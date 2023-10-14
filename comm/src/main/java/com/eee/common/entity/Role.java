@@ -16,7 +16,7 @@ public class Role {
          private Integer id;
 
 
-         @Column(name= "name",length =40,nullable = false,unique = true )
+         @Column(name= "name",length =40,nullable = false,unique = false )
          private String name;
 
          @Column(name= "descrption",length =40,nullable = false)

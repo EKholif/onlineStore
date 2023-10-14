@@ -1,20 +1,25 @@
-package test;
-
+package com.eee.admin.test;
 
 import com.eee.admin.role.RoleRepository;
 import com.eee.common.entity.Role;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
+import org.springframework.test.annotation.Rollback;
 
 
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@SpringBootTest(classes=com.eee.admin.role.RoleRepository.class )
+@DataJpaTest
+@AutoConfigureTestDatabase(replace =Replace.NONE)
+@Rollback(false)
+
+
 public class RoleRepositoryTest {
 
 @Autowired
