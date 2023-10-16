@@ -3,6 +3,8 @@ package com.eee.common.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
@@ -13,28 +15,24 @@ public class Role {
          @Id
          @GeneratedValue(strategy = GenerationType.IDENTITY)
          @Column (name= "id")
-         private Integer id;
-
+         private Long id;
 
          @Column(name= "name",length =40,nullable = false,unique = false )
          private String name;
-
-         @Column(name= "descrption",length =40,nullable = false)
+         @Column(name= "descrption",length =150,nullable = false)
          private String descrption;
-
-
 
     public Role() {
 
     }
 
-//    @Lob
-//    @Basic(fetch=LAZY)
-    public Integer getId() {
+    @Lob
+    @Basic(fetch=LAZY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,12 +58,21 @@ public class Role {
     }
 
     @Override
-    public String toString() {
-        return "\n Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", descrption='" + descrption + '\'' +
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return Objects.equals(id, role.id) && Objects.equals(name, role.name) && Objects.equals(descrption, role.descrption);
+    }
 
-                '}';
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, descrption);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+
     }
 }
