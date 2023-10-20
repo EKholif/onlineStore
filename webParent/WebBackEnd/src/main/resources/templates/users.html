@@ -71,11 +71,11 @@
 <div class="container=5">
     <h2>Users List </h2>
     <hr/>
-    <a th:href="@{/users}" class="btn btn-primary mb-2">Add User</a>
+    <a th:href="@{/newUserForm}" class="btn btn-primary mb-2">Add User</a>
     <a th:href="@{/users}" class="btn btn-danger mb-2">remove</a>
 
     <table class="table table-header table-striped">
-        <thead>
+        <thead class="thead-dark" >
         <tr>
             <th> User Id </th>
             <th> First name </th>
@@ -94,7 +94,11 @@
                     crossorigin="anonymous"></script>
         </tr>
         </thead>
-        <tbody>
+        <tbody><div th:if="${message !=null }" class="alert alert-success text-center" >
+            [[${message}]]
+        </div>
+
+
         <tr>
         <tr th:each = "user: ${users}">
             <td th:text="${user.getId()}"></td>
