@@ -23,7 +23,6 @@ class UserRepositoryTest {
     @Autowired
     private RoleRepository roleRepository;
 
-
     @Test
     public void testCreateFirstUser() {
         User userAdmin = new User("ehabkholif@gmail.com", "0000", "ehab", "kholif");
@@ -106,4 +105,18 @@ class UserRepositoryTest {
         repo.saveAndFlush(userAdmin);
 
     }
+
+    @Test
+    public void testFindUserByEmail() {
+        User UserByEmail = repo.findByEmail("ehabkholif@gmail.com");
+        System.out.println(UserByEmail.getId());
+    }
+
+    @Test
+    public void testUserExistsByEmail() {
+        boolean UserByEmail = repo.existsByEmail("ehabkholif@2gmail.com");
+        System.out.println(UserByEmail);
+    }
+
+
 }

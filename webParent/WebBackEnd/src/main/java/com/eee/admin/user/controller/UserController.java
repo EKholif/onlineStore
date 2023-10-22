@@ -6,6 +6,7 @@ import com.eee.admin.user.servcies.UserService;
 import com.eee.common.entity.Role;
 import com.eee.common.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -15,7 +16,7 @@ import java.util.List;
 @RestController
 public class UserController {
     @Autowired
-    private UserService service;
+    private UserService userService;
     @Autowired
     private UserRepository userRepository;
 
@@ -23,7 +24,7 @@ public class UserController {
     @GetMapping("/users")
     public ModelAndView listAllUsers( ){
         ModelAndView model = new ModelAndView("users");
-         List<User> list = service.listAllUsers();
+         List<User> list = userService.listAllUsers();
          model.addObject("users", list);
          return model;
      }
@@ -31,7 +32,7 @@ public class UserController {
     @GetMapping("/newUserForm")
     public ModelAndView newUserForm() {
         ModelAndView model = new ModelAndView("newUserForm");
-       List<Role> listAllRoles = service.listAllRoles();
+       List<Role> listAllRoles = userService.listAllRoles();
         User newUser = new User();
         newUser.setEnable(true);
         model.addObject("user", newUser);
@@ -43,9 +44,10 @@ public class UserController {
 
     @PostMapping({ "/save-user"} )
     public ModelAndView saveNewUser( @ModelAttribute final User user, RedirectAttributes redirectAttributes ) {
+
         redirectAttributes.addFlashAttribute("message", "the user has been saved");
-        service.saveUser(user);
-        return listAllUsers();
+        userService.saveUser(user);
+        return new ModelAndView("redirect:/users");
 
     }
 

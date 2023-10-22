@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
     <script type="text/javascript" th:src="@{webjars/jquery/3.6.4/jquery.min.js}"> </script>
-    <      <script type="text/javascript" th:src="@{webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" ></script>-->
+      <script type="text/javascript" th:src="@{webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" ></script>
     <script type="text/javascript" th:src="@{webjars/bootstrap/5.3.0/js/bootstrap.min.js}" ></script>
 </head>
 <body>
@@ -74,6 +74,12 @@
     <a th:href="@{/newUserForm}" class="btn btn-primary mb-2">Add User</a>
     <a th:href="@{/users}" class="btn btn-danger mb-2">remove</a>
 
+    <div th:if="${message != null}" class="alert alert-success text-center" >
+<!--        <p th:text="${message}"></p>-->
+
+            [[${message}]]
+    </div>
+
     <table class="table table-header table-striped">
         <thead class="thead-dark" >
         <tr>
@@ -94,9 +100,6 @@
                     crossorigin="anonymous"></script>
         </tr>
         </thead>
-        <tbody><div th:if="${message !=null }" class="alert alert-success text-center" >
-            [[${message}]]
-        </div>
 
 
         <tr>
@@ -120,6 +123,7 @@
 <div>
     <p class="text-center"> eee copyright copy&copy; Ehab Kholif </p>
 </div>
+
 
 
 </body>
