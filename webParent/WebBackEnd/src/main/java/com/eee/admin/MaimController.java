@@ -17,8 +17,11 @@ public class MaimController {
 
     @GetMapping("/")
     public String ViewHome(){
-        Role role = new Role("appppppppp", "been");
-        Role savedRole = repo.save(role);
         return "index";
     }
+
+
+
+
+
 }

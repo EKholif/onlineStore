@@ -19,7 +19,7 @@ import java.util.List;
 @Rollback(false)
 public class RoleRepositoryTest {
 
-@Autowired
+    @Autowired
     private RoleRepository repo;
 
 
@@ -29,6 +29,7 @@ public class RoleRepositoryTest {
         Role savedRole = repo.saveAndFlush(roleAdmin);
         assertThat(savedRole.getId()).isGreaterThan(0);
     }
+
     @Test
     public void testCreateFirstRoles() {
         Role roleSalesperson = new Role("Salesperson", "manage product price, "
@@ -45,5 +46,9 @@ public class RoleRepositoryTest {
     }
 
 
+    @Test
+    public void testDeleteRole() {
+        repo.deleteById(6L);
     }
+}
 

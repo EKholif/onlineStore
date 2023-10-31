@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,19 +32,22 @@ class UserRepositoryTest {
         assertThat(savedRole.getId()).isGreaterThan(0);
     }
 
+
+
     @Test
-    public void testCreateUsers() {
+    public void testCreateUsers()
+     {
         User userSalesperson = new User("ehab.bts@gmail.com", "a0000", "ehab", "kholif");
         userSalesperson.addRole(roleRepository.getReferenceById(2L));
 
         User userEditor = new User("ehab@gmail.com", "0a000", "ekholif", "kholif");
-        userSalesperson.addRole(roleRepository.getReferenceById(3L));
+        userEditor.addRole(roleRepository.getReferenceById(3L));
 
         User userShipper = new User("bts@gmail.com", "00a00", "testUserOne", "kholif");
-        userSalesperson.addRole(roleRepository.getReferenceById(4L));
+        userShipper.addRole(roleRepository.getReferenceById(4L));
 
         User userAssistant = new User("eh.bts@gmail.com", "000a0", "testUserTwo", "kholif");
-        userSalesperson.addRole(roleRepository.getReferenceById(5L));
+        userAssistant.addRole(roleRepository.getReferenceById(5L));
 
         repo.saveAllAndFlush(List.of(userSalesperson, userEditor, userShipper, userAssistant));
 
@@ -62,9 +66,11 @@ class UserRepositoryTest {
      User userAdmin = repo.findById(1L).get();
         System.out.println(userAdmin);
     }
+
+
     @Test
     public void testUpdateUser(){
-        User userAdmin = repo.findById(1L).get();
+        User userAdmin = repo.findById(69L).get();
         userAdmin.setEnable(true);
         userAdmin.setPassword("1111L");
         repo.saveAndFlush(userAdmin);
@@ -81,7 +87,7 @@ class UserRepositoryTest {
     @Test
     public void testDeleteUser() {
 
-        Long userId = 10L;
+        Long userId = 6L;
         repo.deleteById(userId);
     }
 
@@ -108,15 +114,36 @@ class UserRepositoryTest {
 
     @Test
     public void testFindUserByEmail() {
-        User UserByEmail = repo.findByEmail("ehabkholif@gmail.com");
-        System.out.println(UserByEmail.getId());
+        User UserByEmail = repo.findByEmail("ehabffkholif@gmail.com");
+        boolean user = (UserByEmail==null);
+        System.out.println(user);
     }
 
     @Test
-    public void testUserExistsByEmail() {
-        boolean UserByEmail = repo.existsByEmail("ehabkholif@2gmail.com");
-        System.out.println(UserByEmail);
+    public void  testNewUserId (){
+        User newUser = new User();
+        System.out.println(newUser.getId());
+
     }
 
 
+    @Test
+    public void testUserExistsByEmail() {
+        boolean UserByEmail = repo.existsByEmail("ehab.bts@gmail.com");
+        System.out.println(UserByEmail);
+    }
+
+    @Test
+    public void testFindUserById () {
+        try {
+            User userFindById = repo.findById(2L).get();
+            System.out.println(userFindById);
+
+        }catch (NoSuchElementException ex){
+
+            System.out.println("null");
+
+        }
+
+    }
 }

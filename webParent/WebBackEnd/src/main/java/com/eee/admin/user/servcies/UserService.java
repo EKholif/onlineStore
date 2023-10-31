@@ -1,6 +1,7 @@
 package com.eee.admin.user.servcies;
 
 
+import com.eee.admin.UsernameNotFoundException;
 import com.eee.admin.role.RoleRepository;
 import com.eee.admin.user.UserRepository;
 import com.eee.common.entity.Role;
@@ -10,6 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -41,10 +45,53 @@ public class UserService {
         user.setPassword(encodePassword);
     }
 
-    public boolean isEmailUnique(String email){
-        return userRepo.existsByEmail(email);
+     public User findUserById (Long id) {
+        try {
+            User userFindById = userRepo.findById(id).get();
+            return userFindById;
+        } catch (NoSuchElementException ex){
+            return null;
+        }
 
+     }
+
+
+
+    public boolean isEmailUnique(Long id, String email) {
+        User userByEmail = userRepo.findByEmail(email);
+
+        if (userByEmail == null) return true;
+        boolean isCreatingNew = (id == 0);
+
+        if (isCreatingNew) {
+            if (userByEmail != null) return false;
+        } else {
+            if (userByEmail.getId() == id) {
+                return true;
+            }
+        }
+return true;
     }
 
-   }
+    public User getUser( Long userId) throws UsernameNotFoundException{
+        try {
+        return userRepo.findById(userId).get();
 
+        }catch (NoSuchElementException ex){
+
+            throw new UsernameNotFoundException("Could not find any user with ID " + userId);
+    }
+}
+
+
+public void deleteUser(Long userId) throws UsernameNotFoundException{
+    try {
+        userRepo.deleteById(userId);
+    }catch (NoSuchElementException ex){
+
+        throw new UsernameNotFoundException("Could not find any user with ID " + userId);
+    }
+}
+
+
+ }
