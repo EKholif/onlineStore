@@ -1,8 +1,8 @@
-package com.eee.admin.test;
+package com.onlineStore.admin.test;
 
-import com.eee.admin.role.RoleRepository;
-import com.eee.admin.user.UserRepository;
-import com.eee.common.entity.User;
+import com.onlineStore.admin.role.RoleRepository;
+import com.onlineStore.admin.user.UserRepository;
+import com.onlineStore.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -76,6 +76,14 @@ class UserRepositoryTest {
         repo.saveAndFlush(userAdmin);
         System.out.println(userAdmin);
     }
+    @Test
+    public void testCountById(){
+        Long id =252L;
+        Long countBYId = repo.countById(id);
+        assertThat(countBYId).isNotNull().isGreaterThan(0);
+
+    }
+
 
     @Test
     public void testCreateTestUser() {
@@ -144,6 +152,14 @@ class UserRepositoryTest {
             System.out.println("null");
 
         }
+
+    }
+
+    @Test
+    public void testEnableUser(){
+        Long id = 1152L;
+        repo.enableUser(id,true);
+
 
     }
 }

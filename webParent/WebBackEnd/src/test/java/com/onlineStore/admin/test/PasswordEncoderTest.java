@@ -1,4 +1,4 @@
-package com.eee.admin.test;
+package com.onlineStore.admin.test;
 
 import org.junit.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

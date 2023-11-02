@@ -1,21 +1,22 @@
-package com.eee.admin.user.servcies;
+package com.onlineStore.admin.user.servcies;
 
 
-import com.eee.admin.UsernameNotFoundException;
-import com.eee.admin.role.RoleRepository;
-import com.eee.admin.user.UserRepository;
-import com.eee.common.entity.Role;
-import com.eee.common.entity.User;
+import com.onlineStore.admin.UsernameNotFoundException;
+import com.onlineStore.admin.role.RoleRepository;
+import com.onlineStore.admin.user.UserRepository;
+import com.onlineStore.entity.Role;
+import com.onlineStore.entity.User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
+@Transactional
+
 public class UserService {
 
     @Autowired
@@ -34,9 +35,10 @@ public class UserService {
         return roleRepo.findAll();
     }
 
-    public void saveUser (User user){
+    public void saveUser (User user)   {
         encodePassword(user);
         userRepo.saveAndFlush(user);
+
     }
 
     private void encodePassword(User user){
@@ -45,16 +47,10 @@ public class UserService {
         user.setPassword(encodePassword);
     }
 
-     public User findUserById (Long id) {
-        try {
-            User userFindById = userRepo.findById(id).get();
-            return userFindById;
-        } catch (NoSuchElementException ex){
-            return null;
-        }
-
-     }
-
+//    public Long countById (Long id){
+//
+//        userRepo.countById(id)
+//    }
 
 
     public boolean isEmailUnique(Long id, String email) {
@@ -93,5 +89,14 @@ public void deleteUser(Long userId) throws UsernameNotFoundException{
     }
 }
 
+public void UdpateUserEnableStatus (Long id, Boolean enable){
+        userRepo.enableUser(id, enable);
 
- }
+}
+
+
+
+
+}
+
+

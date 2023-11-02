@@ -71,7 +71,7 @@
 </div>
 <div>
     <h1> Create New User</h1>
-    <a th:href="@{/newUserForm}">[[${pageTitle}]]</a>
+    <a th:href="@{/new-user-form}">[[${pageTitle}]]</a>
 </div>
 
 
@@ -79,16 +79,20 @@
 
     <h2>[[${pageTitle}]]</h2>
 
-    <form  th:action="@{${saveChanges}}" th:object="${user}" method="post" onsubmit="return checkDuplicateEmail(this);">
+    <form  th:action="@{${saveChanges}}" th:object="${user}" method="post"
+           enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto"
+           onsubmit="return checkDuplicateEmail(this);">
         <input type="hidden"  id="id" name="id"  th:value="${UserId}"  />
         <div>
             <div class="form-text rounded-3">
         <input type="text" th:field="*{fristName}" required minlength="2" placeholder="enter first name"  class="form-control col-4 mb-4"/>
         <input type="text" th:field="*{lastName}"  placeholder="enter last name"  class="form-control col-2 mb-2" />
         <input type="text" th:field="*{email}"  placeholder="enter email" id="email"  class="form-control col-4 mb-4" />
-        <input type="text" th:field="*{password}"  placeholder="enter password"  class="form-control col-4 mb-4" />
+        <input th:if ="${UserId == 0}" type="password" th:field="*{password}" required placeholder="enter password"  class="form-control col-4 mb-4" />
+        <input th:if ="${UserId > 0}" type="password" th:field="*{password}"   placeholder="enter password"  class="form-control col-4 mb-4" />
             </div>
         </div>
+
 
 
 
@@ -103,18 +107,27 @@
                       />
                - <small>[[${role.descrption}]]</small>
                <br/>
-
            </th:block>
           </div>
        </div>
 
 
         <div class="checkboxes">
-               <label class="col-sm-4 col-form-label">Enable</label>
-                   <div class="col-sm-8 ">
-                        <input type="checkbox" th:field="*{enable}"/>
-                  </div>
+            <label class="col-sm-4 col-form-label">Enable</label>
+            <div class="col-sm-8 ">
+                <input type="checkbox" th:field="*{enable}"/>
+            </div>
         </div>
+
+        <div class="form row" >
+            <label class="col-sm-4 col-form-label">Photo</label>
+            <div class="col-sm-8 ">
+                <input class="mb-2" type="file" id="fileImage" name="image" accept="image/jpg, image/jpeg, image/png"/>
+                <img class="img-fluid"  id="thumbnail" alt="user Photo" th:src="@{/images/bob.png}"/>
+            </div>
+        </div>
+
+
 
       <div>
         <button class= "btn btn-primary " type="submit">Save</button>
@@ -159,8 +172,32 @@
         $("#buttonCancel").on("click", function (){
             window.location="[[@{users}]]";
         });
+
+        $("#fileImage").change(function (){
+            fileSize =this.files[0].size;
+            // alert("file size" + fileSize)
+
+            if (fileSize> 1048576){
+                this.setCustomValidity("Maximum image size is 1Mb ");
+                this.reportValidity();
+
+            }else {
+                // this.setCustomValidity("cool")
+
+                showImage(this);}
+        });
+
+
     });
 
+    function showImage (fileInput){
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+        reader.onload=function (e){
+            $("#thumbnail").attr("src", e.target.result)
+        };
+        reader.readAsDataURL (file);
+    }
 
     function checkDuplicateEmail(form) {
         // Build the URL for the server-side endpoint.

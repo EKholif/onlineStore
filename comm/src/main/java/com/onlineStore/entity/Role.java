@@ -1,4 +1,4 @@
-package com.eee.common.entity;
+package com.onlineStore.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -9,7 +9,7 @@ import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name="role")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role {
 
          @Id

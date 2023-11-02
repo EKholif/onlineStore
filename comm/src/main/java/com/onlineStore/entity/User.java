@@ -1,4 +1,4 @@
-package com.eee.common.entity;
+package com.onlineStore.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,7 +27,8 @@ public class User {
     @Column(name= "lastName", length = 85, nullable = false)
 
     private String lastName;
-
+    @Column(name= "enable")
+    private boolean enable ;
     @Column (name= "user_bio")
     private byte[] user_bio;
     @ManyToMany
@@ -37,6 +37,8 @@ public class User {
     inverseJoinColumns =@JoinColumn(name="role_id"))
     @JsonIgnore
     private Set<Role> roles =new HashSet<>();
+    public User() {
+    }
 
     public byte[] getUser_bio() {
         return user_bio;
@@ -65,9 +67,6 @@ public class User {
         this.enable = enable;
     }
 
-    private boolean enable ;
-    public User() {
-    }
 
     public User(String email, String password, String fristName, String lastName) {
         this.email = email;
@@ -120,6 +119,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "email='" + email + '\'' +
+                " userId = '" + id + '\'' +
                 '}';
     }
 }

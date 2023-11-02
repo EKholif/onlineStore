@@ -1,4 +1,4 @@
-package com.eee.admin;
+package com.onlineStore.admin;
 
 public class UsernameNotFoundException extends Exception{
 

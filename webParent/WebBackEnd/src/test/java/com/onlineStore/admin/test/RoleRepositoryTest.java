@@ -1,7 +1,7 @@
-package com.eee.admin.test;
+package com.onlineStore.admin.test;
 
-import com.eee.admin.role.RoleRepository;
-import com.eee.common.entity.Role;
+import com.onlineStore.admin.role.RoleRepository;
+import com.onlineStore.entity.Role;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;

@@ -1,10 +1,9 @@
-package com.eee.admin.user;
+package com.onlineStore.admin.user;
 
 
-import com.eee.admin.user.servcies.UserService;
+import com.onlineStore.admin.user.servcies.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

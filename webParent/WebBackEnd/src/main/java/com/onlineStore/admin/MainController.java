@@ -1,13 +1,12 @@
-package com.eee.admin;
+package com.onlineStore.admin;
 
-import com.eee.admin.role.RoleRepository;
-import com.eee.common.entity.Role;
+import com.onlineStore.admin.role.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MaimController {
+public class MainController {
 
     @Autowired
 
