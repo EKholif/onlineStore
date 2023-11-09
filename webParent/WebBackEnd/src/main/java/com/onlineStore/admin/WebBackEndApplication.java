@@ -1,12 +1,11 @@
 package com.onlineStore.admin;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan({"com.onlineStore.entity","com.onlineStore.admin.role"})
+@EntityScan({"com.onlineStoreCom.entity"})
 public class WebBackEndApplication {
 
 

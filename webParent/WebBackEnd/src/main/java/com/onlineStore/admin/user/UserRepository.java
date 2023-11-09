@@ -1,7 +1,7 @@
 package com.onlineStore.admin.user;
 
 
-import com.onlineStore.entity.User;
+import com.onlineStoreCom.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

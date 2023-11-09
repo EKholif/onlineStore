@@ -4,8 +4,8 @@ package com.onlineStore.admin.user.servcies;
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
-import com.onlineStore.entity.Role;
-import com.onlineStore.entity.User;
+import com.onlineStoreCom.entity.Role;
+import com.onlineStoreCom.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,9 +35,9 @@ public class UserService {
         return roleRepo.findAll();
     }
 
-    public void saveUser (User user)   {
+    public User saveUser (User user)   {
         encodePassword(user);
-        userRepo.saveAndFlush(user);
+       return userRepo.saveAndFlush(user);
 
     }
 

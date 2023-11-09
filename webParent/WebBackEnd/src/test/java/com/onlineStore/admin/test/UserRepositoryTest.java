@@ -1,14 +1,17 @@
 package com.onlineStore.admin.test;
 
+import com.onlineStore.admin.FileUploadUtil;
 import com.onlineStore.admin.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
-import com.onlineStore.entity.User;
+import com.onlineStoreCom.entity.User;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -101,7 +104,7 @@ class UserRepositoryTest {
 
     @Test
     public void testUpdateRoleUser() {
-        User userAdmin = repo.findById(9L).get();
+        User userAdmin = repo.findById(3103L).get();
         userAdmin.addRole(roleRepository.getReferenceById(1L));
         repo.saveAndFlush(userAdmin);
         userAdmin.addRole(roleRepository.getReferenceById(3L));
@@ -144,22 +147,54 @@ class UserRepositoryTest {
     @Test
     public void testFindUserById () {
         try {
-            User userFindById = repo.findById(2L).get();
+            User userFindById = repo.findById(1202L).get();
             System.out.println(userFindById);
 
         }catch (NoSuchElementException ex){
 
             System.out.println("null");
-
         }
-
     }
 
     @Test
     public void testEnableUser(){
         Long id = 1152L;
         repo.enableUser(id,true);
+    }
+
+    @Test
+    public void testGetUserImagePath(){
+
+        User user = repo.getReferenceById(3L);
+
+        System.out.println( user.getImagePath());
+        System.out.println( user.getUser_bio());
+
 
 
     }
+
+    @Test
+    public void testUnitBean(){
+        User user = repo.getReferenceById(3252L);
+        User userAdmin =new User();
+        userAdmin.addRole(roleRepository.getReferenceById(1L));
+
+
+        BeanUtils.copyProperties( userAdmin,user, "id");
+        System.out.println(userAdmin.getRoles());
+        System.out.println(user.getRoles());
+    }
+
+    @Test
+    public void testCleanDir() throws IOException {
+
+        User user = repo.getReferenceById(3L);
+
+        FileUploadUtil.cleanDir(user.getImageDir());
+
+
+    }
+
+
 }

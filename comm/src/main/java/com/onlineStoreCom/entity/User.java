@@ -1,4 +1,4 @@
-package com.onlineStore.entity;
+package com.onlineStoreCom.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,37 +14,38 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-   @Column(name= "email", length = 85, nullable = false)
+    @Column(name = "email", length = 85, nullable = false)
     private String email;
-    @Column(name= "password", length = 85, nullable = false)
+    @Column(name = "password", length = 85, nullable = false)
 
     private String password;
-    @Column(name= "fristName", length = 85, nullable = false)
+    @Column(name = "fristName", length = 85, nullable = false)
 
     private String fristName;
-    @Column(name= "lastName", length = 85, nullable = false)
+    @Column(name = "lastName", length = 85, nullable = false)
 
     private String lastName;
-    @Column(name= "enable")
-    private boolean enable ;
-    @Column (name= "user_bio")
-    private byte[] user_bio;
+    @Column(name = "enable")
+    private boolean enable;
+    @Column(name = "user_bio")
+    private String user_bio;
     @ManyToMany
-    @JoinTable( name= "user_roles",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns =@JoinColumn(name="role_id"))
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     @JsonIgnore
-    private Set<Role> roles =new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
+
     public User() {
     }
 
-    public byte[] getUser_bio() {
+    public String getUser_bio() {
         return user_bio;
     }
 
-    public void setUser_bio(byte[] user_bio) {
+    public void setUser_bio(String user_bio) {
         this.user_bio = user_bio;
     }
 
@@ -56,9 +57,10 @@ public class User {
         this.roles = roles;
     }
 
-    public void addRole( Role role){
+    public void addRole(Role role) {
         this.roles.add(role);
     }
+
     public boolean isEnable() {
         return enable;
     }
@@ -75,7 +77,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -120,6 +122,25 @@ public class User {
         return "User{" +
                 "email='" + email + '\'' +
                 " userId = '" + id + '\'' +
+                " fristName = '" + fristName + '\'' +
                 '}';
     }
+
+    @Transient
+    public String getImagePath() {
+        String dirName =   "user-photos\\" ;
+        if ( id == null || user_bio == null) return "images" + "\\" +"bob.png";
+
+
+        return dirName + this.id + '\\' +this.user_bio;
+    }
+
+    @Transient
+    public String getImageDir() {
+        String dirName =   "user-photos\\" ;
+//        if ( id == null || user_bio == null) return "\\images \\ bob.png";
+        return dirName + this.id + '\\' ;
+    }
+
+
 }

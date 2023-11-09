@@ -1,4 +1,4 @@
-package com.onlineStore.admin.user;
+package com.onlineStore.admin.user.controller;
 
 
 import com.onlineStore.admin.user.servcies.UserService;
