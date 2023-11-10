@@ -8,6 +8,9 @@ import com.onlineStoreCom.entity.Role;
 import com.onlineStoreCom.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,8 @@ import java.util.NoSuchElementException;
 @Transactional
 
 public class UserService {
+
+    public static final int USERS_PER_PAGE=4;
 
     @Autowired
     private UserRepository userRepo;
@@ -31,6 +36,8 @@ public class UserService {
         return userRepo.findAll();
     }
 
+
+
     public List<Role> listAllRoles (){
         return roleRepo.findAll();
     }
@@ -41,16 +48,23 @@ public class UserService {
 
     }
 
+    public Page<User> listByPage(int pageNum){
+
+        Pageable pageable = PageRequest.of(pageNum-1 ,USERS_PER_PAGE);
+        System.out.println(pageNum);
+        return userRepo.findAll(pageable);
+
+
+    }
+
+
+
     private void encodePassword(User user){
 
         String encodePassword= passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
     }
 
-//    public Long countById (Long id){
-//
-//        userRepo.countById(id)
-//    }
 
 
     public boolean isEmailUnique(Long id, String email) {

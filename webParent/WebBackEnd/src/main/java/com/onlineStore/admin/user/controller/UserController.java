@@ -10,6 +10,7 @@ import com.onlineStoreCom.entity.User;
 import com.onlineStoreCom.entity.Role;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,12 +32,40 @@ public class UserController {
 
 
     @GetMapping("/users")
-    public ModelAndView listAllUsers() {
+    public ModelAndView listAllUsers( ) {
         ModelAndView model = new ModelAndView("users");
-        List<User> list = userService.listAllUsers();
-        model.addObject("users", list);
 
-        return model;
+        return listByPage(1);
+    }
+
+    @GetMapping("/users/page/{pageNum}")
+    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum) {
+        ModelAndView model = new ModelAndView("users");
+        Page<User> userPage = userService.listByPage(pageNum);
+        List<User>listUsers= userPage.getContent();
+
+        Long startCont = (long) ((pageNum-1)* UserService.USERS_PER_PAGE +1);
+        Long endCount = startCont+ UserService.USERS_PER_PAGE -1;
+         if(endCount> userPage.getTotalElements()){
+             endCount=userPage.getTotalElements();
+
+         }
+
+        model.addObject("totalItems", userPage.getTotalElements());
+        model.addObject("curerntPage", pageNum);
+
+        model.addObject("userPage", userPage);
+        model.addObject("endCount", endCount);
+        model.addObject("startCont", startCont);
+
+         model.addObject("users", listUsers);
+
+        System.out.println("page num"+ pageNum);
+        System.out.println("total elmant"+ userPage.getTotalPages());
+        System.out.println("page num"+ pageNum);
+        System.out.println(listUsers);
+
+         return  model;
     }
 
 
