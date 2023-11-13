@@ -52,7 +52,10 @@ public class UserController {
          }
 
         model.addObject("totalItems", userPage.getTotalElements());
-        model.addObject("curerntPage", pageNum);
+        model.addObject("totalPages", userPage.getTotalPages());
+
+
+        model.addObject("currentPage", pageNum);
 
         model.addObject("userPage", userPage);
         model.addObject("endCount", endCount);

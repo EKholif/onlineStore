@@ -106,7 +106,42 @@
             [[${message}]]
     </div>
 
-    <div class="table-responsive">
+        <nav aria-label="paginat"  class="text-center flex mb-1" >
+            <div  th:if="${totalItems>0}" >
+                <span class="align-content-end"> showing users # [[${startCont}]] to [[${endCount}]] of [[${totalItems}]]</span>
+            </div>
+            <div  th:unless="${totalItems>0}" >
+                <span> No Users Found</span>
+            </div>
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                    <a class="page-link"    th:href="@{'http://localhost:750/users/page/1' }" tabindex="-1">First</a>
+                </li>
+
+                <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                    <a class="page-link"   th:if="${currentPage>=2}" th:href="@{'http://localhost:750/users/page/' + ${currentPage - 1}}" tabindex="-1">Previous</a>
+                    <a class="page-link"   th:if="${currentPage<=1}" th:href="@{'http://localhost:750/users/page/1' }" tabindex="-1">Previous</a>
+                </li>
+
+                <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
+                    <a class="page-link" th:href="@{'http://localhost:750/users/page/'+${i}}">[[${i}]]</a>
+                </li>
+
+                <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                    <a class="page-link" th:if="${currentPage<totalPages}" th:href="@{'http://localhost:750/users/page/' + ${currentPage + 1}}"  >Next</a>
+                    <a class="page-link" th:if="${currentPage>=totalPages}" th:href="@{'http://localhost:750/users/page/' + ${totalPages}}"  >Next</a>
+                </li>
+                <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                    <a class="page-link" th:href="@{'http://localhost:750/users/page/' + ${totalPages}}">Last</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+
+        <div class="table-responsive">
     <table class="table  me-sm-1 table-header table-striped  table-bordered ">
         <thead class="table-dark " >
         <tr>
@@ -123,26 +158,21 @@
             <th></th>
 
 
-<!--            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"-->
-<!--                    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"-->
-<!--                    crossorigin="anonymous"></script>-->
-<!--            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"-->
-<!--                    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"-->
-<!--                    crossorigin="anonymous"></script>-->
         </tr>
         </thead>
+
 
 
         <tr >
         <tr th:each = "user: ${users}">
 
 
-        <td><input class="form-check-input" type="checkbox" name="selectedUsers" th:value="${user.id}" id="flexCheckDefault"></td>
+        <td><input class="form-check-input " type="checkbox" name="selectedUsers" th:value="${user.id}" id="flexCheckDefault"></td>
         <td th:text="${user.getId()}"></td>
 
         <td>
             <span th:if="${user.user_bio == null}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
-            <img th:if="${user.user_bio != null}"  th:src="@{${user.getImagePath()}}" class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"  />
+            <img th:if="${user.user_bio != null}"  th:src="'http://localhost:750/' + ${user.getImagePath()}" class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"  />
 
         </td>
 
@@ -152,7 +182,7 @@
             <td th:pattern="${user.getPassword()}"></td>
             <td th:text="${user.getRoles()}"></td>
             <td >
-                <a th:if="${user.isEnable() == true}" class="fas fa-check-circle px-2 icon-green"
+                <a th:if="${user.isEnable() == true}" class="fas fa-check-circle px-2 icon-green "
                    th:href="@{'/user/' + ${user.getId()} +'/enable/false' } "
                   title="Disable User"></a>
 <!--                                &nbsp;-->
