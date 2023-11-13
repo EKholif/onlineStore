@@ -23,7 +23,8 @@ public class User {
     private String password;
     @Column(name = "fristName", length = 85, nullable = false)
 
-    private String fristName;
+    private String firstName;
+
     @Column(name = "lastName", length = 85, nullable = false)
 
     private String lastName;
@@ -73,7 +74,7 @@ public class User {
     public User(String email, String password, String fristName, String lastName) {
         this.email = email;
         this.password = password;
-        this.fristName = fristName;
+        this.firstName = fristName;
         this.lastName = lastName;
     }
 
@@ -102,11 +103,11 @@ public class User {
     }
 
     public String getFristName() {
-        return fristName;
+        return firstName;
     }
 
     public void setFristName(String fristName) {
-        this.fristName = fristName;
+        this.firstName = fristName;
     }
 
     public String getLastName() {
@@ -122,7 +123,7 @@ public class User {
         return "User{" +
                 "email='" + email + '\'' +
                 " userId = '" + id + '\'' +
-                " fristName = '" + fristName + '\'' +
+                " fristName = '" + firstName + '\'' +
                 '}';
     }
 

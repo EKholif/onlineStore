@@ -18,7 +18,7 @@
 <body>
 <div class="container-fluid">
     <div>
-        <nav class="navbar me-sm-1 navbar-expand-lg bg-dark navbar-dark">
+        <nav class="navbar me-sm-3 navbar-expand-lg bg-dark navbar-dark">
 
             <a class="navbar-brand" th:href="@{/}">
                 <img alt="Bob" th:src="@{/images/bob.png}"/>
@@ -67,44 +67,37 @@
         </nav>
     </div>
 </div>
-<div>
-    <h1> Mange Users</h1>
-    <a th:href="@{/new-user-form}">Create New User</a>
-</div>
-
 
 <div>
-    <div>
-        <form class="d-inline-flex p-2"  method="post" th:action="@{'/searchID'  }">
+    <div  class="d-inline-flex p-2" >
+        <div>
+            <form class="d-inline-flex p-2"  th:action="@{'/users/page/1' }">
+                <input  type="hidden" name="sortFiled" th:value="${sortFiled}"/>
+                <input  type="hidden" name="sortDir" th:value="${sortDir}"/>
 
-            <input class="form-control me-sm-1" type="text" placeholder="Search User"
-                  name="uid"   >
+            <input class="form-control" type="search" name="keyWord"th:value="${keyWord}" required placeholder="Search User">
 
-            <button class="btn btn-outline-success"   type="submit">Search</button>
-        </form>
-    </div>
+            <input class="btn btn-outline-success"  value="Search" type="submit"/>
+            <input class="btn btn-outline-secondary" value="Clear" type="button" onclick="clearFilter()"/>
+
+           </form>
+        </div>
+        <div class="d-inline-flex p-2 ">
+
+            <form th:action="@{/deleteUsers}" method="post" id="deleteForm">
+                <a th:href="@{/new-user-form}" class="btn btn-primary mb-2">Add User</a>
+            </form>
+                <button class="btn btn-danger mb-2" type="submit">Delete Selected Users</button>
+
+                <div th:if="${message != null}" class="alert alert-success text-center" >
+                    <!--        <p th:text="${message}"></p>-->
+
+                    [[${message}]]
+                </div>
+
+        </div>
 </div>
 
-
-<div class="container=5">
-    <h2>Users List </h2>
-    <hr/>
-
-    <form th:action="@{/deleteUsers}" method="post" id="deleteForm">
-
-        <a th:href="@{/new-user-form}" class="btn btn-primary mb-2">Add User</a>
-
-
-        <button class="btn btn-danger mb-2" type="submit">Delete Selected Users</button>
-
-
-
-
-    <div th:if="${message != null}" class="alert alert-success text-center" >
-<!--        <p th:text="${message}"></p>-->
-
-            [[${message}]]
-    </div>
 
         <nav aria-label="paginat"  class="text-center flex mb-1" >
             <div  th:if="${totalItems>0}" >
@@ -113,29 +106,35 @@
             <div  th:unless="${totalItems>0}" >
                 <span> No Users Found</span>
             </div>
-            <ul class="pagination justify-content-center">
+
+            <div  th:if="${totalPages>1}"   >
+
+            <ul class="pagination justify-content-center" >
 
                 <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                    <a class="page-link"    th:href="@{'http://localhost:750/users/page/1' }" tabindex="-1">First</a>
+                    <a class="page-link"    th:href="@{'http://localhost:750/users/page/1' +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  tabindex="-1">First</a>
                 </li>
 
                 <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                    <a class="page-link"   th:if="${currentPage>=2}" th:href="@{'http://localhost:750/users/page/' + ${currentPage - 1}}" tabindex="-1">Previous</a>
-                    <a class="page-link"   th:if="${currentPage<=1}" th:href="@{'http://localhost:750/users/page/1' }" tabindex="-1">Previous</a>
+                    <a class="page-link"   th:if="${currentPage>=2}" th:href="@{'http://localhost:750/users/page/' + ${currentPage - 1}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  tabindex="-1">Previous</a>
+                    <a class="page-link"   th:unless="${currentPage>=1}" th:href="@{'http://localhost:750/users/page/1'+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir}  + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  tabindex="-1">Previous</a>
                 </li>
 
                 <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
-                    <a class="page-link" th:href="@{'http://localhost:750/users/page/'+${i}}">[[${i}]]</a>
+                    <a class="page-link" th:href="@{'http://localhost:750/users/page/'+${i}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}" >[[${i}]]</a>
                 </li>
 
                 <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                    <a class="page-link" th:if="${currentPage<totalPages}" th:href="@{'http://localhost:750/users/page/' + ${currentPage + 1}}"  >Next</a>
-                    <a class="page-link" th:if="${currentPage>=totalPages}" th:href="@{'http://localhost:750/users/page/' + ${totalPages}}"  >Next</a>
+                    <a class="page-link" th:if="${currentPage<totalPages}" th:href="@{'http://localhost:750/users/page/' + ${currentPage + 1}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"    >Next</a>
+
+                    <a class="page-link" th:if="${currentPage>=totalPages}" th:href="@{'http://localhost:750/users/page/' + ${totalPages}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   >Next</a>
                 </li>
                 <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                    <a class="page-link" th:href="@{'http://localhost:750/users/page/' + ${totalPages}}">Last</a>
+                    <a class="page-link" th:href="@{'http://localhost:750/users/page/' + ${totalPages}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} }">Last</a>
                 </li>
             </ul>
+            </div>
+
         </nav>
 
 
@@ -146,14 +145,49 @@
         <thead class="table-dark " >
         <tr>
             <th>Select</th>
-            <th> User Id </th>
+
+            <th> <a th:if="${sortFiled!= 'id'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=id&sortDir='+${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white " >  User Id </a>
+                <a th:if="${sortFiled== 'id'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=id&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  User Id </a>
+                <span th:if="${sortFiled== 'id'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+            </th>
+
             <th> User Photo</th>
-            <th> First name </th>
-            <th> Last name</th>
-            <th> Email</th>
+
+            <th>
+                <a th:if="${sortFiled!= 'firstName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=firstName&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  First name </a>
+                <a th:if="${sortFiled== 'firstName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=firstName&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  First name </a>
+                <span th:if="${sortFiled== 'firstName'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+            </th>
+
+            <th>
+                <a th:if="${sortFiled!= 'lastName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=lastName&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Last name </a>
+                <a th:if="${sortFiled== 'lastName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=lastName&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Last name </a>
+                <span th:if="${sortFiled== 'lastName'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+            </th>
+
+
+            <th>
+                <a th:if="${sortFiled!= 'email'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=email&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Email </a>
+                <a th:if="${sortFiled== 'email'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=email&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Email </a>
+                <span th:if="${sortFiled== 'email'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+            </th>
             <th>Password</th>
-            <th>Role</th>
-            <th>Enable</th>
+
+            <th>
+                <a th:if="${sortFiled!= 'roles'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=roles&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Role </a>
+                <a th:if="${sortFiled== 'roles'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=roles&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Role </a>
+                <span th:if="${sortFiled== 'roles'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+            </th>
+
+
+            <th>
+                <a th:if="${sortFiled!= 'enable'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=enable&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Enable </a>
+                <a th:if="${sortFiled== 'enable'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=enable&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Enable </a>
+                <span th:if="${sortFiled== 'enable'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+
+           </th>
+
+
             <th></th>
             <th></th>
 
@@ -251,7 +285,9 @@
             $("#confirmModal").modal('show');
         });
     });
-
+    function clearFilter(){
+       window.location="[[@{/users}]]"
+    }
 
 
 </script>

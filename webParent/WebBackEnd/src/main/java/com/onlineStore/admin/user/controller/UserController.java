@@ -11,6 +11,7 @@ import com.onlineStoreCom.entity.Role;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,39 +35,37 @@ public class UserController {
     @GetMapping("/users")
     public ModelAndView listAllUsers( ) {
         ModelAndView model = new ModelAndView("users");
-
-        return listByPage(1);
+        return listByPage(1,"firstName","dsc",null);
     }
 
     @GetMapping("/users/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum) {
+    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
+    @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+           @Param("keyWord") String keyWord
+    ) {
+
         ModelAndView model = new ModelAndView("users");
-        Page<User> userPage = userService.listByPage(pageNum);
+        Page<User> userPage = userService.listByPage(pageNum, sortFiled, sortDir, keyWord);
         List<User>listUsers= userPage.getContent();
 
         Long startCont = (long) ((pageNum-1)* UserService.USERS_PER_PAGE +1);
         Long endCount = startCont+ UserService.USERS_PER_PAGE -1;
          if(endCount> userPage.getTotalElements()){
              endCount=userPage.getTotalElements();
-
          }
+        String reverseSortDir= sortDir.equals("asc")?"dsc":"asc";
 
         model.addObject("totalItems", userPage.getTotalElements());
         model.addObject("totalPages", userPage.getTotalPages());
-
-
+        model.addObject("sortFiled" , sortFiled);
+        model.addObject("sortDir" , sortDir);
         model.addObject("currentPage", pageNum);
-
         model.addObject("userPage", userPage);
         model.addObject("endCount", endCount);
         model.addObject("startCont", startCont);
-
-         model.addObject("users", listUsers);
-
-        System.out.println("page num"+ pageNum);
-        System.out.println("total elmant"+ userPage.getTotalPages());
-        System.out.println("page num"+ pageNum);
-        System.out.println(listUsers);
+        model.addObject("users", listUsers);
+        model.addObject("reverseSortDir", reverseSortDir);
+        model.addObject("keyWord", keyWord);
 
          return  model;
     }
@@ -190,21 +189,6 @@ public class UserController {
     }
 
 
-    @PostMapping("/searchID")
-    public ModelAndView searchUser(@RequestParam ("uid") Long id,@ModelAttribute  User user,  RedirectAttributes redirectAttributes)  {
-
-
-        ModelAndView model = new ModelAndView("users");
-        try {
-            user = userService.getUser(id);
-            model.addObject("users", user);
-            return model;
-
-        } catch (UsernameNotFoundException ex) {
-            redirectAttributes.addFlashAttribute("message  Ehab", ex.getMessage());
-            return new ModelAndView("redirect:/users");
-        }
-    }
 
     @GetMapping ("/delete-user/{id}")
         public ModelAndView deleteUser(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) {

@@ -207,12 +207,20 @@ class UserRepositoryTest {
 
     }
 
-//    @Test
-//    public void testUserServPageing(){
-//
-//        int pageNum = 1;
-//        System.out.println(userService.listByPage(pageNum));
-//    }
+    @Test
+    public void testUserServPageing(){
+   String keyword = "bruce";
+   int pageNum = 0;
+   int pagSize = 6;
+   Pageable pageable =PageRequest.of(pageNum,pagSize);
+   Page<User>page=repo.findAll(keyword, pageable);
+   List<User>listUsers=page.getContent();
+        System.out.println(listUsers);
+
+
+
+
+    }
 
 
 
