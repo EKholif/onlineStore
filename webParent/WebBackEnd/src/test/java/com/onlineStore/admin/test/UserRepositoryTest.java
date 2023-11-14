@@ -30,6 +30,7 @@ class UserRepositoryTest {
     @Autowired
     private RoleRepository roleRepository;
 
+
     @Test
     public void testCreateFirstUser() {
         User userAdmin = new User("ehabkholif@gmail.com", "0000", "ehab", "kholif");
@@ -221,7 +222,12 @@ class UserRepositoryTest {
 
 
     }
+    @Test
+    public void testUserSeachPageing(){
 
+
+
+    }
 
 
 }

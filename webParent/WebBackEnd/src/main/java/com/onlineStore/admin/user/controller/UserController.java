@@ -185,7 +185,9 @@ public class UserController {
             }
 
         }
-        return new ModelAndView("redirect:/users");
+        String fristPartEmail= user.getEmail().split("@")[0];
+
+        return new ModelAndView("redirect:/users/page/1?sortFiled=id&sortDir=asc&keyWord="+fristPartEmail);
     }
 
 

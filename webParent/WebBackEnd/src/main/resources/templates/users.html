@@ -21,7 +21,7 @@
         <nav class="navbar me-sm-3 navbar-expand-lg bg-dark navbar-dark">
 
             <a class="navbar-brand" th:href="@{/}">
-                <img alt="Bob" th:src="@{/images/bob.png}"/>
+                <img class="rounded-circle" alt="Bob" th:src="@{/images/bob.png}"/>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
@@ -89,14 +89,12 @@
             </form>
                 <button class="btn btn-danger mb-2" type="submit">Delete Selected Users</button>
 
-                <div th:if="${message != null}" class="alert alert-success text-center" >
-                    <!--        <p th:text="${message}"></p>-->
-
-                    [[${message}]]
-                </div>
 
         </div>
 </div>
+    <div th:if="${message != null}" class="alert alert-success text-center" >
+        [[${message}]]
+    </div>
 
 
         <nav aria-label="paginat"  class="text-center flex mb-1" >
@@ -112,26 +110,33 @@
             <ul class="pagination justify-content-center" >
 
                 <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                    <a class="page-link"    th:href="@{'http://localhost:750/users/page/1' +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  tabindex="-1">First</a>
-                </li>
+                    <a th:replace="fragments::page_link(1,'First')" /></a>
+
+                </li >
 
                 <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                    <a class="page-link"   th:if="${currentPage>=2}" th:href="@{'http://localhost:750/users/page/' + ${currentPage - 1}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  tabindex="-1">Previous</a>
-                    <a class="page-link"   th:unless="${currentPage>=1}" th:href="@{'http://localhost:750/users/page/1'+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir}  + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  tabindex="-1">Previous</a>
+
+                   <a th:replace="fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')"></a>
+
                 </li>
 
                 <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
-                    <a class="page-link" th:href="@{'http://localhost:750/users/page/'+${i}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}" >[[${i}]]</a>
+
+                    <a th:replace="fragments::page_link(${i}, ${i})" /></a>
+
                 </li>
 
                 <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                    <a class="page-link" th:if="${currentPage<totalPages}" th:href="@{'http://localhost:750/users/page/' + ${currentPage + 1}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"    >Next</a>
 
-                    <a class="page-link" th:if="${currentPage>=totalPages}" th:href="@{'http://localhost:750/users/page/' + ${totalPages}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   >Next</a>
-                </li>
+                    <a th:replace="fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')"></a>
+
+                 </li>
+
                 <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                    <a class="page-link" th:href="@{'http://localhost:750/users/page/' + ${totalPages}+'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} }">Last</a>
+                    <a th:replace="fragments::page_link(${totalPages}, 'Last')" /></a>
+
                 </li>
+
             </ul>
             </div>
 
@@ -142,58 +147,25 @@
 
         <div class="table-responsive">
     <table class="table  me-sm-1 table-header table-striped  table-bordered ">
-        <thead class="table-dark " >
-        <tr>
-            <th>Select</th>
+             <thead class="table-dark " >
+                  <tr>
+                          <th>Select</th>
 
-            <th> <a th:if="${sortFiled!= 'id'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=id&sortDir='+${sortDir} + ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white " >  User Id </a>
-                <a th:if="${sortFiled== 'id'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=id&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  User Id </a>
-                <span th:if="${sortFiled== 'id'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-            </th>
+                          <th th:replace="fragments::colum_link ('id', 'User ID')"/>
 
-            <th> User Photo</th>
+                          <th> User Photo</th>
 
-            <th>
-                <a th:if="${sortFiled!= 'firstName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=firstName&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  First name </a>
-                <a th:if="${sortFiled== 'firstName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=firstName&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  First name </a>
-                <span th:if="${sortFiled== 'firstName'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-            </th>
+                          <th th:replace="fragments::colum_link ('firstName', 'First Name')"/>
+                          <th th:replace="fragments::colum_link ('lastName', 'Last Name')"/>
+                          <th th:replace="fragments::colum_link ('email', 'E-mail')"/>
 
-            <th>
-                <a th:if="${sortFiled!= 'lastName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=lastName&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Last name </a>
-                <a th:if="${sortFiled== 'lastName'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=lastName&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Last name </a>
-                <span th:if="${sortFiled== 'lastName'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-            </th>
+                          <th>Roles</th>
 
-
-            <th>
-                <a th:if="${sortFiled!= 'email'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=email&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Email </a>
-                <a th:if="${sortFiled== 'email'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=email&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Email </a>
-                <span th:if="${sortFiled== 'email'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-            </th>
-            <th>Password</th>
-
-            <th>
-                <a th:if="${sortFiled!= 'roles'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=roles&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Role </a>
-                <a th:if="${sortFiled== 'roles'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=roles&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Role </a>
-                <span th:if="${sortFiled== 'roles'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-            </th>
-
-
-            <th>
-                <a th:if="${sortFiled!= 'enable'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=enable&sortDir='+${sortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"   class="text-white " >  Enable </a>
-                <a th:if="${sortFiled== 'enable'}" th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled=enable&sortDir='+${reverseSortDir}+ ${keyWord!=null ? '&keyWord='+ keyWord: ' '}}"  class="text-white"  >  Enable </a>
-                <span th:if="${sortFiled== 'enable'}" th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-
-           </th>
-
-
-            <th></th>
-            <th></th>
-
-
-        </tr>
-        </thead>
+                          <th th:replace="fragments::colum_link ('enable', 'Status')"/>
+                          <th></th>
+                          <th></th>
+                  </tr>
+             </thead>
 
 
 
@@ -213,7 +185,6 @@
             <td th:text="${user.getFristName()}"></td>
             <td th:text="${user.getLastName()}"></td>
             <td th:text="${user.getEmail()}"></td>
-            <td th:pattern="${user.getPassword()}"></td>
             <td th:text="${user.getRoles()}"></td>
             <td >
                 <a th:if="${user.isEnable() == true}" class="fas fa-check-circle px-2 icon-green "
