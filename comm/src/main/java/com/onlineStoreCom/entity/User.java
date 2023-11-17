@@ -21,11 +21,11 @@ public class User {
     @Column(name = "password", length = 85, nullable = false)
 
     private String password;
-    @Column(name = "fristName", length = 85, nullable = false)
+    @Column(name = "first_name", length = 85, nullable = false)
 
     private String firstName;
 
-    @Column(name = "lastName", length = 85, nullable = false)
+    @Column(name = "last_name", length = 85, nullable = false)
 
     private String lastName;
     @Column(name = "enable")
@@ -71,10 +71,10 @@ public class User {
     }
 
 
-    public User(String email, String password, String fristName, String lastName) {
+    public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
-        this.firstName = fristName;
+        this.firstName = firstName;
         this.lastName = lastName;
     }
 
@@ -102,12 +102,12 @@ public class User {
         this.password = password;
     }
 
-    public String getFristName() {
+    public String getfirstName() {
         return firstName;
     }
 
-    public void setFristName(String fristName) {
-        this.firstName = fristName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -123,13 +123,17 @@ public class User {
         return "User{" +
                 "email='" + email + '\'' +
                 " userId = '" + id + '\'' +
-                " fristName = '" + firstName + '\'' +
+                " firstName = '" + firstName + '\'' +
+
+                 "lastName = '" + lastName + '\'' +
+
+                " status = '" + enable + '\'' +
                 '}';
     }
 
     @Transient
     public String getImagePath() {
-        String dirName =   "user-photos\\" ;
+        String dirName =   "/user-photos/" ;
         if ( id == null || user_bio == null) return "images" + "\\" +"bob.png";
 
 
@@ -142,6 +146,10 @@ public class User {
 //        if ( id == null || user_bio == null) return "\\images \\ bob.png";
         return dirName + this.id + '\\' ;
     }
+    @Transient
+    public String getFullName() {
+        return firstName +" " + lastName;
 
+    }
 
 }

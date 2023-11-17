@@ -23,7 +23,7 @@
 
 
        <a   th:fragment="page_link(pageNum,lable)"     class="page-link"
-            th:href="@{'http://localhost:750/users/page/'+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
+            th:href="@{'/users/page/'+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
              '&keyWord='+ keyWord: ' '}}" >[[${lable}]]
        </a>
 

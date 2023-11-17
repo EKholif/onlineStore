@@ -1,6 +1,6 @@
 package com.onlineStore.admin.test;
 
-import com.onlineStore.admin.FileUploadUtil;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
 import com.onlineStoreCom.entity.User;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(false)
+@Rollback(value = true)
 class UserRepositoryTest {
 
     @Autowired

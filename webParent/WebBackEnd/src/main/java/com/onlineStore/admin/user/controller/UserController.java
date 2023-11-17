@@ -1,13 +1,17 @@
 package com.onlineStore.admin.user.controller;
 
 
-import com.onlineStore.admin.FileUploadUtil;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
 import com.onlineStore.admin.user.servcies.UserService;
+import com.onlineStore.admin.utility.UserCsvExporter;
+import com.onlineStore.admin.utility.UserExcelExporter;
+import com.onlineStore.admin.utility.UserPdfExporter;
 import com.onlineStoreCom.entity.User;
 import com.onlineStoreCom.entity.Role;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -226,15 +230,50 @@ public class UserController {
     @PostMapping("/deleteUsers")
     public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Long> selectedUsers,
                               RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
+
+        System.out.println(selectedUsers);
         if (selectedUsers != null && !selectedUsers.isEmpty()) {
             for (Long userId : selectedUsers) {
                 FileUploadUtil.cleanDir( userService.getUser(userId).getImageDir());
-
+                System.out.println(userId);
                 userService.deleteUser(userId);
             }
         }
         return new ModelAndView( "redirect:/users");
     }
+
+
+@GetMapping("/users/export/csv")
+    public void exportToCsv(HttpServletResponse response) throws IOException {
+        List<User> listUsers = userService.listAllUsers();
+        UserCsvExporter userCsvExporter = new UserCsvExporter();
+        userCsvExporter.export(listUsers,response);
+
+}
+    @GetMapping("/users/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        List<User> listUsers = userService.listAllUsers();
+
+        UserExcelExporter userExcelExporter = new  UserExcelExporter();
+        userExcelExporter.export(listUsers,response);
+
+    }
+    @GetMapping("/users/export/pdf")
+    public void exportToPdf(HttpServletResponse response) throws IOException {
+        List<User> listUsers = userService.listAllUsers();
+
+        UserPdfExporter UserPdfExporter = new  UserPdfExporter();
+        UserPdfExporter.export(listUsers,response);
+
+    }
+
+
+
+
+
+
+
+
 
 
 }

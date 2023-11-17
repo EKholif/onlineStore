@@ -1,4 +1,4 @@
-package com.onlineStore.admin;
+package com.onlineStore.admin.utility;
 
 import org.springframework.web.multipart.MultipartFile;
 
