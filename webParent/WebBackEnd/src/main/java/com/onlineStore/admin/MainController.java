@@ -19,8 +19,23 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String signIn(){
+        return "login";
 
+    }
+    @GetMapping("/ldn")
+    public String neds(){
+        return "losssgin";
 
+    }
 
-
+//    @GetMapping("/error")
+//    public String tneds(){
+//        return "error";
+//
+//    }
 }
+
+
+

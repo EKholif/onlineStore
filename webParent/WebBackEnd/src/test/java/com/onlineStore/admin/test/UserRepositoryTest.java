@@ -1,8 +1,8 @@
 package com.onlineStore.admin.test;
 
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
@@ -19,10 +19,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 @DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = true)
+@Rollback(value = false)
 class UserRepositoryTest {
 
     @Autowired
@@ -33,13 +32,25 @@ class UserRepositoryTest {
 
     @Test
     public void testCreateFirstUser() {
-        User userAdmin = new User("ehabkholif@gmail.com", "0000", "ehab", "kholif");
+        User userAdmin = new User("e@gmail.com", "0", "ehab", "kholif");
         userAdmin.addRole(roleRepository.getReferenceById(1L));
+        userAdmin.setEnable(true);
+
         User savedRole = repo.saveAndFlush(userAdmin);
+        System.out.println(userAdmin.getEmail());
+
+        System.out.println(userAdmin);
+
+        testlUser();
         assertThat(savedRole.getId()).isGreaterThan(0);
+
     }
-
-
+    @Test
+    public void tateFirstUser() {
+     User user = repo.findByEmail("ehab@gmail.com");
+     user.setEnable(true);
+        testlUser();
+    }
 
     @Test
     public void testCreateUsers()
@@ -56,12 +67,18 @@ class UserRepositoryTest {
         User userAssistant = new User("eh.bts@gmail.com", "000a0", "testUserTwo", "kholif");
         userAssistant.addRole(roleRepository.getReferenceById(5L));
 
+         testlUser();
+
         repo.saveAllAndFlush(List.of(userSalesperson, userEditor, userShipper, userAssistant));
 
     }
 
-    @Test
-    public void testListAllUser(){
+
+
+
+
+        @Test
+       public void testListAllUser(){
 
         Iterable<User> listUsers =repo.findAll();
         listUsers.forEach(System.out::println);
@@ -75,6 +92,9 @@ class UserRepositoryTest {
     }
 
 
+
+
+
     @Test
     public void testUpdateUser(){
         User userAdmin = repo.findById(69L).get();
@@ -83,9 +103,12 @@ class UserRepositoryTest {
         repo.saveAndFlush(userAdmin);
         System.out.println(userAdmin);
     }
+
+
+
     @Test
     public void testCountById(){
-        Long id =252L;
+        Long id =22L;
         Long countBYId = repo.countById(id);
         assertThat(countBYId).isNotNull().isGreaterThan(0);
 
@@ -102,8 +125,10 @@ class UserRepositoryTest {
     @Test
     public void testDeleteUser() {
 
-        Long userId = 6L;
+        Long userId = 1L;
         repo.deleteById(userId);
+
+        testlUser();
     }
 
     @Test
@@ -151,7 +176,7 @@ class UserRepositoryTest {
     @Test
     public void testFindUserById () {
         try {
-            User userFindById = repo.findById(1202L).get();
+            User userFindById = repo.findById(2L).get();
             System.out.println(userFindById);
 
         }catch (NoSuchElementException ex){
@@ -229,5 +254,16 @@ class UserRepositoryTest {
 
     }
 
+    @Test
+    public void testlUser(){
+
+        Iterable<User> listUsers =repo.findAll();
+
+        for (User user:listUsers) {
+            System.out.println(user.getId() + " --" + user.getfirstName() + "-- "
+                    + user.getEmail()+"--"+user.isEnable()+"--"+user.getPassword());
+        }
+
+}
 
 }

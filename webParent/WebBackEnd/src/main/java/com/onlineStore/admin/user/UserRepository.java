@@ -16,12 +16,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
  boolean existsByEmail(String email);
 
- public Long countById(Long id);
+ Long countById(Long id);
 
  @Query("UPDATE User u set  u.enable=?2 WHERE u.id = ?1 ")
  @Modifying
-
- public void enableUser (Long id, boolean enable);
+ void enableUser(Long id, boolean enable);
 
  @Query("SELECT u FROM User u WHERE  CONCAT(u.id, ' ', u.email, ' ', u.firstName, ' ',"+
          "u.lastName) LIKE %?1%")

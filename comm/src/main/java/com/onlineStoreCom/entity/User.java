@@ -3,16 +3,16 @@ package com.onlineStoreCom.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.onlineStoreCom.entity.users.Role;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "'user'")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -32,7 +32,7 @@ public class User {
     private boolean enable;
     @Column(name = "user_bio")
     private String user_bio;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -118,18 +118,18 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "email='" + email + '\'' +
-                " userId = '" + id + '\'' +
-                " firstName = '" + firstName + '\'' +
-
-                 "lastName = '" + lastName + '\'' +
-
-                " status = '" + enable + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "email='" + email + '\'' +
+//                " userId = '" + id + '\'' +
+//                " firstName = '" + firstName + '\'' +
+//
+//                 "lastName = '" + lastName + '\'' +
+//
+//                " status = '" + enable + '\'' +
+//                '}';
+//    }
 
     @Transient
     public String getImagePath() {
@@ -139,14 +139,13 @@ public class User {
 
         return dirName + this.id + '\\' +this.user_bio;
     }
-
     @Transient
     public String getImageDir() {
         String dirName =   "user-photos\\" ;
 //        if ( id == null || user_bio == null) return "\\images \\ bob.png";
         return dirName + this.id + '\\' ;
     }
-    @Transient
+
     public String getFullName() {
         return firstName +" " + lastName;
 

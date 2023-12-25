@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
-    <meta charset="UTF-8">
-</head>
-<body>
-      <th th:fragment="colum_link (fieldName, columnLable)">
+    <meta  http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" >
 
+    <title>403</title>
+
+
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"> </script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}" ></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" ></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+
+
+<body>
+
+
+<!--===============================================================================-->
+<!--                                 colum_link             -->
+
+<!--===============================================================================-->
+
+      <th th:fragment="colum_link (fieldName, columnLable)">
             <a
                     th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
                             +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
@@ -16,18 +36,244 @@
 
             <span th:if="${sortFiled== fieldName}"
                   th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-
       </th>
 
+<!--===============================================================================-->
+<!--                                 colum_linkCat             -->
+
+<!--===============================================================================-->
+
+<th th:fragment="colum_linkCat (fieldName, columnLable)">
+    <a
+            th:href="@{'/categories/page/'+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
+                            +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+                            '&keyWord='+ keyWord: ' '}}"  class="text-white " >
+        [[${columnLable}]]
+    </a>
+
+    <span th:if="${sortFiled== fieldName}"
+          th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+</th>
 
 
+<!--===============================================================================-->
 
-       <a   th:fragment="page_link(pageNum,lable)"     class="page-link"
+<!--               page_link      -->
+
+<!--===============================================================================-->
+
+
+       <a   th:fragment="page_link(pageNum,label)"     class="page-link"
             th:href="@{'/users/page/'+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
-             '&keyWord='+ keyWord: ' '}}" >[[${lable}]]
+             '&keyWord='+ keyWord: ' '}}" >[[${label}]]
        </a>
+
+
+<!--===============================================================================-->
+
+<!--               page_linkCat      -->
+
+<!--===============================================================================-->
+
+`
+<a   th:fragment="page_linkCat(pageNum,label)"     class="page-link"
+     th:href="@{'/categories/page/'+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
+             '&keyWord='+ keyWord: ' '}}" >[[${label}]]
+</a>
+
+
+
+
+
+
+<!--===============================================================================-->
+
+                          <!--Nav bar item link -->
+<!--===============================================================================-->
+
+//   //  sec:authorize="hasAnyAuthority('
+
+
+      <li   th:fragment="nav-link(fieldName,label)"     class="nav-item mx-n0 "  sec:authorize="hasAuthority('Admin')">
+          <a class="nav-link" th:href="@{'/' + ${fieldName}}">[[${label}]]</a>
+      </li>
+
+
+<!--===============================================================================-->
+      <button  th:fragment="navbar-toggler"
+
+               class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+<!--===============================================================================-->
+<!--                   Page Header with navbar -->
+
+<!--===============================================================================-->
+
+      <div      th:fragment="navbar" >
+          <nav class="navbar  navbar-expand-md bg-dark navbar-dark">
+               <div class="container-fluid ">
+
+                   <a class="navbar-brand " th:href="@{/}">
+                  <img class="rounded-pill w-40" alt="Bob" th:src="@{/images/rr.png}"/>
+              </a>
+
+              <button th:replace="~{fragments::navbar-toggler}"></button>
+
+              <div class="collapse navbar-collapse  "  id="topNavbar">
+                  <ul class="navbar-nav ">
+                      <li th:replace="~{fragments::nav-link('users','Users')}"></li>
+                      <li th:replace="~{fragments::nav-link('categories/new-category-form','Add category')}"></li>
+                      <li th:replace="~{fragments::nav-link('categories/categories','categories')}"></li>
+                     <li th:replace="~{fragments::nav-link('users','Edit User')}"></li>
+                      <li th:replace="~{fragments::nav-link('users','Search')}"></li>
+                      <li th:replace="~{fragments::nav-link('users','Clear')}"></li>
+                      <li class="nav-item">
+                          <div th:replace="~{fragments::imageicon}" ></div>
+                      </li>
+
+                      <li class="nav-item  ">
+                          <div th:replace="~{fragments::dropdown}"></div>
+
+                      </li>
+
+                      <li>
+                          <a class="nav-link" data-bs-toggle="dropdown" th:text="${#authentication.principal.getAuthorities}"></a>
+
+
+                      </li>
+
+                  </ul>
+              </div>
+             </div>
+          </nav>
+      </div>
+<!--===============================================================================-->
+                                <!-- not in use yet-->
+
+<!--===============================================================================-->
+
+
+
+
+      <ul th:fragment="navbar1"
+          class="navbar-nav">
+          <li th:each="item : ${navbarItems}">
+          <li th:replace="fragments::nav-link(${item.url}, ${item.label})"></li>
+          </li>
+      </ul>
+<!--===============================================================================-->
+
+<!--                                         Search input                            -->
+<!--===============================================================================-->
+
+      <div  th:fragment="search"  >
+           <div  class="d-inline-flex p-2" >
+              <div>
+                  <form class="d-inline-flex p-2"  th:action="@{'/users/page/1' }">
+                      <input  type="hidden" name="sortFiled" th:value="${sortFiled}"/>
+                      <input  type="hidden" name="sortDir" th:value="${sortDir}"/>
+
+                      <input class="form-control" type="search" name="keyWord"th:value="${keyWord}" required placeholder="Search User">
+
+                      <input class="btn btn-outline-success"  value="Search" type="submit"/>
+                      <input class="btn btn-outline-secondary" value="Clear" type="button" onclick="clearFilter()"/>
+                  </form>
+              </div>
+          </div>
+      </div>
+<!--&lt;!&ndash;===============================================================================&ndash;&gt;-->
+
+<!--                                         DropDown menu   -->
+<!--===============================================================================-->
+
+
+
+      <div  th:fragment="dropdown">
+     <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+         <input   type="submit">
+
+
+     </form>
+          <div class="dropdown">
+
+              <a class="nav-link" data-bs-toggle="dropdown" th:text="${#authentication.principal.getFullName}"></a>
+
+              <ul class=" dropdown-menu ">
+                  <li><a class="dropdown-item" id="logout"   >Log out</a></li>
+                  <li><a class="dropdown-item" th:href="@{/account}">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Link 3</a></li>
+              </ul>
+          </div>
+
+
+      </div>
+<!--===============================================================================-->
+<!--                   Icon Image    -->
+
+<!--===============================================================================-->
+<div  class=" float-sm-end ">
+
+<img th:fragment="imageicon"  type="button"
+     th:if="${#authorization.expression('isAuthenticated()')}"
+            th:src="${#authentication.principal.getImagePath}" id="account" class="rounded-circle dropdown-toggle float-sm-end "  style="width:25px" alt="User" />
+<span  th:if="${#authorization.expression(!'isAuthenticated()')}"  class="fas fa-user fa-2 icon-green float-sm-end"></span>
+</div>
+
+
+<!--===============================================================================-->
+<!--                  footer    -->
+
+<!--===============================================================================-->
+
+<div th:fragment="footer"  >
+    <p class="text-center" > OnlineGRoup copyright copy&copy; Ehab Kholif  </p>
+</div>
+
+
+
+
+<!--===============================================================================-->
+<!--                 input-group row Category   -->
+
+<!--===============================================================================-->
+
+<div  th:fragment="input-group-category(name,label)"  class="input-group row">
+    <label class="col-sm-4 col-form-label">[[${label}]]</label>
+    <div class="col-sm-8">
+        <input type="text" th:field="*{name}" required minlength="2" th:placeholder="${label}" class="form-control col-4 mb-4"/>
+    </div>
+</div>
+
+
+<!--===============================================================================-->
+<!--                 input-group row Category  image -->
+
+<!--===============================================================================-->
+
+<div th:fragment="input-group-category-image(label)"  class="form row" >
+    <label class="col-sm-4 col-form-label">[[${label}]]</label>
+    <div class="col-sm-8 ">
+        <input class="mb-2" type="file" id="fileImage" name="image" accept="image/jpg, image/jpeg, image/png"/>
+        <img class="img-thumbnail rounded-circle float-left "   id="thumbnail" style="width: 200px" alt="product Photo"
+             th:src="@{${categoty}}" />
+    </div>
+</div>
+
+
+<!--===============================================================================-->
+<!--                Cancel and rest buttons -->
+
+<!--===============================================================================-->
+
+<div th:fragment="save-and-rest-buttons"  >
+    <button class= "btn btn-primary " type="submit">Save</button>
+    <button class= "btn btn-danger " type="reset"  id="buttonCancel">Rest</button>
+</div>
+</form>
 
 
 
 </body>
 </html>
+

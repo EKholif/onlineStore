@@ -1,16 +1,16 @@
 package com.onlineStore.admin.user.controller;
 
 
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
 import com.onlineStore.admin.user.servcies.UserService;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.UserCsvExporter;
 import com.onlineStore.admin.utility.UserExcelExporter;
 import com.onlineStore.admin.utility.UserPdfExporter;
+import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.User;
-import com.onlineStoreCom.entity.Role;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +52,10 @@ public class UserController {
         Page<User> userPage = userService.listByPage(pageNum, sortFiled, sortDir, keyWord);
         List<User>listUsers= userPage.getContent();
 
-        Long startCont = (long) ((pageNum-1)* UserService.USERS_PER_PAGE +1);
-        Long endCount = startCont+ UserService.USERS_PER_PAGE -1;
+        long startCont = (long) ((long) (pageNum - 1) * UserService.USERS_PER_PAGE +1);
+        long endCount = startCont+ UserService.USERS_PER_PAGE -1;
+
+
          if(endCount> userPage.getTotalElements()){
              endCount=userPage.getTotalElements();
          }
@@ -87,6 +89,7 @@ public class UserController {
         model.addObject("pageTitle","Creat new User" );
         model.addObject("saveChanges", "/save-user");
         model.addObject("UserId", 0L);
+
         return model;
 
     }
@@ -101,13 +104,18 @@ public class UserController {
               String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
               user.setUser_bio(fileName);
+
+            System.out.println(user.getfirstName());
+
               User savedUser = userService.saveUser(user);
 
               String dirName = "user-photos/";
 
-              String uploadDir = dirName  +savedUser.getId();
+              String uploadDir = dirName + savedUser.getId();
 
-              FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);}
+              FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        }
+
 
          userService.saveUser(user);
 
@@ -126,14 +134,16 @@ public class UserController {
             List<Role> listAllRoles = userService.listAllRoles();
             model.addObject("user", user);
             model.addObject("listAllRoles",  user.getRoles()  ) ;
-            model.addObject("pageTitle","Edit User (ID: " + id + ")" );
+            model.addObject("pageTitle","Edit "+user.getfirstName()   + " (ID: " + id + ")" );
             model.addObject("listAllRoles", listAllRoles);
             model.addObject("saveChanges", "/save-edit-user/");
             model.addObject("UserId", id);
+
+
             return model;
 
         } catch (UsernameNotFoundException ex) {
-            redirectAttributes.addFlashAttribute("message  Ehab", ex.getMessage());
+            redirectAttributes.addFlashAttribute("message ", ex.getMessage());
             return new ModelAndView("redirect:/users");
 
         }
@@ -149,20 +159,18 @@ public class UserController {
         if (user.getPassword().isEmpty()) {
 
             if (multipartFile.isEmpty()) {
+                BeanUtils.copyProperties(  user,updateUser,"id",  "user_bio" ,"password");
+                userService.saveUpdatededUser(updateUser);
 
-                BeanUtils.copyProperties(  user,updateUser,"id", "password", "user_bio");
-                userService.saveUser(updateUser);
 
-            } else if (!multipartFile.isEmpty()) {
+               } else if (!multipartFile.isEmpty()) {
 
                 FileUploadUtil.cleanDir(updateUser.getImageDir());
-
                 String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                 String uploadDir = "user-photos/" + updateUser.getId();
                 user.setUser_bio(fileName);
                 BeanUtils.copyProperties( user,updateUser,"id" ,"password" );
-
-                userService.saveUser(updateUser);
+                userService.saveUpdatededUser(updateUser);
                 FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
             }
@@ -172,6 +180,7 @@ public class UserController {
             if (multipartFile.isEmpty()) {
 
                 BeanUtils.copyProperties(  user,updateUser,"id", "user_bio");
+
                 userService.saveUser(updateUser);
 
             } else if (!multipartFile.isEmpty()) {
@@ -182,7 +191,6 @@ public class UserController {
                 String uploadDir = "user-photos/" + updateUser.getId();
                 user.setUser_bio(fileName);
                 BeanUtils.copyProperties( user,updateUser,"id");
-
                 userService.saveUser(updateUser);
                 FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -190,7 +198,6 @@ public class UserController {
 
         }
         String fristPartEmail= user.getEmail().split("@")[0];
-
         return new ModelAndView("redirect:/users/page/1?sortFiled=id&sortDir=asc&keyWord="+fristPartEmail);
     }
 
@@ -221,7 +228,7 @@ public class UserController {
                                     RedirectAttributes redirectAttributes){
         userService.UdpateUserEnableStatus(id,enable);
         String status = enable ? "enable" :" disable";
-        String message = " the user Id  " + id +"has bean  " +status ;
+        String message = " the user Id  " + id +"  has bean  " +status ;
         redirectAttributes.addFlashAttribute("message", message);
         return new ModelAndView( "redirect:/users");
 
@@ -231,14 +238,15 @@ public class UserController {
     public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Long> selectedUsers,
                               RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
 
-        System.out.println(selectedUsers);
         if (selectedUsers != null && !selectedUsers.isEmpty()) {
             for (Long userId : selectedUsers) {
                 FileUploadUtil.cleanDir( userService.getUser(userId).getImageDir());
-                System.out.println(userId);
-                userService.deleteUser(userId);
+                       userService.deleteUser(userId);
             }
         }
+
+
+
         return new ModelAndView( "redirect:/users");
     }
 
@@ -253,7 +261,6 @@ public class UserController {
     @GetMapping("/users/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
         List<User> listUsers = userService.listAllUsers();
-
         UserExcelExporter userExcelExporter = new  UserExcelExporter();
         userExcelExporter.export(listUsers,response);
 
@@ -261,19 +268,9 @@ public class UserController {
     @GetMapping("/users/export/pdf")
     public void exportToPdf(HttpServletResponse response) throws IOException {
         List<User> listUsers = userService.listAllUsers();
-
         UserPdfExporter UserPdfExporter = new  UserPdfExporter();
         UserPdfExporter.export(listUsers,response);
 
     }
-
-
-
-
-
-
-
-
-
 
 }

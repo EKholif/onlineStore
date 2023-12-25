@@ -1,7 +1,7 @@
 package com.onlineStore.admin.test;
 
 import com.onlineStore.admin.role.RoleRepository;
-import com.onlineStoreCom.entity.Role;
+import com.onlineStoreCom.entity.users.Role;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -24,11 +24,24 @@ public class RoleRepositoryTest {
     @Autowired
     private RoleRepository repo;
 
+    @Test
+    public void testListAllUser(){
+
+        Iterable<Role> listUsers =repo.findAll();
+
+        for (Role role:listUsers) {
+            System.out.println(role.getId() + " --" + role.getName() );
+        }
+        
+    }
+
+
 
     @Test
     public void testCreateFirstRole() {
         Role roleAdmin = new Role("Admin", "manage everything");
         Role savedRole = repo.saveAndFlush(roleAdmin);
+
         assertThat(savedRole.getId()).isGreaterThan(0);
     }
 
@@ -50,7 +63,13 @@ public class RoleRepositoryTest {
 
     @Test
     public void testDeleteRole() {
-        repo.deleteById(6L);
+        repo.deleteById(1L);
+        repo.deleteById(2L);
+        repo.deleteById(3L);
+        repo.deleteById(4L);
+        repo.deleteById(5L);
+
+       testListAllUser();
     }
 }
 

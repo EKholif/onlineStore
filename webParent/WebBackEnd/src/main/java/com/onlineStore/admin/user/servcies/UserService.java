@@ -4,7 +4,7 @@ package com.onlineStore.admin.user.servcies;
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
-import com.onlineStoreCom.entity.Role;
+import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +45,17 @@ public class UserService {
 
     public User saveUser (User user)   {
         encodePassword(user);
+
        return userRepo.saveAndFlush(user);
 
     }
+
+    public User saveUpdatededUser (User user)   {
+
+        return userRepo.saveAndFlush(user);
+
+    }
+
 
     public Page<User> listByPage(int pageNum, String sortFiled, String sortDir, String keyWord){
         Sort sort = Sort.by(sortFiled);
@@ -79,7 +87,7 @@ public class UserService {
         boolean isCreatingNew = (id == 0);
 
         if (isCreatingNew) {
-            if (userByEmail != null) return false;
+            return userByEmail == null;
         } else {
             if (userByEmail.getId() == id) {
                 return true;
@@ -102,6 +110,7 @@ return true;
 public void deleteUser(Long userId) throws UsernameNotFoundException{
     try {
         userRepo.deleteById(userId);
+
     }catch (NoSuchElementException ex){
 
         throw new UsernameNotFoundException("Could not find any user with ID " + userId);
