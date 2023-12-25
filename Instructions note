@@ -1,0 +1,38 @@
+
+
+1. Create MySQL Database Schema:
+
+Open your preferred MySQL client (e.g., MySQL Workbench, command line).
+Execute SQL commands to create the database schema. For example:
+sql
+Copy code
+CREATE DATABASE your_database_name;
+
+
+2. Update Configuration in Resources Folder:
+
+Navigate to the resources folder in your project directory.
+Look for a configuration file that contains database connection details. 
+
+**/webParent/WebBackEnd/src/main/resources/application.properties
+
+
+You also can change the port 
+
+local_port=750
+
+
+database_name=your_database_name
+root_username=your_username
+password=your_password
+Save the changes.
+Note: Make sure to keep sensitive information like database credentials secure. Do not share them publicly.
+
+
+
+
+After completing these steps, your web app should be configured to use the newly created MySQL database schema with the updated connection details. 
+
+
+
+Run Maven clean and build the backend  your application to apply the changes.
