@@ -39,7 +39,7 @@ public class CategoryController {
         model.addObject("pageTitle","List categories" );
 
         model.addObject("categories", service.listAll());
-        return listByPage(1,"name","dsc",null);
+        return listByPage(1,"name","asc",null);
     }
 
 
@@ -55,11 +55,11 @@ public class CategoryController {
 
         List<Category>categoryList= categoryPagePage.getContent();
 
-        long startCont = (long) ((long) (pageNum - 1) * UserService.USERS_PER_PAGE +1);
+        long startCont = (long) (pageNum - 1) * UserService.USERS_PER_PAGE +1;
 
         long endCount = startCont+ UserService.USERS_PER_PAGE -1;
 
-
+        System.out.println(categoryList);
         if(endCount> categoryPagePage.getTotalElements()){
             endCount=categoryPagePage.getTotalElements();
         }

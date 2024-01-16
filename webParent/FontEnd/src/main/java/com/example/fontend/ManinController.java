@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ManinController {
 
     @GetMapping("/")
-    public String ViewNain (){
+    public String ViewMain(){
         return ("index");
     }
 }

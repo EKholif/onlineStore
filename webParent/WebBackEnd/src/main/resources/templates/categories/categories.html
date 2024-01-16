@@ -80,7 +80,7 @@
                                 <input class="form-check-input delete-checkbox " type="checkbox" name="selectedCategory" th:value="${category.getId}" id="flexCheckDefault">
                             </td>
 
-                            <td th:text="${category.getId}"></td>
+                            <td th:text="${category.id}"></td>
 
                             <td>
                                   <span th:if="${category.getImage.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
@@ -93,7 +93,7 @@
                             <td th:text="${category.alias}"></td>
 
 
-                              <td th:text="${category.parentN(category) }"></td>
+                              <td th:text="${category.parentIndentation() }"></td>
 
 
                               <td th:text="${category.childNames(category)}"></td>
