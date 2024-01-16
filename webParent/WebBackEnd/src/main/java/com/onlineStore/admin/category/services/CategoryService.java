@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -38,32 +37,58 @@ public class CategoryService {
             throw new UsernameNotFoundException("Could not find any Category with ID " + id);
         }
     }
+//    public List<Category> listUsedForForm() {
+//        List<Category> categoriesUsedInForm = new ArrayList<>();
+//
+//        Iterable<Category> categories = repository.findAll();
+//
+//        for (Category category : categories) {
+//            if (category.getParent() == null) {
+//                printCategoryHierarchy(category, categoriesUsedInForm, 0);
+//            }
+//        }
+//
+//        return categoriesUsedInForm;
+//    }
+//
+//
+//    private void printCategoryHierarchy(Category category, List<Category> categoriesUsedInForm, int level) {
+//        // Add the current category to the list with id
+//        categoriesUsedInForm.add(new Category(category.getId(), getIndentation(level) + category.getName()));
+//
+//        // Recursively add subcategories to the list
+//        Set<Category> children = category.getChildren();
+//        for (Category subCategory : children) {
+//            printCategoryHierarchy(subCategory, categoriesUsedInForm, level + 1);
+//        }
+//    }
+//
+//    private String getIndentation(int level) {
+//        // You can customize the indentation character(s) and size based on your preference
+//        StringBuilder indentation = new StringBuilder();
+//        for (int i = 0; i < level; i++) {
+//            indentation.append("-"); // Two spaces for each level; adjust as needed
+//        }
+//        return indentation.toString();
+//    }
     public List<Category> listUsedForForm() {
         List<Category> categoriesUsedInForm = new ArrayList<>();
 
         Iterable<Category> categories = repository.findAll();
 
         for (Category category : categories) {
-            if (category.getParent() == null) {
-                printCategoryHierarchy(category, categoriesUsedInForm, 0);
-            }
+
+                printCategoryHierarchy(category, categoriesUsedInForm, category.getLevel());
         }
 
         return categoriesUsedInForm;
     }
 
 
-
-
     private void printCategoryHierarchy(Category category, List<Category> categoriesUsedInForm, int level) {
         // Add the current category to the list with id
         categoriesUsedInForm.add(new Category(category.getId(), getIndentation(level) + category.getName()));
 
-        // Recursively add subcategories to the list
-        Set<Category> children = category.getChildren();
-        for (Category subCategory : children) {
-            printCategoryHierarchy(subCategory, categoriesUsedInForm, level + 1);
-        }
     }
 
     private String getIndentation(int level) {
@@ -74,9 +99,6 @@ public class CategoryService {
         }
         return indentation.toString();
     }
-
-
-
     public Page<Category> listByPage(int pageNum, String sortField, String sortDir,
                                   String keyWord) {
         Sort sort = Sort.by(sortField);
@@ -85,6 +107,7 @@ public class CategoryService {
         Pageable pageable = PageRequest.of(pageNum - 1, USERS_PER_PAGE, sort);
 
         if (keyWord != null) {
+
             return repository.findAll(keyWord, pageable);
         }
         return repository.findAll(pageable);
@@ -110,5 +133,25 @@ public class CategoryService {
         repository.enableCategory(id, enable);
 
     }
+    public void setCategoriesLevel(){
 
+        List<Category> root = repository.findAll();
+
+        for ( Category cat   : root  ) {
+
+
+            if (cat.getParent() == null) {
+                cat.setLevel(0) ;
+                System.out.println( "No parent "+cat);
+            } else {
+
+                cat.setLevel( cat.getParent().getLevel() + 1);
+                System.out.println(cat.getParent().getLevel());
+                System.out.println( "Cat Name "+cat.getName());
+
+            }
+
+        }
+
+    }
 }

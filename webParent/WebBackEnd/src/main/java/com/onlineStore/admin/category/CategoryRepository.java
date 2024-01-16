@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
@@ -21,6 +23,12 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query("SELECT u FROM Category u WHERE  CONCAT(u.id, ' ', u.name, ' ', u.alias, ' ',"+
             "u.parent) LIKE %?1%")
     Page<Category> findAll(String keyword, Pageable pageable);
+
+
+    @Query ("SELECT C FROM Category C WHERE C.parent.id IS NULL ")
+    public List<Category> findRootCategories();
+
+
 
 
 }

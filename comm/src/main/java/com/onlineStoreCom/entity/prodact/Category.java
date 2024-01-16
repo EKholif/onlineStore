@@ -33,6 +33,39 @@ public class Category {
 
     private boolean enable;
 
+    public int getLevel() {
+        return level;
+    }
+
+    @Transient
+    public String parentIndentation() {
+        if (parent != null) {
+             parent.getLevel();
+           return parent.indentation() + parent.getName();
+
+        }
+        return null; // or an empty string or any default value you prefer
+    }
+
+
+
+    @Transient
+    public String indentation() {
+
+        int level = this.level;
+        // You can customize the indentation character(s) and size based on your preference
+        StringBuilder indentation = new StringBuilder();
+        for (int i = 0; i < level; i++) {
+            indentation.append("-"); // Two spaces for each level; adjust as needed
+        }
+        return indentation.toString();
+    }
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    private int level;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_Id")
     private Category parent;
@@ -65,6 +98,28 @@ public class Category {
         this.alias = alias;
         this.enable = enable;
         this.parent = parent;
+    }
+
+    public static Category copyFull (Category category ){
+    Category copyCategory = new Category();
+    copyCategory.setName(category.getName());
+    copyCategory.setId(category.getId());
+    copyCategory.setImage(category.getImage());
+    copyCategory.setAlias(category.getAlias());
+    copyCategory.setId(category.getId());
+
+
+    return copyCategory;
+    }
+
+    public static Category copyFullCategore(Category Category, String name)
+    {
+        Category copycategory = Category.copyFull(Category);
+        copycategory.setName(name);
+
+
+        return copycategory;
+
     }
 
     public static Long ParentId (Category category){
@@ -136,11 +191,6 @@ public class Category {
     }
 
 
-    public String parentName (Category parent)
-    {
-             return parent.getName();
-
-    }
     public List<String> childNames(Category category) {
 
         Set<Category> childSet= category.getChildren();
@@ -172,8 +222,11 @@ public class Category {
     }
 
     @Transient
-    public String parentN(Category category) {
-        return  category.getName() ;
+    public String getParentName() {
+        if (parent != null) {
+            return parent.getName();
+        }
+        return null; // or an empty string or any default value you prefer
     }
 
 

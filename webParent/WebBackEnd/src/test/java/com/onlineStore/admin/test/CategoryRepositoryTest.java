@@ -117,14 +117,14 @@ public class CategoryRepositoryTest {
 
         System.out.println(category.getParent().getName());
 
-//        Set<Category> children = category.getChildren();
-//        for (Category subCategory : children){
-//
-//            System.out.println(subCategory.getName());
-////
+        Set<Category> children = category.getChildren();
+        for (Category subCategory : children){
+
+            System.out.println(subCategory.getName());
+
         }
-//        assertThat(children.size()).isGreaterThan(0);
-//    }
+        assertThat(children.size()).isGreaterThan(0);
+    }
 
 //
 
@@ -142,15 +142,16 @@ public class CategoryRepositoryTest {
         Iterable<Category> categories = repository.findAll();
 
         for (Category category : categories) {
-            if (category.getParent() == null  ) {
-                printCategoryHierarchy(category, 0);
+//            if (category.getParent() == null  ) {
+                printCategoryHierarchy(category, category.getLevel());
 
-            }
+//            }
 
-            if ( category.getParent() != null && category.getParent().getId()==category.getId()  ){
-//                printCategoryHierarchy(category, 0);
-//                System.out.println(category.getId());
-            }
+//            if ( category.getParent() != null && category.getParent().getId()==category.getId()  ){
+////                printCategoryHierarchy(category, 0);
+////                System.out.println(category.getId());
+//                System.out.println("dddddddddddddddddddddd");
+//            }
 
         }
     }
@@ -161,14 +162,50 @@ public class CategoryRepositoryTest {
         System.out.println(indentation + "**" + category.getId() + " -" + category.getName());
 
         // Recursively print subcategories
-        Set<Category> children = category.getChildren();
-        for (Category subCategory : children) {
-            printCategoryHierarchy(subCategory, depth + 1);
-        }
+//        Set<Category> children = category.getChildren();
+//        for (Category subCategory : children) {
+//            printCategoryHierarchy(subCategory, depth + 1);
+//        }
     }
 
 
+    @Test
+    public void getCategoriesLevel(){
 
+        List<Category> root = repository.findAll();
+
+        for ( Category cat   : root  ) {
+
+            System.out.println(cat.getName() +"  parent Id :    " + cat.parentIndentation());
+
+
+        }
+
+
+        }
+
+            @Test
+  public void setCategoriesLevel(){
+
+        List<Category> root = repository.findAll();
+
+        for ( Category cat   : root  ) {
+
+
+            if (cat.getParent() == null) {
+                cat.setLevel(0) ;
+                System.out.println( "No parent "+cat);
+            } else {
+
+                cat.setLevel( cat.getParent().getLevel() + 1);
+                System.out.println(cat.getParent().getLevel());
+                System.out.println( "Cat Name "+cat.getName());
+
+            }
+
+        }
+
+    }
 
 
 
