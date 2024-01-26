@@ -143,7 +143,7 @@ public class UserController {
             return model;
 
         } catch (UsernameNotFoundException ex) {
-            redirectAttributes.addFlashAttribute("message ", ex.getMessage());
+            redirectAttributes.addFlashAttribute("message", ex.getMessage());
             return new ModelAndView("redirect:/users");
 
         }

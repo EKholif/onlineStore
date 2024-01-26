@@ -84,7 +84,8 @@ public class UserService {
         User userByEmail = userRepo.findByEmail(email);
 
         if (userByEmail == null) return true;
-        boolean isCreatingNew = (id == 0);
+
+        boolean isCreatingNew = (id == 0L);
 
         if (isCreatingNew) {
             return userByEmail == null;

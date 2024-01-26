@@ -143,7 +143,7 @@
 */
 function checkDuplicateEmail(form) {
     // Build the URL for the server-side endpoint.
-    var url = "[[@{'/check_email'}]]";
+    var url = "[[@'{/check_email}']]";
 
     // Get the user Id
     var userId =$("#id").val();
