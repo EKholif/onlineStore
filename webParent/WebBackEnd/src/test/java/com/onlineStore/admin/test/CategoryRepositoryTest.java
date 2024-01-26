@@ -182,6 +182,8 @@ public class CategoryRepositoryTest {
         }
 
 
+
+
         }
 
             @Test
@@ -207,6 +209,22 @@ public class CategoryRepositoryTest {
 
     }
 
+    @Test
+    public void findCategoryByName(){
 
+        String name = "Cam";
 
+        Category cat = repository.findByName(name);
+
+        System.out.println(cat.getId());
+    }
+    @Test
+    public void findCategoryByAlias(){
+
+        String alias = "BB";
+
+        Category cat = repository.findByAlias(alias);
+
+        System.out.println(cat.getId());
+    }
 }

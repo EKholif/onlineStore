@@ -20,49 +20,15 @@ public class Category {
     private long id;
 
     @Column(name = "name", length = 85, nullable = false, unique = true)
-
     private String name;
 
     @Column(name = "alias", length = 85, nullable = false, unique = true)
-
     private String alias;
 
     @Column(name = "image", length = 125, nullable = true)
-
     private String image;
 
     private boolean enable;
-
-    public int getLevel() {
-        return level;
-    }
-
-    @Transient
-    public String parentIndentation() {
-        if (parent != null) {
-             parent.getLevel();
-           return parent.indentation() + parent.getName();
-
-        }
-        return null; // or an empty string or any default value you prefer
-    }
-
-
-
-    @Transient
-    public String indentation() {
-
-        int level = this.level;
-        // You can customize the indentation character(s) and size based on your preference
-        StringBuilder indentation = new StringBuilder();
-        for (int i = 0; i < level; i++) {
-            indentation.append("-"); // Two spaces for each level; adjust as needed
-        }
-        return indentation.toString();
-    }
-    public void setLevel(int level) {
-        this.level = level;
-    }
 
     private int level;
 
@@ -88,9 +54,17 @@ public class Category {
         this.parent =parent;
     }
 
+    public Category(long id, String name, String alias) {
+        this.id = id;
+        this.name = name;
+        this.alias = alias;
+
+    }
+
     public Category(long id, String name) {
         this.id = id;
         this.name = name;
+
     }
 
     public Category(String name, String alias, boolean enable, Category parent) {
@@ -98,7 +72,52 @@ public class Category {
         this.alias = alias;
         this.enable = enable;
         this.parent = parent;
+
     }
+
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+
+    @Transient
+    public String parentIndentation() {
+        if (parent != null) {
+             parent.getLevel();
+           return parent.indentation() + parent.getName();
+
+        }
+        return null; // or an empty string or any default value you prefer
+    }
+
+
+
+    @Transient
+    public String indentation() {
+
+        int level = this.level;
+        // You can customize the indentation character(s) and size based on your preference
+        StringBuilder indentation = new StringBuilder();
+        for (int i = 0; i < level; i++) {
+            indentation.append("-"); // Two spaces for each level; adjust as needed
+        }
+        return indentation.toString();
+    }
+
+
+
+
+
+
+
+
+
+
 
     public static Category copyFull (Category category ){
     Category copyCategory = new Category();
@@ -221,13 +240,6 @@ public class Category {
         return dirName + this.id + '\\' ;
     }
 
-    @Transient
-    public String getParentName() {
-        if (parent != null) {
-            return parent.getName();
-        }
-        return null; // or an empty string or any default value you prefer
-    }
 
 
 }

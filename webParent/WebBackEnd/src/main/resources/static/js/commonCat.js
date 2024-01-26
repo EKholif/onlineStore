@@ -137,20 +137,24 @@
      }
      /*
 ========================================================================================
-                                checkDuplicateEmail
+                                checkUnique
 ========================================================================================
 
 */
-function checkDuplicateEmail(form) {
+function checkUnique(form) {
     // Build the URL for the server-side endpoint.
-    var url = "[[@{'/check_email'}]]";
 
-    // Get the user Id
-    var userId =$("#id").val();
+     var url = "[[@'{check_unique}']]";
+
+    // Get the cat Id
+    var id =$("#id").val();
+
+    var alies = $("#alies").val();
+
+    var name = $("#name").val();
 
 
-    // Get the user's email input from the form.
-    var userEmail = $("#email").val();
+
 
     // Get the CSRF token from the form.
     var csrf = $("input[name='_csrf']").val();
@@ -158,22 +162,37 @@ function checkDuplicateEmail(form) {
 
 
     // Create a JavaScript object with the email and CSRF token.
-    var params = {  email: userEmail, _csrf: csrf, id: userId };
+    var params = {id: id,name: name, alies: alies,  _csrf: csrf };
 
     $.post(url, params, function (response) {
 
-        if (response === "OK" ) {
-            showmodalDialog("This Unique", userEmail);
-            form.submit();
-        }else if (response === "Duplicated") {
+        alert(response);
+    }).fail(function (){
+     alert('faild');
 
-            showmodalDialog("There is another user having the email ", userEmail);
 
-        } else {
-            showmodalDialog("  else else Unknown response from server");
-        }
-    }).fail(function () {
-        showmodalDialog("fail  Fail Could not connect to the server");
+    //     if (response === "OK" ) {
+    //         showmodalDialog("This Unique", alies);
+    //         // form.submit();
+    //
+    //
+    //     }else if (response === "DuplicateName") {
+    //
+    //         showmodalDialog("There is another Category having the name ", name);
+    //
+    //
+    //     }else if (response === "DuplicateAlies") {
+    //
+    //         showmodalDialog("There is another Category having the Alies ", alies);
+    //
+    //
+    //     } else {
+    //         showmodalDialog("  else else Unknown response from server");
+    //     }
+    // }).fail(function () {
+    //     console.error("Failed to connect to the server");
+    //     console.log(id,name,alies,url)
+    //     showmodalDialog("fail  Fail Could not connect to the server",   alies );
     });
 
     return false;

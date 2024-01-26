@@ -1,7 +1,7 @@
 package com.onlineStore.admin.category.controller;
 
 
-import com.onlineStore.admin.UsernameNotFoundException;
+import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.CategoryRepository;
 import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
@@ -108,6 +108,11 @@ public class CategoryController {
         return model;
 
     }
+
+
+//    todo : rundom id
+
+
     @PostMapping("/categories/save-category")
     public ModelAndView saveNewUCategory(@ModelAttribute  Category category,
                                          RedirectAttributes redirectAttributes
@@ -140,11 +145,12 @@ public class CategoryController {
     }
 
     @GetMapping("/category/edit/{id}")
-    public ModelAndView editCategory(@PathVariable long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView editCategory(@PathVariable (name="id")long id, RedirectAttributes redirectAttributes) {
 
 
-        ModelAndView model = new ModelAndView("/categories/new-category-form");
         try {
+            ModelAndView model = new ModelAndView("/categories/new-category-form");
+
             Category ExistCategory = service.getCategory(id);
 
             List<Category> listCategory = service.listUsedForForm();
@@ -162,16 +168,17 @@ public class CategoryController {
 
             return model;
 
-        } catch (UsernameNotFoundException ex) {
-            redirectAttributes.addFlashAttribute("message ehab ", ex.getMessage());
+        } catch (CategoryNotFoundException ex) {
+            redirectAttributes.addFlashAttribute("message", ex.getMessage());
             return new ModelAndView("redirect:/categories/categories");
+
 
         }
     }
 
     @PostMapping( "/categories/save-edit-category/")
     public ModelAndView saveUpdaterUser(@RequestParam ( name="id") Long id,@ModelAttribute  Category category, RedirectAttributes redirectAttributes,
-                                       @RequestParam("fileImage") MultipartFile multipartFile ) throws UsernameNotFoundException, IOException {
+                                       @RequestParam("fileImage") MultipartFile multipartFile ) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id+  " has been updated successfully. ");
 
@@ -202,7 +209,7 @@ public class CategoryController {
 
 
     @GetMapping ("/categories/delete-Category/{id}")
-        public ModelAndView deleteCategory(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
+        public ModelAndView deleteCategory(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         try {
             if (categoryRepository.existsById(id)) {
@@ -218,7 +225,7 @@ public class CategoryController {
             return new ModelAndView("redirect:/categories/categories");
         }
 
-        catch (UsernameNotFoundException | IOException ex) {
+        catch (CategoryNotFoundException | IOException ex) {
             redirectAttributes.addFlashAttribute("message", " Category Not Found");
         }
             return new ModelAndView("redirect:/categories/categories");
@@ -239,7 +246,7 @@ public class CategoryController {
 
     @PostMapping("/categories/deleteCategories")
     public ModelAndView deleteCategory(@RequestParam(name = "selectedCategory", required = false) List<Long> selectedCategory,
-                              RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
+                              RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category ID: " + selectedCategory + " has been Deleted");
         ModelAndView model = new ModelAndView("/categories/categories");

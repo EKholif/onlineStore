@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta  http-equiv="Content-Type" charset="UTF-8" content="text/css">
@@ -13,6 +14,9 @@
     <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}" ></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" ></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+
+
+
 
 </head>
 <body>
@@ -36,7 +40,11 @@
 
     <form  th:action="@{${saveChanges}}" th:object="${category}" method="post"
 
-           enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto">
+           enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto"
+
+           onsubmit="return checkUnique(this);">
+
+
         <input type="hidden"  id="id" name="id"  th:value="${id}"  />
 
         <div class="border border-secondary rounded p-3">
@@ -55,12 +63,9 @@
                         <label class="col-sm-4 col-form-label">Alias</label>
                         <div class="col-sm-8">
 
-            <input type="text" th:field="*{alias}"  placeholder="enter last name"  class="form-control col-2 mb-2" />
+            <input type="text" th:field="*{alias}" id="alies" placeholder="enter last name"  class="form-control col-2 mb-2" />
                         </div>
               </div>
-
-<!--                     <div th:replace="~{fragments::input-group-category(alias,Alias)}" ></div>-->
-<!--                     <div th:replace="~{fragments::input-group-category(parent,Parent)}" ></div>-->
 
 
             <div    class="input-group row">
@@ -126,7 +131,6 @@
                         </div>
                         <div class="modal-body">
                             <span id="modalBody"></span>
-                            <p>Modal body text goes here.</p>
                         </div>
                         <div class="modal-footer">
                             <button type="close" class="btn btn-danger" data-dismiss="modal">Close</button>
