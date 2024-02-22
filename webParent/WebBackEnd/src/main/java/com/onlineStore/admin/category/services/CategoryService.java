@@ -5,15 +5,10 @@ import com.onlineStore.admin.category.CategoryRepository;
 import com.onlineStoreCom.entity.prodact.Category;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 @Transactional
@@ -25,9 +20,8 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repository;
 
-    public List<Category> listAll(){return repository.findAll();
+    public List<Category> listAll(){return repository.findAll();}
 
-    }
     public Category getCategory(Long id) throws CategoryNotFoundException {
         try {
 
@@ -66,51 +60,136 @@ public class CategoryService {
 //
 //        }
             return "Ok";
+
     }
 
 
-
     public List<Category> listUsedForForm() {
+
+        String sortField = "name";
+        String sortDir="asc";
+
+        Sort sort = Sort.by(sortField);
+
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+
+
         List<Category> categoriesUsedInForm = new ArrayList<>();
 
-        Iterable<Category> categories = repository.findAll();
+        Iterable<Category> categories = repository.findAll( sort);
 
         for (Category category : categories) {
+            if (category.getParent() == null  ) {
+                printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel());
 
-                printCategoryHierarchy(category, categoriesUsedInForm, category.getLevel());
+            }
+
+            if ( category.getParent() != null && category.getParent().getId()==category.getId()  ){
+                printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel());
+            }
         }
-
         return categoriesUsedInForm;
     }
 
 
-    private void printCategoryHierarchy(Category category, List<Category> categoriesUsedInForm, int level) {
-        // Add the current category to the list with id
-        categoriesUsedInForm.add(new Category(category.getId(), getIndentation(level) + category.getName()));
 
-    }
+    private void printCategoryHierarchy(Category category,List<Category> categoriesUsedInForm, int depth) {
+        // Print the current category with indentation based on the depth
 
-    private String getIndentation(int level) {
-        // You can customize the indentation character(s) and size based on your preference
-        StringBuilder indentation = new StringBuilder();
-        for (int i = 0; i < level; i++) {
-            indentation.append("-"); // Two spaces for each level; adjust as needed
+
+        String indentation = "*".repeat(depth);
+        categoriesUsedInForm.add(new Category(indentation  + category.getId() + "-" + category.getName()));
+
+        // Recursively print subcategories
+        Set<Category> children = category.getChildren();
+        for (Category subCategory : children) {
+            printCategoryHierarchy(subCategory, categoriesUsedInForm,depth + 1);
         }
-        return indentation.toString();
     }
-    public Page<Category> listByPage(int pageNum, String sortField, String sortDir,
-                                  String keyWord) {
+
+
+    public List<Category> listByPage(CategoryPageInfo pageInfo, int pageNum, String sortField, String sortDir,
+                                       String keyWord ) {
+
         Sort sort = Sort.by(sortField);
+
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 
         Pageable pageable = PageRequest.of(pageNum - 1, USERS_PER_PAGE, sort);
 
+        List<Category> categoriesUsedInForm = new ArrayList<>();
+
+        Page<Category> pageCategories = null;
+
+        if (keyWord != null && !keyWord.isEmpty()) {
+
+            pageCategories = repository.findAll(keyWord, pageable);
+
+             List<Category> categories = pageCategories.getContent();
+
+
+             return categories;
+
+        } else {
+
+            pageCategories = repository.findAll(pageable);
+
+            pageInfo.setTotalElements(pageCategories.getTotalElements());
+            pageInfo.setTotalPages(pageCategories.getTotalPages());
+            List<Category> categories = pageCategories.getContent();
+            return categories;
+
+        }
+
+//
+////        pageInfo.setTotalElements(pageCategories.getTotalElements());
+////        pageInfo.setTotalPages(pageCategories.getTotalPages());
+//
+//        List<Category> categories = pageCategories.getContent();
+//
+//            for (Category category : categories) {
+//
+//            if (category.getParent() == null  ) {
+//                printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel());
+//
+//            }
+//
+//            if ( category.getParent() != null && category.getParent().getId()==category.getId()  ){
+//                printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel());
+//
+//            }
+//        }
+//
+//        return categoriesUsedInForm;
+    }
+
+
+
+    public Page<Category> listByPage1(int pageNum, String sortField, String sortDir,
+                String keyWord) {
+
+
+            Sort sort = Sort.by(sortField);
+
+            sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+
+            Pageable pageable = PageRequest.of(pageNum - 1, USERS_PER_PAGE, sort);
+
+
+
+
         if (keyWord != null) {
 
-            return repository.findAll(keyWord, pageable);
+            return  repository.findAll(keyWord,pageable );
         }
-        return repository.findAll(pageable);
+
+        return  repository.findAll(pageable );
     }
+
+
+
+
+
 
     public Category saveCategory (Category category) {
         setCategoryLevel(category);

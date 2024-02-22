@@ -144,7 +144,8 @@
 function checkUnique(form) {
     // Build the URL for the server-side endpoint.
 
-     var url = "[[@'{check_unique}']]";
+     var url = "[[@{'check_unique'}]]";
+
 
     // Get the cat Id
     var id =$("#id").val();
@@ -166,33 +167,33 @@ function checkUnique(form) {
 
     $.post(url, params, function (response) {
 
-        alert(response);
-    }).fail(function (){
-     alert('faild');
+    //     alert(response);
+    // }).fail(function (){
+    //  alert('faild');
 
 
-    //     if (response === "OK" ) {
-    //         showmodalDialog("This Unique", alies);
-    //         // form.submit();
-    //
-    //
-    //     }else if (response === "DuplicateName") {
-    //
-    //         showmodalDialog("There is another Category having the name ", name);
-    //
-    //
-    //     }else if (response === "DuplicateAlies") {
-    //
-    //         showmodalDialog("There is another Category having the Alies ", alies);
-    //
-    //
-    //     } else {
-    //         showmodalDialog("  else else Unknown response from server");
-    //     }
-    // }).fail(function () {
-    //     console.error("Failed to connect to the server");
-    //     console.log(id,name,alies,url)
-    //     showmodalDialog("fail  Fail Could not connect to the server",   alies );
+        if (response === "OK" ) {
+            showmodalDialog("This Unique", url);
+            // form.submit();
+
+
+        }else if (response === "DuplicateName") {
+
+            showmodalDialog("There is another Category having the name ", url);
+
+
+        }else if (response === "DuplicateAlies") {
+
+            showmodalDialog("There is another Category having the Alies ", alies);
+
+
+        } else {
+            showmodalDialog("  else else Unknown response from server");
+        }
+    }).fail(function () {
+        console.error("Failed to connect to the server");
+        console.log(id,name,alies,url)
+        showmodalDialog("fail  Fail Could not connect to the server",   url );
     });
 
     return false;

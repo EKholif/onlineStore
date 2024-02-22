@@ -143,7 +143,7 @@
 */
 function checkDuplicateEmail(form) {
     // Build the URL for the server-side endpoint.
-    var url = "[[@'{/check_email}']]";
+    var url = "[[@{/check_email}]]";
 
     // Get the user Id
     var userId =$("#id").val();
@@ -174,7 +174,12 @@ function checkDuplicateEmail(form) {
         }
     }).fail(function () {
         showmodalDialog("fail  Fail Could not connect to the server");
+        console.error("Failed to connect to the server");
+            console.log(id,name)
+
     });
+
+    alert(response);
 
     return false;
 }

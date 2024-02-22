@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "categories")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Category {
+public class Category implements Comparable<Category> {
 
 
     @Id
@@ -37,8 +37,8 @@ public class Category {
     private Category parent;
 
 
-    @OneToMany(mappedBy = "parent" , fetch = FetchType.LAZY)
-    private Set <Category> children = new HashSet<>();
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+    private Set<Category> children = new HashSet<>();
 
 
     public Category(String name) {
@@ -51,7 +51,7 @@ public class Category {
 
     public Category(String name, Category parent) {
         this(name);
-        this.parent =parent;
+        this.parent = parent;
     }
 
     public Category(long id, String name, String alias) {
@@ -88,13 +88,12 @@ public class Category {
     @Transient
     public String parentIndentation() {
         if (parent != null) {
-             parent.getLevel();
-           return parent.indentation() + parent.getName();
+            parent.getLevel();
+            return parent.indentation() + parent.getName();
 
         }
         return null; // or an empty string or any default value you prefer
     }
-
 
 
     @Transient
@@ -110,29 +109,19 @@ public class Category {
     }
 
 
+    public static Category copyFull(Category category) {
+        Category copyCategory = new Category();
+        copyCategory.setName(category.getName());
+        copyCategory.setId(category.getId());
+        copyCategory.setImage(category.getImage());
+        copyCategory.setAlias(category.getAlias());
+        copyCategory.setId(category.getId());
 
 
-
-
-
-
-
-
-
-    public static Category copyFull (Category category ){
-    Category copyCategory = new Category();
-    copyCategory.setName(category.getName());
-    copyCategory.setId(category.getId());
-    copyCategory.setImage(category.getImage());
-    copyCategory.setAlias(category.getAlias());
-    copyCategory.setId(category.getId());
-
-
-    return copyCategory;
+        return copyCategory;
     }
 
-    public static Category copyFullCategore(Category Category, String name)
-    {
+    public static Category copyFullCategore(Category Category, String name) {
         Category copycategory = Category.copyFull(Category);
         copycategory.setName(name);
 
@@ -141,11 +130,12 @@ public class Category {
 
     }
 
-    public static Long ParentId (Category category){
+    public static Long ParentId(Category category) {
 
         return category.getId();
 
     }
+
     public Category(long id) {
         this.id = id;
     }
@@ -205,6 +195,7 @@ public class Category {
     public void setChildren(Set<Category> children) {
         this.children = children;
     }
+
     public String StringParent() {
         return parent.getName();
     }
@@ -212,7 +203,7 @@ public class Category {
 
     public List<String> childNames(Category category) {
 
-        Set<Category> childSet= category.getChildren();
+        Set<Category> childSet = category.getChildren();
         List<String> names = new ArrayList<>();
 
         for (Category child : childSet) {
@@ -225,21 +216,26 @@ public class Category {
 
     @Transient
     public String getCatImagePath() {
-        String dirName =   "/categories-photos/" ;
+        String dirName = "/categories-photos/";
 
 
-        if ( id <0 || image == null) return "/images" + "\\" +"bob.png";
+        if (id < 0 || image == null) return "/images" + "\\" + "bob.png";
 
-        return dirName + this.id + '\\' +this.image;
+        return dirName + this.id + '\\' + this.image;
     }
 
     @Transient
     public String getImageDir() {
-        String dirName =   "categories-photos\\" ;
+        String dirName = "categories-photos\\";
 //        if ( id == null || user_bio == null) return "\\images \\ bob.png";
-        return dirName + this.id + '\\' ;
+        return dirName + this.id + '\\';
     }
 
 
-
+    @Override
+    public int compareTo(Category other) {
+        // Implement comparison logic based on the natural ordering of Category objects
+        // For example, compare by name
+        return this.getName().compareTo(other.getName());
+    }
 }

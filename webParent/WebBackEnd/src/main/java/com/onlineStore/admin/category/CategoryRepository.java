@@ -4,6 +4,7 @@ package com.onlineStore.admin.category;
 import com.onlineStoreCom.entity.prodact.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,13 +21,11 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Modifying
     void enableCategory(Long id, boolean enable);
 
-    @Query("SELECT u FROM Category u WHERE  CONCAT(u.id, ' ', u.name, ' ', u.alias, ' ',"+
-            "u.parent) LIKE %?1%")
+    @Query("SELECT u FROM Category u WHERE  CONCAT(u.id, ' ', u.name, ' ', u.alias) LIKE %?1%")
     Page<Category> findAll(String keyword, Pageable pageable);
 
-
     @Query ("SELECT C FROM Category C WHERE C.parent.id IS NULL ")
-    public List<Category> findRootCategories();
+    public List<Category> findRootCategories(Sort sort);
 
      public Category findByName(String name);
 
