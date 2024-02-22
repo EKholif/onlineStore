@@ -6,14 +6,13 @@ import com.onlineStore.admin.category.CategoryRepository;
 import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
+import com.onlineStore.admin.category.services.CategoryPageInfo;
 import com.onlineStore.admin.category.services.CategoryService;
-import com.onlineStore.admin.user.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.prodact.Category;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -51,29 +50,33 @@ public class CategoryController {
 
         ModelAndView model = new ModelAndView("/categories/categories");
 
-        Page<Category> categoryPagePage = service.listByPage(pageNum, sortFiled, sortDir, keyWord);
+        CategoryPageInfo pageInfo = new CategoryPageInfo();
 
-        List<Category>categoryList= categoryPagePage.getContent();
+        List<Category> categoryPagePage = service.listByPage(pageInfo,pageNum, sortFiled, sortDir, keyWord);
 
-        long startCont = (long) (pageNum - 1) * UserService.USERS_PER_PAGE +1;
+//        List<Category>categoryList= categoryPagePage.getContent();
 
-        long endCount = startCont+ UserService.USERS_PER_PAGE -1;
 
-        System.out.println(categoryList);
-        if(endCount> categoryPagePage.getTotalElements()){
-            endCount=categoryPagePage.getTotalElements();
+
+//        List<Category>categoryList=  service.listByPage(pageInfo,pageNum, sortFiled, sortDir, keyWord);
+
+        long startCount = (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
+        long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
+        if (endCount > pageInfo.getTotalElements()) {
+            endCount = pageInfo.getTotalElements();
         }
-        String reverseSortDir= sortDir.equals("asc")?"dsc":"asc";
 
-        model.addObject("totalItems", categoryPagePage.getTotalElements());
-        model.addObject("totalPages", categoryPagePage.getTotalPages());
+        String reverseSortDir = sortDir.equals("asc") ? "dsc" : "asc";
+
+        model.addObject("totalItems", pageInfo.getTotalElements());
+        model.addObject("totalPages",  pageInfo.getTotalPages());
+        model.addObject("currentPage", pageNum);
         model.addObject("sortFiled" , sortFiled);
         model.addObject("sortDir" , sortDir);
-        model.addObject("currentPage", pageNum);
-        model.addObject("userPage", categoryPagePage);
+
         model.addObject("endCount", endCount);
-        model.addObject("startCont", startCont);
-        model.addObject("categories", categoryList);
+        model.addObject("startCont", startCount);
+        model.addObject("categories", categoryPagePage);
         model.addObject("reverseSortDir", reverseSortDir);
         model.addObject("keyWord", keyWord);
 

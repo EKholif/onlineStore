@@ -148,5 +148,74 @@
 
     <script type="text/javascript" th:src="@{/js/commonCat.js}" ></script>
 
+ <script type="text/javascript" >
+
+     function checkUnique(form) {
+         // Build the URL for the server-side endpoint.
+
+         var url = "[[@{'check_unique'}]]";
+
+
+         // Get the cat Id
+         var id =$("#id").val();
+
+         var alies = $("#alies").val();
+
+         var name = $("#name").val();
+
+
+
+
+         // Get the CSRF token from the form.
+         var csrf = $("input[name='_csrf']").val();
+
+
+
+         // Create a JavaScript object with the email and CSRF token.
+         var params = {id: id,name: name, alies: alies,  _csrf: csrf };
+
+         $.post(url, params, function (response) {
+
+             //     alert(response);
+             // }).fail(function (){
+             //  alert('faild');
+
+
+             if (response === "Ok" ) {
+                 showmodalDialog("This Unique");
+                 form.submit();
+
+
+             }else if (response === "DuplicateName") {
+
+                 showmodalDialog("Warning" ,"There is another Category having the name : "+name);
+
+
+             }else if (response === "DuplicateAlies") {
+
+                 showmodalDialog("Warning" ,"There is another Category having the Alies : " +alies );
+
+
+             } else {
+                 showmodalDialog("Warning" ," else Unknown response from server", response);
+             }
+         }).fail(function () {
+             console.error("Failed to connect to the server");
+             console.log(id,name,alies,url)
+             showmodalDialog("fail  Fail Could not connect to the server",   url );
+         });
+
+         return false;}
+
+
+
+
+ </script>
+
+
+
+
+
+
 </body>
 </html>

@@ -123,38 +123,41 @@
 
 </div>
 
+<script type="text/javascript" th:src="@{/js/common.js}" ></script>
+
+
 <script type="text/javascript" >
 
-    $(document).ready(function (){
-        $("#buttonCancel").on("click", function (){
-            window.location="[[@{users}]]";
-        });
-
-        $("#fileImage").change(function (){
-            fileSize =this.files[0].size;
-            alert("file size" + fileSize)
-
-            if (fileSize> 1048576){
-                this.setCustomValidity("Maximum image size is 1Mb ");
-                this.reportValidity();
-
-            }else {
-                // this.setCustomValidity("cool")
-
-                showImage(this);}
-        });
-
-
-    });
-
-    function showImage (fileInput){
-        var file = fileInput.files[0];
-        var reader = new FileReader();
-        reader.onload=function (e){
-            $("#thumbnail").attr("src", e.target.result)
-        };
-        reader.readAsDataURL (file);
-    }
+    // $(document).ready(function (){
+    //     $("#buttonCancel").on("click", function (){
+    //         window.location="[[@{users}]]";
+    //     });
+    //
+    //     $("#fileImage").change(function (){
+    //         fileSize =this.files[0].size;
+    //         alert("file size" + fileSize)
+    //
+    //         if (fileSize> 1048576){
+    //             this.setCustomValidity("Maximum image size is 1Mb ");
+    //             this.reportValidity();
+    //
+    //         }else {
+    //             // this.setCustomValidity("cool")
+    //
+    //             showImage(this);}
+    //     });
+    //
+    //
+    // });
+    //
+    // function showImage (fileInput){
+    //     var file = fileInput.files[0];
+    //     var reader = new FileReader();
+    //     reader.onload=function (e){
+    //         $("#thumbnail").attr("src", e.target.result)
+    //     };
+    //     reader.readAsDataURL (file);
+    // }
 
     function checkDuplicateEmail(form) {
         // Build the URL for the server-side endpoint.
@@ -193,21 +196,21 @@
 
         return false;
 }
-    function  showmodalDialog (tital, message){
-        $("#modalTitle").text(tital);
-        $("#modalBody").text(message);
-        $('#modalDialog').modal('show');
-    }
-
-
-    function checkPasswordMatch(confirmPassword) {
-
-        if (confirmPassword.value !== $("#Password").val()) {
-            confirmPassword.setCustomValidity("Password Not Match")
-        } else {
-            confirmPassword.setCustomValidity("");
-        }
-    }
+    // function  showmodalDialog (tital, message){
+    //     $("#modalTitle").text(tital);
+    //     $("#modalBody").text(message);
+    //     $('#modalDialog').modal('show');
+    // }
+    //
+    //
+    // function checkPasswordMatch(confirmPassword) {
+    //
+    //     if (confirmPassword.value !== $("#Password").val()) {
+    //         confirmPassword.setCustomValidity("Password Not Match")
+    //     } else {
+    //         confirmPassword.setCustomValidity("");
+    //     }
+    // }
 </script>
 <script>$j = jQuery.noConflict();</script>
 
