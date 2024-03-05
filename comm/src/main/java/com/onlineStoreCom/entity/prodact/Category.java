@@ -40,7 +40,8 @@ public class Category implements Comparable<Category> {
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private Set<Category> children = new HashSet<>();
 
-
+    @Transient
+    private boolean hasChildren;
     public Category(String name) {
 
         this.name = name;
@@ -108,20 +109,29 @@ public class Category implements Comparable<Category> {
         return indentation.toString();
     }
 
+    public static Category copyIdAndName(Integer id, String name) {
+        Category copyCategory = new Category();
+        copyCategory.setId(id);
+        copyCategory.setName(name);
 
+        return copyCategory;
+    }
     public static Category copyFull(Category category) {
         Category copyCategory = new Category();
-        copyCategory.setName(category.getName());
         copyCategory.setId(category.getId());
+        copyCategory.setName(category.getName());
         copyCategory.setImage(category.getImage());
         copyCategory.setAlias(category.getAlias());
-        copyCategory.setId(category.getId());
+        copyCategory.setEnable(category.isEnable());
+        copyCategory.setParent(category.getParent());
+        copyCategory.setChildren(category.getChildren());
+        copyCategory.setHasChildren(category.getChildren().size() > 0);
 
 
         return copyCategory;
     }
 
-    public static Category copyFullCategore(Category Category, String name) {
+    public static Category copyFull(Category Category, String name) {
         Category copycategory = Category.copyFull(Category);
         copycategory.setName(name);
 
@@ -145,7 +155,7 @@ public class Category implements Comparable<Category> {
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.id =id;
     }
 
     public String getName() {
@@ -200,7 +210,13 @@ public class Category implements Comparable<Category> {
         return parent.getName();
     }
 
+    public boolean isHasChildren() {
+        return hasChildren;
+    }
 
+    public void setHasChildren(boolean hasChildren) {
+        this.hasChildren = hasChildren;
+    }
     public List<String> childNames(Category category) {
 
         Set<Category> childSet = category.getChildren();

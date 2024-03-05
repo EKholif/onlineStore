@@ -26,7 +26,6 @@ public class CategoryRestController {
 
 
         String result = service.checkUnique(id, name, alies);
-        System.out.println("id  "+ id + "     name   "+ name + "    alias   "+ alies);
 
         logger.info("Result: {}", result);
         return result;

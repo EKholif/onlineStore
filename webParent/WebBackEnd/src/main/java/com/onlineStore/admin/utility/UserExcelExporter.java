@@ -1,5 +1,6 @@
 package com.onlineStore.admin.utility;
 
+import com.onlineStore.admin.abstarct.AbstractExporter;
 import com.onlineStoreCom.entity.User;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
@@ -64,7 +65,7 @@ public class UserExcelExporter extends AbstractExporter {
 
     public void export(List<User> listUsers, HttpServletResponse response) throws IOException {
 
-        super.export(response, "application/octet-stream", ".xlsx");
+        super.export(response, "application/octet-stream", ".xlsx","users_");
 
         writeHeadline();
         writeDatelines(listUsers);

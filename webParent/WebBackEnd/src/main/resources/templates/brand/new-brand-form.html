@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta  http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" >
+
+    <title>[[${pageTitle}]]</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"> </script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}" ></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" ></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+
+
+
+
+</head>
+<body>
+                                <h1> [[${pageTitle}]]</h1>
+                                <div th:replace="~{fragments::navbar}"></div>
+                                <div th:replace="~{fragments::search}"></div>
+
+
+
+<div class="container-fluid">
+
+
+     <div>
+         <a th:href="@{/categories/new-category-form}">[[${pageTitle}]]</a>
+     </div>
+
+
+    <div class="container">
+
+        <h2  class="text-center">[[${pageTitle}]]</h2>
+
+    <form  th:action="@{${saveChanges}}" th:object="${category}" method="post"
+
+           enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto"
+
+           onsubmit="return checkUnique(this);">
+
+
+        <input type="hidden"  id="id" name="id"  th:value="${id}"  />
+
+        <div class="border border-secondary rounded p-3">
+
+<!--            <div th:replace="~{fragments::input-group-category(name,Name)}" ></div>-->
+
+            <div    class="input-group row">
+                <label class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+            <input type="text" th:field="*{name}" required minlength="2" placeholder="enter first name"  class="form-control col-4 mb-4"/>
+                </div>
+            </div>
+
+
+              <div    class="input-group row">
+                        <label class="col-sm-4 col-form-label">Alias</label>
+                        <div class="col-sm-8">
+
+            <input type="text" th:field="*{alias}" id="alies" placeholder="enter last name"  class="form-control col-2 mb-2" />
+                        </div>
+              </div>
+
+
+            <div    class="input-group row">
+                <label class="col-sm-4 col-form-label">[[${label}]]</label>
+                <div class="col-sm-8">
+                    <select  class="form-control" th:field="*{parent}">
+                        <option value="0"> [No Parent]</option>
+
+                        <th:block th:each="cat : ${listCategory}">
+                            <option th:value="${cat.id}" > [[${cat.name}]]</option>
+
+                        </th:block>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="checkboxes">
+                <label class="col-sm-4 col-form-label">Enable</label>
+                <div class="col-sm-8 ">
+                    <input class="text-center" type="checkbox" th:field="*{enable}"/>
+                </div>
+            </div>
+
+
+
+
+
+            <div   class="form row" >
+                <label class="col-sm-4 col-form-label">[[${label}]]</label>
+                <div class="col-sm-8 ">
+                    <input type="hidden" th:field="*{image}"/>
+                    <input class="mb-2" type="file" id="fileImage" name="fileImage" accept="image/jpg, image/jpeg, image/png"/>
+
+                    <div class="mb-2">
+
+                    <img class="img-thumbnail rounded-circle float-left "   id="thumbnail" style="width: 200px" alt="product Photo"
+                         th:src="@{${category.getCatImagePath()}}" />
+
+                    </div>
+                </div>
+</div>
+
+
+
+        </div>
+
+
+                      <div th:replace="~{fragments::save-and-rest-buttons}"></div>
+
+
+    </form>
+
+
+            <div class="modal fade text-center" data-bs-toggle="modal" id ="modalDialog" data-bs-target="#modalDialog" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id ="modalTitle"> Alert Message Box </h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <span id="modalBody"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="close" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+    <div th:replace="~{fragments :: footer}"></div>
+
+    </div>
+</div>
+
+
+    <script type="text/javascript" th:src="@{/js/commonCat.js}" ></script>
+
+ <script type="text/javascript" >
+
+     function checkUnique(form) {
+         // Build the URL for the server-side endpoint.
+
+         var url = "[[@{'check_unique'}]]";
+
+
+         // Get the cat Id
+         var id =$("#id").val();
+
+         var alies = $("#alies").val();
+
+         var name = $("#name").val();
+
+
+
+
+         // Get the CSRF token from the form.
+         var csrf = $("input[name='_csrf']").val();
+
+
+
+         // Create a JavaScript object with the email and CSRF token.
+         var params = {id: id,name: name, alies: alies,  _csrf: csrf };
+
+         $.post(url, params, function (response) {
+
+             //     alert(response);
+             // }).fail(function (){
+             //  alert('faild');
+
+
+             if (response === "Ok" ) {
+                 showmodalDialog("This Unique");
+                 form.submit();
+
+
+             }else if (response === "DuplicateName") {
+
+                 showmodalDialog("Warning" ,"There is another Category having the name : "+name);
+
+
+             }else if (response === "DuplicateAlies") {
+
+                 showmodalDialog("Warning" ,"There is another Category having the Alies : " +alies );
+
+
+             } else {
+                 showmodalDialog("Warning" ," else Unknown response from server", response);
+             }
+         }).fail(function () {
+             console.error("Failed to connect to the server");
+             console.log(id,name,alies,url)
+             showmodalDialog("fail  Fail Could not connect to the server",   url );
+         });
+
+         return false;}
+
+
+
+
+ </script>
+
+
+
+
+
+
+</body>
+</html>

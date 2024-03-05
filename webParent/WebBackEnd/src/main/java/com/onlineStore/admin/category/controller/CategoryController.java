@@ -2,7 +2,6 @@ package com.onlineStore.admin.category.controller;
 
 
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.category.CategoryRepository;
 import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
@@ -28,8 +27,7 @@ import java.util.Objects;
 public class CategoryController {
     @Autowired
     private CategoryService service ;
-    @Autowired
-    private CategoryRepository categoryRepository;
+
 
 
     @GetMapping("/categories/categories")
@@ -45,8 +43,7 @@ public class CategoryController {
     @GetMapping("/categories/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
                                    @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
-                                   @Param("keyWord") String keyWord)
-    {
+                                   @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("/categories/categories");
 
@@ -54,39 +51,41 @@ public class CategoryController {
 
         List<Category> categoryPagePage = service.listByPage(pageInfo,pageNum, sortFiled, sortDir, keyWord);
 
-//        List<Category>categoryList= categoryPagePage.getContent();
 
-
-
-//        List<Category>categoryList=  service.listByPage(pageInfo,pageNum, sortFiled, sortDir, keyWord);
-
-        long startCount = (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
+        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
         long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
+
         if (endCount > pageInfo.getTotalElements()) {
             endCount = pageInfo.getTotalElements();
         }
 
-        String reverseSortDir = sortDir.equals("asc") ? "dsc" : "asc";
 
-        model.addObject("totalItems", pageInfo.getTotalElements());
-        model.addObject("totalPages",  pageInfo.getTotalPages());
+        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+
+        model.addObject("keyWord", keyWord);
+        model.addObject("sortDir" , sortDir);
+        model.addObject("endCount", endCount);
         model.addObject("currentPage", pageNum);
         model.addObject("sortFiled" , sortFiled);
-        model.addObject("sortDir" , sortDir);
-
-        model.addObject("endCount", endCount);
         model.addObject("startCont", startCount);
         model.addObject("categories", categoryPagePage);
         model.addObject("reverseSortDir", reverseSortDir);
-        model.addObject("keyWord", keyWord);
+        model.addObject("totalPages",  pageInfo.getTotalPages());
+        model.addObject("totalItems", pageInfo.getTotalElements());
+        model.addObject("search" , "/categories/page/1");
+        model.addObject("modelUrl", "/categories/page/");
+
+
+
 
         return  model;
     }
 
-
-
-
-
+    public static <T> List<T> getPage(List<T> list, int pageNumber, int pageSize) {
+        int startIndex = (pageNumber - 1) * pageSize;
+        int endIndex = Math.min(startIndex + pageSize, list.size());
+        return list.subList(startIndex, endIndex);
+    }
 
 
     @GetMapping("/categories/new-category-form")
@@ -127,7 +126,7 @@ public class CategoryController {
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
-            System.out.println(fileName);
+
 
             category.setImage(fileName);
             Category savedCategory = service.saveCategory(category);
@@ -154,7 +153,7 @@ public class CategoryController {
         try {
             ModelAndView model = new ModelAndView("/categories/new-category-form");
 
-            Category ExistCategory = service.getCategory(id);
+            Category ExistCategory = service.findById(id);
 
             List<Category> listCategory = service.listUsedForForm();
 
@@ -185,7 +184,7 @@ public class CategoryController {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id+  " has been updated successfully. ");
 
-        Category updateCategory =service.getCategory(id);
+        Category updateCategory =service.findById(id);
 
 
 
@@ -215,8 +214,8 @@ public class CategoryController {
         public ModelAndView deleteCategory(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         try {
-            if (categoryRepository.existsById(id)) {
-                FileUploadUtil.cleanDir( service.getCategory(id).getImageDir());
+            if (service.existsById(id)) {
+                FileUploadUtil.cleanDir( service.findById(id).getImageDir());
 
            service.deleteCategory(id);
                 redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + " has been Deleted");
@@ -258,7 +257,7 @@ public class CategoryController {
 
         if (selectedCategory != null && !selectedCategory.isEmpty()) {
             for (Long userId : selectedCategory) {
-                FileUploadUtil.cleanDir( service.getCategory(userId).getImageDir());
+                FileUploadUtil.cleanDir( service.findById(userId).getImageDir());
                 service.deleteCategory(userId);
             }
         }
@@ -268,14 +267,14 @@ public class CategoryController {
 
 @GetMapping("/categories/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
-        List<Category> listCategories = service.listAll();
+        List<Category> listCategories = service.listUsedForForm();
         CategoryCsvCategoryExporter userCsvExporter = new CategoryCsvCategoryExporter();
         userCsvExporter.export(listCategories,response);
 
 }
     @GetMapping("/categories/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
-        List<Category> categoryList = service.listAll();
+        List<Category> categoryList = service.listUsedForForm();
 
         CategoryExcelExporter categoryExcelExporter = new  CategoryExcelExporter();
         categoryExcelExporter.export(categoryList,response);
@@ -284,7 +283,7 @@ public class CategoryController {
     }
     @GetMapping("/categories/export/pdf")
     public void exportToPdf(HttpServletResponse response) throws IOException {
-        List<Category> categoryList = service.listAll();
+        List<Category> categoryList = service.listUsedForForm();
 
         CategoryPdfCategoryExporter categoryPdfCategoryExporter = new  CategoryPdfCategoryExporter();
         categoryPdfCategoryExporter.export(categoryList,response);

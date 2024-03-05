@@ -28,7 +28,7 @@
 
       <th th:fragment="colum_link (fieldName, columnLable)">
             <a
-                    th:href="@{'/users/page/'+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
+                    th:href="@{${modelUrl}+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
                             +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ' '}}"  class="text-white " >
                        [[${columnLable}]]
@@ -39,21 +39,17 @@
       </th>
 
 <!--===============================================================================-->
-<!--                                 colum_linkCat             -->
+<!--                                 message          -->
 
 <!--===============================================================================-->
 
-<th th:fragment="colum_linkCat (fieldName, columnLable)">
-    <a
-            th:href="@{'/categories/page/'+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
-                            +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
-                            '&keyWord='+ keyWord: ' '}}"  class="text-white " >
-        [[${columnLable}]]
-    </a>
+<div th:fragment="message">
 
-    <span th:if="${sortFiled== fieldName}"
-          th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
-</th>
+    <div class="alert alert-success text-center" >
+        [[${message}]]
+    </div>
+
+</div>
 
 
 <!--===============================================================================-->
@@ -94,7 +90,10 @@
 //   //  sec:authorize="hasAnyAuthority('
 
 
-      <li   th:fragment="nav-link(fieldName,label)"     class="nav-item mx-n0 "  sec:authorize="hasAuthority('Admin')">
+      <li   th:fragment="nav-link(fieldName,label)"
+
+            class="nav-item mx-n0 "  sec:authorize="hasAuthority('Admin')">
+
           <a class="nav-link" th:href="@{'/' + ${fieldName}}">[[${label}]]</a>
       </li>
 
@@ -126,6 +125,8 @@
                       <li th:replace="~{fragments::nav-link('categories/new-category-form','Add category')}"></li>
                       <li th:replace="~{fragments::nav-link('categories/categories','categories')}"></li>
                      <li th:replace="~{fragments::nav-link('users','Edit User')}"></li>
+                     <li th:replace="~{fragments::nav-link('brand/brands','Brand')}"></li>
+
                       <li th:replace="~{fragments::nav-link('users','Search')}"></li>
                       <li th:replace="~{fragments::nav-link('users','Clear')}"></li>
                       <li class="nav-item">
@@ -170,7 +171,7 @@
       <div  th:fragment="search"  >
            <div  class="d-inline-flex p-2" >
               <div>
-                  <form class="d-inline-flex p-2"  th:action="@{'/categories/page/1' }">
+                  <form class="d-inline-flex p-2"  th:action="@{${search} }">
                       <input  type="hidden" name="sortFiled" th:value="${sortFiled}"/>
                       <input  type="hidden" name="sortDir" th:value="${sortDir}"/>
 

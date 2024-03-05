@@ -2,7 +2,7 @@ package com.onlineStore.admin.user.servcies;
 
 
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.role.RoleRepository;
+import com.onlineStore.admin.user.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
 import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.User;

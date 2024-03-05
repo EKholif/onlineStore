@@ -16,7 +16,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = false)
+@Rollback(value = true)
 public class CategoryRepositoryTest {
 
     @Autowired
@@ -269,27 +269,27 @@ public class CategoryRepositoryTest {
     public void testGetAllCategory() {
 
         String sortDir="asc";
+        String sortField = "name";
+
+        Sort sort = Sort.by(sortField);
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+        Pageable pageable = PageRequest.of(0, 9, sort);
+
 
         List<Category> categoriesUsedInForm = new ArrayList<>();
-        Iterable<Category> categories = repository.findAll();
-        List<Category> topLevelCategories = new ArrayList<>();
+        Iterable<Category> categories = repository.findAll(pageable);
+
 
         for (Category category : categories) {
             if (category.getParent() == null  ) {
-                topLevelCategories.add(category);
+                printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel());
 
             }
 
             if ( category.getParent() != null && category.getParent().getId()==category.getId()  ){
-                topLevelCategories.add(category);
+                printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel());
             }
 
-        }
-        Collections.sort(topLevelCategories, Comparator.comparing(Category::getId));
-
-// Print the sorted top-level categories
-        for (Category category : topLevelCategories) {
-            printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel());
         }
     }
 
@@ -301,7 +301,7 @@ public class CategoryRepositoryTest {
         String indentation = "*".repeat(depth);
         topLevelCategories.add(new Category(indentation  + category.getId() + "-" + category.getName()));
 
-//        getPage( topLevelCategories,1,4);
+       getPage( topLevelCategories,1,4);
 
 
 

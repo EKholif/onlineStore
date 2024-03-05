@@ -1,4 +1,4 @@
-package com.onlineStore.admin.category.controller.utility;
+package com.onlineStore.admin.abstarct;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -7,14 +7,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AbstractCategoryExporter {
+public class AbstractExporter {
 
 
-    public void export(HttpServletResponse response, String contentType, String extinction) throws IOException {
+    public void export(HttpServletResponse response, String contentType, String extinction,String prefix) throws IOException {
 
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
         String timeStamp = dateFormatter.format(new Date());
-        String fileName = "Category_" + timeStamp + extinction;
+        String fileName =  prefix + timeStamp + extinction;
 
         response.setContentType(contentType);
 
