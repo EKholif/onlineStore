@@ -1,6 +1,6 @@
 package com.onlineStore.admin;
 
-import com.onlineStore.admin.role.RoleRepository;
+import com.onlineStore.admin.user.role.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

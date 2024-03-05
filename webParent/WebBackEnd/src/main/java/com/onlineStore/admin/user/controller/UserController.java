@@ -2,7 +2,8 @@ package com.onlineStore.admin.user.controller;
 
 
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.role.RoleRepository;
+import com.onlineStore.admin.category.services.CategoryService;
+import com.onlineStore.admin.user.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
 import com.onlineStore.admin.user.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
@@ -44,16 +45,15 @@ public class UserController {
 
     @GetMapping("/users/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-    @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
-           @Param("keyWord") String keyWord
-    ) {
+                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+                                   @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("users");
         Page<User> userPage = userService.listByPage(pageNum, sortFiled, sortDir, keyWord);
         List<User>listUsers= userPage.getContent();
 
-        long startCont = (long) ((long) (pageNum - 1) * UserService.USERS_PER_PAGE +1);
-        long endCount = startCont+ UserService.USERS_PER_PAGE -1;
+        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
+        long endCount = startCount+ UserService.USERS_PER_PAGE -1;
 
 
          if(endCount> userPage.getTotalElements()){
@@ -66,13 +66,13 @@ public class UserController {
         model.addObject("sortFiled" , sortFiled);
         model.addObject("sortDir" , sortDir);
         model.addObject("currentPage", pageNum);
-        model.addObject("userPage", userPage);
         model.addObject("endCount", endCount);
-        model.addObject("startCont", startCont);
+        model.addObject("startCont", startCount);
         model.addObject("users", listUsers);
         model.addObject("reverseSortDir", reverseSortDir);
         model.addObject("keyWord", keyWord);
-
+        model.addObject("search" , "/users/page/1");
+        model.addObject("modelUrl", "/users/page/");
          return  model;
     }
 
@@ -105,7 +105,7 @@ public class UserController {
 
               user.setUser_bio(fileName);
 
-            System.out.println(user.getfirstName());
+
 
               User savedUser = userService.saveUser(user);
 

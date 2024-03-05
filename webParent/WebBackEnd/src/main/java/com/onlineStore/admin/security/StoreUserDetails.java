@@ -63,7 +63,7 @@ public class StoreUserDetails implements UserDetails {
 
     public String getImagePath() {
 
-        System.out.println(user.getImagePath());
+
         return user.getImagePath();
     }
 

@@ -28,7 +28,6 @@ public class FileUploadUtil {
 
         try (InputStream inputStream = multipartFile.getInputStream()) {
             Path filePath = uploadPath.resolve(filename);
-            System.out.println(filePath);
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 
         }catch (IOException ex){
@@ -45,24 +44,20 @@ public class FileUploadUtil {
 
 
     public static void cleanDir(String dir) throws IOException {
-        System.out.println("cleanDir dir  " + dir);
         Path dirPath = Paths.get(dir);
 
         try {
             Files.list(dirPath).forEach(file -> {
-                System.out.println("cleanDir file name  " + file.getFileName());
                 if (!Files.isDirectory(file)) {
                     try {
                         Files.delete(file);
                     } catch (IOException ex) {
                         LOGGER.error("File not found: " + file.getFileName());
-                        System.out.println("File not found: " + file.getFileName());
                     }
                 }
             });
         } catch (IOException e) {
-            System.out.println("Not a valid directory: " + dir);
-            System.out.println("Not a valid directory: " + dir);
+            LOGGER.error("Not a valid directory: " + dir);
         }
     }
 

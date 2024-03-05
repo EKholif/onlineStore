@@ -1,6 +1,6 @@
 package com.onlineStore.admin.test;
 
-import com.onlineStore.admin.role.RoleRepository;
+import com.onlineStore.admin.user.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.User;

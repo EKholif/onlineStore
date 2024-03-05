@@ -1,4 +1,4 @@
-package com.onlineStore.admin.role;
+package com.onlineStore.admin.user.role;
 
 
 

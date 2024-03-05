@@ -28,18 +28,18 @@
               <div th:replace="~{fragments::search}"></div>
 
 
-             <form th:action="@{/categories/deleteCategories}" method="post" id="deleteForm">
+             <form th:action="@{/brands/deletebrands}" method="post" id="deleteForm">
 
              <div class=" justify-content-center mb-2 ">
-                 <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;"  type="submit" title="Delete Selected Categories"></button>
+                 <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;"  type="submit" title="Delete Selected brands"></button>
 
-                 <a th:href="@{/categories/new-category-form}" class="fas fa-user-plus fa-2x icon-d-green"     title="Add Category"  ></a>&nbsp;&nbsp;
+                 <a th:href="@{/brands/new-brand-form}" class="fas fa-user-plus fa-2x icon-d-green"     title="Add brand"  ></a>&nbsp;&nbsp;
 
-                 <a  class="fas fa-file-csv fa-2x icon-primary" th:href="@{/categories/export/csv}"       title="Export to CSV"></a> &nbsp;&nbsp;
+                 <a  class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}"       title="Export to CSV"></a> &nbsp;&nbsp;
 
-                 <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/categories/export/pdf}"            title="Export to PDF"></a> &nbsp;&nbsp;
+                 <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}"            title="Export to PDF"></a> &nbsp;&nbsp;
 
-                 <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/categories/export/excel}"  title="Export to Excel"></a>&nbsp;&nbsp;
+                 <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}"  title="Export to Excel"></a>&nbsp;&nbsp;
              </div>
 
 
@@ -63,67 +63,66 @@
                        <th th:replace="~{fragments::colum_link('id', 'ID')}"></th>
                        <th>image</th>
                        <th th:replace="~{fragments::colum_link('name', 'Name')}"></th>
-                       <th th:replace="~{fragments::colum_link('alias', 'Alias')}"></th>
-                       <th th:replace="~{fragments::colum_link('parent', 'Parent')}"></th>
-                       <th th:replace="~{fragments::colum_link('children', 'Children')}"></th>
-                       <th th:replace="~{fragments::colum_link('status', 'Status')}"></th>
+
+                       <th th:replace="~{fragments::colum_link('logo', 'logo')}"></th>
+
                         <th></th>
                         <th></th>
                   </tr>
         </thead>
 
         <tbody>
-                       <tr th:each = "category: ${categories}">
+                       <tr th:each = "brand: ${brands}">
 
 
                             <td>
-                                <input class="form-check-input delete-checkbox " type="checkbox" name="selectedCategory" th:value="${category.getId}" id="flexCheckDefault">
+                                <input class="form-check-input delete-checkbox " type="checkbox" name="selectedbrand" th:value="${brand.getId}" id="flexCheckDefault">
                             </td>
 
-                            <td th:text="${category.id}"></td>
+                            <td th:text="${brand.id}"></td>
 
                             <td>
-                                  <span th:if="${category.getImage.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
-                                <img th:if="${category.image != null && !category.getImage.isEmpty() }"  th:src=" @{${category.getCatImagePath()}}" class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"  />
+                                  <span th:if="${brand.getImage.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
+                                <img th:if="${brand.image != null && !brand.getImage.isEmpty() }"  th:src=" @{${brand.getCatImagePath()}}" class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"  />
 
                             </td>
 
 
-                            <td th:text="${category.name}"></td>
-                            <td th:text="${category.alias}"></td>
+                            <td th:text="${brand.name}"></td>
+                            <td th:text="${brand.alias}"></td>
 
 
-                              <td th:text="${category.parentIndentation() }"></td>
+                              <td th:text="${brand.parentIndentation() }"></td>
 
 
-                              <td th:text="${category.childNames(category)}"></td>
+                              <td th:text="${brand.childNames(brand)}"></td>
 
 
 
                            <td >
-                               <a th:if="${category.isEnable == true}" class="fas fa-check-circle px-2 icon-green "
-                                  th:href="@{'/category/' + ${category.getId} +'/enable/false' } "
-                                  title="Disable Category"></a>
+                               <a th:if="${brand.isEnable == true}" class="fas fa-check-circle px-2 icon-green "
+                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/false' } "
+                                  title="Disable brand"></a>
                                <!--                                                      &nbsp;-->
-                               <a th:if="${category.isEnable() == false}" class="fas fa-circle px-2 icon-red"
-                                  th:href="@{'/category/' + ${category.getId} +'/enable/true' }"
-                                  title="Enable Category"></a>
+                               <a th:if="${brand.isEnable() == false}" class="fas fa-circle px-2 icon-red"
+                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/true' }"
+                                  title="Enable brand"></a>
 
                            </td>
 
                            <td >
                                <a class="fas fa-edit px-2 icon-green"
-                                  th:href="@{'/category/edit/' + ${category.getId()}}"
-                                  title="Edit Category"></a>
+                                  th:href="@{'/brand/edit/' + ${brand.getId()}}"
+                                  title="Edit brand"></a>
                            </td>
 
 
 
                            <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                                  th:href="@{'/categories/delete-Category/' + ${category.getId()}}"
-                                  th:userId="${category.id}"
+                                  th:href="@{'/brands/delete-brand/' + ${brand.getId()}}"
+                                  th:userId="${brand.id}"
 
-                                  title="Delete Category"></a> </td>
+                                  title="Delete brand"></a> </td>
                        </tr>
 
 
@@ -150,30 +149,30 @@
                          <ul class="pagination justify-content-center flex-wrap" >
 
                              <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                                 <a th:replace="~{fragments::page_linkCat(1,'First')}" /></a>
+                                 <a th:replace="~{fragments::page_link(1,'First')}" /></a>
 
                              </li >
 
                              <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
 
-                                 <a th:replace="~{fragments::page_linkCat(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+                                 <a th:replace="~{fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
 
                              </li>
 
                              <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
 
-                                 <a th:replace="~{fragments::page_linkCat(${i}, ${i})}" /></a>
+                                 <a th:replace="~{fragments::page_link(${i}, ${i})}" /></a>
 
                              </li>
 
                              <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
 
-                                 <a th:replace="~{fragments::page_linkCat(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+                                 <a th:replace="~{fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
 
                              </li>
 
                              <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                                 <a th:replace="~{fragments::page_linkCat(${totalPages}, 'Last')}" /></a>
+                                 <a th:replace="~{fragments::page_link(${totalPages}, 'Last')}" /></a>
 
 
                              </li>

@@ -1,5 +1,6 @@
 package com.onlineStore.admin.category.controller.utility;
 
+import com.onlineStore.admin.abstarct.AbstractExporter;
 import com.onlineStoreCom.entity.prodact.Category;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
@@ -9,35 +10,32 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.IOException;
 import java.util.List;
 
-public class CategoryExcelExporter extends AbstractCategoryExporter {
+public class CategoryExcelExporter extends AbstractExporter {
 
 
-    XSSFWorkbook workbook ;
-    XSSFSheet sheet ;
+    private XSSFWorkbook workbook;
+    private XSSFSheet sheet;
 
     public CategoryExcelExporter() {
         workbook = new  XSSFWorkbook();
     }
 
-    private void writeHeadline(){
+    private void writeHeader(){
         sheet = workbook.createSheet("Categories");
         XSSFRow row=sheet.createRow(0);
 
-        XSSFCellStyle cellStyle=workbook.createCellStyle();
-        XSSFFont font = workbook.createFont();
-        font.setBold(true);
-        font.setFontHeight(16);
-        cellStyle.setFont(font);
+        XSSFCellStyle headerStyle = workbook.createCellStyle();
+        XSSFFont headerFont = workbook.createFont();
+        headerFont.setBold(true);
+        headerFont.setFontHeightInPoints((short) 16);
+        headerStyle.setFont(headerFont);
 
-        createCell(row ,0 ,"ID" ,cellStyle );
-        createCell(row ,1 ," Name" ,cellStyle );
-        createCell(row ,2 ,"Alies" ,cellStyle );
-//        createCell(row ,3 ,"Parent" ,cellStyle );
-//        createCell(row ,4 ,"Child " ,cellStyle );
-        createCell(row ,5 ,"Status" ,cellStyle );
-
-
+        String[] headers = {"ID  Name", "Alias", "Status"};
+        for (int i = 0; i < headers.length; i++) {
+            createCell(row, i, headers[i], headerStyle);
+        }
     }
+
 
     private void createCell(XSSFRow row, int columnIndex, Object value, CellStyle style){
 
@@ -65,9 +63,9 @@ public class CategoryExcelExporter extends AbstractCategoryExporter {
 
     public void export(List<Category> categoryList, HttpServletResponse response) throws IOException {
 
-        super.export(response, "application/octet-stream", ".xlsx");
+        super.export(response, "application/octet-stream", ".xlsx","Category_");
 
-        writeHeadline();
+        writeHeader();
 
         writeDatelines(categoryList);
 

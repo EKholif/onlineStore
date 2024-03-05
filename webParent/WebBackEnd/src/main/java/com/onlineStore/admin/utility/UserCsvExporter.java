@@ -1,5 +1,6 @@
 package com.onlineStore.admin.utility;
 
+import com.onlineStore.admin.abstarct.AbstractExporter;
 import com.onlineStoreCom.entity.User;
 import jakarta.servlet.http.HttpServletResponse;
 import org.supercsv.io.CsvBeanWriter;
@@ -13,7 +14,7 @@ public class UserCsvExporter extends AbstractExporter {
 
     public void export(List<User> listUsers, HttpServletResponse response) throws IOException {
 
-       super.export(response,"text/csv",".csv");
+       super.export(response,"text/csv",".csv","users_");
 
 
         ICsvBeanWriter csvBeanWriter = new CsvBeanWriter(response.getWriter(),

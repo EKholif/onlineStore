@@ -1,91 +1,112 @@
 package com.onlineStore.admin.category.controller.utility;
 
-import com.lowagie.text.Font;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import com.onlineStore.admin.abstarct.AbstractExporter;
 import com.onlineStoreCom.entity.prodact.Category;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
-public class CategoryPdfCategoryExporter extends AbstractCategoryExporter {
+import static java.awt.Color.BLUE;
+import static java.awt.Color.WHITE;
+
+public class CategoryPdfCategoryExporter extends AbstractExporter {
 
     public void export(List<Category> categoryList, HttpServletResponse response) throws IOException {
-
-       super.export(response,"application/pdf",".pdf");
-
+        super.export(response, "application/pdf", ".pdf", "Category_");
 
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document,response.getOutputStream());
+        PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
-        Font font = FontFactory.getFont(FontFactory.TIMES_ITALIC);
-        font.setSize(18);
-        font.setColor( Color.blue);
-        Paragraph paragraph = new Paragraph("List of Categories", font);
 
-        paragraph.setAlignment(Paragraph.ALIGN_CENTER);
-        document.add(paragraph);
+        // Add header with logo
+        addHeader(document);
 
-        PdfPTable table = new PdfPTable(6);
+        // Add title
+        Font titleFont = FontFactory.getFont(FontFactory.TIMES_BOLD);
+        titleFont.setSize(24);
+        Paragraph title = new Paragraph("List of Categories", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+
+        document.add(title);
+        Paragraph emptyLine = new Paragraph("\n\n"); // You can adjust the spacing as needed
+        document.add(emptyLine);
+        // Add table
+        PdfPTable table = new PdfPTable(4);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[] { 1f, 2.5f,2.5f,4f,3f,1.5f } );
-        writerTableHeader(table);
-        writerTableData(table, categoryList);
-
+        table.setWidths(new float[]{1f, 2.5f, 2.5f, 1.5f});
+        writeTableHeader(table);
+        writeTableData(table, categoryList);
         document.add(table);
 
         document.close();
     }
 
-    private void writerTableData(PdfPTable table, List<Category> categoryList) {
+    private void addHeader(Document document) {
+        try {
+            PdfPTable headerTable = new PdfPTable(1);
+            headerTable.setWidthPercentage(10);
 
-        for(Category category:categoryList){
+            // Add logo
+            Image logo = Image.getInstance("categories-photos/rr.png");
 
-            table.addCell(String.valueOf(category.getId()));
-            table.addCell(String.valueOf(category.getName()));
-            table.addCell(String.valueOf(category.getAlias()));
-//            table.addCell(String.valueOf(category.getParent()));
-//            table.addCell(String.valueOf(category.getChildren()));
-            table.addCell(String.valueOf(category.isEnable()));
+            float percentage = 10f; // Adjust this value as needed
+            float width = logo.getWidth() * percentage / 100;
+            float height = logo.getHeight() * percentage / 100;
+
+            logo.scaleToFit(width, height);
+            PdfPCell logoCell = new PdfPCell(logo, true);
+            logoCell.setBorder(Rectangle.NO_BORDER);
+            logoCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            headerTable.addCell(logoCell);
+
+            // Add empty space below the logo
+            PdfPCell emptyCell = new PdfPCell(new Phrase(""));
+            emptyCell.setBorder(Rectangle.NO_BORDER);
+            headerTable.addCell(emptyCell);
+
+            document.add(headerTable);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
-
-
     }
 
-    private void writerTableHeader(PdfPTable table) {
+    private void writeTableData(PdfPTable table, List<Category> categoryList) {
+        for (Category category : categoryList) {
+            table.addCell(String.valueOf(category.getId()));
+            table.addCell(category.getName());
+
+            table.addCell(category.getAlias());
+            table.addCell(category.isEnable() ? "Enabled" : "Disabled");
+        }
+    }
+
+    private void writeTableHeader(PdfPTable table) {
+        Font headerFont = FontFactory.getFont(FontFactory.TIMES_BOLD);
+        headerFont.setColor(WHITE);
 
         PdfPCell cell = new PdfPCell();
-        cell.setBackgroundColor(Color.yellow);
+
+
+        cell.setBackgroundColor(BLUE);
         cell.setPadding(5);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-        Font font = FontFactory.getFont(FontFactory.TIMES_ITALIC);
-        font.setSize(18);
-        font.setColor( Color.black);
-
-        cell.setPhrase(new Phrase(" ID", font));
+        cell.setPhrase(new Phrase("ID", headerFont));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase(" Name", font));
+        cell.setPhrase(new Phrase("Name", headerFont));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Alies", font));
+        cell.setPhrase(new Phrase("Alias", headerFont));
         table.addCell(cell);
 
-//        cell.setPhrase(new Phrase("Parent", font));
-//        table.addCell(cell);
-//
-//        cell.setPhrase(new Phrase("Child", font));
-//        table.addCell(cell);
-
-        cell.setPhrase(new Phrase("status", font));
+        cell.setPhrase(new Phrase("Status", headerFont));
         table.addCell(cell);
-
-
     }
 }
