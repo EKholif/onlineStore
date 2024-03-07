@@ -2,8 +2,6 @@ package com.onlineStore.admin.category.controller;
 
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
-import com.onlineStoreCom.entity.User;
-import com.onlineStoreCom.entity.prodact.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +23,9 @@ public class PagingAndSortingHelper {
     private String search  ;
     private String modelUrl ;
     private String pageTitle ;
+    private Long totalPages ;
+    private Long TotalElements ;
+
 
     private String newObjecturl ;
     private int pageNum;
@@ -42,6 +43,29 @@ public class PagingAndSortingHelper {
 
 
 
+    long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
+    long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
+
+    String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+
+    public PagingAndSortingHelper() {
+    }
+
+    public Long getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(Long totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public Long getTotalElements() {
+        return TotalElements;
+    }
+
+    public void setTotalElements(Long totalElements) {
+        TotalElements = totalElements;
+    }
 
     public PagingAndSortingHelper(ModelAndView model, String listName,
                                   String sortField, String sortDir, String keyWord,
@@ -57,48 +81,24 @@ public class PagingAndSortingHelper {
         this.search   =   "/"+listName+"/page/1";
         this.modelUrl = " /"+listName+"/page/";
         this.pageTitle ="List  "+listName;
-
         this.newObjecturl = listName+"/new-"+listName+"-form";
 
     }
-    public PagingAndSortingHelper(ModelAndView model, String listName,
-                                  String sortField, String sortDir, String keyWord,
-                                  int pageNum,Page<?> pageItems) {
-        this.pageNum=pageNum;
-        this.model = model;
-        this.listName = listName;
-        this.sortField = sortField;
-        this.sortDir = sortDir;
-        this.keyWord = keyWord;
-        this.pageItems= pageItems;
-        this.listItems =  pageItems.getContent();
-        this.search   =   "/"+listName+"/page/1";
-        this.modelUrl = " /"+listName+"/page/";
-        this.pageTitle ="List  "+listName;
-
-        this.newObjecturl = listName+"/new-"+listName+"-form";
-    }
-    public ModelAndView listByPage( PageInfo pageInfo) {
 
 
-        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
-        long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
-
-
+    public ModelAndView listByPage( PageInfo pageInfo,String name) {
 
         if (endCount > pageInfo.getTotalElements()) {
-            endCount = pageInfo.getTotalElements();
+            endCount =pageInfo.getTotalElements();
         }
 
-        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
-
+        model.addObject(name, listItems);
         model.addObject("keyWord", keyWord);
         model.addObject("sortDir" , sortDir);
         model.addObject("endCount", endCount);
         model.addObject("currentPage", pageNum);
         model.addObject("sortFiled" , sortField);
         model.addObject("startCont", startCount);
-        model.addObject("categories", listItems);
         model.addObject("reverseSortDir", reverseSortDir);
         model.addObject("totalPages",  pageInfo.getTotalPages());
         model.addObject("totalItems", pageInfo.getTotalElements());
@@ -108,75 +108,19 @@ public class PagingAndSortingHelper {
 
         return  model;
     }
-    public ModelAndView listByPage( ) {
 
-        PageInfo pageInfo = new PageInfo();
-        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
-        long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
-
-
-
-        if (endCount > pageItems.getTotalElements()) {
-            endCount = pageItems.getTotalElements();
-        }
-
-        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
-
-        model.addObject("keyWord", keyWord);
-        model.addObject("sortDir" , sortDir);
-        model.addObject("endCount", endCount);
-        model.addObject("currentPage", pageNum);
-        model.addObject("sortFiled" , sortField);
-        model.addObject("startCont", startCount);
-        model.addObject("users", listItems);
-        model.addObject("reverseSortDir", reverseSortDir);
-        model.addObject("totalPages",  pageItems.getTotalPages());
-        model.addObject("totalItems", pageItems.getTotalElements());
-        model.addObject("search" , search);
-        model.addObject("modelUrl", modelUrl);
-        model.addObject("pageTitle",pageTitle );
-
-        return  model;
-    }
-
-    public ModelAndView listByPage(Page<User> listByPage ) {
-
-
-       setListItems(listByPage.getContent()) ;
-
-
-        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
-        long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
-
-
-        if (endCount > listByPage.getTotalElements()) {
-            endCount = listByPage.getTotalElements();
-        }
-
-        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
-
-        model.addObject("keyWord", keyWord);
-        model.addObject("sortDir" , sortDir);
-        model.addObject("endCount", endCount);
-        model.addObject("currentPage", pageNum);
-        model.addObject("sortFiled" , sortField);
-        model.addObject("startCont", startCount);
-        model.addObject("categories", listItems);
-        model.addObject("reverseSortDir", reverseSortDir);
-        model.addObject("totalPages",  listByPage.getTotalPages());
-        model.addObject("totalItems", listByPage.getTotalElements());
-        model.addObject("search" , search);
-        model.addObject("modelUrl", modelUrl);
-        model.addObject("pageTitle",pageTitle );
-
-        return  model;
-    }
-
+    //new object creation constructor
     public PagingAndSortingHelper(String listName, List<?> listItems) {
         this.listName = listName;
         this.listItems = listItems;
     }
-
+    public ModelAndView newForm(ModelAndView model, String objectName,Object object) {
+        model.addObject(objectName, object);
+        model.addObject("listItems", listItems); // Assuming listItems is a class variable
+        model.addObject("pageTitle", "Create new " + listName);
+        model.addObject("saveChanges", "/" + listName + "/save-"+objectName);
+        return model;
+    }
     //    public void listEntities(int pageNum, int pageSize, SearchRepository<?, Integer> repo) {
 //        Pageable pageable = createPageable(pageSize, pageNum);
 //        Page<?> page = null;
@@ -195,18 +139,6 @@ public class PagingAndSortingHelper {
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
         return PageRequest.of(pageNum - 1, pageSize, sort);
     }
-
-
-
-    public ModelAndView newForm(ModelAndView model, Category object) {
-        model.addObject("object", object);
-        model.addObject("listItems", listItems); // Assuming listItems is a class variable
-        model.addObject("pageTitle", "Create new " + listName);
-        model.addObject("saveChanges", "/" + listName + "/save-category");
-        return model;
-    }
-
-
 
 
 

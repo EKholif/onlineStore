@@ -2,6 +2,7 @@ package com.onlineStore.admin.user.servcies;
 
 
 import com.onlineStore.admin.UsernameNotFoundException;
+import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.user.UserRepository;
 import com.onlineStore.admin.user.role.RoleRepository;
 import com.onlineStoreCom.entity.User;
@@ -56,7 +57,7 @@ public class UserService {
     }
 
 
-    public Page<User> listByPage( int pageNum, String sortFiled, String sortDir, String keyWord) {
+    public List<User> listByPage(PageInfo pageInfo, int pageNum, String sortFiled, String sortDir, String keyWord) {
         Sort sort = Sort.by(sortFiled);
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 
@@ -70,8 +71,12 @@ public class UserService {
               pageUsers = userRepo.findAll(pageable);
         }
 
+        pageInfo.setTotalElements(pageUsers.getTotalElements());
+        pageInfo.setTotalPages(pageUsers.getTotalPages());
 
-        return pageUsers;
+
+        List<User> listUsers =pageUsers.getContent();
+        return listUsers;
        }
 
 
