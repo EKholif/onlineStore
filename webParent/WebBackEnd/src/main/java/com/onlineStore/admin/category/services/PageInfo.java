@@ -1,6 +1,6 @@
 package com.onlineStore.admin.category.services;
 
-public class CategoryPageInfo {
+public class PageInfo {
     private int totalPages;
     private long totalElements;
 

@@ -19,7 +19,7 @@ public class BrandController {
         model.addObject("pageTitle","List brands" );
 
         model.addObject("brands", service.listAll());
-        model.addObject("modelUrl", "/categories/page/");
+//        model.addObject("modelUrl", "/brand/brands");
 
         return model;
 //        return listByPage(1,"name","asc",null);a
@@ -70,10 +70,10 @@ public class BrandController {
 //    }
 //
 //
-//    @GetMapping("/brands/new-category-form")
+//    @GetMapping("/brands/new-categories-form")
 //    public ModelAndView newCategoryForm() {
 //
-//        ModelAndView model = new ModelAndView("/brands/new-category-form");
+//        ModelAndView model = new ModelAndView("/brands/new-categories-form");
 //
 //        Category newCategory = new Category();
 //
@@ -133,7 +133,7 @@ public class BrandController {
 //
 //
 //        try {
-//            ModelAndView model = new ModelAndView("/brands/new-category-form");
+//            ModelAndView model = new ModelAndView("/brands/new-categories-form");
 //
 //            Category ExistCategory = service.getCategory(id);
 //

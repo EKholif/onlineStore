@@ -18,14 +18,14 @@
 <body>
 
 
-             <h2  class="text-center">[[${pageTitle}]]</h2>
-
-
-              <div th:replace="~{fragments::navbar}"></div>
 
 
 
-              <div th:replace="~{fragments::search}"></div>
+              <div th:replace="~{support/fragments::navbar}"></div>
+
+              <h2  class="text-center">[[${pageTitle}]]</h2>
+
+              <div th:replace="~{support/fragments::search}"></div>
 
 
              <form th:action="@{/categories/deleteCategories}" method="post" id="deleteForm">
@@ -33,7 +33,7 @@
              <div class=" justify-content-center mb-2 ">
                  <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;"  type="submit" title="Delete Selected Categories"></button>
 
-                 <a th:href="@{/categories/new-category-form}" class="fas fa-user-plus fa-2x icon-d-green"     title="Add Category"  ></a>&nbsp;&nbsp;
+                 <a th:href="@{/categories/new-categories-form}" class="fas fa-user-plus fa-2x icon-d-green"     title="Add Category"  ></a>&nbsp;&nbsp;
 
                  <a  class="fas fa-file-csv fa-2x icon-primary" th:href="@{/categories/export/csv}"       title="Export to CSV"></a> &nbsp;&nbsp;
 
@@ -60,13 +60,13 @@
                    <tr>
 
                        <th>Select</th>
-                       <th th:replace="~{fragments::colum_link('id', 'ID')}"></th>
+                       <th th:replace="~{support/fragments::colum_link('id', 'ID')}"></th>
                        <th>image</th>
-                       <th th:replace="~{fragments::colum_link('name', 'Name')}"></th>
-                       <th th:replace="~{fragments::colum_link('alias', 'Alias')}"></th>
-                       <th th:replace="~{fragments::colum_link('parent', 'Parent')}"></th>
-                       <th th:replace="~{fragments::colum_link('children', 'Children')}"></th>
-                       <th th:replace="~{fragments::colum_link('status', 'Status')}"></th>
+                       <th th:replace="~{support/fragments::colum_link('name', 'Name')}"></th>
+                       <th th:replace="~{support/fragments::colum_link('alias', 'Alias')}"></th>
+                       <th th:replace="~{support/fragments::colum_link('parent', 'Parent')}"></th>
+                       <th th:replace="~{support/fragments::colum_link('children', 'Children')}"></th>
+                       <th th:replace="~{support/fragments::colum_link('status', 'Status')}"></th>
                         <th></th>
                         <th></th>
                   </tr>
@@ -113,14 +113,14 @@
 
                            <td >
                                <a class="fas fa-edit px-2 icon-green"
-                                  th:href="@{'/category/edit/' + ${category.getId()}}"
+                                  th:href="@{'/categories/edit/' + ${category.getId()}}"
                                   title="Edit Category"></a>
                            </td>
 
 
 
                            <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                                  th:href="@{'/categories/delete-Category/' + ${category.getId()}}"
+                                  th:href="@{'/delete-Category/' + ${category.getId()}}"
                                   th:userId="${category.id}"
 
                                   title="Delete Category"></a> </td>
@@ -150,30 +150,30 @@
                          <ul class="pagination justify-content-center flex-wrap" >
 
                              <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                                 <a th:replace="~{fragments::page_linkCat(1,'First')}" /></a>
+                                 <a th:replace="~{support/fragments::page_link(1,'First')}" /></a>
 
                              </li >
 
                              <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
 
-                                 <a th:replace="~{fragments::page_linkCat(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+                                 <a th:replace="~{support/fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
 
                              </li>
 
                              <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
 
-                                 <a th:replace="~{fragments::page_linkCat(${i}, ${i})}" /></a>
+                                 <a th:replace="~{support/fragments::page_link(${i}, ${i})}" /></a>
 
                              </li>
 
                              <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
 
-                                 <a th:replace="~{fragments::page_linkCat(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+                                 <a th:replace="~{support/fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
 
                              </li>
 
                              <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                                 <a th:replace="~{fragments::page_linkCat(${totalPages}, 'Last')}" /></a>
+                                 <a th:replace="~{support/fragments::page_link(${totalPages}, 'Last')}" /></a>
 
 
                              </li>
@@ -190,7 +190,7 @@
 
 
 
-                            <div th:replace="~{fragments::footer}"></div>
+                            <div th:replace="~{support/fragments::footer}"></div>
 
              <div class="modal fade text-center" data-bs-toggle="modal" id ="confirmModal" data-bs-target="#modalDialog" tabindex="-1" role="dialog">
                  <div class="modal-dialog" role="document">

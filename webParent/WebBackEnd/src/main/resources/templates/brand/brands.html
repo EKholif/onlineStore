@@ -21,11 +21,11 @@
              <h2  class="text-center">[[${pageTitle}]]</h2>
 
 
-              <div th:replace="~{fragments::navbar}"></div>
+              <div th:replace="~{support/fragments::navbar}"></div>
 
 
 
-              <div th:replace="~{fragments::search}"></div>
+              <div th:replace="~{support/fragments::search}"></div>
 
 
              <form th:action="@{/brands/deletebrands}" method="post" id="deleteForm">
@@ -60,11 +60,16 @@
                    <tr>
 
                        <th>Select</th>
-                       <th th:replace="~{fragments::colum_link('id', 'ID')}"></th>
-                       <th>image</th>
-                       <th th:replace="~{fragments::colum_link('name', 'Name')}"></th>
+<!--                       <th th:replace="~{support/fragments::colum_link('id', 'ID')}"></th>-->
+<!--                       <th>image</th>-->
+<!--                       <th th:replace="~{support/fragments::colum_link('name', 'Name')}"></th>-->
 
-                       <th th:replace="~{fragments::colum_link('logo', 'logo')}"></th>
+<!--                       <th th:replace="~{support/fragments::colum_link('logo', 'logo')}"></th>-->
+
+                       <th>ID</th>
+                       <th>Name</th>
+                       <th>logo</th>
+
 
                         <th></th>
                         <th></th>
@@ -76,53 +81,53 @@
 
 
                             <td>
-                                <input class="form-check-input delete-checkbox " type="checkbox" name="selectedbrand" th:value="${brand.getId}" id="flexCheckDefault">
+                                <input class="form-check-input delete-checkbox " type="checkbox" name="selectedbrand" th:value="${brand.id}" id="flexCheckDefault">
                             </td>
 
                             <td th:text="${brand.id}"></td>
 
-                            <td>
-                                  <span th:if="${brand.getImage.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
-                                <img th:if="${brand.image != null && !brand.getImage.isEmpty() }"  th:src=" @{${brand.getCatImagePath()}}" class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"  />
+<!--                            <td>-->
+<!--                                  <span th:if="${brand.getImage.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>-->
+<!--                                <img th:if="${brand.image != null && !brand.getImage.isEmpty() }"  th:src=" @{${brand.getCatImagePath()}}" class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"  />-->
 
-                            </td>
+<!--                            </td>-->
 
 
                             <td th:text="${brand.name}"></td>
-                            <td th:text="${brand.alias}"></td>
+                            <td th:text="${brand.logo}"></td>
 
 
-                              <td th:text="${brand.parentIndentation() }"></td>
+<!--                              <td th:text="${brand.parentIndentation() }"></td>-->
 
 
-                              <td th:text="${brand.childNames(brand)}"></td>
-
-
-
-                           <td >
-                               <a th:if="${brand.isEnable == true}" class="fas fa-check-circle px-2 icon-green "
-                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/false' } "
-                                  title="Disable brand"></a>
-                               <!--                                                      &nbsp;-->
-                               <a th:if="${brand.isEnable() == false}" class="fas fa-circle px-2 icon-red"
-                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/true' }"
-                                  title="Enable brand"></a>
-
-                           </td>
-
-                           <td >
-                               <a class="fas fa-edit px-2 icon-green"
-                                  th:href="@{'/brand/edit/' + ${brand.getId()}}"
-                                  title="Edit brand"></a>
-                           </td>
+<!--                              <td th:text="${brand.childNames(brand)}"></td>-->
 
 
 
-                           <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                                  th:href="@{'/brands/delete-brand/' + ${brand.getId()}}"
-                                  th:userId="${brand.id}"
+<!--                           <td >-->
+<!--                               <a th:if="${brand.isEnable == true}" class="fas fa-check-circle px-2 icon-green "-->
+<!--                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/false' } "-->
+<!--                                  title="Disable brand"></a>-->
+<!--                               &lt;!&ndash;                                                      &nbsp;&ndash;&gt;-->
+<!--                               <a th:if="${brand.isEnable() == false}" class="fas fa-circle px-2 icon-red"-->
+<!--                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/true' }"-->
+<!--                                  title="Enable brand"></a>-->
 
-                                  title="Delete brand"></a> </td>
+<!--                           </td>-->
+
+<!--                           <td >-->
+<!--                               <a class="fas fa-edit px-2 icon-green"-->
+<!--                                  th:href="@{'/brand/edit/' + ${brand.getId()}}"-->
+<!--                                  title="Edit brand"></a>-->
+<!--                           </td>-->
+
+
+
+<!--                           <td><a class="fas fa-trash px-2 icon-red delete-confirmation"-->
+<!--                                  th:href="@{'/brands/delete-brand/' + ${brand.getId()}}"-->
+<!--                                  th:userId="${brand.id}"-->
+
+<!--                                  title="Delete brand"></a> </td>-->
                        </tr>
 
 
@@ -149,30 +154,30 @@
                          <ul class="pagination justify-content-center flex-wrap" >
 
                              <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                                 <a th:replace="~{fragments::page_link(1,'First')}" /></a>
+                                 <a th:replace="~{support/fragments::page_link(1,'First')}" /></a>
 
                              </li >
 
                              <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
 
-                                 <a th:replace="~{fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+                                 <a th:replace="~{support/fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
 
                              </li>
 
                              <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
 
-                                 <a th:replace="~{fragments::page_link(${i}, ${i})}" /></a>
+                                 <a th:replace="~{support/fragments::page_link(${i}, ${i})}" /></a>
 
                              </li>
 
                              <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
 
-                                 <a th:replace="~{fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+                                 <a th:replace="~{support/fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
 
                              </li>
 
                              <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                                 <a th:replace="~{fragments::page_link(${totalPages}, 'Last')}" /></a>
+                                 <a th:replace="~{support/fragments::page_link(${totalPages}, 'Last')}" /></a>
 
 
                              </li>
@@ -189,7 +194,7 @@
 
 
 
-                            <div th:replace="~{fragments::footer}"></div>
+                            <div th:replace="~{support/fragments::footer}"></div>
 
              <div class="modal fade text-center" data-bs-toggle="modal" id ="confirmModal" data-bs-target="#modalDialog" tabindex="-1" role="dialog">
                  <div class="modal-dialog" role="document">

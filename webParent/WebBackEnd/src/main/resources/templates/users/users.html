@@ -20,19 +20,20 @@
 
 <body>
 
-<div th:replace="~{fragments::navbar}"></div>
+<div th:replace="~{support/fragments::navbar}"></div>
 
-<div th:replace="~{fragments::search}"></div>
+<h2  class="text-center">[[${pageTitle}]]</h2>
+
+<div th:replace="~{support/fragments::search}"></div>
 
 
-
-<form th:action="@{/deleteUsers}" method="post" id="deleteForm">
+<form th:action="@{/users/deleteUsers}" method="post" id="deleteForm">
 
 
 <div class=" justify-content-center mb-2 ">
           <button class="fas fa-user-minus fa-2x icon-red  " style="border: none; background: none;"  type="submit" title="Delete Selected Users"></button>
 
-          <a th:href="@{/new-user-form}" class="fas fa-user-plus fa-2x icon-d-green"         title="Add User"  ></a>&nbsp;&nbsp;
+          <a th:href="@{/users/new-users-form}" class="fas fa-user-plus fa-2x icon-d-green"         title="Add User"  ></a>&nbsp;&nbsp;
 
           <a  class="fas fa-file-csv fa-2x icon-primary" th:href="@{/users/export/csv}"       title="Export to CSV"></a> &nbsp;&nbsp;
 
@@ -65,7 +66,7 @@
 
                   <div class="m-1">
                       <a class="fas fa-edit px-2 icon-green"
-                         th:href="@{'/edit/' + ${user.getId()}}"
+                         th:href="@{'users/edit/' + ${user.getId()}}"
                          title="Edit User"></a>
 
 
@@ -98,17 +99,17 @@
                   <tr>
                           <th>Select</th>
 
-                          <th th:replace="~{fragments::colum_link ('id', 'User ID')}"></th>
+                          <th th:replace="~{support/fragments::colum_link ('id', 'User ID')}"></th>
 
                           <th> User Photo</th>
 
-                          <th th:replace="~{fragments::colum_link ('firstName', 'First Name')}"></th>
-                          <th th:replace="~{fragments::colum_link ('lastName', 'Last Name')}"></th>
-                          <th th:replace="~{fragments::colum_link ('email', 'E-mail')}"></th>
+                          <th th:replace="~{support/fragments::colum_link ('firstName', 'First Name')}"></th>
+                          <th th:replace="~{support/fragments::colum_link ('lastName', 'Last Name')}"></th>
+                          <th th:replace="~{support/fragments::colum_link ('email', 'E-mail')}"></th>
 
                           <th>Roles</th>
 
-                          <th th:replace="~{fragments::colum_link ('enable', 'Status')}"></th>
+                          <th th:replace="~{support/fragments::colum_link ('enable', 'Status')}"></th>
                           <th></th>
                           <th></th>
                   </tr>
@@ -147,7 +148,7 @@
 
                                   <td >
                                       <a class="fas fa-edit px-2 icon-green"
-                                         th:href="@{'/edit/' + ${user.getId()}}"
+                                         th:href="@{'/users/edit/' + ${user.getId()}}"
                                             title="Edit User"></a>
                                   </td>
 
@@ -183,30 +184,30 @@
         <ul class="pagination justify-content-center flex-wrap" >
 
             <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                <a th:replace="~{fragments::page_link(1,'First')}" /></a>
+                <a th:replace="~{support/fragments::page_link(1,'First')}" /></a>
 
             </li >
 
             <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
 
-                <a th:replace="~{fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+                <a th:replace="~{support/fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
 
             </li>
 
             <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
 
-                <a th:replace="~{fragments::page_link(${i}, ${i})}" /></a>
+                <a th:replace="~{support/fragments::page_link(${i}, ${i})}" /></a>
 
             </li>
 
             <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
 
-                <a th:replace="~{fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+                <a th:replace="~{support/fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
 
             </li>
 
             <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                <a th:replace="~{fragments::page_link(${totalPages}, 'Last')}" /></a>
+                <a th:replace="~{support/fragments::page_link(${totalPages}, 'Last')}" /></a>
 
 
             </li>
@@ -248,7 +249,7 @@
     </div>
 </div>
 
-<div th:replace="~{fragments::footer}"></div>
+<div th:replace="~{support/fragments::footer}"></div>
 
 <script type="text/javascript" th:src="@{/js/common.js}" ></script>
 

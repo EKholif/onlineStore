@@ -21,10 +21,10 @@
 </head>
 <body>
 
-<div th:replace="~{fragments::navbar}"></div>
+<div th:replace="~{support/fragments::navbar}"></div>
 
 <div>
-    <a th:href="@{/new-user-form}">[[${pageTitle}]]</a>
+    <a th:href="@{/users/new-users-form}">[[${pageTitle}]]</a>
 </div>
 
 
@@ -119,7 +119,7 @@
 
 
 
-    <div th:replace="~{fragments::footer}"></div>
+    <div th:replace="~{support/fragments::footer}"></div>
 
 </div>
 

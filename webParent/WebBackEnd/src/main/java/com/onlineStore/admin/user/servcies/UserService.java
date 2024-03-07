@@ -2,10 +2,10 @@ package com.onlineStore.admin.user.servcies;
 
 
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.user.role.RoleRepository;
 import com.onlineStore.admin.user.UserRepository;
-import com.onlineStoreCom.entity.users.Role;
+import com.onlineStore.admin.user.role.RoleRepository;
 import com.onlineStoreCom.entity.User;
+import com.onlineStoreCom.entity.users.Role;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
 
 public class UserService {
 
-    public static final int USERS_PER_PAGE=4;
+    public static final int USERS_PER_PAGE = 4;
 
     @Autowired
     private UserRepository userRepo;
@@ -33,42 +33,47 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
 
-    public List<User> listAllUsers(){
+    public List<User> listAllUsers() {
         return userRepo.findAll();
     }
 
 
-
-    public List<Role> listAllRoles (){
+    public List<Role> listAllRoles() {
         return roleRepo.findAll();
     }
 
-    public User saveUser (User user)   {
+    public User saveUser(User user) {
         encodePassword(user);
 
-       return userRepo.saveAndFlush(user);
+        return userRepo.saveAndFlush(user);
 
     }
 
-    public User saveUpdatededUser (User user)   {
+    public User saveUpdatededUser(User user) {
 
         return userRepo.saveAndFlush(user);
 
     }
 
 
-    public Page<User> listByPage(int pageNum, String sortFiled, String sortDir, String keyWord){
+    public Page<User> listByPage( int pageNum, String sortFiled, String sortDir, String keyWord) {
         Sort sort = Sort.by(sortFiled);
-        sort=sortDir.equals("asc")?sort.ascending():sort.descending();
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 
-        Pageable pageable = PageRequest.of(pageNum-1 ,USERS_PER_PAGE, sort);
+        Pageable pageable = PageRequest.of(pageNum - 1, USERS_PER_PAGE, sort);
 
-        if (keyWord!= null){
-            return userRepo.findAll(keyWord, pageable);
+        Page<User> pageUsers = null;
+
+        if (keyWord != null) {
+             pageUsers = userRepo.findAll(keyWord, pageable);
+        }else {
+              pageUsers = userRepo.findAll(pageable);
         }
-        return userRepo.findAll(pageable);
 
-    }
+
+        return pageUsers;
+       }
+
 
 
 
@@ -106,6 +111,9 @@ return true;
             throw new UsernameNotFoundException("Could not find any user with ID " + userId);
     }
 }
+    public Boolean existsById (Long id){
+        return userRepo.findById(id).isPresent();
+    }
 
 
 public void deleteUser(Long userId) throws UsernameNotFoundException{

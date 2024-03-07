@@ -38,6 +38,9 @@
                   th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
       </th>
 
+
+
+
 <!--===============================================================================-->
 <!--                                 message          -->
 
@@ -60,25 +63,9 @@
 
 
        <a   th:fragment="page_link(pageNum,label)"     class="page-link"
-            th:href="@{'/users/page/'+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
+            th:href="@{${modelUrl}+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
              '&keyWord='+ keyWord: ' '}}" >[[${label}]]
        </a>
-
-
-<!--===============================================================================-->
-
-<!--               page_linkCat      -->
-
-<!--===============================================================================-->
-
-`
-<a   th:fragment="page_linkCat(pageNum,label)"     class="page-link"
-     th:href="@{'/categories/page/'+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
-             '&keyWord='+ keyWord: ' '}}" >[[${label}]]
-</a>
-
-
-
 
 
 
@@ -117,24 +104,31 @@
                   <img class="rounded-pill w-40" alt="Bob" th:src="@{/images/rr.png}"/>
               </a>
 
-              <button th:replace="~{fragments::navbar-toggler}"></button>
+              <button th:replace="~{support/fragments::navbar-toggler}"></button>
 
               <div class="collapse navbar-collapse  "  id="topNavbar">
                   <ul class="navbar-nav ">
-                      <li th:replace="~{fragments::nav-link('users','Users')}"></li>
-                      <li th:replace="~{fragments::nav-link('categories/new-category-form','Add category')}"></li>
-                      <li th:replace="~{fragments::nav-link('categories/categories','categories')}"></li>
-                     <li th:replace="~{fragments::nav-link('users','Edit User')}"></li>
-                     <li th:replace="~{fragments::nav-link('brand/brands','Brand')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('users/users','Users')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('users/new-users-form','New Users')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('users/users','Edit User')}"></li>
 
-                      <li th:replace="~{fragments::nav-link('users','Search')}"></li>
-                      <li th:replace="~{fragments::nav-link('users','Clear')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('categories/categories','categories')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('categories/new-categories-form','New category')}"></li>
+                     <li th:replace="~{support/fragments::nav-link('brand/brands','Brand')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('brand/new-brand-form','New Brand')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('users/users','Search')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('users/users','Clear')}"></li>
+
+                      <li> &nbsp; </li>
+
+                      <li> online-stotre-  </li>
+
                       <li class="nav-item">
-                          <div th:replace="~{fragments::imageicon}" ></div>
+                          <div th:replace="~{support/fragments::imageicon}" ></div>
                       </li>
 
                       <li class="nav-item  ">
-                          <div th:replace="~{fragments::dropdown}"></div>
+                          <div th:replace="~{support/fragments::dropdown}"></div>
 
                       </li>
 
@@ -160,7 +154,7 @@
       <ul th:fragment="navbar1"
           class="navbar-nav">
           <li th:each="item : ${navbarItems}">
-          <li th:replace="fragments::nav-link(${item.url}, ${item.label})"></li>
+          <li th:replace="support/fragments::nav-link(${item.url}, ${item.label})"></li>
           </li>
       </ul>
 <!--===============================================================================-->

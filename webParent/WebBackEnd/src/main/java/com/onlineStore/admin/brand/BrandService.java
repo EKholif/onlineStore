@@ -19,6 +19,7 @@ public class BrandService {
     private BrandRepository repo;
 
     public List<Brand> listAll() {
+        repo.findAll().forEach(brand -> System.out.println(brand.getName()));
         return  repo.findAll();
     }
 

@@ -93,6 +93,9 @@ public class CategoryService {
                 printCategoryHierarchy(category, categoriesUsedInForm,category.getLevel(), sortDir);
             }
         }
+
+
+
         return categoriesUsedInForm;
     }
 
@@ -111,7 +114,7 @@ public class CategoryService {
 
 
 
-    public List<Category> listByPage(CategoryPageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
+    public List<Category> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
 
 
         if (sortField == null || sortDir.isEmpty()) {
