@@ -21,8 +21,9 @@
 </head>
 <body>
                                 <h1> [[${pageTitle}]]</h1>
-                                <div th:replace="~{fragments::navbar}"></div>
-                                <div th:replace="~{fragments::search}"></div>
+                                <div th:replace="~{support/fragments::navbar}"></div>
+
+                                <div th:replace="~{support/fragments::search}"></div>
 
 
 
@@ -30,7 +31,7 @@
 
 
      <div>
-         <a th:href="@{/categories/new-category-form}">[[${pageTitle}]]</a>
+         <a th:href="@{/categories/new-categories-form}">[[${pageTitle}]]</a>
      </div>
 
 
@@ -49,7 +50,7 @@
 
         <div class="border border-secondary rounded p-3">
 
-<!--            <div th:replace="~{fragments::input-group-category(name,Name)}" ></div>-->
+<!--            <div th:replace="~{support/fragments::input-group-category(name,Name)}" ></div>-->
 
             <div    class="input-group row">
                 <label class="col-sm-4 col-form-label">Name</label>
@@ -74,7 +75,7 @@
                     <select  class="form-control" th:field="*{parent}">
                         <option value="0"> [No Parent]</option>
 
-                        <th:block th:each="cat : ${listCategory}">
+                        <th:block th:each="cat : ${listItems}">
                             <option th:value="${cat.id}" > [[${cat.name}]]</option>
 
                         </th:block>
@@ -114,7 +115,7 @@
         </div>
 
 
-                      <div th:replace="~{fragments::save-and-rest-buttons}"></div>
+                      <div th:replace="~{support/fragments::save-and-rest-buttons}"></div>
 
 
     </form>
@@ -140,7 +141,7 @@
         </div>
 
 
-    <div th:replace="~{fragments :: footer}"></div>
+    <div th:replace="~{support/fragments :: footer}"></div>
 
     </div>
 </div>

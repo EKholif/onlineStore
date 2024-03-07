@@ -5,7 +5,7 @@ import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
-import com.onlineStore.admin.category.services.CategoryPageInfo;
+import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.prodact.Category;
@@ -29,15 +29,14 @@ public class CategoryController {
     private CategoryService service ;
 
 
-
     @GetMapping("/categories/categories")
     public ModelAndView listAllCategories( ) {
-        ModelAndView model = new ModelAndView("/categories/categories");
-        model.addObject("pageTitle","List categories" );
+        ModelAndView model = new ModelAndView("categories/categories");
 
-        model.addObject("categories", service.listAll());
         return listByPage(1,"name","asc",null);
     }
+
+
 
 
     @GetMapping("/categories/page/{pageNum}")
@@ -45,41 +44,24 @@ public class CategoryController {
                                    @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
-        ModelAndView model = new ModelAndView("/categories/categories");
+        ModelAndView model = new ModelAndView("categories/categories");
 
-        CategoryPageInfo pageInfo = new CategoryPageInfo();
+        PageInfo pageInfo = new PageInfo();
 
         List<Category> categoryPagePage = service.listByPage(pageInfo,pageNum, sortFiled, sortDir, keyWord);
 
 
-        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
-        long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper( model, "categories",sortFiled,sortDir, keyWord, pageNum,categoryPagePage);
 
-        if (endCount > pageInfo.getTotalElements()) {
-            endCount = pageInfo.getTotalElements();
-        }
+       return pagingAndSortingHelper.listByPage(pageInfo);
 
 
-        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
-
-        model.addObject("keyWord", keyWord);
-        model.addObject("sortDir" , sortDir);
-        model.addObject("endCount", endCount);
-        model.addObject("currentPage", pageNum);
-        model.addObject("sortFiled" , sortFiled);
-        model.addObject("startCont", startCount);
-        model.addObject("categories", categoryPagePage);
-        model.addObject("reverseSortDir", reverseSortDir);
-        model.addObject("totalPages",  pageInfo.getTotalPages());
-        model.addObject("totalItems", pageInfo.getTotalElements());
-        model.addObject("search" , "/categories/page/1");
-        model.addObject("modelUrl", "/categories/page/");
-
-
-
-
-        return  model;
     }
+
+
+
+
+
 
     public static <T> List<T> getPage(List<T> list, int pageNumber, int pageSize) {
         int startIndex = (pageNumber - 1) * pageSize;
@@ -88,10 +70,10 @@ public class CategoryController {
     }
 
 
-    @GetMapping("/categories/new-category-form")
+    @GetMapping("/categories/new-categories-form")
     public ModelAndView newCategoryForm() {
 
-        ModelAndView model = new ModelAndView("/categories/new-category-form");
+        ModelAndView model = new ModelAndView("categories/new-categories-form");
 
         Category newCategory = new Category();
 
@@ -100,13 +82,18 @@ public class CategoryController {
         List<Category> listCategory = service.listUsedForForm();
 
 
-        model.addObject("category", newCategory);
+        model.addObject("id", 0L);
         model.addObject("label", "Parent Category :");
 
-        model.addObject("listCategory",listCategory );
+
+        model.addObject("category", newCategory);
+
+        model.addObject("listItems",listCategory );
         model.addObject("pageTitle","Creat new Category" );
         model.addObject("saveChanges", "/categories/save-category");
-        model.addObject("id", 0L);
+
+
+
         return model;
 
     }
@@ -146,12 +133,12 @@ public class CategoryController {
 
     }
 
-    @GetMapping("/category/edit/{id}")
+    @GetMapping("/categories/edit/{id}")
     public ModelAndView editCategory(@PathVariable (name="id")long id, RedirectAttributes redirectAttributes) {
 
 
         try {
-            ModelAndView model = new ModelAndView("/categories/new-category-form");
+            ModelAndView model = new ModelAndView("categories/new-categories-form");
 
             Category ExistCategory = service.findById(id);
 
@@ -210,7 +197,7 @@ public class CategoryController {
 
 
 
-    @GetMapping ("/categories/delete-Category/{id}")
+    @GetMapping ("/delete-Category/{id}")
         public ModelAndView deleteCategory(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         try {
@@ -251,7 +238,7 @@ public class CategoryController {
                               RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category ID: " + selectedCategory + " has been Deleted");
-        ModelAndView model = new ModelAndView("/categories/categories");
+        ModelAndView model = new ModelAndView("categories/categories");
 
         model.addObject("label", selectedCategory);
 

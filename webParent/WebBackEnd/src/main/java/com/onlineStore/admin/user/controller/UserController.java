@@ -2,16 +2,14 @@ package com.onlineStore.admin.user.controller;
 
 
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.category.services.CategoryService;
-import com.onlineStore.admin.user.role.RoleRepository;
-import com.onlineStore.admin.user.UserRepository;
+import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.user.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.UserCsvExporter;
 import com.onlineStore.admin.utility.UserExcelExporter;
 import com.onlineStore.admin.utility.UserPdfExporter;
-import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.User;
+import com.onlineStoreCom.entity.users.Role;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +29,12 @@ import java.util.Objects;
 public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
 
 
-    @GetMapping("/users")
+    @GetMapping("/users/users")
     public ModelAndView listAllUsers( ) {
-        ModelAndView model = new ModelAndView("users");
+        ModelAndView model = new ModelAndView("users/users");
+
         return listByPage(1,"firstName","dsc",null);
     }
 
@@ -48,52 +43,43 @@ public class UserController {
                                    @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
-        ModelAndView model = new ModelAndView("users");
-        Page<User> userPage = userService.listByPage(pageNum, sortFiled, sortDir, keyWord);
-        List<User>listUsers= userPage.getContent();
-
-        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
-        long endCount = startCount+ UserService.USERS_PER_PAGE -1;
+        ModelAndView model = new ModelAndView("users/users");
+        Page<User> listByPage = userService.listByPage
+                (pageNum, sortFiled, sortDir, keyWord);
 
 
-         if(endCount> userPage.getTotalElements()){
-             endCount=userPage.getTotalElements();
-         }
-        String reverseSortDir= sortDir.equals("asc")?"dsc":"asc";
 
-        model.addObject("totalItems", userPage.getTotalElements());
-        model.addObject("totalPages", userPage.getTotalPages());
-        model.addObject("sortFiled" , sortFiled);
-        model.addObject("sortDir" , sortDir);
-        model.addObject("currentPage", pageNum);
-        model.addObject("endCount", endCount);
-        model.addObject("startCont", startCount);
-        model.addObject("users", listUsers);
-        model.addObject("reverseSortDir", reverseSortDir);
-        model.addObject("keyWord", keyWord);
-        model.addObject("search" , "/users/page/1");
-        model.addObject("modelUrl", "/users/page/");
-         return  model;
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
+                ( model, "users",
+
+                sortFiled,sortDir, keyWord, pageNum,listByPage);
+
+        pagingAndSortingHelper.listByPage();
+
+        return model;
+
     }
 
 
-    @GetMapping("/new-user-form")
+    @GetMapping("/users/new-users-form")
     public ModelAndView newUserForm() {
-        ModelAndView model = new ModelAndView("new-user-form");
+        ModelAndView model = new ModelAndView("users/new-users-form");
         List<Role> listAllRoles = userService.listAllRoles();
         User newUser = new User();
         newUser.setEnable(true);
         model.addObject("user", newUser);
 
         model.addObject("listAllRoles", listAllRoles);
-        model.addObject("pageTitle","Creat new User" );
-        model.addObject("saveChanges", "/save-user");
         model.addObject("UserId", 0L);
+
+        model.addObject("pageTitle","Creat new User" );
+        model.addObject("saveChanges", "/users/save-user");
+
 
         return model;
 
     }
-    @PostMapping("/save-user")
+    @PostMapping("/users/save-user")
     public ModelAndView saveNewUser(@ModelAttribute  User user,
                                     RedirectAttributes redirectAttributes,
                                     @RequestParam("image")MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
@@ -119,16 +105,16 @@ public class UserController {
 
          userService.saveUser(user);
 
-        return new ModelAndView("redirect:/users");
+        return new ModelAndView("redirect:/users/users");
     }
 
 
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/users/edit/{id}")
     public ModelAndView editUser(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 
 
-        ModelAndView model = new ModelAndView("new-user-form");
+        ModelAndView model = new ModelAndView("users/new-users-form");
         try {
             User user = userService.getUser(id);
             List<Role> listAllRoles = userService.listAllRoles();
@@ -136,7 +122,7 @@ public class UserController {
             model.addObject("listAllRoles",  user.getRoles()  ) ;
             model.addObject("pageTitle","Edit "+user.getfirstName()   + " (ID: " + id + ")" );
             model.addObject("listAllRoles", listAllRoles);
-            model.addObject("saveChanges", "/save-edit-user/");
+            model.addObject("saveChanges", "/users/save-edit-user/");
             model.addObject("UserId", id);
 
 
@@ -144,12 +130,12 @@ public class UserController {
 
         } catch (UsernameNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
-            return new ModelAndView("redirect:/users");
+            return new ModelAndView("redirect:/users/users");
 
         }
     }
 
-    @PostMapping( "/save-edit-user/")
+    @PostMapping( "/users/save-edit-user/")
     public ModelAndView saveUpdaterUser(@RequestParam ( name="id") Long id,@ModelAttribute  User user, RedirectAttributes redirectAttributes,
                                        @RequestParam("image") MultipartFile multipartFile ) throws UsernameNotFoundException, IOException {
         redirectAttributes.addFlashAttribute("message", "the user Id : " + id+  " has been updated successfully. ");
@@ -207,7 +193,7 @@ public class UserController {
         public ModelAndView deleteUser(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) {
 
         try {
-            if(userRepository.existsById(id)){
+            if(userService.existsById(id)){
                 FileUploadUtil.cleanDir( userService.getUser(id).getImageDir());
 
             userService.deleteUser(id);
@@ -215,10 +201,10 @@ public class UserController {
             } else {
                 redirectAttributes.addFlashAttribute("message", "the user ID: "+ id+" user Not Found");
 
-            }return new ModelAndView("redirect:/users");
+            }return new ModelAndView("redirect:/users/users");
         } catch (UsernameNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", " user Not Found");
-            return new ModelAndView("redirect:/users");
+            return new ModelAndView("redirect:/users/users");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -230,11 +216,11 @@ public class UserController {
         String status = enable ? "enable" :" disable";
         String message = " the user Id  " + id +"  has bean  " +status ;
         redirectAttributes.addFlashAttribute("message", message);
-        return new ModelAndView( "redirect:/users");
+        return new ModelAndView( "redirect:/users/users");
 
        }
 
-    @PostMapping("/deleteUsers")
+    @PostMapping("/users/deleteUsers")
     public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Long> selectedUsers,
                               RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
 
@@ -247,7 +233,7 @@ public class UserController {
 
 
 
-        return new ModelAndView( "redirect:/users");
+        return new ModelAndView( "redirect:/users/users");
     }
 
 

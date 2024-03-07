@@ -29,7 +29,7 @@ public class AccountController {
                                            RedirectAttributes redirectAttributes)  {
 
         Long id = loggedUser.getId();
-        ModelAndView model = new ModelAndView("new-user-form");
+        ModelAndView model = new ModelAndView("users/new-users-form");
 
         try {
             User user = userService.getUser(id);
