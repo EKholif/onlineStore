@@ -3,6 +3,7 @@ package com.onlineStore.admin.user.controller;
 
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
+import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.user.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.UserCsvExporter;
@@ -13,7 +14,6 @@ import com.onlineStoreCom.entity.users.Role;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -44,17 +44,18 @@ public class UserController {
                                    @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("users/users");
-        Page<User> listByPage = userService.listByPage
-                (pageNum, sortFiled, sortDir, keyWord);
 
 
+
+        PageInfo pageInfo = new PageInfo();
+
+        List<User> listByPage = userService.listByPage
+                (pageInfo,pageNum, sortFiled, sortDir, keyWord);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                ( model, "users",
+                ( model, "users",  sortFiled,sortDir, keyWord, pageNum,listByPage);
 
-                sortFiled,sortDir, keyWord, pageNum,listByPage);
-
-        pagingAndSortingHelper.listByPage();
+        pagingAndSortingHelper.listByPage(pageInfo,"users");
 
         return model;
 
@@ -65,18 +66,16 @@ public class UserController {
     public ModelAndView newUserForm() {
         ModelAndView model = new ModelAndView("users/new-users-form");
         List<Role> listAllRoles = userService.listAllRoles();
-        User newUser = new User();
-        newUser.setEnable(true);
-        model.addObject("user", newUser);
+        User user = new User();
+        user.setEnable(true);
+        model.addObject("user", user);
 
         model.addObject("listAllRoles", listAllRoles);
         model.addObject("UserId", 0L);
 
-        model.addObject("pageTitle","Creat new User" );
-        model.addObject("saveChanges", "/users/save-user");
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("listAllRoles", listAllRoles); // Corrected listName
+        return pagingAndSortingHelper.newForm(model,"user", user);
 
-
-        return model;
 
     }
     @PostMapping("/users/save-user")

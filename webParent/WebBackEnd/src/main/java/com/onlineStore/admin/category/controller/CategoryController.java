@@ -50,23 +50,10 @@ public class CategoryController {
 
         List<Category> categoryPagePage = service.listByPage(pageInfo,pageNum, sortFiled, sortDir, keyWord);
 
-
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper( model, "categories",sortFiled,sortDir, keyWord, pageNum,categoryPagePage);
 
-       return pagingAndSortingHelper.listByPage(pageInfo);
+        return pagingAndSortingHelper.listByPage(pageInfo,"categories");
 
-
-    }
-
-
-
-
-
-
-    public static <T> List<T> getPage(List<T> list, int pageNumber, int pageSize) {
-        int startIndex = (pageNumber - 1) * pageSize;
-        int endIndex = Math.min(startIndex + pageSize, list.size());
-        return list.subList(startIndex, endIndex);
     }
 
 
@@ -74,27 +61,16 @@ public class CategoryController {
     public ModelAndView newCategoryForm() {
 
         ModelAndView model = new ModelAndView("categories/new-categories-form");
-
-        Category newCategory = new Category();
-
-        newCategory.setEnable(true);
+        Category category = new Category();
+        category.setEnable(true);
 
         List<Category> listCategory = service.listUsedForForm();
-
 
         model.addObject("id", 0L);
         model.addObject("label", "Parent Category :");
 
-
-        model.addObject("category", newCategory);
-
-        model.addObject("listItems",listCategory );
-        model.addObject("pageTitle","Creat new Category" );
-        model.addObject("saveChanges", "/categories/save-category");
-
-
-
-        return model;
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("categories", listCategory); // Corrected listName
+        return pagingAndSortingHelper.newForm(model,"category", category);
 
     }
 
