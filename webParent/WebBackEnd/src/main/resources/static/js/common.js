@@ -4,149 +4,170 @@
 ========================================================================================
 
 */
-     $(document).ready( function (){
-            $("#logout").on("click",function (e){
-                e.preventDefault();
-                document.logoutForm.submit();
-            });
-           customDropMenu()
-        });
-     /*
-     ========================================================================================
-                                      customDropMenu
-     ========================================================================================
+$(document).ready(function () {
 
-     */
-
-     function customDropMenu() {
-
-         $(".navbar .dropdown").hover(
-
-             function (){
-
-                    $(this).find('.dropdown-menu').first().stop(true, true).delay(350).slideDown();
-             },
-
-             function (){
-             $(this).find('.dropdown-menu').first().stop(true, true).delay(150).slideU();
-             },
-         )
-
-         $("#account").click(function () {
-             location.href = "account"
-
-         });
-     }
-
-     /*
-     ========================================================================================
-                                       delete-confirmation
-     ========================================================================================
-
-     */
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
+    };
+    spinner(0);
 
 
-         $(document).ready(function (){
-         $(".delete-confirmation").on("click", function (e){
-             e.preventDefault();
-             link=$(this);
-             userId=link.attr("userId");
-             $("#yesbutton").attr("href", link.attr('href'));
+    $("#logout").on("click", function (e) {
+        e.preventDefault();
+        document.logoutForm.submit();
+    });
+    customDropMenu()
+});
 
-             $("#modalTitle").text("Warning");
-             $("#modalBody").text("Are You Sure You want to delete User ID :   " + userId);
-             $("#confirmModal").modal('show');
-         });
-     });
-     /*
-     ========================================================================================
-                                      clearFilter
-     ========================================================================================
-
-     */
-
-         function clearFilter(){
-         window.location="[[@{/users}]]"
-     }
-         $(document).ready( function (){
-         $("#logout").on("click",function (e){
-             e.preventDefault();
-             document.logoutForm.submit();
-         });
-     });
-
-     /*
-     ========================================================================================
-                                     buttonCancel
-     ========================================================================================
-
-     */
-
-
-         $(document).ready(function (){
-         $("#buttonCancel").on("click", function (){
-             window.location="[[@{users}]]";
-         });
-
-         $("#fileImage").change(function (){
-         fileSize =this.files[0].size;
-         alert("file size" + fileSize)
-
-         if (fileSize> 1048576){
-         this.setCustomValidity("Maximum image size is 1Mb ");
-         this.reportValidity();
-
-     }else {
-         // this.setCustomValidity("cool")
-
-         showImage(this);}
-     });
-
-     });
- /*
+/*
 ========================================================================================
-                                  checkPasswordMatch
-========================================================================================
-
-*/
-         function showImage (fileInput){
-         var file = fileInput.files[0];
-         var reader = new FileReader();
-         reader.onload=function (e){
-         $("#thumbnail").attr("src", e.target.result)
-     };
-         reader.readAsDataURL (file);
-         customDropMenu()
-     }
-
-     /*
-========================================================================================
-                               showImage
+                                 customDropMenu
 ========================================================================================
 
 */
 
-     function showImage (fileInput){
-         var file = fileInput.files[0];
-         var reader = new FileReader();
-         reader.onload=function (e){
-             $("#thumbnail").attr("src", e.target.result)
-         };
-         reader.readAsDataURL (file);
-         customDropMenu()
-     }
-     /*
+function customDropMenu() {
+
+    $(".navbar .dropdown").hover(
+        function () {
+
+            $(this).find('.dropdown-menu').first().stop(true, true).delay(350).slideDown();
+        },
+
+        function () {
+            $(this).find('.dropdown-menu').first().stop(true, true).delay(150).slideU();
+        },
+    )
+
+    $("#account").click(function () {
+        location.href = "account"
+
+    });
+}
+
+/*
 ========================================================================================
-                                checkDuplicateEmail
+                                  // delete-confirmation
+========================================================================================
+
+*/
+
+
+$(document).ready(function () {
+    $(".delete-confirmation").on("click", function (e) {
+        e.preventDefault();
+        link = $(this);
+        id = link.attr("id");
+        $("#yesbutton").attr("href", link.attr('href'));
+
+        $("#modalTitle").text("Warning");
+
+        if (id !== null && id !== undefined) {
+            $("#modalBody").text("Are You Sure You want to delete User ID: " + id);
+        } else {
+            $("#modalBody").text("Are You Sure You want to delete this Users?");
+        }
+
+        $("#confirmModal").modal('show');
+    });
+});
+
+/*
+========================================================================================
+                                 clearFilter
+========================================================================================
+
+*/
+function clearFilter() {
+    window.location = windowLocationValue;
+}
+
+$(document).ready(function () {
+    $("#logout").on("click", function (e) {
+        e.preventDefault();
+        document.logoutForm.submit();
+    });
+});
+
+/*
+========================================================================================
+                                buttonCancel
+========================================================================================
+
+*/
+
+
+$(document).ready(function () {
+    $("#buttonCancel").on("click", function () {
+        window.location = windowLocationValue;
+    });
+
+    $("#fileImage").change(function () {
+        fileSize = this.files[0].size;
+
+
+        if (fileSize > 1048576) {
+            this.setCustomValidity("Maximum image size is 1Mb ehab1");
+            this.reportValidity();
+
+        } else {
+            // this.setCustomValidity("cool")
+
+            showImage(this);
+        }
+    });
+
+});
+
+/*
+========================================================================================
+                                 checkPasswordMatch
+========================================================================================
+
+*/
+function showImage(fileInput) {
+    var file = fileInput.files[0];
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#thumbnail").attr("src", e.target.result)
+    };
+    reader.readAsDataURL(file);
+    customDropMenu()
+}
+
+/*
+========================================================================================
+                          showImage
+========================================================================================
+
+*/
+
+function showImage(fileInput) {
+    var file = fileInput.files[0];
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#thumbnail").attr("src", e.target.result)
+    };
+    reader.readAsDataURL(file);
+    customDropMenu()
+}
+
+/*
+========================================================================================
+                           checkDuplicateEmail
 ========================================================================================
 
 */
 function checkDuplicateEmail(form) {
     // Build the URL for the server-side endpoint.
-    var url = "[[@{/check_email}]]";
+
 
     // Get the user Id
-    var userId =$("#id").val();
+    var id = $("#id").val();
 
 
     // Get the user's email input from the form.
@@ -155,59 +176,60 @@ function checkDuplicateEmail(form) {
     // Get the CSRF token from the form.
     var csrf = $("input[name='_csrf']").val();
 
-
+    console.log(id, url, userEmail);
 
     // Create a JavaScript object with the email and CSRF token.
-    var params = {  email: userEmail, _csrf: csrf, id: userId };
+    var params = {email: userEmail, _csrf: csrf, id: id};
 
     $.post(url, params, function (response) {
 
-        if (response === "OK" ) {
+        if (response === "OK") {
             showmodalDialog("This Unique", userEmail);
             form.submit();
-        }else if (response === "Duplicated") {
+        } else if (response === "Duplicated") {
 
             showmodalDialog("There is another user having the email ", userEmail);
 
         } else {
-            showmodalDialog("  else else Unknown response from server");
+            showmodalDialog("else Unknown response from server ");
+            console.error("Failed to connect to the server ");
         }
     }).fail(function () {
-        showmodalDialog("fail  Fail Could not connect to the server");
-        console.error("Failed to connect to the server");
-            console.log(id,name)
+        showmodalDialog("Fail Could not connect to the server ");
+        console.error("Failed to connect to the server ");
+        console.log(id, name)
 
     });
 
-    alert(response);
 
     return false;
 }
-     /*
+
+/*
 ========================================================================================
-                                showmodalDialog
+                           showmodalDialog
 ========================================================================================
 
 */
 
 
+function showmodalDialog(tital, message) {
+    $("#modalTitle").text(tital);
+    $("#modalBody").text(message);
+    $('#confirmModal').modal('show');
+}
 
-     function  showmodalDialog (tital, message){
-         $("#modalTitle").text(tital);
-         $("#modalBody").text(message);
-         $('#modalDialog').modal('show');
-     }
+/*
+========================================================================================
+                                  jQuery
+========================================================================================
 
-     /*
-     ========================================================================================
-                                       jQuery
-     ========================================================================================
-
-     */
+*/
 
 
-    $j = jQuery.noConflict();
-     var $ = jQuery;
+$j = jQuery.noConflict();
+var $ = jQuery;
+
 /*
 ========================================================================================
                                   checkPasswordMatch
@@ -215,12 +237,14 @@ function checkDuplicateEmail(form) {
 
 */
 
-     function checkPasswordMatch(confirmPassword){
+function checkPasswordMatch(confirmPassword) {
 
-         if (confirmPassword.value !==  $("#Password").val()) {
-             confirmPassword.setCustomValidity("Password Not Match")
-         }else {
-             confirmPassword.setCustomValidity("");
+    if (confirmPassword.value !== $("#Password").val()) {
+        confirmPassword.setCustomValidity("Password Not Match")
+    } else {
+        confirmPassword.setCustomValidity("");
 
-         }
-     }
+    }
+}
+
+

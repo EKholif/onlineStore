@@ -7,12 +7,15 @@ public class PageInfo {
     public int getTotalPages() {
         return totalPages;
     }
+
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
     }
+
     public long getTotalElements() {
         return totalElements;
     }
+
     public void setTotalElements(long totalElements) {
         this.totalElements = totalElements;
     }

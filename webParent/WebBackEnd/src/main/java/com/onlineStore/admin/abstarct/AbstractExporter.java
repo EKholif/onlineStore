@@ -10,11 +10,11 @@ import java.util.Date;
 public class AbstractExporter {
 
 
-    public void export(HttpServletResponse response, String contentType, String extinction,String prefix) throws IOException {
+    public void export(HttpServletResponse response, String contentType, String extinction, String prefix) throws IOException {
 
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
         String timeStamp = dateFormatter.format(new Date());
-        String fileName =  prefix + timeStamp + extinction;
+        String fileName = prefix + timeStamp + extinction;
 
         response.setContentType(contentType);
 

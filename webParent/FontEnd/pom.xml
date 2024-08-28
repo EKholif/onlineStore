@@ -18,6 +18,12 @@
     </properties>
     <dependencies>
 
+        <!-- https://mvnrepository.com/artifact/com.twilio.sdk/twilio-java-sdk -->
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio-java-sdk</artifactId>
+            <version>3.3.9</version>
+        </dependency>
 
         <dependency>
             <groupId>com.onlineStore</groupId>

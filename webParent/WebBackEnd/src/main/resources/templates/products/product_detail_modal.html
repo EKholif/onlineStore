@@ -1,0 +1,82 @@
+
+
+<div class="modal-header">
+    <h3 class="modal-title" id ="modalTitle"> Product Details </h3>
+    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#overview"
+                    type="button" role="tab">Overview
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#description"
+                    type="button" role="tab">Description
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#images"
+                    type="button" role="tab">Images
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details"
+                    type="button" role="tab">Details
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab">
+                Shipping
+            </button>
+        </li>
+
+
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active p-3" id="overview" role="tabpanel">
+
+
+            <div th:replace="~{products/fregment-readonly/overview-fregment::content}"></div>
+
+        </div>
+        <div class="tab-pane" id="description" role="tabpanel">
+                <div th:replace="~{products/fregment-readonly/discription-fregment-readonly::content}"></div>
+        </div>
+
+
+        <div class="tab-pane" id="images" role="tabpanel">
+
+            <div th:replace="~{products/fregment-readonly/products-image-fregment-readonly::content}"></div>
+
+        </div>
+
+
+
+        <div class="tab-pane p-3" id="details" role="tabpanel">
+            <div th:replace="~{products/fregment-readonly/details-fregment-readonly::content}"></div>
+
+
+
+        </div>
+
+
+
+        <div class="tab-pane p-3" id="shipping" role="tabpanel">
+            <div th:replace="~{products/fregment-readonly/shipping-fregment-readonly::content}"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">done</button>
+</div>
+

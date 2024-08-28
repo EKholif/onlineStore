@@ -28,14 +28,14 @@ import java.util.Objects;
 @RestController
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserService service;
 
 
     @GetMapping("/users/users")
-    public ModelAndView listAllUsers( ) {
+    public ModelAndView listAllUsers() {
         ModelAndView model = new ModelAndView("users/users");
 
-        return listByPage(1,"firstName","dsc",null);
+        return listByPage(1, "firstName", "dsc", null);
     }
 
     @GetMapping("/users/page/{pageNum}")
@@ -44,18 +44,15 @@ public class UserController {
                                    @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("users/users");
-
-
-
         PageInfo pageInfo = new PageInfo();
 
-        List<User> listByPage = userService.listByPage
-                (pageInfo,pageNum, sortFiled, sortDir, keyWord);
+        List<User> listByPage = service.listByPage
+                (pageInfo, pageNum, sortFiled, sortDir, keyWord);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                ( model, "users",  sortFiled,sortDir, keyWord, pageNum,listByPage);
+                (model, "users", sortFiled, sortDir, keyWord, pageNum, listByPage);
 
-        pagingAndSortingHelper.listByPage(pageInfo,"users");
+        pagingAndSortingHelper.listByPage(pageInfo, "users");
 
         return model;
 
@@ -65,48 +62,45 @@ public class UserController {
     @GetMapping("/users/new-users-form")
     public ModelAndView newUserForm() {
         ModelAndView model = new ModelAndView("users/new-users-form");
-        List<Role> listAllRoles = userService.listAllRoles();
+
         User user = new User();
+        List<Role> listAllRoles = service.listAllRoles();
+
         user.setEnable(true);
-        model.addObject("user", user);
+        model.addObject("id", 0L);
 
-        model.addObject("listAllRoles", listAllRoles);
-        model.addObject("UserId", 0L);
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("listAllRoles", listAllRoles); // Corrected listName
-        return pagingAndSortingHelper.newForm(model,"user", user);
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected listName
+        return pagingAndSortingHelper.newForm(model, "user", user);
 
 
     }
-    @PostMapping("/users/save-user")
-    public ModelAndView saveNewUser(@ModelAttribute  User user,
-                                    RedirectAttributes redirectAttributes,
-                                    @RequestParam("image")MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
-        redirectAttributes.addFlashAttribute("message", "the user   has been saved successfully.  ");
 
+    @PostMapping("/users/save-user")
+    public ModelAndView saveNewUser(@ModelAttribute User user,
+                                    RedirectAttributes redirectAttributes,
+                                    @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
+        redirectAttributes.addFlashAttribute("message", "the user   has been saved successfully.  ");
+        String dirName = "user-photos/";
 
         if (!multipartFile.isEmpty()) {
-              String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-
-              user.setUser_bio(fileName);
-
-
-
-              User savedUser = userService.saveUser(user);
-
-              String dirName = "user-photos/";
-
-              String uploadDir = dirName + savedUser.getId();
-
-              FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+            savePhoto(user, multipartFile, dirName);
         }
-
-
-         userService.saveUser(user);
-
+        service.saveUser(user);
         return new ModelAndView("redirect:/users/users");
     }
 
+
+    private void savePhoto(User user, MultipartFile multipartFile, String dirName) throws IOException {
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+        user.setUser_bio(fileName);
+
+        User savedUser = service.saveUser(user);
+
+        String uploadDir = dirName + savedUser.getId();
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    }
 
 
     @GetMapping("/users/edit/{id}")
@@ -115,17 +109,15 @@ public class UserController {
 
         ModelAndView model = new ModelAndView("users/new-users-form");
         try {
-            User user = userService.getUser(id);
-            List<Role> listAllRoles = userService.listAllRoles();
-            model.addObject("user", user);
-            model.addObject("listAllRoles",  user.getRoles()  ) ;
-            model.addObject("pageTitle","Edit "+user.getfirstName()   + " (ID: " + id + ")" );
-            model.addObject("listAllRoles", listAllRoles);
-            model.addObject("saveChanges", "/users/save-edit-user/");
-            model.addObject("UserId", id);
+            User user = service.getUser(id);
+            List<Role> listAllRoles = service.listAllRoles();
 
 
-            return model;
+            model.addObject("listItems", user.getRoles());
+
+            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected listName
+            return pagingAndSortingHelper.editForm(model, "user", user, id);
+
 
         } catch (UsernameNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
@@ -134,28 +126,28 @@ public class UserController {
         }
     }
 
-    @PostMapping( "/users/save-edit-user/")
-    public ModelAndView saveUpdaterUser(@RequestParam ( name="id") Long id,@ModelAttribute  User user, RedirectAttributes redirectAttributes,
-                                       @RequestParam("image") MultipartFile multipartFile ) throws UsernameNotFoundException, IOException {
-        redirectAttributes.addFlashAttribute("message", "the user Id : " + id+  " has been updated successfully. ");
+    @PostMapping("/users/save-edit-user/")
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Long id, @ModelAttribute User user, RedirectAttributes redirectAttributes,
+                                        @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
+        redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
 
-        User updateUser =userService.getUser(id);
+        User updateUser = service.getUser(id);
 
         if (user.getPassword().isEmpty()) {
 
             if (multipartFile.isEmpty()) {
-                BeanUtils.copyProperties(  user,updateUser,"id",  "user_bio" ,"password");
-                userService.saveUpdatededUser(updateUser);
+                BeanUtils.copyProperties(user, updateUser, "id", "user_bio", "password");
+                service.saveUpdatededUser(updateUser);
 
 
-               } else if (!multipartFile.isEmpty()) {
+            } else if (!multipartFile.isEmpty()) {
 
                 FileUploadUtil.cleanDir(updateUser.getImageDir());
                 String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                 String uploadDir = "user-photos/" + updateUser.getId();
                 user.setUser_bio(fileName);
-                BeanUtils.copyProperties( user,updateUser,"id" ,"password" );
-                userService.saveUpdatededUser(updateUser);
+                BeanUtils.copyProperties(user, updateUser, "id", "password");
+                service.saveUpdatededUser(updateUser);
                 FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
             }
@@ -164,9 +156,9 @@ public class UserController {
 
             if (multipartFile.isEmpty()) {
 
-                BeanUtils.copyProperties(  user,updateUser,"id", "user_bio");
+                BeanUtils.copyProperties(user, updateUser, "id", "user_bio");
 
-                userService.saveUser(updateUser);
+                service.saveUser(updateUser);
 
             } else if (!multipartFile.isEmpty()) {
 
@@ -175,86 +167,92 @@ public class UserController {
                 String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                 String uploadDir = "user-photos/" + updateUser.getId();
                 user.setUser_bio(fileName);
-                BeanUtils.copyProperties( user,updateUser,"id");
-                userService.saveUser(updateUser);
+                BeanUtils.copyProperties(user, updateUser, "id");
+                service.saveUser(updateUser);
                 FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
             }
 
         }
-        String fristPartEmail= user.getEmail().split("@")[0];
-        return new ModelAndView("redirect:/users/page/1?sortFiled=id&sortDir=asc&keyWord="+fristPartEmail);
+        String fristPartEmail = user.getEmail().split("@")[0];
+        return new ModelAndView("redirect:/users/page/1?sortFiled=id&sortDir=asc&keyWord=" + fristPartEmail);
     }
 
 
-
-    @GetMapping ("/delete-user/{id}")
-        public ModelAndView deleteUser(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) {
-
+    @GetMapping("/delete-user/{id}")
+    public ModelAndView deleteUser(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         try {
-            if(userService.existsById(id)){
-                FileUploadUtil.cleanDir( userService.getUser(id).getImageDir());
-
-            userService.deleteUser(id);
-            redirectAttributes.addFlashAttribute("message", "the user ID: "+ id+" has been Deleted");
+            if (service.existsById(id)) {
+                FileUploadUtil.cleanDir(service.getUser(id).getImageDir());
+                service.deleteUser(id);
+                redirectAttributes.addFlashAttribute("message", "User with ID " + id + " has been successfully deleted.");
             } else {
-                redirectAttributes.addFlashAttribute("message", "the user ID: "+ id+" user Not Found");
-
-            }return new ModelAndView("redirect:/users/users");
+                redirectAttributes.addFlashAttribute("message", "User with ID " + id + " not found.");
+            }
         } catch (UsernameNotFoundException ex) {
-            redirectAttributes.addFlashAttribute("message", " user Not Found");
-            return new ModelAndView("redirect:/users/users");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            redirectAttributes.addFlashAttribute("message", "User with ID " + id + " not found.");
+        } catch (IOException ex) {
+            redirectAttributes.addFlashAttribute("message", "Error occurred while deleting user with ID " + id + ".");
+            // Log the exception for further investigation
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("message", "An unexpected error occurred.");
+            // Log the exception for further investigation
+            ex.printStackTrace();
         }
+        return new ModelAndView("redirect:/users/users");
     }
+
+
     @GetMapping("/user/{id}/enable/{status}")
-    public ModelAndView UpdateUserStatus (@PathVariable("id")Long id, @PathVariable("status") boolean enable,
-                                    RedirectAttributes redirectAttributes){
-        userService.UdpateUserEnableStatus(id,enable);
-        String status = enable ? "enable" :" disable";
-        String message = " the user Id  " + id +"  has bean  " +status ;
+    public ModelAndView UpdateUserStatus(@PathVariable("id") Long id, @PathVariable("status") boolean enable,
+                                         RedirectAttributes redirectAttributes) {
+        service.UdpateUserEnableStatus(id, enable);
+        String status = enable ? "enable" : " disable";
+        String message = " the user Id  " + id + "  has bean  " + status;
         redirectAttributes.addFlashAttribute("message", message);
-        return new ModelAndView( "redirect:/users/users");
+        return new ModelAndView("redirect:/users/users");
 
-       }
+    }
 
-    @PostMapping("/users/deleteUsers")
+    @PostMapping("/deleteUsers")
     public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Long> selectedUsers,
-                              RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
+                                    RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
+
+        redirectAttributes.addFlashAttribute("message", "the Users ID: " + selectedUsers + " has been Deleted");
 
         if (selectedUsers != null && !selectedUsers.isEmpty()) {
-            for (Long userId : selectedUsers) {
-                FileUploadUtil.cleanDir( userService.getUser(userId).getImageDir());
-                       userService.deleteUser(userId);
+            for (Long id : selectedUsers) {
+                FileUploadUtil.cleanDir(service.getUser(id).getImageDir());
+                service.deleteUser(id);
             }
         }
 
-
-
-        return new ModelAndView( "redirect:/users/users");
+        return new ModelAndView("redirect:/users/users");
     }
 
 
-@GetMapping("/users/export/csv")
+    @GetMapping("/users/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
-        List<User> listUsers = userService.listAllUsers();
+        List<User> listUsers = service.listAllUsers();
         UserCsvExporter userCsvExporter = new UserCsvExporter();
-        userCsvExporter.export(listUsers,response);
+        userCsvExporter.export(listUsers, response);
 
-}
+    }
+
     @GetMapping("/users/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
-        List<User> listUsers = userService.listAllUsers();
-        UserExcelExporter userExcelExporter = new  UserExcelExporter();
-        userExcelExporter.export(listUsers,response);
+        List<User> listUsers = service.listAllUsers();
+        UserExcelExporter userExcelExporter = new UserExcelExporter();
+        userExcelExporter.export(listUsers, response);
 
     }
+
     @GetMapping("/users/export/pdf")
     public void exportToPdf(HttpServletResponse response) throws IOException {
-        List<User> listUsers = userService.listAllUsers();
-        UserPdfExporter UserPdfExporter = new  UserPdfExporter();
-        UserPdfExporter.export(listUsers,response);
+        List<User> listUsers = service.listAllUsers();
+        UserPdfExporter UserPdfExporter = new UserPdfExporter();
+        UserPdfExporter.export(listUsers, response);
 
     }
 

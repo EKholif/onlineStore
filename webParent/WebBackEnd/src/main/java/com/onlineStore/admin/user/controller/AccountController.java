@@ -26,7 +26,7 @@ public class AccountController {
 
     @GetMapping("/account")
     public ModelAndView ViewAccountDetails(@AuthenticationPrincipal StoreUserDetails loggedUser,
-                                           RedirectAttributes redirectAttributes)  {
+                                           RedirectAttributes redirectAttributes) {
 
         Long id = loggedUser.getId();
         ModelAndView model = new ModelAndView("users/new-users-form");
@@ -35,11 +35,11 @@ public class AccountController {
             User user = userService.getUser(id);
             List<Role> listAllRoles = userService.listAllRoles();
             model.addObject("user", user);
-            model.addObject("listAllRoles",  user.getRoles()  ) ;
-            model.addObject("pageTitle","Edit User "+user.getfirstName() + " (ID: " + id + ")" );
+            model.addObject("listAllRoles", user.getRoles());
+            model.addObject("pageTitle", "Edit User " + user.getfirstName() + " (ID: " + id + ")");
             model.addObject("listAllRoles", listAllRoles);
             model.addObject("saveChanges", "/save-edit-user/");
-            model.addObject("UserId", id);
+            model.addObject("id", id);
             return model;
 
         } catch (UsernameNotFoundException ex) {

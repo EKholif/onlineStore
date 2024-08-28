@@ -20,7 +20,7 @@ public class WebSecurityConfig {
 
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -28,6 +28,7 @@ public class WebSecurityConfig {
     public UserDetailsService userDetailsService() {
         return new SUserDetailsService();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration authConfig) throws Exception {
@@ -35,14 +36,12 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
-          DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-          authenticationProvider.setUserDetailsService(userDetailsService());
-          authenticationProvider.setPasswordEncoder(passwordEncoder());
-          return authenticationProvider;
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService());
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        return authenticationProvider;
     }
-
-
 
 
     @Bean
@@ -55,6 +54,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/users/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
+                        .requestMatchers("/products/**").hasAnyAuthority("Admin", "Editor")
+                        .requestMatchers("/pdf-convert/**").hasAnyAuthority("Admin", "Editor")
+
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -66,10 +68,8 @@ public class WebSecurityConfig {
                 )
 
                 .rememberMe(rememberMe -> rememberMe.key("BqRqADxmG8iRXXLvwIZ47NY4")
-                        .tokenValiditySeconds(1*24*60*60))
+                        .tokenValiditySeconds(1 * 24 * 60 * 60))
                 .logout(LogoutConfigurer::permitAll);
-
-
 
 
         return http.build();
@@ -79,11 +79,6 @@ public class WebSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**");
     }
-
-
-
-
-
 
 
 }

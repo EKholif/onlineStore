@@ -66,28 +66,25 @@ public class UserService {
         Page<User> pageUsers = null;
 
         if (keyWord != null) {
-             pageUsers = userRepo.findAll(keyWord, pageable);
-        }else {
-              pageUsers = userRepo.findAll(pageable);
+            pageUsers = userRepo.findAll(keyWord, pageable);
+        } else {
+            pageUsers = userRepo.findAll(pageable);
         }
 
         pageInfo.setTotalElements(pageUsers.getTotalElements());
         pageInfo.setTotalPages(pageUsers.getTotalPages());
 
 
-        List<User> listUsers =pageUsers.getContent();
+        List<User> listUsers = pageUsers.getContent();
         return listUsers;
-       }
-
-
-
-
-    private void encodePassword(User user){
-
-        String encodePassword= passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodePassword);
     }
 
+
+    private void encodePassword(User user) {
+
+        String encodePassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodePassword);
+    }
 
 
     public boolean isEmailUnique(Long id, String email) {
@@ -104,41 +101,38 @@ public class UserService {
                 return true;
             }
         }
-return true;
+        return true;
     }
 
-    public User getUser( Long userId) throws UsernameNotFoundException{
+    public User getUser(Long id) throws UsernameNotFoundException {
         try {
-        return userRepo.findById(userId).get();
+            return userRepo.findById(id).get();
 
-        }catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
 
-            throw new UsernameNotFoundException("Could not find any user with ID " + userId);
+            throw new UsernameNotFoundException("Could not find any user with ID " + id);
+        }
     }
-}
-    public Boolean existsById (Long id){
+
+    public Boolean existsById(Long id) {
         return userRepo.findById(id).isPresent();
     }
 
 
-public void deleteUser(Long userId) throws UsernameNotFoundException{
-    try {
-        userRepo.deleteById(userId);
+    public void deleteUser(Long id) throws UsernameNotFoundException {
+        try {
+            userRepo.deleteById(id);
 
-    }catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
 
-        throw new UsernameNotFoundException("Could not find any user with ID " + userId);
+            throw new UsernameNotFoundException("Could not find any user with ID " + id);
+        }
     }
-}
 
-public void UdpateUserEnableStatus (Long id, Boolean enable){
+    public void UdpateUserEnableStatus(Long id, Boolean enable) {
         userRepo.enableUser(id, enable);
 
-}
-
-
-
-
+    }
 }
 
 

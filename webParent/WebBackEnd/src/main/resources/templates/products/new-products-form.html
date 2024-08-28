@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>[[${pageTitle}]]</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/texteditor/richtext.min.css}"/>
+    <script type="text/javascript" th:src="@{/texteditor/jquery.richtext.js}"></script>
+
+
+</head>
+<body>
+
+
+<div th:replace="~{support/fragments::navbar}"></div>
+<h2 class="text-center">[[${pageTitle}]]</h2>
+<div th:replace="~{support/fragments::search}"></div>
+
+
+<div class=" justify-content-center mb-2 mt-2 ">
+
+
+    <form th:action="@{${saveChanges}}" th:object="${product}" method="post"
+
+          enctype="multipart/form-data" onsubmit="return check_unique_product(this);">
+        <input type="hidden" id="id" name="id" th:value="${id}"/>
+        <input type="hidden" th:field="*{id}" /> <input
+            th:if="${product.category != null}" type="hidden" id="categoryId"
+            th:value="${product.category.id}" />
+
+        <div>
+            <!-- Nav tabs -->
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#overview"
+                            type="button" role="tab">Overview
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#description"
+                            type="button" role="tab">Description
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#images"
+                            type="button" role="tab">Images
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details"
+                            type="button" role="tab">Details
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab">
+                        Shipping
+                    </button>
+                </li>
+
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="overview" role="tabpanel">
+                    <div th:replace="~{products/fregment-edit/overview-fregment::content}"></div>
+                </div>
+
+                <div class="tab-pane" id="description" role="tabpanel">
+                    <div th:replace="~{products/fregment-edit/discription-fregment::content}"></div>
+                </div>
+
+                <div class="tab-pane" id="images" role="tabpanel">
+                    <div th:replace="~{products/fregment-edit/products-image-fregment::content}"></div>
+                </div>
+
+                <div class="tab-pane" id="details" role="tabpanel"  aria-required="false" >
+
+                    <div th:replace="~{products/fregment-edit/details-fregment::content}"></div>
+
+                    <div class="p-5">
+                        <button class="btn btn-primary " type="button" onclick="addExtraDetails()">Add More</button>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="shipping" role="tabpanel">
+                    <div th:replace="~{products/fregment-edit/shipping-fregment::content}"></div>
+                </div>
+
+            </div>
+
+            <div th:replace="~{support/fragments::save-and-rest-buttons}"></div>
+        </div>
+    </form>
+
+
+</div>
+
+
+<div th:replace="~{support/fragments::modal}"></div>
+
+<div th:replace="~{support/fragments::footer}"></div>
+
+<script type="text/javascript" th:src="@{/js/commonForm.js}"></script>
+
+<script type="text/javascript">
+
+    extraImagesCount = 0;
+
+    dropdownBrands = $("#brand");
+    dropdownCategories = $("#categories");
+    richText = $("#richText")
+    brandModuleURL = "[[@{/list-categories}]]";
+    Max_File_Size = 1042000;
+
+    defultImage = "[[@{/images/pngwing.com.png}]]";
+
+    $(document).ready(function () {
+        richText.richText();
+        getCategories();
+
+        dropdownBrands.change(function () {
+            getCategories();
+
+        })
+    })
+
+
+    function getCategories() {
+        dropdownCategories.empty();
+
+        var brandId = dropdownBrands.val();
+        url = brandModuleURL + "/" + brandId + "/category";
+
+        $.get(url, function (responseJson) {
+            $.each(responseJson, function (index, category) {
+                $("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
+            });
+        });
+    }
+
+
+    function check_unique_product(form) {
+        url = "[[@{/check_unique_product}]]";
+        var id = $("#id").val();
+        var name = $("#name").val();
+        var alias = $("#alias").val();
+        var csrf = $("input[name='_csrf']").val();
+        var params = {id: id, name: name, alias: alias, _csrf: csrf};
+
+
+        return sendAjaxRequest(url, params, form);
+    }
+
+    function sendAjaxRequest(url, params, form) {
+        $.post(url, params, function (response) {
+            showmodalDialog("response");
+            if (response === "Ok") {
+
+                form.submit();
+            } else if (response === "DuplicateName") {
+                showmodalDialog("Warning", "There is another Category having the name: " + params.name);
+            } else if (response === "DuplicateAlies") {
+                showmodalDialog("Warning", "There is another Category having the Alies: " + params.alias);
+            } else {
+                showmodalDialog("Warning", "Unknown response from server: " + response);
+            }
+        }).fail(function () {
+            console.error("Failed to connect to the server");
+            console.log(params.id, params.name, params.alies, url);
+            showmodalDialog("Failed to connect to the server", url);
+        });
+
+        return false;
+    }
+
+
+</script>
+</body>
+</html>
