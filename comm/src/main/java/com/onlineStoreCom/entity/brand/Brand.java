@@ -2,7 +2,7 @@ package com.onlineStoreCom.entity.brand;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.onlineStoreCom.entity.prodact.Category;
+import com.onlineStoreCom.entity.category.Category;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -31,7 +31,18 @@ public class Brand {
     private Set<Category> categories = new HashSet<>();
 
     public Brand() {
+    }
 
+    public Brand(long id, String name, String logo) {
+        this.id = id;
+        this.name = name;
+        this.logo = logo;
+
+    }
+
+    public Brand(long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Brand(String name) {
@@ -75,13 +86,31 @@ public class Brand {
 //    public String getLogoPath() {
 //        if (this.id == null) return "/images/image-thumbnail.png";
 //
-//        return Constants.S3_BASE_URI + "/brand-logos/" + this.id + "/" + this.logo;
+//        return Constants.S3_BASE_URI + "/brands-photos/" + this.id + "/" + this.logo;
 //    }
 
 
+    @Transient
+    public String getImagePath() {
+        String dirName = "/brands-photos/";
 
 
+        if (id < 0 || logo == null) return "/images" + "\\" + "bob.png";
+
+        return dirName + this.id + '\\' + this.logo;
+    }
 
 
+    @Transient
+    public String getImageDir() {
+        String dirName = "brands-photos\\";
+        if (id == -1L || logo == null) return "\\images \\ bob.png";
+        return dirName + this.id + '\\';
+    }
 
+    @Override
+    public String toString() {
+        return "Brand [id=" + id + ", name=" + name + ", categories=" + categories + "]";
+    }
 }
+

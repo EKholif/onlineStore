@@ -5,7 +5,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import com.onlineStore.admin.abstarct.AbstractExporter;
-import com.onlineStoreCom.entity.prodact.Category;
+import com.onlineStoreCom.entity.category.Category;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;

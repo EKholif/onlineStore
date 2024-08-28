@@ -27,10 +27,10 @@
 <div th:replace="~{support/fragments::search}"></div>
 
 
-<form th:action="@{/users/deleteUsers}" method="post" id="deleteForm">
+<form th:action="@{/deleteUsers}"  method="post" id="deleteForm">
 
 
-<div class=" justify-content-center mb-2 ">
+<div class=" justify-content-center mb-2 mt-2 ">
           <button class="fas fa-user-minus fa-2x icon-red  " style="border: none; background: none;"  type="submit" title="Delete Selected Users"></button>
 
           <a th:href="@{/users/new-users-form}" class="fas fa-user-plus fa-2x icon-d-green"         title="Add User"  ></a>&nbsp;&nbsp;
@@ -72,7 +72,7 @@
 
                   <a class="fas fa-trash px-2 icon-red delete-confirmation"
                          th:href="@{'/delete-user/' + ${user.getId()}}"
-                         th:userId="${user.id}"
+                         th:id="${user.id}"
 
                          title="Delete User"></a>
                       &nbsp;
@@ -110,8 +110,9 @@
                           <th>Roles</th>
 
                           <th th:replace="~{support/fragments::colum_link ('enable', 'Status')}"></th>
-                          <th></th>
-                          <th></th>
+
+                          <th>Edit</th>
+                          <th>Delete</th>
                   </tr>
              </thead>
 
@@ -156,7 +157,7 @@
 
                               <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
                                      th:href="@{'/delete-user/' + ${user.getId()}}"
-                                     th:userId="${user.id}"
+                                     th:id="${user.id}"
 
                                      title="Delete User"></a> </td>
                               </tr>
@@ -168,90 +169,26 @@
 
 
 
-<nav aria-label="paginat"  class="text-center flex mb-1" >
-    <div  th:if="${totalItems>0}" >
-        <span class="align-content-end"> showing users # [[${startCont}]] to [[${endCount}]] of [[${totalItems}]]</span>
-    </div>
-    <div  th:unless="${totalItems>0}" >
-        <span> No Users Found</span>
-    </div>
-
-    <div  th:if="${totalPages>1}"   >
+                    <nav th:replace="~{support/fragments::paginate}"></nav>
 
 
 
+<div th:replace="~{support/fragments::modal}"></div>
 
-        <ul class="pagination justify-content-center flex-wrap" >
-
-            <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                <a th:replace="~{support/fragments::page_link(1,'First')}" /></a>
-
-            </li >
-
-            <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-
-                <a th:replace="~{support/fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
-
-            </li>
-
-            <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
-
-                <a th:replace="~{support/fragments::page_link(${i}, ${i})}" /></a>
-
-            </li>
-
-            <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-
-                <a th:replace="~{support/fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
-
-            </li>
-
-            <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                <a th:replace="~{support/fragments::page_link(${totalPages}, 'Last')}" /></a>
-
-
-            </li>
-
-        </ul>
-
-
-
-    </div>
-</nav>
-
-
-
-
-
-
-
-
-<div class="modal fade text-center" data-bs-toggle="modal" id ="confirmModal" data-bs-target="#modalDialog" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id ="modalTitle"> Alert Message Box </h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <span id="modalBody"></span>
-                <p></p>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-success"  href="" id="yesbutton">yes</a>
-
-
-                <button type="close" class="btn btn-danger" data-dismiss="modal">no</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div th:replace="~{support/fragments::footer}"></div>
 
-<script type="text/javascript" th:src="@{/js/common.js}" ></script>
+
+<script type="text/javascript" th:src="@{/js/common.js}" >
+
+</script>
+
+
+<script >
+    const windowLocationValue = `[[@{${name}}]]`;
+</script>
+
+
 
 
 </body>

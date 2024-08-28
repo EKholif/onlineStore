@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>[[${pageTitle}]]</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+
+</head>
+<body>
+
+
+<div th:replace="~{support/fragments::navbar}"></div>
+<h2 class="text-center">[[${pageTitle}]]</h2>
+<div th:replace="~{support/fragments::search}"></div>
+
+
+<form th:action="@{/delete-brands}" method="post" id="deleteForm">
+
+    <div class=" justify-content-center mb-2 mt-2 ">
+        <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" type="submit"
+                title="Delete Selected brands"></button>
+
+        <a th:href="@{/brands/new-brands-form}" class="fas fa-user-plus fa-2x icon-d-green" title="Add brand"></a>&nbsp;&nbsp;
+
+        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a> &nbsp;&nbsp;
+
+        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a> &nbsp;&nbsp;
+
+        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}" title="Export to Excel"></a>&nbsp;&nbsp;
+    </div>
+
+
+    <div th:if="${message != null}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+
+    <div class="full-details  less-details">
+        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered ">
+            <thead class="table-dark ">
+            <tr>
+
+                <th>Select</th>
+                <th th:replace="~{support/fragments::colum_link('id', 'ID')}"></th>
+
+
+                <th th:replace="~{support/fragments::colum_link('logo', 'logo')}"></th>
+
+                <th th:replace="~{support/fragments::colum_link('name', 'Name')}"></th>
+
+
+                <th th:replace="~{support/fragments::colum_link('categories', 'Categories')}"></th>
+
+                <!--                       <th>Enable</th>-->
+                <th>Edit</th>
+
+                <th>Delete</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="brand: ${brands}">
+
+
+                <td>
+                    <input class="form-check-input delete-checkbox " type="checkbox" name="selectedForDelete"
+                           th:value="${brand.id}" id="flexCheckDefault">
+                </td>
+
+
+                <td th:text="${brand.id}"></td>
+
+
+                <td>
+                    <span th:if="${brand.logo.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
+                    <img th:if="${brand.logo != null && !brand.logo.isEmpty() }" th:src=" @{${brand.getImagePath()}}"
+                         class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"/>
+
+                </td>
+
+
+                <td th:text="${brand.name}"></td>
+
+                <td>
+                    <th:block th:each="cat : ${brand.categories}">
+                        <span class="badge rounded-pill bg-secondary" th:text="${cat.name}"></span>
+                    </th:block>
+                </td>
+
+                <!--                              <td th:text="${brand.parentIndentation() }"></td>-->
+
+
+                <!--                              <td th:text="${brand.childNames(brand)}"></td>-->
+
+
+                <!--                           <td >-->
+                <!--                               <a th:if="${brand.isEnable == true}" class="fas fa-check-circle px-2 icon-green "-->
+                <!--                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/false' } "-->
+                <!--                                  title="Disable brand"></a>-->
+                <!--                               &lt;!&ndash;                                                      &nbsp;&ndash;&gt;-->
+                <!--                               &lt;!&ndash;                                                      &nbsp;&ndash;&gt;-->
+                <!--                               <a th:if="${brand.isEnable() == false}" class="fas fa-circle px-2 icon-red"-->
+                <!--                                  th:href="@{'/brand/' + ${brand.getId} +'/enable/true' }"-->
+                <!--                                  title="Enable brand"></a>-->
+
+                <!--                           </td>-->
+
+                <td>
+                    <a class="fas fa-edit px-2 icon-green"
+                       th:href="@{'/brand/edit/' + ${brand.getId()}}"
+                       title="Edit brand"></a>
+                </td>
+
+
+                <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
+                       th:href="@{'/brands/delete-brand/' + ${brand.getId()}}"
+                       th:id="${brand.id}"
+
+                       title="Delete brand"></a></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</form>
+
+<nav th:replace="~{support/fragments::paginate}"></nav>
+
+
+<div th:replace="~{support/fragments::footer}"></div>
+
+<div th:replace="~{support/fragments::modal}"></div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".delete-confirmation").on("click", function (e) {
+            e.preventDefault();
+            link = $(this);
+            id = link.attr("id");
+
+
+            $("#yesbutton").attr("href", link.attr('href'));
+
+            $("#modalTitle").text("Warning");
+            $("#modalBody").text("Are You Sure You want to delete  Cat :   " + id);
+            $("#confirmModal").modal('show');
+        });
+    });
+
+
+</script>
+
+
+<script type="text/javascript" th:src="@{/js/commonCat.js}"></script>
+
+
+<script>
+    const windowLocationValue = `[[@{${name}}]]`;
+</script>
+
+</body>
+
+</html>

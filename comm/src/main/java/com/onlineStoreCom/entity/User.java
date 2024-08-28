@@ -127,7 +127,7 @@ public class User {
 //    public String toString() {
 //        return "User{" +
 //                "email='" + email + '\'' +
-//                " userId = '" + id + '\'' +
+//                " id = '" + id + '\'' +
 //                " firstName = '" + firstName + '\'' +
 //
 //                 "lastName = '" + lastName + '\'' +
@@ -139,7 +139,7 @@ public class User {
     @Transient
     public String getImagePath() {
         String dirName =   "/user-photos/" ;
-        if ( id == null || user_bio == null) return "images" + "\\" +"bob.png";
+        if ( id == null || user_bio == null) return "/images" + "\\" +"bob.png";
 
 
         return dirName + this.id + '\\' +this.user_bio;
@@ -147,7 +147,7 @@ public class User {
     @Transient
     public String getImageDir() {
         String dirName =   "user-photos\\" ;
-//        if ( id == null || user_bio == null) return "\\images \\ bob.png";
+        if ( id == null || user_bio == null) return "\\images\\bob.png";
         return dirName + this.id + '\\' ;
     }
 

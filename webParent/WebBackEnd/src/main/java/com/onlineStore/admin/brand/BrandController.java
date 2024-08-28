@@ -1,279 +1,236 @@
 package com.onlineStore.admin.brand;
 
 
+import com.onlineStore.admin.brand.utility.BrandCsvExporter;
+import com.onlineStore.admin.brand.utility.BrandExcelExporter;
+import com.onlineStore.admin.brand.utility.BrandPdfExporter;
+import com.onlineStore.admin.category.CategoryNotFoundException;
+import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
+import com.onlineStore.admin.category.services.CategoryService;
+import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.utility.FileUploadUtil;
+import com.onlineStoreCom.entity.brand.Brand;
+import com.onlineStoreCom.entity.category.Category;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class BrandController {
     @Autowired
-    private BrandService service ;
+    private BrandService service;
+    @Autowired
+    private CategoryService categoryService;
+    public static Integer USERS_PER_PAGE = 4;
 
 
-    @GetMapping("/brand/brands")
-    public ModelAndView listAllbrands( ) {
-        ModelAndView model = new ModelAndView("/brand/brands");
+    @GetMapping("/brands/brands")
+    public ModelAndView listAllUsers() {
+        ModelAndView model = new ModelAndView("brands/brands");
 
-        model.addObject("pageTitle","List brands" );
 
-        model.addObject("brands", service.listAll());
-//        model.addObject("modelUrl", "/brand/brands");
+        return listByPage(1, "name", "dsc", null);
+    }
 
+
+    @GetMapping("/brands/page/{pageNum}")
+    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
+                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+                                   @Param("keyWord") String keyWord) {
+
+        ModelAndView model = new ModelAndView("brands/brands");
+        PageInfo pageInfo = new PageInfo();
+
+        List<Brand> listByPage = service.listByPage(pageInfo, pageNum, sortFiled, sortDir, keyWord);
+
+
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
+                (model, "brands", sortFiled, sortDir, keyWord, pageNum, listByPage);
+
+        pagingAndSortingHelper.listByPage(pageInfo, "brands");
         return model;
-//        return listByPage(1,"name","asc",null);a
+    }
+
+    @GetMapping("/brands/new-brands-form")
+    public ModelAndView newBrandForm() {
+        ModelAndView model = new ModelAndView("brands/new-brands-form");
+
+
+        List<Category> listCategory = categoryService.listUsedForForm();
+        Brand brand = new Brand();
+
+        model.addObject("label", " Category :");
+        model.addObject("id", 0L);
+
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected listName
+        return pagingAndSortingHelper.newForm(model, "brand", brand);
+
+
     }
 
 
-//    @GetMapping("/brands/page/{pageNum}")
-//    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-//                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
-//                                   @Param("keyWord") String keyWord) {
-//
-//        ModelAndView model = new ModelAndView("/brand/brands");
-//
-//
-//        Page<User> userPage = service.listByPage(pageNum, sortFiled, sortDir, keyWord);
-//        List<User> listUsers= userPage.getContent();
-//
-//        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
-//        long endCount = startCount+ UserService.USERS_PER_PAGE -1;
-//
-//
-//        if(endCount> userPage.getTotalElements()){
-//            endCount=userPage.getTotalElements();
-//        }
-//        String reverseSortDir= sortDir.equals("asc")?"dsc":"asc";
-//
-//        model.addObject("totalItems", userPage.getTotalElements());
-//        model.addObject("totalPages", userPage.getTotalPages());
-//        model.addObject("sortFiled" , sortFiled);
-//        model.addObject("sortDir" , sortDir);
-//        model.addObject("currentPage", pageNum);
-//        model.addObject("endCount", endCount);
-//        model.addObject("startCont", startCount);
-//        model.addObject("users", listUsers);
-//        model.addObject("reverseSortDir", reverseSortDir);
-//        model.addObject("keyWord", keyWord);
-//        model.addObject("search" , "/users/page/1");
-//        model.addObject("modelUrl", "/users/page/");
-//        return  model;
-//    }
+    @PostMapping("/brands/save-brand")
+    public ModelAndView saveNewUCategory(@ModelAttribute Brand brand,
+                                         RedirectAttributes redirectAttributes
+            , @RequestParam("fileImage") MultipartFile multipartFile)
+            throws IOException {
+        redirectAttributes.addFlashAttribute("message", "the brand has been saved successfully.  ");
 
-//}
-//
-//    public static <T> List<T> getPage(List<T> list, int pageNumber, int pageSize) {
-//        int startIndex = (pageNumber - 1) * pageSize;
-//        int endIndex = Math.min(startIndex + pageSize, list.size());
-//        return list.subList(startIndex, endIndex);
-//    }
-//
-//
-//    @GetMapping("/brands/new-categories-form")
-//    public ModelAndView newCategoryForm() {
-//
-//        ModelAndView model = new ModelAndView("/brands/new-categories-form");
-//
-//        Category newCategory = new Category();
-//
-//        newCategory.setEnable(true);
-//
-//        List<Category> listCategory = service.listUsedForForm();
-//
-//
-//        model.addObject("category", newCategory);
-//        model.addObject("label", "Parent Category :");
-//
-//        model.addObject("listCategory",listCategory );
-//        model.addObject("pageTitle","Creat new Category" );
-//        model.addObject("saveChanges", "/brands/save-category");
-//        model.addObject("id", 0L);
-//        return model;
-//
-//    }
-//
-//
-////    todo : rundom id
-//
-//
-//    @PostMapping("/brands/save-category")
-//    public ModelAndView saveNewUCategory(@ModelAttribute  Category category,
-//                                         RedirectAttributes redirectAttributes
-//            , @RequestParam("fileImage") MultipartFile multipartFile)
-//            throws IOException {
-//        redirectAttributes.addFlashAttribute("message", "the category   has been saved successfully.  ");
-//
-//
-//        if (!multipartFile.isEmpty()) {
-//            String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-//
-//            System.out.println(fileName);
-//
-//            category.setImage(fileName);
-//            Category savedCategory = service.saveCategory(category);
-//
-//            String dirName = "brands-photos/";
-//            String uploadDir = dirName + savedCategory.getId();
-//
-//            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-//
-//        } else {
-//
-//            service.saveCategory(category);
-//        }
-//
-//        return new ModelAndView("redirect:/brand/brands");
-//
-//
-//    }
-//
-//    @GetMapping("/category/edit/{id}")
-//    public ModelAndView editCategory(@PathVariable (name="id")long id, RedirectAttributes redirectAttributes) {
-//
-//
-//        try {
-//            ModelAndView model = new ModelAndView("/brands/new-categories-form");
-//
-//            Category ExistCategory = service.getCategory(id);
-//
-//            List<Category> listCategory = service.listUsedForForm();
-//
-//            model.addObject("category", ExistCategory);
-//
-//            model.addObject("label", "Parent Category :");
-//
-//            model.addObject("listCategory", listCategory);
-//            model.addObject("saveChanges", "/brands/save-edit-category/");
-//
-//            model.addObject("pageTitle", "Edit " + ExistCategory.getName() + " (ID: " + id + ")");
-//            model.addObject("id", id);
-//
-//
-//            return model;
-//
-//        } catch (CategoryNotFoundException ex) {
-//            redirectAttributes.addFlashAttribute("message", ex.getMessage());
-//            return new ModelAndView("redirect:/brand/brands");
-//
-//
-//        }
-//    }
-//
-//    @PostMapping( "/brands/save-edit-category/")
-//    public ModelAndView saveUpdaterUser(@RequestParam ( name="id") Long id,@ModelAttribute  Category category, RedirectAttributes redirectAttributes,
-//                                       @RequestParam("fileImage") MultipartFile multipartFile ) throws CategoryNotFoundException, IOException {
-//
-//        redirectAttributes.addFlashAttribute("message", "the Category Id : " + id+  " has been updated successfully. ");
-//
-//        Category updateCategory =service.getCategory(id);
-//
-//
-//
-//            if (multipartFile.isEmpty()) {
-//                BeanUtils.copyProperties(  category,updateCategory,"id",  "image");
-//                service.saveCategory(updateCategory);
-//
-//               } else if (!multipartFile.isEmpty()) {
-//
-//                FileUploadUtil.cleanDir(updateCategory.getImageDir());
-//                String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-//                String uploadDir = "brands-photos/" + updateCategory.getId();
-//                category.setImage(fileName);
-//                BeanUtils.copyProperties( category,updateCategory,"id"  );
-//
-//                service.saveCategory(updateCategory);
-//                FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-//
-//            }
-//
-//        return new ModelAndView("redirect:/brand/brands");
-//    }
-//
-//
-//
-//    @GetMapping ("/brands/delete-Category/{id}")
-//        public ModelAndView deleteCategory(@PathVariable (name = "id")Long id, RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
-//
-//        try {
-//            if (categoryRepository.existsById(id)) {
-//                FileUploadUtil.cleanDir( service.getCategory(id).getImageDir());
-//
-//           service.deleteCategory(id);
-//                redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + " has been Deleted");
-//            } else {
-//                redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + " Category Not Found");
-//
-//            }
-//
-//            return new ModelAndView("redirect:/brand/brands");
-//        }
-//
-//        catch (CategoryNotFoundException | IOException ex) {
-//            redirectAttributes.addFlashAttribute("message", " Category Not Found");
-//        }
-//            return new ModelAndView("redirect:/brand/brands");
-//        }
-//
-//
-//    @GetMapping("/category/{id}/enable/{status}")
-//    public ModelAndView UpdateUserStatus (@PathVariable("id")Long id, @PathVariable("status") boolean enable,
-//                                    RedirectAttributes redirectAttributes){
-//        service.UpdateCategoryEnableStatus(id,enable);
-//        String status = enable ? "enable" :" disable";
-//        String message = " the user Id :   " + id +" has bean  " +status ;
-//        redirectAttributes.addFlashAttribute("message", message);
-//
-//        return new ModelAndView("redirect:/brand/brands");
-//
-//       }
-//
-//    @PostMapping("/brands/deletebrands")
-//    public ModelAndView deleteCategory(@RequestParam(name = "selectedCategory", required = false) List<Long> selectedCategory,
-//                              RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
-//
-//        redirectAttributes.addFlashAttribute("message", "the Category ID: " + selectedCategory + " has been Deleted");
-//        ModelAndView model = new ModelAndView("/brand/brands");
-//
-//        model.addObject("label", selectedCategory);
-//
-//        if (selectedCategory != null && !selectedCategory.isEmpty()) {
-//            for (Long userId : selectedCategory) {
-//                FileUploadUtil.cleanDir( service.getCategory(userId).getImageDir());
-//                service.deleteCategory(userId);
-//            }
-//        }
-//        return new ModelAndView("redirect:/brand/brands");
-//    }
-//
-//
-//@GetMapping("/brands/export/csv")
-//    public void exportToCsv(HttpServletResponse response) throws IOException {
-//        List<Category> listbrands = service.listUsedForForm();
-//        CategoryCsvCategoryExporter userCsvExporter = new CategoryCsvCategoryExporter();
-//        userCsvExporter.export(listbrands,response);
-//
-//}
-//    @GetMapping("/brands/export/excel")
-//    public void exportToExcel(HttpServletResponse response) throws IOException {
-//        List<Category> categoryList = service.listUsedForForm();
-//
-//        CategoryExcelExporter categoryExcelExporter = new  CategoryExcelExporter();
-//        categoryExcelExporter.export(categoryList,response);
-//
-//
-//    }
-//    @GetMapping("/brands/export/pdf")
-//    public void exportToPdf(HttpServletResponse response) throws IOException {
-//        List<Category> categoryList = service.listUsedForForm();
-//
-//        CategoryPdfCategoryExporter categoryPdfCategoryExporter = new  CategoryPdfCategoryExporter();
-//        categoryPdfCategoryExporter.export(categoryList,response);
-//
-//    }
 
+        if (!multipartFile.isEmpty()) {
+            String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+
+            brand.setLogo(fileName);
+            Brand savedBrand = service.saveBrand(brand);
+
+            String dirName = "brands-photos/";
+            String uploadDir = dirName + savedBrand.getId();
+
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        } else {
+
+            service.saveBrand(brand);
+        }
+
+        return new ModelAndView("redirect:/brands/brands");
 
     }
+
+
+    @GetMapping("/brand/edit/{id}")
+    public ModelAndView editCategory(@PathVariable(name = "id") long id, RedirectAttributes redirectAttributes) {
+
+
+        try {
+            ModelAndView model = new ModelAndView("/brands/new-brands-form");
+
+            Brand existCategory = service.findById(id);
+
+            List<Category> listCategory = categoryService.listUsedForForm();
+
+
+            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected listName
+            return pagingAndSortingHelper.editForm(model, "brand", existCategory, id);
+
+
+        } catch (CategoryNotFoundException ex) {
+            redirectAttributes.addFlashAttribute("message", ex.getMessage());
+            return new ModelAndView("redirect:/brands/brands");
+        }
+
+    }
+
+    @PostMapping("/brands/save-edit-brand/")
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Long id, @ModelAttribute Brand brand, RedirectAttributes redirectAttributes,
+                                        @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
+
+        redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
+
+        Brand updateBrand = service.findById(id);
+
+        if (multipartFile.isEmpty()) {
+            BeanUtils.copyProperties(brand, updateBrand, "id", "logo");
+            service.saveBrand(updateBrand);
+
+        } else if (!multipartFile.isEmpty()) {
+
+            FileUploadUtil.cleanDir(updateBrand.getImageDir());
+            String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+            String uploadDir = "brands-photos/" + updateBrand.getId();
+            brand.setLogo(fileName);
+            BeanUtils.copyProperties(brand, updateBrand, "id");
+
+            service.saveBrand(updateBrand);
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        }
+
+        return new ModelAndView("redirect:/brands/brands");
+    }
+
+
+    @GetMapping("/brands/delete-brand/{id}")
+    public ModelAndView deleteCategory(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes) {
+
+        try {
+            if (service.existsById(id)) {
+                FileUploadUtil.cleanDir(service.findById(id).getImageDir());
+
+                service.delete(id);
+                redirectAttributes.addFlashAttribute("message", "the Brand ID: " + id + " has been Deleted");
+            } else {
+                redirectAttributes.addFlashAttribute("message", "the Brand ID: " + id + " Brand Not Found");
+
+            }
+
+            return new ModelAndView("redirect:/brands/brands");
+        } catch (BrandNotFoundException | IOException | CategoryNotFoundException e) {
+            redirectAttributes.addFlashAttribute("message", " Brand Not Found");
+        }
+        return new ModelAndView("redirect:/brands/brands");
+    }
+
+
+    @PostMapping("/delete-brands")
+    public ModelAndView deleteBrand(@RequestParam(name = "selectedForDelete", required = false) List<Long> selectedForDelete,
+                                    RedirectAttributes redirectAttributes) throws IOException, BrandNotFoundException, CategoryNotFoundException {
+
+        ModelAndView model = new ModelAndView("/brands/brands");
+        redirectAttributes.addFlashAttribute("message", "the Brand ID: " + selectedForDelete + " has been Deleted");
+
+        System.out.println(selectedForDelete);
+
+        model.addObject("label", selectedForDelete);
+
+        if (selectedForDelete != null && !selectedForDelete.isEmpty()) {
+            for (Long id : selectedForDelete) {
+                FileUploadUtil.cleanDir(service.findById(id).getImageDir());
+                service.delete(id);
+            }
+        }
+        return new ModelAndView("redirect:/brands/brands");
+    }
+//
+
+    @GetMapping("/brands/export/csv")
+    public void exportToCsv(HttpServletResponse response) throws IOException {
+        List<Brand> listbrands = service.listAll();
+        BrandCsvExporter userCsvExporter = new BrandCsvExporter();
+        userCsvExporter.export(listbrands, response);
+    }
+
+    @GetMapping("/brands/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+
+        List<Brand> listbrands = service.listAll();
+        BrandExcelExporter BrandExcelExporter = new BrandExcelExporter();
+        BrandExcelExporter.export(listbrands, response);
+
+    }
+
+    @GetMapping("/brands/export/pdf")
+    public void exportToPdf(HttpServletResponse response) throws IOException {
+        List<Brand> listbrands = service.listAll();
+
+        BrandPdfExporter brandPdfExporter = new BrandPdfExporter();
+        brandPdfExporter.export(listbrands, response);
+
+    }
+
+}
+
 
 
 

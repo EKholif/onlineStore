@@ -44,6 +44,7 @@ public class FileUploadUtil {
 
 
     public static void cleanDir(String dir) throws IOException {
+
         Path dirPath = Paths.get(dir);
 
         try {
@@ -56,10 +57,27 @@ public class FileUploadUtil {
                     }
                 }
             });
+
         } catch (IOException e) {
             LOGGER.error("Not a valid directory: " + dir);
         }
     }
+
+
+    public static void deleteDir(String dir) throws IOException {
+
+        cleanDir(dir);
+
+        try {
+            Files.delete(Paths.get(dir));
+
+        } catch (IOException e) {
+            LOGGER.error("Could not remove directory: " + dir);
+        }
+
+    }
+
+
 
 
     }

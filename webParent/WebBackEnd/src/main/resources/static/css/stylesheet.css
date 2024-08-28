@@ -1,29 +1,74 @@
-*.icon-white {color:white}
-*.icon-silver {color:silver}
-*.icon-green {color:lawngreen}
-*.icon-dark {color: rgb(128, 128, 128)
+*.icon-white {
+    color: white
 }
-*.icon-golden {color:gold}
-*.icon-red {color:red}
-*.icon-blue {color:blue}
-*.icon-d-green {color: #24a413}
 
-
-@media screen and (max-width: 768px){
-        /*  small screen  */
-    div.full-details{display: none}
-    div.less-details{display: block}
+*.icon-silver {
+    color: silver
 }
-@media screen and (min-width: 768px) and (max-width: 1024px){
+
+*.icon-green {
+    color: lawngreen
+}
+
+*.icon-dark {
+    color: rgb(128, 128, 128)
+}
+
+*.icon-golden {
+    color: gold
+}
+
+*.icon-red {
+    color: red
+}
+
+*.icon-blue {
+    color: blue
+}
+
+*.icon-d-green {
+    color: #24a413
+}
+
+*.icon-orange {
+    color: #f59714
+}
+*.icon-gray {
+    color: #626363
+}
+@media screen and (max-width: 768px) {
+    /*  small screen  */
+    div.full-details {
+        display: none
+    }
+
+    div.less-details {
+        display: block
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     /*  Md screen  */
-    div.less-details{display: none}
-    div.full-details{display: block}
+    div.less-details {
+        display: none
+    }
+
+    div.full-details {
+        display: block
+    }
 }
-@media screen and (min-width: 1024px){
+
+@media screen and (min-width: 1024px) {
     /*  Lg screen  */
-    div.less-details{display: none}
-    div.full-details{display: block}
+    div.less-details {
+        display: none
+    }
+
+    div.full-details {
+        display: block
+    }
 }
+
 .login {
     min-height: 100vh;
 }
@@ -41,4 +86,41 @@
     font-size: 0.9rem;
     letter-spacing: 0.05rem;
     padding: 0.75rem 1rem;
+}
+
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #fccb90;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    /*background: #fccb90;*/
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+    /*!* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    background: linear-gradient(to right, #aec30f, #82a815, #51be37, #45be72, #12aa4a);
+}
+
+#e663a3
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
 }

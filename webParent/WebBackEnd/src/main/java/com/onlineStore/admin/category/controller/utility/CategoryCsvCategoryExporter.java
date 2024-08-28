@@ -1,7 +1,7 @@
 package com.onlineStore.admin.category.controller.utility;
 
 import com.onlineStore.admin.abstarct.AbstractExporter;
-import com.onlineStoreCom.entity.prodact.Category;
+import com.onlineStoreCom.entity.category.Category;
 import jakarta.servlet.http.HttpServletResponse;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
@@ -14,19 +14,19 @@ public class CategoryCsvCategoryExporter extends AbstractExporter {
 
     public void export(List<Category> categoryList, HttpServletResponse response) throws IOException {
 
-       super.export(response,"text/csv",".csv","Category_");
+        super.export(response, "text/csv", ".csv", "Category_");
 
 
         ICsvBeanWriter csvBeanWriter = new CsvBeanWriter(response.getWriter(),
                 CsvPreference.STANDARD_PREFERENCE);
 
-        String [] csvHeader = { "ID  Name", "Alies","Parent", "Children"," status"};
-        String [] fieldMapping = {"name", "alias","parent" ,"children","enable"};
+        String[] csvHeader = {"ID  Name", "Alies", "Parent", "Children", " status"};
+        String[] fieldMapping = {"name", "alias", "parent", "children", "enable"};
         csvBeanWriter.writeHeader(csvHeader);
 
-        for (Category category: categoryList) {
+        for (Category category : categoryList) {
             category.setName(category.getName().replace("--", "  "));
-              csvBeanWriter.write(category,fieldMapping);
+            csvBeanWriter.write(category, fieldMapping);
         }
 
         csvBeanWriter.close();

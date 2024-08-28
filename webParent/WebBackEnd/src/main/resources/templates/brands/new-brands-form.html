@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>[[${pageTitle}]]</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+
+
+</head>
+<body>
+
+<div th:replace="~{support/fragments::navbar}"></div>
+<h2 class="text-center">[[${pageTitle}]]</h2>
+<div th:replace="~{support/fragments::search}"></div>
+
+<div class="container-fluid">
+
+
+    <form th:action="@{${saveChanges}}" th:object="${brand}" method="post"
+
+          enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto"
+
+          onsubmit="return  checkUniqueName(this);">
+
+        <input type="hidden" id="id" name="id" th:value="${id}"/>
+
+
+        <div class="border border-secondary rounded p-3">
+
+
+            <div class="input-group row">
+                <label class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" required minlength="2"
+                           placeholder="Please enter the Brand name" class="form-control col-4 mb-4"/>
+                </div>
+            </div>
+
+
+            <div class="form row">
+                <label class="col-sm-4 col-form-label">[[${label}]]</label>
+                <div class="col-sm-8 ">
+                    <input type="hidden" th:field="*{logo}"/>
+                    <input class="mb-2" type="file" id="fileImage" name="fileImage"
+                           accept="image/jpg, image/jpeg, image/png"/>
+
+                    <div class="mb-2">
+
+                        <img class="img-thumbnail rounded-circle float-left " id="thumbnail" style="width: 200px"
+                             alt="Brand logo"
+                             th:src="@{${brand.getImagePath()}}"/>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="input-group row">
+                <label class="col-sm-4 col-form-label">[[${label}]]</label>
+                <div class="col-sm-8">
+                    <select multiple id="categories" class="form-control " th:field="*{categories}"
+                            style="resize: vertical; height: 200px">
+                        <option value="0"> [No Parent]</option>
+
+                        <th:block th:each="cat : ${listItems}">
+                            <option th:value="${cat.id}"> [[${cat.name}]]</option>
+
+                        </th:block>
+
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group row p-3">
+                <label class="col-sm-4 col-form-label">Chosen categories:</label>
+                <div class="col-sm-8">
+                    <div id="chosenCategories"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div th:replace="~{support/fragments::save-and-rest-buttons}"></div>
+
+
+    </form>
+</div>
+
+
+<div th:replace="~{support/fragments::modal}"></div>
+
+
+<div th:replace="~{support/fragments :: footer}"></div>
+
+
+<script>
+    Max_File_Size = 1042000;
+    const windowLocationValue = `[[@{${name}}]]`;
+    const url = "[[@{'/check_unique_name'}]]";
+
+</script>
+
+<script type="text/javascript" th:src="@{/js/commonCat.js}"></script>
+
+
+<script>$j = jQuery.noConflict();
+
+var $ = jQuery; </script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        dropdownCategories = $("#categories");
+        divChosenCategories = $("#chosenCategories");
+
+        dropdownCategories.change(function () {
+            divChosenCategories.empty();
+            showChosenCategories();
+
+        });
+
+        function showChosenCategories() {
+            dropdownCategories.children("option:selected").each(function () {
+                selectedCategory = $(this);
+                catId = selectedCategory.val();
+                catName = selectedCategory.text().replace(/-/g, "");
+                divChosenCategories.append("<span class='badge rounded-pill bg-secondary'>" + catName + "</span>");
+
+            });
+        }
+    });
+
+
+</script>
+</body>
+
+
+</html>

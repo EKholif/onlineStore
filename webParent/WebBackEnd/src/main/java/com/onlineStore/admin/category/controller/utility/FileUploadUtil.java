@@ -16,12 +16,12 @@ public class FileUploadUtil {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FileUploadUtil.class);
 
-    public static void saveFile (String uploadDir, String filename,
-                                 MultipartFile multipartFile) throws IOException {
+    public static void saveFile(String uploadDir, String filename,
+                                MultipartFile multipartFile) throws IOException {
 
-        Path uploadPath =Paths.get(uploadDir);
+        Path uploadPath = Paths.get(uploadDir);
 
-        if (!Files.exists(uploadPath)){
+        if (!Files.exists(uploadPath)) {
 
             Files.createDirectories(uploadPath);
         }
@@ -31,17 +31,14 @@ public class FileUploadUtil {
 
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 
-        }catch (IOException ex){
+        } catch (IOException ex) {
 
             LOGGER.error("could not save the file" + filename, ex);
             throw new IOException("could not save the file" + filename, ex);
         }
 
 
-
     }
-
-
 
 
     public static void cleanDir(String dir) throws IOException {
@@ -64,5 +61,5 @@ public class FileUploadUtil {
     }
 
 
-    }
+}
 
