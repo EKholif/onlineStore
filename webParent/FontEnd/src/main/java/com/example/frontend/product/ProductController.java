@@ -10,50 +10,61 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Controller
 public class ProductController {
 
-    @Autowired private CategoryService categoryService;
-    @Autowired private ProductService productService;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private ProductService productService;
 
 
     @GetMapping("/c/{category_alias}")
     public String viewCategoryFirstPage(@PathVariable("category_alias") String alias,
                                         Model model) {
-try{
+        try {
 
-        Category category = categoryService.getCategory(alias);
+            Category category = categoryService.getCategory(alias);
 
-        List<Category> listCategoryParents = categoryService.getCategoryParents(category);
-     model.addAttribute("pageTitle" , category.getName());
-     model.addAttribute("listCategoryParents" , listCategoryParents);
+            List<Category> listCategoryParents = categoryService.getCategoryParents(category);
+            model.addAttribute("pageTitle", category.getName());
+            model.addAttribute("listCategoryParents", listCategoryParents);
 
 //    List<Category> listCategories = categoryService.listNoChildrenCategories();
-    Set<Category> listCategoryChildren=    category.getChildren();
+            Set<Category> listCategoryChildren = category.getChildren();
+            model.addAttribute("listCategories", listCategoryChildren);
+
+            Set<Product> listProduct = productService.setAll(category.getId());
+            model.addAttribute("listProduct", listProduct);
+
+// Initialize a set to store all products from the child categories
+            Set<Product> listCatProduct = new HashSet<>();
+
+// Iterate over each child category
+            for (Category childCategory : listCategoryChildren) {
+                // Fetch products for each child category using productService
+                Set<Product> childCategoryProducts = productService.setAll(childCategory.getId());
+
+                // Add the products to the main product set
+                listCatProduct.addAll(childCategoryProducts);
+            }
+            model.addAttribute("listCatProduct", listCatProduct);
+
+// Now, listProduct contains all products associated with the child categories
 
 
-    model.addAttribute("listCategories", listCategoryChildren);
-
-
-    Set<Product> listProduct=    productService.setAll(category.getId());
-
-
-    model.addAttribute("listProduct", listProduct);
 
 
 
-
-    return "product/products_by_category";
-    } catch (CategoryNotFoundException ex) {
-        return "error/404";
+            return "product/products_by_category";
+        } catch (CategoryNotFoundException ex) {
+            return "error/404";
+        }
     }
-}
-
-
-
 
 
     @GetMapping("/c/{category_alias}/page/{pageNum}")
