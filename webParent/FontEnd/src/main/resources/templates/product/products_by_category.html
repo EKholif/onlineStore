@@ -51,21 +51,35 @@
 </div>
 
 
+
+
+
 <div class="row">
-    <div class="col" th:each="cat : ${listProduct}">
+    <div class="col" th:each="product : ${listCatProduct}">
         <div>
-            <img th:src="@{${cat.getImagePath}}" width="80"/>
+            <img th:src="@{${product.getImagePath}}" width="80"/>
         </div>
         <div>
-            <a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
+            <a th:href="@{'/c/' + ${product.alias}}">[[${product.alias}]]</a>
+
+            <span class="badge rounded-pill bg-secondary" >[[${product.price}]]</span>
         </div>
     </div>
 </div>
 </div>
 
 
-
-
+<div class="row">
+    <div class="col" th:each="product : ${listProduct}">
+        <div>
+            <img th:src="@{${product.getImagePath}}" width="80"/>
+        </div>
+        <div>
+            <a th:href="@{'/c/' + ${product.alias}}">[[${product.name}]]</a>
+        </div>
+    </div>
+</div>
+</div>
 
 
 <div th:replace="~{supports/fragments::footer_menu}"></div>

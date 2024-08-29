@@ -49,9 +49,10 @@ class UserRepositoryTest {
     }
     @Test
     public void tateFirstUser() {
-     User user = repo.findByEmail("ehab@gmail.com");
-     user.setEnable(true);
-        testlUser();
+     User user = repo.findByEmail("aecllc.bnk@gmail.com");
+        System.out.println(user.getId());
+     user.setPassword("");
+        System.out.println(user.getPassword());
     }
 
     @Test
@@ -99,7 +100,7 @@ class UserRepositoryTest {
 
     @Test
     public void testUpdateUser(){
-        User userAdmin = repo.findById(1002L).get();
+        User userAdmin = repo.findById(3L).get();
         userAdmin.setEnable(true);
         userAdmin.setPassword("");
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
