@@ -1,4 +1,4 @@
-package com.example.fontend.category;
+package com.example.frontend.category;
 
 import com.onlineStoreCom.entity.category.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

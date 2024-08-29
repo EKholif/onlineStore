@@ -1,8 +1,9 @@
-package com.example.fontend.product;
+package com.example.frontend.product;
 
-import com.example.fontend.category.CategoryService;
+import com.example.frontend.category.CategoryService;
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.entity.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,16 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ProductController {
 
-//    @Autowired private ProductService productService;
     @Autowired private CategoryService categoryService;
-//    @Autowired private ReviewService reviewService;
-//    @Autowired private ReviewVoteService voteService;
-//    @Autowired private ControllerHelper controllerHelper;
-//
+    @Autowired private ProductService productService;
 
 
     @GetMapping("/c/{category_alias}")
@@ -33,7 +31,22 @@ try{
      model.addAttribute("pageTitle" , category.getName());
      model.addAttribute("listCategoryParents" , listCategoryParents);
 
-        return "product/products_by_category";
+//    List<Category> listCategories = categoryService.listNoChildrenCategories();
+    Set<Category> listCategoryChildren=    category.getChildren();
+
+
+    model.addAttribute("listCategories", listCategoryChildren);
+
+
+    Set<Product> listProduct=    productService.setAll(category.getId());
+
+
+    model.addAttribute("listProduct", listProduct);
+
+
+
+
+    return "product/products_by_category";
     } catch (CategoryNotFoundException ex) {
         return "error/404";
     }

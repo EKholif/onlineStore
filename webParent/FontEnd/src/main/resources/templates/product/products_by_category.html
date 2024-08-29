@@ -2,18 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta  http-equiv="Content-Type" charset="UTF-8" content="text/css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" >
+    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>[[${pageTitle}]]</title>
+    <title>[[${pageTitle}]]</title>
 
-  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
-  <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"> </script>
-  <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
-  <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}" ></script>
-  <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" ></script>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
-  <script type="text/javascript" th:src="@{/js/common.js}" ></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
 </head>
 <body>
 
@@ -22,46 +22,49 @@
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
 <div class=" justify-content-center mb-2 mt-2 ">
-<div  th:if="${listCategoryParents !=null && !listCategoryParents.isEmpty() }">
-  <nav  class="bg-dark-subtle" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+    <div th:if="${listCategoryParents !=null && !listCategoryParents.isEmpty() }">
+        <nav class="bg-dark-subtle" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
 
-    <th:block  th:each="parent : ${listCategoryParents}"   >
+                <th:block th:each="parent : ${listCategoryParents}">
 
-      <li class="breadcrumb-item">
-        <a th:href="@{'/c/' + ${parent.alias}}">[[${parent.name}]]</a>
-      </li>
-
-
-    </th:block>
-
-
-    </ol>
+                    <li class="breadcrumb-item">
+                        <a th:href="@{'/c/' + ${parent.alias}}">[[${parent.name}]]</a>
+                    </li>
+                </th:block>
+            </ol>
+        </nav>
+    </div>
 
 
-
-
-  </nav>
-
-
+    <div class="row">
+        <div class="col" th:each="cat : ${listCategories}">
+            <div>
+                <img th:src="@{${cat.getCatImagePath}}" width="80"/>
+            </div>
+            <div>
+                <a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 
 
 <div class="row">
-  <div class="col" th:each="cat : ${listCategories}">
-    <div>
-      <img th:src="@{${cat.getCatImagePath}}" width="80" />
+    <div class="col" th:each="cat : ${listProduct}">
+        <div>
+            <img th:src="@{${cat.getImagePath}}" width="80"/>
+        </div>
+        <div>
+            <a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
+        </div>
     </div>
-    <div>
-      <a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
-    </div>
-  </div>
+</div>
 </div>
 
-</div>
+
+
 
 
 
