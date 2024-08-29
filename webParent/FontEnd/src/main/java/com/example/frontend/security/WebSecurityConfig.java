@@ -1,4 +1,4 @@
-package com.example.fontend.security;
+package com.example.frontend.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

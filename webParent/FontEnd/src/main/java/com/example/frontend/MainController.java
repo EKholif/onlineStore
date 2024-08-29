@@ -1,6 +1,6 @@
-package com.example.fontend;
+package com.example.frontend;
 
-import com.example.fontend.category.CategoryService;
+import com.example.frontend.category.CategoryService;
 import com.onlineStoreCom.entity.category.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

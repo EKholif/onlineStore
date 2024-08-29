@@ -1,6 +1,7 @@
-package com.example.fontend;
+package com.example.frontend;
 
-import com.example.fontend.category.CategoryRepository;
+import com.example.frontend.category.CategoryRepository;
+import com.example.frontend.product.*;
 import com.onlineStoreCom.entity.category.Category;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 public class CategoryRepositoryTests {
 
     @Autowired private CategoryRepository repo;
+    @Autowired private ProductRepository productRepository;
     @Test
     public void testListEnabledCategories() {
         List<Category> categories = repo.findAllEnabled();
@@ -27,8 +29,17 @@ public class CategoryRepositoryTests {
 
     @Test
     public void testFindCategoryByAlias() {
+
         String alias = "electronics";
+        String aliasProduct = "computer_sound_cards";
+
         Category category = repo.findByAliasEnabled(alias);
+
+
+
+
+//        productRepository.ge
+
 
         assertThat(category).isNotNull();
     }
