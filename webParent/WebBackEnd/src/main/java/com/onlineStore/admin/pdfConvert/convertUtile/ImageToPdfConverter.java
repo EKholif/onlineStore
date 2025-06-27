@@ -50,7 +50,7 @@ public class ImageToPdfConverter {
         String dirNamePath = "/fileConvert/";
 
         ImageToPdfConverter converter = new ImageToPdfConverter();
-        converter.ImageToPdf(dirNamePath + "1.jpg", dirNamePath + "22.pdf");
+        ImageToPdf(dirNamePath + "1.jpg", dirNamePath + "22.pdf");
         System.out.println("PDF generated successfully.");
     }
 

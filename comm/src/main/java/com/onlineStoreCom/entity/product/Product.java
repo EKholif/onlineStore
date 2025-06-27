@@ -60,7 +60,7 @@ public class Product {
 
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<ProductDetails> details = new ArrayList<>();
+    private final List<ProductDetails> details = new ArrayList<>();
 
 
     public Product(Integer id, String name, String alias) {
@@ -69,9 +69,12 @@ public class Product {
         this.alias = alias;
     }
 
-    public List<ProductDetails> details() {
+    public List<ProductDetails> getDetails() {
+
         return details;
     }
+
+
 
     public void addProductDetails(String detailName, String detailValue) {
         this.details.add(new ProductDetails(detailName, detailValue, this));
@@ -266,6 +269,15 @@ public class Product {
 
 
     @Transient
+    public float getDiscountPrice() {
+        if (discountPercent > 0) {
+            return price * ((100 - discountPercent) / 100);
+        }
+        return this.price;
+    }
+
+
+    @Transient
     public String getImagePath() {
         String dirName = "/products-photos/";
 
@@ -297,5 +309,13 @@ public class Product {
         return dirName + this.id + File.separator + "extras";
     }
 
+
+    @Transient
+    public String getShortName() {
+        if (name.length() > 70) {
+            return name.substring(0, 70).concat("...");
+        }
+        return name;
+    }
 
 }

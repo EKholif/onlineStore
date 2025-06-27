@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <body>
 
@@ -35,30 +35,20 @@
     </div>
 
 
-    <div class="form-group row  p-3">
-        <label class="col-sm-2 col-form-label ">Category Name</label>
+    <div class="form-group row p-3">
+        <label class="col-sm-2 col-form-label">Category Name</label>
         <div class="col-sm-10">
             <select id="categories" th:field="*{category}" class="form-control" required>
-
-
-              <div  th:if="${product.category == null}">
-                <th:block th:each="cat : ${listCategory}">
-                    <option th:value="${cat.id}"> [[${cat.name}]]</option>
-                </th:block>
-              </div>
-
-                <div  th:if="${product.category != null}">
-                    <th:block th:each="cat : ${product.brand.categories}">
-                        <option th:value="${cat.id}">[[${cat.name}]]</option>
-                    </th:block>
-                </div>
-
-
+                <option th:each="cat : ${product.category != null ? product.brand.categories : listCategory}"
+                        th:value="${cat.id}"
+                        th:text="${cat.name}">
+                </option>
             </select>
         </div>
+    </div>
 
 
-        <div class="form-group row  p-3">
+    <div class="form-group row  p-3">
             <label class="col-sm-2 col-form-label p-0">Enable</label>
             <div class="col-sm-10 ">
                 <input class="checkboxes  pe-5" type="checkbox" th:field="*{enable}"/>
@@ -76,21 +66,21 @@
         <div class="form-group  row p-3">
             <label class="col-sm-2 col-form-label ">Cost</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control " th:field="*{cost}"/>
+                <input type="number" step="0.01" class="form-control " th:field="*{cost}"/>
             </div>
         </div>
 
         <div class="form-group  row p-3">
             <label class="col-sm-2 col-form-label ">Price</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control " th:field="*{price}"/>
+                <input type="number" step="0.01" class="form-control " th:field="*{price}"/>
             </div>
         </div>
 
         <div class="form-group  row p-3">
             <label class="col-sm-2 col-form-label ">Discount</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control " th:field="*{discountPercent}"/>
+                <input type="number" step="0.01" class="form-control " th:field="*{discountPercent}"/>
             </div>
         </div>
 

@@ -50,7 +50,7 @@ public class TxtToPdfConverter {
         try {
             TxtToPdfConverter converter = new TxtToPdfConverter();
 
-            converter.TxtToPdf(dirNamePath+"\\input.txt", dirNamePath+"\\output555.pdf");
+            TxtToPdf(dirNamePath+"\\input.txt", dirNamePath+"\\output555.pdf");
         } catch (IOException e) {
             e.printStackTrace();
         }

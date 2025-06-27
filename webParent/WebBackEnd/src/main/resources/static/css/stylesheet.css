@@ -123,4 +123,11 @@
         border-top-right-radius: .3rem;
         border-bottom-right-radius: .3rem;
     }
+
+    h4 {
+        font-family: 'Great Vibes', cursive;
+        color: #2bb970;
+    }
+
+
 }

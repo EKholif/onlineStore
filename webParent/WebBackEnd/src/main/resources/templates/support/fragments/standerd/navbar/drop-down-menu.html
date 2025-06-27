@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="content">
+
+
+    <form method="post" name="logoutForm" th:action="@{/logout}" th:hidden="true">
+        <input type="submit">
+    </form>
+
+    <div class="dropdown">
+
+        <a class="nav-link" data-bs-toggle="dropdown" th:text="${#authentication.principal.getFullName}"></a>
+
+        <ul class=" dropdown-menu ">
+            <li><a class="dropdown-item" id="logout">Log out</a></li>
+            <li><a class="dropdown-item" th:href="@{/account}">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Link 3</a></li>
+        </ul>
+
+
+    </div>
+</div>
+</body>
+
+</html>
+
+
+

@@ -1,6 +1,6 @@
 package com.onlineStore.admin;
 
-import com.onlineStore.admin.user.role.RoleRepository;
+import com.onlineStore.admin.usersAndCustomers.users.role.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,7 +25,7 @@ public class MainController {
     public String viewLoginPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "eee";
+            return "login";
         }
 
         return "redirect:/";

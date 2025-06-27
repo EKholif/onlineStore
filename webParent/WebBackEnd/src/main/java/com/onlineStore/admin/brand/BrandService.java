@@ -2,6 +2,7 @@ package com.onlineStore.admin.brand;
 
 import com.onlineStore.admin.brand.reposetry.BrandRepository;
 import com.onlineStore.admin.category.CategoryNotFoundException;
+import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStoreCom.entity.brand.Brand;
 import jakarta.transaction.Transactional;
@@ -14,8 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-
-import static com.onlineStore.admin.user.servcies.UserService.USERS_PER_PAGE;
 
 
 @Service
@@ -59,7 +58,7 @@ public class BrandService {
 
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 
-        Pageable pageable = PageRequest.of(pageNum - 1, USERS_PER_PAGE, sort);
+        Pageable pageable = PageRequest.of(pageNum - 1, UserService.USERS_PER_PAGE, sort);
 
         Page<Brand> pageUsers = null;
 

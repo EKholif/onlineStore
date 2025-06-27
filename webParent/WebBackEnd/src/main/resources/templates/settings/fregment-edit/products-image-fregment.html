@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="content" th:remove="tag">
+
+    <div class=" row" id="divProductImages">
+
+        <div class="col border m-3 p-2">
+            <div><label> Main Image : [[${product.mainImage}]]</label></div>
+            <div>
+                <input type="file" id="fileImage" name="fileImage" th:required="${product.mainImage == null}"
+                       accept="image/jpg, image/jpeg, image/png"/>
+                <input type="hidden" th:field="*{mainImage}"/>
+            </div>
+
+
+            <div class="mb-2">
+                <img class="img-fluid  " id="thumbnail" style="width: 200px" alt="product Photo"
+                     th:src="@{${product.getImagePath}}"/>
+
+            </div>
+        </div>
+
+        <th:block th:each="productImage , status: ${product.images}">
+
+
+            <div class="col border m-3 p-2 " th:id="'divExtraProductImage' + ${status.index}">
+
+                <div id="'extraImageHeader' + ${status.index}"><label>Extra Image #[[${status.index + 1}]] :
+                    [[${productImage.name}]]</label>
+                    <a class="btn fas fa-times-circle fa-1x float-end icon-red"
+
+                       href="javascript:removeExtraImage(${status.index})"
+
+                       title="Remove this image"> </a>
+                </div>
+
+                <div>
+                    <input type="file" th:id="'extraImage' + ${status.index}" name="extraImage"
+                           accept="image/jpg, image/jpeg, image/png"/>
+                </div>
+
+                <div class="mb-2">
+
+                    <img class="img-fluid " th:id="'extraThumbnail' + ${status.index}" style="width: 200px"
+                         alt="product Photo"
+                         th:src="@{${productImage.getImagePath}}"/>
+
+
+                </div>
+
+            </div>
+
+        </th:block>
+
+
+        <div class="col border m-3 p-2 " th:id="'divExtraProductImage' + ${numberOfExistingExtraImage}">
+
+
+
+
+
+
+            <div id="extraImageHeader0"><label>Extra Images #[[${numberOfExistingExtraImage + 1}]]</label></div>
+
+
+            <div>
+                <input type="file" th:id="'extraImage' + ${numberOfExistingExtraImage}" name="extraImage" accept="image/jpg, image/jpeg, image/png"/>
+            </div>
+
+            <div class="mb-2">
+                <img class="img-fluid " th:id="'extraThumbnail' +${numberOfExistingExtraImage}" style="width: 200px"
+                     alt="product Photo"
+                     th:src="@{/images/pngwing.com.png}"/>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>

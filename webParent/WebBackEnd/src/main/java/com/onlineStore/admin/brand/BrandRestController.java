@@ -45,7 +45,6 @@ public class BrandRestController {
     public List<CategoryDTO> listCategories(@PathVariable(name = "id") Long id) throws CategoryNotFoundException, BrandNotFoundException {
 
         List<CategoryDTO> listCategories = new ArrayList<>();
-        System.out.println(id);
 
         Brand brand = service.findById(id);
 
@@ -56,7 +55,7 @@ public class BrandRestController {
             CategoryDTO categoryDTO = new CategoryDTO(cat.getId(), cat.getName());
             listCategories.add(categoryDTO);
         }
-        System.out.println(listCategories);
+
 
         return listCategories;
 

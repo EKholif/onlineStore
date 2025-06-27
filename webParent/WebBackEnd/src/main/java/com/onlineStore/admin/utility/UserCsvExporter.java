@@ -1,7 +1,7 @@
 package com.onlineStore.admin.utility;
 
 import com.onlineStore.admin.abstarct.AbstractExporter;
-import com.onlineStoreCom.entity.User;
+import com.onlineStoreCom.entity.users.User;
 import jakarta.servlet.http.HttpServletResponse;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;

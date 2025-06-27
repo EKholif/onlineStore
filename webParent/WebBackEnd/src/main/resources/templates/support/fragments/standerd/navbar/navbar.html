@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{support/fragments/standerd/header::content}"></head>
+
+<body>
+<div th:fragment="content">
+
+
+    <nav class="navbar  navbar-expand-md navbar-dark bg-black custom-navbar ">
+        <div class="container-fluid ">
+
+            <a class="navbar-brand " th:href="@{/}">
+                <img alt="SITE LOGO" class="rounded-pill"
+                     style="width: 150px; height: 150px; object-fit: contain; background-color: transparent; "
+                     th:src="@{/images/rr.png}"/>
+            </a>
+
+            <div th:replace="~{support/fragments/standerd/navbar/navbar-toggler::content}"></div>
+
+            <div class="collapse navbar-collapse  " id="topNavbar">
+                <ul class="navbar-nav ">
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('users/users','Users')}"></li>
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('users/new-users-form','New Users')}"></li>
+
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('customer/customer','customer')}"></li>
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('customer/new-customer-form','New customer')}"></li>
+
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('categories/categories','categories')}"></li>
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('categories/new-categories-form','New category')}"></li>
+
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('brands/brands','Brand')}"></li>
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('brands/new-brands-form','New Brand')}"></li>
+
+
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('products/products','Products')}"></li>
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('products/new-products-form','New Product')}"></li>
+
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('settings','settings')}"></li>
+
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('convert/convert','PdfConvert')}"></li>
+
+
+<!--                    <li class="nav-item ">-->
+<!--                        &lt;!&ndash;                          <div th:replace="~{support/fragments::imageicon}" ></div>&ndash;&gt;-->
+<!--                        <div th:replace="~{support/fragments/standerd/navbar/image_icon::content}"></div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item  ">-->
+<!--                        <div th:replace="~{support/fragments/standerd/navbar/drop-down-menu::content}"></div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <a class="nav-link" data-bs-toggle="dropdown"-->
+<!--                           th:text="${#authentication.principal.getAuthorities}"></a>-->
+
+
+<!--                    </li>-->
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+</div>
+
+</body>
+
+</html>
+
+
+

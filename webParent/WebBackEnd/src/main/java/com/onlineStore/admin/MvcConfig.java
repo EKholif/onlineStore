@@ -15,10 +15,13 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         addResourceHandler(registry, "categories-photos");
+        addResourceHandler(registry, "customers-photos");
+
         addResourceHandler(registry, "user-photos");
         addResourceHandler(registry, "brands-photos");
         addResourceHandler(registry, "products-photos");
         addResourceHandler(registry, "pdf-convert");
+        addResourceHandler(registry, "site-logo");
     }
 
 

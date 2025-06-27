@@ -42,7 +42,7 @@ public class PdfToTextConverter {
         try {
 
             PdfToTextConverter converter = new PdfToTextConverter();
-            converter.PdfToTxT(dirNamePath+"\\input.pdf",dirNamePath+"\\output55.text");
+            PdfToTxT(dirNamePath+"\\input.pdf",dirNamePath+"\\output55.text");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -106,7 +106,8 @@ public class PagingAndSortingHelper {
         model.addObject("search", search);
         model.addObject("modelUrl", modelUrl);
         model.addObject("pageTitle", pageTitle);
-        model.addObject("name", "/" + name + "/" + name);
+        model.addObject("name",  name );
+        model.addObject("url", "/" + name + "/" + name);
 
         return model;
     }
@@ -119,10 +120,9 @@ public class PagingAndSortingHelper {
 
     public ModelAndView newForm(ModelAndView model, String objectName, Object object) {
         model.addObject(objectName, object);
-
         model.addObject("listItems", listItems); // Assuming listItems is a class variable
-        model.addObject("pageTitle", "Create new " + listName);
-        model.addObject("saveChanges", "/" + listName + "/save-" + objectName);
+        model.addObject("pageTitle", "Create new " + objectName);
+        model.addObject("saveChanges", "/" + objectName + "/save-" + objectName);
         return model;
     }
 
