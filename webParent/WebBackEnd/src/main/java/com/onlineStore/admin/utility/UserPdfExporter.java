@@ -1,12 +1,12 @@
 package com.onlineStore.admin.utility;
 
+import com.onlineStore.admin.abstarct.AbstractExporter;
 import com.lowagie.text.Font;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import com.onlineStore.admin.abstarct.AbstractExporter;
-import com.onlineStoreCom.entity.User;
+import com.onlineStoreCom.entity.users.User;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.awt.*;

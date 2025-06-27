@@ -126,7 +126,7 @@ public class Category implements Comparable<Category> {
     }
 
     public static Category copyFull(Category Category, String name) {
-        Category copycategory = Category.copyFull(Category);
+        Category copycategory = copyFull(Category);
         copycategory.setName(name);
 
 
@@ -203,10 +203,7 @@ public class Category implements Comparable<Category> {
     @Transient
     public String getCatImagePath() {
         String dirName = "/categories-photos/";
-
-
         if (id < 0 || image == null) return "/images" + "\\" + "bob.png";
-
         return dirName + this.id + '\\' + this.image;
     }
 

@@ -49,7 +49,7 @@ public class PdfToImageConverter {
         String dirNamePath = "/fileConvert";
         try {
             PdfToImageConverter converter = new PdfToImageConverter();
-            converter.PDFtoImage(dirNamePath+"\\input2.pdf", "jpg");
+            PDFtoImage(dirNamePath+"\\input2.pdf", "jpg");
         } catch (IOException e) {
             e.printStackTrace();
         }

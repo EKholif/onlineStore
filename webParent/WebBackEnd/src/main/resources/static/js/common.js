@@ -44,7 +44,7 @@ function customDropMenu() {
     )
 
     $("#account").click(function () {
-        location.href = "account"
+        location.href = "/account"
 
     });
 }

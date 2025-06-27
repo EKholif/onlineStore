@@ -1,9 +1,9 @@
 package com.onlineStore.admin.pdfConvert;
 
-
 import com.itextpdf.text.DocumentException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
-import com.onlineStore.admin.category.controller.utility.FileUploadUtil;
+import com.onlineStore.admin.pdfConvert.convertUtile.*;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.convertPdf.FileConvert;
 import com.onlineStoreCom.entity.convertPdf.FileExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +19,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
-import static com.onlineStore.admin.pdfConvert.convertUtile.DocxToPdfConverter.DocxToPdf;
-import static com.onlineStore.admin.pdfConvert.convertUtile.ExcelToPdfConverter.ExcelToPdf;
-import static com.onlineStore.admin.pdfConvert.convertUtile.HtmlToPdfConverter.HTMLToPDF;
-import static com.onlineStore.admin.pdfConvert.convertUtile.ImageToPdfConverter.ImageToPdf;
-import static com.onlineStore.admin.pdfConvert.convertUtile.PdfToDocxConverter.PdfToDocx;
-import static com.onlineStore.admin.pdfConvert.convertUtile.PdfToExcelConverter.PdfToExcel;
-import static com.onlineStore.admin.pdfConvert.convertUtile.PdfToImageConverter.PDFtoImage;
-import static com.onlineStore.admin.pdfConvert.convertUtile.PdfToTextConverter.PdfToTxT;
-import static com.onlineStore.admin.pdfConvert.convertUtile.TxtToPdfConverter.TxtToPdf;
 
 @RestController
 
@@ -121,26 +111,26 @@ public class PdfConvertController {
                 return InputFilePath;
 
             case "html":
-                HTMLToPDF(InputFilePath, pdfOutFilePath);
+                HtmlToPdfConverter.HTMLToPDF(InputFilePath, pdfOutFilePath);
                 break;
 
             case "xlsx":
-                ExcelToPdf(InputFilePath, pdfOutFilePath);
+                ExcelToPdfConverter.ExcelToPdf(InputFilePath, pdfOutFilePath);
                 break;
 
             case "png":
             case "jpg":
 
-                ImageToPdf(InputFilePath, pdfOutFilePath);
+                ImageToPdfConverter.ImageToPdf(InputFilePath, pdfOutFilePath);
                 break;
 
             case "txt":
-                TxtToPdf(InputFilePath, pdfOutFilePath);
+                TxtToPdfConverter.TxtToPdf(InputFilePath, pdfOutFilePath);
 
                 break;
 
             case "docx":
-                DocxToPdf(InputFilePath, pdfOutFilePath);
+                DocxToPdfConverter.DocxToPdf(InputFilePath, pdfOutFilePath);
                 break;
         }
 
@@ -159,26 +149,26 @@ public class PdfConvertController {
 
 
                 case "html":
-                    HTMLToPDF(InputFilePath, pdfOutFilePath);
+                    HtmlToPdfConverter.HTMLToPDF(InputFilePath, pdfOutFilePath);
                     break;
 
                 case "xlsx":
-                    PdfToExcel(InputFilePath, pdfOutFilePath);
+                    PdfToExcelConverter.PdfToExcel(InputFilePath, pdfOutFilePath);
                     break;
 
                 case "png":
                 case "jpg":
 
-                    PDFtoImage(InputFilePath, pdfOutFilePath);
+                    PdfToImageConverter.PDFtoImage(InputFilePath, pdfOutFilePath);
                     break;
 
                 case "txt":
-                    PdfToTxT(InputFilePath, pdfOutFilePath);
+                    PdfToTextConverter.PdfToTxT(InputFilePath, pdfOutFilePath);
 
                     break;
 
                 case "docx":
-                    PdfToDocx(InputFilePath, pdfOutFilePath);
+                    PdfToDocxConverter.PdfToDocx(InputFilePath, pdfOutFilePath);
                     break;
             }
 

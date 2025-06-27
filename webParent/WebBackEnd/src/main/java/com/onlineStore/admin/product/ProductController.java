@@ -1,14 +1,14 @@
 package com.onlineStore.admin.product;
 
 
+import com.onlineStore.admin.product.service.ProductService;
+import com.onlineStore.admin.category.CategoryNotFoundException;
+import com.onlineStore.admin.category.services.CategoryService;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.brand.BrandNotFoundException;
 import com.onlineStore.admin.brand.BrandService;
-import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
-import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
-import com.onlineStore.admin.product.service.ProductService;
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.product.Product;
@@ -84,9 +84,9 @@ public class ProductController {
         model.addObject("label", "Main Image");
 
         model.addObject("label-category", " Category :");
-        model.addObject("listCategory", listCategory);
+//        model.addObject("listCategory", listCategory);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("products", listCategory); // Corrected listName
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("listCategory", listCategory); // Corrected listName
         return pagingAndSortingHelper.newForm(model, "product", product);
 
     }
@@ -166,14 +166,11 @@ public class ProductController {
 
     private void setExtraImageNames(MultipartFile[] extraImageMultipart, Product product) {
 
-        if (extraImageMultipart.length > 0) {
+        for (MultipartFile multipartFile : extraImageMultipart) {
 
-            for (MultipartFile multipartFile : extraImageMultipart) {
-
-                if (!multipartFile.isEmpty()) {
-                    String extraImageFileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                    product.addExtraImages(extraImageFileName);
-                }
+            if (!multipartFile.isEmpty()) {
+                String extraImageFileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+                product.addExtraImages(extraImageFileName);
             }
         }
     }

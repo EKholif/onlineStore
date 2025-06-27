@@ -243,7 +243,7 @@ public class CategoryService {
         Category parent = category.getParent();
         if (parent != null) {
             String allParentIds = parent.getAllParentIDs() == null ? "-" : parent.getAllParentIDs();
-            allParentIds += String.valueOf(parent.getId()) + "-";
+            allParentIds += parent.getId() + "-";
             category.setAllParentIDs(allParentIds);
         }
         setCategoryLevel(category);

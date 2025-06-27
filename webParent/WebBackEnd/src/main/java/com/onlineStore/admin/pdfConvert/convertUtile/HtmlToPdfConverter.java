@@ -62,7 +62,7 @@ public class HtmlToPdfConverter {
         String dirNamePath = "/fileConvert/";
         try {
             HtmlToPdfConverter converter = new HtmlToPdfConverter();
-            converter.HTMLToPDF(dirNamePath + "a.html", dirNamePath + "aa.pdf");
+            HTMLToPDF(dirNamePath + "a.html", dirNamePath + "aa.pdf");
         } catch (IOException | DocumentException e) {
             e.printStackTrace();
         }

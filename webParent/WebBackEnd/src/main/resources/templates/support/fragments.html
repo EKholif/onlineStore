@@ -138,7 +138,7 @@
                <div class="container-fluid ">
 
                    <a class="navbar-brand " th:href="@{/}">
-                  <img class="rounded-pill w-40" alt="Bob" th:src="@{/images/rr.png}"/>
+                  <img class="rounded-pill" alt="SITE LOGO" style="width: 150px; height: 150px; object-fit: contain; background-color: transparent; " th:src="@{/images/rr.png}"/>
               </a>
 
               <button th:replace="~{support/fragments::navbar-toggler}"></button>
@@ -147,6 +147,9 @@
                   <ul class="navbar-nav ">
                       <li th:replace="~{support/fragments::nav-link('users/users','Users')}"></li>
                       <li th:replace="~{support/fragments::nav-link('users/new-users-form','New Users')}"></li>
+
+                      <li th:replace="~{support/fragments::nav-link('customer/customer','customer')}"></li>
+                      <li th:replace="~{support/fragments::nav-link('customer/new-customer-form','New customer')}"></li>
 
                       <li th:replace="~{support/fragments::nav-link('categories/categories','categories')}"></li>
                       <li th:replace="~{support/fragments::nav-link('categories/new-categories-form','New category')}"></li>
@@ -158,15 +161,17 @@
                       <li th:replace="~{support/fragments::nav-link('products/products','Products')}"></li>
                       <li th:replace="~{support/fragments::nav-link('products/new-products-form','New Product')}"></li>
 
+                      <li th:replace="~{support/fragments::nav-link('settings','settings')}"></li>
+
                       <li th:replace="~{support/fragments::nav-link('convert/convert','PdfConvert')}"></li>
 
 
 
 
 
-
                       <li class="nav-item ">
-                          <div th:replace="~{support/fragments::imageicon}" ></div>
+<!--                          <div th:replace="~{support/fragments::imageicon}" ></div>-->
+                          <div th:replace="~{support/fragments/standerd/navbar/image_icon::content}" ></div>
                       </li>
 
                       <li class="nav-item  ">
@@ -252,6 +257,8 @@
                       </a>
                       <a href="#" class="my-auto">
                           <div th:replace="~{support/fragments::imageicon}" ></div>
+<!--                          <div th:replace="~{support/fragments/standerd/image_icon::content}" ></div>-->
+
                       </a>
                   </div>
               </div>
@@ -351,7 +358,8 @@
 <!--===============================================================================-->
 
 <div th:fragment="footer"  >
-    <p class="text-center" > OnlineGRoup copyright copy&copy; Ehab Kholif  </p>
+            <p class="text-center text-primary display-3"   >[[${COPYRIGHT}]]</p>
+    <p class="text-center" > [[${COPYRIGHT}]] </p>
 </div>
 
 
@@ -410,7 +418,7 @@
     </div>
     <div  th:unless="${totalItems>0}" >
 
-        <span> No [[${name}]] Found</span>
+        <span> No [[${url}]] Found</span>
     </div>
 
     <div  th:if="${totalPages>1}"   >
@@ -524,59 +532,6 @@
     </div>
 
 </div>
-
-<!--===============================================================================-->
-<!--                   modal   Dialog          -->
-
-<!--===============================================================================-->
-
-
-<div th:fragment="detaidlModal">
-    <div class="modal fade text-center modal-xl"
-         id="detailModal" data-bs-target="#modalDialog" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--===============================================================================-->
-<!--                  ooter_menu         -->
-
-<!--===============================================================================-->
-
-
-<div th:fragment="footer_menu">
-    <div>
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#bottomNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="bottomNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="">About Us</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="">Privacy
-                        Notice</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Returns
-                        &amp; Refunds</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div th:fragment="footer" class="text-center m-3">
-<!--        <p>[[${COPYRIGHT}]]</p>-->
-        <p class="text-center p-3"> OnlineGRoup copyright copy&copy; Ehab Kholif </p>
-
-    </div>
-
-
-
-
-
 
 
 

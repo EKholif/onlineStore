@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head th:replace="~{support/fragments/standerd/header::content}"></head>
+
+
+
+
+
+<body>
+
+<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 p-3">
+            <div th:replace="~{support/fragments/standerd/search::content}"></div>
+        </div>
+
+        <div class="col-sm-4 "> <!-- Use col-sm-12 to span the entire width on small devices -->
+            <h2 class="text-center">[[${pageTitle}]]</h2>
+        </div>
+    </div>
+</div>
+
+
+<div th:if="${message != null}" class="alert alert-success text-center">
+    [[${message}]]
+</div>
+
+
+<form th:action="@{${saveChanges}}" th:object="${objectName}" method="post"
+
+      enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto">
+
+    <div class="col-md-6 offset-md-3 p-3">
+
+        <div class="col border m-3 p-3">
+            <form>
+                <div class="form-group">
+                    <div class="col-lg">
+                        <label for="fileUpload">Upload your file</label>
+                        <input type="file" class="form-control-file" name="fileUpload" id="fileUpload" />
+                    </div>
+                    <div class="col-lg">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col border m-3 p-3 " id="divExtraProductImage0">
+
+            <div class="form-group p-3">
+                <label>Convert to:</label>
+
+                <div class="fa fa-cog fa-spin fa-1x fa-fw"></div>
+                <a class="fa fa-file-excel icon-d-green fa-4x" title="Excel"></a>
+                <a class="fa fa-file-image icon-orange fa-4x" title="Image"></a>
+                <a class="fa fa-file-pdf icon-red fa-4x" title="PDF"></a>
+                <a class="fa fa-file-alt icon-gray fa-4x" title="TEXT"></a>
+                <a class="fa fa-file-word icon-blue fa-4x" title="WORD"></a>
+                <a class="fab fa-html5 icon-red fa-4x" title="HTML"></a>
+                <div class="fa fa-cog fa-spin fa-1x fa-fw"></div>
+
+
+                <div class="form-group p-3">
+
+                    <select class="form-control" id="selectedExtension" name="selectedExtension">
+                        <th:block th:each="extension : ${fileExtensions}">
+                            <option th:value="${extension.extension}" th:text="${extension.extension}"></option>
+                        </th:block>
+                    </select>
+
+                    <div class="form-group row p-3">
+
+                        <div id="chosenExtensions"></div>
+                    </div>
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Convert</button>
+
+
+        </div>
+    </div>
+</form>
+
+
+
+<h4 class="text-center  mb-4 p-1 icon-gray">Internet's #1 and 100% free online PDF converter to
+
+    convert your files to and from PDFs. </br>
+    No registration or installation needed. Start converting today!</h4>
+
+ <div th:replace="~{support/fragments/standerd/footer::content}"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var dropdownExtensions = $("#selectedExtension");
+        var divChosenExtensions = $("#chosenExtensions");
+
+
+        dropdownExtensions.change(function () {
+            divChosenExtensions.empty();
+            showChosenFileExtensions();
+
+        });
+
+        function showChosenFileExtensions() {
+            dropdownExtensions.children("option:selected").each(function () {
+                var selectedExtension = $(this).val();
+
+                var iconHtml = '';
+                switch (selectedExtension) {
+                    case 'pdf':
+                        iconHtml = "<span class='badge rounded-pill text-danger'>" + selectedExtension + " <i class='fa fa-file-pdf icon-red fa-2x'></i></span>";
+                        break;
+                    case 'html':
+                        iconHtml = "<span class='badge rounded-pill  text-danger'>" + selectedExtension + " <i class='fab fa-html5 icon-red fa-2x'></i></span>";
+                        break;
+                    case 'png':
+                    case 'jpg':
+                        iconHtml = "<span class='badge rounded-pill icon-orange'>" + selectedExtension + " <i class='fa fa-file-image icon-orange fa-2x'></i></span>";
+                        break;
+                    case 'xlsx':
+                        iconHtml = "<span class='badge rounded-pill text-success'>" + selectedExtension + " <i class='fa fa-file-excel icon-d-green fa-2x'></i></span>";
+                        break;
+                    case 'txt':
+                        iconHtml = "<span class='badge rounded-pill icon-gray'>" + selectedExtension + " <i class='fa fa-file-alt icon-gray fa-2x'></i></span>";
+                        break;
+                    case 'docx':
+                        iconHtml = "<span class='badge rounded-pill text-primary'>" + selectedExtension + " <i class='fa fa-file-word icon-blue fa-2x'></i></span>";
+                        break;
+                }
+
+
+                // divChosenExtensions.append("<h4><span class='badge rounded-pill bg-secondary   '>" + selectedExtension + "</span></h4>");
+
+                divChosenExtensions.append(iconHtml + " ")
+            });
+        }
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

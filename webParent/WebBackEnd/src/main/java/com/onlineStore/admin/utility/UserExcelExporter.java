@@ -1,7 +1,7 @@
 package com.onlineStore.admin.utility;
 
 import com.onlineStore.admin.abstarct.AbstractExporter;
-import com.onlineStoreCom.entity.User;
+import com.onlineStoreCom.entity.users.User;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.poi.ss.usermodel.CellStyle;

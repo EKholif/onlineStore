@@ -22,9 +22,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
 
     @Query("SELECT C FROM Category C WHERE C.parent.id IS NULL ")
-    public Page<Category> findRootCategories(Pageable pageable);
+    Page<Category> findRootCategories(Pageable pageable);
 
-    public Category findByName(String name);
+    Category findByName(String name);
 
-    public Category findByAlias(String alias);
+    Category findByAlias(String alias);
 }

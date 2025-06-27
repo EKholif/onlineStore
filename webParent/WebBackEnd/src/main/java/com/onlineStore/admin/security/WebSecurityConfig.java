@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,14 +25,21 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new SUserDetailsService();
+        return new UserDetailsService();
     }
+
+
+
+
 
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
     }
+
+
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -51,24 +57,29 @@ public class WebSecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests((requests) -> requests
 
+
+
                         .requestMatchers("/users/**").hasAnyAuthority("Admin", "Editor")
+                        .requestMatchers("/customer/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/products/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/pdf-convert/**").hasAnyAuthority("Admin", "Editor")
+                        .requestMatchers("/settings/**").hasAnyAuthority("Admin", "Editor")
 
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .usernameParameter("email")
+
                         .permitAll()
 
 
                 )
 
                 .rememberMe(rememberMe -> rememberMe.key("BqRqADxmG8iRXXLvwIZ47NY4")
-                        .tokenValiditySeconds(1 * 24 * 60 * 60))
+                        .tokenValiditySeconds(14 * 24 * 60 * 60))
                 .logout(LogoutConfigurer::permitAll);
 
 

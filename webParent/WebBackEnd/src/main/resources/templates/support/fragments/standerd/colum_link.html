@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+
+<th th:fragment="contant (fieldName, columnLable)">
+    <a
+            th:href="@{${modelUrl}+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
+                            +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+                            '&keyWord='+ keyWord: ' '}}"  class="text-white " >
+        [[${columnLable}]]
+    </a>
+
+    <span th:if="${sortFiled== fieldName}"
+          th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+</th>
+
+
+
+</body>
+
+</html>

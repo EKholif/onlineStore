@@ -1,8 +1,8 @@
 package com.onlineStore.admin.product;
 
 
-import com.onlineStore.admin.category.controller.CategoryController;
 import com.onlineStore.admin.product.service.ProductService;
+import com.onlineStore.admin.category.controller.CategoryController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

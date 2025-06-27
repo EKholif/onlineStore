@@ -2,26 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-    <title>[[${pageTitle}]]</title>
-
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
-    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
-    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+<head th:replace="~{support/fragments/standerd/header::content}"></head>
 
 
-</head>
+
 <body>
 
-<div th:replace="~{support/fragments::navbar}"></div>
+<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments::search}"></div>
+<div th:replace="~{support/fragments/standerd/search::content}"></div>
 
 <div class="container-fluid">
 
@@ -93,8 +82,7 @@
 
         </div>
 
-        <div th:replace="~{support/fragments::save-and-rest-buttons}"></div>
-
+        <div th:replace="~{support/fragments/standerd/save-and-rest-button::content}"></div>
 
     </form>
 </div>

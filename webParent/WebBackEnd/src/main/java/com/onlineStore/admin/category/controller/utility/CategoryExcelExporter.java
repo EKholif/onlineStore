@@ -13,7 +13,7 @@ import java.util.List;
 public class CategoryExcelExporter extends AbstractExporter {
 
 
-    private XSSFWorkbook workbook;
+    private final XSSFWorkbook workbook;
     private XSSFSheet sheet;
 
     public CategoryExcelExporter() {

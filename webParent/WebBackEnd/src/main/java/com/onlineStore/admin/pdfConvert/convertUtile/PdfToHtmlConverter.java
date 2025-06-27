@@ -4,6 +4,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.fit.pdfdom.PDFDomTree;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 
 //Todo done tested
@@ -24,7 +25,7 @@ public class PdfToHtmlConverter {
         }
 
         try (PDDocument pdf = PDDocument.load(pdfFile);
-             Writer output = new PrintWriter(new OutputStreamWriter(new FileOutputStream(htmlOutFilePath), "UTF-8"))) {
+             Writer output = new PrintWriter(new OutputStreamWriter(new FileOutputStream(htmlOutFilePath), StandardCharsets.UTF_8))) {
 
             new PDFDomTree().writeText(pdf, output);
         } catch (IOException e) {
@@ -35,8 +36,7 @@ public class PdfToHtmlConverter {
 
     public static void main(String[] args) throws IOException {
         String dirNamePath = "/fileConvert/";
-
-        PdfToHtmlConverter converter = new PdfToHtmlConverter();
+         PdfToHtmlConverter converter = new PdfToHtmlConverter();
         converter.PdfToHtml(dirNamePath +"input2.pdf" , dirNamePath + "a.html");
         System.out.println("PDF generated successfully.");
     }
