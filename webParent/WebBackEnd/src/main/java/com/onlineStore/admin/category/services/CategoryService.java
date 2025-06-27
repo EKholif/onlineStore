@@ -18,17 +18,17 @@ public class CategoryService {
 
 
     @Autowired
-    private CategoryRepository repository;
+    private CategoryRepository categoryRepo;
 
     public List<Category> listAll() {
-        return repository.findAll();
+        return categoryRepo.findAll();
     }
 
     public Category findById(Long id) throws CategoryNotFoundException {
         try {
 
 
-            return repository.findById(id).get();
+            return categoryRepo.findById(id).get();
 
 
         } catch (NoSuchElementException ex) {
@@ -39,7 +39,7 @@ public class CategoryService {
     }
 
     public Boolean existsById(Long id) {
-        return repository.findById(id).isPresent();
+        return categoryRepo.findById(id).isPresent();
     }
 
 
@@ -47,8 +47,8 @@ public class CategoryService {
 
 //        boolean isCreatingNew = (id==null|| id==0L);
 
-        Category categoryByName = repository.findByName(name);
-        Category categoryByAlias = repository.findByAlias(alias);
+        Category categoryByName = categoryRepo.findByName(name);
+        Category categoryByAlias = categoryRepo.findByAlias(alias);
 
 //        if (isCreatingNew){
 
@@ -85,7 +85,7 @@ public class CategoryService {
 
         List<Category> categoriesUsedInForm = new ArrayList<>();
 
-        Iterable<Category> categories = repository.findAll(sort);
+        Iterable<Category> categories = categoryRepo.findAll(sort);
 
         for (Category category : categories) {
             if (category.getParent() == null) {
@@ -132,10 +132,10 @@ public class CategoryService {
 
         if (keyWord != null && !keyWord.isEmpty()) {
 
-            pageCategories = repository.findAll(keyWord, pageable);
+            pageCategories = categoryRepo.findAll(keyWord, pageable);
 
         } else {
-            pageCategories = repository.findRootCategories(pageable);
+            pageCategories = categoryRepo.findRootCategories(pageable);
         }
 
         List<Category> searchResult = pageCategories.getContent();
@@ -247,7 +247,7 @@ public class CategoryService {
             category.setAllParentIDs(allParentIds);
         }
         setCategoryLevel(category);
-        return repository.saveAndFlush(category);
+        return categoryRepo.saveAndFlush(category);
 
     }
 
@@ -262,13 +262,13 @@ public class CategoryService {
         }
 
 
-        repository.saveAndFlush(category);
+        categoryRepo.saveAndFlush(category);
 
     }
 
     public void deleteCategory(Long id) throws CategoryNotFoundException {
         try {
-            repository.deleteById(id);
+            categoryRepo.deleteById(id);
 
         } catch (NoSuchElementException ex) {
 
@@ -277,9 +277,34 @@ public class CategoryService {
     }
 
     public void UpdateCategoryEnableStatus(Long id, Boolean enable) {
-        repository.enableCategory(id, enable);
+        disableCategoryAndSubcategories(id, enable);
 
     }
+
+    @Transactional
+    public void disableCategoryAndSubcategories(Long id, Boolean enable) {
+        Category category = categoryRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+
+
+        categoryRepo.enableCategory(id, enable);
+
+        disableChildrenRecursively(category,enable);
+    }
+
+    private void disableChildrenRecursively(Category parent , Boolean enable) {
+        List<Category> children = categoryRepo.findByParent(parent);
+        for (Category child : children) {
+
+            categoryRepo.enableCategory(child.getId(), enable);
+
+
+            disableChildrenRecursively(child,  enable);
+        }
+    }
+
+
+
 
 
 }

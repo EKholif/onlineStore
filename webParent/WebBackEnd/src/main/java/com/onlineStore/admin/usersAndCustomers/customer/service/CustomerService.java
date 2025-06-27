@@ -7,7 +7,7 @@ import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import jakarta.transaction.Transactional;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

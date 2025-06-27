@@ -69,6 +69,9 @@ public class Product {
         this.alias = alias;
     }
 
+    public Product(Integer id) {
+    }
+
     public List<ProductDetails> getDetails() {
 
         return details;

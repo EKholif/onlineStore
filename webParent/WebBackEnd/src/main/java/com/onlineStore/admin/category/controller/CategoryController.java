@@ -42,16 +42,16 @@ public class CategoryController {
 
     @GetMapping("/categories/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("categories/categories");
 
         PageInfo pageInfo = new PageInfo();
 
-        List<Category> categoryPagePage = service.listByPage(pageInfo, pageNum, sortFiled, sortDir, keyWord);
+        List<Category> categoryPagePage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "categories", sortFiled, sortDir, keyWord, pageNum, categoryPagePage);
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "categories", sortField, sortDir, keyWord, pageNum, categoryPagePage);
 
         return pagingAndSortingHelper.listByPage(pageInfo, "categories");
 
@@ -190,8 +190,10 @@ public class CategoryController {
     @GetMapping("/category/{id}/enable/{status}")
     public ModelAndView UpdateUserStatus(@PathVariable("id") Long id, @PathVariable("status") boolean enable,
                                          RedirectAttributes redirectAttributes) {
-        service.UpdateCategoryEnableStatus(id, enable);
+
         String status = enable ? "enable" : " disable";
+
+        service.UpdateCategoryEnableStatus(id, enable);
         String message = " the user Id :   " + id + " has bean  " + status;
         redirectAttributes.addFlashAttribute("message", message);
 

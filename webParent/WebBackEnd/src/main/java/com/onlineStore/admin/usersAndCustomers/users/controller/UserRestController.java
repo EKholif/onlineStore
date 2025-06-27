@@ -3,8 +3,9 @@ package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserRestController {
@@ -13,7 +14,7 @@ public class UserRestController {
     private UserService userService;
 
     @PostMapping("/check_email")
-    public String checkDuplicateEmail(@Param("id") Long id, @Param("email") String email) {
+    public String checkDuplicateEmail( Long id,  String email) {
         return userService.isEmailUnique(id, email) ? "OK" : "Duplicated";
     }
 }

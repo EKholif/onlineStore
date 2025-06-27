@@ -39,22 +39,22 @@
 
                     <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('convert/convert','PdfConvert')}"></li>
 
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('shipping-rate','Shipping Rate')}"></li>
+                    <li th:replace="~{support/fragments/standerd/navbar/nav_link::contant('new-shipping-rate-form','New Shipping Rate')}"></li>
+                    <li class="nav-item ">
+                        <div th:replace="~{support/fragments/standerd/navbar/image_icon::content}"></div>
+                    </li>
 
-<!--                    <li class="nav-item ">-->
-<!--                        &lt;!&ndash;                          <div th:replace="~{support/fragments::imageicon}" ></div>&ndash;&gt;-->
-<!--                        <div th:replace="~{support/fragments/standerd/navbar/image_icon::content}"></div>-->
-<!--                    </li>-->
+                    <li class="nav-item  ">
+                        <div th:replace="~{support/fragments/standerd/navbar/drop-down-menu::content}"></div>
+                    </li>
 
-<!--                    <li class="nav-item  ">-->
-<!--                        <div th:replace="~{support/fragments/standerd/navbar/drop-down-menu::content}"></div>-->
-<!--                    </li>-->
-
-<!--                    <li>-->
-<!--                        <a class="nav-link" data-bs-toggle="dropdown"-->
-<!--                           th:text="${#authentication.principal.getAuthorities}"></a>-->
+                    <li>
+                        <a class="nav-link" data-bs-toggle="dropdown"
+                           th:text="${#authentication.principal.getAuthorities}"></a>
 
 
-<!--                    </li>-->
+                    </li>
 
 
 

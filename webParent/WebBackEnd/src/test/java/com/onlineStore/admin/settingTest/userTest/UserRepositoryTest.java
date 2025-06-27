@@ -43,7 +43,7 @@ class UserRepositoryTest {
 
         System.out.println(userAdmin);
 
-        testlUser();
+        testUser();
         assertThat(savedRole.getId()).isGreaterThan(0);
 
     }
@@ -70,7 +70,7 @@ class UserRepositoryTest {
         User userAssistant = new User("eh.bts@gmail.com", "000a0", "testUserTwo", "kholif");
         userAssistant.addRole(roleRepository.getReferenceById(5L));
 
-         testlUser();
+         testUser();
 
         repo.saveAllAndFlush(List.of(userSalesperson, userEditor, userShipper, userAssistant));
 
@@ -134,7 +134,7 @@ class UserRepositoryTest {
         Long id = 1L;
         repo.deleteById(id);
 
-        testlUser();
+        testUser();
     }
 
     @Test
@@ -266,7 +266,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    public void testlUser(){
+    public void testUser(){
 
         Iterable<User> listUsers =repo.findAll();
 

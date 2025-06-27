@@ -40,17 +40,17 @@ public class UserController {
 
     @GetMapping("/users/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("users/users");
         PageInfo pageInfo = new PageInfo();
 
         List<User> listByPage = service.listByPage
-                (pageInfo, pageNum, sortFiled, sortDir, keyWord);
+                (pageInfo, pageNum, sortField, sortDir, keyWord);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                (model, "users", sortFiled, sortDir, keyWord, pageNum, listByPage);
+                (model, "users", sortField, sortDir, keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "users");
 
@@ -191,7 +191,7 @@ public class UserController {
 
         }
         String fristPartEmail = user.getEmail().split("@")[0];
-        return new ModelAndView("redirect:/users/page/1?sortFiled=id&sortDir=asc&keyWord=" + fristPartEmail);
+        return new ModelAndView("redirect:/users/page/1?sortField=id&sortDir=asc&keyWord=" + fristPartEmail);
     }
 
 

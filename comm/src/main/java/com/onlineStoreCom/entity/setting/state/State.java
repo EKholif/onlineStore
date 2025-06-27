@@ -1,7 +1,7 @@
 package com.onlineStoreCom.entity.setting.state;
 
 
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 

@@ -1,6 +1,6 @@
 package com.onlineStore.admin.setting.state;
 
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import org.springframework.data.jpa.repository.JpaRepository;
 

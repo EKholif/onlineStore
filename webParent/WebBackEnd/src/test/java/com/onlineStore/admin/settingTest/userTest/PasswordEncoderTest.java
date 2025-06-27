@@ -1,6 +1,5 @@
 package com.onlineStore.admin.settingTest.userTest;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

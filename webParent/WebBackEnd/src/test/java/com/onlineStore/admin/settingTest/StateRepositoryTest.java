@@ -1,8 +1,9 @@
 package com.onlineStore.admin.settingTest;
 
 
+import com.onlineStore.admin.ImageCopier;
 import com.onlineStore.admin.setting.state.StateRepository;
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class StateRepositoryTest {
 
         assertThat(state).isNotNull();
         assertThat(state.getId()).isGreaterThan(0);
+
     }
 
     @Test
@@ -92,6 +94,9 @@ public class StateRepositoryTest {
         Optional<State> findById = repo.findById(stateId);
         assertThat(findById.isEmpty());
     }
-
+    @Test
+    public void imageCopier() {
+        ImageCopier.imageCopier( "Sa", "user-photos" );
+    }
 
 }

@@ -17,7 +17,7 @@
 
     <div class="container">
 
-
+        <div class="border border-secondary rounded p-3">
         <form th:action="@{${saveChanges}}" th:object="${category}" method="post"
 
               enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto"
@@ -27,7 +27,7 @@
 
             <input type="hidden" id="id" name="id" th:value="${id}"/>
 
-            <div class="border border-secondary rounded p-3">
+
 
                 <!--            <div th:replace="~{support/fragments::input-group-category(name,Name)}" ></div>-->
 
@@ -35,7 +35,7 @@
                     <label class="col-sm-4 col-form-label">Name</label>
                     <div class="col-sm-8">
                         <input type="text" th:field="*{name}" required minlength="2" placeholder="enter first name"
-                               class="form-control col-4 mb-4"/>
+                               class="form-control col-4 mb-2"/>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
                 <div class="input-group row">
                     <label class="col-sm-4 col-form-label">[[${label}]]</label>
                     <div class="col-sm-8">
-                        <select class="form-control" th:field="*{parent}">
+                        <select class="form-control mb-2" th:field="*{parent}">
                             <option value="0"> [No Parent]</option>
 
                             <th:block th:each="cat : ${listItems}">
@@ -66,16 +66,16 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Enabled:</label>
-                    <div class="col-sm-10">
-                        <input class="text-center" type="checkbox" th:field="*{enable}"/>
+                    <label class="col-sm-4 col-form-label">Enabled:</label>
+                    <div class="col-sm-8">
+                        <input class="text-center mb-2" type="checkbox" th:field="*{enable}"/>
                     </div>
                 </div>
 
 
                 <div class="form row">
                     <label class="col-sm-4 col-form-label">[[${label}]]</label>
-                    <div class="col-sm-8 ">
+                    <div class="col-sm-8 mb-2 ">
                         <input type="hidden" th:field="*{image}"/>
                         <input class="mb-2" type="file" id="fileImage" name="fileImage"
                                accept="image/jpg, image/jpeg, image/png"/>

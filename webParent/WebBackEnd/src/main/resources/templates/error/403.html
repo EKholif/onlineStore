@@ -19,21 +19,21 @@
 
 <body>
 
-<div th:replace="~{support/fragments::navbar}"></div>
-<div th:replace="~{support/fragments::search}"></div>
+<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
+<div class="text-center icon-red   mt-3">
+    <h2 class="fas fa-exclamation-triangle fa-5x  "> </h2>
+    <h2 class=" ">Error </h2>
+</div>
+<div th:replace="~{support/fragments/standerd/search::content}"></div>
 
 
-<div class="container-fluid">
 
-
-    <div class="m-3">
+    <div class="m-3 text-center icon-red">
         <h2>Sorry, you don't have permission to access this page</h2>
     </div>
 
 
-    <div th:replace="~{support/fragments::footer}"></div>
-
-</div>
+    <div th:replace="~{support/fragments/standerd/footer::content}"></div>
 
 
 <script type="text/javascript" th:src="@{/js/common.js}"></script>

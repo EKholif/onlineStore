@@ -2,7 +2,7 @@ package com.onlineStore.admin.test.counteryTest;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import jakarta.persistence.EntityManager;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.onlineStore.admin.test.counteryTest;
 
 import com.onlineStore.admin.setting.country.CountryRepository;
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

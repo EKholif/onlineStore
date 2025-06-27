@@ -7,7 +7,7 @@ import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
@@ -54,17 +54,17 @@ public class CustomerController {
 
     @GetMapping("/customer/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("customer/customer");
         PageInfo pageInfo = new PageInfo();
 
         List<Customer> listByPage = service.listByPage
-                (pageInfo, pageNum, sortFiled, sortDir, keyWord);
+                (pageInfo, pageNum, sortField, sortDir, keyWord);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                (model, "customer", sortFiled, sortDir, keyWord, pageNum, listByPage);
+                (model, "customer", sortField, sortDir, keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "customer");
 

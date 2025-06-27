@@ -45,17 +45,17 @@ public class BrandController {
 
     @GetMapping("/brands/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("brands/brands");
         PageInfo pageInfo = new PageInfo();
 
-        List<Brand> listByPage = service.listByPage(pageInfo, pageNum, sortFiled, sortDir, keyWord);
+        List<Brand> listByPage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
 
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                (model, "brands", sortFiled, sortDir, keyWord, pageNum, listByPage);
+                (model, "brands", sortField, sortDir, keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "brands");
         return model;

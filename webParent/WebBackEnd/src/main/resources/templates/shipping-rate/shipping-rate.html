@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standerd/header::content}"></head>
+
+
+<body>
+
+
+<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
+<h2 class="text-center">[[${pageTitle}]]</h2>
+<div th:replace="~{support/fragments/standerd/search::content}"></div>
+
+
+<form id="deleteForm" method="post" th:action="@{/delete-shipping-rate}">
+
+    <div class=" justify-content-center mb-2 mt-2 ">
+        <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" title="Delete Selected shippinRates"
+                type="submit"></button>
+
+        <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/templates/shipping-rate/new-hipping-rate-form}"
+           title="Add shippinRate"></a>&nbsp;&nbsp;
+
+        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a> &nbsp;&nbsp;
+
+        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a> &nbsp;&nbsp;
+
+        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}" title="Export to Excel"></a>&nbsp;&nbsp;
+    </div>
+
+
+    <div class="alert alert-success text-center" th:if="${message != null}">
+        [[${message}]]
+    </div>
+
+
+    <div class="container  full-details  less-details">
+        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered ">
+            <thead class="table-dark ">
+            <tr>
+
+                <th>Select</th>
+                <th th:replace="~{support/fragments::colum_link('id', 'ID')}"></th>
+
+
+                <th th:replace="~{support/fragments::colum_link('country', 'Country')}"></th>
+
+                <th th:replace="~{support/fragments::colum_link('state', 'State')}"></th>
+
+
+                <th th:replace="~{support/fragments::colum_link('rate', 'Rate')}"></th>
+
+                <th th:replace="~{support/fragments::colum_link('days', 'Days')}"></th>
+
+                <th th:replace="~{support/fragments::colum_link('codSpupport', 'COD Spupport')}"></th>
+
+                <th>Edit</th>
+
+                <th>Delete</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="ShippingRate: ${shippingRates}">
+
+
+                <td class="text-center" style="width: 40px;">
+                    <input class="form-check-input delete-checkbox " id="flexCheckDefault" name="selectedForDelete"
+                           th:value="${ShippingRate.id}" type="checkbox">
+                </td>
+
+
+                <td th:text="${ShippingRate.id}"></td>
+
+                <td th:text="${ShippingRate.country.name}"></td>
+
+                <td th:text="${ShippingRate.state.name}"></td>
+
+                <td th:text="${ShippingRate.rate}"></td>
+
+                <td th:text="${ShippingRate.days}"></td>
+
+
+                <td class="text-center"  style="width: 100px;">
+                    <a class="fas fa-check-circle px-2 icon-green " th:href="@{'/shipping-rate/' + ${ShippingRate.getId} +'/enable/false' } "
+                       th:if="${ShippingRate.codSupported == true}"
+                       title="Disable brand"></a>
+                    <!--                                                      &nbsp;-->
+                    <!--                                                      &nbsp;-->
+                    <a class="fas fa-circle px-2 icon-red" th:href="@{'/shipping-rate/' + ${ShippingRate.getId} +'/enable/true' }"
+                       th:if="${ShippingRate.codSupported == false}"
+                       title="Enable brand"></a>
+
+                </td>
+
+                <td class="text-center" style="width: 40px;">
+                    <a class="fas fa-edit px-2 icon-green"
+                       th:href="@{'/shipping-rate/edit/' + ${ShippingRate.getId}}"
+                       title="Edit shipping rate"></a>
+                </td>
+
+
+                <td class="text-center" style="width: 40px;">
+
+                    <a class="fas fa-trash px-2 icon-red delete-confirmation"
+                       th:href="@{'/delete-shipping-rate/' + ${ShippingRate.getId}}"
+                       th:id="${ShippingRate.getId}"
+
+                       title="Delete shipping rate"></a></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</form>
+
+
+<div th:replace="~{support/fragments/standerd/paginate::content}"></div>
+
+
+<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+
+<div th:replace="~{support/fragments::modal}"></div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".delete-confirmation").on("click", function (e) {
+            e.preventDefault();
+            link = $(this);
+            id = link.attr("id");
+
+
+            $("#yesbutton").attr("href", link.attr('href'));
+
+            $("#modalTitle").text("Warning");
+            $("#modalBody").text("Are You Sure You want to delete  Cat :   " + id);
+            $("#confirmModal").modal('show');
+        });
+    });
+
+
+</script>
+
+
+<script th:src="@{/js/commonCat.js}" type="text/javascript"></script>
+
+
+<script>
+    const windowLocationValue = `[[@{${name}}]]`;
+</script>
+
+</body>
+
+</html>

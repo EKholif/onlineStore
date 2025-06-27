@@ -8,7 +8,7 @@
     <div  class="d-inline-flex mb-2 " >
         <div>
             <form class="d-inline-flex "  th:action="@{${search} }">
-                <input  type="hidden" name="sortFiled" th:value="${sortFiled}"/>
+                <input  type="hidden" name="sortField" th:value="${sortField}"/>
                 <input  type="hidden" name="sortDir" th:value="${sortDir}"/>
 
                 <input class="form-control " type="search" name="keyWord" th:value="${keyWord}" required  placeholder="Search User">

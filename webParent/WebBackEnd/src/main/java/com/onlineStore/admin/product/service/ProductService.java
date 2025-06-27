@@ -93,9 +93,9 @@ public class ProductService {
 
     }
 
-    public List<Product> listByPage(PageInfo pageInfo, int pageNum, String sortFiled, String sortDir, String keyWord) {
+    public List<Product> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
 
-        Sort sort = Sort.by(sortFiled);
+        Sort sort = Sort.by(sortField);
 
 
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();

@@ -98,7 +98,7 @@ public class PagingAndSortingHelper {
         model.addObject("sortDir", sortDir);
         model.addObject("endCount", endCount);
         model.addObject("currentPage", pageNum);
-        model.addObject("sortFiled", sortField);
+        model.addObject("sortField", sortField);
         model.addObject("startCont", startCount);
         model.addObject("reverseSortDir", reverseSortDir);
         model.addObject("totalPages", pageInfo.getTotalPages());
@@ -106,8 +106,6 @@ public class PagingAndSortingHelper {
         model.addObject("search", search);
         model.addObject("modelUrl", modelUrl);
         model.addObject("pageTitle", pageTitle);
-        model.addObject("name",  name );
-        model.addObject("url", "/" + name + "/" + name);
 
         return model;
     }

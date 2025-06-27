@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standerd/header::content}"></head>
+
+
+<body>
+
+<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
+<h2 class="text-center">[[${pageTitle}]]</h2>
+<div th:replace="~{support/fragments/standerd/search::content}"></div>
+
+
+<div class="container-fluid">
+
+
+    <div class="container">
+
+
+        <form method="post"
+              th:action="@{${saveChanges}}"
+              th:object="${shippingRate}">
+
+            <input type="hidden" id="id" name="id" th:value="${id}"/>
+            <div class="border border-secondary rounded p-3">
+
+
+                <!-- الدولة -->
+                <div class="input-group row">
+                    <label class="col-sm-4 col-form-label">Country</label>
+                    <div class="col-sm-8 mt-2">
+                        <select class="form-control" name="country" th:field="*{country}">
+                            <option value="0">[No Country]</option>
+                            <th:block th:each="country : ${listItems}">
+                                <option th:value="${country.id}">[[${country.name}]]</option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group row">
+                    <label class="col-sm-4 col-form-label">State</label>
+                    <div class="col-sm-8 mt-2">
+                        <select class="form-control" name="state" th:field="*{state}">
+                            <option th:each="state : ${allStates}"
+                                    th:value="${state.id}"
+                                    th:text="${state.name}">
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="input-group row d-none" id="newStateGroup">
+                    <label class="col-sm-4 col-form-label">State</label>
+                    <div class="col-sm-8 mt-2">
+                        <input class="form-control" id="newStateInput"
+                               name="stateNameManual"
+                               type="text"
+                               placeholder="Enter state name manually"
+                               minlength="2"
+                               disabled />
+                    </div>
+                </div>
+
+
+                <div class="input-group row">
+                    <label class="col-sm-4 col-form-label">rate</label>
+                    <div class="col-sm-8">
+                        <input class="form-control col-4 mt-2" placeholder="Please enter the rate"
+                               required
+                               th:field="*{rate}" type="text"/>
+                    </div>
+                </div>
+
+                <div class="input-group row">
+                    <label class="col-sm-4 col-form-label">Dalivery Days</label>
+                    <div class="col-sm-8">
+                        <input class="form-control col-4 mt-2"
+                               placeholder="Please enter the Dalivery Days" required
+                               th:field="*{days}" type="text"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">COD Spupport:</label>
+                    <div class="col-sm-8  mt-2">
+                        <input class="text-center" th:field="*{codSupported}" type="checkbox"/>
+                    </div>
+                </div>
+            </div>
+
+            <div th:replace="~{support/fragments/standerd/save-and-rest-button::content}"></div>
+
+        </form>
+    </div>
+</div>
+</div>
+
+
+<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+
+<div th:replace="~{support/fragments::modal}"></div>
+
+<script>
+    Max_File_Size = 1042000;
+    const windowLocationValue = `[[@{${name}}]]`;
+    const url = "[[@{'/check_unique_name'}]]";
+
+</script>
+<script th:inline="javascript">
+    let allStates = [[${allStates}]];
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        const selectedCountryId = parseInt($("select[name='country']").val());
+        const selectedStateId = parseInt($("select[name='state']").val());
+
+        filterStatesByCountry(selectedCountryId, selectedStateId); // تحميل أولي مع الولاية الحالية
+
+        $("select[name='country']").change(function () {
+            const countryId = parseInt($(this).val());
+            filterStatesByCountry(countryId); // تغيير الدولة
+        });
+    });
+
+    function filterStatesByCountry(countryId, selectedStateId = null) {
+        const $stateSelect = $("select[name='state']");
+        $stateSelect.empty();
+
+        const filteredStates = allStates.filter(state => state.country.id === countryId);
+
+        if (filteredStates.length === 0) {
+            $stateSelect.append('<option value="0">[No state]</option>');
+            $('#newStateGroup').removeClass('d-none'); // ✅ إظهار إدخال نص
+        } else {
+            $('#newStateGroup').addClass('d-none'); // ✅ إخفاء إدخال نص
+            $('#newStateInput').val(''); // تفريغ القيمة النصية
+
+            if (selectedStateId !== null) {
+                const selectedState = filteredStates.find(state => state.id === selectedStateId);
+                if (selectedState) {
+                    $stateSelect.append('<option value="' + selectedState.id + '" selected>' + selectedState.name + '</option>');
+                }
+            }
+
+            filteredStates.forEach(state => {
+                if (state.id !== selectedStateId) {
+                    $stateSelect.append('<option value="' + state.id + '">' + state.name + '</option>');
+                }
+            });
+        }
+    }
+
+
+</script>
+
+</body>
+
+
+</html>

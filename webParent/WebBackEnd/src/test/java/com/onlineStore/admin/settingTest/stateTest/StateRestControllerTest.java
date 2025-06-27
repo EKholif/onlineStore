@@ -4,7 +4,7 @@ package com.onlineStore.admin.settingTest.stateTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.onlineStore.admin.setting.country.CountryRepository;
 import com.onlineStore.admin.setting.state.StateRepository;
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

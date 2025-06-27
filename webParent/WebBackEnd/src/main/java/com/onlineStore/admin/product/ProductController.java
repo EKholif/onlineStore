@@ -52,17 +52,17 @@ public class ProductController {
 
     @GetMapping("/products/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortFiled") String sortFiled, @Param("sortDir") String sortDir,
+                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
 
         ModelAndView model = new ModelAndView("products/products");
         PageInfo pageInfo = new PageInfo();
 
-        List<Product> listByPage = productService.listByPage(pageInfo, pageNum, sortFiled, sortDir, keyWord);
+        List<Product> listByPage = productService.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                (model, "products", sortFiled, sortDir, keyWord, pageNum, listByPage);
+                (model, "products", sortField, sortDir, keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "products");
         return model;

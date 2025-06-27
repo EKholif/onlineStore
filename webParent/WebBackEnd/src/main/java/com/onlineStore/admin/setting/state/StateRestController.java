@@ -1,6 +1,6 @@
 package com.onlineStore.admin.setting.state;
 
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.setting.state.StateDTO;
 import org.springframework.beans.factory.annotation.Autowired;

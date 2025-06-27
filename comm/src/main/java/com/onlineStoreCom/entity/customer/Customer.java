@@ -3,7 +3,7 @@ package com.onlineStoreCom.entity.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.AuthenticationType;
-import com.onlineStoreCom.entity.setting.Country.Country;
+import com.onlineStoreCom.entity.setting.state.Country.Country;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -41,13 +41,15 @@ public class Customer {
     private String email;
     @Column(nullable = false, length = 64)
     private String password;
+
     @Column(name = "verification_code", length = 64)
     private String verificationCode;
     private boolean enabled;
     @Column(name = "created_time")
     private Date createdTime;
-    @Column(name = "image", length = 125, nullable = true)
+    @Column(name = "image", length = 225, nullable = true)
     private String image;
+
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -61,20 +63,12 @@ public class Customer {
         this.authenticationType = authenticationType;
     }
 
-    public String getResetPasswordToken() {
-        return resetPasswordToken;
-    }
-
-    public void setResetPasswordToken(String resetPasswordToken) {
-        this.resetPasswordToken = resetPasswordToken;
-    }
-
     @Enumerated(EnumType.STRING)
     @Column(name = "authentication_type", length = 10)
     private AuthenticationType authenticationType;
 
-    @Column(name = "reset_password_token", length = 30)
-    private String resetPasswordToken;
+    @Column(name = "rest_password_token", length = 30)
+    private String restPasswordToken;
 
 
 
@@ -208,6 +202,13 @@ public class Customer {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+    public String getRestPasswordToken() {
+        return restPasswordToken;
+    }
+
+    public void setRestPasswordToken(String restPasswordToken) {
+        this.restPasswordToken = restPasswordToken;
     }
 
     @Override

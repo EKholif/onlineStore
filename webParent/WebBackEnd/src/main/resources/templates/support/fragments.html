@@ -28,13 +28,13 @@
 
       <th th:fragment="colum_link (fieldName, columnLable)">
             <a
-                    th:href="@{${modelUrl}+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
-                            +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+                    th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                            +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ' '}}"  class="text-white " >
                        [[${columnLable}]]
             </a>
 
-            <span th:if="${sortFiled== fieldName}"
+            <span th:if="${sortField== fieldName}"
                   th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
       </th>
 
@@ -46,13 +46,13 @@
 
 <th th:fragment="colum_link_product (fieldName, columnLable)">
     <a
-            th:href="@{${modelUrl}+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
-                            +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+            th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                            +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ' '}}"  class="text-white " >
         [[${columnLable}]]
     </a>
 
-    <span th:if="${sortFiled== fieldName}"
+    <span th:if="${sortField== fieldName}"
           th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
 </th>
 
@@ -80,7 +80,7 @@
 
 
        <a   th:fragment="page_link(pageNum,label)"     class="page-link"
-            th:href="@{${modelUrl}+ ${pageNum} +'?sortFiled='+${sortFiled} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
+            th:href="@{${modelUrl}+ ${pageNum} +'?sortField='+${sortField} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
              '&keyWord='+ keyWord: ' '}}" >[[${label}]]
        </a>
 
@@ -299,7 +299,7 @@
            <div  class="d-inline-flex mb-2 " >
               <div>
                   <form class="d-inline-flex "  th:action="@{${search} }">
-                      <input  type="hidden" name="sortFiled" th:value="${sortFiled}"/>
+                      <input  type="hidden" name="sortField" th:value="${sortField}"/>
                       <input  type="hidden" name="sortDir" th:value="${sortDir}"/>
 
                       <input class="form-control " type="search" name="keyWord" th:value="${keyWord}" required  placeholder="Search User">

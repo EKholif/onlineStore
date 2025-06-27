@@ -31,11 +31,7 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/brands/new-form")
-    public String neds() {
-        return "/brands/new-form";
 
-    }
 
 }
 

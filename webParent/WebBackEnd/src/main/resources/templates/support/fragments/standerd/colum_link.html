@@ -6,13 +6,13 @@
 
 <th th:fragment="contant (fieldName, columnLable)">
     <a
-            th:href="@{${modelUrl}+ ${currentPage}+'?sortFiled='+${fieldName}+'&sortDir='
-                            +${sortFiled!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+            th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                            +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ' '}}"  class="text-white " >
         [[${columnLable}]]
     </a>
 
-    <span th:if="${sortFiled== fieldName}"
+    <span th:if="${sortField== fieldName}"
           th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
 </th>
 
