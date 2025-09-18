@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{support/fragments/header::content}"></head>
+
+<body>
+<div th:fragment="content">
+
+
+    <nav class="navbar  navbar-expand-md bg-black ">
+        <div class="container-fluid   ">
+
+            <a class="navbar-brand " th:href="@{/}">
+                <img alt="SITE LOGO" class="rounded-pill"
+                     style="width: 100px; height: 100px; object-fit: contain; background-color: transparent; "
+                     th:src="@{/images/rr.png}"/>
+            </a>
+
+            <div th:replace="~{support/fragments/navbar/navbar-toggler::content}"></div>
+
+
+            <div class="collapse navbar-collapse mt-5 " id="mainNavbar">
+
+                <ul class="navbar-nav ">
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" class="nav-link dropdown-toggle  icon-navbar"
+                           data-bs-toggle="dropdown"
+                           href="#" role="button">
+                            Manage Users
+                        </a>
+                        <ul class="dropdown-menu bg-dark">
+                            <li class="dropdown-item text-dark-emphasis"
+                                th:replace="~{support/fragments/navbar/nav_link::contant('users/users','Users')}"></li>
+                            <li class="dropdown-item text-dark-emphasis"
+                                th:replace="~{support/fragments/navbar/nav_link::contant('users/new-users-form','New Users')}"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="dropdown-item text-dark-emphasis"
+                                th:replace="~{support/fragments/navbar/nav_link::contant('customer/customer','customer')}"></li>
+                            <li class="dropdown-item text-dark-emphasis"
+                                th:replace="~{support/fragments/navbar/nav_link::contant('customer/new-customer-form','New customer')}"></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+                <div class="collapse navbar-collapse" id="mainNavbarCategory">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item dropdown">
+                            <a aria-expanded="false" class="nav-link dropdown-toggle icon-navbar"
+                               data-bs-toggle="dropdown"
+                               href="#" role="button">
+                                Category Producut
+                            </a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('categories/categories','categories')}"></li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('categories/new-categories-form','New category')}"></li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('brands/brands','Brand')}"></li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('brands/new-brands-form','New Brand')}"></li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('products/products','Products')}"></li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('products/new-products-form','New Product')}"></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="collapse navbar-collapse" id="mainNavbarsettings">
+
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a aria-expanded="false"
+                                   class="nav-link dropdown-toggle icon-navbar"
+                                   data-bs-toggle="dropdown"
+                                   href="#" role="button">
+                                    settings
+                                </a>
+                                <ul class="dropdown-menu bg-dark">
+                                    <li class="dropdown-item text-dark-emphasis"
+                                        th:replace="~{support/fragments/navbar/nav_link::contant('settings','settings')}"></li>
+                                    <hr class="dropdown-divider">
+                                    <li class="dropdown-item text-dark-emphasis"
+                                        th:replace="~{support/fragments/navbar/nav_link::contant('shipping-rate','Shipping Rate')}"></li>
+                                    <li class="dropdown-item text-dark-emphasis"
+                                        th:replace="~{support/fragments/navbar/nav_link::contant('new-shipping-rate-form','New Shipping Rate')}"></li>
+
+                                    <li>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="collapse navbar-collapse" id="mainNavbarsShipping">
+
+                            <ul class="navbar-nav ">
+                                <li class="nav-item dropdown">
+                                    <a aria-expanded="false"
+                                       class="nav-link dropdown-toggle icon-navbar"
+                                       data-bs-toggle="dropdown"
+                                       href="#" role="button">
+                                        Shipping
+                                    </a>
+                                    <ul class="dropdown-menu bg-dark">
+
+                                        <li class="dropdown-item text-dark-emphasis"
+                                            th:replace="~{support/fragments/navbar/nav_link::contant('shipping-rate','Shipping Rate')}"></li>
+                                        <li class="dropdown-item text-dark-emphasis"
+                                            th:replace="~{support/fragments/navbar/nav_link::contant('new-shipping-rate-form','New Shipping Rate')}"></li>
+
+                                        <li>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="collapse navbar-collapse" id="mainNavbarOrder">
+
+                                <ul class="navbar-nav ">
+                                    <li class="nav-item dropdown">
+                                        <a aria-expanded="false" class="nav-link dropdown-toggle icon-navbar "
+                                           data-bs-toggle="dropdown"
+                                           href="#" role="button">
+                                            Order
+                                        </a>
+                                        <ul class="dropdown-menu bg-dark">
+                                            <li class="dropdown-item text-dark-emphasis"
+                                                th:replace="~{support/fragments/navbar/nav_link::contant('orders','Orders')}"></li>
+
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+
+
+                                <div class="collapse navbar-collapse" id="mainNavbarcontent">
+
+                                    <ul class="navbar-nav ">
+                                        <li class="nav-item dropdown">
+                                            <a aria-expanded="false"
+                                               class="nav-link dropdown-toggle icon-navbar"
+                                               data-bs-toggle="dropdown"
+                                               href="#" role="button">
+                                                content
+                                            </a>
+                                            <ul class="dropdown-menu bg-dark">
+                                                <li class="dropdown-item text-dark-emphasis"
+                                                    th:replace="~{support/fragments/navbar/nav_link::contant('convert/convert','PdfConvert')}"></li>
+
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <li class="nav-item d-flex flex-column align-items-center pl-1">
+                        <!-- img -->
+                        <div th:replace="~{support/fragments/navbar/image_icon::content}"></div>
+
+                        <!--  Dropdown -->
+                        <a class="nav-link dropdown-toggle icon-navbar mt-1" href="#" role="button"
+                           data-bs-toggle="dropdown"
+                           th:text="${#authentication.principal.getAuthorities()}">
+                        </a>
+
+                        <!-- Dropdown -->
+                        <ul class="dropdown-menu" th:replace="~{support/fragments/navbar/drop-down-menu::content}"></ul>
+                    </li>
+
+                    </ul>
+                </div>
+            </div>
+    </nav>
+
+
+</div>
+
+</body>
+
+</html>
+
+
+
