@@ -1,17 +1,15 @@
 package com.onlineStoreCom.entity.product;
 
 
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "product_details")
 
-public class ProductDetails {
+public class ProductDetails extends IdBasedEntity {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     @Column(nullable = false, length = 255)
     private String name;
@@ -44,13 +42,7 @@ public class ProductDetails {
         this.product = product;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

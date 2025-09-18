@@ -1,9 +1,12 @@
 package com.onlineStoreCom.entity.setting.state;
 
-public class StateDTO {
-	private Integer id;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+
+public class StateDTO  extends IdBasedEntity {
+
+
+
 	private String name;
-	
 	public StateDTO() {
 		
 	}
@@ -13,13 +16,6 @@ public class StateDTO {
 		this.name = name;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

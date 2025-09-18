@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 @Entity
@@ -122,18 +123,18 @@ public class User {
         this.lastName = lastName;
     }
 
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "email='" + email + '\'' +
-//                " id = '" + id + '\'' +
-//                " firstName = '" + firstName + '\'' +
-//
-//                 "lastName = '" + lastName + '\'' +
-//
-//                " status = '" + enable + '\'' +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                " id = '" + id + '\'' +
+                " firstName = '" + firstName + '\'' +
+
+                 "lastName = '" + lastName + '\'' +
+
+                " status = '" + enable + '\'' +
+                '}';
+    }
 
     @Transient
     public String getImagePath() {
@@ -153,6 +154,18 @@ public class User {
     public String getFullName() {
         return firstName +" " + lastName;
 
+    }
+    public boolean hasRole(String roleName) {
+        Iterator<Role> iterator = roles.iterator();
+
+        while (iterator.hasNext()) {
+            Role role = iterator.next();
+            if (role.getName().equals(roleName)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

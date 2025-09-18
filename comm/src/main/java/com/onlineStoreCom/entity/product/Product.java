@@ -3,6 +3,7 @@ package com.onlineStoreCom.entity.product;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.io.File;
@@ -11,12 +12,10 @@ import java.util.*;
 @Entity
 @Table(name = "products")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Product {
+public class Product extends IdBasedEntity {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
     @Column(unique = true, length = 256, nullable = false)
     private String name;
 
@@ -63,6 +62,47 @@ public class Product {
     private final List<ProductDetails> details = new ArrayList<>();
 
 
+    private int reviewCount;
+    private float averageRating;
+
+    public int getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(int reviewCount) {
+        this.reviewCount = reviewCount;
+    }
+
+    public float getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(float averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public boolean isCustomerCanReview() {
+        return customerCanReview;
+    }
+
+    public void setCustomerCanReview(boolean customerCanReview) {
+        this.customerCanReview = customerCanReview;
+    }
+
+    public boolean isReviewedByCustomer() {
+        return reviewedByCustomer;
+    }
+
+    public void setReviewedByCustomer(boolean reviewedByCustomer) {
+        this.reviewedByCustomer = reviewedByCustomer;
+    }
+
+    @Transient private boolean customerCanReview;
+    @Transient private boolean reviewedByCustomer;
+
+
+
+
     public Product(Integer id, String name, String alias) {
         this.id = id;
         this.name = name;
@@ -70,6 +110,10 @@ public class Product {
     }
 
     public Product(Integer id) {
+    }
+
+    public Product(String name) {
+        this.name = name;
     }
 
     public List<ProductDetails> getDetails() {
@@ -118,13 +162,6 @@ public class Product {
     }
 
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

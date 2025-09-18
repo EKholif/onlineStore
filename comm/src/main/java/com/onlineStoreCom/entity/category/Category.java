@@ -1,6 +1,7 @@
 package com.onlineStoreCom.entity.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -10,12 +11,9 @@ import java.util.Set;
 @Entity
 @Table(name = "categories")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Category implements Comparable<Category> {
+public class Category extends IdBasedEntity implements Comparable<Category> {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     @Column(name = "name", length = 85, nullable = false, unique = true)
     private String name;
@@ -62,14 +60,14 @@ public class Category implements Comparable<Category> {
         this.parent = parent;
     }
 
-    public Category(long id, String name, String alias) {
+    public Category(Integer id, String name, String alias) {
         this.id = id;
         this.name = name;
         this.alias = alias;
 
     }
 
-    public Category(long id, String name) {
+    public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
 
@@ -135,17 +133,10 @@ public class Category implements Comparable<Category> {
     }
 
 
-    public Category(long id) {
+    public Category(Integer id) {
         this.id = id;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -203,8 +194,12 @@ public class Category implements Comparable<Category> {
     @Transient
     public String getCatImagePath() {
         String dirName = "/categories-photos/";
-        if (id < 0 || image == null) return "/images" + "\\" + "bob.png";
-        return dirName + this.id + '\\' + this.image;
+
+        if (id == null || id < 0 || image == null || image.isEmpty()) {
+            return "/images/bob.png";
+        }
+
+        return dirName + this.id + '/' + this.image;
     }
 
     @Transient

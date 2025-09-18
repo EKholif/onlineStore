@@ -3,7 +3,9 @@ package com.onlineStoreCom.entity.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.AuthenticationType;
+import com.onlineStoreCom.entity.address.AbstractAddressWithCountry;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -11,32 +13,11 @@ import java.util.Date;
 @Entity
 @Table(name = "customers")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Customer {
+public class Customer extends AbstractAddressWithCountry {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
-    @Column(name = "phone_number", nullable = false, length = 15)
-    protected String phoneNumber;
-    @Column(name = "address_line_1", nullable = false, length = 64)
-    protected String addressLine1;
-    @Column(name = "address_line_2", length = 64)
-    protected String addressLine2;
-    @Column(nullable = false, length = 45)
-    protected String city;
-    @Column(nullable = false, length = 45)
-    protected String state;
-    @Column(name = "postal_code", nullable = false, length = 10)
-    protected String postalCode;
 
-    @Column(name = "first_name", length = 85, nullable = false)
-
-    private String firstName;
-    @Column(name = "last_name", length = 85, nullable = false)
-
-    private String lastName;
     @Column(nullable = false, unique = true, length = 45)
     private String email;
     @Column(nullable = false, length = 64)
@@ -50,10 +31,6 @@ public class Customer {
     @Column(name = "image", length = 225, nullable = true)
     private String image;
 
-
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
 
     public AuthenticationType getAuthenticationType() {
         return authenticationType;
@@ -78,14 +55,6 @@ public class Customer {
 
     public Customer(Integer id) {
         this.id = id;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
     }
 
     public String getEmail() {
@@ -132,101 +101,14 @@ public class Customer {
         return firstName + " " + lastName;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddressLine1() {
-        return addressLine1;
-    }
-
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
     public String getRestPasswordToken() {
         return restPasswordToken;
     }
 
     public void setRestPasswordToken(String restPasswordToken) {
         this.restPasswordToken = restPasswordToken;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", createdTime=" + createdTime +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", addressLine1='" + addressLine1 + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-
-                ", postalCode='" + postalCode + '\'' +
-                '}';
     }
 
 

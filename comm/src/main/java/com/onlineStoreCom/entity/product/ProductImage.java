@@ -1,17 +1,16 @@
 package com.onlineStoreCom.entity.product;
 
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.io.File;
 
 @Entity
 @Table(name = "product_images")
-public class ProductImage {
+public class ProductImage extends IdBasedEntity {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
 
     @Column(nullable = false)
     private String name;

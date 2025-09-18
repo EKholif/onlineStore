@@ -2,7 +2,6 @@ package com.onlineStoreCom.entity.shipping;
 
 
 import com.onlineStoreCom.entity.setting.state.Country.Country;
-import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
@@ -13,25 +12,38 @@ public class ShippingRate extends IdBasedEntity {
 
     private float rate;
     private int days;
-
+    @Column(name = "state_name")
+    private String stateName;
     @Column(name = "cod_supported")
     private boolean codSupported;
-
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-    @ManyToOne
-    @JoinColumn(name = "state_id")
-    private State state;
+
 
     public ShippingRate(float rate) {
         this.rate = rate;
 
     }
 
+    public ShippingRate(String stateName) {
+        this.stateName = stateName;
+    }
+
     public ShippingRate() {
 
     }
+
+    public String getStateName() {
+        return stateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+
+
 
     public float getRate() {
         return rate;
@@ -65,18 +77,10 @@ public class ShippingRate extends IdBasedEntity {
         this.country = country;
     }
 
-    public State getState() {
-        return state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
-    }
 
     @Override
     public String toString() {
-        return "ShippingRate [id=" + id + ", rate=" + rate + ", days=" + days + ", codSupported=" + codSupported
-                + ", country=" + country.getName() + ", state=" + state + "]";
+        return "ShippingRate [id=" + id + ", rate=" + rate + ", days=" + days + ", codSupported=" + codSupported + ", country=" + country.getName() + ", state=" + stateName + "]";
     }
 
     @Override
@@ -89,19 +93,13 @@ public class ShippingRate extends IdBasedEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         ShippingRate other = (ShippingRate) obj;
         if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+            return other.id == null;
+        } else return id.equals(other.id);
     }
 
 

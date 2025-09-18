@@ -3,6 +3,7 @@ package com.onlineStoreCom.entity.brand;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -11,11 +12,9 @@ import java.util.Set;
 @Entity
 @Table(name = "brands")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Brand {
+public class Brand extends IdBasedEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+
     @Column(nullable = false, length = 45, unique = true)
     private String name;
 
@@ -33,16 +32,9 @@ public class Brand {
     public Brand() {
     }
 
-    public Brand(long id, String name, String logo) {
-        this.id = id;
+    public Brand(Integer id,String name ) {
         this.name = name;
-        this.logo = logo;
-
-    }
-
-    public Brand(long id, String name) {
         this.id = id;
-        this.name = name;
     }
 
     public Brand(String name) {
@@ -50,13 +42,6 @@ public class Brand {
         this.logo = "brand-logo.png";
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -95,7 +80,8 @@ public class Brand {
         String dirName = "/brands-photos/";
 
 
-        if (id < 0 || logo == null) return "/images" + "\\" + "bob.png";
+        if (id == null || id < 0 || logo == null) return "/images/bob.png";
+
 
         return dirName + this.id + '\\' + this.logo;
     }
