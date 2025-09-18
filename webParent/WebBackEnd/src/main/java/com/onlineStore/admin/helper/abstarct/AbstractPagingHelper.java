@@ -45,7 +45,7 @@ public abstract class AbstractPagingHelper<T> implements PagingHelper<T> {
         addSortingAttributes();
 
         model.addObject("search", "/" + url + "/page/1");
-        model.addObject("modelUrl", "/" + url + "/page/");
+        model.addObject("moduleURL", "/" + url + "/page/");
         model.addObject("pageTitle", "List of " + pageTitle);
 
         return model;

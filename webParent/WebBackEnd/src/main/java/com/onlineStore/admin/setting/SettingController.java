@@ -1,8 +1,9 @@
 package com.onlineStore.admin.setting;
 
 import com.onlineStore.admin.setting.repository.CurrencyRepository;
-import com.onlineStore.admin.setting.repository.GeneralSettingBag;
+import com.onlineStore.admin.setting.settingBag.GeneralSettingBag;
 import com.onlineStore.admin.setting.service.SettingService;
+import com.onlineStore.admin.setting.settingBag.PaymentSettingBag;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.setting.Setting;
 import com.onlineStoreCom.entity.setting.subsetting.Currency;
@@ -120,7 +121,16 @@ public class SettingController {
         return "redirect:/settings#mailServer";
     }
 
+    @PostMapping("/settings/save_payment")
 
+    public String savePaymentSettings(HttpServletRequest request, RedirectAttributes ra) {
+        List<Setting> paymentSettings = service.getPaymentSettings();
+        updateSettingValuesFromForm(request, paymentSettings);
+
+        ra.addFlashAttribute("message", "Payment settings have been saved");
+
+        return "redirect:/settings#payment";
+    }
 
 
 

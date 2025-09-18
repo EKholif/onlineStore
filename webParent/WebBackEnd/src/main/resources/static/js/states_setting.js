@@ -17,8 +17,6 @@ $(document).ready(function() {
 	labelStateName = $("#labelStateName");
 	fieldStateName = $("#fieldStateName");
 
-
-
 	buttonLoad4States.click(function() {
 		loadCountries4States();
 	});
@@ -188,7 +186,7 @@ function loadStates4Country() {
 }
 
 function loadCountries4States() {
-	url = contextPath + "setting/list";
+	url = contextPath + "countries/list";
 	$.get(url, function(responseJSON) {
 		dropDownCountry4States.empty();
 

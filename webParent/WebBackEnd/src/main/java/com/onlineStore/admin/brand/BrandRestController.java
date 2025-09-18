@@ -29,7 +29,7 @@ public class BrandRestController {
     private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     @PostMapping("/check_unique_name")
-    public String checkDuplicateName(@Param("id") Long id, @Param("name") String name, @Param("alies") String alies) {
+    public String checkDuplicateName(@Param("id") Integer id, @Param("name") String name, @Param("alies") String alies) {
 
         logger.info("Checking uniqueness for id={}, name={}, alies={}", id, name, alies);
 
@@ -42,7 +42,7 @@ public class BrandRestController {
 
 
     @GetMapping("/list-categories/{id}/category")
-    public List<CategoryDTO> listCategories(@PathVariable(name = "id") Long id) throws CategoryNotFoundException, BrandNotFoundException {
+    public List<CategoryDTO> listCategories(@PathVariable(name = "id") Integer id) throws CategoryNotFoundException, BrandNotFoundException {
 
         List<CategoryDTO> listCategories = new ArrayList<>();
 

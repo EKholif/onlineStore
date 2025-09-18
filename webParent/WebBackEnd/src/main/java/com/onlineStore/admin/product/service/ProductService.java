@@ -5,6 +5,7 @@ import com.onlineStore.admin.product.repository.ProductRepository;
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStoreCom.entity.product.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ import java.util.Objects;
 @Transactional
 public class ProductService {
 
+
+    public static final int PRODUCTS_PER_PAGE = 5;
     @Autowired
     private ProductRepository repository;
 
@@ -116,6 +119,11 @@ public class ProductService {
 
         return pageUsers.getContent();
     }
-
+    public void searchProducts(int pageNum, PagingAndSortingHelper helper) {
+        Pageable pageable = helper.createPageable(PRODUCTS_PER_PAGE, pageNum);
+        String keyword = helper.getKeyword();
+        Page<Product> page = repository.searchProductsByName(keyword, pageable);
+        helper.updateModelAttributes(pageNum, page);
+    }
 
 }

@@ -1,7 +1,9 @@
 package com.onlineStore.admin.setting.service;
 
+import com.onlineStore.admin.setting.settingBag.CurrencySettingBag;
 import com.onlineStore.admin.setting.repository.CurrencyRepository;
-import com.onlineStore.admin.setting.repository.GeneralSettingBag;
+import com.onlineStore.admin.setting.settingBag.GeneralSettingBag;
+import com.onlineStore.admin.setting.settingBag.PaymentSettingBag;
 import com.onlineStore.admin.usersAndCustomers.customer.controller.EmailSettingBag;
 import com.onlineStore.admin.setting.country.SettingRepository;
 import com.onlineStoreCom.entity.setting.Setting;
@@ -37,11 +39,6 @@ public class SettingService {
 		return settingRepo.findByCategory(SettingCategory.MAIL_SERVER);
 	}
 	public List<Setting> getMailTemplateSettings() {
-
-		for (Setting s:settingRepo.findByCategory(SettingCategory.MAIL_TEMPLATES))
-			  {
-		}
-
 		return settingRepo.findByCategory(SettingCategory.MAIL_TEMPLATES);
 	}
 
@@ -52,16 +49,21 @@ public class SettingService {
 		return new EmailSettingBag(settings);
 	}
 
-//	public CurrencySettingBag getCurrencySettings() {
-//		List<Setting> settings = settingRepo.findByCategory(SettingCategory.CURRENCY);
-//		return new CurrencySettingBag(settings);
-//	}
-//
-//	public PaymentSettingBag getPaymentSettings() {
-//		List<Setting> settings = settingRepo.findByCategory(SettingCategory.PAYMENT);
-//		return new PaymentSettingBag(settings);
-//	}
-//
+	public CurrencySettingBag getCurrencySettings() {
+		List<Setting> settings = settingRepo.findByCategory(SettingCategory.CURRENCY);
+
+		return new CurrencySettingBag(settings);
+	}
+
+
+
+
+	public List<Setting> getPaymentSettings() {
+		return settingRepo.findByCategory(SettingCategory.PAYMENT);
+	}
+
+
+
 //	public String getCurrencyCode() {
 //		Setting setting = settingRepo.findByKey("CURRENCY_ID");
 //		Integer currencyId = Integer.parseInt(setting.getValue());

@@ -7,7 +7,7 @@
 <body>
 
 
-<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
@@ -128,7 +128,7 @@
     </div>
 </form>
 
-<!--                          <div  th:replace="~{support/fragments/standerd/paginate::content}"></div>-->
+                          <div  th:replace="~{support/fragments/standerd/paginate::content}"></div>
 
 
 <div th:replace="~{support/fragments/standerd/modal::content}"></div>
@@ -137,8 +137,8 @@
 
 
 <script type="text/javascript" th:src="@{/js/commonCat.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>-->
 <script>
     const windowLocationValue = `[[@{${name}}]]`;
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="content">
+
+
+
+    <img  type="button"
+         th:if="${#authorization.expression('isAuthenticated()')}"
+         th:src="${#authentication.principal.getImagePath}" id="account" class="rounded-circle dropdown-toggle float-sm-end "  style="width:40px" alt="User" />
+
+</div>
+
+</body>
+
+</html>
+
+
+

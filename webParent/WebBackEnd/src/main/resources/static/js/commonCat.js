@@ -4,13 +4,7 @@
 ========================================================================================
 
 */
-$(document).ready(function () {
-    $("#logout").on("click", function (e) {
-        e.preventDefault();
-        document.logoutForm.submit();
-    });
-    customDropMenu()
-});
+
 
 /*
 ========================================================================================
@@ -98,15 +92,10 @@ function deleteUsers(form) {
 */
 
 function clearFilter() {
-    window.location = windowLocationValue;
+    window.location =  '/' + windowLocationValue;
 }
 
-$(document).ready(function () {
-    $("#logout").on("click", function (e) {
-        e.preventDefault();
-        document.logoutForm.submit();
-    });
-});
+
 
 /*
 ========================================================================================
@@ -118,7 +107,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#buttonCancel").on("click", function () {
-        window.location = windowLocationValue;
+        window.location ='/' + windowLocationValue;
     });
 
     $("#fileImage").change(function () {

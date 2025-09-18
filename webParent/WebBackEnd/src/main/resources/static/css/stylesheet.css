@@ -30,6 +30,18 @@
     color: #24a413
 }
 
+*.icon-navbar {
+    color: rgba(190, 246, 255, 0.81)
+}
+
+.footer-fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-top: 60px;
+}
+
+
 *.icon-orange {
     color: #f59714
 }

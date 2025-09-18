@@ -4,24 +4,7 @@
 ========================================================================================
 
 */
-$(document).ready(function () {
 
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner(0);
-
-
-    $("#logout").on("click", function (e) {
-        e.preventDefault();
-        document.logoutForm.submit();
-    });
-    customDropMenu()
-});
 
 /*
 ========================================================================================
@@ -83,15 +66,9 @@ $(document).ready(function () {
 
 */
 function clearFilter() {
-    window.location = windowLocationValue;
+    window.location =  '/' + windowLocationValue;
 }
 
-$(document).ready(function () {
-    $("#logout").on("click", function (e) {
-        e.preventDefault();
-        document.logoutForm.submit();
-    });
-});
 
 /*
 ========================================================================================
@@ -103,7 +80,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#buttonCancel").on("click", function () {
-        window.location = windowLocationValue;
+        window.location =  '/' + windowLocationValue;
     });
 
     $("#fileImage").change(function () {

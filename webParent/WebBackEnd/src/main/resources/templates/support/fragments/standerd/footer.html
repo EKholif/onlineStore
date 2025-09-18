@@ -2,12 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <body>
+
+
+
+
+
 <div th:fragment="content">
 
 
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#bottomNavbar">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark   ">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#bottomNavbar"
+                aria-controls="bottomNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="bottomNavbar">
@@ -27,7 +36,7 @@
 
 
 
-
+    <script th:src="@{/js/logout.js}"></script>
 </div>
 
 </body>

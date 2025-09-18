@@ -110,7 +110,7 @@ public class BrandController {
 
 
     @GetMapping("/brand/edit/{id}")
-    public ModelAndView editCategory(@PathVariable(name = "id") long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView editCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 
 
         try {
@@ -133,7 +133,7 @@ public class BrandController {
     }
 
     @PostMapping("/brands/save-edit-brand/")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Long id, @ModelAttribute Brand brand, RedirectAttributes redirectAttributes,
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Brand brand, RedirectAttributes redirectAttributes,
                                         @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
@@ -162,7 +162,7 @@ public class BrandController {
 
 
     @GetMapping("/brands/delete-brand/{id}")
-    public ModelAndView deleteCategory(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 
         try {
             if (service.existsById(id)) {
@@ -184,18 +184,17 @@ public class BrandController {
 
 
     @PostMapping("/delete-brands")
-    public ModelAndView deleteBrand(@RequestParam(name = "selectedForDelete", required = false) List<Long> selectedForDelete,
+    public ModelAndView deleteBrand(@RequestParam(name = "selectedForDelete", required = false) List<Integer> selectedForDelete,
                                     RedirectAttributes redirectAttributes) throws IOException, BrandNotFoundException, CategoryNotFoundException {
 
         ModelAndView model = new ModelAndView("/brands/brands");
         redirectAttributes.addFlashAttribute("message", "the Brand ID: " + selectedForDelete + " has been Deleted");
 
-        System.out.println(selectedForDelete);
 
         model.addObject("label", selectedForDelete);
 
         if (selectedForDelete != null && !selectedForDelete.isEmpty()) {
-            for (Long id : selectedForDelete) {
+            for (Integer id : selectedForDelete) {
                 FileUploadUtil.cleanDir(service.findById(id).getImageDir());
                 service.delete(id);
             }

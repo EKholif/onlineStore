@@ -8,7 +8,7 @@
 <body>
 
 
-<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
@@ -44,6 +44,8 @@
             <thead class="table-dark ">
             <tr>
               <th>Select</th>
+
+
                 <th th:replace="~{support/fragments/standerd/colum_link::contant ('id', 'ID')}"></th>
                 <th>image</th>
                 <th th:replace="~{support/fragments/standerd/colum_link::contant  ('firstName', 'Name')}"></th>

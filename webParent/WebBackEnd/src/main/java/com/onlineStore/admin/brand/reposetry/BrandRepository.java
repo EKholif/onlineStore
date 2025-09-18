@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BrandRepository extends JpaRepository<Brand, Long> {
+public interface BrandRepository extends JpaRepository<Brand, Integer> {
 
-    Long countById(Long id);
+    Integer countById(Integer id);
 
     Brand findByName(String name);
 

@@ -2,7 +2,7 @@ package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.product.security.StoreUserDetails;
+import com.onlineStore.admin.security.StoreUserDetails;
 import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.users.User;
 import org.springframework.beans.factory.annotation.Autowired;

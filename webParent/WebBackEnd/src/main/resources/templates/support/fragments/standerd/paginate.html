@@ -7,7 +7,7 @@
 
     <nav    aria-label="paginate"  class="text-center flex mb-1" >
         <div  th:if="${totalItems>0}" >
-            <span class="align-content-end"> showing [[${name}]] # [[${startCont}]] to [[${endCount}]] of [[${totalItems}]]</span>
+            <span class="align-content-end"> showing [[${name}]] # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
         </div>
         <div  th:unless="${totalItems>0}" >
 
@@ -16,28 +16,27 @@
 
         <div  th:if="${totalPages>1}"   >
 
-
             <ul class="pagination justify-content-center flex-wrap" >
 
                 <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                    <a th:replace="~{support/fragments::page_link(1,'First')}" /></a>
+                    <a th:replace="~{support/fragments/standerd/page-link::content(1,'First')}"></a>
                 </li >
 
                 <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
-                    <a th:replace="~{support/fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
                 </li>
 
                 <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
-                    <a th:replace="~{support/fragments::page_link(${i}, ${i})}" /></a>
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${i}, ${i})}" ></a>
                 </li>
 
 
                 <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                    <a th:replace="~{support/fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
                 </li>
 
                 <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
-                    <a th:replace="~{support/fragments::page_link(${totalPages}, 'Last')}" /></a>
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${totalPages}, 'Last')}" ></a>
                 </li>
 
             </ul>

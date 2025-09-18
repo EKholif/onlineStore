@@ -21,6 +21,11 @@ public class MainController {
         return "redirect:/users/users";
     }
 
+    @GetMapping("/ind")
+    public String View() {
+        return "/index";
+    }
+
     @GetMapping("/login")
     public String viewLoginPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

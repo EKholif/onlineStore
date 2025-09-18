@@ -14,12 +14,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
 
     @Query("UPDATE Category u set  u.enable=?2 WHERE u.id = ?1 ")
     @Modifying
-    void enableCategory(Long id, boolean enable);
+    void enableCategory(Integer id, boolean enable);
 
     @Query("UPDATE Category c set  c.enable=true WHERE c.enable=false ")
     @Modifying
@@ -51,7 +51,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 //    )
 //    UPDATE categories SET enabled = false WHERE id IN (SELECT id FROM subcategories)
 //""", nativeQuery = true)
-//    void disableCategoryTree(Long categoryId);
+//    void disableCategoryTree(Integer categoryId);
 
 
 

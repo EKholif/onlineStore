@@ -1,0 +1,12 @@
+<div th:fragment="content(amount)" th:remove="tag">
+
+
+    <span th:if="${CURRENCY_SYMBOLE_POSITION == 'Before Price'}"
+          th:remove="tag">[[${CURRENCY_SYMBOLE}]]</span>[[${#numbers.formatDecimal(amount, 1, THOUSANDS_POINT_TYPE,
+    DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span
+        th:if="${CURRENCY_SYMBOLE_POSITION == 'After Price'}" th:remove="tag">[[${CURRENCY_SYMBOLE}]]</span>
+</div>
+
+
+
+

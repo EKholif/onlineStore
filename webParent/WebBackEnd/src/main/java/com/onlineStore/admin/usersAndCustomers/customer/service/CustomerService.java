@@ -109,7 +109,6 @@ public class CustomerService {
 
         }else {
 
-            System.out.println("rrrrrrrrrr      "+ customer.getPassword());
             encodePassword(customer);
             customer.setEnabled(true);
         }

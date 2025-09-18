@@ -24,7 +24,7 @@ public class CategoryService {
         return categoryRepo.findAll();
     }
 
-    public Category findById(Long id) throws CategoryNotFoundException {
+    public Category findById(Integer id) throws CategoryNotFoundException {
         try {
 
 
@@ -38,12 +38,12 @@ public class CategoryService {
         }
     }
 
-    public Boolean existsById(Long id) {
+    public Boolean existsById(Integer id) {
         return categoryRepo.findById(id).isPresent();
     }
 
 
-    public String checkUnique(Long id, String name, String alias) {
+    public String checkUnique(Integer id, String name, String alias) {
 
 //        boolean isCreatingNew = (id==null|| id==0L);
 
@@ -266,7 +266,7 @@ public class CategoryService {
 
     }
 
-    public void deleteCategory(Long id) throws CategoryNotFoundException {
+    public void deleteCategory(Integer id) throws CategoryNotFoundException {
         try {
             categoryRepo.deleteById(id);
 
@@ -276,13 +276,13 @@ public class CategoryService {
         }
     }
 
-    public void UpdateCategoryEnableStatus(Long id, Boolean enable) {
+    public void UpdateCategoryEnableStatus(Integer id, Boolean enable) {
         disableCategoryAndSubcategories(id, enable);
 
     }
 
     @Transactional
-    public void disableCategoryAndSubcategories(Long id, Boolean enable) {
+    public void disableCategoryAndSubcategories(Integer id, Boolean enable) {
         Category category = categoryRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
 

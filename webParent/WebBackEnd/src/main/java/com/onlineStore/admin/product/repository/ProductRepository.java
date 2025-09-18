@@ -24,4 +24,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("UPDATE Product p set  p.enable=?2 WHERE p.id = ?1 ")
     @Modifying
     Integer enableProduct(Integer id, boolean enable);
+
+    @Query("SELECT p FROM Product p WHERE p.name LIKE %?1%")
+    public Page<Product> searchProductsByName(String keyword, Pageable pageable);
+
+
+
+
 }

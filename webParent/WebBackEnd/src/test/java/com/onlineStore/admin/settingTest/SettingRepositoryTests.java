@@ -35,10 +35,11 @@ public class SettingRepositoryTests {
     }
     @Test
     public void testCreateGeneralSettings2() {
-        Setting siteName = new Setting("ORDER_CONFIRMATION_SUBJECT", "ORDER_CONFIRMATION", SettingCategory.MAIL_TEMPLATES);
-        Setting siteLogo = new Setting("ORDER_CONFIRMATION_CONTENT", "ORDER_CONFIRMATION_CONTENT", SettingCategory.MAIL_TEMPLATES);
+        Setting siteName = new Setting("PAYPAL_API_BASE_URL", "ORDER_CONFIRMATION", SettingCategory.PAYMENT);
+        Setting siteLogo = new Setting("PAYPAL_API_CLIENT_ID", "ORDER_CONFIRMATION_CONTENT", SettingCategory.PAYMENT);
+        Setting siteLogo1 = new Setting("PAYPAL_API_CLIENT_SECRET", "ORDER_CONFIRMATION_CONTENT", SettingCategory.PAYMENT);
 
-        repo.saveAll(List.of(siteName, siteLogo));
+        repo.saveAll(List.of(siteName, siteLogo,siteLogo1));
 
         Iterable<Setting> iterable = repo.findAll();
 
@@ -74,7 +75,7 @@ public class SettingRepositoryTests {
         Setting copyright1 = new Setting("MAIL_PASSWORD", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
         Setting copyright2 = new Setting("SMTP_AUTH", "true", SettingCategory.MAIL_SERVER);
         Setting copyright3 = new Setting("STMP_SECURED", "true", SettingCategory.MAIL_SERVER);
-        Setting copyright4 = new Setting("MAIL_FORM", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
+        Setting copyright4 = new Setting("MAIL_FROM", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
         Setting copyright5 = new Setting("MAIL_SENDER_NAME", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
         Setting copyright6= new Setting("CUSTOMER_VERIFY_SUBJECT", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_TEMPLATES);
         Setting copyright7 = new Setting("CUSTOMER_VERIFY_CONTENT", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_TEMPLATES);

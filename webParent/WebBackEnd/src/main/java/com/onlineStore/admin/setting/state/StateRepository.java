@@ -14,4 +14,9 @@ public interface StateRepository extends JpaRepository<State, String> {
 
     List<State>findByCountryOrderByNameAsc(Country country);
 
+    State findByName(String name);
+
+
+
+
 }

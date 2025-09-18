@@ -20,7 +20,7 @@ public class PagingAndSortingHelper {
     private String keyWord;
 
     private String search;
-    private String modelUrl;
+    private String moduleURL;
     private String pageTitle;
     private Long totalPages;
     private Long TotalElements;
@@ -53,7 +53,7 @@ public class PagingAndSortingHelper {
         this.pageNum = pageNum;
         this.listItems = listItems;
         this.search = "/" + listName + "/page/1";
-        this.modelUrl = " /" + listName + "/page/";
+        this.moduleURL = " /" + listName + "/page/";
         this.pageTitle = "List  " + listName;
         this.newObjecturl = listName + "/new-" + listName + "-form";
 
@@ -93,18 +93,21 @@ public class PagingAndSortingHelper {
 
         String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
 
-        model.addObject(name, listItems);
+        model.addObject(listName, listItems);
+        model.addObject("name", name+"/"+name);
+
+//        model.addObject(name, listItems);
         model.addObject("keyWord", keyWord);
         model.addObject("sortDir", sortDir);
         model.addObject("endCount", endCount);
         model.addObject("currentPage", pageNum);
         model.addObject("sortField", sortField);
-        model.addObject("startCont", startCount);
+        model.addObject("startCount", startCount);
         model.addObject("reverseSortDir", reverseSortDir);
         model.addObject("totalPages", pageInfo.getTotalPages());
         model.addObject("totalItems", pageInfo.getTotalElements());
         model.addObject("search", search);
-        model.addObject("modelUrl", modelUrl);
+        model.addObject("moduleURL", moduleURL);
         model.addObject("pageTitle", pageTitle);
 
         return model;

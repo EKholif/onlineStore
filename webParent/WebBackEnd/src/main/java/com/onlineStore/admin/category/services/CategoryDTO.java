@@ -2,22 +2,22 @@ package com.onlineStore.admin.category.services;
 
 public class CategoryDTO {
 
-    public Long id;
+    public Integer id;
     public String name;
 
     public CategoryDTO() {
     }
 
-    public CategoryDTO(Long id, String name) {
+    public CategoryDTO(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

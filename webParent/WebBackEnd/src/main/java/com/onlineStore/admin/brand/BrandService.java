@@ -33,12 +33,12 @@ public class BrandService {
         return repository.findAll();
     }
 
-    public Boolean existsById(Long id) {
+    public Boolean existsById(Integer id) {
         return repository.findById(id).isPresent();
     }
 
 
-    public Brand findById(Long id) throws CategoryNotFoundException {
+    public Brand findById(Integer id) throws CategoryNotFoundException {
         try {
 
 
@@ -76,8 +76,8 @@ public class BrandService {
     }
 
 
-    public void delete(Long id) throws BrandNotFoundException {
-        Long countById = repository.countById(id);
+    public void delete(Integer id) throws BrandNotFoundException {
+        Integer countById = repository.countById(id);
 
         if (countById == null || countById == 0) {
             throw new BrandNotFoundException("Could not find any brand with ID " + id);
@@ -86,10 +86,9 @@ public class BrandService {
         repository.deleteById(id);
     }
 
-    public String checkUnique(Long id, String name) {
+    public String checkUnique(Integer id, String name) {
         boolean isCreatingNew = (id == null || id == 0);
         Brand brandByName = repository.findByName(name);
-        System.out.println("isCreatingNew   " + isCreatingNew);
         if (isCreatingNew) {
             if (brandByName != null) return "Duplicate";
 

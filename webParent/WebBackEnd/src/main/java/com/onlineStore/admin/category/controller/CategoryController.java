@@ -112,7 +112,7 @@ public class CategoryController {
     }
 
     @GetMapping("/categories/edit/{id}")
-    public ModelAndView editCategory(@PathVariable(name = "id") long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView editCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
         ModelAndView model = new ModelAndView("categories/new-categories-form");
 
 
@@ -136,7 +136,7 @@ public class CategoryController {
     }
 
     @PostMapping("/categories/save-edit-category/")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Long id, @ModelAttribute Category category, RedirectAttributes redirectAttributes,
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Category category, RedirectAttributes redirectAttributes,
                                         @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
@@ -166,7 +166,7 @@ public class CategoryController {
 
 
     @GetMapping("/delete-category/{id}")
-    public ModelAndView deleteCategory(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
+    public ModelAndView deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         try {
             if (service.existsById(id)) {
@@ -188,7 +188,7 @@ public class CategoryController {
 
 
     @GetMapping("/category/{id}/enable/{status}")
-    public ModelAndView UpdateUserStatus(@PathVariable("id") Long id, @PathVariable("status") boolean enable,
+    public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
                                          RedirectAttributes redirectAttributes) {
 
         String status = enable ? "enable" : " disable";
@@ -202,7 +202,7 @@ public class CategoryController {
     }
 
     @PostMapping("/categories/deleteCategories")
-    public ModelAndView deleteCategory(@RequestParam(name = "selectedCategory", required = false) List<Long> selectedCategory,
+    public ModelAndView deleteCategory(@RequestParam(name = "selectedCategory", required = false) List<Integer> selectedCategory,
                                        RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category ID: " + selectedCategory + " has been Deleted");
@@ -211,7 +211,7 @@ public class CategoryController {
         model.addObject("label", selectedCategory);
 
         if (selectedCategory != null && !selectedCategory.isEmpty()) {
-            for (Long id : selectedCategory) {
+            for (Integer id : selectedCategory) {
                 FileUploadUtil.cleanDir(service.findById(id).getImageDir());
                 service.deleteCategory(id);
             }

@@ -1,0 +1,49 @@
+
+	<div th:fragment="content" th:remove="tag">
+
+		<th:block th:each="detail, status : ${order.orderDetails}">
+			<div class="row border rounded p-1"
+				 th:with="product = ${detail.product}">
+				<div class="col-sm-1">
+					<div class="div-count">[[${status.count}]]</div>
+				</div>
+
+				<div class="col-sm-3">
+					<img alt="Product Image" class="img-fluid  " th:src="@{${product.getImagePath}}"/>
+				</div>
+				<div class="col-sm-8">
+					<div class="text-wrap">
+						<b>[[${product.name}]]</b>
+					</div>
+
+					<th:block th:if="${isVisibleForAdminOrSalesperson}">
+						<div>
+							Product Cost:
+							<div
+									th:replace="~{support/fragments/format/format_currency::content(${detail.productCost})}"></div>
+						</div>
+						<div>`
+							Subtotal: [[${detail.quantity}]] X
+							<div
+									th:replace="~{support/fragments/format/format_currency::content(${detail.unitPrice})}"></div>
+							=
+							<div
+									th:replace="~{support/fragments/format/format_currency::content(${detail.subtotal})}"></div>
+						</div>
+						<div>
+							Shipping Cost:
+							<div
+									th:replace="~{support/fragments/format/format_currency::content(${detail.shippingCost})}"></div>
+						</div>
+					</th:block>
+				</div>
+			</div>
+		</th:block>
+
+
+
+
+
+
+
+	</div>

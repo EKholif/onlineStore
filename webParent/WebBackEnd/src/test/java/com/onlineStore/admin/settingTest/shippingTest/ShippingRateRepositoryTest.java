@@ -1,8 +1,9 @@
 package com.onlineStore.admin.settingTest.shippingTest;
 
 
-import com.onlineStore.admin.setting.shipping.repository.ShippingRateRepository;
-import com.onlineStoreCom.entity.customer.Customer;
+import com.onlineStore.admin.setting.country.CountryRepository;
+import com.onlineStore.admin.shipping.repository.ShippingRateRepository;
+import com.onlineStore.admin.setting.state.StateRepository;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.shipping.ShippingRate;
@@ -22,29 +23,31 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest(showSql = true)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = false)
+@Rollback(value = true)
 class ShippingRateRepositoryTest {
 
-    @Autowired
-    private ShippingRateRepository repo;
+    @Autowired private ShippingRateRepository repo;
+    @Autowired private StateRepository stateRepository;
+    @Autowired private CountryRepository countryRepository;
     @Autowired private TestEntityManager entityManager;
     @Test
     public void testCreateShippingRateInIndia() {
         Integer countryId = 9 ;
         Integer stateId = 9;
         float rate = 4.99f;
+        String name = "West Bengal";
 
         Country country = entityManager.find(Country.class, countryId);
-        State state = entityManager.find(State.class, stateId);
-
+        State getState = entityManager.find(State.class, stateId);
+        String state = getState.getName();
 
 
         System.out.println("البلد: " + country.getName());
-        System.out.println("المحافظة: " + state.getId());
+        System.out.println("المحافظة: " + state);
 
         ShippingRate shippingRate = new ShippingRate(rate);
         shippingRate.setCountry(country);
-        shippingRate.setState(state);
+        shippingRate.setStateName(state);
 
         // إضافة باقي القيم لو كانت مطلوبة
         shippingRate.setDays(3);  // مثلاً يومين أو ٣ حسب النظام عندك
@@ -80,7 +83,51 @@ class ShippingRateRepositoryTest {
     }
 
 
+//    @Test
+//    void testUpdateStateId() {
+//        List<String> states = repo.findAllNonNullStateNames();
+//        for (String c : states) {
+//            State state = stateRepository.findByName(c);
+//            repo.updateStateName(c, state);
+//        }
+//    }
+
+        @Test
+        void testUptStateId() {
+            List<Object[]> results = repo.findAllStateNameAndCountry();
+
+            for (Object[] row : results) {
+                String stateName = (String) row[0];
+                Country country = (Country) row[1];  // حسب نوع الحقل في الكيان
+                State state  =  stateRepository.findByName(stateName);
+
+                if (state != null) {
+                    System.out.println("State: " + stateName + ", Id: " + state.getId());
+                    ShippingRate shippingRate = repo.findByStateName(stateName);
+                    shippingRate.setStateName(stateName);
+                    repo.save(shippingRate);
+                } else {
+
+                    System.out.println("State: " + stateName + ", Id: " );
+                    State newState = new State();
+
+                    newState.setName(stateName);
+                    newState.setCountry(country);
+                    stateRepository.save(newState);
+
+                    ShippingRate shippingRate = repo.findByStateName(stateName);
+                    shippingRate.setStateName(stateName);
+                    repo.save(shippingRate);
+
+                }
+
+            }
+
+            }
+
 
 }
+
+
 
 

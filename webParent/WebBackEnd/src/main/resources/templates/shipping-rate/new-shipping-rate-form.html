@@ -7,7 +7,7 @@
 
 <body>
 
-<div th:replace="~{support/fragments/standerd/navbar/navbar::content}"></div>
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
 <div th:replace="~{support/fragments/standerd/search::content}"></div>
 
@@ -42,28 +42,28 @@
                 <div class="input-group row">
                     <label class="col-sm-4 col-form-label">State</label>
                     <div class="col-sm-8 mt-2">
-                        <select class="form-control" name="state" th:field="*{state}">
-                            <option th:each="state : ${allStates}"
-                                    th:value="${state.id}"
-                                    th:text="${state.name}">
-                            </option>
-
-                        </select>
+                        <input list="stateList" name="stateName" class="form-control" th:field="*{stateName}">
+                        <datalist id="stateList">
+                            <option th:each="state : ${allStates}" th:value="${state.name}"></option>
+                        </datalist>
                     </div>
                 </div>
 
 
-                <div class="input-group row d-none" id="newStateGroup">
-                    <label class="col-sm-4 col-form-label">State</label>
-                    <div class="col-sm-8 mt-2">
-                        <input class="form-control" id="newStateInput"
-                               name="stateNameManual"
-                               type="text"
-                               placeholder="Enter state name manually"
-                               minlength="2"
-                               disabled />
-                    </div>
-                </div>
+
+                <!--                <div class="input-group row d-none" id="newStateGroup">-->
+<!--                    <label class="col-sm-4 col-form-label">State</label>-->
+<!--                    <div class="col-sm-8 mt-2">-->
+<!--                        <input class="form-control" id="newStateInput"-->
+<!--                               name="stateNameManual"-->
+<!--                               th:field="*{stateName}"-->
+<!--                               type="text"-->
+<!--                               placeholder="Enter state name manually"-->
+<!--                               minlength="2"-->
+
+<!--                               disabled />-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
                 <div class="input-group row">

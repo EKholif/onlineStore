@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<body>
 
 
 <th th:fragment="contant (fieldName, columnLable)">
     <a
-            th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+            th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
                             +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ' '}}"  class="text-white " >
         [[${columnLable}]]
@@ -17,7 +13,3 @@
 </th>
 
 
-
-</body>
-
-</html>

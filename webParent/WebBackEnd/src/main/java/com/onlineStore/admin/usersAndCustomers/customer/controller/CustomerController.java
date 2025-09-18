@@ -215,16 +215,10 @@ public class CustomerController {
         String logoPath = "/site-logo/dream-logo-print0200.png";
         File file = new File(logoPath);
 
-        System.out.println("Looking for file at: " + file.getAbsolutePath());
-        System.out.println("File exists: " + file.exists());
-
         Resource logoResource = new ClassPathResource("site-logo/dream-logo-print0200.png");
 
 //        ClassPathResource logoResource = new ClassPathResource(file.getAbsolutePath());
 
-
-        System.out.println("    logo  Resource      "+logoResource);
-//        System.out.println("Current ClassPath: " + System.getProperty("java.class.path"));
 
 
         if (!logoResource.exists()) {
@@ -237,7 +231,6 @@ public class CustomerController {
         helper.addInline("siteLogo", logoResource, contentType);
 
 
-        System.out.println("    content Type      "+contentType);
 
 
         // Embed logo in the content

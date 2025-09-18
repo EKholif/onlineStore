@@ -28,7 +28,7 @@
 
       <th th:fragment="colum_link (fieldName, columnLable)">
             <a
-                    th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                    th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
                             +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ' '}}"  class="text-white " >
                        [[${columnLable}]]
@@ -46,7 +46,7 @@
 
 <th th:fragment="colum_link_product (fieldName, columnLable)">
     <a
-            th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+            th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
                             +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ' '}}"  class="text-white " >
         [[${columnLable}]]
@@ -80,7 +80,7 @@
 
 
        <a   th:fragment="page_link(pageNum,label)"     class="page-link"
-            th:href="@{${modelUrl}+ ${pageNum} +'?sortField='+${sortField} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
+            th:href="@{${moduleURL}+ ${pageNum} +'?sortField='+${sortField} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
              '&keyWord='+ keyWord: ' '}}" >[[${label}]]
        </a>
 
