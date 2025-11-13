@@ -10,12 +10,28 @@ import org.hibernate.annotations.ParamDef;
 import org.hibernate.annotations.TenantId;
 
 @MappedSuperclass
-@FilterDef(name = "tenantFilter", parameters = @ParamDef(name = "tenantId", type = Long.class))
-@Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+@FilterDef(
+        name = "tenantFilter",
+        parameters = @ParamDef(name = "tenantId", type = Long.class)
+)
+@Filter(
+        name = "tenantFilter",
+        condition = "tenant_id = :tenantId"
+)
 public abstract class TenantAwareEntity  {
-    @Column(name = "tenant_id", nullable = false, updatable = false)
+    @Column(name = "tenant_id", nullable = false, updatable = false )
 
     private Long tenantId;
+
+    @PrePersist
+    public void prePersist() {
+        if (tenantId == null) {
+            Long currentTenant = getTenantId();
+            tenantId = (currentTenant != null) ? currentTenant : 0L;
+        }
+    }
+
+
 
     public Long getTenantId() {
         return tenantId;

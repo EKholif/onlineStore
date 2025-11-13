@@ -126,6 +126,7 @@ public class User  extends IdBasedEntity {
                  "lastName = '" + lastName + '\'' +
 
                 " status = '" + enable + '\'' +
+                " TenantId = '" + getTenantId() + '\'' +
                 '}';
     }
 

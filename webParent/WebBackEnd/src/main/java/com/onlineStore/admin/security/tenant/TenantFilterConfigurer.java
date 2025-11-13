@@ -12,6 +12,7 @@ public class TenantFilterConfigurer {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     @PostConstruct
     public void enableTenantFilter() {
         Session session = entityManager.unwrap(Session.class);
