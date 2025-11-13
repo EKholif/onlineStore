@@ -1,8 +1,10 @@
 package com.onlineStoreCom.entity.setting;
 
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+
 import java.util.List;
 
-public class SettingBag {
+public class SettingBag   extends IdBasedEntity {
     private final List<Setting> listSettings;
 
     public SettingBag(List<Setting> listSettings) {

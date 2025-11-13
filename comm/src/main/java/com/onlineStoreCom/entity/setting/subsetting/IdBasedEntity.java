@@ -4,14 +4,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
 
 @MappedSuperclass
-public abstract class IdBasedEntity {
+
+public  class IdBasedEntity extends TenantAwareEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
-
-
 
 
 	public Integer getId() {

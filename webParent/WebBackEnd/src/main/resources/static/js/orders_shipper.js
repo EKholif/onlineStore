@@ -61,13 +61,13 @@ function showUpdateConfirmModal(link) {
 	yesButton.show();
 
 	orderId = link.attr("orderId");
-	status = link.attr("status");
+	state = link.attr("status");
 	yesButton.attr("href", link.attr("href"));
 
 	confirmText.text("Are you sure you want to update status of the order ID #" + orderId
-		+ " to " + status + "?");
+		+ " to " + state + "?");
 
-	confirmModalDialog.modal();
+	confirmModalDialog.modal('show');
 }
 
 function showMessageModal(message) {

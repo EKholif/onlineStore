@@ -67,7 +67,7 @@ public class RoleRepositoryTest {
     @Test
     public void testDeleteRole() {
 
-        repo.deleteById(20L);
+        repo.deleteById(20);
 
         testListAllUserRole();
     }

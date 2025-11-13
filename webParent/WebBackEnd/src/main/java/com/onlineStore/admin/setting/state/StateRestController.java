@@ -1,5 +1,6 @@
 package com.onlineStore.admin.setting.state;
 
+import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.setting.state.StateDTO;
@@ -29,6 +30,8 @@ public class StateRestController {
 	
 	@PostMapping("/states/save")
 	public String save(@RequestBody State state) {
+		Long tenantId = TenantContext.getTenantId();
+		state.setTenantId(tenantId);
 		State savedState = repo.save(state);
 		return String.valueOf(savedState.getId());
 	}

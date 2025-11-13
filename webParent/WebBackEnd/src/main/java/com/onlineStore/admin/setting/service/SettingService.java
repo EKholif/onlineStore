@@ -17,7 +17,6 @@ import java.util.List;
 @Service
 public class SettingService {
 	@Autowired private SettingRepository settingRepo;
-	@Autowired private CurrencyRepository currencyRepo;
 
 	public GeneralSettingBag getGeneralSettings() {
 		List<Setting> settings = settingRepo.findByTwoCategories(SettingCategory.GENERAL, SettingCategory.CURRENCY);

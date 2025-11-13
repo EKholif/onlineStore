@@ -1,0 +1,79 @@
+package com.onlineStoreCom.entity.shoppingCart;
+
+import com.onlineStoreCom.entity.customer.Customer;
+import com.onlineStoreCom.entity.product.Product;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import org.springframework.data.annotation.Transient;
+
+@Entity
+@Table(name = "cart_items")
+public class CartItem extends IdBasedEntity{
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+
+
+
+	@ManyToOne
+	@JoinColumn(name = "product_id")	
+	private Product product;
+	
+	private int quantity;
+	
+	@Transient
+	private float shippingCost;
+	
+	public CartItem() {
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "CartItem [id=" + id + ", customer=" + customer.getFullName() + ", product=" + product.getShortName() + ", quantity=" + quantity
+				+ "]";
+	}
+
+	@Transient
+	public float getSubtotal() {
+		return product.getDiscountPrice() * quantity;
+	}
+
+	@Transient
+	public float getShippingCost() {
+		return this.shippingCost=shippingCost;
+	}
+
+	public void setShippingCost(float shippingCost) {
+		this.shippingCost = shippingCost;
+	}
+	
+	
+}

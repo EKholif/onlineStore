@@ -2,6 +2,7 @@ package com.onlineStore.admin.usersAndCustomers.customer.controller;
 
 import com.onlineStore.admin.setting.service.SettingService;
 import com.onlineStore.admin.usersAndCustomers.customer.service.CustomerService;
+import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.PageInfo;
@@ -89,7 +90,8 @@ public class CustomerController {
         redirectAttributes.addFlashAttribute("message", "the Customer has been saved successfully.  ");
           boolean newCustomer = customer.getId() ==null;
           Customer savedCustomer;
-
+        Long tenantId = TenantContext.getTenantId();
+           customer.setTenantId(tenantId);
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 

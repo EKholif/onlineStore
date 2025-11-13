@@ -1,11 +1,13 @@
 package com.onlineStoreCom.entity.setting;
 
 
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+import com.onlineStoreCom.entity.setting.subsetting.TenantAwareEntity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "settings")
-public class Setting {
+public class Setting extends TenantAwareEntity {
 	@Id
 	@Column(name = "`key`", nullable = false, length = 128)
 	private String key;

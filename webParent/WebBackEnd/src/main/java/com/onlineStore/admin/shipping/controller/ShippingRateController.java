@@ -5,6 +5,7 @@ import com.onlineStore.admin.helper.SortingInfo;
 import com.onlineStore.admin.setting.country.CountryRepository;
 import com.onlineStore.admin.shipping.service.ShippingRateService;
 import com.onlineStore.admin.setting.state.StateRepository;
+import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.shipping.ShippingRate;
@@ -73,7 +74,8 @@ public class ShippingRateController {
     @PostMapping("/shipping-rate/save-new-shipping-rate")
     public ModelAndView saveNewUCategory(@ModelAttribute ShippingRate shippingRate, RedirectAttributes redirectAttributes) throws IOException {
         redirectAttributes.addFlashAttribute("message", " New Shipping Rate has been saved successfully.  ");
-
+        Long tenantId = TenantContext.getTenantId();
+        shippingRate.setTenantId(tenantId);
 
         shippingRateService.saveShippingRate(shippingRate);
         return new ModelAndView("redirect:/shipping-rate");

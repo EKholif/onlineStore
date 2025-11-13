@@ -1,9 +1,10 @@
 package com.onlineStore.admin.order;
 
-import com.onlineStore.admin.security.StoreUserDetails;
 import com.onlineStore.admin.product.service.ProductService;
-import com.onlineStore.admin.setting.settingBag.CurrencySettingBag;
+import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.setting.service.SettingService;
+import com.onlineStore.admin.setting.settingBag.CurrencySettingBag;
 
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
@@ -25,7 +26,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -133,7 +133,8 @@ public class OrderController {
     public String saveOrder(Order order, HttpServletRequest request, RedirectAttributes ra) {
         String countryName = request.getParameter("countryName");
         order.setCountry(countryName);
-
+        Long tenantId = TenantContext.getTenantId();
+        order.setTenantId(tenantId);
         updateProductDetails(order, request);
         updateOrderTracks(order, request);
 

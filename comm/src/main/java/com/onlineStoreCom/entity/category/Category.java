@@ -13,8 +13,6 @@ import java.util.Set;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Category extends IdBasedEntity implements Comparable<Category> {
 
-
-
     @Column(name = "name", length = 85, nullable = false, unique = true)
     private String name;
 
@@ -126,8 +124,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
     public static Category copyFull(Category Category, String name) {
         Category copycategory = copyFull(Category);
         copycategory.setName(name);
-
-
         return copycategory;
 
     }

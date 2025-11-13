@@ -10,17 +10,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByEmail(String email);
 
     boolean existsByEmail(String email);
 
-    Long countById(Long id);
+    Integer countById(Integer id);
 
     @Query("UPDATE User u set  u.enable=?2 WHERE u.id = ?1 ")
     @Modifying
-    void enableUser(Long id, boolean enable);
+    void enableUser(Integer id, boolean enable);
 
     @Query("SELECT u FROM User u WHERE  CONCAT(u.id, ' ', u.email, ' ', u.firstName, ' '," +
             "u.lastName) LIKE %?1%")

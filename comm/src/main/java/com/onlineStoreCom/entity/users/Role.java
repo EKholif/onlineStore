@@ -1,40 +1,79 @@
 package com.onlineStoreCom.entity.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name="role")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Role {
+public class Role extends IdBasedEntity {
 
-         @Id
-         @GeneratedValue(strategy = GenerationType.IDENTITY)
-         @Column (name= "id")
-         private Long id;
+
 
          @Column(name= "name",length =40,nullable = false,unique = false )
          private String name;
          @Column(name= "descrption",length =150,nullable = false)
          private String descrption;
 
+    @Column(name = "all_parent_ids", length = 256, nullable = true)
+    private String allParentIDs;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_Id")
+    private Role parent;
+
+
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+    private Set<Role> children = new HashSet<>();
+
+    @Transient
+    private boolean hasChildren;
+
+    public String getAllParentIDs() {
+
+        return allParentIDs;
+    }
+
+    public void setAllParentIDs(String allParentIDs) {
+        this.allParentIDs = allParentIDs;
+    }
+
+    public Role getParent() {
+        return parent;
+    }
+
+    public void setParent(Role parent) {
+        this.parent = parent;
+    }
+
+    public Set<Role> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Set<Role> children) {
+        this.children = children;
+    }
+
+    public boolean isHasChildren() {
+        return hasChildren;
+    }
+
+    public void setHasChildren(boolean hasChildren) {
+        this.hasChildren = hasChildren;
+    }
+
     public Role() {
 
     }
 
-    @Lob
-    @Basic(fetch=LAZY)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

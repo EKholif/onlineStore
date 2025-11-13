@@ -81,14 +81,14 @@ public class UserService {
     }
 
 
-    public boolean isEmailUnique(Long id, String email) {
+    public boolean isEmailUnique(Integer id, String email) {
         User userByEmail = userRepo.findByEmail(email);
 
         return userByEmail == null || userByEmail.getId().equals(id);
     }
 
 
-    public User getUser(Long id) throws UsernameNotFoundException {
+    public User getUser(Integer id) throws UsernameNotFoundException {
         try {
             return userRepo.findById(id).get();
 
@@ -98,12 +98,12 @@ public class UserService {
         }
     }
 
-    public Boolean existsById(Long id) {
+    public Boolean existsById(Integer id) {
         return userRepo.findById(id).isPresent();
     }
 
 
-    public void deleteUser(Long id) throws UsernameNotFoundException {
+    public void deleteUser(Integer id) throws UsernameNotFoundException {
         try {
             userRepo.deleteById(id);
 
@@ -113,7 +113,7 @@ public class UserService {
         }
     }
 
-    public void UdpateUserEnableStatus(Long id, Boolean enable) {
+    public void UdpateUserEnableStatus(Integer id, Boolean enable) {
         userRepo.enableUser(id, enable);
 
     }

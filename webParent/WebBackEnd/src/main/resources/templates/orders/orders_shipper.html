@@ -9,9 +9,7 @@
 		<div>
 			<h2>Manage Orders</h2>
 		</div>
-
-	<h1>ehab</h1>
-
+	<div th:replace="~{support/fragments/standerd/search::content}"></div>
 		<div th:replace="~{orders/search-form/search_form_and_message :: content}"></div>
 
 		<div>
@@ -48,6 +46,7 @@
 								</b></span>
 							</div>
 							<div>&nbsp;</div>
+
 							<div class="row">
 								<div
 									th:replace="~{orders/search-form/order_status_fragment :: content(${order.picked}, 'PICKED', 'fa-people-carry')}">
@@ -65,6 +64,8 @@
 										th:replace="~{orders/search-form/order_status_fragment  :: content(${order.returned}, 'RETURNED', 'fa-undo')}">
 								</div>
 
+
+
 							</div>
 						</div>
 					</div>
@@ -79,7 +80,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Update Confirmation</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<button type="button" class="close" data-bs-dismiss="modal">&times;</button>
 					</div>
 
 					<div class="modal-body">
@@ -89,7 +90,7 @@
 					<div class="modal-footer">
 						<a class="btn btn-success" href="" id="yesButton">Yes</a>
 						<button type="button" class="btn btn-danger" id="noButton"
-							data-dismiss="modal">No</button>
+							data-bs-dismiss="modal">No</button>
 					</div>
 				</div>
 			</div>
@@ -104,7 +105,8 @@
 	<div th:replace="~{support/fragments/standerd/footer::content}"></div>
 
 	</div>
-	<script th:src="@{/js/common_list.js}"></script>
+<script th:src="@{/js/orders_shipper.js}"></script>
+	<script th:src="@{/js/common.js}"></script>
 	<script type="text/javascript">
 		moduleURL = "[[@{/orders}]]";
 		var csrfHeaderName = "[[${_csrf.headerName}]]";
@@ -123,7 +125,7 @@
 			});
 		}
 	</script>
-	<script th:src="@{/js/orders_shipper.js}"></script>
+
 </body>
 
 </html>

@@ -6,6 +6,7 @@ import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.services.CategoryService;
+import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStoreCom.entity.category.Category;
@@ -89,7 +90,8 @@ public class CategoryController {
             throws IOException {
         redirectAttributes.addFlashAttribute("message", "the category   has been saved successfully.  ");
 
-
+             Long tenantId = TenantContext.getTenantId();
+            category.setTenantId(tenantId);
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 

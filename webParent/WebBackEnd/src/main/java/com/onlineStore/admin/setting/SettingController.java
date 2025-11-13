@@ -3,7 +3,7 @@ package com.onlineStore.admin.setting;
 import com.onlineStore.admin.setting.repository.CurrencyRepository;
 import com.onlineStore.admin.setting.settingBag.GeneralSettingBag;
 import com.onlineStore.admin.setting.service.SettingService;
-import com.onlineStore.admin.setting.settingBag.PaymentSettingBag;
+import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.setting.Setting;
 import com.onlineStoreCom.entity.setting.subsetting.Currency;
@@ -52,6 +52,9 @@ public class SettingController {
     public String saveGeneralSettings(@RequestParam("fileImage") MultipartFile multipartFile, HttpServletRequest request, RedirectAttributes ra) throws IOException {
         GeneralSettingBag settingBag = service.getGeneralSettings();
 
+        Long tenantId = TenantContext.getTenantId();
+        settingBag.setTenantId(tenantId);
+
         saveSiteLogo(multipartFile, settingBag);
         saveCurrencySymbol(request, settingBag);
 
@@ -67,6 +70,9 @@ public class SettingController {
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
             String value = "/site-logo/" + fileName;
+
+            Long tenantId = TenantContext.getTenantId();
+            settingBag.setTenantId(tenantId);
 
             settingBag.updateSiteLogo(value);
             String uploadDir = "site-logo";
@@ -101,6 +107,12 @@ public class SettingController {
     @PostMapping("/settings/save_mail_server")
     public String saveMailServerSetttings(HttpServletRequest request, RedirectAttributes ra) {
         List<Setting> mailServerSettings = service.getMailServerSettings();
+
+        Long tenantId = TenantContext.getTenantId();
+        for (Setting setting : mailServerSettings) {
+            setting.setTenantId(tenantId);
+        };
+
         updateSettingValuesFromForm(request, mailServerSettings);
 
         ra.addFlashAttribute("message", "Mail server settings have been saved");

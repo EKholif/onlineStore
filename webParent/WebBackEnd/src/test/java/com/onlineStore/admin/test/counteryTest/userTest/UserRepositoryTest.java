@@ -1,8 +1,12 @@
 package com.onlineStore.admin.test.counteryTest.userTest;
 
+import com.onlineStore.admin.product.repository.ProductRepository;
 import com.onlineStore.admin.usersAndCustomers.users.UserRepository;
+import com.onlineStore.admin.security.tenant.TenantContext;
+import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.role.RoleRepository;
 import com.onlineStore.admin.utility.FileUploadUtil;
+import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.users.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
@@ -31,11 +35,13 @@ class UserRepositoryTest {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private ProductRepository Repository;
 
     @Test
     public void testCreateFirstUser() {
         User userAdmin = new User("e@gmail.com", "0", "ehab", "kholif");
-        userAdmin.addRole(roleRepository.getReferenceById(1L));
+        userAdmin.addRole(roleRepository.getReferenceById(1));
         userAdmin.setEnable(true);
 
         User savedRole = repo.saveAndFlush(userAdmin);
@@ -59,16 +65,16 @@ class UserRepositoryTest {
     public void testCreateUsers()
      {
         User userSalesperson = new User("ehab.bts@gmail.com", "a0000", "ehab", "kholif");
-        userSalesperson.addRole(roleRepository.getReferenceById(2L));
+        userSalesperson.addRole(roleRepository.getReferenceById(2));
 
         User userEditor = new User("ehab@gmail.com", "0a000", "ekholif", "kholif");
-        userEditor.addRole(roleRepository.getReferenceById(3L));
+        userEditor.addRole(roleRepository.getReferenceById(3));
 
         User userShipper = new User("bts@gmail.com", "00a00", "testUserOne", "kholif");
-        userShipper.addRole(roleRepository.getReferenceById(4L));
+        userShipper.addRole(roleRepository.getReferenceById(4));
 
         User userAssistant = new User("eh.bts@gmail.com", "000a0", "testUserTwo", "kholif");
-        userAssistant.addRole(roleRepository.getReferenceById(5L));
+        userAssistant.addRole(roleRepository.getReferenceById(5));
 
          testUser();
 
@@ -84,14 +90,23 @@ class UserRepositoryTest {
        public void testListAllUser(){
 
         Iterable<User> listUsers =repo.findAll();
-        listUsers.forEach(System.out::println);
+            for ( User user:listUsers) {
+                System.out.println("fffffffffff" +  user.getTenantId());
+            }  ;
+
     }
 
     @Test
     public void testGetUserById(){
 
-     User userAdmin = repo.findById(1L).get();
-        System.out.println(userAdmin);
+        Long tenantId = 8247009068765685744L;
+        TenantContext.setTenantId(tenantId);
+
+        System.out.println("Current tenant: " + TenantContext.getTenantId());
+        List<Product> products = Repository.findAll();
+        for (Product p : products) {
+            System.out.println("Product tenantId: " + p.getTenantId() + " Name: " + p.getName());
+        }
     }
 
 
@@ -100,7 +115,7 @@ class UserRepositoryTest {
 
     @Test
     public void testUpdateUser(){
-        User userAdmin = repo.findById(1L).get();
+        User userAdmin = repo.findById(1).get();
         userAdmin.setEnable(true);
         userAdmin.setPassword("");
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -114,8 +129,8 @@ class UserRepositoryTest {
 
     @Test
     public void testCountById(){
-        Long id =22L;
-        Long countBYId = repo.countById(id);
+        Integer id =22;
+        Integer countBYId = repo.countById(id);
         assertThat(countBYId).isNotNull().isGreaterThan(0);
 
     }
@@ -124,14 +139,14 @@ class UserRepositoryTest {
     @Test
     public void testCreateTestUser() {
         User userAdmin = new User("testDeleteUser@gmail.com", "0000", "ehab", "kholif");
-        userAdmin.addRole(roleRepository.getReferenceById(1L));
+        userAdmin.addRole(roleRepository.getReferenceById(1));
         User savedRole = repo.saveAndFlush(userAdmin);
         assertThat(savedRole.getId()).isGreaterThan(0);
     }
     @Test
     public void testDeleteUser() {
 
-        Long id = 1L;
+        Integer id = 24;
         repo.deleteById(id);
 
         testUser();
@@ -139,21 +154,21 @@ class UserRepositoryTest {
 
     @Test
     public void testUpdateRoleUser() {
-        User userAdmin = repo.findById(3103L).get();
-        userAdmin.addRole(roleRepository.getReferenceById(1L));
+        User userAdmin = repo.findById(3103).get();
+        userAdmin.addRole(roleRepository.getReferenceById(1));
         repo.saveAndFlush(userAdmin);
-        userAdmin.addRole(roleRepository.getReferenceById(3L));
+        userAdmin.addRole(roleRepository.getReferenceById(3));
         repo.saveAndFlush(userAdmin);
-        userAdmin.addRole(roleRepository.getReferenceById(4L));
+        userAdmin.addRole(roleRepository.getReferenceById(4));
         repo.saveAndFlush(userAdmin);
 
     }
 
     @Test
     public void testRemoveRoleUser() {
-        User userAdmin = repo.findById(9L).get();
-        userAdmin.getRoles().remove(roleRepository.getReferenceById(3L));
-        userAdmin.getRoles().remove(roleRepository.getReferenceById(1L));
+        User userAdmin = repo.findById(9).get();
+        userAdmin.getRoles().remove(roleRepository.getReferenceById(3));
+        userAdmin.getRoles().remove(roleRepository.getReferenceById(1));
         repo.saveAndFlush(userAdmin);
 
     }
@@ -182,7 +197,7 @@ class UserRepositoryTest {
     @Test
     public void testFindUserById () {
         try {
-            User userFindById = repo.findById(2L).get();
+            User userFindById = repo.findById(2).get();
             System.out.println(userFindById);
 
         }catch (NoSuchElementException ex){
@@ -193,14 +208,14 @@ class UserRepositoryTest {
 
     @Test
     public void testEnableUser(){
-        Long id = 1152L;
+        Integer id = 115;
         repo.enableUser(id,true);
     }
 
     @Test
     public void testGetUserImagePath(){
 
-        User user = repo.getReferenceById(3L);
+        User user = repo.getReferenceById(3);
 
         System.out.println( user.getImagePath());
         System.out.println( user.getUser_bio());
@@ -211,9 +226,9 @@ class UserRepositoryTest {
 
     @Test
     public void testUnitBean(){
-        User user = repo.getReferenceById(3252L);
+        User user = repo.getReferenceById(3252);
         User userAdmin =new User();
-        userAdmin.addRole(roleRepository.getReferenceById(1L));
+        userAdmin.addRole(roleRepository.getReferenceById(1));
 
 
         BeanUtils.copyProperties( userAdmin,user, "id");
@@ -223,7 +238,7 @@ class UserRepositoryTest {
 
     @Test
     public void testCleanDir() throws IOException {
-        User user = repo.getReferenceById(3L);
+        User user = repo.getReferenceById(3);
         FileUploadUtil.cleanDir(user.getImageDir());
     }
 
@@ -256,8 +271,8 @@ class UserRepositoryTest {
     @Test
     public void testUserSeachPageing(){
 
-     Long id = 20L;
-        User user = repo.getReferenceById(20L);
+        Integer id = 20;
+        User user = repo.getReferenceById(20);
         String encodedPassword = "'$2a$10$1pu/o2S4kwAQ3aFWvIAW9eEnbVgOq0/SebsHLe7BsyZYJ9mSOdRpG'";
 
         user.setPassword(encodedPassword);
@@ -274,7 +289,23 @@ class UserRepositoryTest {
             System.out.println(user.getId() + " --" + user.getfirstName() + "-- "
                     + user.getEmail()+"--"+user.isEnable()+"--"+user.getPassword());
         }
-
 }
+    @Test
+    public void testCreateUser(){
+
+        User user=  new User();
+        String encodedPassword = "'$2a$10$1pu/o2S4kwAQ3aFWvIAW9eEnbVgOq0/SebsHLe7BsyZYJ9mSOdRpG'";
+        user.setFirstName("Ehab");
+        user.setLastName("Kholif");
+        user.setEmail("ehabkholif@gmail.com");
+        user.setPassword(encodedPassword);
+        user.addRole(roleRepository.getReferenceById(1));
+        user.setTenantId(TenantService.createTenant());
+
+         repo.saveAndFlush(user);
+
+
+    }
+
 
 }

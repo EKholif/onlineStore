@@ -27,16 +27,24 @@
 <!--===============================================================================-->
 
       <th th:fragment="colum_link (fieldName, columnLable)">
-            <a
-                    th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+            <a th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
                             +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
-                            '&keyWord='+ keyWord: ' '}}"  class="text-white " >
+                            '&keyWord='+ keyWord: ''}}"  class="text-white " >
                        [[${columnLable}]]
-            </a>
+
 
             <span th:if="${sortField== fieldName}"
                   th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"></span>
+
+            </a>
       </th>
+
+
+<div th:replace="~{fragments/sortDropdown :: sort_dropdown(
+                ${moduleURL}, ${currentPage}, ${sortField}, ${sortDir}, ${keyWord})}">
+</div>
+
+
 
 
 <!--===============================================================================-->

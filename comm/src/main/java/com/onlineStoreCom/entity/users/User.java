@@ -3,6 +3,7 @@ package com.onlineStoreCom.entity.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -12,10 +13,9 @@ import java.util.Set;
 @Entity
 @Table(name = "'user'")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+
+public class User  extends IdBasedEntity {
+
     @Column(name = "email", length = 85, nullable = false)
     private String email;
     @Column(name = "password", length = 85, nullable = false)
@@ -42,8 +42,8 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String email) {
-        this.id = id;
+    public User(String email) {
+
         this.email = email;
     }
 
@@ -83,13 +83,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;

@@ -1,7 +1,10 @@
 package com.onlineStore.admin.category.controller;
 
+import com.onlineStore.admin.category.controller.utility.PagingAndSorting;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.product.service.ListProductByCategory;
+import com.onlineStoreCom.entity.product.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,11 +27,38 @@ public class PagingAndSortingHelper {
     private String pageTitle;
     private Long totalPages;
     private Long TotalElements;
-
+    private PageInfo pageInfo;
 
     private String newObjecturl;
     private int pageNum;
     private List<?> listItems;
+
+    public PagingAndSortingHelper(ModelAndView model, String products, List<Product> listByPage, PagingAndSorting listProductByCategory) {
+        this.model = model;
+        this.listName = products;
+        this.sortField = listProductByCategory.getSortField();
+        this.sortDir = listProductByCategory.getSortDir();
+        this.keyWord = listProductByCategory.getKeyWord();
+        this.pageNum = listProductByCategory.getPageNum();
+        this.pageInfo = listProductByCategory.getPageInfo();
+        this.listItems = listByPage;
+        this.search = "/" + products + "/page/1";
+        this.moduleURL = " /" + products + "/page/";
+        this.pageTitle = "List  " + products;
+        this.newObjecturl = products + "/new-" + products + "-form";
+    }
+
+    public PagingAndSortingHelper(ModelAndView model, String products, List<Product> listByPage) {
+        this.model = model;
+        this.listName = products;
+        this.listItems = listByPage;
+        this.search = "/" + products + "/page/1";
+        this.moduleURL = " /" + products + "/page/";
+        this.pageTitle = "List  " + products;
+        this.newObjecturl = products + "/new-" + products + "-form";
+
+
+    }
 
     public Page<?> getPageItems() {
         return pageItems;
@@ -123,7 +153,7 @@ public class PagingAndSortingHelper {
         model.addObject(objectName, object);
         model.addObject("listItems", listItems); // Assuming listItems is a class variable
         model.addObject("pageTitle", "Create new " + objectName);
-        model.addObject("saveChanges", "/" + objectName + "/save-" + objectName);
+        model.addObject("saveChanges", "/" + listName + "/save-" + objectName);
         return model;
     }
 

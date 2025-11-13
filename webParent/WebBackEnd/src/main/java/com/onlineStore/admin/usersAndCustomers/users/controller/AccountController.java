@@ -28,7 +28,7 @@ public class AccountController {
     public ModelAndView ViewAccountDetails(@AuthenticationPrincipal StoreUserDetails loggedUser,
                                            RedirectAttributes redirectAttributes) {
 
-        Long id = loggedUser.getId();
+        Integer id = loggedUser.getId();
         ModelAndView model = new ModelAndView("users/new-users-form");
 
         try {

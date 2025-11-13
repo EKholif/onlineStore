@@ -1,8 +1,11 @@
 package com.onlineStore.admin.category.services;
 
-public class PageInfo {
+import java.util.List;
+
+public class PageInfo<T> {
     private int totalPages;
     private long totalElements;
+    private List<T> content;
 
     public int getTotalPages() {
         return totalPages;
@@ -20,5 +23,11 @@ public class PageInfo {
         this.totalElements = totalElements;
     }
 
+    public List<T> getContent() {
+        return content;
+    }
 
+    public void setContent(List<T> content) {
+        this.content = content;
+    }
 }

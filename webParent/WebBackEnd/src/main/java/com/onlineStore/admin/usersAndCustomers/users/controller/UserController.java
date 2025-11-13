@@ -1,7 +1,10 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 
+import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
+import com.onlineStore.admin.security.tenant.TenantContext;
+
 import com.onlineStore.admin.utility.UserPdfExporter;
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
@@ -9,6 +12,7 @@ import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.UserCsvExporter;
 import com.onlineStore.admin.utility.UserExcelExporter;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.entity.users.Role;
 import jakarta.servlet.http.HttpServletResponse;
@@ -67,7 +71,7 @@ public class UserController {
         List<Role> listAllRoles = service.listAllRoles();
 
         user.setEnable(true);
-        model.addObject("id", 0L);
+        model.addObject("id", 0);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected listName
         return pagingAndSortingHelper.newForm(model, "user", user);
@@ -83,7 +87,7 @@ public class UserController {
         List<Role> listAllRoles = service.listAllRoles();
 
         user.setEnable(true);
-        model.addObject("id", 0L);
+        model.addObject("id", 0);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected listName
         return pagingAndSortingHelper.newForm(model, "user", user);
@@ -98,12 +102,31 @@ public class UserController {
         redirectAttributes.addFlashAttribute("message", "the user   has been saved successfully.  ");
         String dirName = "user-photos/";
 
+        Long tenantId = TenantContext.getTenantId();
+
+        if (user.getTenantId() == null || user.getTenantId() == 0) {
+            user.setTenantId(TenantService.createTenant());
+        }else {
+            user.setTenantId(tenantId);
+        }
+
+
+
         if (!multipartFile.isEmpty()) {
             savePhoto(user, multipartFile, dirName);
         }
+
+        user.setTenantId(getTenantId(user));
+
+
         service.saveUser(user);
         return new ModelAndView("redirect:/users/users");
     }
+
+    public <T extends IdBasedEntity > Long getTenantId(T entity) {
+       return entity.getTenantId();
+    }
+
 
 
     private void savePhoto(User user, MultipartFile multipartFile, String dirName) throws IOException {
@@ -120,7 +143,7 @@ public class UserController {
 
 
     @GetMapping("/users/edit/{id}")
-    public ModelAndView editUser(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView editUser(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
 
 
         ModelAndView model = new ModelAndView("users/new-users-form");
@@ -143,7 +166,7 @@ public class UserController {
     }
 
     @PostMapping("/users/save-edit-user/")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Long id, @ModelAttribute User user, RedirectAttributes redirectAttributes,
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute User user, RedirectAttributes redirectAttributes,
                                         @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
 
@@ -196,7 +219,7 @@ public class UserController {
 
 
     @GetMapping("/delete-user/{id}")
-    public ModelAndView deleteUser(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView deleteUser(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         try {
             if (service.existsById(id)) {
                 FileUploadUtil.cleanDir(service.getUser(id).getImageDir());
@@ -221,7 +244,7 @@ public class UserController {
 
 
     @GetMapping("/user/{id}/enable/{status}")
-    public ModelAndView UpdateUserStatus(@PathVariable("id") Long id, @PathVariable("status") boolean enable,
+    public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
                                          RedirectAttributes redirectAttributes) {
         service.UdpateUserEnableStatus(id, enable);
         String status = enable ? "enable" : " disable";
@@ -231,13 +254,13 @@ public class UserController {
 
     }
     @PostMapping("/deleteUsers")
-    public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Long> selectedUsers,
+    public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Integer> selectedUsers,
                                     RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Users ID: " + selectedUsers + " has been Deleted");
 
         if (selectedUsers != null && !selectedUsers.isEmpty()) {
-            for (Long id : selectedUsers) {
+            for (Integer id : selectedUsers) {
                 FileUploadUtil.cleanDir(service.getUser(id).getImageDir());
                 service.deleteUser(id);
             }

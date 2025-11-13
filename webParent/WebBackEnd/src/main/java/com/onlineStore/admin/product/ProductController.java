@@ -4,6 +4,7 @@ package com.onlineStore.admin.product;
 import com.onlineStore.admin.product.service.ProductService;
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.services.CategoryService;
+import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.brand.BrandNotFoundException;
 import com.onlineStore.admin.brand.BrandService;
@@ -64,9 +65,9 @@ public class ProductController {
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
                 (model, "products", sortField, sortDir, keyWord, pageNum, listByPage);
 
-        pagingAndSortingHelper.listByPage(pageInfo, "products");
-        return model;
+       return pagingAndSortingHelper.listByPage(pageInfo, "products");
     }
+
 
     @GetMapping("/products/new-products-form")
     public ModelAndView newBrandForm() {
@@ -86,7 +87,7 @@ public class ProductController {
         model.addObject("label-category", " Category :");
 //        model.addObject("listCategory", listCategory);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("listCategory", listCategory); // Corrected listName
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("products", listCategory); // Corrected listName
         return pagingAndSortingHelper.newForm(model, "product", product);
 
     }
@@ -103,12 +104,13 @@ public class ProductController {
 
         redirectAttributes.addFlashAttribute("message", "the brand has been saved successfully.  ");
 
+        Long tenantId = TenantContext.getTenantId();
+        product.setTenantId(tenantId);
+
         setMainImageName(mainImageMultipartFile, product);
         setExtraImageNames(extraImageMultipart, product);
-        setProductDetails(detailIDs, detailNames, detailValues, product);
-
+        setProductDetails(detailIDs, detailNames, detailValues, product,tenantId);
         Product saveProduct = productService.saveProduct(product);
-
 
         saveUpLoadImages(mainImageMultipartFile, extraImageMultipart, saveProduct);
         return new ModelAndView("redirect:/products/products");
@@ -116,7 +118,7 @@ public class ProductController {
 
 
     static void setProductDetails(String[] detailIDs, String[] detailNames,
-                                  String[] detailValues, Product product) {
+                                  String[] detailValues, Product product, Long tenantId) {
         if (detailNames == null || detailNames.length == 0) return;
 
         for (int count = 0; count < detailNames.length; count++) {
@@ -126,10 +128,9 @@ public class ProductController {
             Integer id = count;
 
             if (id != 0) {
-
-                product.addProductDetails(name, value);
+                product.addProductDetails(id,name, value);
             } else if (!name.isEmpty() && !value.isEmpty()) {
-                product.addProductDetails(name, value);
+                product.addProductDetails(name, value, tenantId);
 
             }
         }
@@ -274,8 +275,9 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
 
         Product updateProduct = productService.findById(id);
-
-        setProductDetails(detailIDs, detailNames, detailValues, updateProduct);
+        Long tenantId = TenantContext.getTenantId();
+        product.setTenantId(tenantId);
+        setProductDetails(detailIDs, detailNames, detailValues, updateProduct,tenantId);
 
         setMainImageName(mainImageMultipartFile, product);
         setExtraImageNames(extraImageMultipart, product);

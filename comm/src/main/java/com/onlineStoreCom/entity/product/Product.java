@@ -121,20 +121,16 @@ public class Product extends IdBasedEntity {
         return details;
     }
 
-
-
-    public void addProductDetails(String detailName, String detailValue) {
-        this.details.add(new ProductDetails(detailName, detailValue, this));
-
+    public void addProductDetails(Integer id,String detailName, String detailValue) {
+        this.details.add(new ProductDetails(id,detailName, detailValue, this));
     }
 
-    public void addProductDetails(int id, String detailName, String detailValue) {
-
-
-        this.details.add(new ProductDetails(id, detailName, detailValue, this));
+    public void addProductDetails(String detailName, String detailValue, Long tenantId) {
+        this.details.add(new ProductDetails(detailName, detailValue,tenantId, this));
     }
-
-
+    public void addProductDetailsTenantId(Long tenantId) {
+        this.details.add(new ProductDetails(tenantId, this));
+    }
     public void addExtraImages(String imageName) {
 
         this.images.add(new ProductImage(imageName, this));

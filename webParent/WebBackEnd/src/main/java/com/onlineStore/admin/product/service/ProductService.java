@@ -1,6 +1,7 @@
 package com.onlineStore.admin.product.service;
 
 
+import com.onlineStore.admin.category.controller.utility.PagingAndSorting;
 import com.onlineStore.admin.product.repository.ProductRepository;
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
@@ -99,10 +100,7 @@ public class ProductService {
     public List<Product> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
 
         Sort sort = Sort.by(sortField);
-
-
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
-
         Pageable pageable = PageRequest.of(pageNum - 1, UserService.USERS_PER_PAGE, sort);
 
         Page<Product> pageUsers = null;
@@ -126,4 +124,35 @@ public class ProductService {
         helper.updateModelAttributes(pageNum, page);
     }
 
+
+//    public List<Product> listByPage(PagingAndSorting pagingAndSorting) {
+//
+//        Page<Product> pageUsers = null;
+//        String keyWord = pagingAndSorting.getKeyWord();
+//
+//        Sort sort = Sort.by(pagingAndSorting.getSortField());
+//
+//        sort = pagingAndSorting.getSortDir().equals("asc") ? sort.ascending() : sort.descending();
+//        int pegNum = pagingAndSorting.getPageNum();
+//        Pageable pageable = PageRequest.of( pegNum - 1, PagingAndSorting.PRODUCTS_PER_PAGE, sort);
+//
+//        if (keyWord != null) {
+//            pageUsers = repository.findAll(keyWord, pageable);
+//        } else {
+//            pageUsers = repository.findAll(pageable);
+//
+//        }
+//
+//        PageInfo pageInfo = pagingAndSorting.getPageInfo();
+//        pageInfo.setTotalElements(pageUsers.getTotalElements());
+//        pageInfo.setTotalPages(pageUsers.getTotalPages());
+//
+//
+//        return pageUsers.getContent();
+//    }
+
+
 }
+
+
+
