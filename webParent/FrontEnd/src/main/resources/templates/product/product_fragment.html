@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="content" class="col-sm-2">
+		<div>
+			<a th:href="@{${product.URI}}"> <img
+				th:src="@{${product.mainImagePath}}" width="150" /> <br /> <b>[[${product.shortName}]]</b>
+			</a>
+		</div>
+		<div>
+			<table>
+				<tr>
+					<td><input type="text" class="product-detail-rating-star"
+						dir="ltr" data-size="xs" th:value="${product.averageRating}" /></td>
+					<td><small>[[${product.reviewCount}]]</small></td>
+				</tr>
+			</table>
+		</div>
+		<div th:replace="~{product/product_fragment :: product_price}"></div>
+	</div>
+
+
+
+
+
+		<div th:fragment="product_price" th:remove="tag">
+			<th:block th:if="${product.discountPercent <= 0}">
+				<div
+	th:replace="~{product/product_fragment :: price_fragment(${product.price})}"></div>
+	</th:block>
+			<th:block th:if="${product.discountPercent > 0}">
+				<span style="font-size: larger; color: darkred">
+					<span class="badge rounded-pill bg-danger">
+					<div
+							th:replace="~{product/product_fragment :: price_fragment(${product.discountPercent})}"></div> % Off </span>
+
+
+					<div class="price-discounted"
+						th:replace="~{product/product_fragment :: price_fragment(${product.discountPrice})}"></div>
+				</span>
+				<del>
+					<span>
+						<div class="price-original"
+							th:replace="~{product/product_fragment :: price_fragment(${product.price})}"></div>
+					</span>
+				</del>
+			</th:block>
+	</div>
+
+	<div th:fragment="price_fragment(productPrice)" th:remove="tag">
+		<span th:if="${CURRENCY_SYMBOLE_POSITION == 'Before Price'}"
+			  th:remove="tag">[[${CURRENCY_SYMBOLE}]]</span>
+		[[${#numbers.formatDecimal(productPrice,
+		1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span
+			th:if="${CURRENCY_SYMBOLE_POSITION == 'After Price'}"
+			th:remove="tag">[[${CURRENCY_SYMBOLE}]]</span>
+
+
+
+	</div>
+
+</body>
+
+</html>

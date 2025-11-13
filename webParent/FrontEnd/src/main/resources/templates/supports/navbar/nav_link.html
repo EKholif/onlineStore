@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+
+//   //  sec:authorize="hasAnyAuthority('
+
+
+
+
+<li  th:fragment="content(fieldName,label)" >
+    <!--            class="nav-item mx-n0 "  sec:authorize="hasAuthority('Admin')">-->
+
+    <a class="nav-link" th:href="@{'/' + ${fieldName}}">[[${label}]]</a>
+</li>
+
+
+
+
+
+</body>
+
+</html>

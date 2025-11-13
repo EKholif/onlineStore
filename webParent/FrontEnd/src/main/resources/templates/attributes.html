@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OAuth2 Attributes</title>
+
+    <head th:replace="~{supports/header/header::content}"></head>
+
+</head>
+<body>
+
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+<div class="full-details  less-details mx-5">
+
+
+    <div class=" mt-5  pb-5 "></div>
+    <h2 class="text-center mx-5">User OAuth2 Attributes</h2>
+    <div class=" mt-5 "></div>
+
+
+    <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered mt-5  pb-5   "
+           id="employeeTable">
+        <thead class="table-dark ">
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="attr : ${attributes}">
+            <td th:text="${attr.key}">Key</td>
+            <td th:text="${attr.value}">Value</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+
+</body>
+</html>

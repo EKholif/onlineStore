@@ -1,0 +1,58 @@
+
+
+
+
+<!--	&lt;!&ndash; تعديل fragment product_price ليأخذ product و rowNumber &ndash;&gt;-->
+<!--	<div th:fragment="product_price(product, rowNumber)" th:remove="tag">-->
+<!--		<th:block th:if="${product.discountPercent <= 0}">-->
+<!--			<div class="priceOriginal"-->
+<!--				 th:id="'priceOriginal' + ${product.id}"-->
+<!--				 th:data-price="${product.price}"-->
+<!--				 th:replace="~{product/product_fragment :: price_fragment(${product.price})}">-->
+<!--			</div>-->
+<!--		</th:block>-->
+
+<!--		<th:block th:if="${product.discountPercent > 0}">-->
+<!--        <span style="font-size: larger; color: darkred">-->
+<!--            <span class="badge rounded-pill bg-danger">-->
+<!--&lt;!&ndash;                <div&ndash;&gt;-->
+<!--&lt;!&ndash;						th:replace="~{product/product_fragment :: price_fragment(${product.discountPercent})}"></div> % Off&ndash;&gt;-->
+<!--&lt;!&ndash;            </span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="price-discounted"&ndash;&gt;-->
+<!--&lt;!&ndash;				 th:id="'priceDiscounted' + ${product.id}"&ndash;&gt;-->
+<!--&lt;!&ndash;				 th:data-price="${product.discountPrice}"&ndash;&gt;-->
+<!--&lt;!&ndash;				 th:replace="~{product/product_fragment :: price_fragment(${product.discountPrice})}">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        </span>-->
+
+<!--			<del>-->
+<!--            <span>-->
+<!--                <div class="price-original"-->
+<!--					 th:id="'priceOriginal' + ${product.id}"-->
+<!--					 th:data-price="${product.price}"-->
+<!--					 th:replace="~{product/product_fragment :: price_fragment(${product.price})}">-->
+<!--                </div>-->
+<!--            </span>-->
+<!--			</del>-->
+<!--		</th:block>-->
+<!--	</div>-->
+
+
+	<span th:fragment="price_fragment(productPrice,priceKind)" th:remove="tag">
+
+   <span th:if="${CURRENCY_SYMBOLE_POSITION == 'Before Price'}"
+		 th:remove="tag" >[[${CURRENCY_SYMBOLE}]]</span>
+
+    <span th:class="${priceKind}"
+		  th:id="${priceKind + product.id}"
+		  th:data-price="${productPrice}" >
+        [[${#numbers.formatDecimal(productPrice,
+        1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]
+ </span>
+
+   <span th:if="${CURRENCY_SYMBOLE_POSITION == 'After Price'}"
+		 th:remove="tag">[[${CURRENCY_SYMBOLE}]]</span>
+
+	</span>
+

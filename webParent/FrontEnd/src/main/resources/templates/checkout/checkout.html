@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{supports/header/header::content}"></head>
+<body>
+
+
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+<div th:replace="~{supports/fragment::search}"></div>
+
+<div class="text-center">
+    <h2>Checkout</h2>
+</div>
+
+
+
+<div class="row m-1">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>Shipping information</h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    <b>Ship to:</b>&nbsp; [[${shippingAddress}]] <a
+                        th:href="@{/address_book(redirect=checkout)}">[Ship to
+                    another address]</a>
+                </p>
+                <p>
+                    <b>Days to deliver: </b>[[${checkoutInfo.deliverDays}]] day(s)
+                </p>
+                <p>
+                    <b>Expected deliver date: </b>[[${#dates.format(checkoutInfo.deliverDate,
+                    'E, dd MMM yyyy')}]]
+                </p>
+            </div>
+        </div>
+
+        <div class="card mt-3 mb-3">
+            <div class="card-header">
+                <h5>Payment Method</h5>
+            </div>
+            <div class="card-body">
+                <div th:if="${checkoutInfo.codSupported}">
+                    <form method="post" th:action="@{/place_order}">
+                        <p>
+
+                            <input id="radioCOD" name="paymentMethod" type="radio"
+                                   value="COD"/> Cash on Delivery (COD) &nbsp;
+                            <button class="btn btn-primary d-none" id="buttonSubmit"
+                                    type="submit">Place Order with COD
+                            </button>
+                        </p>
+                    </form>
+                </div>
+
+                <div id="paypal-button-container"></div>
+                <form id="paypalForm" method="post"
+                      th:action="@{/process_paypal_order}">
+                    <input id="orderId" name="orderId" type="hidden"/> <input
+                        name="paymentMethod" type="hidden" value="PAYPAL"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Order Summary</h5>
+            </div>
+            <div class="card-body">
+                <div>
+                    <table>
+                        <th:block th:each="item : ${cartItems}">
+                            <tr th:with="product = ${item.product}">
+                                <td>[[${item.quantity}]] X &nbsp;&nbsp;</td>
+                                <td width="70%"><a target="_blank"
+                                                   th:href="@{'/p/' + ${product.alias}}"> [[${product.shortName}]] </a>
+                                    <br/> <small>Ship:
+                                        <div
+                                                th:replace="~{supports/format/format_currency:: content(${item.shippingCost})}">
+                                        </div>
+
+                                        <h1> [[${item.shippingCost}  ]] </h1>
+                                    </small></td>
+                                <td>
+                                    <div
+                                            th:replace="~{supports/format/format_currency:: content(${item.subtotal})}">
+                                    </div>
+                                </td>
+                            </tr>
+                        </th:block>
+                        <tr>
+                            <td colspan="3">
+                                <hr/>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col">Product Total:</div>
+                    <div class="col">
+                        <div
+                                th:replace="~{supports/format/format_currency:: content(${checkoutInfo.productTotal})}"></div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col">Shipping Total:</div>
+                    <div class="col">
+                        <div
+                                th:replace="~{supports/format/format_currency:: content(${checkoutInfo.shippingCostTotal})}"></div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col">Payment Total:</div>
+                    <div class="col">
+                        <b>
+                            <div
+                                    th:replace="~{supports/format/format_currency:: content(${checkoutInfo.paymentTotal})}"></div>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--		<div th:replace="fragments :: modal_dialog"></div>-->
+<!--<div th:replace="~{supports/modal-dialog::content}"></div>-->
+
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+
+<div class="modal fade text-center" id="confirmModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Alert Message Box</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span id="modalBody"></span>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" href="" id="yesbutton">Yes</a>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script th:src="@{/js/common_modal.js}"></script>
+<script th:src="@{https://www.sandbox.paypal.com/sdk/js(client-id=${paypalClientId},currency=${currencyCode})}"></script>
+<script>
+    if (window.paypal) {
+        console.log('PayPal SDK loaded successfully!');
+    } else {
+        console.log('PayPal SDK did not load.');
+    }
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+
+    $(document).ready(function () {
+        $("#radioCOD").on("click", function () {
+            $("#buttonSubmit").removeClass("d-none");
+        });
+    });
+
+    function validateOrder(orderId) {
+        $("#orderId").val(orderId);
+        $("#paypalForm").submit();
+    }
+
+    paypal.Buttons({
+        enableStandardCardFields: true,
+        createOrder: function (data, actions) {
+            // setup a transaction
+            return actions.order.create({
+
+                intent: 'CAPTURE', // make payment immediately
+                payer: {
+                    name: {
+                        given_name: "[[${customer.firstName}]]",
+                        surname: "[[${customer.lastName}]]"
+                    },
+
+                    address: {
+                        address_line_1: "[[${customer.addressLine1}]]",
+                        address_line_2: "[[${customer.addressLine2}]]",
+                        admin_area_1: "[[${customer.state}]]",
+                        admin_area_2: "[[${customer.city}]]",
+                        postal_code: "[[${customer.postalCode}]]",
+                        country_code: "[[${customer.country.code}]]"
+                    },
+
+                    email_address: "[[${customer.email}]]",
+
+                    phone: {
+                        phone_type: "MOBILE",
+                        phone_number: {
+                            national_number: "[[${customer.phoneNumber}]]"
+                        }
+                    }
+                },
+
+                purchase_units: [{
+                    amount: {
+                        value: "[[${checkoutInfo.paymentTotal4PayPal}]]",
+                        currency_code: "[[${currencyCode}]]"
+                    }
+                }],
+
+                application_context: {
+                    shipping_preference: "NO_SHIPPING"
+                }
+            });
+        },
+
+        onApprove: function (data, actions) {
+
+
+            // buyer approved payment
+            return actions.order.capture().then(function (details) {
+                console.log(   "ehab   "+  details);
+                orderId = details.id;
+                console.log(   "ehab   "+  details.id);
+
+                validateOrder(orderId);
+            });
+        },
+
+        onCancel: function (data) {
+            // buyer cancelled payment
+            // alert('Payment cancelled by the buyer');
+            showErrorModal("Something wrong with your address information, so payment will not work.");
+
+        },
+
+        onError: function (err) {
+            // error that prevents buyer from doing checkout
+            showErrorModal("Something wrong with your address information, so payment will not work.");
+        }
+    }).render("#paypal-button-container");
+
+</script>
+</body>
+
+</html>

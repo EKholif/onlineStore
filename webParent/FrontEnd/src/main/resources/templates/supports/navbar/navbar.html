@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standerd/header::content}"></head>
+
+<body>
+<div th:fragment="content">
+
+
+    <nav class="navbar  navbar-expand-lg gradient-custom-blue    navbar-dark ">
+        <div class="container-fluid ">
+
+            <a class="navbar-brand " th:href="@{/}">
+                <img alt="SITE LOGO " class="rounded-pill"
+                     style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
+                     th:src="@{${SITE_LOGO}}"/>
+            </a>
+
+            <button th:replace="~{supports/fragment::navbar-toggler}"></button>
+
+            <div class="collapse navbar-collapse mt-auto" id="topNavbar">
+                <ul class="navbar-nav  ">
+                    <li th:replace="~{supports/navbar/nav_link::content('account','Customer')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('cart','Cart')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('Payments','Payments')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('address_book',' Shipping &amp; Delivery')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('registration','Register')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('attributes','Contact')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('about','About ')}"></li>
+                </ul>
+
+
+
+
+
+
+
+                <ul class="navbar-nav ms-auto ">
+
+                    <th:block sec:authorize="!isAuthenticated()">
+
+                        <span   class="fas fa-user fa-2 icon-green fa-2x float-sm-end"></span>
+
+                        <li class="nav-item "><a class="nav-link" th:href="@{/login}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/registration}">Register</a></li>
+                    </th:block>
+
+
+                    <th:block sec:authorize="isAuthenticated()">
+
+                        <div>
+                        <div th:replace="~{supports/navbar/image_icon::content}"></div>
+
+                        <div>  <a class="nav-link" data-bs-toggle="dropdown" th:text="${#authentication.principal.getFullName}"></a></div>
+
+
+                        <form method="post" name="logoutForm" th:action="@{/logout}">
+                            <input type="submit" value="Logout"/>
+                        </form>
+                        </div>
+
+                    </th:block>
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+</body>
+
+</html>
+
+
+

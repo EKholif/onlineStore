@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{supports/header/header::content}"></head>
+<body>
+
+
+
+<div class="container-fluid text-center">
+	<div th:replace="~{supports/navbar/navbar::content}"></div>>
+		<div>&nbsp;</div>
+
+		<div th:if="${pageTitle != null}">
+			<h2>[[${pageTitle}]]</h2>
+		</div>
+
+		<div th:if="${message != null}">
+			<h3>[[${message}]]</h3>
+		</div>
+
+		<div>&nbsp;</div>
+	<div th:replace="~{supports/footer/footer_menu::content}"></div>
+	</div>
+
+
+</body>
+
+</html>

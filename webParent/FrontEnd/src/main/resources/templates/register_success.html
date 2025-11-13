@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{supports/header/header::content}"></head>
+<body>
+
+
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+
+
+</div>
+<h1 class="text-center">[[${pageTitle}]]</h1>
+</div>
+
+
+<div>&nbsp;</div>
+
+<div class="text-center">
+    <h2>Customer Registration</h2>
+    <h4>You have registered successfully as a customer</h4>
+    <p>Please check your email to verify our account.</p>
+    <p>
+        <a th:href="@{/login}">Login here</a>
+    </p>
+</div>
+
+<div>&nbsp;</div>
+
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+<div th:fragment="modal">
+    <div class="modal fade text-center" data-bs-target="#modalDialog" data-bs-toggle="modal" id="confirmModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle"> Alert Message Box </h3>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" href="" id="yesbutton">yes</a>
+
+
+                    <button class="btn btn-danger" data-dismiss="modal" type="close">no</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    extraImagesCount = 0;
+
+    dropdownCountry = $("#country");
+    dropdownStates = $("#states");
+
+    customerURL = "[[@{/states/list_by_country/}]]";
+    Max_File_Size = 1042000;
+    var custUrl = "[[@{/check_email}]]";
+    defultImage = "[[@{/images/pngwing.com.png}]]";
+
+    $(document).ready(function () {
+
+
+        getStates();
+
+        dropdownCountry.change(function () {
+            getStates();
+
+        })
+    })
+
+
+    function getStates() {
+        dropdownStates.empty();
+
+        var countryId = dropdownCountry.val();
+        url = customerURL + countryId;
+
+
+        $.get(url)
+            .done(function (responseJson) {
+                $.each(responseJson, function (index, state) {
+                    $("<option>").val(state.id).text(state.name).appendTo(dropdownStates);
+
+                });
+            })
+            .fail(function () {
+                $("<option>").val("").text("Failed to load categories").appendTo(dropdownStates);
+            });
+
+    }
+
+
+
+    function checkPasswordMatch(confirmPassword) {
+
+        if (confirmPassword.value !== $("#Password").val()) {
+            confirmPassword.setCustomValidity("Password Not Match")
+        } else {
+            confirmPassword.setCustomValidity("");
+
+        }
+    }
+
+    function checkDuplicateEmail(form) {
+        // Get the user Id
+        var id = $("#id").val();
+
+
+        // Get the user's email input from the form.
+        var customerEmail = $("#email").val();
+
+        // Get the CSRF token from the form.
+        var csrf = $("input[name='_csrf']").val();
+
+        // console.log(id, url, customerEmail);
+
+        // Create a JavaScript object with the email and CSRF token.
+        var params = {email: customerEmail, _csrf: csrf, id: id};
+
+
+
+
+        $.post(custUrl, params, function (response) {
+
+
+            if (response === "OK") {
+                showmodalDialog("This Unique", customerEmail);
+                form.submit();
+            } else if (response === "Duplicated") {
+
+                showmodalDialog("There is another Customer having the email ", customerEmail);
+
+            } else {
+                showmodalDialog("else Unknown response from server ");
+                console.error("Failed to connect to the server ");
+            }
+        }).fail(function () {
+            showmodalDialog("Fail Could not connect to the server ");
+            console.error("Failed to connect to the server ");
+            console.log(id, name)
+
+        });
+
+
+        return false;
+    }
+
+    function showmodalDialog(tital, message) {
+        $("#modalTitle").text(tital);
+        $("#modalBody").text(message);
+        $('#confirmModal').modal('show');
+    }
+
+
+</script>
+
+
+</body>
+</html>

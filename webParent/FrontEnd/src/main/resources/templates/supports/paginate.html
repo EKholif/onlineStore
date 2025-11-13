@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<nav aria-label="paginate" class="text-center flex mb-1" th:fragment="content">
+    <div th:if="${totalItems>0}">
+        <span class="align-content-end"> showing users # [[${startCont}]] to [[${endCount}]] of [[${totalItems}]]</span>
+
+    </div>
+    <div th:unless="${totalItems>0}">
+        <span> No [[${modelUrl}]] Found</span>
+    </div>
+
+    <div th:if="${totalPages>1}">
+
+
+        <ul class="pagination justify-content-center flex-wrap">
+
+            <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                <a th:replace="~{supports/fragment::page_link(1,'First')}"/></a>
+            </li>
+
+            <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                <a th:replace="~{supports/fragment::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${currentPage ==i ?'active':''}"
+                th:each="i :${#numbers.sequence(1,totalPages)} ">
+                <a th:replace="~{supports/fragment::page_link(${i}, ${i})}"/></a>
+            </li>
+
+
+            <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                <a th:replace="~{supports/fragment::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                <a th:replace="~{supports/fragment::page_link(${totalPages}, 'Last')}"/></a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{supports/header/header::content}"></head>
+<body>
+<div class="container-fluid">
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Search fragment -->
+            <div class="col-md-6">
+                <div th:replace="~{supports/fragment::search}"></div>
+            </div>
+
+            <!-- Page title -->
+            <div class="col-md-6 text-end">
+                <h2 class="text-center ">[[${pageTitle}]]</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <!-- Right column: Categories & Subcategories -->
+
+
+            <div class="col-md-3 border-end">
+                <div th:replace="~{supports/breadcrumb :: content}"></div>
+                <h5 class="fw-bold bg-body-secondary mb-3 text-center"> 🛍️ Categories </h5>
+                <div class="list-group">
+                    <div class="mb-3" th:each="cat : ${listCategories}">
+                        <div class="d-flex align-items-center">
+                            <img style="width: 50px; height: 50px; object-fit: contain; margin-right: 10px;"
+                                 th:src="@{${cat.getCatImagePath}}"/>
+                            <a class="list-group-item-action text-decoration-none fw-bold h4 mb-0"
+                               th:href="@{'/c/' + ${cat.alias}}">
+                                [[${cat.name}]]
+                            </a>
+                        </div>
+
+                        <!-- Subcategories -->
+                        <div class="ms-5 mt-2" th:if="${cat.children != null}">
+                            <div class="d-flex align-items-center mb-1" th:each="sub : ${cat.children}">
+                                <img style="width: 25px; height: 25px; object-fit: contain; margin-right: 8px;"
+                                     th:src="@{${sub.getCatImagePath}}"/>
+                                <a class="small text-muted text-decoration-none h6 mb-0"
+                                   th:href="@{'/c/' + ${sub.alias}}">
+                                    [[${sub.name}]]
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Left column:  Products -->
+            <div class="col-md-9">
+                <h5 class="mb-3 text-center bg-primary-subtle">🛍️ Products</h5>
+
+
+                <div th:replace="~{supports/sortAndSearchDrop/sort_drop_menu :: sort_dropdown(
+                ${modelUrl}, ${currentPage}, ${sortField}, ${sortDir}, ${keyWord})}">
+                </div>
+
+
+                <div class="row row-cols-2 row-cols-md-4 g-3">
+                    <div class="col" th:each="product : ${products}">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="p-2 text-center">
+                                <img class="card-img-top"
+                                     style="width: 100%; height: 120px; object-fit: contain;"
+                                     th:src="@{${product.getImagePath}}"/>
+                            </div>
+                            <div class="card-body text-center p-2">
+                                <a class="text-decoration-none small d-block"
+                                   th:href="@{'/c/c/' + ${product.alias}}">
+                                    [[${product.shortName}]]
+                                </a>
+                                <div th:replace="~{product/product_fragment :: product_price}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav th:replace="~{supports/paginate::content}"></nav>
+
+
+
+
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

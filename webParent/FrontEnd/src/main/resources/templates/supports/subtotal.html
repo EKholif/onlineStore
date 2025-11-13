@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="content">
+
+  <span th:if="${CURRENCY_SYMBOLE_POSITION == 'Before Price'}"
+        style="font-size: 20px ;"  >[[${CURRENCY_SYMBOLE}]]</span>
+
+
+    <span class="h4 subtotal" th:id="'subtotal' + ${product.id}">[[${#numbers.formatDecimal(item.subtotal,
+									1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span>
+
+
+
+
+    <span th:if="${CURRENCY_SYMBOLE_POSITION == 'After Price'}"
+          style="font-size: 20px ;"  >[[${CURRENCY_SYMBOLE}]]</span>
+
+</div>
+
+</body>
+
+</html>

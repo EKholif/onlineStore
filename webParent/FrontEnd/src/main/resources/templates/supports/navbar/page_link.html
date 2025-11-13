@@ -1,0 +1,8 @@
+
+
+
+
+<a th:fragment="page_link(pageNum,label)" class="page-link"
+   th:href="@{${modelUrl}+ ${pageNum} +'?sortField='+${sortField} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
+             '&keyWord='+ keyWord: ' '}}">[[${label}]]
+</a>

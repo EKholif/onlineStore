@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head th:replace="~{supports/header/header::content}"></head>
+<body>
+
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+	<div class="container-fluid">
+
+
+
+		<div>&nbsp;</div>
+
+		<div class="text-center">
+			<h2>Customer Verification</h2>
+			<h4>Congratulations! Your account has been verified.</h4>
+			<p>
+				<a th:href="@{/login}">Login Now</a>
+			</p>
+		</div>
+
+		<div>&nbsp;</div>
+
+
+	</div>
+
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+</body>
+
+</html>

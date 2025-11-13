@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="content">
+
+
+    <nav    aria-label="paginate"  class="text-center flex mb-1" >
+        <div  th:if="${totalItems>0}" >
+            <span class="align-content-end"> showing [[${name}]] # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
+        </div>
+        <div  th:unless="${totalItems>0}" >
+
+            <span> No [[${url}]] Found</span>
+        </div>
+
+        <div  th:if="${totalPages>1}"   >
+
+            <ul class="pagination justify-content-center flex-wrap" >
+
+                <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                    <a th:replace="~{support/fragments/standerd/page-link::content(1,'First')}"></a>
+                </li >
+
+                <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+                </li>
+
+                <li class="page-item"  th:each="i :${#numbers.sequence(1,totalPages)} " th:classappend="${currentPage ==i ?'active':''}">
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${i}, ${i})}" ></a>
+                </li>
+
+
+                <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+                </li>
+
+                <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                    <a th:replace="~{support/fragments/standerd/page-link::content(${totalPages}, 'Last')}" ></a>
+                </li>
+
+            </ul>
+
+
+
+        </div>
+    </nav>
+
+
+    <p class="text-center" > Copyright © 2025 GropLink, Inc </p>
+
+
+
+
+</div>
+
+</body>
+
+</html>
+
+
+

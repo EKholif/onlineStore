@@ -1,0 +1,213 @@
+package frontEnd.utilites;
+
+
+import frontEnd.category.CategoryService;
+import frontEnd.product.PageInfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
+public class ModelControllerHelper {
+
+
+    private ModelAndView model;
+    private String listName;
+    private String sortField;
+    private String sortDir;
+    private String keyWord;
+
+    private String search;
+    private String modelUrl;
+    private String pageTitle;
+    private Long totalPages;
+    private Long TotalElements;
+
+
+    private String newObjecturl;
+    private int pageNum;
+    private List<?> listItems;
+
+    public Page<?> getPageItems() {
+        return pageItems;
+    }
+
+    public void setPageItems(Page<?> pageItems) {
+        this.pageItems = pageItems;
+    }
+
+    private Page<?> pageItems;
+
+
+    public ModelControllerHelper(ModelAndView model, String listName,
+                                 String sortField, String sortDir, String keyWord,
+                                 int pageNum, List<?> listItems) {
+
+        this.model = model;
+        this.listName = listName;
+        this.sortField = sortField;
+        this.sortDir = sortDir;
+        this.keyWord = keyWord;
+        this.pageNum = pageNum;
+        this.listItems = listItems;
+        this.search = "/" + listName + "/page/1";
+        this.modelUrl = " /" + listName + "/page/";
+        this.pageTitle = "List  " + listName;
+        this.newObjecturl = listName + "/new-" + listName + "-form";
+
+    }
+
+    public ModelControllerHelper() {
+    }
+
+    public Long getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(Long totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public Long getTotalElements() {
+        return TotalElements;
+    }
+
+    public void setTotalElements(Long totalElements) {
+        TotalElements = totalElements;
+    }
+
+
+// to list the data By page
+
+    public ModelAndView listByPage(PageInfo pageInfo, String name) {
+
+        long startCount = (long) (pageNum - 1) * CategoryService.USERS_PER_PAGE + 1;
+        long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
+
+        if (endCount > pageInfo.getTotalElements()) {
+            endCount = pageInfo.getTotalElements();
+        }
+
+
+        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+
+        model.addObject(name, listItems);
+        model.addObject("keyWord", keyWord);
+        model.addObject("sortDir", sortDir);
+        model.addObject("endCount", endCount);
+        model.addObject("currentPage", pageNum);
+        model.addObject("sortField", sortField);
+        model.addObject("startCont", startCount);
+        model.addObject("reverseSortDir", reverseSortDir);
+        model.addObject("totalPages", pageInfo.getTotalPages());
+        model.addObject("totalItems", pageInfo.getTotalElements());
+        model.addObject("search", search);
+        model.addObject("modelUrl", modelUrl);
+        model.addObject("pageTitle", pageTitle);
+        model.addObject("name", "/" + name + "/" + name);
+
+        return model;
+    }
+
+    //new object creation constructor
+    public ModelControllerHelper(String listName, List<?> listItems) {
+        this.listName = listName;
+        this.listItems = listItems;
+    }
+
+    public ModelAndView newForm(ModelAndView model, String objectName, Object object) {
+        model.addObject(objectName, object);
+
+        model.addObject("listItems", listItems); // Assuming listItems is a class variable
+        model.addObject("pageTitle", "Create new " + listName);
+        model.addObject("saveChanges", "/" + listName + "/save-" + objectName);
+        return model;
+    }
+
+    public ModelAndView editForm(ModelAndView model, String objectName, Object object, int id) {
+        model.addObject(objectName, object);
+        model.addObject("id", id);
+
+        model.addObject("listItems", listItems); // Assuming listItems is a class variable
+        model.addObject("pageTitle", " Edit : " + objectName + " ID :  " + id);
+        model.addObject("saveChanges", "/" + listName + "/save-" + objectName);
+        return model;
+    }
+
+    public ModelAndView editForm(ModelAndView model, String objectName, Object object, Integer id) {
+        model.addObject(objectName, object);
+        model.addObject("id", id);
+        model.addObject("listItems", listItems); // Assuming listItems is a class variable
+        model.addObject("pageTitle", " Edit : " + objectName + " ID :  " + id);
+
+        model.addObject("saveChanges", "/" + listName + "/save-edit-" + objectName + "/");
+        return model;
+    }
+
+
+    public Pageable createPageable(int pageSize, int pageNum) {
+        Sort sort = Sort.by(sortField);
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+        return PageRequest.of(pageNum - 1, pageSize, sort);
+    }
+
+
+    public ModelAndView getModel() {
+        return model;
+    }
+
+    public void setModel(ModelAndView model) {
+        this.model = model;
+    }
+
+    public String getListName() {
+        return listName;
+    }
+
+    public void setListName(String listName) {
+        this.listName = listName;
+    }
+
+    public String getSortField() {
+        return sortField;
+    }
+
+    public void setSortField(String sortField) {
+        this.sortField = sortField;
+    }
+
+    public String getSortDir() {
+        return sortDir;
+    }
+
+    public void setSortDir(String sortDir) {
+        this.sortDir = sortDir;
+    }
+
+    public String getkeyWord() {
+        return keyWord;
+    }
+
+    public void setkeyWord(String keyWord) {
+        this.keyWord = keyWord;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public List<?> getListItems() {
+        return listItems;
+    }
+
+    public void setListItems(List<?> listItems) {
+        this.listItems = listItems;
+    }
+}

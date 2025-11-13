@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="~{supports/header/header::content}"></head>
+<body>
+
+
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+<div th:replace="~{supports/fragment::search}"></div>
+
+
+<div class="row m-1">
+    <div class="col-sm-8">
+        <th:block class="cart-item" th:each="item, status : ${cartItems}">
+            <div class="row border rounded p-1"
+                 th:id="'row' + ${status.count}"
+                 th:with="product = ${item.product}">
+                <div class="col-1">
+                    <div class="divCount">[[${status.count}]]</div>
+                    <div>
+
+                        <a class="fas fa-trash icon-dark linkRemove"
+                           th:attr="data-row-number=${status.count}"
+                           th:data-id="${product.id}"></a>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <img class="img-fluid" th:src="@{${product.getImagePath}}"/>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <a target="_blank" th:href="@{'/c/c/' + ${product.alias}}"
+                           th:title="${product.name}"> <b>[[${product.shortName}]]</b>
+                        </a>
+                    </div>
+                    <div>
+                        <span>X&nbsp;</span>
+
+                        <div th:replace="~{supports/price_fragment :: product_price}"></div>
+
+                        <div>
+                            <span>=&nbsp;</span>
+
+                            <div th:replace="~{supports/subtotal :: content}"></div>
+
+
+                        </div>
+
+                        <div th:replace="~{supports/quantity_control::cart_quantity_control(${item.quantity}, ${product.id})}"></div>
+
+                        <div class="mt-3">
+
+                            <input class="btn btn-primary btnAddToCart" id="buttonAdd2Cart" type="button"
+                                   value="Add to Cart"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-1" th:id="'blankLine' + ${status.count}">&nbsp;</div>
+            </div>
+        </th:block>
+    </div>
+
+    <div class="col-sm-4" id="sectionTotal"
+         th:if="${!#lists.isEmpty(cartItems)}">
+        <div>
+            <span class="h3">Estimated Total:</span>
+        </div>
+
+        <div class="mt-2">
+            <div>
+                <span>Total Before Discount: </span>
+                <span class="fw-bold" id="totalBefore">$0.00</span>
+            </div>
+
+            <div class="mt-1">
+                <span>Total After Discount: </span>
+                <span class="fw-bold text-success" id="totalAfter">$0.00</span>
+            </div>
+
+        </div>
+
+        <div class="mt-2">
+            <div th:if="${shippingSupported}">
+                <form th:action="@{/checkout}">
+                    <button class="btn btn-danger p-3 mt-2" type="submit">Check
+                        Out
+                    </button>
+                </form>
+            </div>
+
+            <div th:unless="${shippingSupported}">
+                <div>
+							<span class="h5 text-warning">No shipping available for
+								your location</span>
+                </div>
+
+                <div th:if="${usePrimaryAddressAsDefault}">
+                    <a class="h6" th:href="@{/account_details(redirect=cart)}">Update
+                        your address</a>
+                    <a class="h6" th:href="@{/address_book(redirect=cart)}">Use
+                        another shipping address</a>
+
+
+                </div>
+
+                <div th:unless="${usePrimaryAddressAsDefault}">
+                    <a class="h6" th:href="@{/address_book(redirect=cart)}">Use
+                        another shipping address</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div aria-atomic="true" aria-live="polite"
+     class="toast justify-content-center d-flex " data-delay="3000" role="alert">
+    <div aria-atomic="true" aria-live="assertive" role="alert">
+        <div class="toast-body">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+<div th:replace="~{supports/modal-dialog::content}"></div>
+
+
+<script type="text/javascript">
+    const contextPath = "[[@{/}]]";
+    const csrfHeaderName = "[[${_csrf.headerName}]]";
+    const csrfValue = "[[${_csrf.token}]]";
+    const cartSize = [[${#lists.size(cartItems)}]];
+    const currencySymbol = "[[${CURRENCY_SYMBOLE}]]";
+    const currencyPosition = "[[${CURRENCY_SYMBOLE_POSITION}]]"; // "before" or"after"
+    const decimalDigits = "[[${ DECIMAL_DIGITS}]]"; // "before" أو "after"
+    const decimalSeparator = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+    const thousandsSeparator = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+
+
+    $(document).ready(function () {
+        calculateTotal();
+
+        $(document).on("click", ".linkRemove", function (evt) {
+            evt.preventDefault();
+
+            if (!confirm("Are you sure you want to delete this product?")) {
+                return;
+            }
+
+            const productId = $(this).data("id");
+            const rowNumber = $(this).data("row-number");
+
+            deleteCartItem(productId, rowNumber);
+
+
+        });
+    });
+
+    function deleteCartItem(productId, rowNumber) {
+        const url = contextPath + "cart/remove/" + productId;
+
+        $.ajax({
+            type: 'DELETE',
+            url: url,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(csrfHeaderName, csrfValue);
+            }
+        }).done(function () {
+            $("#row" + rowNumber).remove();
+            $("#blankLine" + rowNumber).remove();
+            calculateTotal();
+            showToastMessage("The product has been removed from the cart");
+            updateCountNumbers();
+
+
+        }).fail(function () {
+            showToastMessage("Error: The product could not be removed");
+        });
+    }
+
+    function showToastMessage(message) {
+        if (message) {
+            $("#toastMessage").text(message);
+            $(".toast").toast('show');
+        } else {
+            $('.toast').toast('hide');
+        }
+    }
+</script>
+
+
+</script>
+
+
+<script th:src="@{/js/add_to_shoppingcart.js}"></script>
+<script th:src="@{/js/common_modal.js}"></script>
+<script th:src="@{/js/shopping_cart_quantity_control.js}"></script>
+<script th:src="@{/js/calculateTotals.js}"></script>
+<script th:src="@{/js/updateCountNumbers.js}"></script>
+<script th:src="@{/js/jquery.number.min.js}"></script>
+
+
+</body>
+</html>
+
+
+
+
