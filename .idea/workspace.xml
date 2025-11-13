@@ -32,7 +32,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/webParent/FrontEnd" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
@@ -71,7 +71,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/emailSender/src/main/resources/templates/settings/fregment-edit/mail_server/mail_templates",
+    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/FrontEnd",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,7 +80,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15234375",
     "project.structure.side.proportion": "0.24421832",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -363,7 +363,7 @@
       <workItem from="1762356128323" duration="122612000" />
       <workItem from="1762794296073" duration="2466000" />
       <workItem from="1762796853950" duration="11948000" />
-      <workItem from="1762874557265" duration="22091000" />
+      <workItem from="1762874557265" duration="23139000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -491,6 +491,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/emailSender" />
+      <path value="$PROJECT_DIR$/webParent/FrontEnd" />
+    </ignored-roots>
     <MESSAGE value="new Frontend" />
     <MESSAGE value="updated" />
     <MESSAGE value="backend src" />
