@@ -7,7 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="up to emailsender" />
+    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="up to emailsender">
+      <change afterPath="$PROJECT_DIR$/emailSender" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +35,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/emailSender" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/webParent/FrontEnd" />
     <option name="RESET_MODE" value="HARD" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
@@ -361,7 +366,7 @@
       <workItem from="1762356128323" duration="122612000" />
       <workItem from="1762794296073" duration="2466000" />
       <workItem from="1762796853950" duration="11948000" />
-      <workItem from="1762874557265" duration="17230000" />
+      <workItem from="1762874557265" duration="18820000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -427,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763048355951</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="up to emailsender">
+      <option name="closed" value="true" />
+      <created>1763048557253</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1763048557253</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
