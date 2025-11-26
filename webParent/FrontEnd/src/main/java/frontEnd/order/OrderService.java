@@ -29,7 +29,8 @@ public class OrderService {
 							 PaymentMethod paymentMethod, CheckoutInfo checkoutInfo) {
 		Order newOrder = new Order();
 		newOrder.setOrderTime(new Date());
-		
+		newOrder.setTenantId(customer.getTenantId());
+
 		if (paymentMethod.equals(PaymentMethod.PAYPAL)) {
 			newOrder.setStatus(OrderStatus.PAID);
 		} else {
@@ -65,7 +66,8 @@ public class OrderService {
 			orderDetail.setProductCost(product.getCost() * cartItem.getQuantity());
 			orderDetail.setSubtotal(cartItem.getSubtotal());
 			orderDetail.setShippingCost(cartItem.getShippingCost());
-			
+			orderDetail.setTenantId(customer.getTenantId());
+
 			orderDetails.add(orderDetail);
 		}
 		
@@ -74,7 +76,8 @@ public class OrderService {
 		track.setStatus(OrderStatus.NEW);
 		track.setNotes(OrderStatus.NEW.defaultDescription());
 		track.setUpdatedTime(new Date());
-		
+		track.setTenantId(customer.getTenantId());
+
 		newOrder.getOrderTracks().add(track);
 		
 		return repo.save(newOrder);

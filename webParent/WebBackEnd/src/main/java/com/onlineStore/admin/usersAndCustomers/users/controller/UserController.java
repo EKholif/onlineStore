@@ -15,12 +15,17 @@ import com.onlineStore.admin.utility.UserExcelExporter;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.entity.users.Role;
+import jakarta.persistence.EntityManager;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -33,11 +38,21 @@ import java.util.Objects;
 public class UserController {
     @Autowired
     private UserService service;
-
-
+    @Autowired
+    private EntityManager entityManager;
     @GetMapping("/users/users")
     public ModelAndView listAllUsers() {
         ModelAndView model = new ModelAndView("users/users");
+
+        Long tenantId = TenantContext.getTenantId();
+        Session session = entityManager.unwrap(Session.class);
+        org.hibernate.Filter filter = session.getEnabledFilter("tenantFilter");
+
+        if (filter != null) {
+            System.out.println("🔥 tenantFilter parameter tenantId: " + filter.getName());
+        } else {
+            System.out.println("🔥 tenantFilter not enabled!"+ filter.getName());
+        }
 
         return listByPage(1, "firstName", "dsc", null);
     }
@@ -57,6 +72,7 @@ public class UserController {
                 (model, "users", sortField, sortDir, keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "users");
+
 
         return model;
 

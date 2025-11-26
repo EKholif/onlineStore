@@ -52,7 +52,7 @@ public class ReviewController {
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-		model.addAttribute("moduleURL", "/reviews");
+		model.addAttribute("modelUrl", "/reviews");
 		
 		model.addAttribute("listReviews", listReviews);
 

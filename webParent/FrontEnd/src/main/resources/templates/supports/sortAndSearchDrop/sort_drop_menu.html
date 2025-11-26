@@ -1,6 +1,6 @@
 <!-- file: fragments/sortDropdown.html -->
 <!— Fragment for sorting dropdown —>
-<div th:fragment="sort_dropdown(moduleURL, currentPage, sortField, sortDir, keyWord)"
+<div th:fragment="sort_dropdown(modelUrl, currentPage, sortField, sortDir, keyWord)"
      class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4 position-relative">
 
     <label class="me-2">Sort by:</label>
@@ -32,7 +32,7 @@
 </div>
 
 <li th:fragment="colum_link (fieldName, columnLable)">
-    <a th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+    <a th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
                             +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
                             '&keyWord='+ keyWord: ''}}"  class="text-dark-emphasis " >
         [[${columnLable}]]
@@ -44,6 +44,6 @@
 
 
 <div th:replace="~{supports/sortAndSearchDrop/sort_drop_menu :: sort_dropdown(
-                ${moduleURL}, ${currentPage}, ${sortField}, ${sortDir}, ${keyWord})}">
+                ${modelUrl}, ${currentPage}, ${sortField}, ${sortDir}, ${keyWord})}">
 </div>
 

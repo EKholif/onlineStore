@@ -42,7 +42,7 @@ public class ShoppingCartService {
         }
 
         cartItem.setQuantity(updatedQuantity);
-
+        cartItem.setTenantId(customer.getTenantId());
         cartRepo.save(cartItem);
 
         return updatedQuantity;

@@ -7,21 +7,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/emailSender/src/main/java/com/onlineStore/emailsender/EmailSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" afterDir="false" />
+    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="updated">
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/format/format_time.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/table_format/colum_link.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/AuthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CurrentTenantIdentifierResolverImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterCheckTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterDebugTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterEmptyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterMultipleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterNoDeleteTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterRequestSimulationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterSessionDebug.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/comm/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/TenantAwareEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/TenantAwareEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CurrentTenantIdentifierResolverImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/shoppingCart/ShoppingCartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/shoppingCart/ShoppingCartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/orders_customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/orders_customer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/sortAndSearchDrop/sort_drop_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/sortAndSearchDrop/sort_drop_menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/HibernateFilterConfigurer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantFilterConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantFilterConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantIdFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantFilterConfigurer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantIdentifierResolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/CurrentTenantResolver.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +60,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -85,7 +107,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/FrontEnd",
+    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/FrontEnd/src/main/resources/templates/supports/table_format",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -109,11 +131,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\main\resources\templates\supports\table_format" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\templates\settings\fregment-edit\mail_server\mail_templates" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\templates\settings\fregment-edit" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\templates\" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\static\" />
-      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\static" />
@@ -143,15 +165,75 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.WebBackEndApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TenantFilterTest.testFilterKeepsTenantDuring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TenantFilterCheckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.onlineStore.admin.tenantTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.tenantTest" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.tenantTest.TenantFilterCheckTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TenantFilterCheckTest.testFilterAppliedOnSameEntityManager" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.onlineStore.admin.tenantTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.tenantTest" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.tenantTest.TenantFilterCheckTest" />
+      <option name="METHOD_NAME" value="testFilterAppliedOnSameEntityManager" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TenantFilterDebugTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.onlineStore.admin.tenantTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.tenantTest" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.tenantTest.TenantFilterDebugTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TenantFilterDebugTest.testQueryUsesFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.onlineStore.admin.tenantTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.tenantTest" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.tenantTest.TenantFilterDebugTest" />
+      <option name="METHOD_NAME" value="testQueryUsesFilter" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TenantFilterManualTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebBackEnd" />
       <extension name="coverage">
         <pattern>
@@ -160,73 +242,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant" />
-      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.TenantFilterTest" />
-      <option name="METHOD_NAME" value="testFilterKeepsTenantDuring" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TenantFilterTest.testFilterKeepsTenantDuringChain" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant" />
-      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.TenantFilterTest" />
-      <option name="METHOD_NAME" value="testFilterKeepsTenantDuringChain" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TenantFilterTest.testFilterWithMockRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant" />
-      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.TenantFilterTest" />
-      <option name="METHOD_NAME" value="testFilterWithMockRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TenantFilterTest.testTenantFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant" />
-      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.TenantFilterTest" />
-      <option name="METHOD_NAME" value="testTenantFilter" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TenantFilterTest.testTenantFilterAfterLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant" />
-      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.TenantFilterTest" />
-      <option name="METHOD_NAME" value="testTenantFilterAfterLogin" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.test.counteryTest.userTest.tenant.TenantFilterManualTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -285,22 +302,22 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TenantFilterTest.testFilterKeepsTenantDuring" />
-      <item itemvalue="JUnit.TenantFilterTest.testFilterKeepsTenantDuringChain" />
-      <item itemvalue="JUnit.TenantFilterTest.testFilterWithMockRequest" />
-      <item itemvalue="JUnit.TenantFilterTest.testTenantFilter" />
-      <item itemvalue="JUnit.TenantFilterTest.testTenantFilterAfterLogin" />
+      <item itemvalue="JUnit.TenantFilterCheckTest" />
+      <item itemvalue="JUnit.TenantFilterDebugTest" />
+      <item itemvalue="JUnit.TenantFilterDebugTest.testQueryUsesFilter" />
+      <item itemvalue="JUnit.TenantFilterCheckTest.testFilterAppliedOnSameEntityManager" />
+      <item itemvalue="JUnit.TenantFilterManualTest" />
       <item itemvalue="Spring Boot.EmailSenderApplication" />
       <item itemvalue="Spring Boot.WebBackEndApplication" />
       <item itemvalue="Spring Boot.FrontEndApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TenantFilterTest.testTenantFilter" />
-        <item itemvalue="JUnit.TenantFilterTest.testFilterKeepsTenantDuring" />
-        <item itemvalue="JUnit.TenantFilterTest.testFilterKeepsTenantDuringChain" />
-        <item itemvalue="JUnit.TenantFilterTest.testTenantFilterAfterLogin" />
-        <item itemvalue="JUnit.TenantFilterTest.testFilterWithMockRequest" />
+        <item itemvalue="JUnit.TenantFilterCheckTest.testFilterAppliedOnSameEntityManager" />
+        <item itemvalue="JUnit.TenantFilterCheckTest" />
+        <item itemvalue="JUnit.TenantFilterDebugTest.testQueryUsesFilter" />
+        <item itemvalue="JUnit.TenantFilterDebugTest" />
+        <item itemvalue="JUnit.TenantFilterManualTest" />
       </list>
     </recent_temporary>
   </component>
@@ -377,7 +394,10 @@
       <workItem from="1762356128323" duration="122612000" />
       <workItem from="1762794296073" duration="2466000" />
       <workItem from="1762796853950" duration="11948000" />
-      <workItem from="1762874557265" duration="43111000" />
+      <workItem from="1762874557265" duration="61414000" />
+      <workItem from="1763681830378" duration="4810000" />
+      <workItem from="1763733792788" duration="2252000" />
+      <workItem from="1764155634757" duration="13240000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -467,7 +487,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763056996090</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="up to emailsender">
+      <option name="closed" value="true" />
+      <created>1763076121602</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1763076121602</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,17 +540,19 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/emailSender" />
       <path value="$PROJECT_DIR$/webParent/FrontEnd" />
     </ignored-roots>
     <MESSAGE value="new Frontend" />
-    <MESSAGE value="updated" />
     <MESSAGE value="backend src" />
     <MESSAGE value="README.md" />
     <MESSAGE value="up to emailsender" />
-    <option name="LAST_COMMIT_MESSAGE" value="up to emailsender" />
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -558,29 +588,14 @@
           <option name="timeStamp" value="266" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="320" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/shipping/controller/ShippingRateController.java</url>
           <line>76</line>
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantIdentifierResolver.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="376" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantIdentifierResolver.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="377" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantFilterConfigurer.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="380" />
+          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterManualTest.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="381" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

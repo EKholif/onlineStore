@@ -46,7 +46,7 @@ public class OrderController {
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("keyword", keyword);
-		model.addAttribute("moduleURL", "/orders");
+		model.addAttribute("modelUrl", " /orders/page/");
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 		
 		long startCount = (pageNum - 1) * OrderService.ORDERS_PER_PAGE + 1;

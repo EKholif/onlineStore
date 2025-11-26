@@ -21,10 +21,12 @@
 
             <div class="collapse navbar-collapse mt-auto" id="topNavbar">
                 <ul class="navbar-nav  ">
-                    <li th:replace="~{supports/navbar/nav_link::content('account','Customer')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('orders','My Orders')}"></li>
+
                     <li th:replace="~{supports/navbar/nav_link::content('cart','Cart')}"></li>
                     <li th:replace="~{supports/navbar/nav_link::content('Payments','Payments')}"></li>
                     <li th:replace="~{supports/navbar/nav_link::content('address_book',' Shipping &amp; Delivery')}"></li>
+                    <li th:replace="~{supports/navbar/nav_link::content('account','Customer')}"></li>
                     <li th:replace="~{supports/navbar/nav_link::content('registration','Register')}"></li>
                     <li th:replace="~{supports/navbar/nav_link::content('attributes','Contact')}"></li>
                     <li th:replace="~{supports/navbar/nav_link::content('about','About ')}"></li>

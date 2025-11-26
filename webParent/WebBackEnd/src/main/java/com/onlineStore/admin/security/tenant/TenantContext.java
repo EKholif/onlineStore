@@ -3,10 +3,10 @@ package com.onlineStore.admin.security.tenant;
 import com.onlineStore.admin.security.StoreUserDetails;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 public class TenantContext {
 
@@ -17,25 +17,28 @@ public class TenantContext {
     }
 
     public static Long getTenantId() {
-        // 1. ThreadLocal
+        // 1) ThreadLocal (fast path)
         Long tenantId = currentTenant.get();
         if (tenantId != null) return tenantId;
 
-        // 2. Session fallback
+        // 2) Session fallback
         ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (attrs != null) {
             HttpServletRequest request = attrs.getRequest();
-            HttpSession session = request.getSession(false);
-            if (session != null) {
-                tenantId = (Long) session.getAttribute("TENANT_ID");
-                if (tenantId != null) {
-                    currentTenant.set(tenantId);
-                    return tenantId;
+            if (request != null) {
+                HttpSession session = request.getSession(false);
+                if (session != null) {
+                    Object val = session.getAttribute("TENANT_ID");
+                    if (val instanceof Long) {
+                        tenantId = (Long) val;
+                        currentTenant.set(tenantId);
+                        return tenantId;
+                    }
                 }
             }
         }
 
-        // 3. SecurityContext fallback
+        // 3) SecurityContext fallback (if user principal contains tenant)
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && auth.isAuthenticated() && auth.getPrincipal() instanceof StoreUserDetails) {
             tenantId = ((StoreUserDetails) auth.getPrincipal()).getTenantId();
@@ -43,7 +46,7 @@ public class TenantContext {
             return tenantId;
         }
 
-        // 4. قبل login أو fallback
+        // 4) default before login or not found
         return 0L;
     }
 
