@@ -7,43 +7,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="updated">
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/format/format_time.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/table_format/colum_link.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/AuthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CurrentTenantIdentifierResolverImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterCheckTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterDebugTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterEmptyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterMultipleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterNoDeleteTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterRequestSimulationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterSessionDebug.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/js/common_list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/js/common_rating.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/js/return_order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/js/review_vote.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/site-logo/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/comm/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/TenantAwareEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/TenantAwareEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emailSender/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/emailSender/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/order/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/shoppingCart/ShoppingCartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/shoppingCart/ShoppingCartService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/orders_customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/orders_customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/sortAndSearchDrop/sort_drop_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/sortAndSearchDrop/sort_drop_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantFilterConfigurer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantIdentifierResolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/return_order_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/return_order_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/site-logo/Minduka_Present_Blue_Pack.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/CurrentTenantResolver.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +85,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/FrontEnd/src/main/resources/templates/supports/table_format",
+    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/FrontEnd/src/main/resources/static/js",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -131,11 +109,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\main\resources\static\js" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\main\resources\templates\supports\table_format" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\templates\settings\fregment-edit\mail_server\mail_templates" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\templates\settings\fregment-edit" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\templates\" />
-      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\static\" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\static" />
@@ -164,7 +142,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.WebBackEndApplication">
+  <component name="RunManager" selected="Spring Boot.FrontEndApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
@@ -397,7 +375,7 @@
       <workItem from="1762874557265" duration="61414000" />
       <workItem from="1763681830378" duration="4810000" />
       <workItem from="1763733792788" duration="2252000" />
-      <workItem from="1764155634757" duration="13240000" />
+      <workItem from="1764155634757" duration="22131000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -495,7 +473,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763076121602</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updated">
+      <option name="closed" value="true" />
+      <created>1764198455563</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1764198455563</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

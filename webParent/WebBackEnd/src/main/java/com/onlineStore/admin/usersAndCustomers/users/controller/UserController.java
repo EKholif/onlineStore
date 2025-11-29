@@ -1,22 +1,20 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 
-import com.onlineStore.admin.security.tenant.TenantService;
-import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
-import com.onlineStore.admin.security.tenant.TenantContext;
-
-import com.onlineStore.admin.utility.UserPdfExporter;
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.security.tenant.TenantContext;
+import com.onlineStore.admin.security.tenant.TenantService;
+import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.UserCsvExporter;
 import com.onlineStore.admin.utility.UserExcelExporter;
+import com.onlineStore.admin.utility.UserPdfExporter;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
-import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.entity.users.Role;
+import com.onlineStoreCom.entity.users.User;
 import jakarta.persistence.EntityManager;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.springframework.beans.BeanUtils;
@@ -24,8 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -51,7 +47,7 @@ public class UserController {
         if (filter != null) {
             System.out.println("🔥 tenantFilter parameter tenantId: " + filter.getName());
         } else {
-            System.out.println("🔥 tenantFilter not enabled!"+ filter.getName());
+            System.out.println("🔥 tenantFilter not enabled!    " + tenantId);
         }
 
         return listByPage(1, "firstName", "dsc", null);

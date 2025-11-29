@@ -67,12 +67,6 @@ public class Brand extends IdBasedEntity {
         this.categories = categories;
     }
 
-//    @Transient
-//    public String getLogoPath() {
-//        if (this.id == null) return "/images/image-thumbnail.png";
-//
-//        return Constants.S3_BASE_URI + "/brands-photos/" + this.id + "/" + this.logo;
-//    }
 
 
     @Transient
