@@ -1,16 +1,14 @@
 package com.onlineStore.admin.order;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
-
 import com.onlineStore.admin.utility.SearchRepository;
-
 import com.onlineStoreCom.entity.order.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 
 
@@ -41,14 +39,9 @@ public interface OrderRepository extends SearchRepository<Order, Integer> {
 			+ " o.customer.lastName LIKE %?1%")
 	public Set<Order> findAllSet(String keyword);
 
-
-
-
-
-
 	public Long countById(Integer id);
-	
-	@Query("SELECT NEW  Order(o.id, o.orderTime, o.productCost,"
+
+    @Query("SELECT NEW com.onlineStoreCom.entity.order.Order(o.id, o.orderTime, o.productCost,"
 			+ " o.subtotal, o.total) FROM Order o WHERE"
 			+ " o.orderTime BETWEEN ?1 AND ?2 ORDER BY o.orderTime ASC")
 	public List<Order> findByOrderTimeBetween(Date startTime, Date endTime);

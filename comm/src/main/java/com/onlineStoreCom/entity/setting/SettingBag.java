@@ -41,4 +41,9 @@ public class SettingBag   extends IdBasedEntity {
     }
 
 
+    public List<Setting> getAllSettings() {
+        return this.listSettings;
+    }
+
+
 }

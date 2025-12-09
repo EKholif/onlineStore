@@ -18,7 +18,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = true)
+@Rollback(value = false)
 
 public class CustomerRepositoryTest {
 
@@ -35,6 +35,12 @@ public class CustomerRepositoryTest {
 
         List<Customer> customerList = customersRepository.findAll();
 
+        for (Customer order : customerList) {
+            if (order.getId() == null) {
+                System.out.println("Order ID " + order.getId() + " has missing customer!");
+            }
+        }
+
 
         customerList.forEach(c -> System.out.println( "🔥 test name 🔥" + c.getFullName()));
 
@@ -42,7 +48,32 @@ public class CustomerRepositoryTest {
     }
 
 
+    @Test
+    public void newCustomer() {
 
+        Customer customer = new Customer();
+        customer.setFirstName("firstName");
+        customer.setLastName("lastName");
+        customer.setTenantId(0L);
+        customer.setId(32);
+        customer.setEmail("eh.a.bkh.olif@gmail.com");
+        customer.setPassword("");
+        customer.setPhoneNumber("0100000000");
+        customer.setPostalCode("123456");
+        customer.setAddressLine1("addressLine1");
+        customer.setCity("city");
+        customer.setState("state");
+        customer.setPassword("");
+        customersRepository.save(customer);
+
+
+        customersRepository.save(customer);
+
+
+//        customerList.forEach(c -> System.out.println( "🔥 test name 🔥" + c.getFullName()));
+//
+//        assertThat(customerList.size()).isGreaterThan(0);
+    }
     @Test
     public void countryTest() {
 

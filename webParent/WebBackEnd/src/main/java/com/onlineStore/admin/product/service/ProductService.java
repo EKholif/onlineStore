@@ -1,11 +1,10 @@
 package com.onlineStore.admin.product.service;
 
 
-import com.onlineStore.admin.category.controller.utility.PagingAndSorting;
-import com.onlineStore.admin.product.repository.ProductRepository;
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.product.repository.ProductRepository;
+import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStoreCom.entity.product.Product;
 import jakarta.transaction.Transactional;
@@ -68,6 +67,7 @@ public class ProductService {
         }
 
         product.setAlias(product.getAlias().replace(" ", "_"));
+
 
         return repository.save(product);
     }

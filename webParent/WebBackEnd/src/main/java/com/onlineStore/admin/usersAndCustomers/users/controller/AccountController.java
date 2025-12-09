@@ -1,8 +1,8 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
-import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class AccountController {
             model.addObject("listAllRoles", user.getRoles());
             model.addObject("pageTitle", "Edit User " + user.getfirstName() + " (ID: " + id + ")");
             model.addObject("listAllRoles", listAllRoles);
-            model.addObject("saveChanges", "/save-edit-user/");
+            model.addObject("saveChanges", "/save-edit-user");
             model.addObject("id", id);
             return model;
 

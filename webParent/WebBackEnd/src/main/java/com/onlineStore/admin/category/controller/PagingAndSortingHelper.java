@@ -3,7 +3,6 @@ package com.onlineStore.admin.category.controller;
 import com.onlineStore.admin.category.controller.utility.PagingAndSorting;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
-import com.onlineStore.admin.product.service.ListProductByCategory;
 import com.onlineStoreCom.entity.product.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -163,7 +162,7 @@ public class PagingAndSortingHelper {
 
         model.addObject("listItems", listItems); // Assuming listItems is a class variable
         model.addObject("pageTitle", " Edit : " + objectName + " ID :  " + id);
-        model.addObject("saveChanges", "/" + listName + "/save-" + objectName);
+        model.addObject("saveChanges", "/" + listName + "/save-edit-" + objectName);
         return model;
     }
 

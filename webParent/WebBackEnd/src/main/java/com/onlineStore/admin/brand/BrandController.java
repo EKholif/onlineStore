@@ -8,7 +8,6 @@ import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
-
 import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.brand.Brand;
@@ -129,7 +128,7 @@ public class BrandController {
 
     }
 
-    @PostMapping("/brands/save-edit-brand/")
+    @PostMapping("/brands/save-edit-brand")
     public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Brand brand, RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");

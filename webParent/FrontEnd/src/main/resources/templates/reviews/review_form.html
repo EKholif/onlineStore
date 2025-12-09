@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{supports/header/header::content}">
+
+
+    <link media="all" rel="stylesheet"
+          th:href="@{/star-rating/css/star-rating.css}" type="text/css"/>
+    <script th:src="@{/star-rating/js/star-rating.js}"
+            type="text/javascript"></script>
+    <link media="all" rel="stylesheet"
+          th:href="@{/star-rating/themes/krajee-svg/theme.css}" type="text/css"/>
+    <script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
+</head>
+
+<body>
+<div class="container-fluid text-center">
+    <div th:replace="~{supports/navbar/navbar::content}"></div>
+    <div th:replace="~{supports/fragment::search}"></div>
+
+
+    <div>
+        <h2>Write Product Review</h2>
+    </div>
+
+    <div>
+        <img style="height: 200px" th:src="@{${product.getImagePath()}}"/>
+    </div>
+
+    <div>
+        <div>
+            <h4>[[${product.name}]]</h4>
+        </div>
+
+        <div th:if="${customerReviewed}">
+            <span class="text-success">You already reviewed this product.</span>
+        </div>
+
+        <div th:if="${NoReviewPermission}">
+				<span class="text-danger">You can't review this product
+					because you did not purchase it, or you have not received it.</span>
+        </div>
+    </div>
+
+    <form method="post" style="max-width: 600px; margin: 0 auto"
+          th:action="@{/post_review}" th:if="${customerCanReview}"
+          th:object="${review}">
+        <input name="productId" th:value="${product.id}" type="hidden"/>
+        <div class="border border-secondary rounded p-3">
+            <p>
+                <input -step="1" class="product-rating-star" data
+                       data-size="md" dir="ltr" th:field="*{rating}" type="text"/>
+            </p>
+            <p>
+                <input class="form-control" maxlength="128" minlength="10"
+                       placeholder="Headline or Summary" required th:field="*{headline}"
+                       type="text"/>
+            </p>
+            <p>
+					<textarea class="form-control" cols="10" placeholder="Comment Details"
+                              required rows="3" th:field="*{comment}"></textarea>
+            </p>
+            <p>
+                <input class="btn btn-primary" type="submit"
+                       value="Post this Review"/>
+            </p>
+        </div>
+
+    </form>
+
+    <div>&nbsp;</div>
+    <div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+</div>
+
+<script type="text/javascript">
+    $(".product-rating-star").rating({
+        hoverOnClear: false,
+        theme: 'krajee-svg'
+    });
+</script>
+</body>
+
+</html>

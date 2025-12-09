@@ -51,21 +51,10 @@
                 <th th:replace="~{support/fragments/standerd/colum_link::contant  ('firstName', 'Name')}"></th>
                 <th th:replace="~{support/fragments/standerd/colum_link::contant ('email', 'Email')}"></th>
                 <th th:replace="~{support/fragments/standerd/colum_link::contant ('country', 'Country')}"></th>
+                <th th:replace="~{support/fragments/standerd/colum_link::contant ('city', 'City')}"></th>
+                <th th:replace="~{support/fragments/standerd/colum_link::contant ('phoneNumber', 'Phone Number')}"></th>
+
                 <th>Enabled</th>
-
-
-<!--                <th th:replace="~{support/fragments::colum_link ('id', 'User ID')}"></th>-->
-
-<!--                <th> User Photo</th>-->
-
-<!--                <th th:replace="~{support/fragments::colum_link  ('firstName', 'First Name')}"></th>-->
-<!--                <th th:replace="~{support/fragments::colum_link ('lastName', 'Last Name')}"></th>-->
-<!--                <th th:replace="~{support/fragments::colum_link ('email', 'E-mail')}"></th>-->
-
-<!--                <th>Roles</th>-->
-
-<!--                <th th:replace="~{support/fragments::colum_link ('enable', 'Status')}"></th>-->
-
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -92,7 +81,10 @@
                 <td th:text="${customer.firstName} + ' ' + ${customer.lastName}"></td>
 
                 <td th:text="${customer.email}"></td>
-                <td th:text="${customer.password}"></td>
+                <td th:text="${customer.country}"></td>
+                <td th:text="${customer.city}"></td>
+                <td th:text="${customer.phoneNumber}"></td>
+
 
 
                 <td>

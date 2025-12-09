@@ -1,15 +1,15 @@
 package com.onlineStore.admin.product;
 
 
-import com.onlineStore.admin.product.service.ProductService;
-import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.category.services.CategoryService;
-import com.onlineStore.admin.security.tenant.TenantContext;
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.brand.BrandNotFoundException;
 import com.onlineStore.admin.brand.BrandService;
+import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
+import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.product.service.ProductService;
+import com.onlineStore.admin.security.tenant.TenantContext;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.product.Product;
@@ -128,7 +128,7 @@ public class ProductController {
             Integer id = count;
 
             if (id != 0) {
-                product.addProductDetails(id,name, value);
+                product.addProductDetails(id, name, value, tenantId);
             } else if (!name.isEmpty() && !value.isEmpty()) {
                 product.addProductDetails(name, value, tenantId);
 
@@ -276,7 +276,7 @@ public class ProductController {
 
         Product updateProduct = productService.findById(id);
         Long tenantId = TenantContext.getTenantId();
-        product.setTenantId(tenantId);
+
         setProductDetails(detailIDs, detailNames, detailValues, updateProduct,tenantId);
 
         setMainImageName(mainImageMultipartFile, product);
@@ -286,12 +286,10 @@ public class ProductController {
 
             product.setMainImage(updateProduct.getMainImage());
 
-
         }
 
-        BeanUtils.copyProperties(product, updateProduct, "id", "name", "alias");
+        BeanUtils.copyProperties(product, updateProduct, "id", "name", "alias", "tenantId");
 
-        BeanUtils.copyProperties(product, updateProduct, "id");
 
         Product saveProduct = productService.saveProduct(updateProduct);
 

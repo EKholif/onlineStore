@@ -155,4 +155,16 @@ public class ProductRepositoryTest {
         }
 
     }
+
+    @Test
+    public void testUpdate() {
+
+        int productId = 45;
+        productRepository.updateReviewCountAndAverageRating(productId);
+        System.out.println("🔥 test started 🔥");
+
+
+    }
+
+
 }

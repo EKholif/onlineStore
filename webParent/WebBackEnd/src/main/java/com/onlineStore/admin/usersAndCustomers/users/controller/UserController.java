@@ -177,7 +177,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/users/save-edit-user/")
+    @PostMapping("/users/save-edit-user")
     public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute User user, RedirectAttributes redirectAttributes,
                                         @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");

@@ -1,14 +1,14 @@
 package com.onlineStore.admin.category.controller;
 
 
+import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
-import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.services.CategoryService;
+import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStoreCom.entity.category.Category;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
@@ -133,11 +133,10 @@ public class CategoryController {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
             return new ModelAndView("redirect:/categories/categories");
 
-
         }
     }
 
-    @PostMapping("/categories/save-edit-category/")
+    @PostMapping("/categories/save-edit-category")
     public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Category category, RedirectAttributes redirectAttributes,
                                         @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
 
@@ -147,7 +146,7 @@ public class CategoryController {
 
 
         if (multipartFile.isEmpty()) {
-            BeanUtils.copyProperties(category, updateCategory, "id", "image");
+            BeanUtils.copyProperties(category, updateCategory, "id", "image", "tenantId");
             service.saveCategory(updateCategory);
 
         } else if (!multipartFile.isEmpty()) {
@@ -156,7 +155,7 @@ public class CategoryController {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
             String uploadDir = "categories-photos/" + updateCategory.getId();
             category.setImage(fileName);
-            BeanUtils.copyProperties(category, updateCategory, "id");
+            BeanUtils.copyProperties(category, updateCategory, "id", "tenantId");
 
             service.saveCategory(updateCategory);
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);

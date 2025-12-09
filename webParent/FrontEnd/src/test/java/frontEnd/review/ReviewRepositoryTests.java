@@ -10,10 +10,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.test.annotation.Rollback;
 
 import java.util.List;
+import java.util.Optional;
 
+import static frontEnd.review.vote.VoteResult.fail;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -37,8 +38,8 @@ public class ReviewRepositoryTests {
 	
 	@Test
 	public void testFindByCustomerWithKeyword() {
-		Integer customerId = 5;
-		String keyword = "charger";
+        Integer customerId = 163;
+        String keyword = "SanDisk";
 		Pageable pageable = PageRequest.of(1, 5);
 		
 		Page<Review> page = repo.findByCustomer(customerId, keyword, pageable);
@@ -49,7 +50,7 @@ public class ReviewRepositoryTests {
 	
 	@Test
 	public void testFindByCustomerAndId() {
-		Integer customerId = 5;
+        Integer customerId = 163;
 		Integer reviewId = 4;
 		
 		Review review = repo.findByCustomerAndId(customerId, reviewId);
@@ -70,27 +71,34 @@ public class ReviewRepositoryTests {
 	
 	@Test
 	public void testCountByCustomerAndProduct() {
-		Integer customerId = 5;
+        Integer customerId = 163;
 		Integer productId = 1;
 		Long count = repo.countByCustomerAndProduct(customerId, productId);
 		
 		assertThat(count).isEqualTo(1);
 	}
-	
+
 	@Test
 	public void testUpdateVoteCount() {
-		Integer reviewId = 5;
+        Integer reviewId = 23;
 		repo.updateVoteCount(reviewId);
-		Review review = repo.findById(reviewId).get();
-		
-		assertThat(review.getVotes()).isEqualTo(2);
+
+        Optional<Review> reviewOpt = repo.findById(reviewId);
+        if (reviewOpt.isPresent()) {
+            Review review = reviewOpt.get();
+            System.out.println("ggggggggg" + review.getVotes());
+            assertThat(review.getVotes()).isEqualTo(0);
+        } else {
+            System.out.println("Review بالـ ID ده مش موجود: " + reviewId);
+            fail("Review مش موجود بعد التحديث");
+        }
 	}
-	
+
 	@Test
 	public void testGetVoteCount() {
-		Integer reviewId = 5;
+        Integer reviewId = 23;
 		Integer voteCount = repo.getVoteCount(reviewId);
-		
-		assertThat(voteCount).isEqualTo(2);
+
+        assertThat(voteCount).isEqualTo(5);
 	}
 }

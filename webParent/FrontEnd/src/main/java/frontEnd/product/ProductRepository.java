@@ -49,7 +49,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     Page<Product> findAllBYPage(String keyword, Pageable pageable);
 
 //    @Query(
-//            value = "SELECT * FROM products WHERE enabled = true AND " +
+//            value = "SELECT * FROM shop.products WHERE enabled = true AND " +
 //                    "MATCH(name, short_description, full_description) AGAINST (?1)",
 //            nativeQuery = true
 //    )

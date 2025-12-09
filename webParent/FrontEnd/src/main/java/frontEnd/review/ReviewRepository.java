@@ -34,8 +34,12 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE reviews r SET r.votes = COALESCE((SELECT SUM(v.votes) FROM reviews_votes v WHERE v.review_id = ?1), 0) " +
-			"WHERE r.id = ?1", nativeQuery = true)
+    @Query(
+            nativeQuery = true,
+            value = "UPDATE shop.reviews " +
+                    "SET votes = COALESCE((SELECT SUM(v.votes) FROM shop.reviews_votes v WHERE v.review_id = ?1), 0) " +
+                    "WHERE id = ?1"
+    )
 	void updateVoteCount(Integer reviewId);
 
 

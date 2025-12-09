@@ -69,7 +69,7 @@ public class Country extends IdBasedEntity {
 
     @Override
     public String toString() {
-        return "Country [id=" + id + ", name=" + name + ", code=" + code + "]";
+        return code + " - " + name;
     }
 
 

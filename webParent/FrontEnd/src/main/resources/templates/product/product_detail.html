@@ -42,6 +42,17 @@
             <div>
                 <h2>[[${product.name}]]</h2>
             </div>
+
+            <div class="row ml-1">
+                <div class="col-xs">
+                    <input class="product-detail-rating-star" data-size="md" dir="ltr"
+                           th:value="${product.averageRating}" type="text"/>
+                </div>
+                <div class="col-xs ml-1 mt-3">
+                    <a th:href="@{ '#review'}">[[${product.reviewCount}]]
+                        rating(s)</a>
+                </div>
+            </div>
             <div class="row ml-1">
 
                 <div>
@@ -146,7 +157,14 @@
 <script th:src="@{/js/common_modal.js}" ></script>
 <script th:src="@{/js/quantity_control.js}"></script>
 
-
+<script type="text/javascript">
+    $(".product-detail-rating-star").rating({
+        displayOnly: true,
+        hoverOnClera: false,
+        showCaption: false,
+        theme: 'krajee-svg'
+    });
+</script>
 </body>
 
 </html>

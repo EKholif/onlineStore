@@ -2,10 +2,10 @@ package frontEnd.security.oauth;
 
 import com.onlineStoreCom.entity.AuthenticationType;
 import com.onlineStoreCom.entity.customer.Customer;
+import frontEnd.customer.CustomerService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import frontEnd.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
@@ -37,7 +37,9 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 		AuthenticationType authenticationType = getAuthenticationType(clientName);
 
 		Customer customer = customerService.getCustomerByEmail(email);
-		if (customer == null) {
+
+
+        if (customer == null) {
 			customerService.addNewCustomerUponOAuthLogin(name, email,  countryCode, authenticationType, picture);
 		} else {
 			oauth2User.setFullName(customer.getFullName());

@@ -35,7 +35,7 @@ public class TenantContextFilter extends OncePerRequestFilter {
         Long tenantId = TenantContext.getTenantId();
         Session session = entityManager.unwrap(Session.class);
 
-        if (tenantId != null && tenantId != 0L) {
+        if (tenantId != null) {
             session.enableFilter("tenantFilter")
                     .setParameter("tenantId", tenantId);
 //            logger.debug("Tenant filter enabled for tenantId={}", tenantId);

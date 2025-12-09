@@ -80,7 +80,7 @@ public class ReviewService {
 	public Review save(Review review) {
 		review.setReviewTime(new Date());
 		Review savedReview = reviewRepo.save(review);
-		
+        savedReview.setTenantId(review.getProduct().getTenantId());
 		Integer productId = savedReview.getProduct().getId();		
 		productRepo.updateReviewCountAndAverageRating(productId);
 		

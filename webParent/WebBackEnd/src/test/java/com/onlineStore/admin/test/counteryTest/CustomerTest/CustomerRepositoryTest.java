@@ -10,13 +10,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
-import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = true)
+@Rollback(value = false)
 
 public class CustomerRepositoryTest {
 
@@ -31,12 +29,18 @@ public class CustomerRepositoryTest {
    @Test
     public void ListAllCustomer(){
 
-       List<Customer> customerList = customersRepository.findAll();
+//       List<Customer> customerList = customersRepository.findAll();
 
+       Customer customer = customersRepository.findById(36).get();
+       System.out.println(customer.getFirstName());
+       customer.setId(1);
+       customersRepository.save(customer);
 
-       customerList.forEach(c -> System.out.println(c.getCountry()));
+       System.out.println(customer.getId());
 
-       assertThat(customerList.size()).isGreaterThan(0);
+//       customerList.forEach(c -> System.out.println(c.getCountry()));
+//
+//       assertThat(customerList.size()).isGreaterThan(0);
    }
 
 

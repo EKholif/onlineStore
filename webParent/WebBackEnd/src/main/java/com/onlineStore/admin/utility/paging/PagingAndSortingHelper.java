@@ -1,12 +1,13 @@
 package com.onlineStore.admin.utility.paging;
 
-import java.util.List;
-
+import com.onlineStore.admin.review.ReviewRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.method.support.ModelAndViewContainer;
+
+import java.util.List;
 
 public class PagingAndSortingHelper {
 	private final ModelAndViewContainer model;
@@ -46,8 +47,8 @@ public class PagingAndSortingHelper {
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute(listName, listItems);
 	}
-	
-	public void listEntities(int pageNum, int pageSize, SearchRepository<?, Integer> repo) {
+
+    public void listEntities(int pageNum, int pageSize, ReviewRepository repo) {
 		Pageable pageable = createPageable(pageSize, pageNum);
 		Page<?> page = null;
 

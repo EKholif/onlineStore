@@ -81,7 +81,7 @@ function clearFilter() {
 
 $(document).ready(function () {
     $("#buttonCancel").on("click", function () {
-        window.location = '/' + windowLocationValue;
+        window.location = windowLocationValue;
     });
 
     $("#fileImage").change(function () {

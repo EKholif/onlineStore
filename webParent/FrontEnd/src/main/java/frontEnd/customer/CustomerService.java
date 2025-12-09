@@ -159,6 +159,10 @@ public class CustomerService {
         setName(name, customer);
         customer.setImage(picture);
 
+        //	To do :  removed when multi-tenant is implemented   Ehab
+        customer.setTenantId(0L);
+
+
         customer.setEnabled(true);
         customer.setCreatedTime(new Date());
         customer.setAuthenticationType(authenticationType);

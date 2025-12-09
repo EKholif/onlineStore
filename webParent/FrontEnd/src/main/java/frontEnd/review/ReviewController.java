@@ -3,10 +3,8 @@ package frontEnd.review;
 
 import com.onlineStoreCom.entity.Review.Review;
 import com.onlineStoreCom.entity.customer.Customer;
-import com.onlineStoreCom.entity.exception.ProductNotFoundException;
 import com.onlineStoreCom.entity.exception.ReviewNotFoundException;
 import com.onlineStoreCom.entity.product.Product;
-
 import frontEnd.product.ProductService;
 import frontEnd.review.vote.ReviewVoteService;
 import frontEnd.utilites.ControllerHelper;
@@ -52,7 +50,7 @@ public class ReviewController {
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-		model.addAttribute("modelUrl", "/reviews");
+        model.addAttribute("modelUrl", "/reviews/page/");
 		
 		model.addAttribute("listReviews", listReviews);
 

@@ -110,6 +110,7 @@ public class Product extends IdBasedEntity {
     }
 
     public Product(Integer id) {
+        this.id = id;
     }
 
     public Product(String name) {
@@ -121,8 +122,8 @@ public class Product extends IdBasedEntity {
         return details;
     }
 
-    public void addProductDetails(Integer id,String detailName, String detailValue) {
-        this.details.add(new ProductDetails(id,detailName, detailValue, this));
+    public void addProductDetails(Integer id, String detailName, String detailValue, Long tenantId) {
+        this.details.add(new ProductDetails(id, detailName, detailValue, tenantId, this));
     }
 
     public void addProductDetails(String detailName, String detailValue, Long tenantId) {

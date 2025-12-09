@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div class="row m-2" th:fragment="content">
+    <div class="col">
+        <th:block th:each="review : ${listReviews}">
+            <div class="row">
+                <div class="col-xs">
+                    <input class="product-detail-rating-star" data-size="xs" dir="ltr"
+                           th:value="${review.rating}" type="text"/>
+                </div>
+
+                <div class="col-xs ml-2">
+                    <a class="linkVoteReview fa-thumbs-up"
+                       th:classappend="${review.upvotedByCurrentCustomer ? 'fas' : 'far'}"
+                       th:href="@{'/vote_review/' + ${review.id} + '/up'}" th:id="'linkVoteUp-' + ${review.id}"
+                       th:reviewId="${review.id}"></a>
+                </div>
+
+                <div class="col-xs ml-2">
+						<span th:id="'voteCount-' + ${review.id}">[[${review.votes}]]
+							Votes</span>
+                </div>
+
+                <div class="col-xs ml-2">
+                    <a class="linkVoteReview fa-thumbs-down"
+                       th:classappend="${review.downvotedByCurrentCustomer ? 'fas' : 'far'}"
+                       th:href="@{'/vote_review/' + ${review.id} + '/down'}" th:id="'linkVoteDown-' + ${review.id}"
+                       th:reviewId="${review.id}"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <b>[[${review.headline}]]</b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">[[${review.comment}]]</div>
+            </div>
+
+            <div class="row">
+                <div class="col ml-3">
+                    <small>[[${review.customer.fullName}]],
+                        <div th:replace="fragments :: format_time(${review.reviewTime})"></div>
+                    </small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <hr/>
+                </div>
+            </div>
+        </th:block>
+    </div>
+</div>
+</body>
+
+</html>

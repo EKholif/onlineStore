@@ -24,7 +24,7 @@ import static org.springframework.data.domain.Pageable.ofSize;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(false)
+@Rollback(value = true)
 public class OrderRepositoryTests {
 
 	@Autowired
@@ -118,7 +118,7 @@ public class OrderRepositoryTests {
 	
 	@Test
 	public void testListOrders() {
-		Iterable<Order> orders = repo.findAllSet("ehab");
+        Iterable<Order> orders = repo.findAllSet("Brian");
 		
 		assertThat(orders).hasSizeGreaterThan(0);
 		
