@@ -59,8 +59,12 @@ public class ReviewVoteService {
 				vote.voteDown();
 			}
 		}
-		
+
+		vote.setTenantId(review.getTenantId());
 		voteRepo.save(vote);
+		System.out.println(" \uD83D\uDD25 test Saved vote ID: \uD83D\uDD25  " + vote.getId());
+
+
 		reviewRepo.updateVoteCount(reviewId);
 		Integer voteCount = reviewRepo.getVoteCount(reviewId);
 		

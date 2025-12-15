@@ -355,4 +355,10 @@ public class Product extends IdBasedEntity {
         return name;
     }
 
+    @Transient
+    public String getURI() {
+        return "/p/" + this.alias;
+    }
+
+
 }

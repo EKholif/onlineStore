@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col ml-3">
                     <small>[[${review.customer.fullName}]],
-                        <div th:replace="fragments :: format_time(${review.reviewTime})"></div>
+                        <div th:replace="~{supports/format/format_time :: content(${review.reviewTime})}"></div>
                     </small>
                 </div>
             </div>

@@ -1,13 +1,19 @@
 package frontEnd.product;
 
+import com.onlineStoreCom.entity.Review.Review;
 import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.product.Product;
 import frontEnd.category.CategoryService;
+import frontEnd.review.ReviewService;
+import frontEnd.review.vote.ReviewVoteService;
+import frontEnd.utilites.ControllerHelper;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +29,12 @@ public class ProductController {
     private CategoryService categoryService;
     @Autowired
     private ProductService productService;
-
+    @Autowired
+    private ReviewService reviewService;
+    @Autowired
+    private ReviewVoteService voteService;
+    @Autowired
+    private ControllerHelper controllerHelper;
 
 //    @GetMapping("/p/{category_alias}")
 //    public String viewCategoryFirstPage(@PathVariable("category_alias") String alias,
@@ -133,17 +144,30 @@ public class ProductController {
         return model;
     }
 
-    @GetMapping("/c/c/{product_alias}")
-    public ModelAndView viewProductDetail(@PathVariable("product_alias") String alias) throws ProductNotFoundException, CategoryNotFoundException {
+    @GetMapping("/p/{product_alias}")
+    public ModelAndView viewProductDetail(@PathVariable("product_alias") String alias, HttpServletRequest request) throws ProductNotFoundException, CategoryNotFoundException {
 
         Product product = productService.findByAlis(alias);
         ModelAndView model = new ModelAndView("product/product_detail");
 
         Category category = product.getCategory();
         List<Category> listCategoryParents = categoryService.getCategoryParents(category);
+        Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);
+        Customer customer = controllerHelper.getAuthenticatedCustomer(request);
+        if (customer != null) {
+            boolean customerReviewed = reviewService.didCustomerReviewProduct(customer, product.getId());
+            voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), customer.getId());
+
+            if (customerReviewed) {
+                model.addObject("customerReviewed", customerReviewed);
+            } else {
+                boolean customerCanReview = reviewService.canCustomerReviewProduct(customer, product.getId());
+                model.addObject("customerCanReview", customerCanReview);
+            }
+        }
 
         model.addObject("listCategoryParents", listCategoryParents);
-
+        model.addObject("listReviews", listReviews);
         model.addObject("pageTitle", product.getName());
         model.addObject("product", product);
 

@@ -7,124 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="new Frontend">
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/css/star-rating.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/css/star-rating.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/img/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/LANG.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/bn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/de.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/es.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/fa.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/fr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/gr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/id.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/it.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/kk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/ko.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/nl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/pl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/pt-BR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/ro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/ru.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/tr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/ua.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/locales/zh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/star-rating.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/js/star-rating.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fa/theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fa/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fa/theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fa/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fas/theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fas/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fas/theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-fas/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-gly/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-gly/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-svg/theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-svg/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-svg/theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-svg/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-uni/theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-uni/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-uni/theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/star-rating/themes/krajee-uni/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_top_reviews.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/review_detail_modal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/review_done.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/review_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_customer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_product.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_votes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/review/ProductRepositoryTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/AbstractReportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/MasterOrderReportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/OrderDetailReportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/ReportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/ReportItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/ReportRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/ReportType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/review/ReviewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/review/ReviewRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/review/ReviewService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/static/js/common_list.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reports/reports.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reports/sales_report_fragment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/review_detail_modal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/review_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/reviews.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/review/ReviewRepositoryTests.java" afterDir="false" />
+    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/ProductDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/ProductDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingBag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/emailSender/src/main/resources/templates/support/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/emailSender/src/main/resources/templates/support/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/emailSender/src/main/resources/templates/support/fragments/standerd/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/emailSender/src/main/resources/templates/support/fragments/standerd/modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/customer/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/customer/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/oauth/OAuth2LoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/oauth/OAuth2LoginSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/vote/ReviewVoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/vote/ReviewVoteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/cart/shopping_cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/cart/shopping_cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_top_reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_top_reviews.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/products_by_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/products_by_category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/register/register_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/register/register_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/register/register_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/register/register_success.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/register_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/register_success.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/header/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/header/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/modal-dialog.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/modal-dialog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/categoryRepositoryTest/ProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/categoryRepositoryTest/ProductRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/customerTest/CustomerRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/customerTest/CustomerRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/review/ReviewRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/review/ReviewRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/site-logo/8c02662811277bacd09ea2389c572119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/PagingAndSortingHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/PagingAndSortingHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/utility/paging/PagingAndSortingHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/utility/paging/PagingAndSortingHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/static/js/common_form.js" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/static/js/common_form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/brands/modal-dialog-fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/brands/modal-dialog-fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/new-customer-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/new-customer-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderDetailRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderDetailRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/CustomerTest/CustomerRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/CustomerTest/CustomerRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_votes.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_votes.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,54 +63,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.codeium.enabled": "true",
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/FrontEnd/src/main/resources/templates/product",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15234375",
-    "project.structure.side.proportion": "0.24421832",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/FrontEnd/src/main/resources/templates/product&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15234375&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.24421832&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;module&quot;,
+      &quot;repository&quot;
     ],
-    "DatabaseDriversLRU": [
-      "mysql"
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\main\resources\templates\product" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\test\java\frontEnd\review" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\main\resources\static\star-rating" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\main\resources\static" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\main\resources\templates" />
-      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\resources\static\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\emailSender\src\main\resources\static" />
@@ -252,7 +146,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReviewRepositoryTests.testCountByCustomerAndProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRepositoryTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FrontEnd" />
       <extension name="coverage">
         <pattern>
@@ -261,9 +155,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="frontEnd.review" />
-      <option name="MAIN_CLASS_NAME" value="frontEnd.review.ReviewRepositoryTests" />
-      <option name="METHOD_NAME" value="testCountByCustomerAndProduct" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="frontEnd.review.ProductRepositoryTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -284,7 +177,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReviewRepositoryTests.testFindByProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReviewRepositoryTests.testFindByCustomerNoKeyword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FrontEnd" />
       <extension name="coverage">
         <pattern>
@@ -294,13 +187,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="frontEnd.review" />
       <option name="MAIN_CLASS_NAME" value="frontEnd.review.ReviewRepositoryTests" />
-      <option name="METHOD_NAME" value="testFindByProduct" />
+      <option name="METHOD_NAME" value="testFindByCustomerNoKeyword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReviewRepositoryTests.testGetVoteCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReviewRepositoryTests.testFindByCustomerWithKeyword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FrontEnd" />
       <extension name="coverage">
         <pattern>
@@ -310,7 +203,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="frontEnd.review" />
       <option name="MAIN_CLASS_NAME" value="frontEnd.review.ReviewRepositoryTests" />
-      <option name="METHOD_NAME" value="testGetVoteCount" />
+      <option name="METHOD_NAME" value="testFindByCustomerWithKeyword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -386,10 +279,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ReviewRepositoryTests.testCountByCustomerAndProduct" />
+      <item itemvalue="JUnit.ProductRepositoryTests" />
+      <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerNoKeyword" />
+      <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerWithKeyword" />
       <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerAndId" />
-      <item itemvalue="JUnit.ReviewRepositoryTests.testFindByProduct" />
-      <item itemvalue="JUnit.ReviewRepositoryTests.testGetVoteCount" />
       <item itemvalue="JUnit.ReviewRepositoryTests.testUpdateVoteCount" />
       <item itemvalue="Spring Boot.EmailSenderApplication" />
       <item itemvalue="Spring Boot.WebBackEndApplication" />
@@ -397,11 +290,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReviewRepositoryTests.testUpdateVoteCount" />
-        <item itemvalue="JUnit.ReviewRepositoryTests.testGetVoteCount" />
-        <item itemvalue="JUnit.ReviewRepositoryTests.testCountByCustomerAndProduct" />
-        <item itemvalue="JUnit.ReviewRepositoryTests.testFindByProduct" />
         <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerAndId" />
+        <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerWithKeyword" />
+        <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerNoKeyword" />
+        <item itemvalue="JUnit.ProductRepositoryTests" />
+        <item itemvalue="JUnit.ReviewRepositoryTests.testUpdateVoteCount" />
       </list>
     </recent_temporary>
   </component>
@@ -484,7 +377,9 @@
       <workItem from="1764155634757" duration="39945000" />
       <workItem from="1764680407569" duration="1029000" />
       <workItem from="1764983249009" duration="29101000" />
-      <workItem from="1765278094534" duration="2500000" />
+      <workItem from="1765278094534" duration="4606000" />
+      <workItem from="1765374882622" duration="4337000" />
+      <workItem from="1765797069579" duration="4558000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -598,7 +493,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764374866356</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add report functionality and improve UI components&#10;&#10;- Introduced ReportType enum for report categorization.&#10;- Enhanced SettingBag with a method to retrieve all settings.&#10;- Updated Country to improve string representation.&#10;- Modified common_form.js for better navigation handling.&#10;- Added ProductRepositoryTests for product alias retrieval.&#10;- Implemented new report controller for sales report view.&#10;- Updated various HTML files to improve modal behavior and styling.&#10;- Added translations for star rating in multiple languages.">
+      <option name="closed" value="true" />
+      <created>1765285828881</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1765285828881</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +558,8 @@
     <MESSAGE value="up to emailsender" />
     <MESSAGE value="updated" />
     <MESSAGE value="new Frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="new Frontend" />
+    <MESSAGE value="Add report functionality and improve UI components&#10;&#10;- Introduced ReportType enum for report categorization.&#10;- Enhanced SettingBag with a method to retrieve all settings.&#10;- Updated Country to improve string representation.&#10;- Modified common_form.js for better navigation handling.&#10;- Added ProductRepositoryTests for product alias retrieval.&#10;- Implemented new report controller for sales report view.&#10;- Updated various HTML files for improved modal behavior and styling." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add report functionality and improve UI components&#10;&#10;- Introduced ReportType enum for report categorization.&#10;- Enhanced SettingBag with a method to retrieve all settings.&#10;- Updated Country to improve string representation.&#10;- Modified common_form.js for better navigation handling.&#10;- Added ProductRepositoryTests for product alias retrieval.&#10;- Implemented new report controller for sales report view.&#10;- Updated various HTML files for improved modal behavior and styling." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
