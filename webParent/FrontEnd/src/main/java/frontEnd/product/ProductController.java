@@ -36,44 +36,41 @@ public class ProductController {
     @Autowired
     private ControllerHelper controllerHelper;
 
-//    @GetMapping("/p/{category_alias}")
-//    public String viewCategoryFirstPage(@PathVariable("category_alias") String alias,
-//                                        Model model) {
-//        try {
-//            Category category = categoryService.getCategory(alias);
-//
-//            List<Category> listCategoryParents = categoryService.getCategoryParents(category);
-//
-//            Set<Category> listCategoryChildren = categoryService.listCategoryChildren(category);
-//
-//            Set<Product> listProduct = productService.setAll(category.getId());
-//            Set<Product> listCatProduct = productService.childCategoryProduct(listCategoryChildren);
-//
-//            model.addObject("listProduct", listProduct);
-//            model.addObject("pageTitle", category.getName());
-//            model.addObject("listCategoryParents", listCategoryParents);
-//            model.addObject("listCategories", listCategoryChildren);
-//            model.addObject("listCatProduct", listCatProduct);
-//
-//            return "product/products_by_category";
-//        } catch (CategoryNotFoundException ex) {
-//            return "error/404";
-//        }
-//    }
-    @GetMapping("")
-    public ModelAndView viewHomePage( ) {
-        String sortDir = "asc";
-        String sortField = "name";
-        return listProductOnSale(   5, sortField,sortDir,"");
-    }
-
+    // @GetMapping("/p/{category_alias}")
+    // public String viewCategoryFirstPage(@PathVariable("category_alias") String
+    // alias,
+    // Model model) {
+    // try {
+    // Category category = categoryService.getCategory(alias);
+    //
+    // List<Category> listCategoryParents =
+    // categoryService.getCategoryParents(category);
+    //
+    // Set<Category> listCategoryChildren =
+    // categoryService.listCategoryChildren(category);
+    //
+    // Set<Product> listProduct = productService.setAll(category.getId());
+    // Set<Product> listCatProduct =
+    // productService.childCategoryProduct(listCategoryChildren);
+    //
+    // model.addObject("listProduct", listProduct);
+    // model.addObject("pageTitle", category.getName());
+    // model.addObject("listCategoryParents", listCategoryParents);
+    // model.addObject("listCategories", listCategoryChildren);
+    // model.addObject("listCatProduct", listCatProduct);
+    //
+    // return "product/products_by_category";
+    // } catch (CategoryNotFoundException ex) {
+    // return "error/404";
+    // }
+    // }
 
     @GetMapping("/c/{category_alias}")
     public ModelAndView listAllUsers(@PathVariable("category_alias") String alias) throws CategoryNotFoundException {
-        String category =categoryService.getCategory(alias).getName();
+        String category = categoryService.getCategory(alias).getName();
         String sortDir = "asc";
         String sortField = "name";
-        return listByPage(alias, 1,sortField,sortDir ,alias);
+        return listByPage(alias, 1, sortField, sortDir, alias);
     }
 
     @GetMapping("/c/{category_alias}/page/{pageNum}")
@@ -89,33 +86,32 @@ public class ProductController {
         List<Category> listCategoryParents = categoryService.getCategoryParents(category);
         Set<Category> listCategoryChildren = categoryService.listCategoryChildren(category);
 
-
         model.addObject("listCategoryParents", listCategoryParents);
         model.addObject("listCategories", listCategoryChildren);
 
-
         PageInfo pageInfo = new PageInfo();
-        List<Product> listProduct = productService.listByCategory(pageInfo, pageNum, sortField, sortDir, keyWord, alias);
+        List<Product> listProduct = productService.listByCategory(pageInfo, pageNum, sortField, sortDir, keyWord,
+                alias);
 
         PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(
-                model, "products", sortField, sortDir, keyWord, pageNum, listProduct
-        );
+                model, "products", sortField, sortDir, keyWord, pageNum, listProduct);
         pagingAndSortingHelper.listByPage(pageInfo, "products");
 
         return model;
     }
 
     @GetMapping("/d/listProductOnSale/page/{pageNum}")
-    public ModelAndView listProductOnSale(   @PathVariable("pageNum") int pageNum,
-                              @Param("sortField") String sortField, @Param("sortDir") String sortDir,
-                              @RequestParam(name = "keyWord", required = false) String keyWord ) {
+    public ModelAndView listProductOnSale(@PathVariable("pageNum") int pageNum,
+                                          @Param("sortField") String sortField, @Param("sortDir") String sortDir,
+                                          @RequestParam(name = "keyWord", required = false) String keyWord) {
 
         String pageTitle = "OnlineStore";
 
         ModelAndView model = new ModelAndView("index");
-        PageInfo pageInfo =new PageInfo();
+        PageInfo pageInfo = new PageInfo();
         List<Category> listCategories = categoryService.listNoParentCategories();
-        List<Product> listProductOnSale = productService.allItemOnSale(pageInfo,pageNum,sortField,sortDir,keyWord),k;
+        List<Product> listProductOnSale = productService.allItemOnSale(pageInfo, pageNum, sortField, sortDir, keyWord),
+                k;
 
         long startCount = (long) 1;
         long endCount = startCount + CategoryService.USERS_PER_PAGE - 1;
@@ -145,7 +141,8 @@ public class ProductController {
     }
 
     @GetMapping("/p/{product_alias}")
-    public ModelAndView viewProductDetail(@PathVariable("product_alias") String alias, HttpServletRequest request) throws ProductNotFoundException, CategoryNotFoundException {
+    public ModelAndView viewProductDetail(@PathVariable("product_alias") String alias, HttpServletRequest request)
+            throws ProductNotFoundException, CategoryNotFoundException {
 
         Product product = productService.findByAlis(alias);
         ModelAndView model = new ModelAndView("product/product_detail");
@@ -156,7 +153,8 @@ public class ProductController {
         Customer customer = controllerHelper.getAuthenticatedCustomer(request);
         if (customer != null) {
             boolean customerReviewed = reviewService.didCustomerReviewProduct(customer, product.getId());
-            voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), customer.getId());
+            voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(),
+                    customer.getId());
 
             if (customerReviewed) {
                 model.addObject("customerReviewed", customerReviewed);
@@ -174,92 +172,94 @@ public class ProductController {
         return model;
     }
 
-
-
     @GetMapping("/products/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
                                    @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 
-
         ModelAndView model = new ModelAndView("product/products_by_category");
-       PageInfo pageInfo = new PageInfo();
+        PageInfo pageInfo = new PageInfo();
 
-        List<Product> listByPage = productService.listByCategory(pageInfo, pageNum, sortField, sortDir, keyWord,keyWord);
+        List<Product> listByPage = productService.listByCategory(pageInfo, pageNum, sortField, sortDir, keyWord,
+                keyWord);
 
-
-
-       PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                (model, "products", sortField, sortDir, keyWord, pageNum, listByPage);
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "products", sortField,
+                sortDir, keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "products");
         return model;
     }
 
-
-//    @GetMapping("/p/{product_alias}")
-//    public String viewProductDetail(@PathVariable("product_alias") String alias, Model model,
-//                                    HttpServletRequest request) {
-//
-//        try {
-//            Product product = productService.getProduct(alias);
-//            List<Category> listCategoryParents = categoryService.getCategoryParents(product.getCategory());
-//            Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);
-//
-//            Customer customer = controllerHelper.getAuthenticatedCustomer(request);
-//
-//            if (customer != null) {
-//                boolean customerReviewed = reviewService.didCustomerReviewProduct(customer, product.getId());
-//                voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), customer.getId());
-//
-//                if (customerReviewed) {
-//                    model.addObject("customerReviewed", customerReviewed);
-//                } else {
-//                    boolean customerCanReview = reviewService.canCustomerReviewProduct(customer, product.getId());
-//                    model.addObject("customerCanReview", customerCanReview);
-//                }
-//            }
-//
-//            model.addObject("listCategoryParents", listCategoryParents);
-//            model.addObject("product", product);
-//            model.addObject("listReviews", listReviews);
-//            model.addObject("pageTitle", product.getShortName());
-//
-//            return "product/product_detail";
-//        } catch (ProductNotFoundException e) {
-//            return "error/404";
-//        }
-//    }
-//
-//    @GetMapping("/search")
-//    public String searchFirstPage(String keyword, Model model) {
-//        return searchByPage(keyword, 1, model);
-//    }
-//
-//    @GetMapping("/search/page/{pageNum}")
-//    public String searchByPage(String keyword,
-//                               @PathVariable("pageNum") int pageNum,
-//                               Model model) {
-//        Page<Product> pageProducts = productService.search(keyword, pageNum);
-//        List<Product> listResult = pageProducts.getContent();
-//
-//        Integer startCount = (pageNum - 1) * ProductService.SEARCH_RESULTS_PER_PAGE + 1;
-//        Integer endCount = startCount + ProductService.SEARCH_RESULTS_PER_PAGE - 1;
-//        if (endCount > pageProducts.getTotalElements()) {
-//            endCount = pageProducts.getTotalElements();
-//        }
-//
-//        model.addObject("currentPage", pageNum);
-//        model.addObject("totalPages", pageProducts.getTotalPages());
-//        model.addObject("startCount", startCount);
-//        model.addObject("endCount", endCount);
-//        model.addObject("totalItems", pageProducts.getTotalElements());
-//        model.addObject("pageTitle", keyword + " - Search Result");
-//
-//        model.addObject("keyword", keyword);
-//        model.addObject("searchKeyword", keyword);
-//        model.addObject("listResult", listResult);
-//
-//        return "product/search_result";
-//    }
+    // @GetMapping("/p/{product_alias}")
+    // public String viewProductDetail(@PathVariable("product_alias") String alias,
+    // Model model,
+    // HttpServletRequest request) {
+    //
+    // try {
+    // Product product = productService.getProduct(alias);
+    // List<Category> listCategoryParents =
+    // categoryService.getCategoryParents(product.getCategory());
+    // Page<Review> listReviews =
+    // reviewService.list3MostVotedReviewsByProduct(product);
+    //
+    // Customer customer = controllerHelper.getAuthenticatedCustomer(request);
+    //
+    // if (customer != null) {
+    // boolean customerReviewed = reviewService.didCustomerReviewProduct(customer,
+    // product.getId());
+    // voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(),
+    // product.getId(), customer.getId());
+    //
+    // if (customerReviewed) {
+    // model.addObject("customerReviewed", customerReviewed);
+    // } else {
+    // boolean customerCanReview = reviewService.canCustomerReviewProduct(customer,
+    // product.getId());
+    // model.addObject("customerCanReview", customerCanReview);
+    // }
+    // }
+    //
+    // model.addObject("listCategoryParents", listCategoryParents);
+    // model.addObject("product", product);
+    // model.addObject("listReviews", listReviews);
+    // model.addObject("pageTitle", product.getShortName());
+    //
+    // return "product/product_detail";
+    // } catch (ProductNotFoundException e) {
+    // return "error/404";
+    // }
+    // }
+    //
+    // @GetMapping("/search")
+    // public String searchFirstPage(String keyword, Model model) {
+    // return searchByPage(keyword, 1, model);
+    // }
+    //
+    // @GetMapping("/search/page/{pageNum}")
+    // public String searchByPage(String keyword,
+    // @PathVariable("pageNum") int pageNum,
+    // Model model) {
+    // Page<Product> pageProducts = productService.search(keyword, pageNum);
+    // List<Product> listResult = pageProducts.getContent();
+    //
+    // Integer startCount = (pageNum - 1) * ProductService.SEARCH_RESULTS_PER_PAGE +
+    // 1;
+    // Integer endCount = startCount + ProductService.SEARCH_RESULTS_PER_PAGE - 1;
+    // if (endCount > pageProducts.getTotalElements()) {
+    // endCount = pageProducts.getTotalElements();
+    // }
+    //
+    // model.addObject("currentPage", pageNum);
+    // model.addObject("totalPages", pageProducts.getTotalPages());
+    // model.addObject("startCount", startCount);
+    // model.addObject("endCount", endCount);
+    // model.addObject("totalItems", pageProducts.getTotalElements());
+    // model.addObject("pageTitle", keyword + " - Search Result");
+    //
+    // model.addObject("keyword", keyword);
+    // model.addObject("searchKeyword", keyword);
+    // model.addObject("listResult", listResult);
+    //
+    // return "product/search_result";
+    // }
 }

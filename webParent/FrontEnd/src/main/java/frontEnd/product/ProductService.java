@@ -1,1 +1,118 @@
-package frontEnd.product;import com.onlineStoreCom.entity.category.Category;import com.onlineStoreCom.entity.product.Product;import jakarta.transaction.Transactional;import org.apache.poi.ss.formula.functions.T;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.data.domain.Page;import org.springframework.data.domain.PageRequest;import org.springframework.data.domain.Pageable;import org.springframework.data.domain.Sort;import org.springframework.stereotype.Service;import java.util.HashSet;import java.util.List;import java.util.Set;@Service@Transactionalpublic class ProductService {    @Autowired    private ProductRepository productRepository;    public static final int PRODUCTS_PER_PAGE = 5;    public List<Product> listAll() {        return productRepository.findAll();    }    public Product  findByAlis( String alias ) throws ProductNotFoundException {        Product product = productRepository.findByAlias(alias);      if (product==null){          throw new ProductNotFoundException("not Found ");      }    return product;    }        public Set<Product> setAll(Integer categoryId) {        return  productRepository.setProductByCategory(categoryId);    }    public List<Product> listByCategory(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord , String alise) {        Sort sort = Sort.by(sortField);        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();        Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);        Page<Product> productPage = null;        if (keyWord != null  ) {            productPage = productRepository.findAll(keyWord, pageable);        } else if (keyWord == null) {            productPage = productRepository.findAll(alise, pageable);        } else {        productPage = productRepository.findAll(pageable);        }        return viewListByPage(pageInfo, productPage);    }//    public void searchProducts(int pageNum, PagingAndSortingHelper helper) {//        Pageable pageable = helper.createPageable(PRODUCTS_PER_PAGE, pageNum);//        String keyword = helper.getKeyword();//        Page<Product> page = repository.searchProductsByName(keyword, pageable);//        helper.updateModelAttributes(pageNum, page);//    }    public Product findById(Integer id) {        return productRepository.getReferenceById(id);    }    public List<Product> search(PageInfo pageInfo,  String keyWord) {        int pageNum = 1;        Sort sort = Sort.by("name");        sort =  sort.ascending() ;        Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);        Page<Product> pageUsers = null;            pageUsers = productRepository.search(keyWord, pageable);        pageInfo.setTotalElements(pageUsers.getTotalElements());        pageInfo.setTotalPages(pageUsers.getTotalPages());        return pageUsers.getContent();    }    public List<Product> allItemOnSale(PageInfo pageInfo,int pageNum,                                       String sortField, String sortDir,String keyWord) {        Sort sort = Sort.by(sortField);        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();        Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);        Page<Product> productPage = productRepository.pageProductOnSale(pageable);        return viewListByPage(pageInfo, productPage);    }    public <T> List<T> viewListByPage(PageInfo pageInfo, Page<T> pageData) {        pageInfo.setTotalElements(pageData.getTotalElements());        pageInfo.setTotalPages(pageData.getTotalPages());        return pageData.getContent();    }    public Boolean existsById(Integer id) {        return productRepository.findById(id).isPresent();    }}
+package frontEnd.product;
+
+import com.onlineStoreCom.entity.product.Product;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Set;
+
+@Service
+@Transactional
+public class ProductService {
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    public static final int PRODUCTS_PER_PAGE = 5;
+
+    public List<Product> listAll() {
+
+        return productRepository.findAll();
+    }
+
+    public Product findByAlis(String alias) throws ProductNotFoundException {
+        Product product = productRepository.findByAlias(alias);
+        if (product == null) {
+
+            throw new ProductNotFoundException("not Found ");
+        }
+
+        return product;
+
+    }
+
+    public Set<Product> setAll(Integer categoryId) {
+
+        return productRepository.setProductByCategory(categoryId);
+    }
+
+    public List<Product> listByCategory(PageInfo pageInfo, int pageNum, String sortField, String sortDir,
+                                        String keyWord, String alise) {
+
+        Sort sort = Sort.by(sortField);
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+        Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);
+        Page<Product> productPage = null;
+        if (keyWord != null) {
+            productPage = productRepository.findAll(keyWord, pageable);
+        } else if (keyWord == null) {
+            productPage = productRepository.findAll(alise, pageable);
+        } else {
+            productPage = productRepository.findAll(pageable);
+        }
+
+        return viewListByPage(pageInfo, productPage);
+    }
+
+    // public void searchProducts(int pageNum, PagingAndSortingHelper helper) {
+    // Pageable pageable = helper.createPageable(PRODUCTS_PER_PAGE, pageNum);
+    // String keyword = helper.getKeyword();
+    // Page<Product> page = repository.searchProductsByName(keyword, pageable);
+    // helper.updateModelAttributes(pageNum, page);
+    // }
+
+    public Product findById(Integer id) {
+
+        return productRepository.getReferenceById(id);
+    }
+
+    public List<Product> search(PageInfo pageInfo, String keyWord) {
+
+        int pageNum = 1;
+        Sort sort = Sort.by("name");
+        sort = sort.ascending();
+
+        Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);
+
+        Page<Product> pageUsers = null;
+
+        pageUsers = productRepository.search(keyWord, pageable);
+
+        pageInfo.setTotalElements(pageUsers.getTotalElements());
+        pageInfo.setTotalPages(pageUsers.getTotalPages());
+
+        return pageUsers.getContent();
+    }
+
+    public List<Product> getOnSaleProducts() {
+        return productRepository.findAllOnSale();
+    }
+
+    public List<Product> allItemOnSale(PageInfo pageInfo, int pageNum,
+                                       String sortField, String sortDir, String keyWord) {
+
+        Sort sort = Sort.by(sortField);
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+        Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);
+        Page<Product> productPage = productRepository.pageProductOnSale(pageable);
+
+        return viewListByPage(pageInfo, productPage);
+    }
+
+    public <T> List<T> viewListByPage(PageInfo pageInfo, Page<T> pageData) {
+        pageInfo.setTotalElements(pageData.getTotalElements());
+        pageInfo.setTotalPages(pageData.getTotalPages());
+        return pageData.getContent();
+    }
+
+    public Boolean existsById(Integer id) {
+        return productRepository.findById(id).isPresent();
+    }
+
+}

@@ -3,37 +3,44 @@ package frontEnd;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.product.Product;
 import frontEnd.category.CategoryService;
-import frontEnd.product.CategoryNotFoundException;
-import frontEnd.product.PageInfo;
 import frontEnd.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 public class MainController {
 
-
     @Autowired
     private CategoryService categoryService;
     @Autowired
     private ProductService productService;
 
+    @GetMapping("/")
+    public String viewHomePage(Model model) {
+        List<Category> listCategories = categoryService.listNoParentCategories();
+        List<Product> listProductOnSale = productService.getOnSaleProducts();
 
+        model.addAttribute("listCategories", listCategories);
+        model.addAttribute("listProductOnSale", listProductOnSale);
 
+        // Add attributes required by index.html fragments (sort/search/pagination)
+        model.addAttribute("modelUrl", "/");
+        model.addAttribute("currentPage", 1);
+        model.addAttribute("totalPages", 1);
+        model.addAttribute("totalElements", listProductOnSale.size());
+        model.addAttribute("sortField", "name");
+        model.addAttribute("sortDir", "asc");
+        model.addAttribute("keyWord", null);
 
-
+        return "index";
+    }
 
     @GetMapping("/login")
     public String viewLoginPage() {
@@ -49,15 +56,7 @@ public class MainController {
     @GetMapping("/about")
     public String aboutPage() {
 
-
         return "/about/about";
     }
-
-
-
-
-
-
-
 
 }
