@@ -4,6 +4,7 @@ import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
+
 import java.util.Date;
 
 /**
@@ -26,7 +27,7 @@ public class Review extends IdBasedEntity {
 	private String comment;
 
 	/** Rating given by the customer (e.g., 1-5). */
-	private int rating;
+    private float rating;
 
 	/** Total votes on this review (can be upvotes/downvotes). */
 	private int votes;
@@ -55,38 +56,86 @@ public class Review extends IdBasedEntity {
 
 	// ---------------- Constructors ----------------
 
-	public Review() { }
+    public Review() {
+    }
 
-	public Review(Integer id) { this.id = id; }
+    public Review(Integer id) {
+        this.id = id;
+    }
 
 	// ---------------- Getters & Setters ----------------
 
-	public String getHeadline() { return headline; }
-	public void setHeadline(String headline) { this.headline = headline; }
+    public String getHeadline() {
+        return headline;
+    }
 
-	public String getComment() { return comment; }
-	public void setComment(String comment) { this.comment = comment; }
+    public void setHeadline(String headline) {
+        this.headline = headline;
+    }
 
-	public int getRating() { return rating; }
-	public void setRating(int rating) { this.rating = rating; }
+    public String getComment() {
+        return comment;
+    }
 
-	public int getVotes() { return votes; }
-	public void setVotes(int votes) { this.votes = votes; }
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	public Date getReviewTime() { return reviewTime; }
-	public void setReviewTime(Date reviewTime) { this.reviewTime = reviewTime; }
+    public float getRating() {
+        return rating;
+    }
 
-	public Product getProduct() { return product; }
-	public void setProduct(Product product) { this.product = product; }
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
 
-	public Customer getCustomer() { return customer; }
-	public void setCustomer(Customer customer) { this.customer = customer; }
+    public int getVotes() {
+        return votes;
+    }
 
-	public boolean isUpvotedByCurrentCustomer() { return upvotedByCurrentCustomer; }
-	public void setUpvotedByCurrentCustomer(boolean upvotedByCurrentCustomer) { this.upvotedByCurrentCustomer = upvotedByCurrentCustomer; }
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
 
-	public boolean isDownvotedByCurrentCustomer() { return downvotedByCurrentCustomer; }
-	public void setDownvotedByCurrentCustomer(boolean downvotedByCurrentCustomer) { this.downvotedByCurrentCustomer = downvotedByCurrentCustomer; }
+    public Date getReviewTime() {
+        return reviewTime;
+    }
+
+    public void setReviewTime(Date reviewTime) {
+        this.reviewTime = reviewTime;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public boolean isUpvotedByCurrentCustomer() {
+        return upvotedByCurrentCustomer;
+    }
+
+    public void setUpvotedByCurrentCustomer(boolean upvotedByCurrentCustomer) {
+        this.upvotedByCurrentCustomer = upvotedByCurrentCustomer;
+    }
+
+    public boolean isDownvotedByCurrentCustomer() {
+        return downvotedByCurrentCustomer;
+    }
+
+    public void setDownvotedByCurrentCustomer(boolean downvotedByCurrentCustomer) {
+        this.downvotedByCurrentCustomer = downvotedByCurrentCustomer;
+    }
 
 	// ---------------- Utility Methods ----------------
 
@@ -106,8 +155,10 @@ public class Review extends IdBasedEntity {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
 		Review other = (Review) obj;
 		return id != null && id.equals(other.id);
 	}

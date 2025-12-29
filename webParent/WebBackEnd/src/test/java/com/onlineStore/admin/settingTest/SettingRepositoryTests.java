@@ -23,9 +23,9 @@ public class SettingRepositoryTests {
 
     @Test
     public void testCreateGeneralSettings() {
-        Setting siteName = new Setting("SITE_NAME", "Shopme", SettingCategory.GENERAL);
-        Setting siteLogo = new Setting("SITE_LOGO", "Shopme.png", SettingCategory.GENERAL);
-        Setting copyright = new Setting("COPYRIGHT", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.GENERAL);
+        Setting siteName = new Setting("SITE_NAME", "Online Store", SettingCategory.GENERAL);
+        Setting siteLogo = new Setting("SITE_LOGO", "Online Store.png", SettingCategory.GENERAL);
+        Setting copyright = new Setting("COPYRIGHT", "Copyright (C) 2021 Online Store Ltd.", SettingCategory.GENERAL);
 
         repo.saveAll(List.of(siteName, siteLogo, copyright));
 
@@ -69,16 +69,16 @@ public class SettingRepositoryTests {
 
     @Test
     public void testCreateMailServerlSettings() {
-        Setting siteName = new Setting("MAIL_HOST", "Shopme", SettingCategory.MAIL_SERVER);
-        Setting siteLogo = new Setting("MAIL_PORT", "Shopme.png", SettingCategory.MAIL_SERVER);
-        Setting copyright = new Setting("MAIL_USERNAME", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
-        Setting copyright1 = new Setting("MAIL_PASSWORD", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
+        Setting siteName = new Setting("MAIL_HOST", "Online Store", SettingCategory.MAIL_SERVER);
+        Setting siteLogo = new Setting("MAIL_PORT", "Online Store.png", SettingCategory.MAIL_SERVER);
+        Setting copyright = new Setting("MAIL_USERNAME", "Copyright (C) 2021 Online Store Ltd.", SettingCategory.MAIL_SERVER);
+        Setting copyright1 = new Setting("MAIL_PASSWORD", "Copyright (C) 2021 Online Store Ltd.", SettingCategory.MAIL_SERVER);
         Setting copyright2 = new Setting("SMTP_AUTH", "true", SettingCategory.MAIL_SERVER);
         Setting copyright3 = new Setting("STMP_SECURED", "true", SettingCategory.MAIL_SERVER);
-        Setting copyright4 = new Setting("MAIL_FROM", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
-        Setting copyright5 = new Setting("MAIL_SENDER_NAME", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_SERVER);
-        Setting copyright6= new Setting("CUSTOMER_VERIFY_SUBJECT", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_TEMPLATES);
-        Setting copyright7 = new Setting("CUSTOMER_VERIFY_CONTENT", "Copyright (C) 2021 Shopme Ltd.", SettingCategory.MAIL_TEMPLATES);
+        Setting copyright4 = new Setting("MAIL_FROM", "Copyright (C) 2021 Online Store Ltd.", SettingCategory.MAIL_SERVER);
+        Setting copyright5 = new Setting("MAIL_SENDER_NAME", "Copyright (C) 2021 Online Store Ltd.", SettingCategory.MAIL_SERVER);
+        Setting copyright6 = new Setting("CUSTOMER_VERIFY_SUBJECT", "Copyright (C) 2021 Online Store Ltd.", SettingCategory.MAIL_TEMPLATES);
+        Setting copyright7 = new Setting("CUSTOMER_VERIFY_CONTENT", "Copyright (C) 2021 Online Store Ltd.", SettingCategory.MAIL_TEMPLATES);
 
         repo.saveAll(List.of(copyright1, copyright2, copyright3,copyright4,copyright5,copyright6,copyright7));
 

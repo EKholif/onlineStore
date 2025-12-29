@@ -6,7 +6,6 @@ import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import frontEnd.customer.CustomerService;
 import frontEnd.utilites.ControllerHelper;
-import frontEnd.utilites.ModelControllerHelper;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,7 +61,7 @@ public class AddressController {
 		Customer customer = controllerHelper.getAuthenticatedCustomer(request);
 		
 		address.setCustomer(customer);
-
+        address.setTenantId(customer.getTenantId());
 		addressService.save(address);
 		
 		String redirectOption = request.getParameter("redirect");

@@ -228,6 +228,7 @@
 }
 
 @media (min-width: 992px) {
+
     .hero-header,
     .page-header {
         margin-top: 152px !important;
@@ -235,6 +236,7 @@
 }
 
 @media (max-width: 992px) {
+
     .hero-header,
     .page-header {
         margin-top: 97px !important;
@@ -510,3 +512,15 @@
 /*** Footer End ***/
 
 
+/* Tracking Icons */
+.icon-green {
+    color: #198754 !important;
+    /* Bootstrap success green */
+    font-weight: 900;
+    /* Ensure solid weight */
+}
+
+.icon-dark {
+    color: #adb5bd !important;
+    /* Gray */
+}

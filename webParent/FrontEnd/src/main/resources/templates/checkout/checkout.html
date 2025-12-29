@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{supports/header/header::content}"></head>
+
 <body>
 
 
@@ -11,7 +12,6 @@
 <div class="text-center">
     <h2>Checkout</h2>
 </div>
-
 
 
 <div class="row m-1">
@@ -45,20 +45,19 @@
                     <form method="post" th:action="@{/place_order}">
                         <p>
 
-                            <input id="radioCOD" name="paymentMethod" type="radio"
-                                   value="COD"/> Cash on Delivery (COD) &nbsp;
-                            <button class="btn btn-primary d-none" id="buttonSubmit"
-                                    type="submit">Place Order with COD
+                            <input id="radioCOD" name="paymentMethod" type="radio" value="COD"/> Cash on Delivery
+                            (COD) &nbsp;
+                            <button class="btn btn-primary d-none" id="buttonSubmit" type="submit">Place Order with
+                                COD
                             </button>
                         </p>
                     </form>
                 </div>
 
                 <div id="paypal-button-container"></div>
-                <form id="paypalForm" method="post"
-                      th:action="@{/process_paypal_order}">
-                    <input id="orderId" name="orderId" type="hidden"/> <input
-                        name="paymentMethod" type="hidden" value="PAYPAL"/>
+                <form id="paypalForm" method="post" th:action="@{/process_paypal_order}">
+                    <input id="orderId" name="orderId" type="hidden"/> <input name="paymentMethod" type="hidden"
+                                                                              value="PAYPAL"/>
                 </form>
             </div>
         </div>
@@ -75,15 +74,14 @@
                         <th:block th:each="item : ${cartItems}">
                             <tr th:with="product = ${item.product}">
                                 <td>[[${item.quantity}]] X &nbsp;&nbsp;</td>
-                                <td width="70%"><a target="_blank"
-                                                   th:href="@{'/p/' + ${product.alias}}"> [[${product.shortName}]] </a>
+                                <td width="70%"><a target="_blank" th:href="@{'/p/' + ${product.alias}}">
+                                    [[${product.shortName}]] </a>
                                     <br/> <small>Ship:
                                         <div
                                                 th:replace="~{supports/format/format_currency:: content(${item.shippingCost})}">
                                         </div>
-
-                                        <h1> [[${item.shippingCost}  ]] </h1>
-                                    </small></td>
+                                    </small>
+                                </td>
                                 <td>
                                     <div
                                             th:replace="~{supports/format/format_currency:: content(${item.subtotal})}">
@@ -102,7 +100,8 @@
                     <div class="col">Product Total:</div>
                     <div class="col">
                         <div
-                                th:replace="~{supports/format/format_currency:: content(${checkoutInfo.productTotal})}"></div>
+                                th:replace="~{supports/format/format_currency:: content(${checkoutInfo.productTotal})}">
+                        </div>
                     </div>
                 </div>
 
@@ -110,7 +109,8 @@
                     <div class="col">Shipping Total:</div>
                     <div class="col">
                         <div
-                                th:replace="~{supports/format/format_currency:: content(${checkoutInfo.shippingCostTotal})}"></div>
+                                th:replace="~{supports/format/format_currency:: content(${checkoutInfo.shippingCostTotal})}">
+                        </div>
                     </div>
                 </div>
 
@@ -119,7 +119,8 @@
                     <div class="col">
                         <b>
                             <div
-                                    th:replace="~{supports/format/format_currency:: content(${checkoutInfo.paymentTotal})}"></div>
+                                    th:replace="~{supports/format/format_currency:: content(${checkoutInfo.paymentTotal})}">
+                            </div>
                         </b>
                     </div>
                 </div>
@@ -153,9 +154,9 @@
 </div>
 
 
-
 <script th:src="@{/js/common_modal.js}"></script>
-<script th:src="@{https://www.sandbox.paypal.com/sdk/js(client-id=${paypalClientId},currency=${currencyCode})}"></script>
+<script
+        th:src="@{https://www.sandbox.paypal.com/sdk/js(client-id=${paypalClientId},currency=${currencyCode})}"></script>
 <script>
     if (window.paypal) {
         console.log('PayPal SDK loaded successfully!');
@@ -163,9 +164,6 @@
         console.log('PayPal SDK did not load.');
     }
 </script>
-
-
-
 
 
 <script type="text/javascript">
@@ -234,9 +232,9 @@
 
             // buyer approved payment
             return actions.order.capture().then(function (details) {
-                console.log(   "ehab   "+  details);
+                console.log("ehab   " + details);
                 orderId = details.id;
-                console.log(   "ehab   "+  details.id);
+                console.log("ehab   " + details.id);
 
                 validateOrder(orderId);
             });

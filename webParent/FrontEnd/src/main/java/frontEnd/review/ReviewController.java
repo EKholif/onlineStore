@@ -1,6 +1,5 @@
 package frontEnd.review;
 
-
 import com.onlineStoreCom.entity.Review.Review;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.ReviewNotFoundException;
@@ -23,26 +22,29 @@ import java.util.List;
 @Controller
 public class ReviewController {
 	private String defaultRedirectURL = "redirect:/reviews/page/1?sortField=reviewTime&sortDir=desc";
-	
+
 	@Autowired
 	private ReviewService reviewService;
-	@Autowired private ControllerHelper controllerHelper;
-	@Autowired private ProductService productService;
-	@Autowired private ReviewVoteService voteService;
-	
+    @Autowired
+    private ControllerHelper controllerHelper;
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private ReviewVoteService voteService;
+
 	@GetMapping("/reviews")
 	public String listFirstPage(Model model) {
 		return defaultRedirectURL;
 	}
-	
-	@GetMapping("/reviews/page/{pageNum}") 
+
+    @GetMapping("/reviews/page/{pageNum}")
 	public String listReviewsByCustomerByPage(Model model, HttpServletRequest request,
-							@PathVariable(name = "pageNum") int pageNum,
-							String keyword, String sortField, String sortDir) {
+                                              @PathVariable(name = "pageNum") int pageNum,
+                                              String keyword, String sortField, String sortDir) {
 		Customer customer = controllerHelper.getAuthenticatedCustomer(request);
 		Page<Review> page = reviewService.listByCustomerByPage(customer, keyword, pageNum, sortField, sortDir);
 		List<Review> listReviews = page.getContent();
-		
+
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("currentPage", pageNum);
@@ -51,136 +53,146 @@ public class ReviewController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         model.addAttribute("modelUrl", "/reviews/page/");
-		
+
 		model.addAttribute("listReviews", listReviews);
 
 		long startCount = (pageNum - 1) * ReviewService.REVIEWS_PER_PAGE + 1;
 		model.addAttribute("startCount", startCount);
-		
+
 		long endCount = startCount + ReviewService.REVIEWS_PER_PAGE - 1;
 		if (endCount > page.getTotalElements()) {
 			endCount = page.getTotalElements();
 		}
-		
+
 		model.addAttribute("endCount", endCount);
-		
+
 		return "reviews/reviews_customer";
 	}
-	
+
 	@GetMapping("/reviews/detail/{id}")
 	public String viewReview(@PathVariable("id") Integer id, Model model,
-							 RedirectAttributes ra, HttpServletRequest request) {
+                             RedirectAttributes ra, HttpServletRequest request) {
 		Customer customer = controllerHelper.getAuthenticatedCustomer(request);
 		try {
 			Review review = reviewService.getByCustomerAndId(customer, id);
 			model.addAttribute("review", review);
-			
+
 			return "reviews/review_detail_modal";
 		} catch (ReviewNotFoundException ex) {
 			ra.addFlashAttribute("message", ex.getMessage());
-			return defaultRedirectURL;		
+            return defaultRedirectURL;
 		}
 	}
-	
-	@GetMapping("/ratings/{productAlias}/page/{pageNum}") 
+
+    @GetMapping("/ratings/{productAlias}/page/{pageNum}")
 	public String listByProductByPage(Model model,
-				@PathVariable(name = "productAlias") String productAlias,
-				@PathVariable(name = "pageNum") int pageNum,
-				String sortField, String sortDir,
-				HttpServletRequest request) {
-		
+                                      @PathVariable(name = "productAlias") String productAlias,
+                                      @PathVariable(name = "pageNum") int pageNum,
+                                      String sortField, String sortDir,
+                                      HttpServletRequest request) {
+
 		Product product = null;
-		
-		try {
+
+        try {
 			product = productService.findByAlis(productAlias);
 		} catch (frontEnd.product.ProductNotFoundException ex) {
 			return "error/404";
 		}
-		
-		Page<Review> page = reviewService.listByProduct(product, pageNum, sortField, sortDir);
+
+        Page<Review> page = reviewService.listByProduct(product, pageNum, sortField, sortDir);
 		List<Review> listReviews = page.getContent();
-		
-		Customer customer = controllerHelper.getAuthenticatedCustomer(request);
+
+        Customer customer = controllerHelper.getAuthenticatedCustomer(request);
 		if (customer != null) {
 			voteService.markReviewsVotedForProductByCustomer(listReviews, product.getId(), customer.getId());
 		}
-		
-		model.addAttribute("totalPages", page.getTotalPages());
+
+        model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("currentPage", pageNum);
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-		
-		model.addAttribute("listReviews", listReviews);
+
+        model.addAttribute("listReviews", listReviews);
 		model.addAttribute("product", product);
 
 		long startCount = (pageNum - 1) * ReviewService.REVIEWS_PER_PAGE + 1;
 		model.addAttribute("startCount", startCount);
-		
-		long endCount = startCount + ReviewService.REVIEWS_PER_PAGE - 1;
+
+        long endCount = startCount + ReviewService.REVIEWS_PER_PAGE - 1;
 		if (endCount > page.getTotalElements()) {
 			endCount = page.getTotalElements();
 		}
-		
-		model.addAttribute("endCount", endCount);
+
+        model.addAttribute("endCount", endCount);
 		model.addAttribute("pageTitle", "Reviews for " + product.getShortName());
-		
-		return "reviews/reviews_product";
+
+        return "reviews/reviews_product";
 	}
-	
-	@GetMapping("/ratings/{productAlias}")
+
+    @GetMapping("/ratings/{productAlias}")
 	public String listByProductFirstPage(@PathVariable(name = "productAlias") String productAlias, Model model,
 			HttpServletRequest request) {
 		return listByProductByPage(model, productAlias, 1, "reviewTime", "desc", request);
-	}	
-	
+    }
+
 	@GetMapping("/write_review/product/{productId}")
 	public String showViewForm(@PathVariable("productId") Integer productId, Model model,
 			HttpServletRequest request) {
-		
-		Review review = new Review();
-		
-		Product product = null;
 
-		product = productService.findById(productId);
+        Review review = new Review();
+
+        Product product = null;
+
+        try {
+            product = productService.findById(productId);
+            if (product != null)
+                product.getName(); // Trigger lazy loading
+        } catch (Exception ex) {
+            return "error/404";
+        }
 
 		Customer customer = controllerHelper.getAuthenticatedCustomer(request);
+        if (customer == null) {
+            return "redirect:/login";
+        }
+
 		boolean customerReviewed = reviewService.didCustomerReviewProduct(customer, product.getId());
-		
-		if (customerReviewed) {
+
+        if (customerReviewed) {
 			model.addAttribute("customerReviewed", customerReviewed);
 		} else {
 			boolean customerCanReview = reviewService.canCustomerReviewProduct(customer, product.getId());
-			
-			if (customerCanReview) {
-				model.addAttribute("customerCanReview", customerCanReview);				
+
+            if (customerCanReview) {
+                model.addAttribute("customerCanReview", customerCanReview);
 			} else {
 				model.addAttribute("NoReviewPermission", true);
 			}
-		}		
-		
+        }
+
 		model.addAttribute("product", product);
 		model.addAttribute("review", review);
-		
-		return "reviews/review_form";
+
+        return "reviews/review_form";
 	}
-	
-	@PostMapping("/post_review")
+
+    @PostMapping("/post_review")
 	public String saveReview(Model model, Review review, Integer productId, HttpServletRequest request) {
 		Customer customer = controllerHelper.getAuthenticatedCustomer(request);
-		
-		Product product = null;
+
+        Product product = null;
 
 		product = productService.findById(productId);
 
 		review.setProduct(product);
 		review.setCustomer(customer);
-		
+        review.setTenantId(product.getTenantId());
 		Review savedReview = reviewService.save(review);
-		
-		model.addAttribute("review", savedReview);
-		
-		return "reviews/review_done";
+
+        model.addAttribute("review", savedReview);
+
+        return "reviews/review_done";
 	}
 }

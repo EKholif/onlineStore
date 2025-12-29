@@ -9,16 +9,22 @@
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/vote/ReviewVoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/vote/ReviewVoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/cart/shopping_cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/cart/shopping_cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_top_reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_top_reviews.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/products_by_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/products_by_category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_votes.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/reviews/reviews_votes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/Review/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/Review/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/order/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/customerAddress/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/customerAddress/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/shipping/ShippingRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/shipping/ShippingRateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/utilites/ModelBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/utilites/ModelBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/utilites/SaveAndUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/utilites/SaveAndUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/checkout/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/checkout/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/orders/order_details_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/reviews.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/column_linkWithTag.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/column_linkWithTag.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/SettingRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/SettingRepositoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,8 +145,23 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.FrontEndApplication">
+  <component name="RunManager" selected="JUnit.OrderTrackFixTest">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTrackFixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.onlineStore.admin.order.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.order" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.order.OrderTrackFixTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -209,22 +230,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReviewRepositoryTests.testUpdateVoteCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FrontEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="frontEnd.review.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="frontEnd.review" />
-      <option name="MAIN_CLASS_NAME" value="frontEnd.review.ReviewRepositoryTests" />
-      <option name="METHOD_NAME" value="testUpdateVoteCount" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -279,22 +284,22 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.OrderTrackFixTest" />
       <item itemvalue="JUnit.ProductRepositoryTests" />
       <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerNoKeyword" />
       <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerWithKeyword" />
       <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerAndId" />
-      <item itemvalue="JUnit.ReviewRepositoryTests.testUpdateVoteCount" />
       <item itemvalue="Spring Boot.EmailSenderApplication" />
       <item itemvalue="Spring Boot.WebBackEndApplication" />
       <item itemvalue="Spring Boot.FrontEndApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderTrackFixTest" />
         <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerAndId" />
         <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerWithKeyword" />
         <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerNoKeyword" />
         <item itemvalue="JUnit.ProductRepositoryTests" />
-        <item itemvalue="JUnit.ReviewRepositoryTests.testUpdateVoteCount" />
       </list>
     </recent_temporary>
   </component>
@@ -380,6 +385,7 @@
       <workItem from="1765278094534" duration="4606000" />
       <workItem from="1765374882622" duration="4337000" />
       <workItem from="1765797069579" duration="4558000" />
+      <workItem from="1767004163983" duration="7453000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -568,34 +574,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/shipping/ShippingRateRepositoryTests.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="115" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/shipping/service/ShippingRateService.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/shipping/service/ShippingRateService.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductService.java</url>
           <line>66</line>
           <option name="timeStamp" value="208" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/shipping/controller/ShippingRateController.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="321" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterManualTest.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="381" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

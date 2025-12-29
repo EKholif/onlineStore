@@ -1,6 +1,5 @@
 package frontEnd.shipping;
 
-
 import com.onlineStoreCom.entity.address.Address;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.shipping.ShippingRate;
@@ -20,7 +19,13 @@ public class ShippingRateService {
             state = customer.getCity();
         }
 
-        return repo.findByCountryAndState(customer.getCountry(), state);
+        System.out.println("DEBUG SHIPPING: Customer Country: " + customer.getCountry().getName());
+        System.out.println("DEBUG SHIPPING: Customer State/City used for search: '" + state + "'");
+
+        ShippingRate rate = repo.findByCountryAndState(customer.getCountry(), state);
+        System.out.println("DEBUG SHIPPING: Rate found: " + (rate != null ? rate.getRate() : "NULL"));
+
+        return rate;
     }
 
     public ShippingRate getShippingRateForAddress(Address address) {
@@ -29,6 +34,12 @@ public class ShippingRateService {
             state = address.getCity();
         }
 
-        return repo.findByCountryAndState(address.getCountry(), state);
+        System.out.println("DEBUG SHIPPING: Address Country: " + address.getCountry().getName());
+        System.out.println("DEBUG SHIPPING: Address State/City used for search: '" + state + "'");
+
+        ShippingRate rate = repo.findByCountryAndState(address.getCountry(), state);
+        System.out.println("DEBUG SHIPPING: Rate found within address: " + (rate != null ? rate.getRate() : "NULL"));
+
+        return rate;
     }
 }

@@ -21,7 +21,7 @@ import java.util.*;
 @Entity
 @Table(name = "orders")
 
-public class Order extends AbstractAddress  {
+public class Order extends AbstractAddress {
 
     @Column(nullable = false, length = 45)
     private String country;
@@ -53,7 +53,8 @@ public class Order extends AbstractAddress  {
     @OrderBy("updatedTime ASC")
     private List<OrderTrack> orderTracks = new ArrayList<>();
 
-    public Order() { }
+    public Order() {
+    }
 
     public Order(Integer id, Date orderTime, float productCost, float subtotal, float total) {
         this.id = id;
@@ -65,47 +66,117 @@ public class Order extends AbstractAddress  {
 
     // ---------------- Getters & Setters ----------------
 
-    public String getCountry() { return country; }
-    public void setCountry(String country) { this.country = country; }
+    public String getCountry() {
+        return country;
+    }
 
-    public Date getOrderTime() { return orderTime; }
-    public void setOrderTime(Date orderTime) { this.orderTime = orderTime; }
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-    public float getShippingCost() { return shippingCost; }
-    public void setShippingCost(float shippingCost) { this.shippingCost = shippingCost; }
+    public Date getOrderTime() {
+        return orderTime;
+    }
 
-    public float getProductCost() { return productCost; }
-    public void setProductCost(float productCost) { this.productCost = productCost; }
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
+    }
 
-    public float getSubtotal() { return subtotal; }
-    public void setSubtotal(float subtotal) { this.subtotal = subtotal; }
+    public float getShippingCost() {
+        return shippingCost;
+    }
 
-    public float getTax() { return tax; }
-    public void setTax(float tax) { this.tax = tax; }
+    public void setShippingCost(float shippingCost) {
+        this.shippingCost = shippingCost;
+    }
 
-    public float getTotal() { return total; }
-    public void setTotal(float total) { this.total = total; }
+    public float getProductCost() {
+        return productCost;
+    }
 
-    public int getDeliverDays() { return deliverDays; }
-    public void setDeliverDays(int deliverDays) { this.deliverDays = deliverDays; }
+    public void setProductCost(float productCost) {
+        this.productCost = productCost;
+    }
 
-    public Date getDeliverDate() { return deliverDate; }
-    public void setDeliverDate(Date deliverDate) { this.deliverDate = deliverDate; }
+    public float getSubtotal() {
+        return subtotal;
+    }
 
-    public PaymentMethod getPaymentMethod() { return paymentMethod; }
-    public void setPaymentMethod(PaymentMethod paymentMethod) { this.paymentMethod = paymentMethod; }
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+    }
 
-    public OrderStatus getStatus() { return status; }
-    public void setStatus(OrderStatus status) { this.status = status; }
+    public float getTax() {
+        return tax;
+    }
 
-    public Customer getCustomer() { return customer; }
-    public void setCustomer(Customer customer) { this.customer = customer; }
+    public void setTax(float tax) {
+        this.tax = tax;
+    }
 
-    public Set<OrderDetail> getOrderDetails() { return orderDetails; }
-    public void setOrderDetails(Set<OrderDetail> orderDetails) { this.orderDetails = orderDetails; }
+    public float getTotal() {
+        return total;
+    }
 
-    public List<OrderTrack> getOrderTracks() { return orderTracks; }
-    public void setOrderTracks(List<OrderTrack> orderTracks) { this.orderTracks = orderTracks; }
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public int getDeliverDays() {
+        return deliverDays;
+    }
+
+    public void setDeliverDays(int deliverDays) {
+        this.deliverDays = deliverDays;
+    }
+
+    public Date getDeliverDate() {
+        return deliverDate;
+    }
+
+    public void setDeliverDate(Date deliverDate) {
+        this.deliverDate = deliverDate;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Set<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(Set<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    public List<OrderTrack> getOrderTracks() {
+        return orderTracks;
+    }
+
+    public void setOrderTracks(List<OrderTrack> orderTracks) {
+        this.orderTracks = orderTracks;
+    }
 
     // ---------------- Utility Methods ----------------
 
@@ -150,7 +221,8 @@ public class Order extends AbstractAddress  {
     @Transient
     public String getDestination() {
         String destination = city + " ";
-        if (state != null && !state.isEmpty()) destination += state + " ";
+        if (state != null && !state.isEmpty())
+            destination += state + " ";
         destination += country;
         return destination;
     }
@@ -159,14 +231,21 @@ public class Order extends AbstractAddress  {
     public String getShippingAddress() {
         String address = firstName;
 
-        if (lastName != null && !lastName.isEmpty()) address += " " + lastName;
-        if (!addressLine1.isEmpty()) address += ", " + addressLine1;
-        if (addressLine2 != null && !addressLine2.isEmpty()) address += ", " + addressLine2;
-        if (!city.isEmpty()) address += ", " + city;
-        if (state != null && !state.isEmpty()) address += ", " + state;
+        if (lastName != null && !lastName.isEmpty())
+            address += " " + lastName;
+        if (!addressLine1.isEmpty())
+            address += ", " + addressLine1;
+        if (addressLine2 != null && !addressLine2.isEmpty())
+            address += ", " + addressLine2;
+        if (!city.isEmpty())
+            address += ", " + city;
+        if (state != null && !state.isEmpty())
+            address += ", " + state;
         address += ", " + country;
-        if (!postalCode.isEmpty()) address += ". Postal Code: " + postalCode;
-        if (!phoneNumber.isEmpty()) address += ". Phone Number: " + phoneNumber;
+        if (!postalCode.isEmpty())
+            address += ". Postal Code: " + postalCode;
+        if (!phoneNumber.isEmpty())
+            address += ". Phone Number: " + phoneNumber;
 
         return address;
     }
@@ -189,18 +268,23 @@ public class Order extends AbstractAddress  {
     @Transient
     public String getRecipientName() {
         String name = firstName;
-        if (lastName != null && !lastName.isEmpty()) name += " " + lastName;
+        if (lastName != null && !lastName.isEmpty())
+            name += " " + lastName;
         return name;
     }
 
     @Transient
     public String getRecipientAddress() {
         String address = addressLine1;
-        if (addressLine2 != null && !addressLine2.isEmpty()) address += ", " + addressLine2;
-        if (!city.isEmpty()) address += ", " + city;
-        if (state != null && !state.isEmpty()) address += ", " + state;
+        if (addressLine2 != null && !addressLine2.isEmpty())
+            address += ", " + addressLine2;
+        if (!city.isEmpty())
+            address += ", " + city;
+        if (state != null && !state.isEmpty())
+            address += ", " + state;
         address += ", " + country;
-        if (!postalCode.isEmpty()) address += ". " + postalCode;
+        if (!postalCode.isEmpty())
+            address += ". " + postalCode;
         return address;
     }
 
@@ -210,24 +294,60 @@ public class Order extends AbstractAddress  {
     }
 
     @Transient
-    public boolean isProcessing() { return hasStatus(OrderStatus.PROCESSING); }
+    public boolean isNew() {
+        return hasStatus(OrderStatus.NEW);
+    }
+
     @Transient
-    public boolean isPicked() { return hasStatus(OrderStatus.PICKED); }
+    public OrderStatus getStatusBasedOnTrack() {
+        if (orderTracks != null && !orderTracks.isEmpty()) {
+            return orderTracks.get(orderTracks.size() - 1).getStatus();
+        }
+        return status;
+    }
+
     @Transient
-    public boolean isShipping() { return hasStatus(OrderStatus.SHIPPING); }
+    public boolean isProcessing() {
+        return hasStatus(OrderStatus.PROCESSING);
+    }
+
     @Transient
-    public boolean isDelivered() { return hasStatus(OrderStatus.DELIVERED); }
+    public boolean isPackaged() {
+        return hasStatus(OrderStatus.PACKAGED);
+    }
+
     @Transient
-    public boolean isReturnRequested() { return hasStatus(OrderStatus.RETURN_REQUESTED); }
+    public boolean isPicked() {
+        return hasStatus(OrderStatus.PICKED);
+    }
+
     @Transient
-    public boolean isReturned() { return hasStatus(OrderStatus.RETURNED); }
+    public boolean isShipping() {
+        return hasStatus(OrderStatus.SHIPPING);
+    }
+
+    @Transient
+    public boolean isDelivered() {
+        return hasStatus(OrderStatus.DELIVERED);
+    }
+
+    @Transient
+    public boolean isReturnRequested() {
+        return hasStatus(OrderStatus.RETURN_REQUESTED);
+    }
+
+    @Transient
+    public boolean isReturned() {
+        return hasStatus(OrderStatus.RETURNED);
+    }
 
     /**
      * Checks if the order has a given status in its orderTracks.
      */
     public boolean hasStatus(OrderStatus status) {
         for (OrderTrack aTrack : orderTracks) {
-            if (aTrack.getStatus().equals(status)) return true;
+            if (aTrack.getStatus().equals(status))
+                return true;
         }
         return false;
     }
