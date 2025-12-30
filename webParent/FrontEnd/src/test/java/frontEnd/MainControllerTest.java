@@ -55,6 +55,7 @@ public class MainControllerTest {
 
         when(categoryService.listNoParentCategories()).thenReturn(List.of(cat1));
         when(productService.getOnSaleProducts()).thenReturn(List.of(prod1));
+        when(settingService.getGenlSettings()).thenReturn(java.util.Collections.emptyList());
 
         // Act & Assert
         mockMvc.perform(get("/"))

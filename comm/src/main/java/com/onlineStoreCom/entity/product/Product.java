@@ -33,7 +33,7 @@ public class Product extends IdBasedEntity {
 
     @Column(name = "updated_time")
     private Date updatedTime;
-
+    @Column(name = "enabled")
     private boolean enable;
 
     @Column(name = "in_stock")

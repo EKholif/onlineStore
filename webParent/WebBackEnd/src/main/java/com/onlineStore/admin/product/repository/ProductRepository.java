@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
@@ -18,14 +17,17 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Product findByAlias(String alias);
 
-
     @Query("SELECT p FROM Product p WHERE  CONCAT(p.id, ' ', p.name, ' ', p.alias ) LIKE %?1%")
     Page<Product> findAll(String keyword, Pageable pageable);
-
 
     @Query("UPDATE Product p set  p.enable=?2 WHERE p.id = ?1 ")
     @Modifying
     Integer enableProduct(Integer id, boolean enable);
+
+    @Query(value = "UPDATE products SET enable=true", nativeQuery = true)
+    @Modifying
+    @Transactional
+    void enableProductAll();
 
     @Query("SELECT p FROM Product p WHERE p.name LIKE %?1%")
     public Page<Product> searchProductsByName(String keyword, Pageable pageable);
@@ -33,7 +35,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Modifying
     @Transactional
     @Query("""
-                UPDATE Product p 
+                UPDATE Product p
                 SET p.averageRating = COALESCE(
                     CAST((SELECT AVG(r.rating) FROM Review r WHERE r.product.id = :productId) AS float),
                     0
@@ -46,5 +48,3 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     void updateReviewCountAndAverageRating(@Param("productId") Integer productId);
 
 }
-
-

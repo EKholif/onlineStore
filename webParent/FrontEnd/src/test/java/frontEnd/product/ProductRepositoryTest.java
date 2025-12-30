@@ -36,7 +36,7 @@ public class ProductRepositoryTest {
         p.setPrice(100);
         p.setDiscountPercent(10.0f); // 10% off
         p.setMainImage("test.png");
-
+        p.setTenantId(0l);
         repo.save(p);
 
         // 2. Query
@@ -53,4 +53,19 @@ public class ProductRepositoryTest {
         }
         assertThat(found).isTrue();
     }
+
+    @Test
+    public void testFindOnSle() {
+
+        List<Product> onSale = repo.findAllOnSale();
+
+        assertThat(onSale).isNotEmpty();
+        for (Product product : onSale) {
+            System.out.println("Found On Sale: " + product.getName() + " - " + product.getDiscountPercent() + "%");
+        }
+
+    }
+
+
+
 }

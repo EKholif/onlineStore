@@ -8,44 +8,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/MainControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/product/ProductRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/test/js/common.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/test/js/setup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/category/CategoryRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/checkout/CheckoutControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/customer/CustomerControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/customerAddress/AddressControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/product/ProductRepositoryTestN.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/shoppingCart/ShoppingCartControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/MainControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/category/controller/CategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/product/ProductControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/security/WithMockStoreUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/security/WithMockStoreUserSecurityContextFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/test/js/setup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Amina Elshal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Satya Narayana.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/emailSender/src/main/resources/templates/settings/fregment-edit/general-fregment.html" beforeDir="false" afterPath="$PROJECT_DIR$/emailSender/src/main/resources/templates/settings/fregment-edit/general-fregment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/footer/footer_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/footer/footer_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/fragment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/categoryRepositoryTest/CategoryRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/categoryRepositoryTest/ProductRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/general-fregment.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/general-fregment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/3/Bruce Kitchell.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Alfred.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Alfred.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Ali Raza.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Ali Raza.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Allada Pavan.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Allada Pavan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Ammanolla.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Ammanolla.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Anna Maria.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Anna Maria.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Bill Feeny.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Bill Feeny.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Bruce Kitchell.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Bruce Kitchell.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Dave Kumar.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Dave Kumar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Frederick Santos.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Frederick Santos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Isaac Henry.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Isaac Henry.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Jack Bruce.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Jack Bruce.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/KentHervey.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/KentHervey.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Matthew.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Matthew.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Mithun Kumar Majumdar.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Mithun Kumar Majumdar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Mohamed Zirri.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Mohamed Zirri.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Muhammad Evran.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Muhammad Evran.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Nathi_Sangweni.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Nathi_Sangweni.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Pedro Quintero.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Pedro Quintero.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Svetlana Stasovska.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/Svetlana Stasovska.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/default-user.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/default-user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/namhm.png" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/namhm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/MainControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/MainControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/product/ProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/product/ProductRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +155,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.FrontEndApplication">
+  <component name="RunManager" selected="JUnit.ProductRepositoryTestN.FindAlProduct">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
@@ -188,21 +177,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderTrackFixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.onlineStore.admin.order.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.onlineStore.admin.order" />
-      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.order.OrderTrackFixTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ProductRepositoryTestN" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FrontEnd" />
       <extension name="coverage">
@@ -218,33 +192,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReviewRepositoryTests.testFindByCustomerAndId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRepositoryTestN.FindAlProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FrontEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="frontEnd.review.*" />
+          <option name="PATTERN" value="frontEnd.product.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="frontEnd.review" />
-      <option name="MAIN_CLASS_NAME" value="frontEnd.review.ReviewRepositoryTests" />
-      <option name="METHOD_NAME" value="testFindByCustomerAndId" />
+      <option name="PACKAGE_NAME" value="frontEnd.product" />
+      <option name="MAIN_CLASS_NAME" value="frontEnd.product.ProductRepositoryTestN" />
+      <option name="METHOD_NAME" value="FindAlProduct" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReviewRepositoryTests.testFindByCustomerWithKeyword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRepositoryTest.testFindOnSale" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FrontEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="frontEnd.review.*" />
+          <option name="PATTERN" value="frontEnd.product.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="frontEnd.review" />
-      <option name="MAIN_CLASS_NAME" value="frontEnd.review.ReviewRepositoryTests" />
-      <option name="METHOD_NAME" value="testFindByCustomerWithKeyword" />
+      <option name="PACKAGE_NAME" value="frontEnd.product" />
+      <option name="MAIN_CLASS_NAME" value="frontEnd.product.ProductRepositoryTest" />
+      <option name="METHOD_NAME" value="testFindOnSale" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRepositoryTest.testFindOnSle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FrontEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="frontEnd.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="frontEnd.product" />
+      <option name="MAIN_CLASS_NAME" value="frontEnd.product.ProductRepositoryTest" />
+      <option name="METHOD_NAME" value="testFindOnSle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -305,21 +295,21 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.CategoryRepositoryTest" />
-      <item itemvalue="JUnit.OrderTrackFixTest" />
+      <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSale" />
+      <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSle" />
       <item itemvalue="JUnit.ProductRepositoryTestN" />
-      <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerWithKeyword" />
-      <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerAndId" />
+      <item itemvalue="JUnit.ProductRepositoryTestN.FindAlProduct" />
       <item itemvalue="Spring Boot.EmailSenderApplication" />
       <item itemvalue="Spring Boot.WebBackEndApplication" />
       <item itemvalue="Spring Boot.FrontEndApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductRepositoryTestN.FindAlProduct" />
+        <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSle" />
+        <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSale" />
         <item itemvalue="JUnit.ProductRepositoryTestN" />
         <item itemvalue="JUnit.CategoryRepositoryTest" />
-        <item itemvalue="JUnit.OrderTrackFixTest" />
-        <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerAndId" />
-        <item itemvalue="JUnit.ReviewRepositoryTests.testFindByCustomerWithKeyword" />
       </list>
     </recent_temporary>
   </component>
@@ -405,7 +395,7 @@
       <workItem from="1765278094534" duration="4606000" />
       <workItem from="1765374882622" duration="4337000" />
       <workItem from="1765797069579" duration="4558000" />
-      <workItem from="1767004163983" duration="10836000" />
+      <workItem from="1767004163983" duration="13472000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -543,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767028049923</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactor copyright handling and add unit tests for main controller">
+      <option name="closed" value="true" />
+      <created>1767056156935</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1767056156935</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +600,8 @@
     <MESSAGE value="new Frontend" />
     <MESSAGE value="Add report functionality and improve UI components&#10;&#10;- Introduced ReportType enum for report categorization.&#10;- Enhanced SettingBag with a method to retrieve all settings.&#10;- Updated Country to improve string representation.&#10;- Modified common_form.js for better navigation handling.&#10;- Added ProductRepositoryTests for product alias retrieval.&#10;- Implemented new report controller for sales report view.&#10;- Updated various HTML files for improved modal behavior and styling." />
     <MESSAGE value="Implement home page view and enhance product listing functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement home page view and enhance product listing functionality" />
+    <MESSAGE value="Refactor copyright handling and add unit tests for main controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor copyright handling and add unit tests for main controller" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

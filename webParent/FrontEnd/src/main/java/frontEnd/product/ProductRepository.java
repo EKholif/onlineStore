@@ -28,7 +28,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT p FROM Product p WHERE p.enable = true AND p.discountPercent > 0.0 ORDER BY p.name ASC")
     Page<Product> pageProductOnSale(Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.enable = true AND p.discountPercent > 0.0 ORDER BY p.name ASC")
+    @Query("SELECT p FROM Product p WHERE p.enable = true AND p.discountPercent > 0 ORDER BY p.name ASC")
     List<Product> findAllOnSale();
 
     @Query("SELECT p FROM Product p WHERE p.category.enable = true AND p.category.alias LIKE %?1% ORDER BY p.name ASC")
