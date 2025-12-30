@@ -13,7 +13,7 @@ import java.util.List;
 public class BrandService {
 
 
-    public static final int BRANDS_PER_PAGE = 10;
+    public static final int BRANDS_PER_PAGE = 5;
 
     @Autowired
     private BrandRepository repository;

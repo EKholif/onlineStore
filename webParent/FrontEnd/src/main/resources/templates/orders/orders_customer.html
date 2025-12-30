@@ -12,13 +12,16 @@
 
     <div class="full-details">
         <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered ">
-            <thead class=" table-dark ">
+            <thead class="gradient-custom-blue text-white">
             <tr>
                 <th th:replace="~{supports/table_format/colum_link :: content('id', 'ID', 'none')}"></th>
-                <th th:replace="~{supports/table_format/colum_link :: content('orderTime', 'Order Time', 'none')}"></th>
+                <th
+                        th:replace="~{supports/table_format/colum_link :: content('orderTime', 'Order Time', 'none')}">
+                </th>
                 <th>Products</th>
                 <th th:replace="~{supports/table_format/colum_link :: content('total', 'Total', 'none')}"></th>
-                <th th:replace="~{supports/table_format/colum_link :: content('status', 'Status', 'none')}"></th>
+                <th th:replace="~{supports/table_format/colum_link :: content('status', 'Status', 'none')}">
+                </th>
 
                 <th></th>
             </tr>
@@ -37,14 +40,13 @@
                 </td>
                 <td><span th:class="'textOrderStatus' + ${order.id}">[[${order.status}]]</span></td>
                 <td><a class="fas fa-file-alt fa-2x icon-green linkDetail"
-                       th:href="@{'/orders/detail/' + ${order.id}}"
-                       title="View details of this order"></a>
+                       th:href="@{'/orders/detail/' + ${order.id}}" title="View details of this order"></a>
                     <th:block
                             th:if="${order.returnRequested == false && order.delivered == true && order.returned == false}">
                         &nbsp;&nbsp;&nbsp;
                         <a class="fas fa-undo fa-2x icon-dark linkReturnOrder" href=""
-                           th:classappend="'linkReturn' + ${order.id}"
-                           th:orderId="${order.id}" title="Return this order"></a>
+                           th:classappend="'linkReturn' + ${order.id}" th:orderId="${order.id}"
+                           title="Return this order"></a>
                     </th:block>
                 </td>
             </tr>
@@ -69,9 +71,9 @@
                                     <th:block
                                             th:if="${order.returnRequested == false && order.delivered == true && order.returned == false}">
                                         &nbsp;
-                                        <a class="fas fa-undo fa-2x icon-dark linkReturnOrder"
-                                           href="" th:classappend="'linkReturn' + ${order.id}"
-                                           th:orderId="${order.id}" title="Return this order"></a>
+                                        <a class="fas fa-undo fa-2x icon-dark linkReturnOrder" href=""
+                                           th:classappend="'linkReturn' + ${order.id}" th:orderId="${order.id}"
+                                           title="Return this order"></a>
                                     </th:block>
                                 </div>
                             </div>
@@ -92,7 +94,8 @@
                         </div>
                         <div>
                             <small>
-                                <div th:replace="~{supports/format/format_time :: content(${order.orderTime})}"></div>
+                                <div th:replace="~{supports/format/format_time :: content(${order.orderTime})}">
+                                </div>
                             </small>
                         </div>
                     </div>

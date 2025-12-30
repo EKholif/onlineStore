@@ -1,16 +1,9 @@
 package com.onlineStore.admin.category.controller.utility;
 
-import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
-import com.onlineStore.admin.product.repository.ProductRepository;
-import com.onlineStore.admin.product.service.ListProductByCategory;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 public class PagingAndSorting {
 
@@ -20,7 +13,7 @@ public class PagingAndSorting {
     private  String sortField;
     private String sortDir;
     private String keyWord;
-    public static final int PRODUCTS_PER_PAGE = 20;
+    public static final int PRODUCTS_PER_PAGE = 5;
 
 
     public PagingAndSorting(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {

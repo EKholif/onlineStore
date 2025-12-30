@@ -17,7 +17,7 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     @Modifying
     void enableCategory(Integer id, boolean enable);
 
-    @Query(value = "UPDATE categories SET enable=true", nativeQuery = true)
+    @Query("UPDATE Category SET enable=true")
     @Modifying
     void enableCategoryAll();
 

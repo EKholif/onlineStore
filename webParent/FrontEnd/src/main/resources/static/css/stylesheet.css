@@ -33,6 +33,7 @@
 *.icon-orange {
     color: #f59714
 }
+
 *.icon-gray {
     color: #626363
 }
@@ -74,6 +75,7 @@ ul.custom-list li {
 
 
 @media screen and (max-width: 768px) {
+
     /*  small screen  */
     div.full-details {
         display: none
@@ -85,6 +87,7 @@ ul.custom-list li {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+
     /*  Md screen  */
     div.less-details {
         display: none
@@ -96,6 +99,7 @@ ul.custom-list li {
 }
 
 @media screen and (min-width: 1024px) {
+
     /*  Lg screen  */
     div.less-details {
         display: none
@@ -182,18 +186,45 @@ ul.custom-list li {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #003366, #004080, #0059b3, #0066cc);
 }
-.gradient-custom-blue-gold {
-    background: #0a0f2c;
 
-    background: -webkit-linear-gradient(to right, #0a0f2c, #11225a, #1f2f8b, #2b3ca1, #c49b0b);
-    background: linear-gradient(to right, #0a0f2c, #11225a, #1f2f8b, #2b3ca1, #c49b0b);
+.gradient-custom-blue th {
+    background: none !important;
+    color: white !important;
 }
+
+.gradient-custom-blue th a {
+    color: white !important;
+}
+
+background: #0a0f2c
+
+;
+
+background:
+
+-webkit-linear-gradient
+(
+to right, #0a0f2c, #11225a, #1f2f8b, #2b3ca1, #c49b0b
+
+)
+;
+background:
+
+linear-gradient
+(
+to right, #0a0f2c, #11225a, #1f2f8b, #2b3ca1, #c49b0b
+
+)
+;
+}
+
 .gradient-custom-blue-silver {
     background: #0a0f2c;
 
     background: -webkit-linear-gradient(to right, #0a0f2c, #11225a, #1f2f8b, #2b3ca1, #c0c0c0);
     background: linear-gradient(to right, #0a0f2c, #11225a, #1f2f8b, #2b3ca1, #c0c0c0);
 }
+
 .gradient-custom-blue-clean {
     /* fallback */
     background: #0b1a2c;
@@ -220,4 +251,3 @@ ul.custom-list li {
 /*    object-fit: scale-down;*/
 
 /*}*/
-

@@ -2,8 +2,8 @@ package com.onlineStore.admin.brand;
 
 import com.onlineStore.admin.brand.reposetry.BrandRepository;
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStoreCom.entity.brand.Brand;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import java.util.NoSuchElementException;
 public class BrandService {
 
 
-    public static final int BRANDS_PER_PAGE = 10;
+    public static final int BRANDS_PER_PAGE = 5;
 
     @Autowired
     private BrandRepository repository;

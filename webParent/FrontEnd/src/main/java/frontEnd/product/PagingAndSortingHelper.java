@@ -23,7 +23,7 @@ public class PagingAndSortingHelper {
     private String pageTitle;
     private Integer totalPages;
     private Integer TotalElements;
-     Integer USERS_PER_PAGE = 10;
+    Integer USERS_PER_PAGE = 5;
 
 
     private String newObjecturl;

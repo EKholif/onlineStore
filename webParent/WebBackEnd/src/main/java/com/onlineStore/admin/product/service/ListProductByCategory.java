@@ -3,7 +3,6 @@ package com.onlineStore.admin.product.service;
 import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.product.repository.ProductRepository;
 import com.onlineStoreCom.entity.product.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +20,7 @@ public class ListProductByCategory {
     private String alise;
 
     private ProductRepository productRepository;
-    public static final int PRODUCTS_PER_PAGE = 20;
+    public static final int PRODUCTS_PER_PAGE = 5;
 
     public ListProductByCategory(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
         this.pageInfo = pageInfo;

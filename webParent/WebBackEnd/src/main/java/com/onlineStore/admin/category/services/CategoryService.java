@@ -5,7 +5,10 @@ import com.onlineStore.admin.category.CategoryRepository;
 import com.onlineStoreCom.entity.category.Category;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,8 +17,7 @@ import java.util.*;
 @Transactional
 public class CategoryService {
 
-    public static final int USERS_PER_PAGE = 4;
-
+    public static final int USERS_PER_PAGE = 5;
 
     @Autowired
     private CategoryRepository categoryRepo;
@@ -27,12 +29,9 @@ public class CategoryService {
     public Category findById(Integer id) throws CategoryNotFoundException {
         try {
 
-
             return categoryRepo.findById(id).get();
 
-
         } catch (NoSuchElementException ex) {
-
 
             throw new CategoryNotFoundException("Could not find any Category with ID " + id);
         }
@@ -42,35 +41,33 @@ public class CategoryService {
         return categoryRepo.findById(id).isPresent();
     }
 
-
     public String checkUnique(Integer id, String name, String alias) {
 
-//        boolean isCreatingNew = (id==null|| id==0L);
+        // boolean isCreatingNew = (id==null|| id==0L);
 
         Category categoryByName = categoryRepo.findByName(name);
         Category categoryByAlias = categoryRepo.findByAlias(alias);
 
-//        if (isCreatingNew){
+        // if (isCreatingNew){
 
         if (categoryByName != null && categoryByName.getId() != id) {
             return "DuplicateName";
         }
 
-//               }else {
+        // }else {
 
         if (categoryByAlias != null && categoryByAlias.getId() != id) {
             return "DuplicateAlies";
         }
-//                  }
+        // }
 
-//                if (categoryByAlias != null && categoryByAlias.getId() !=id){
-//                    return "DuplicateName";}
-//
-//        }
+        // if (categoryByAlias != null && categoryByAlias.getId() !=id){
+        // return "DuplicateName";}
+        //
+        // }
         return "Ok";
 
     }
-
 
     public List<Category> listUsedForForm() {
 
@@ -81,7 +78,6 @@ public class CategoryService {
         Sort sort = Sort.by(sortField);
 
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
-
 
         List<Category> categoriesUsedInForm = new ArrayList<>();
 
@@ -98,12 +94,11 @@ public class CategoryService {
             }
         }
 
-
         return categoriesUsedInForm;
     }
 
-
-    private void printCategoryHierarchy(Category category, List<Category> categoriesUsedInForm, int depth, String sortDir) {
+    private void printCategoryHierarchy(Category category, List<Category> categoriesUsedInForm, int depth,
+                                        String sortDir) {
 
         String indentation = "*".repeat(depth) + category.getId() + "-" + category.getName();
         categoriesUsedInForm.add(Category.copyFull(category, indentation));
@@ -114,15 +109,12 @@ public class CategoryService {
         }
     }
 
-
     public List<Category> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
-
 
         if (sortField == null || sortDir.isEmpty()) {
             sortField = "name";
         }
         Sort sort = Sort.by(sortField);
-
 
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 
@@ -148,33 +140,74 @@ public class CategoryService {
 
         if (keyWord != null && !keyWord.isEmpty()) {
 
-
             for (Category category : searchResult) {
                 category.setHasChildren(!category.getChildren().isEmpty());
             }
 
             // Todo : fix listHierarchicalCategories to Category return by Page
 
+            /*
+             * AG-CAT-002: Hierarchical View Strategy
+             * We page by ROOT Categories (e.g. 5 roots per page).
+             * However, to display the tree structure, we must return the roots PLUSE their
+             * expanded sub-categories.
+             * This results in a list size > page size (e.g. 5 roots + 10 children = 15
+             * rows).
+             * This is INTENTIONAL behavior to preserve UI hierarchy.
+             * The PageInfo statistics should reflect the Roots (total pages of trees), not
+             * the total rows.
+             */
             return listHierarchicalCategories(searchResult, sortDir);
 
         } else {
+            /*
+             * AG-CAT-003: Row-Based Pagination Strategy
+             * User Requirement: Strict 5 rows per page.
+             * Previous strategy (Root-Based) caused confusing "view explosion" (5 roots ->
+             * 30+ rows).
+             * New Strategy:
+             * 1. Fetch ALL hierarchies (Memory Intensive - documented risk).
+             * 2. Flatten to list.
+             * 3. Apply standard pagination slicing (SubList).
+             */
 
+            // 1. Get ALL root categories (unsorted to build hierarchy correctly first, or
+            // sorted if needed)
+            // Ideally we need findAll() but built hierarchically.
+            // Reuse listUsedForForm() logic which builds the full sorted tree.
+            // But we need to support the 'sortDir' from arguments if possible,
+            // though listUsedForForm uses name/asc by default.
 
-            for (Category category : rootCategories) {
+            // For MVP, we use the existing hierarchical builder with the requested sort.
 
-                printCategoryHierarchy(category, categoriesUsedInForm, category.getLevel(), sortDir);
+            List<Category> fullTree = new ArrayList<>();
+            // We need to fetch all roots to build a correct full tree for flattening
+            // But findRootCategories(pageable) is limited.
+            // We use findAll() and filter roots manually or use a repo method for all
+            // roots.
+
+            // Optimization: Fetch all and build tree.
+            List<Category> allRoots = categoryRepo.findRootCategories(Pageable.unpaged()).getContent();
+            fullTree = listHierarchicalCategories(allRoots, sortDir);
+
+            // 2. Update PageInfo with Total ROWS
+            pageInfo.setTotalElements(fullTree.size());
+            pageInfo.setTotalPages((int) Math.ceil((double) fullTree.size() / USERS_PER_PAGE));
+
+            // 3. Slice the list for current Page
+            int start = (pageNum - 1) * USERS_PER_PAGE;
+            int end = Math.min(start + USERS_PER_PAGE, fullTree.size());
+
+            if (start > fullTree.size()) {
+                return new ArrayList<>();
             }
 
-// Todo : fix categoriesUsedInForm to Category return by Page
+            List<Category> pageContent = fullTree.subList(start, end);
+            return pageContent;
 
-
-            pageInfo.setTotalPages(categoriesUsedInForm.size() / USERS_PER_PAGE);
-            pageInfo.setTotalElements(categoriesUsedInForm.size());
-            return categoriesUsedInForm;
         }
 
     }
-
 
     private List<Category> listHierarchicalCategories(List<Category> rootCategories, String sortDir) {
         List<Category> hierarchicalCategories = new ArrayList<>();
@@ -192,7 +225,6 @@ public class CategoryService {
                 listSubHierarchicalCategories(hierarchicalCategories, subCategory, 1, sortDir);
             }
         }
-
 
         return hierarchicalCategories;
     }
@@ -238,7 +270,6 @@ public class CategoryService {
         return sortedChildren;
     }
 
-
     public Category saveCategory(Category category) {
         Category parent = category.getParent();
         if (parent != null) {
@@ -251,7 +282,6 @@ public class CategoryService {
 
     }
 
-
     public void setCategoryLevel(Category category) {
 
         if (category.getParent() == null) {
@@ -260,7 +290,6 @@ public class CategoryService {
 
             category.setLevel(category.getParent().getLevel() + 1);
         }
-
 
         categoryRepo.saveAndFlush(category);
 
@@ -286,27 +315,19 @@ public class CategoryService {
         Category category = categoryRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
 
-
         categoryRepo.enableCategory(id, enable);
 
-        disableChildrenRecursively(category,enable);
+        disableChildrenRecursively(category, enable);
     }
 
-    private void disableChildrenRecursively(Category parent , Boolean enable) {
+    private void disableChildrenRecursively(Category parent, Boolean enable) {
         List<Category> children = categoryRepo.findByParent(parent);
         for (Category child : children) {
 
             categoryRepo.enableCategory(child.getId(), enable);
 
-
-            disableChildrenRecursively(child,  enable);
+            disableChildrenRecursively(child, enable);
         }
     }
 
-
-
-
-
 }
-
-

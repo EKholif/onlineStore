@@ -28,7 +28,7 @@ import java.util.Objects;
 
 @RestController
 public class BrandController {
-    public static Integer USERS_PER_PAGE = 4;
+
     @Autowired
     private BrandService service;
     @Autowired

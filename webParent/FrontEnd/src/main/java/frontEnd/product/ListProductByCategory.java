@@ -17,7 +17,7 @@ public class ListProductByCategory {
     private String keyWord;
     private String alise;
     private ProductRepository productRepository;
-    public static final int PRODUCTS_PER_PAGE = 20;
+    public static final int PRODUCTS_PER_PAGE = 5;
 
     public ListProductByCategory(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord, String alise, ProductRepository productRepository) {
         this.pageInfo = pageInfo;
