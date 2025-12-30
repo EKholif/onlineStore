@@ -10,8 +10,8 @@
                 <div class="col-xs ml-2">
                     <a class="linkVoteQuestion fa-thumbs-up"
                        th:classappend="${question.upvotedByCurrentCustomer ? 'fas' : 'far'}"
-                       th:href="@{'/vote_question/' + ${question.id} + '/up'}"
                        th:id="'linkVoteUp-question-' + ${question.id}"
+                       th:href="@{'/vote_question/' + ${question.id} + '/up'}"
                        th:questionId="${question.id}"></a>
                 </div>
 
@@ -22,8 +22,8 @@
                 <div class="col-xs ml-2">
                     <a class="linkVoteQuestion fa-thumbs-down"
                        th:classappend="${question.downvotedByCurrentCustomer ? 'fas' : 'far'}"
-                       th:href="@{'/vote_question/' + ${question.id} + '/down'}"
                        th:id="'linkVoteDown-question-' + ${question.id}"
+                       th:href="@{'/vote_question/' + ${question.id} + '/down'}"
                        th:questionId="${question.id}"></a>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     </small></div>
                 </div>
             </th:block>
-					
+
             <div>
                 <hr/>
             </div>

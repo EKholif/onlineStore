@@ -8,14 +8,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_questions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/question_answer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/customer_questions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/question_detail_modal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/questions_votes.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/question/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/question/QuestionVote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductController.java.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/question/QuestionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/question/QuestionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/question/QuestionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/question/QuestionVoteRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/question/VoteResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/CustomerLoginSuccessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/js/question_post.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/js/question_vote.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/product_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/question_answer.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/product/question_answer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/customer_questions.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/customer_questions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/question_detail_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/question_detail_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/questions_votes.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/question/questions_votes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,7 +389,7 @@
       <workItem from="1765278094534" duration="4606000" />
       <workItem from="1765374882622" duration="4337000" />
       <workItem from="1765797069579" duration="4558000" />
-      <workItem from="1767004163983" duration="22790000" />
+      <workItem from="1767004163983" duration="26101000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -538,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767100773357</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Add customer questions and answers functionality with related templates">
+      <option name="closed" value="true" />
+      <created>1767109199451</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1767109199451</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +621,8 @@
     <MESSAGE value="Refactor copyright handling and add unit tests for main controller" />
     <MESSAGE value="Add product enablement feature and set up Jest testing environment" />
     <MESSAGE value="Update pagination settings to limit items per page to 5 across various services and templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update pagination settings to limit items per page to 5 across various services and templates" />
+    <MESSAGE value="Add customer questions and answers functionality with related templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add customer questions and answers functionality with related templates" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

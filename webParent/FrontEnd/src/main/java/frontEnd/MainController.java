@@ -53,10 +53,15 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    public String viewLoginPage() {
+    public String viewLoginPage(
+            @org.springframework.web.bind.annotation.RequestParam(name = "redirect", required = false) String redirect,
+            Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            if (redirect != null) {
+                model.addAttribute("redirect", redirect);
+            }
             return "/login";
         }
 

@@ -14,11 +14,11 @@
         <table class="table table-striped table-bordered table-hover table-responsive-xl">
             <thead class="thead-dark">
             <tr>
-                <th th:replace="fragments :: column_link('id', 'ID', 'none')"/>
-                <th th:replace="fragments :: column_link('product', 'Product', 'none')"/>
-                <th th:replace="fragments :: column_link('questionContent', 'Question', 'none')"/>
-                <th th:replace="fragments :: column_link('askTime', 'Ask Time', 'none')"/>
-                <th th:replace="fragments :: column_link('approved', 'Approved', 'none')"/>
+                <th th:replace="~{supports/table_format/colum_link :: content('id', 'ID', 'none')}"/>
+                <th th:replace="~{supports/table_format/colum_link :: content('product', 'Product', 'none')}"/>
+                <th th:replace="~{supports/table_format/colum_link :: content('questionContent', 'Question', 'none')}"/>
+                <th th:replace="~{supports/table_format/colum_link :: content('askTime', 'Ask Time', 'none')}"/>
+                <th th:replace="~{supports/table_format/colum_link :: content('approved', 'Approved', 'none')}"/>
                 <th>Answered</th>
                 <th></th>
             </tr>

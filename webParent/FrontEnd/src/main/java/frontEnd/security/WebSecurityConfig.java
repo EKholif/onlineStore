@@ -33,11 +33,8 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public CustomerDetailsService customerDetailsService(){
-
-        return new CustomerDetailsService();
-    }
+    @Autowired
+    private CustomerLoginSuccessHandler loginSuccessHandler;
 
     @Bean
     public AuthenticationManager authenticationManager(
@@ -54,6 +51,11 @@ public class WebSecurityConfig {
         return authenticationProvider;
     }
 
+    @Bean
+    public CustomerDetailsService customerDetailsService() {
+
+        return new CustomerDetailsService();
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -62,32 +64,27 @@ public class WebSecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests((requests) -> requests
 
-                                .requestMatchers("/customer").authenticated()
+                        .requestMatchers("/customer").authenticated()
 
-                                .anyRequest().permitAll()
-
+                        .anyRequest().permitAll()
 
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("email")
-                        .permitAll()
-                )
+                        .successHandler(loginSuccessHandler) // Register handler
+                        .permitAll())
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login")
                         .userInfoEndpoint(userInfo -> userInfo
-                                .userService(oAuth2UserService)
-                        )
-                        .successHandler(oauth2LoginHandler)
-                )
+                                .userService(oAuth2UserService))
+                        .successHandler(oauth2LoginHandler))
                 .logout(LogoutConfigurer::permitAll)
                 .rememberMe(rememberMe -> rememberMe
                         .key("CYVQIRJvzrmS8i8crsH5u3IpPpYk2-TF7VUCswd_jXTTAmwxObxmFXML9oi_xxd-muzNiEcRE68S7tXo1DZn1TQevkK1YFVV")
-                        .tokenValiditySeconds(14 * 24 * 60 * 60)
-                )
+                        .tokenValiditySeconds(14 * 24 * 60 * 60))
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                );
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
         return http.build();
     }
 
@@ -95,6 +92,5 @@ public class WebSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**");
     }
-
 
 }

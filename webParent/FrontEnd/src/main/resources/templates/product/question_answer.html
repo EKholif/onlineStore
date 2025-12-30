@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:th="http://www.thymeleaf.org">
+
 <body>
 <div th:fragment="content">
     <div class="row">
@@ -16,24 +17,27 @@
     <div sec:authorize="isAuthenticated()">
         <div>
             <th:block th:if="${numberOfQuestions > 3}">
-                <a th:href="@{'/questions/' + ${product.alias}}">View all [[${numberOfQuestions}]] questions</a>&nbsp;&nbsp;
+                <a th:href="@{'/questions/' + ${product.alias}}">View all [[${numberOfQuestions}]]
+                    questions</a>&nbsp;&nbsp;
             </th:block>
         </div>
         <form class="form-inline my-2" id="formQuestion">
-            <textarea class="form-control" cols="60" id="question" placeholder="Type your question here..." required
-                      rows="2"></textarea>
+                <textarea class="form-control" cols="60" id="question" placeholder="Type your question here..." required
+                          rows="2"></textarea>
             &nbsp;&nbsp;
             <button class="btn btn-secondary my-2" id="buttonPostQuestion">Submit</button>
         </form>
     </div>
     <div sec:authorize="!isAuthenticated()">
-        <form th:action="@{'/ask_question/' + ${product.alias}}">
+        <div class="my-2">
             <th:block th:if="${numberOfQuestions > 3}">
-                <a th:href="@{'/questions/' + ${product.alias}}">View all [[${numberOfQuestions}]] questions</a>&nbsp;&nbsp;
+                <a th:href="@{'/questions/' + ${product.alias}}">View all [[${numberOfQuestions}]]
+                    questions</a>&nbsp;&nbsp;
             </th:block>
-            <button class="btn btn-secondary" type="submit">Ask a Question</button>
-        </form>
+            <button class="btn btn-secondary" id="buttonAskQuestionLogin" type="button">Ask a Question</button>
+        </div>
     </div>
 </div>
 </body>
+
 </html>

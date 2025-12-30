@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <head th:replace="~{supports/header/header::content}"></head>
 
     <style>
@@ -12,7 +13,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 0; /* Add some padding for small screens */
+            padding: 1rem 0;
+            /* Add some padding for small screens */
         }
 
         .login-card {
@@ -27,9 +29,11 @@
             border: none;
             transition: all 0.3s ease;
             font-weight: bold;
-            padding: 0.6rem 1.25rem; /* Reduced padding */
+            padding: 0.6rem 1.25rem;
+            /* Reduced padding */
             border-radius: 0.5rem;
         }
+
         .btn-main-login:hover {
             background: linear-gradient(45deg, #66BB6A, #A5D6A7);
             transform: translateY(-2px);
@@ -38,18 +42,22 @@
 
         /* Social Icons Styling - Smaller */
         .social-icon-btn {
-            width: 45px; /* Reduced size */
-            height: 45px; /* Reduced size */
+            width: 45px;
+            /* Reduced size */
+            height: 45px;
+            /* Reduced size */
             border-radius: 50%;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.25rem; /* Reduced size */
+            font-size: 1.25rem;
+            /* Reduced size */
             color: white;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             text-decoration: none;
         }
+
         .social-icon-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -58,6 +66,7 @@
         .social-icon-google {
             background: linear-gradient(45deg, #DB4437, #EA4335);
         }
+
         .social-icon-facebook {
             background: linear-gradient(45deg, #4267B2, #365899);
         }
@@ -73,14 +82,18 @@
             <div class="card login-card p-4">
                 <div class="card-body">
 
-                    <div class="text-center mb-3"> <a class="navbar-brand mb-2" th:href="@{/}">
+                    <div class="text-center mb-3"><a class="navbar-brand mb-2" th:href="@{/}">
                         <img alt="SITE LOGO" class="rounded-circle"
-                             style="width: 100px; height: 100px; object-fit: contain;" th:src="@{${SITE_LOGO}}"/>
+                             style="width: 100px; height: 100px; object-fit: contain;"
+                             th:src="@{${SITE_LOGO}}"/>
                     </a>
-                        <h5 class="fw-bold mb-1">Welcome Back!</h5> <small class="text-muted">Sign in to your account</small> </div>
+                        <h5 class="fw-bold mb-1">Welcome Back!</h5> <small class="text-muted">Sign in to your
+                            account</small>
+                    </div>
 
 
-                    <div class="d-flex justify-content-center gap-3 mb-3"> <a th:href="@{/oauth2/authorization/google}" class="social-icon-btn social-icon-google">
+                    <div class="d-flex justify-content-center gap-3 mb-3"><a
+                            class="social-icon-btn social-icon-google" th:href="@{/oauth2/authorization/google}">
                         <i class="fab fa-google"></i>
                     </a>
                         <a th:href="@{/oauth2/authorization/facebook}" class="social-icon-btn social-icon-facebook">
@@ -97,20 +110,26 @@
                     </div>
 
                     <form th:action="@{/login}" method="post">
+                        <input name="redirect" th:value="${redirect}" type="hidden"/>
                         <div class="form-floating mb-3">
-                            <input type="email" name="email" id="floatingEmail" class="form-control" placeholder="name@example.com" required>
+                            <input class="form-control" id="floatingEmail" name="email" placeholder="name@example.com"
+                                   required type="email">
                             <label for="floatingEmail">Email address</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" name="password" id="floatingPassword" class="form-control" placeholder="Password" required>
+                            <input class="form-control" id="floatingPassword" name="password" placeholder="Password"
+                                   required type="password">
                             <label for="floatingPassword">Password</label>
                         </div>
 
-                        <div class="d-flex justify-content-between align-items-center mb-3"> <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember-me" id="rememberMeCheck" />
-                            <label class="form-check-label text-muted" for="rememberMeCheck"> Remember me </label>
-                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" id="rememberMeCheck" name="remember-me"
+                                       type="checkbox"/>
+                                <label class="form-check-label text-muted" for="rememberMeCheck"> Remember me
+                                </label>
+                            </div>
                             <a href="/forgot_password" class="text-primary small">Forgot password?</a>
                         </div>
 
@@ -118,9 +137,10 @@
                             <button class="btn btn-main-login w-100" type="submit">Log in</button>
                         </div>
 
-                        <div class="text-center mt-3"> <p class="mb-0 text-muted small">Don't have an account?
-                            <a href="/registration" class="text-primary fw-bold">Register here</a>
-                        </p>
+                        <div class="text-center mt-3">
+                            <p class="mb-0 text-muted small">Don't have an account?
+                                <a class="text-primary fw-bold" href="/registration">Register here</a>
+                            </p>
                         </div>
                     </form>
 
@@ -131,5 +151,5 @@
 </div>
 
 </body>
-</html>
 
+</html>
