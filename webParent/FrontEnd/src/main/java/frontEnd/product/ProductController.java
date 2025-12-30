@@ -140,6 +140,9 @@ public class ProductController {
         return model;
     }
 
+    @Autowired
+    private frontEnd.question.QuestionService questionService;
+
     @GetMapping("/p/{product_alias}")
     public ModelAndView viewProductDetail(@PathVariable("product_alias") String alias, HttpServletRequest request)
             throws ProductNotFoundException, CategoryNotFoundException {
@@ -150,11 +153,22 @@ public class ProductController {
         Category category = product.getCategory();
         List<Category> listCategoryParents = categoryService.getCategoryParents(category);
         Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);
+
+        // AG-QA-IMP-001: Fetch Q&A Data
+        // Load Top 3 Questions
+        List<com.onlineStoreCom.entity.question.Question> listQuestions = questionService
+                .getTop3Questions(product.getId());
+        int numberOfQuestions = questionService.getNumberOfQuestions(product.getId());
+        int numberOfAnsweredQuestions = questionService.getNumberOfAnsweredQuestions(product.getId());
+
         Customer customer = controllerHelper.getAuthenticatedCustomer(request);
         if (customer != null) {
             boolean customerReviewed = reviewService.didCustomerReviewProduct(customer, product.getId());
             voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(),
                     customer.getId());
+
+            // Map Vote Status for Questions
+            questionService.markQuestionsVotedForProductByCustomer(listQuestions, product.getId(), customer.getId());
 
             if (customerReviewed) {
                 model.addObject("customerReviewed", customerReviewed);
@@ -166,6 +180,12 @@ public class ProductController {
 
         model.addObject("listCategoryParents", listCategoryParents);
         model.addObject("listReviews", listReviews);
+
+        // AG-QA-IMP-001: Add Q&A attributes
+        model.addObject("listQuestions", listQuestions);
+        model.addObject("numberOfQuestions", numberOfQuestions); // Used in View All link
+        model.addObject("numberOfAnsweredQuestions", numberOfAnsweredQuestions); // Used in Header stats
+
         model.addObject("pageTitle", product.getName());
         model.addObject("product", product);
 

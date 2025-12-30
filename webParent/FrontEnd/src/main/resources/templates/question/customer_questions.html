@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head('My Questions', 'none')"/>
+<body>
+<div class="container-fluid">
+    <div th:replace="~{supports/navbar/navbar::content}"></div>
+    <div th:replace="~{supports/fragment::search}"></div>
+    <div class="text-center">
+        <h1>Questions asked by me</h1>
+    </div>
+
+
+    <div class="full-details">
+        <table class="table table-striped table-bordered table-hover table-responsive-xl">
+            <thead class="thead-dark">
+            <tr>
+                <th th:replace="fragments :: column_link('id', 'ID', 'none')"/>
+                <th th:replace="fragments :: column_link('product', 'Product', 'none')"/>
+                <th th:replace="fragments :: column_link('questionContent', 'Question', 'none')"/>
+                <th th:replace="fragments :: column_link('askTime', 'Ask Time', 'none')"/>
+                <th th:replace="fragments :: column_link('approved', 'Approved', 'none')"/>
+                <th>Answered</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question : ${listQuestions}">
+                <td th:text="${question.id}">ID</td>
+                <td>
+                    <a target="_blank" th:href="@{${question.product.URI}}" th:title="${question.product.name}">[[${question.product.shortName}]]</a>
+                </td>
+                <td th:text="${question.questionContent}">Question</td>
+                <td th:text="${question.askTime}">Ask Time</td>
+
+                <td>
+                    <span class="fas fa-2x"
+                          th:classappend="${question.approved ? 'fa-check-circle icon-green' : 'fa-circle icon-dark'}"></span>
+                </td>
+
+                <td>
+                    <span class="fas fa-2x"
+                          th:classappend="${question.answered ? 'fa-check-circle icon-green' : 'fa-circle icon-dark'}"></span>
+                </td>
+
+                <td>
+                    <a class="fas fa-file-alt fa-2x icon-green link-detail"
+                       th:href="@{'/customer/questions/detail/' + ${question.id}}"
+                       title="View details of this question"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="less-details">
+        <div class="row m-1" th:each="question : ${listQuestions}">
+            <div class="col-2">
+                <span>[[${question.id}]]</span>
+            </div>
+            <div class="col-10">
+                <div class="mb-1">
+                    <a target="_blank" th:href="@{${question.product.URI}}" th:title="${question.product.name}">[[${question.product.shortName}]]</a>
+                </div>
+
+                <div class="mb-1">
+                    <span><i>[[${question.questionContent}]]</i></span>
+                </div>
+                <div>
+                    &nbsp;
+                    <small>
+                        <div th:replace="~{supports/format/format_time :: content(${question.askTime})}">
+                        </div>
+                    </small>
+                    &nbsp;
+                    <a class="fas fa-file-alt fa-2x icon-green link-detail"
+                       th:href="@{'/customer/questions/detail/' + ${question.id}}"
+                       title="View details of this question"
+                    ></a>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+
+    <nav th:replace="~{supports/paginate::content}"></nav>
+
+    <div class="modal fade" id="detailModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{supports/footer/footer_menu::content}"></div>
+</div>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/customer/questions}]]";
+
+    $(document).ready(function () {
+        handleDefaultDetailLinkClick();
+    });
+</script>
+</body>
+</html>
