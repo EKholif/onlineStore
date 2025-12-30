@@ -27,6 +27,9 @@ public class MainController {
         List<Category> listCategories = categoryService.listNoParentCategories();
         List<Product> listProductOnSale = productService.getOnSaleProducts();
 
+        System.out.println("DEBUG: Categories found: " + listCategories.size());
+        System.out.println("DEBUG: On Sale Products found: " + listProductOnSale.size());
+
         model.addAttribute("listCategories", listCategories);
         model.addAttribute("listProductOnSale", listProductOnSale);
 
@@ -40,6 +43,13 @@ public class MainController {
         model.addAttribute("keyWord", null);
 
         return "index";
+    }
+
+    @GetMapping("/debug/products")
+    @org.springframework.web.bind.annotation.ResponseBody
+    public List<Product> debugProducts() {
+        // Return ALL products to inspect their 'enable' and 'discountPercent' values
+        return productService.listAll();
     }
 
     @GetMapping("/login")

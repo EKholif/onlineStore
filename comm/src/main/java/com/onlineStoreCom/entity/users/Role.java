@@ -1,15 +1,12 @@
 package com.onlineStoreCom.entity.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
-import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name="role")
@@ -36,6 +33,10 @@ public class Role extends IdBasedEntity {
 
     @Transient
     private boolean hasChildren;
+
+    public Role(String roleName) {
+        super();
+    }
 
     public String getAllParentIDs() {
 
