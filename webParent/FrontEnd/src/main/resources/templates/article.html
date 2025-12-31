@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')"/>
+<body>
+<div class="container-fluid">
+    <div th:replace="~{supports/navbar/navbar::content}"></div>
+    <div th:replace="~{supports/fragment::search}"></div>
+
+    <div>
+        <h2>[[${article.title}]]</h2>
+    </div>
+
+    <div class="border p-2 m-2" th:utext="${article.content}"></div>
+
+    <div th:replace="~{supports/footer/footer_menu::content}"></div>
+</div>
+</body>
+</html>

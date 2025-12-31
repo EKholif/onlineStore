@@ -64,8 +64,6 @@ public class QuestionService {
 
     public VoteResult vote(Question question, Customer customer, String type) {
         QuestionVote vote = voteRepo.findByQuestionAndCustomer(question.getId(), customer.getId());
-        boolean upvoted = false;
-        boolean downvoted = false;
         String message = "";
 
         if (vote != null) {

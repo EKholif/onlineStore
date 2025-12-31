@@ -13,7 +13,6 @@ import java.util.List;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
@@ -27,7 +26,6 @@ public class MvcConfig implements WebMvcConfigurer {
         addResourceHandler(registry, "site-logo");
     }
 
-
     private void addResourceHandler(ResourceHandlerRegistry registry, String pathPattern) {
 
         Path path = Paths.get(pathPattern);
@@ -37,12 +35,12 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addResourceHandler("/" + pathPattern + "/**")
                 .addResourceLocations("file:/" + absolutePath + "/");
 
-
     }
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new PagingAndSortingArgumentResolver());
+        resolvers.add(new com.onlineStore.admin.article.paging.PagingAndSortingArgumentResolver());
     }
 
 }

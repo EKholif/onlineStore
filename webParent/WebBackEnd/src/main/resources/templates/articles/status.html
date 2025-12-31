@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<div th:fragment="content(enabled, entityName, entityURL)" th:remove="tag">
+    <a class="fas fa-check-circle fa-2x icon-green" th:href="@{${entityURL} + '/enabled/false'}"
+       th:if="${enabled == true}"
+       th:title="'Disable this ' + ${entityName}"
+    ></a>
+
+    <a class="fas fa-circle fa-2x icon-dark" th:href="@{${entityURL} + '/enabled/true'}"
+       th:if="${enabled == false}"
+       th:title="'Enable this ' + ${entityName}"
+    ></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<body>
+<div class="container-fluid">
+    <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+    <h2 class="text-center">[[${pageTitle}]]</h2>
+    <div th:replace="~{support/fragments/standerd/search::content}"></div>
+
+    <form method="post" style="width: 90%; margin: 0 auto" th:action="@{/articles/save}"
+          th:object="${article}">
+        <input th:field="*{id}" type="hidden"/>
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Title:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" maxlength="256" minlength="5" required th:field="*{title}" type="text"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Alias:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" maxlength="500" minlength="5" placeholder="If leaved empty, default alias will be same as title with spaces replaced by dashes" th:field="*{alias}"
+                           type="text"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="content">Content:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" required rows="10" th:field="*{content}"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="type">Type:</label>
+                <div class="col-sm-10">
+                    <select class="form-control" style="max-width: 190px" th:field="*{type}">
+                        <option value="MENU_BOUND">Menu-Bound Article</option>
+                        <option value="FREE">Free Article</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="published">Published:</label>
+                <div class="col-sm-10">
+                    <input th:field="*{published}" type="checkbox"/>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-primary m-3" type="submit" value="Save"/>
+                <input class="btn btn-secondary" id="buttonCancel" type="button" value="Cancel"/>
+            </div>
+        </div>
+    </form>
+
+
+    <div th:replace="~{support/fragments/standerd/modal-dialog::content}"/>
+
+    <div th:replace="~{support/fragments/standerd/footer::content}"></div>
+
+</div>
+<script type="text/javascript">
+    moduleURL = "[[@{/articles}]]";
+    $("#content").richText();
+</script>
+<script th:src="@{/js/common_form.js}"></script>
+</body>
+</html>

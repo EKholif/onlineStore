@@ -10,3 +10,7 @@ function showDeleteConfirmModal(link, entityName) {
         + entityName + " ID " + entityId + "?");
     $("#confirmModal").modal();
 }
+
+function handleDefaultDetailLinkClick() {
+    handleDetailLinkClick(".link-detail", "#detailModal");
+}

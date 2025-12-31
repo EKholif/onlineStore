@@ -63,7 +63,7 @@ public class QuestionController {
         }
 
         try {
-            Product product = productService.findById(questionService.findById(questionId).getProduct().getId());
+            // Product check removed as it was unused and question retrieval covers it
             Question question = questionService.findById(questionId);
 
             if (question == null)

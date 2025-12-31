@@ -45,39 +45,54 @@
 *.icon-orange {
     color: #f59714
 }
+
 *.icon-gray {
     color: #626363
 }
+
+/* Default: Desktop View */
+div.less-details {
+    display: none !important;
+}
+
+div.full-details {
+    display: block !important;
+}
+
 @media screen and (max-width: 768px) {
+
+
     /*  small screen  */
     div.full-details {
-        display: none
+        display: none !important;
     }
 
     div.less-details {
-        display: block
+        display: block !important;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+
     /*  Md screen  */
     div.less-details {
-        display: none
+        display: none !important;
     }
 
     div.full-details {
-        display: block
+        display: block !important;
     }
 }
 
 @media screen and (min-width: 1024px) {
+
     /*  Lg screen  */
     div.less-details {
-        display: none
+        display: none !important;
     }
 
     div.full-details {
-        display: block
+        display: block !important;
     }
 }
 
@@ -122,7 +137,6 @@
     background: linear-gradient(to right, #aec30f, #82a815, #51be37, #45be72, #12aa4a);
 }
 
-#e663a3
 
 @media (min-width: 768px) {
     .gradient-form {

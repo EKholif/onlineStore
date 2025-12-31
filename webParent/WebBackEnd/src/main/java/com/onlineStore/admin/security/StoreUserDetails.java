@@ -2,7 +2,6 @@ package com.onlineStore.admin.security;
 
 import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.users.User;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -157,5 +156,9 @@ public class StoreUserDetails implements UserDetails {
      */
     public boolean hasRole(String roleName) {
         return user.hasRole(roleName);
+    }
+
+    public User getUser() {
+        return this.user;
     }
 }
