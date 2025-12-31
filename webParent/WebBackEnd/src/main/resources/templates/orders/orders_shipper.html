@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
 <body>
 
 <div class="container-fluid">
-	<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+    <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 		<div>
 			<h2>Manage Orders</h2>
 		</div>
-	<div th:replace="~{support/fragments/standerd/search::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 		<div th:replace="~{orders/search-form/search_form_and_message :: content}"></div>
 
 		<div>
@@ -42,8 +43,10 @@
 							</div>
 							<div th:if="${order.COD}">
 								<span>COD: <b>
-										<div th:replace="~{support/fragments/format/format_currency::content(${order.total})}"></div>
-								</b></span>
+										<div
+                                                th:replace="~{support/fragments/standard/format_fragments :: currency(${order.total})}">
+										</div>
+									</b></span>
 							</div>
 							<div>&nbsp;</div>
 
@@ -53,15 +56,15 @@
 								</div>
 
 								<div
-										th:replace="~{orders/search-form/order_status_fragment:: content (${order.shipping}, 'SHIPPING', 'fa-shipping-fast')}">
+                                        th:replace="~{orders/search-form/order_status_fragment:: content (${order.shipping}, 'SHIPPING', 'fa-shipping-fast')}">
 								</div>
 
 								<div
-										th:replace="~{orders/search-form/order_status_fragment :: content(${order.delivered}, 'DELIVERED', 'fa-box-open')}">
+                                        th:replace="~{orders/search-form/order_status_fragment :: content(${order.delivered}, 'DELIVERED', 'fa-box-open')}">
 								</div>
 
 								<div
-										th:replace="~{orders/search-form/order_status_fragment  :: content(${order.returned}, 'RETURNED', 'fa-undo')}">
+                                        th:replace="~{orders/search-form/order_status_fragment  :: content(${order.returned}, 'RETURNED', 'fa-undo')}">
 								</div>
 
 
@@ -73,7 +76,7 @@
 			</th:block>
 		</div>
 
-	<nav th:replace="~{support/fragments/standerd/paginate::content}"></nav>
+    <nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
 
 		<div class="modal fade text-center" id="confirmModal">
 			<div class="modal-dialog">
@@ -89,8 +92,7 @@
 
 					<div class="modal-footer">
 						<a class="btn btn-success" href="" id="yesButton">Yes</a>
-						<button type="button" class="btn btn-danger" id="noButton"
-							data-bs-dismiss="modal">No</button>
+                        <button class="btn btn-danger" data-bs-dismiss="modal" id="noButton" type="button">No</button>
 					</div>
 				</div>
 			</div>
@@ -102,7 +104,7 @@
 			</div>
 		</div>
 
-	<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 	</div>
 <script th:src="@{/js/orders_shipper.js}"></script>

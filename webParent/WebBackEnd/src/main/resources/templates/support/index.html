@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
 <body>
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
-<script type="text/javascript" th:src="@{/js/common.js}" ></script>
-    </body>
+<script th:src="@{/js/common.js}" type="text/javascript"></script>
+</body>
+
 </html>

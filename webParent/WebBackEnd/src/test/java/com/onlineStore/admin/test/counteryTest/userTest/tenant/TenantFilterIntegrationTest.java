@@ -1,8 +1,8 @@
 package com.onlineStore.admin.test.counteryTest.userTest.tenant;
 
 import com.onlineStore.admin.product.repository.ProductRepository;
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStoreCom.entity.product.Product;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.hibernate.Session;
@@ -34,8 +34,7 @@ public class TenantFilterIntegrationTest {
     public void setupTenantContext() {
         // محاكاة تسجيل الدخول لمستخدم
         SecurityContextHolder.getContext().setAuthentication(
-                new UsernamePasswordAuthenticationToken("user1", "password", List.of())
-        );
+                new UsernamePasswordAuthenticationToken("user1", "password", List.of()));
 
         // نخزن tenantId في ThreadLocal
         TenantContext.setTenantId(TENANT_ID_1);

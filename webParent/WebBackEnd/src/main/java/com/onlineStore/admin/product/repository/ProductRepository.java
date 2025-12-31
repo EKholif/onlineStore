@@ -24,10 +24,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Modifying
     Integer enableProduct(Integer id, boolean enable);
 
-    @Query(value = "UPDATE products SET enable=true", nativeQuery = true)
+    // [AG-TEN-RISK-001] Manual Tenant Check for Native Query
+    // Business Value: Preventing data leak by enforcing tenant isolation on native
+    // updates.
+    @Query(value = "UPDATE products SET enable=true WHERE tenant_id = :tenantId", nativeQuery = true)
     @Modifying
     @Transactional
-    void enableProductAll();
+    void enableProductAll(@Param("tenantId") Long tenantId);
 
     @Query("SELECT p FROM Product p WHERE p.name LIKE %?1%")
     public Page<Product> searchProductsByName(String keyword, Pageable pageable);

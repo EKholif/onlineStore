@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -9,26 +9,30 @@
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <div class="full-details">
-    <table class="table table-bordered table-striped table-hover table-responsive-xl premium-table">
-        <thead class="thead-dark">
+    <table class="table table-responsive me-sm-1 table-header table-striped table-bordered">
+        <thead class="table-dark">
         <tr>
-            <th th:replace="~{support/fragments/standerd/colum_link::contant('id', 'ID')}"></th>
-            <th th:replace="~{support/fragments/standerd/colum_link::contant('title', 'Title')}"></th>
-
-            <th class="hideable-column"
-                th:replace="~{support/fragments/standerd/colum_link::contant('type', 'Type')}"></th>
-
-            <th th:replace="~{support/fragments/standerd/colum_link::contant('user', 'Created by')}"></th>
-
-            <th class="hideable-column"
-                th:replace="~{support/fragments/standerd/colum_link::contant('updatedTime', 'Updated Time')}">
+            <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
+            <th th:replace="~{support/fragments/standard/table_fragments :: column_link('title', 'Title')}">
             </th>
 
-            <th th:replace="~{support/fragments/standerd/colum_link::contant('published', 'Published')}"></th>
+            <th class="hideable-column"
+                th:replace="~{support/fragments/standard/table_fragments :: column_link('type', 'Type')}"></th>
+
+            <th th:replace="~{support/fragments/standard/table_fragments :: column_link('user', 'Created by')}">
+            </th>
+
+            <th class="hideable-column"
+                th:replace="~{support/fragments/standard/table_fragments :: column_link('updatedTime', 'Updated Time')}">
+            </th>
+
+            <th
+                    th:replace="~{support/fragments/standard/table_fragments :: column_link('published', 'Published')}">
+            </th>
             <th></th>
         </tr>
         </thead>
@@ -39,23 +43,25 @@
             <td class="hideable-column">[[${article.type}]]</td>
             <td>[[${article.user.fullName}]]</td>
             <td class="hideable-column">
-                <div th:replace="~{support/fragments/format/format_time :: content(${article.updatedTime})}">
+                <div
+                        th:replace="~{support/fragments/standard/format_fragments :: time(${article.updatedTime})}">
                 </div>
             </td>
             <td>
                 <div
-                        th:replace="~{articles/status :: content(${article.published}, 'article', '/articles/' + ${article.id})}">
+                        th:replace="~{support/fragments/standard/action_fragments :: status(${article.published}, 'article', '/articles/' + ${article.id})}">
                 </div>
             </td>
             <td>
                 <a class="fas fa-file-alt fa-2x icon-green link-detail"
                    th:href="@{'/articles/detail/' + ${article.id}}" title="View details of this article"></a>
                 &nbsp;&nbsp;
-                <div th:replace="~{articles/edit :: content('article', '/articles/edit/' + ${article.id})}">
+                <div
+                        th:replace="~{support/fragments/standard/action_fragments :: edit('article', '/articles/edit/' + ${article.id})}">
                 </div>
                 &nbsp;&nbsp;
                 <div
-                        th:replace="~{articles/delete :: content('article', ${article.id}, '/articles/delete/' + ${article.id}, true)}">
+                        th:replace="~{support/fragments/standard/action_fragments :: delete('article', ${article.id}, '/articles/delete/' + ${article.id}, true)}">
                 </div>
             </td>
         </tr>
@@ -73,13 +79,15 @@
                    th:href="@{'/articles/detail/' + ${article.id}}"></a>
                 &nbsp;
                 <div
-                        th:replace="~{articles/status :: content(${article.published}, 'article', '/articles/' + ${article.id})}">
+                        th:replace="~{support/fragments/standard/action_fragments :: status(${article.published}, 'article', '/articles/' + ${article.id})}">
                 </div>
                 &nbsp;
-                <div th:replace="~{articles/edit :: content('article', '/articles/edit/' + ${article.id})}"></div>
+                <div
+                        th:replace="~{support/fragments/standard/action_fragments :: edit('article', '/articles/edit/' + ${article.id})}">
+                </div>
                 &nbsp;
                 <div
-                        th:replace="~{articles/delete :: content('article', ${article.id}, '/articles/delete/' + ${article.id}, true)}">
+                        th:replace="~{support/fragments/standard/action_fragments :: delete('article', ${article.id}, '/articles/delete/' + ${article.id}, true)}">
                 </div>
             </div>
         </div>
@@ -87,9 +95,9 @@
     </div>
 </div>
 
-<nav th:replace="~{support/fragments/standerd/paginate::content}"></nav>
+<nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
 
-<div th:replace="~{support/fragments/standerd/modal::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
 <div class="modal fade" id="detailModal">
     <div class="modal-dialog modal-xl">
@@ -98,7 +106,7 @@
     </div>
 </div>
 
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 <script th:src="@{/js/common_list.js}"></script>
 <script type="text/javascript">

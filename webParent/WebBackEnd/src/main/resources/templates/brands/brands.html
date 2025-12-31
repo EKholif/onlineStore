@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -9,7 +9,7 @@
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <form th:action="@{/delete-brands}" method="post" id="deleteForm">
@@ -18,13 +18,17 @@
         <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" type="submit"
                 title="Delete Selected brands"></button>
 
-        <a th:href="@{/brands/new-brands-form}" class="fas fa-user-plus fa-2x icon-d-green" title="Add brand"></a>&nbsp;&nbsp;
+        <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/brands/new-brands-form}"
+           title="Add brand"></a>&nbsp;&nbsp;
 
-        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a>
+        &nbsp;&nbsp;
 
-        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a>
+        &nbsp;&nbsp;
 
-        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}" title="Export to Excel"></a>&nbsp;&nbsp;
+        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}"
+           title="Export to Excel"></a>&nbsp;&nbsp;
     </div>
 
 
@@ -39,15 +43,19 @@
             <tr>
 
                 <th>Select</th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('id', 'ID')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
 
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('logo', 'logo')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('logo', 'logo')}">
+                </th>
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('name', 'Name')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Name')}">
+                </th>
 
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('categories', 'Categories')}"></th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('categories', 'Categories')}">
+                </th>
 
                 <!--                       <th>Enable</th>-->
                 <th>Edit</th>
@@ -71,9 +79,11 @@
 
 
                 <td>
-                    <span th:if="${brand.logo.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
-                    <img th:if="${brand.logo != null && !brand.logo.isEmpty() }" th:src=" @{${brand.getImagePath()}}"
-                         class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"/>
+                            <span class="fas fa-user  fa-fade fa-2x icon-golden "
+                                  th:if="${brand.logo.isEmpty()}"></span>
+                    <img class="rounded mx-auto  d-block"
+                         style="width: 40px; height: 40px;" th:if="${brand.logo != null && !brand.logo.isEmpty() }"
+                         th:src=" @{${brand.getImagePath()}}"/>
 
                 </td>
 
@@ -105,16 +115,13 @@
                 <!--                           </td>-->
 
                 <td>
-                    <a class="fas fa-edit px-2 icon-green"
-                       th:href="@{'/brand/edit/' + ${brand.getId()}}"
+                    <a class="fas fa-edit px-2 icon-green" th:href="@{'/brand/edit/' + ${brand.getId()}}"
                        title="Edit brand"></a>
                 </td>
 
 
                 <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                       th:href="@{'/brands/delete-brand/' + ${brand.getId()}}"
-                       th:id="${brand.id}"
-
+                       th:href="@{'/brands/delete-brand/' + ${brand.getId()}}" th:id="${brand.id}"
                        title="Delete brand"></a></td>
             </tr>
 
@@ -125,15 +132,12 @@
     </div>
 </form>
 
-<div  th:replace="~{support/fragments/standerd/paginate::content}"></div>
+<div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
 
 
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
-
-
- <div th:replace="~{support/fragments/standerd/footer::content}"></div>
-
-<div th:replace="~{support/fragments::modal}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
 
 <script type="text/javascript">

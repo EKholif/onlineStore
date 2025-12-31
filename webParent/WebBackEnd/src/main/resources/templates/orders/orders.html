@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
 <body>
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <div class="container-fluid">
 
-    <div th:replace="~{support/fragments/format/search_form_and_message ::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: message}"></div>
 
     <div class="full-details">
-        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered " id="employeeTable">
+        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered "
+               id="employeeTable">
             <thead class="table-dark ">
 
             <tr>
 
-                <th th:replace="~{support/fragments/standerd/column_linkWithTag::contant('id', 'ID', 'none')}"></th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('id', 'ID', 'none')}">
+                </th>
 
 
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('customer', 'Customer', 'none')}"></th>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('customer', 'Customer', 'none')}">
+                </th>
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('total', 'Total', 'none')}"></th>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('total', 'Total', 'none')}">
+                </th>
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('orderTime', 'Order Time', 'none')}"></th>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('orderTime', 'Order Time', 'none')}">
+                </th>
 
                 <th class="hideable-column">
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('destination', 'Destination', 'tag')}"></th>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('destination', 'Destination', 'tag')}">
+                </th>
 
 
                 <th class="hideable-column">
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('paymentMethod', 'Payment Method', 'tag')}"></th>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('paymentMethod', 'Payment Method', 'tag')}">
+                </th>
 
 
                 <th class="hideable-column">
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('status', 'Status', 'tag')}"></th>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('status', 'Status', 'tag')}">
+                </th>
 
 
                 <th></th>
@@ -53,30 +63,34 @@
             <tr th:each="order : ${listOrders}">
 
                 <td>[[${order.id}]]</td>
-                <td><a class="linkCustomerDetail"
-                       th:href="@{'/customer/edit/' + ${order.customer.id}}">
+                <td><a class="linkCustomerDetail" th:href="@{'/customer/edit/' + ${order.customer.id}}">
                     [[${order.customer.fullName}]] </a></td>
 
 
                 <td>
-                    <div th:replace="~{support/fragments/format/format_currency::content(${order.total})}"></div>
+                    <div
+                            th:replace="~{support/fragments/standard/format_fragments :: currency(${order.total})}">
+                    </div>
                 </td>
                 <td>
-                    <div th:replace="~{support/fragments/format/format_time :: content(${order.orderTime})}"></div>
+                    <div
+                            th:replace="~{support/fragments/standard/format_fragments :: time(${order.orderTime})}">
+                    </div>
                 </td>
                 <td class="hideable-column w-25">[[${order.destination}]]</td>
                 <td class="hideable-column">[[${order.getPaymentMethod}]]</td>
                 <td class="hideable-column">[[${order.status}]]</td>
 
-                <td><a
-                        class="fas fa-file-alt fa-2x icon-green linkOrderDetail"
-                        th:href="@{'/orders/detail/' + ${order.id}}"
-                        title="View details of this order"></a> &nbsp;
-                    <div
-                            th:replace="~{support/fragments/format/edit :: content('order', '/orders/edit/' + ${order.id})}"></div>
+                <td><a class="fas fa-file-alt fa-2x icon-green linkOrderDetail"
+                       th:href="@{'/orders/detail/' + ${order.id}}" title="View details of this order"></a>
                     &nbsp;
                     <div
-                            th:replace="~{support/fragments/format/delete :: content('order', ${order.id}, '/orders/delete/' + ${order.id}, true)}"></div>
+                            th:replace="~{support/fragments/standard/action_fragments :: edit('order', '/orders/edit/' + ${order.id})}">
+                    </div>
+                    &nbsp;
+                    <div
+                            th:replace="~{support/fragments/standard/action_fragments :: delete('order', ${order.id}, '/orders/delete/' + ${order.id}, true)}">
+                    </div>
                 </td>
             </tr>
             </tbody>
@@ -93,26 +107,29 @@
                         <small>[[${order.orderTime}]] - [[${order.status}]]</small>
                     </div>
                     <div>
-                        <div th:replace="~{support/fragments/format/format_currency::content(${order.total})}">Total
+                        <div
+                                th:replace="~{support/fragments/standard/format_fragments :: currency(${order.total})}">
+                            Total
                         </div>
                         - [[${order.paymentMethod}]]
                     </div>
                     <div>
                         <a class="fas fa-file-alt fa-2x icon-green linkOrderDetail"
-                           th:href="@{'/orders/detail/' + ${order.id}}"
-                           title="View details of this order"></a> &nbsp;
-                        <div
-                                th:replace="~{support/fragments/format/edit :: content('order', '/orders/edit/' + ${order.id})}"></div>
+                           th:href="@{'/orders/detail/' + ${order.id}}" title="View details of this order"></a>
                         &nbsp;
                         <div
-                                th:replace="~{support/fragments/format/delete :: content('order', ${order.id}, '/orders/delete/' + ${order.id}, true)}"></div>
+                                th:replace="~{support/fragments/standard/action_fragments :: edit('order', '/orders/edit/' + ${order.id})}">
+                        </div>
+                        &nbsp;
+                        <div
+                                th:replace="~{support/fragments/standard/action_fragments :: delete('order', ${order.id}, '/orders/delete/' + ${order.id}, true)}">
+                        </div>
                     </div>
                 </div>
             </div>
             <div>&nbsp;</div>
         </th:block>
     </div>
-
 
 
     <div class="modal fade" id="customerDetailModal">
@@ -128,15 +145,13 @@
     </div>
 
 
+    <!--    <div th:replace="~{orders/modal_fragments::content}"></div>-->
 
-<!--    <div th:replace="~{orders/modal_fragments::content}"></div>-->
-    <div th:replace="~{orders/modal_fragments_confirm_modal::content}"></div>
-    <nav th:replace="~{support/fragments/standerd/paginate::content}"></nav>
+    <nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
 
-    <div th:replace="~{support/fragments/standerd/modal::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
-    <div th:replace="~{support/fragments/standerd/footer::content}"></div>
-
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 
 </div>

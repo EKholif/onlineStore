@@ -3,12 +3,12 @@ package com.onlineStore.admin.shipping.controller;
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.helper.SortingInfo;
 import com.onlineStore.admin.setting.country.CountryRepository;
-import com.onlineStore.admin.shipping.service.ShippingRateService;
 import com.onlineStore.admin.setting.state.StateRepository;
-import com.onlineStore.admin.security.tenant.TenantContext;
+import com.onlineStore.admin.shipping.service.ShippingRateService;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.shipping.ShippingRate;
+import com.onlineStoreCom.tenant.TenantContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,8 +37,10 @@ public class ShippingRateController {
     }
 
     @GetMapping("/shipping-rate/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable("pageNum") int pageNum, @RequestParam(name = "sortField", defaultValue = "country") String sortField,
-                                   @RequestParam(name = "sortDir", defaultValue = "desc") String sortDir, @RequestParam(name = "keyWord", required = false) String keyWord) {
+    public ModelAndView listByPage(@PathVariable("pageNum") int pageNum,
+                                   @RequestParam(name = "sortField", defaultValue = "country") String sortField,
+                                   @RequestParam(name = "sortDir", defaultValue = "desc") String sortDir,
+                                   @RequestParam(name = "keyWord", required = false) String keyWord) {
 
         ModelAndView model = new ModelAndView("shipping-rate/shipping-rate");
 
@@ -47,11 +49,11 @@ public class ShippingRateController {
         Page<ShippingRate> page = shippingRateService.findAll(keyWord, pageNum, RATES_PER_PAGE, sorting.getSort());
         List<ShippingRate> list = page.getContent();
 
-        ShippingRatePagingHelper helper = new ShippingRatePagingHelper(model, "shippingRates", "Shipping Rates", "shipping-rate", list, page, keyWord, pageNum, RATES_PER_PAGE, sorting);
+        ShippingRatePagingHelper helper = new ShippingRatePagingHelper(model, "shippingRates", "Shipping Rates",
+                "shipping-rate", list, page, keyWord, pageNum, RATES_PER_PAGE, sorting);
 
         return helper.listByPage();
     }
-
 
     @GetMapping("/new-shipping-rate-form")
     public ModelAndView newShippingForm() {
@@ -61,18 +63,18 @@ public class ShippingRateController {
         List<Country> countries = countryRepository.findAllByOrderByNameAsc();
         List<State> states = stateRepository.findAllByOrderByNameAsc();
 
-
         model.addObject("allStates", states);
 
-        NewShippingRateHelper helper = new NewShippingRateHelper(model, "listItems", "shipping-rate", "Shipping Rate", countries);
-
+        NewShippingRateHelper helper = new NewShippingRateHelper(model, "listItems", "shipping-rate", "Shipping Rate",
+                countries);
 
         return helper.newForm("shippingRate", shippingRate);
 
     }
 
     @PostMapping("/shipping-rate/save-new-shipping-rate")
-    public ModelAndView saveNewUCategory(@ModelAttribute ShippingRate shippingRate, RedirectAttributes redirectAttributes) throws IOException {
+    public ModelAndView saveNewUCategory(@ModelAttribute ShippingRate shippingRate,
+                                         RedirectAttributes redirectAttributes) throws IOException {
         redirectAttributes.addFlashAttribute("message", " New Shipping Rate has been saved successfully.  ");
         Long tenantId = TenantContext.getTenantId();
         shippingRate.setTenantId(tenantId);
@@ -80,7 +82,6 @@ public class ShippingRateController {
         shippingRateService.saveShippingRate(shippingRate);
         return new ModelAndView("redirect:/shipping-rate");
     }
-
 
     @GetMapping("/shipping-rate/edit/{id}")
     public ModelAndView editShippingRate(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
@@ -92,11 +93,9 @@ public class ShippingRateController {
             List<State> states = stateRepository.findAllByOrderByNameAsc();
             model.addObject("allStates", states);
 
-
             EditForm helper = new EditForm(model, "listItems", "shipping-rate", "Shipping Rate", countries);
 
             return helper.editForm("shippingRate", shippingRate, id);
-
 
         } catch (Exception ex) {
             redirectAttributes.addFlashAttribute("message", "Shipping Rate not found");
@@ -105,22 +104,22 @@ public class ShippingRateController {
     }
 
     @PostMapping("/save-edit-shipping-rate/")
-    public ModelAndView saveUpdatedRate(@RequestParam("id") Integer id, @ModelAttribute ShippingRate shippingRate, RedirectAttributes redirectAttributes) throws IOException, CategoryNotFoundException {
+    public ModelAndView saveUpdatedRate(@RequestParam("id") Integer id, @ModelAttribute ShippingRate shippingRate,
+                                        RedirectAttributes redirectAttributes) throws IOException, CategoryNotFoundException {
 
         redirectAttributes.addFlashAttribute("message", "Shipping Rate ID " + id + " updated successfully.");
-
 
         ShippingRate existingRate = shippingRateService.findById(id);
 
         BeanUtils.copyProperties(shippingRate, existingRate, "id");
         shippingRateService.saveShippingRate(existingRate);
 
-
         return new ModelAndView("redirect:/shipping-rate");
     }
 
     @GetMapping("/shipping-rate/{id}/enable/{status}")
-    public ModelAndView updateRateStatus(@PathVariable("id") int id, @PathVariable("status") boolean enable, RedirectAttributes redirectAttributes) {
+    public ModelAndView updateRateStatus(@PathVariable("id") int id, @PathVariable("status") boolean enable,
+                                         RedirectAttributes redirectAttributes) {
 
         shippingRateService.UpdateRateEnableStatus(id, enable);
         String statusText = enable ? "enabled" : "disabled";

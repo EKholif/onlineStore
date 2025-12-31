@@ -2,23 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!--<head th:replace="~{support/fragments/standerd/header::content}">-->
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 
 <body>
 
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
-
 
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
 
+<form enctype="multipart/form-data" method="post" onsubmit="return checkDuplicateEmail(this);"
+      th:action="@{${saveChanges}}" th:object="${customer}">
 
-<form method="post" enctype="multipart/form-data" onsubmit="return checkDuplicateEmail(this);" th:action="@{${saveChanges}}" th:object="${customer}">
-
-    <input type="hidden"  id="id" name="id"  th:value="${id}"  />
+    <input id="id" name="id" th:value="${id}" type="hidden"/>
     <div class="container-fluid">
         <div class="container">
             <div class="row border border-secondary rounded p-3">
@@ -27,8 +28,7 @@
                         <label class="col-sm-4 col-form-label">First Name </label>
                         <div class="col-sm-8">
                             <input class="form-control col-4 mb-4" minlength="2" placeholder="enter first name"
-                                   th:field="*{firstName}"
-                                   type="text" />
+                                   th:field="*{firstName}" type="text"/>
                         </div>
                     </div>
 
@@ -36,8 +36,7 @@
                         <label class="col-sm-4 col-form-label">Last Name</label>
                         <div class="col-sm-8">
                             <input class="form-control col-4 mb-4" minlength="2" placeholder="enter last name"
-                                   th:field="*{lastName}"
-                                   type="text"/>
+                                   th:field="*{lastName}" type="text"/>
                         </div>
                     </div>
 
@@ -45,35 +44,30 @@
                     <div class="input-group row">
                         <label class="col-sm-4 col-form-label">E-mail</label>
                         <div class="col-sm-8">
-                            <input class="form-control col-4 mb-4" id="email" minlength="2" placeholder="enter your Email"
-                                   th:field="*{email}"
-                                   type="text"/>
+                            <input class="form-control col-4 mb-4" id="email" minlength="2"
+                                   placeholder="enter your Email" th:field="*{email}" type="text"/>
                         </div>
                     </div>
 
                     <div class="input-group row">
                         <label class="col-sm-4 col-form-label">Password</label>
                         <div class="col-sm-8">
-                            <input class="form-control mb-4" id="Password"
-                                   oninput="checkPasswordMatch()"
-                                   placeholder="Enter your password" th:field="*{password}"
-                                   type="password" />
+                            <input class="form-control mb-4" id="Password" oninput="checkPasswordMatch()"
+                                   placeholder="Enter your password" th:field="*{password}" type="password"/>
                         </div>
                     </div>
 
                     <div class="input-group row">
                         <label class="col-sm-4 col-form-label">Confirm Password</label>
                         <div class="col-sm-8">
-                            <input class="form-control mb-4" id="confirmPassword"
-                                   oninput="checkPasswordMatch()"
-                                   placeholder="Confirm Password" type="password" />
+                            <input class="form-control mb-4" id="confirmPassword" oninput="checkPasswordMatch()"
+                                   placeholder="Confirm Password" type="password"/>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="col-sm">
-
 
 
                     <div><label> Main Image : [[${image}]]</label></div>
@@ -97,9 +91,7 @@
                     <label class="col-sm-4 col-form-label">Phone Number:</label>
                     <div class="col-sm-8">
                         <input class="form-control col-4 mb-4" maxlength="15" minlength="8"
-                               th:field="*{phoneNumber}"
-                               value="123456789"
-                               type="text"/>
+                               th:field="*{phoneNumber}" type="text" value="123456789"/>
                     </div>
                 </div>
 
@@ -107,9 +99,7 @@
                     <label class="col-sm-4 col-form-label">Address Line 1:</label>
                     <div class="col-sm-8">
                         <input class="form-control col-4 mb-4" maxlength="64" minlength="3"
-                               th:field="*{addressLine1}"
-                               value="123456789"
-                               type="text"/>
+                               th:field="*{addressLine1}" type="text" value="123456789"/>
                     </div>
                 </div>
 
@@ -124,16 +114,16 @@
                 <div class="input-group row">
                     <label class="col-sm-4 col-form-label">Postal Code:</label>
                     <div class="col-sm-8">
-                        <input class="form-control col-4 mb-4" maxlength="45" minlength="2"
-                               value="123456"  th:field="*{postalCode}" type="text"/>
+                        <input class="form-control col-4 mb-4" maxlength="45" minlength="2" th:field="*{postalCode}"
+                               type="text" value="123456"/>
                     </div>
                 </div>
 
                 <div class="input-group row">
                     <label class="col-sm-4 col-form-label">City:</label>
                     <div class="col-sm-8">
-                        <input class="form-control col-4 mb-4" maxlength="45" minlength="2"
-                               th:field="*{city}" type="text"/>
+                        <input class="form-control col-4 mb-4" maxlength="45" minlength="2" th:field="*{city}"
+                               type="text"/>
                     </div>
                 </div>
 
@@ -154,12 +144,10 @@
                     <label class="col-sm-4 col-form-label">State</label>
                     <div class="col-sm-8">
 
-                        <input class="form-control col-4 mb-4" list="states" maxlength="45"
-                               minlength="3" th:field="*{state}" type="text"/>
+                        <input class="form-control col-4 mb-4" list="states" maxlength="45" minlength="3"
+                               th:field="*{state}" type="text"/>
                         <datalist id="states">
-                            <option th:each="state : ${listStates}"
-                                    th:text="${state.name}"
-                                    th:value="${state.id}">
+                            <option th:each="state : ${listStates}" th:text="${state.name}" th:value="${state.id}">
                             </option>
                         </datalist>
                     </div>
@@ -176,35 +164,7 @@
 </form>
 
 
-
-<div th:fragment="modal">
-    <div class="modal fade text-center" data-bs-target="#modalDialog" data-bs-toggle="modal" id="confirmModal"
-         role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="modalTitle"> Alert Message Box </h3>
-                    <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <span id="modalBody"></span>
-                    <p></p>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-success" href="" id="yesbutton">yes</a>
-
-
-                    <button class="btn btn-danger" data-bs-dismiss="modal" type="close">no</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
-
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 
 <script type="text/javascript">
@@ -252,14 +212,12 @@
     }
 
 
-
     function checkPasswordMatch(confirmPassword) {
         const password = document.getElementById("Password").value; // Get Password value
 
         if (confirmPassword.value !== password) {
             // confirmPassword.setCustomValidity("Passwords do not match"); // Set validation message
             confirmPassword.setCustomValidity(""); // Clear validation message
-
 
 
         } else {
@@ -282,8 +240,6 @@
 
         // Create a JavaScript object with the email and CSRF token.
         var params = {email: customerEmail, _csrf: csrf, id: id};
-
-
 
 
         $.post(custUrl, params, function (response) {
@@ -338,6 +294,7 @@
         });
 
     });
+
     function showImage(fileInput) {
         var file = fileInput.files[0];
         var reader = new FileReader();
@@ -347,6 +304,7 @@
         reader.readAsDataURL(file);
         customDropMenu()
     }
+
     function customDropMenu() {
 
         $(".navbar .dropdown").hover(
@@ -370,4 +328,5 @@
 <!--<script type="text/javascript" th:src="@{/js/common.js}"></script>-->
 
 </body>
+
 </html>

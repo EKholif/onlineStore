@@ -2,10 +2,8 @@ package com.onlineStore.admin.order;
 
 import com.onlineStore.admin.product.service.ProductService;
 import com.onlineStore.admin.security.StoreUserDetails;
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.setting.service.SettingService;
 import com.onlineStore.admin.setting.settingBag.CurrencySettingBag;
-
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.exception.OrderNotFoundException;
@@ -16,6 +14,7 @@ import com.onlineStoreCom.entity.order.OrderTrack;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.setting.Setting;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -49,17 +48,14 @@ public class OrderController {
         return defaultRedirectURL;
     }
 
-
-
-
     @GetMapping("/orders/page/{pageNum}")
-    public String listByPage(@PagingAndSortingParam(listName = "listOrders", moduleURL = "/orders/page/")
-                                 PagingAndSortingHelper helper, @PathVariable(name = "pageNum") int pageNum,
-                             @RequestParam(name = "sortField", defaultValue = "orderTime")String sortField,
-                             @RequestParam(name = "sortDir", defaultValue = "desc")String sortDir,
-                             @RequestParam(name = "keyWord", required = false) String keyWord,
-                              HttpServletRequest request, @AuthenticationPrincipal StoreUserDetails loggedUser) {
-
+    public String listByPage(
+            @PagingAndSortingParam(listName = "listOrders", moduleURL = "/orders/page/") PagingAndSortingHelper helper,
+            @PathVariable(name = "pageNum") int pageNum,
+            @RequestParam(name = "sortField", defaultValue = "orderTime") String sortField,
+            @RequestParam(name = "sortDir", defaultValue = "desc") String sortDir,
+            @RequestParam(name = "keyWord", required = false) String keyWord,
+            HttpServletRequest request, @AuthenticationPrincipal StoreUserDetails loggedUser) {
 
         orderService.listByPage(pageNum, helper);
         loadCurrencySetting(request);
@@ -80,7 +76,8 @@ public class OrderController {
     }
 
     @GetMapping("/orders/detail/{id}")
-    public String viewOrderDetails(@PathVariable("id") Integer id, Model model, RedirectAttributes ra, HttpServletRequest request, @AuthenticationPrincipal StoreUserDetails loggedUser) {
+    public String viewOrderDetails(@PathVariable("id") Integer id, Model model, RedirectAttributes ra,
+                                   HttpServletRequest request, @AuthenticationPrincipal StoreUserDetails loggedUser) {
         try {
             Order order = orderService.get(id);
             loadCurrencySetting(request);
@@ -110,7 +107,8 @@ public class OrderController {
     }
 
     @GetMapping("/orders/edit/{id}")
-    public String editOrder(@PathVariable("id") Integer id, Model model, RedirectAttributes ra, HttpServletRequest request) {
+    public String editOrder(@PathVariable("id") Integer id, Model model, RedirectAttributes ra,
+                            HttpServletRequest request) {
         try {
             Order order = orderService.get(id);
 
@@ -154,11 +152,7 @@ public class OrderController {
         List<OrderTrack> orderTracks = order.getOrderTracks();
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
-
-
         for (int i = 0; i < trackIds.length; i++) {
-
-
 
             OrderTrack trackRecord = new OrderTrack();
 
@@ -190,7 +184,6 @@ public class OrderController {
         String[] productSubtotals = request.getParameterValues("productSubtotal");
         String[] productShipCosts = request.getParameterValues("productShipCost");
 
-
         Set<OrderDetail> orderDetails = order.getOrderDetails();
 
         for (int i = 0; i < detailIds.length; i++) {
@@ -202,7 +195,6 @@ public class OrderController {
             product = productService.findById(productId);
 
             orderDetail.setProduct(product);
-
 
             int detailId = Integer.parseInt(detailIds[i]);
 

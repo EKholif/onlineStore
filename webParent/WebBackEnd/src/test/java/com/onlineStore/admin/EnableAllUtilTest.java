@@ -21,13 +21,14 @@ public class EnableAllUtilTest {
     public void enableAll() {
         System.out.println("Running Enable All...");
         // Set Tenant Context (assuming 1 is main tenant or system)
-        com.onlineStore.admin.security.tenant.TenantContext.setTenantId(1L);
+        com.onlineStoreCom.tenant.TenantContext.setTenantId(1L);
 
         // Enable All Categories
         categoryRepo.enableCategoryAll();
 
         // Enable All Products
-        productRepo.enableProductAll();
+        // [AG-TEN-RISK-001] Secure Bulk Update
+        productRepo.enableProductAll(1L);
 
         System.out.println("All Products and Categories Enabled!");
     }

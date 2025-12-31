@@ -1,9 +1,8 @@
 package com.onlineStore.admin.test.counteryTest.userTest.tenant;
 
 import com.onlineStore.admin.product.repository.ProductRepository;
-import com.onlineStore.admin.security.tenant.TenantContext;
-//import com.onlineStore.admin.security.tenant.TenantFilterConfigurer;
 import com.onlineStoreCom.entity.product.Product;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.FilterChain;

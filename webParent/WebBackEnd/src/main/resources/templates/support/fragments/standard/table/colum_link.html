@@ -1,0 +1,13 @@
+<th th:fragment="contant (fieldName, columnLable)">
+    <a
+            class="text-white " th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                            +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+                            '&keyWord='+ keyWord: ' '}}">
+        [[${columnLable}]]
+    </a>
+
+    <span th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"
+          th:if="${sortField== fieldName}"></span>
+</th>
+
+

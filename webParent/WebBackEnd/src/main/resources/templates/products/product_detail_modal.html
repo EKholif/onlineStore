@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -21,11 +20,12 @@
 
 
 </head>
+
 <body>
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <div class="modal-header">
-    <h3 class="modal-title" id ="modalTitle"> Product Details </h3>
+    <h3 class="modal-title" id="modalTitle"> Product Details </h3>
     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -45,13 +45,13 @@
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#images"
-                    type="button" role="tab">Images
+            <button class="nav-link" data-bs-target="#images" data-bs-toggle="tab" id="messages-tab" role="tab"
+                    type="button">Images
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details"
-                    type="button" role="tab">Details
+            <button class="nav-link" data-bs-target="#details" data-bs-toggle="tab" id="details-tab" role="tab"
+                    type="button">Details
             </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -67,37 +67,33 @@
         <div class="tab-pane active p-3" id="overview" role="tabpanel">
 
 
-            <div th:replace="~{products/fregment-readonly/overview-fregment::content}"></div>
+            <div th:replace="~{products/fragment-readonly/overview-fragment::content}"></div>
 
         </div>
         <div class="tab-pane" id="description" role="tabpanel">
-                <div th:replace="~{products/fregment-readonly/discription-fregment-readonly::content}"></div>
+            <div th:replace="~{products/fragment-readonly/discription-fragment-readonly::content}"></div>
         </div>
 
 
         <div class="tab-pane" id="images" role="tabpanel">
 
-            <div th:replace="~{products/fregment-readonly/products-image-fregment-readonly::content}"></div>
+            <div th:replace="~{products/fragment-readonly/products-image-fragment-readonly::content}"></div>
 
         </div>
-
 
 
         <div class="tab-pane p-3" id="details" role="tabpanel">
-            <div th:replace="~{products/fregment-readonly/details-fregment-readonly::content}"></div>
-
+            <div th:replace="~{products/fragment-readonly/details-fragment-readonly::content}"></div>
 
 
         </div>
-
 
 
         <div class="tab-pane p-3" id="shipping" role="tabpanel">
-            <div th:replace="~{products/fregment-readonly/shipping-fregment-readonly::content}"></div>
+            <div th:replace="~{products/fragment-readonly/shipping-fragment-readonly::content}"></div>
         </div>
     </div>
 </div>
-
 
 
 <div class="modal-footer">
@@ -105,7 +101,7 @@
 </div>
 
 
-
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 </body>
+
 </html>

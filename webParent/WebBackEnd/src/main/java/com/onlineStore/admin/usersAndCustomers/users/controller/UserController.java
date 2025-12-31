@@ -1,10 +1,8 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
-
 import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.PageInfo;
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
@@ -14,6 +12,7 @@ import com.onlineStore.admin.utility.UserPdfExporter;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.users.User;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
@@ -36,6 +35,7 @@ public class UserController {
     private UserService service;
     @Autowired
     private EntityManager entityManager;
+
     @GetMapping("/users/users")
     public ModelAndView listAllUsers() {
         ModelAndView model = new ModelAndView("users/users");
@@ -45,11 +45,15 @@ public class UserController {
         org.hibernate.Filter filter = session.getEnabledFilter("tenantFilter");
 
         if (filter != null) {
-            System.out.println("🔥 tenantFilter parameter tenantId: " + filter.getName());
-        } else {
-            System.out.println("🔥 tenantFilter not enabled!    " + tenantId);
+            // [AG-TEN-TECH-002] Verify Tenant Filter is active for data isolation
+            if (filter != null) {
+                // Business Value: Ensures we are only fetching data for the current tenant.
+                // TODO: Replace System.out with proper Logger (SLF4J) for production readiness [AG-CORE-TECH-005]
+                System.out.println("🔥 tenantFilter parameter tenantId: " + filter.getName());
+            } else {
+                System.out.println("🔥 tenantFilter not enabled!    " + tenantId);
+            }
         }
-
         return listByPage(1, "firstName", "dsc", null);
     }
 
@@ -61,18 +65,16 @@ public class UserController {
         ModelAndView model = new ModelAndView("users/users");
         PageInfo pageInfo = new PageInfo();
 
-        List<User> listByPage = service.listByPage
-                (pageInfo, pageNum, sortField, sortDir, keyWord);
+        List<User> listByPage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                (model, "users", sortField, sortDir, keyWord, pageNum, listByPage);
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "users", sortField, sortDir,
+                keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "users");
 
-
         return model;
-
     }
+
     @GetMapping("/register/new-users-form")
 
     public ModelAndView newUser() {
@@ -85,9 +87,9 @@ public class UserController {
         user.setEnable(true);
         model.addObject("id", 0);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected listName
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected
+        // listName
         return pagingAndSortingHelper.newForm(model, "user", user);
-
 
     }
 
@@ -101,9 +103,9 @@ public class UserController {
         user.setEnable(true);
         model.addObject("id", 0);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected listName
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected
+        // listName
         return pagingAndSortingHelper.newForm(model, "user", user);
-
 
     }
 
@@ -116,13 +118,14 @@ public class UserController {
 
         Long tenantId = TenantContext.getTenantId();
 
+        // [AG-TEN-REQ-001] Explicitly assign Tenant ID to new users
         if (user.getTenantId() == null || user.getTenantId() == 0) {
+            // Business Value: Self-registration flow generates a new tenant scope.
             user.setTenantId(TenantService.createTenant());
-        }else {
+        } else {
+            // Business Value: Admin-created users inherit the admin's tenant scope.
             user.setTenantId(tenantId);
         }
-
-
 
         if (!multipartFile.isEmpty()) {
             savePhoto(user, multipartFile, dirName);
@@ -130,16 +133,13 @@ public class UserController {
 
         user.setTenantId(getTenantId(user));
 
-
         service.saveUser(user);
         return new ModelAndView("redirect:/users/users");
     }
 
-    public <T extends IdBasedEntity > Long getTenantId(T entity) {
-       return entity.getTenantId();
+    public <T extends IdBasedEntity> Long getTenantId(T entity) {
+        return entity.getTenantId();
     }
-
-
 
     private void savePhoto(User user, MultipartFile multipartFile, String dirName) throws IOException {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
@@ -153,22 +153,19 @@ public class UserController {
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     }
 
-
     @GetMapping("/users/edit/{id}")
     public ModelAndView editUser(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
-
 
         ModelAndView model = new ModelAndView("users/new-users-form");
         try {
             User user = service.getUser(id);
             List<Role> listAllRoles = service.listAllRoles();
 
-
             model.addObject("listItems", user.getRoles());
 
-            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected listName
+            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected
+            // listName
             return pagingAndSortingHelper.editForm(model, "user", user, id);
-
 
         } catch (UsernameNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
@@ -178,7 +175,8 @@ public class UserController {
     }
 
     @PostMapping("/users/save-edit-user")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute User user, RedirectAttributes redirectAttributes,
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute User user,
+                                        RedirectAttributes redirectAttributes,
                                         @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
 
@@ -189,7 +187,6 @@ public class UserController {
             if (multipartFile.isEmpty()) {
                 BeanUtils.copyProperties(user, updateUser, "id", "user_bio", "password");
                 service.saveUpdatededUser(updateUser);
-
 
             } else if (!multipartFile.isEmpty()) {
 
@@ -229,14 +226,14 @@ public class UserController {
         return new ModelAndView("redirect:/users/page/1?sortField=id&sortDir=asc&keyWord=" + fristPartEmail);
     }
 
-
     @GetMapping("/delete-user/{id}")
     public ModelAndView deleteUser(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         try {
             if (service.existsById(id)) {
                 FileUploadUtil.cleanDir(service.getUser(id).getImageDir());
                 service.deleteUser(id);
-                redirectAttributes.addFlashAttribute("message", "User with ID " + id + " has been successfully deleted.");
+                redirectAttributes.addFlashAttribute("message",
+                        "User with ID " + id + " has been successfully deleted.");
             } else {
                 redirectAttributes.addFlashAttribute("message", "User with ID " + id + " not found.");
             }
@@ -254,7 +251,6 @@ public class UserController {
         return new ModelAndView("redirect:/users/users");
     }
 
-
     @GetMapping("/user/{id}/enable/{status}")
     public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
                                          RedirectAttributes redirectAttributes) {
@@ -265,6 +261,7 @@ public class UserController {
         return new ModelAndView("redirect:/users/users");
 
     }
+
     @PostMapping("/deleteUsers")
     public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Integer> selectedUsers,
                                     RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
@@ -280,8 +277,6 @@ public class UserController {
 
         return new ModelAndView("redirect:/users/users");
     }
-
-
 
     @GetMapping("/users/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {

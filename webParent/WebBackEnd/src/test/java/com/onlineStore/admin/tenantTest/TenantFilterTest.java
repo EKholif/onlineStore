@@ -1,7 +1,7 @@
 package com.onlineStore.admin.tenantTest;
 
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStoreCom.entity.setting.subsetting.TenantAwareEntity;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @SpringBootTest
-@Transactional  // كل التغييرات هتترجع rollback بعد كل اختبار
+@Transactional // كل التغييرات هتترجع rollback بعد كل اختبار
 public class TenantFilterTest {
 
     @Autowired

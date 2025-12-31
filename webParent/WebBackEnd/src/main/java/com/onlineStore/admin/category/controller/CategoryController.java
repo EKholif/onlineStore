@@ -1,15 +1,14 @@
 package com.onlineStore.admin.category.controller;
 
-
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +29,13 @@ public class CategoryController {
     @Autowired
     private CategoryService service;
 
-
     @GetMapping("/categories/categories")
-
 
     public ModelAndView listAllCategories() {
         ModelAndView model = new ModelAndView("categories/categories");
 
         return listByPage(1, "name", "asc", null);
     }
-
 
     @GetMapping("/categories/page/{pageNum}")
     public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
@@ -52,12 +48,12 @@ public class CategoryController {
 
         List<Category> categoryPagePage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "categories", sortField, sortDir, keyWord, pageNum, categoryPagePage);
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "categories", sortField,
+                sortDir, keyWord, pageNum, categoryPagePage);
 
         return pagingAndSortingHelper.listByPage(pageInfo, "categories");
 
     }
-
 
     @GetMapping("/categories/new-categories-form")
     public ModelAndView newCategoryForm() {
@@ -73,25 +69,22 @@ public class CategoryController {
         model.addObject("label", "Parent Category :");
         model.addObject("category", category);
 
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("categories", listCategory); // Corrected listName
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("categories", listCategory); // Corrected
+        // listName
         return pagingAndSortingHelper.newForm(model, "category", category);
 
     }
 
-
-//    todo : rundom id
-
+    // todo : rundom id
 
     @PostMapping("/categories/save-category")
     public ModelAndView saveNewUCategory(@ModelAttribute Category category,
-                                         RedirectAttributes redirectAttributes
-            , @RequestParam("fileImage") MultipartFile multipartFile)
+                                         RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile)
             throws IOException {
         redirectAttributes.addFlashAttribute("message", "the category   has been saved successfully.  ");
 
-             Long tenantId = TenantContext.getTenantId();
-            category.setTenantId(tenantId);
+        Long tenantId = TenantContext.getTenantId();
+        category.setTenantId(tenantId);
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
@@ -110,13 +103,11 @@ public class CategoryController {
 
         return new ModelAndView("redirect:/categories/categories");
 
-
     }
 
     @GetMapping("/categories/edit/{id}")
     public ModelAndView editCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
         ModelAndView model = new ModelAndView("categories/new-categories-form");
-
 
         try {
 
@@ -125,9 +116,9 @@ public class CategoryController {
 
             model.addObject("label", "Parent Category :");
 
-            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("categories", listCategory); // Corrected listName
+            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("categories", listCategory); // Corrected
+            // listName
             return pagingAndSortingHelper.editForm(model, "category", existCategory, id);
-
 
         } catch (CategoryNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
@@ -137,13 +128,13 @@ public class CategoryController {
     }
 
     @PostMapping("/categories/save-edit-category")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Category category, RedirectAttributes redirectAttributes,
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Category category,
+                                        RedirectAttributes redirectAttributes,
                                         @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
 
         Category updateCategory = service.findById(id);
-
 
         if (multipartFile.isEmpty()) {
             BeanUtils.copyProperties(category, updateCategory, "id", "image", "tenantId");
@@ -165,9 +156,9 @@ public class CategoryController {
         return new ModelAndView("redirect:/categories/categories");
     }
 
-
     @GetMapping("/delete-category/{id}")
-    public ModelAndView deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
+    public ModelAndView deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes)
+            throws CategoryNotFoundException, IOException {
 
         try {
             if (service.existsById(id)) {
@@ -187,7 +178,6 @@ public class CategoryController {
         return new ModelAndView("redirect:/categories/categories");
     }
 
-
     @GetMapping("/category/{id}/enable/{status}")
     public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
                                          RedirectAttributes redirectAttributes) {
@@ -203,8 +193,9 @@ public class CategoryController {
     }
 
     @PostMapping("/categories/deleteCategories")
-    public ModelAndView deleteCategory(@RequestParam(name = "selectedCategory", required = false) List<Integer> selectedCategory,
-                                       RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
+    public ModelAndView deleteCategory(
+            @RequestParam(name = "selectedCategory", required = false) List<Integer> selectedCategory,
+            RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category ID: " + selectedCategory + " has been Deleted");
         ModelAndView model = new ModelAndView("categories/categories");
@@ -219,7 +210,6 @@ public class CategoryController {
         }
         return new ModelAndView("redirect:/categories/categories");
     }
-
 
     @GetMapping("/categories/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
@@ -236,7 +226,6 @@ public class CategoryController {
         CategoryExcelExporter categoryExcelExporter = new CategoryExcelExporter();
         categoryExcelExporter.export(categoryList, response);
 
-
     }
 
     @GetMapping("/categories/export/pdf")
@@ -248,8 +237,4 @@ public class CategoryController {
 
     }
 
-
 }
-
-
-

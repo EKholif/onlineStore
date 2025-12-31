@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -9,23 +9,26 @@
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <form id="deleteForm" method="post" th:action="@{/delete-shipping-rate}">
 
     <div class=" justify-content-center mb-2 mt-2 ">
-        <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" title="Delete Selected shippinRates"
-                type="submit"></button>
+        <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;"
+                title="Delete Selected shippinRates" type="submit"></button>
 
         <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/templates/shipping-rate/new-hipping-rate-form}"
            title="Add shippinRate"></a>&nbsp;&nbsp;
 
-        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a>
+        &nbsp;&nbsp;
 
-        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a>
+        &nbsp;&nbsp;
 
-        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}" title="Export to Excel"></a>&nbsp;&nbsp;
+        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}"
+           title="Export to Excel"></a>&nbsp;&nbsp;
     </div>
 
 
@@ -40,19 +43,26 @@
             <tr>
 
                 <th>Select</th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('id', 'ID')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
 
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('country', 'Country')}"></th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('country', 'Country')}">
+                </th>
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('state', 'State')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('state', 'State')}">
+                </th>
 
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('rate', 'Rate')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('rate', 'Rate')}">
+                </th>
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('days', 'Days')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('days', 'Days')}">
+                </th>
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('codSpupport', 'COD Spupport')}"></th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('codSpupport', 'COD Spupport')}">
+                </th>
 
                 <th>Edit</th>
 
@@ -66,8 +76,8 @@
 
 
                 <td class="text-center" style="width: 40px;">
-                    <input class="form-check-input delete-checkbox " id="flexCheckDefault" name="selectedForDelete"
-                           th:value="${ShippingRate.id}" type="checkbox">
+                    <input class="form-check-input delete-checkbox " id="flexCheckDefault"
+                           name="selectedForDelete" th:value="${ShippingRate.id}" type="checkbox">
                 </td>
 
 
@@ -82,15 +92,15 @@
                 <td th:text="${ShippingRate.days}"></td>
 
 
-                <td class="text-center"  style="width: 100px;">
-                    <a class="fas fa-check-circle px-2 icon-green " th:href="@{'/shipping-rate/' + ${ShippingRate.getId} +'/enable/false' } "
-                       th:if="${ShippingRate.codSupported == true}"
-                       title="Disable brand"></a>
+                <td class="text-center" style="width: 100px;">
+                    <a class="fas fa-check-circle px-2 icon-green "
+                       th:href="@{'/shipping-rate/' + ${ShippingRate.getId} +'/enable/false' } "
+                       th:if="${ShippingRate.codSupported == true}" title="Disable brand"></a>
                     <!--                                                      &nbsp;-->
                     <!--                                                      &nbsp;-->
-                    <a class="fas fa-circle px-2 icon-red" th:href="@{'/shipping-rate/' + ${ShippingRate.getId} +'/enable/true' }"
-                       th:if="${ShippingRate.codSupported == false}"
-                       title="Enable brand"></a>
+                    <a class="fas fa-circle px-2 icon-red"
+                       th:href="@{'/shipping-rate/' + ${ShippingRate.getId} +'/enable/true' }"
+                       th:if="${ShippingRate.codSupported == false}" title="Enable brand"></a>
 
                 </td>
 
@@ -105,9 +115,8 @@
 
                     <a class="fas fa-trash px-2 icon-red delete-confirmation"
                        th:href="@{'/delete-shipping-rate/' + ${ShippingRate.getId}}"
-                       th:id="${ShippingRate.getId}"
-
-                       title="Delete shipping rate"></a></td>
+                       th:id="${ShippingRate.getId}" title="Delete shipping rate"></a>
+                </td>
             </tr>
 
             </tbody>
@@ -118,12 +127,12 @@
 </form>
 
 
-<div th:replace="~{support/fragments/standerd/paginate::content}"></div>
+<div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
 
 
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
-<div th:replace="~{support/fragments::modal}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
 
 <script type="text/javascript">

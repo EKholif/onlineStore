@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -10,20 +10,17 @@
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <div class="container-fluid">
 
 
-    <form th:action="@{${saveChanges}}" th:object="${product}" method="post"
-
-          enctype="multipart/form-data" onsubmit="return check_unique_product(this);">
+    <form enctype="multipart/form-data" method="post" onsubmit="return check_unique_product(this);" th:action="@{${saveChanges}}"
+          th:object="${product}">
         <input type="hidden" id="id" name="id" th:value="${id}"/>
-<!--        <input type="hidden" th:field="*{product.id}" /> <input-->
-        <div
-            th:if="${product.category != null}" type="hidden" id="categoryId"
-            th:value="${product.category.id}" />
+        <!--        <input type="hidden" th:field="*{product.id}" /> <input-->
+        <div id="categoryId" th:if="${product.category != null}" th:value="${product.category.id}" type="hidden"/>
 
         <div>
             <!-- Nav tabs -->
@@ -50,7 +47,8 @@
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab">
+                    <button class="nav-link" data-bs-target="#shipping" data-bs-toggle="tab" role="tab"
+                            type="button">
                         Shipping
                     </button>
                 </li>
@@ -62,20 +60,20 @@
             <div class="tab-content">
 
                 <div class="tab-pane active" id="overview" role="tabpanel">
-                    <div th:replace="~{products/fregment-edit/overview-fregment::content}"></div>
+                    <div th:replace="~{products/fragment-edit/overview-fragment::content}"></div>
                 </div>
 
                 <div class="tab-pane" id="description" role="tabpanel">
-                    <div th:replace="~{products/fregment-edit/discription-fregment::content}"></div>
+                    <div th:replace="~{products/fragment-edit/discription-fragment::content}"></div>
                 </div>
 
                 <div class="tab-pane" id="images" role="tabpanel">
-                    <div th:replace="~{products/fregment-edit/products-image-fregment::content}"></div>
+                    <div th:replace="~{products/fragment-edit/products-image-fragment::content}"></div>
                 </div>
 
-                <div class="tab-pane" id="details" role="tabpanel"  aria-required="false" >
+                <div aria-required="false" class="tab-pane" id="details" role="tabpanel">
 
-                    <div th:replace="~{products/fregment-edit/details-fregment::content}"></div>
+                    <div th:replace="~{products/fragment-edit/details-fragment::content}"></div>
 
                     <div class="p-5">
                         <button class="btn btn-primary " type="button" onclick="addExtraDetails()">Add More</button>
@@ -83,12 +81,12 @@
                 </div>
 
                 <div class="tab-pane" id="shipping" role="tabpanel">
-                    <div th:replace="~{products/fregment-edit/shipping-fregment::content}"></div>
+                    <div th:replace="~{products/fragment-edit/shipping-fragment::content}"></div>
                 </div>
 
             </div>
 
-            <div th:replace="~{support/fragments/standerd/save-and-rest-button::content}"></div>
+            <div th:replace="~{support/fragments/standard/form_fragments :: save_reset_buttons}"></div>
         </div>
     </form>
 
@@ -96,9 +94,9 @@
 </div>
 
 
-<div th:replace="~{support/fragments::modal}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 <script type="text/javascript" th:src="@{/js/common_form.js}"></script>
 
@@ -121,7 +119,6 @@
         getCategories();
 
 
-
         dropdownBrands.change(function () {
             getCategories();
 
@@ -136,12 +133,12 @@
         url = brandModuleURL + "/" + brandId + "/category";
 
         $.get(url)
-            .done(function(responseJson) {
-                $.each(responseJson, function(index, category) {
+            .done(function (responseJson) {
+                $.each(responseJson, function (index, category) {
                     $("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
                 });
             })
-            .fail(function() {
+            .fail(function () {
                 $("<option>").val("").text("Failed to load categories").appendTo(dropdownCategories);
             });
 
@@ -185,4 +182,5 @@
 
 </script>
 </body>
+
 </html>

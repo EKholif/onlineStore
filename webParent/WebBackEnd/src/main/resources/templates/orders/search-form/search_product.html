@@ -2,15 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 <body>
 	<div class="container-fluid">
 		<div>
-			<form th:action="@{/orders/search-form/search_product}" method="post"
-				class="form-inline my-2">
-				<input type="search" required class="form-control mr-sm-2"
-					name="keyword" th:value="${keyword}" placeholder="product name" />
+            <form class="form-inline my-2" method="post" th:action="@{/orders/search-form/search_product}">
+                <input class="form-control mr-sm-2" name="keyword" placeholder="product name" required th:value="${keyword}"
+                       type="search"/>
 				<input type="submit" class="btn btn-outline-success" value="Search" />
 			</form>
 		</div>
@@ -20,7 +19,7 @@
 				<div class="col">
 					<div>
 						<a href="" class="linkProduct" th:pid="${product.id}"> <img
-							th:src="@{${product.getImagePath()}}" height="150"> <br />
+                                height="150" th:src="@{${product.getImagePath()}}"> <br/>
 							<b th:id="'pname' + ${product.id}">[[${product.shortName}]]</b>
 						</a>
 					</div>
@@ -28,7 +27,7 @@
 			</th:block>
 		</div>
 		<div th:replace="~{orders/modal_fragments::content}"></div>
-		<nav th:replace="~{support/fragments/standerd/paginate::content}"></nav>
+        <nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
 	</div>
 
 	<script th:src="@{/js/common_form.js}"></script>

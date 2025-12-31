@@ -1,6 +1,5 @@
 package frontEnd.review.vote;
 
-
 import com.onlineStoreCom.entity.Review.Review;
 import com.onlineStoreCom.entity.Review.ReviewVote;
 import com.onlineStoreCom.entity.customer.Customer;
@@ -15,32 +14,34 @@ import java.util.NoSuchElementException;
 @Service
 @Transactional
 public class ReviewVoteService {
-	
+
 	@Autowired
 	private ReviewRepository reviewRepo;
-	@Autowired private ReviewVoteRepository voteRepo;
-	
+    @Autowired
+    private ReviewVoteRepository voteRepo;
+
 	public VoteResult undoVote(ReviewVote vote, Integer reviewId, VoteType voteType) {
 		voteRepo.delete(vote);
-		reviewRepo.updateVoteCount(reviewId);
+        // [AG-TEN-RISK-001] Pass TenantID for secure update
+        reviewRepo.updateVoteCount(reviewId, com.onlineStoreCom.tenant.TenantContext.getTenantId());
 		Integer voteCount = reviewRepo.getVoteCount(reviewId);
-		
+
 		return VoteResult.success("You have unvoted " + voteType + " that review.", voteCount);
 	}
-	
+
 	public VoteResult doVote(Integer reviewId, Customer customer, VoteType voteType) {
 		Review review = null;
-		
+
 		try {
 			review = reviewRepo.findById(reviewId).get();
 		} catch (NoSuchElementException ex) {
 			return VoteResult.fail("The review ID " + reviewId + " no longer exists.");
 		}
-		
-		ReviewVote vote = voteRepo.findByReviewAndCustomer(reviewId, customer.getId());
-		
-		if (vote != null) {
-			if (vote.isUpvoted() && voteType.equals(VoteType.UP) || 
+
+        ReviewVote vote = voteRepo.findByReviewAndCustomer(reviewId, customer.getId());
+
+        if (vote != null) {
+            if (vote.isUpvoted() && voteType.equals(VoteType.UP) ||
 					vote.isDownvoted() && voteType.equals(VoteType.DOWN)) {
 				return undoVote(vote, reviewId, voteType);
 			} else if (vote.isUpvoted() && voteType.equals(VoteType.DOWN)) {
@@ -52,8 +53,8 @@ public class ReviewVoteService {
 			vote = new ReviewVote();
 			vote.setCustomer(customer);
 			vote.setReview(review);
-			
-			if (voteType.equals(VoteType.UP)) {
+
+            if (voteType.equals(VoteType.UP)) {
 				vote.voteUp();
 			} else {
 				vote.voteDown();
@@ -64,26 +65,26 @@ public class ReviewVoteService {
 		voteRepo.save(vote);
 		System.out.println(" \uD83D\uDD25 test Saved vote ID: \uD83D\uDD25  " + vote.getId());
 
-
-		reviewRepo.updateVoteCount(reviewId);
+        // [AG-TEN-RISK-001] Pass TenantID for secure update
+        reviewRepo.updateVoteCount(reviewId, com.onlineStoreCom.tenant.TenantContext.getTenantId());
 		Integer voteCount = reviewRepo.getVoteCount(reviewId);
-		
-		return VoteResult.success("You have successfully voted " + voteType + " that review.", 
+
+        return VoteResult.success("You have successfully voted " + voteType + " that review.",
 				voteCount);
 	}
-	
-	public void markReviewsVotedForProductByCustomer(List<Review> listReviews, Integer productId,
-													 Integer customerId) {
+
+    public void markReviewsVotedForProductByCustomer(List<Review> listReviews, Integer productId,
+                                                     Integer customerId) {
 		List<ReviewVote> listVotes = voteRepo.findByProductAndCustomer(productId, customerId);
-		
-		for (ReviewVote vote : listVotes) {
+
+        for (ReviewVote vote : listVotes) {
 			Review votedReview = vote.getReview();
-			
-			if (listReviews.contains(votedReview)) {
+
+            if (listReviews.contains(votedReview)) {
 				int index = listReviews.indexOf(votedReview);
 				Review review = listReviews.get(index);
-				
-				if (vote.isUpvoted()) {
+
+                if (vote.isUpvoted()) {
 					review.setUpvotedByCurrentCustomer(true);
 				} else if (vote.isDownvoted()) {
 					review.setDownvotedByCurrentCustomer(true);

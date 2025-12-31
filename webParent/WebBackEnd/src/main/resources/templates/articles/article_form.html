@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
 <body>
 <div class="container-fluid">
     <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
     <h2 class="text-center">[[${pageTitle}]]</h2>
-    <div th:replace="~{support/fragments/standerd/search::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
-    <form method="post" style="width: 90%; margin: 0 auto" th:action="@{/articles/save}"
-          th:object="${article}">
+    <form method="post" style="width: 90%; margin: 0 auto" th:action="@{/articles/save}" th:object="${article}">
         <input th:field="*{id}" type="hidden"/>
         <div class="border border-secondary rounded p-3">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Title:</label>
                 <div class="col-sm-10">
-                    <input class="form-control" maxlength="256" minlength="5" required th:field="*{title}" type="text"/>
+                    <input class="form-control" maxlength="256" minlength="5" required th:field="*{title}"
+                           type="text"/>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Alias:</label>
                 <div class="col-sm-10">
-                    <input class="form-control" maxlength="500" minlength="5" placeholder="If leaved empty, default alias will be same as title with spaces replaced by dashes" th:field="*{alias}"
-                           type="text"/>
+                    <input class="form-control" maxlength="500" minlength="5"
+                           placeholder="If leaved empty, default alias will be same as title with spaces replaced by dashes"
+                           th:field="*{alias}" type="text"/>
                 </div>
             </div>
 
@@ -51,17 +53,14 @@
                 </div>
             </div>
 
-            <div class="text-center">
-                <input class="btn btn-primary m-3" type="submit" value="Save"/>
-                <input class="btn btn-secondary" id="buttonCancel" type="button" value="Cancel"/>
-            </div>
+            <div th:replace="~{support/fragments/standard/form_fragments :: save_reset_buttons}"></div>
         </div>
     </form>
 
 
-    <div th:replace="~{support/fragments/standerd/modal-dialog::content}"/>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
-    <div th:replace="~{support/fragments/standerd/footer::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 </div>
 <script type="text/javascript">
@@ -70,4 +69,5 @@
 </script>
 <script th:src="@{/js/common_form.js}"></script>
 </body>
+
 </html>

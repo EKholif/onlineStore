@@ -22,7 +22,7 @@ public class ArticleController {
     @Autowired
     private ArticleService service;
 
-    @GetMapping("//articles")
+    @GetMapping("/articles")
     public String listFirstPage(Model model) {
         return defaultRedirectURL;
     }

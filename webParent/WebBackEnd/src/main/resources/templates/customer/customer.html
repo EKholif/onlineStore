@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -13,24 +12,27 @@
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <form id="deleteForm" method="post" th:action="@{/deleteCustomers}">
 
 
     <div class=" justify-content-center mb-2 mt-2 ">
-        <button class="fas fa-user-minus fa-2x icon-red  " style="border: none; background: none;" title="Delete Selected Users"
-                type="submit"></button>
+        <button class="fas fa-user-minus fa-2x icon-red  " style="border: none; background: none;"
+                title="Delete Selected Users" type="submit"></button>
 
-        <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/customer/new-customer-form}" title="Add User"></a>&nbsp;&nbsp;
+        <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/customer/new-customer-form}"
+           title="Add User"></a>&nbsp;&nbsp;
 
         <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/customer/export/csv}" title="Export to CSV"></a>
         &nbsp;&nbsp;
 
-        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/customer/export/pdf}" title="Export to PDF"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/customer/export/pdf}" title="Export to PDF"></a>
+        &nbsp;&nbsp;
 
-        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/customer/export/excel}" title="Export to Excel"></a>&nbsp;&nbsp;
+        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/customer/export/excel}"
+           title="Export to Excel"></a>&nbsp;&nbsp;
     </div>
 
 
@@ -43,16 +45,24 @@
         <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered ">
             <thead class="table-dark ">
             <tr>
-              <th>Select</th>
+                <th>Select</th>
 
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('id', 'ID')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
                 <th>image</th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant  ('firstName', 'Name')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('email', 'Email')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('country', 'Country')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('city', 'City')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('phoneNumber', 'Phone Number')}"></th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('firstName', 'Name')}">
+                </th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('email', 'Email')}">
+                </th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('country', 'Country')}">
+                </th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('city', 'City')}">
+                </th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('phoneNumber', 'Phone Number')}">
+                </th>
 
                 <th>Enabled</th>
                 <th>Edit</th>
@@ -66,13 +76,14 @@
             <tr th:each="customer: ${customer}">
 
 
-                <td><input class="form-check-input " id="flexCheckDefault" name="selectedModels" th:value="${customer.id}"
-                           type="checkbox"></td>
+                <td><input class="form-check-input " id="flexCheckDefault" name="selectedModels"
+                           th:value="${customer.id}" type="checkbox"></td>
 
                 <td th:text="${customer.getId()}"></td>
 
                 <td>
-                    <span class="fas fa-user  fa-fade fa-2x icon-golden " th:if="${customer.image == null}"></span>
+                            <span class="fas fa-user  fa-fade fa-2x icon-golden "
+                                  th:if="${customer.image == null}"></span>
                     <img class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"
                          th:if="${customer.image != null}" th:src=" @{${customer.getImagePath()}}"/>
                 </td>
@@ -86,28 +97,25 @@
                 <td th:text="${customer.phoneNumber}"></td>
 
 
-
                 <td>
-                    <a class="fas fa-check-circle px-2 icon-green " th:href="@{'/customer/' + ${customer.id} +'/enable/false' } "
-                       th:if="${customer.enabled == true}"
-                       title="Disable User"></a>
+                    <a class="fas fa-check-circle px-2 icon-green "
+                       th:href="@{'/customer/' + ${customer.id} +'/enable/false' } "
+                       th:if="${customer.enabled == true}" title="Disable User"></a>
                     <!--                                                      &nbsp;-->
-                    <a class="fas fa-circle px-2 icon-red" th:href="@{'/customer/' + ${customer.id} +'/enable/true' }"
+                    <a class="fas fa-circle px-2 icon-red"
+                       th:href="@{'/customer/' + ${customer.id} +'/enable/true' }"
                        th:if="${customer.enabled == false}" title="Enable User"></a>
 
                 </td>
 
                 <td>
-                    <a class="fas fa-edit px-2 icon-green"
-                       th:href="@{'/customer/edit/' + ${customer.getId()}}"
+                    <a class="fas fa-edit px-2 icon-green" th:href="@{'/customer/edit/' + ${customer.getId()}}"
                        title="Edit User"></a>
                 </td>
 
 
                 <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                       th:href="@{'/customer/delete/' + ${customer.getId()}}"
-                       th:id="${customer.id}"
-
+                       th:href="@{'/customer/delete/' + ${customer.getId()}}" th:id="${customer.id}"
                        title="Delete User"></a></td>
             </tr>
             </tbody>
@@ -117,13 +125,13 @@
 </div>
 
 
-                    <div  th:replace="~{support/fragments/standerd/paginate::content}"></div>
+<div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
 
 
-<div th:replace="~{support/fragments::modal}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
 
- <div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 
 <script th:src="@{/js/common.js}" type="text/javascript">
@@ -137,4 +145,5 @@
 
 
 </body>
+
 </html>

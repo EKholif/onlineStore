@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -11,7 +11,7 @@
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <form th:action="@{/categories/deleteCategories}" method="post" id="deleteForm">
@@ -26,7 +26,8 @@
         <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/categories/export/csv}" title="Export to CSV"></a>
         &nbsp;&nbsp;
 
-        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/categories/export/pdf}" title="Export to PDF"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/categories/export/pdf}" title="Export to PDF"></a>
+        &nbsp;&nbsp;
 
         <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/categories/export/excel}"
            title="Export to Excel"></a>&nbsp;&nbsp;
@@ -39,18 +40,27 @@
 
 
     <div class="full-details  less-details">
-        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered " id="employeeTable">
+        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered "
+               id="employeeTable">
             <thead class="table-dark ">
             <tr>
 
                 <th>Select</th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('id', 'ID')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
                 <th>image</th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('name', 'Name')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('alias', 'Alias')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('parent', 'Parent')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('children', 'Children')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant('status', 'Status')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Name')}">
+                </th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('alias', 'Alias')}">
+                </th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('parent', 'Parent')}">
+                </th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('children', 'Children')}">
+                </th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('status', 'Status')}">
+                </th>
                 <th></th>
                 <th></th>
             </tr>
@@ -68,7 +78,8 @@
                 <td th:text="${category.id}"></td>
 
                 <td>
-                    <span th:if="${category.getImage.isEmpty()}" class="fas fa-user  fa-fade fa-2x icon-golden "></span>
+                            <span class="fas fa-user  fa-fade fa-2x icon-golden "
+                                  th:if="${category.getImage.isEmpty()}"></span>
                     <img th:if="${category.image != null && !category.getImage.isEmpty() }"
                          th:src=" @{${category.getCatImagePath()}}" class="rounded mx-auto  d-block"
                          style="width: 40px; height: 40px;"/>
@@ -108,15 +119,12 @@
 
                 <td>
                     <a class="fas fa-edit px-2 icon-green"
-                       th:href="@{'/categories/edit/' + ${category.getId()}}"
-                       title="Edit Category"></a>
+                       th:href="@{'/categories/edit/' + ${category.getId()}}" title="Edit Category"></a>
                 </td>
 
 
                 <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                       th:href="@{'/delete-category/' + ${category.getId()}}"
-                       th:id="${category.id}"
-
+                       th:href="@{'/delete-category/' + ${category.getId()}}" th:id="${category.id}"
                        title="Delete Category"></a></td>
             </tr>
 
@@ -128,12 +136,12 @@
     </div>
 </form>
 
-                          <div  th:replace="~{support/fragments/standerd/paginate::content}"></div>
+<div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
 
 
-<div th:replace="~{support/fragments/standerd/modal::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
- <div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 
 <script type="text/javascript" th:src="@{/js/commonCat.js}"></script>

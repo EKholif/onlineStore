@@ -1,17 +1,16 @@
 package com.onlineStore.admin.test.counteryTest.userTest.tenant;
 
-
-
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStoreCom.entity.product.Product;
+import com.onlineStoreCom.tenant.TenantContext;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNull;
-
-import java.util.List;
 
 public class TenantContextTest {
 
@@ -41,6 +40,7 @@ public class TenantContextTest {
         Long tenantId = TenantContext.getTenantId();
         assertThat(tenantId).isNull();
     }
+
     @Test
     public void testTenantContextSetAndClear() {
         Long tenantId = 123L;
@@ -80,8 +80,10 @@ public class TenantContextTest {
         TenantContext.setTenantId(tenantId);
 
         // منتجات من tenants مختلفين
-        Product p1 = new Product(); p1.setTenantId(111L);
-        Product p2 = new Product(); p2.setTenantId(222L);
+        Product p1 = new Product();
+        p1.setTenantId(111L);
+        Product p2 = new Product();
+        p2.setTenantId(222L);
 
         List<Product> allProducts = List.of(p1, p2);
 

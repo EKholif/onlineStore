@@ -1,8 +1,9 @@
 package com.onlineStore.admin.tenantTest;
 
-import com.onlineStore.admin.security.tenant.TenantContext;
+
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

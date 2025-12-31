@@ -1,6 +1,5 @@
 package frontEnd.review;
 
-
 import com.onlineStoreCom.entity.Review.Review;
 import com.onlineStoreCom.entity.product.Product;
 import org.junit.jupiter.api.Test;
@@ -21,67 +20,68 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 
 public class ReviewRepositoryTests {
-	
+
 	@Autowired
 	private ReviewRepository repo;
-	
+
 	@Test
 	public void testFindByCustomerNoKeyword() {
 		Integer customerId = 163;
 		Pageable pageable = PageRequest.of(1, 5);
-		
+
 		Page<Review> page = repo.findByCustomer(customerId, pageable);
 		long totalElements = page.getTotalElements();
-		
-		assertThat(totalElements).isGreaterThan(1);		
+
+        assertThat(totalElements).isGreaterThan(1);
 	}
-	
+
 	@Test
 	public void testFindByCustomerWithKeyword() {
         Integer customerId = 163;
         String keyword = "SanDisk";
 		Pageable pageable = PageRequest.of(1, 5);
-		
+
 		Page<Review> page = repo.findByCustomer(customerId, keyword, pageable);
 		long totalElements = page.getTotalElements();
-		
-		assertThat(totalElements).isGreaterThan(0);		
+
+        assertThat(totalElements).isGreaterThan(0);
 	}
-	
+
 	@Test
 	public void testFindByCustomerAndId() {
         Integer customerId = 163;
 		Integer reviewId = 4;
-		
-		Review review = repo.findByCustomerAndId(customerId, reviewId);
+
+        Review review = repo.findByCustomerAndId(customerId, reviewId);
 		assertThat(review).isNotNull();
 	}
-	
-	@Test
+
+    @Test
 	public void testFindByProduct() {
 		Product product = new Product(23);
 		Pageable pageable = PageRequest.of(0, 3);
 		Page<Review> page = repo.findByProduct(product, pageable);
-		
-		assertThat(page.getTotalElements()).isGreaterThan(1);
-		
-		List<Review> content = page.getContent();
+
+        assertThat(page.getTotalElements()).isGreaterThan(1);
+
+        List<Review> content = page.getContent();
 		content.forEach(System.out::println);
 	}
-	
-	@Test
+
+    @Test
 	public void testCountByCustomerAndProduct() {
         Integer customerId = 163;
 		Integer productId = 1;
 		Long count = repo.countByCustomerAndProduct(customerId, productId);
-		
-		assertThat(count).isEqualTo(1);
+
+        assertThat(count).isEqualTo(1);
 	}
 
 	@Test
 	public void testUpdateVoteCount() {
         Integer reviewId = 23;
-		repo.updateVoteCount(reviewId);
+        // [AG-TEN-RISK-001] Provide TenantID for test isolation checks
+        repo.updateVoteCount(reviewId, 1L); // Assuming Tenant 1 for tests
 
         Optional<Review> reviewOpt = repo.findById(reviewId);
         if (reviewOpt.isPresent()) {

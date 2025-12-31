@@ -1,13 +1,13 @@
 package com.onlineStore.admin.test.counteryTest.userTest;
 
 import com.onlineStore.admin.product.repository.ProductRepository;
-import com.onlineStore.admin.usersAndCustomers.users.UserRepository;
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.security.tenant.TenantService;
+import com.onlineStore.admin.usersAndCustomers.users.UserRepository;
 import com.onlineStore.admin.usersAndCustomers.users.role.RoleRepository;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.users.User;
+import com.onlineStoreCom.tenant.TenantContext;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,17 +53,17 @@ class UserRepositoryTest {
         assertThat(savedRole.getId()).isGreaterThan(0);
 
     }
+
     @Test
     public void tateFirstUser() {
-     User user = repo.findByEmail("aecllc.bnk@gmail.com");
+        User user = repo.findByEmail("aecllc.bnk@gmail.com");
         System.out.println(user.getId());
-     user.setPassword("");
+        user.setPassword("");
         System.out.println(user.getPassword());
     }
 
     @Test
-    public void testCreateUsers()
-     {
+    public void testCreateUsers() {
         User userSalesperson = new User("ehab.bts@gmail.com", "a0000", "ehab", "kholif");
         userSalesperson.addRole(roleRepository.getReferenceById(2));
 
@@ -76,28 +76,25 @@ class UserRepositoryTest {
         User userAssistant = new User("eh.bts@gmail.com", "000a0", "testUserTwo", "kholif");
         userAssistant.addRole(roleRepository.getReferenceById(5));
 
-         testUser();
+        testUser();
 
         repo.saveAllAndFlush(List.of(userSalesperson, userEditor, userShipper, userAssistant));
 
     }
 
+    @Test
+    public void testListAllUser() {
 
-
-
-
-        @Test
-       public void testListAllUser(){
-
-        Iterable<User> listUsers =repo.findAll();
-            for ( User user:listUsers) {
-                System.out.println("fffffffffff" +  user.getTenantId());
-            }  ;
+        Iterable<User> listUsers = repo.findAll();
+        for (User user : listUsers) {
+            System.out.println("fffffffffff" + user.getTenantId());
+        }
+        ;
 
     }
 
     @Test
-    public void testGetUserById(){
+    public void testGetUserById() {
 
         Long tenantId = 8247009068765685744L;
         TenantContext.setTenantId(tenantId);
@@ -109,32 +106,25 @@ class UserRepositoryTest {
         }
     }
 
-
-
-
-
     @Test
-    public void testUpdateUser(){
+    public void testUpdateUser() {
         User userAdmin = repo.findById(1).get();
         userAdmin.setEnable(true);
         userAdmin.setPassword("");
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodePassword= passwordEncoder.encode(userAdmin.getPassword());
+        String encodePassword = passwordEncoder.encode(userAdmin.getPassword());
         userAdmin.setPassword(encodePassword);
         repo.saveAndFlush(userAdmin);
         System.out.println(userAdmin);
     }
 
-
-
     @Test
-    public void testCountById(){
-        Integer id =22;
+    public void testCountById() {
+        Integer id = 22;
         Integer countBYId = repo.countById(id);
         assertThat(countBYId).isNotNull().isGreaterThan(0);
 
     }
-
 
     @Test
     public void testCreateTestUser() {
@@ -143,6 +133,7 @@ class UserRepositoryTest {
         User savedRole = repo.saveAndFlush(userAdmin);
         assertThat(savedRole.getId()).isGreaterThan(0);
     }
+
     @Test
     public void testDeleteUser() {
 
@@ -176,17 +167,16 @@ class UserRepositoryTest {
     @Test
     public void testFindUserByEmail() {
         User UserByEmail = repo.findByEmail("ehabffkholif@gmail.com");
-        boolean user = (UserByEmail==null);
+        boolean user = (UserByEmail == null);
         System.out.println(user);
     }
 
     @Test
-    public void  testNewid (){
+    public void testNewid() {
         User newUser = new User();
         System.out.println(newUser.getId());
 
     }
-
 
     @Test
     public void testUserExistsByEmail() {
@@ -195,43 +185,40 @@ class UserRepositoryTest {
     }
 
     @Test
-    public void testFindUserById () {
+    public void testFindUserById() {
         try {
             User userFindById = repo.findById(2).get();
             System.out.println(userFindById);
 
-        }catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
 
             System.out.println("null");
         }
     }
 
     @Test
-    public void testEnableUser(){
+    public void testEnableUser() {
         Integer id = 115;
-        repo.enableUser(id,true);
+        repo.enableUser(id, true);
     }
 
     @Test
-    public void testGetUserImagePath(){
+    public void testGetUserImagePath() {
 
         User user = repo.getReferenceById(3);
 
-        System.out.println( user.getImagePath());
-        System.out.println( user.getUser_bio());
-
-
+        System.out.println(user.getImagePath());
+        System.out.println(user.getUser_bio());
 
     }
 
     @Test
-    public void testUnitBean(){
+    public void testUnitBean() {
         User user = repo.getReferenceById(3252);
-        User userAdmin =new User();
+        User userAdmin = new User();
         userAdmin.addRole(roleRepository.getReferenceById(1));
 
-
-        BeanUtils.copyProperties( userAdmin,user, "id");
+        BeanUtils.copyProperties(userAdmin, user, "id");
         System.out.println(userAdmin.getRoles());
         System.out.println(user.getRoles());
     }
@@ -243,33 +230,30 @@ class UserRepositoryTest {
     }
 
     @Test
-    public void testPaging(){
+    public void testPaging() {
         int pageNumber = 1;
         int pageSize = 4;
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<User> page = repo.findAll(pageable);
-        List<User> contant= page.getContent();
+        List<User> contant = page.getContent();
         contant.forEach(System.out::println);
 
-
     }
 
     @Test
-    public void testUserServPageing(){
-   String keyword = "bruce";
-   int pageNum = 0;
-   int pagSize = 6;
-   Pageable pageable =PageRequest.of(pageNum,pagSize);
-   Page<User> page=repo.findAll(keyword, pageable);
-   List<User>listUsers=page.getContent();
+    public void testUserServPageing() {
+        String keyword = "bruce";
+        int pageNum = 0;
+        int pagSize = 6;
+        Pageable pageable = PageRequest.of(pageNum, pagSize);
+        Page<User> page = repo.findAll(keyword, pageable);
+        List<User> listUsers = page.getContent();
         System.out.println(listUsers);
 
-
-
-
     }
+
     @Test
-    public void testUserSeachPageing(){
+    public void testUserSeachPageing() {
 
         Integer id = 20;
         User user = repo.getReferenceById(20);
@@ -281,19 +265,20 @@ class UserRepositoryTest {
     }
 
     @Test
-    public void testUser(){
+    public void testUser() {
 
-        Iterable<User> listUsers =repo.findAll();
+        Iterable<User> listUsers = repo.findAll();
 
-        for (User user:listUsers) {
+        for (User user : listUsers) {
             System.out.println(user.getId() + " --" + user.getfirstName() + "-- "
-                    + user.getEmail()+"--"+user.isEnable()+"--"+user.getPassword());
+                    + user.getEmail() + "--" + user.isEnable() + "--" + user.getPassword());
         }
-}
-    @Test
-    public void testCreateUser(){
+    }
 
-        User user=  new User();
+    @Test
+    public void testCreateUser() {
+
+        User user = new User();
         String encodedPassword = "'$2a$10$1pu/o2S4kwAQ3aFWvIAW9eEnbVgOq0/SebsHLe7BsyZYJ9mSOdRpG'";
         user.setFirstName("Ehab");
         user.setLastName("Kholif");
@@ -302,10 +287,8 @@ class UserRepositoryTest {
         user.addRole(roleRepository.getReferenceById(1));
         user.setTenantId(TenantService.createTenant());
 
-         repo.saveAndFlush(user);
-
+        repo.saveAndFlush(user);
 
     }
-
 
 }

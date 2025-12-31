@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<!-- Generic Column Link (Sortable Header) -->
+<!-- Usage: <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th> -->
+<th th:fragment="column_link(fieldName, columnLabel)">
+    <a class="text-white"
+       th:href="@{${moduleURL} + ${currentPage} + '?sortField=' + ${fieldName} + '&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyWord != null ? '&keyWord=' + keyWord : ''}}">
+        [[${columnLabel}]]
+    </a>
+    <span th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"
+          th:if="${sortField == fieldName}"></span>
+</th>
+
+<!-- Column Link with Tag and Category support (Orders/Advanced) -->
+<!-- Usage: <th th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('id', 'ID', 'none')}"></th> -->
+<th th:fragment="column_link_tag(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
+    <a class="text-white"
+       th:href="@{${moduleURL} + ${currentPage} + '?sortField=' + ${fieldName} + '&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''} + ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+        [[${columnLabel}]]
+    </a>
+    <span th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"
+          th:if="${sortField == fieldName}"></span>
+</th>
+
+<!-- Page Link (Helper for Pagination) -->
+<!-- Usage: Internal use by pagination fragment -->
+<a class="page-link" th:fragment="page_link(pageNum, label)"
+   th:href="@{${moduleURL} + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyWord != null ? '&keyWord=' + keyWord : ''}}">[[${label}]]</a>
+
+<!-- Generic Pagination -->
+<!-- Usage: <nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav> -->
+<nav aria-label="Pagination" class="text-center flex mb-1" th:fragment="pagination">
+    <div th:if="${totalItems > 0}">
+            <span class="align-content-end">Showing [[${entityName}]] # [[${startCount}]] to [[${endCount}]] of
+                [[${totalItems}]]</span>
+    </div>
+    <div th:unless="${totalItems > 0}">
+        <span>No [[${entityName}]] Found</span>
+    </div>
+
+    <div th:if="${totalPages > 1}">
+        <ul class="pagination justify-content-center flex-wrap">
+            <li class="page-item" th:classappend="${currentPage == 1 ? 'disabled' : ''}">
+                <a th:replace="~{this :: page_link(1, 'First')}"></a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == 1 ? 'disabled' : ''}">
+                <a th:replace="~{this :: page_link(${currentPage > 1 ? currentPage - 1 : 1}, 'Previous')}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${currentPage == i ? 'active' : ''}"
+                th:each="i : ${#numbers.sequence(1, totalPages)}">
+                <a th:replace="~{this :: page_link(${i}, ${i})}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${currentPage == totalPages ? 'disabled' : ''}">
+                <a
+                        th:replace="~{this :: page_link(${currentPage < totalPages ? currentPage + 1 : totalPages}, 'Next')}"></a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == totalPages ? 'disabled' : ''}">
+                <a th:replace="~{this :: page_link(${totalPages}, 'Last')}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <p class="text-center">Copyright © 2025 GroupLink, Inc</p>
+</nav>
+
+</body>
+
+</html>

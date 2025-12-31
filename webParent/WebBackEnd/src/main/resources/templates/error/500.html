@@ -1,28 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
-    <title>500</title>
-
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
-    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/texteditor/richtext.min.css}"/>
-    <script type="text/javascript" th:src="@{/texteditor/jquery.richtext.js}"></script>
-
-    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-
-</head>
 <body>
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <div class="text-center icon-red   mt-3">
-<h2 class="fas fa-exclamation fa-5x  "> </h2>
+    <h2 class="fas fa-exclamation fa-5x  "></h2>
     <h2 class=" ">Error </h2>
 </div>
 <div th:replace="~{support/fragments/standerd/search::content}"></div>
@@ -36,8 +21,9 @@
     </div>
 
 
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 <script type="text/javascript" th:src="@{/js/common.js}"></script>
 </body>
+
 </html>

@@ -1,12 +1,12 @@
 package com.onlineStore.admin.setting;
 
 import com.onlineStore.admin.setting.repository.CurrencyRepository;
-import com.onlineStore.admin.setting.settingBag.GeneralSettingBag;
 import com.onlineStore.admin.setting.service.SettingService;
-import com.onlineStore.admin.security.tenant.TenantContext;
+import com.onlineStore.admin.setting.settingBag.GeneralSettingBag;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.setting.Setting;
 import com.onlineStoreCom.entity.setting.subsetting.Currency;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +33,6 @@ public class SettingController {
 
     private CurrencyRepository currencyRepo;
 
-
     @GetMapping("/settings")
     public String listAll(Model modal) {
 
@@ -49,7 +48,8 @@ public class SettingController {
     }
 
     @PostMapping("/settings/save_general")
-    public String saveGeneralSettings(@RequestParam("fileImage") MultipartFile multipartFile, HttpServletRequest request, RedirectAttributes ra) throws IOException {
+    public String saveGeneralSettings(@RequestParam("fileImage") MultipartFile multipartFile,
+                                      HttpServletRequest request, RedirectAttributes ra) throws IOException {
         GeneralSettingBag settingBag = service.getGeneralSettings();
 
         Long tenantId = TenantContext.getTenantId();
@@ -61,7 +61,6 @@ public class SettingController {
         updateSettingValuesFromForm(request, settingBag.list());
 
         ra.addFlashAttribute("message", "General settings have been saved.");
-
 
         return "redirect:/settings";
     }
@@ -111,7 +110,8 @@ public class SettingController {
         Long tenantId = TenantContext.getTenantId();
         for (Setting setting : mailServerSettings) {
             setting.setTenantId(tenantId);
-        };
+        }
+        ;
 
         updateSettingValuesFromForm(request, mailServerSettings);
 
@@ -120,13 +120,11 @@ public class SettingController {
         return "redirect:/settings#mailServer";
     }
 
-
     @PostMapping("/settings/save_mail_template")
     public String saveMailTemplateSetttings(HttpServletRequest request, RedirectAttributes ra) {
 
         List<Setting> mailTemplateSettings = service.getMailTemplateSettings();
         updateSettingValuesFromForm(request, mailTemplateSettings);
-
 
         ra.addFlashAttribute("message", "Mail Template have been saved");
 
@@ -143,7 +141,5 @@ public class SettingController {
 
         return "redirect:/settings#payment";
     }
-
-
 
 }

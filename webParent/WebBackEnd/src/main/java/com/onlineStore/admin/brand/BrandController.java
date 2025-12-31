@@ -1,6 +1,5 @@
 package com.onlineStore.admin.brand;
 
-
 import com.onlineStore.admin.brand.utility.BrandCsvExporter;
 import com.onlineStore.admin.brand.utility.BrandExcelExporter;
 import com.onlineStore.admin.brand.utility.BrandPdfExporter;
@@ -8,10 +7,10 @@ import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.category.services.PageInfo;
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,21 +37,20 @@ public class BrandController {
     public ModelAndView listAllUsers() {
         ModelAndView model = new ModelAndView("brands/brands");
 
-
         return listByPage(1, "name", "dsc", null);
     }
 
-
     @GetMapping("/brands/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum, @Param("sortField") String sortField, @Param("sortDir") String sortDir, @Param("keyWord") String keyWord) {
+    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum, @Param("sortField") String sortField,
+                                   @Param("sortDir") String sortDir, @Param("keyWord") String keyWord) {
 
         ModelAndView model = new ModelAndView("brands/brands");
         PageInfo pageInfo = new PageInfo();
 
         List<Brand> listByPage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
 
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "brands", sortField, sortDir, keyWord, pageNum, listByPage);
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "brands", sortField, sortDir,
+                keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "brands");
         return model;
@@ -62,22 +60,21 @@ public class BrandController {
     public ModelAndView newBrandForm() {
         ModelAndView model = new ModelAndView("brands/new-brands-form");
 
-
         List<Category> listCategory = categoryService.listUsedForForm();
         Brand brand = new Brand();
 
         model.addObject("label", " Category :");
         model.addObject("id", 0L);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected listName
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected
+        // listName
         return pagingAndSortingHelper.newForm(model, "brand", brand);
-
 
     }
 
-
     @PostMapping("/brands/save-brand")
-    public ModelAndView saveNewUCategory(@ModelAttribute Brand brand, RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+    public ModelAndView saveNewUCategory(@ModelAttribute Brand brand, RedirectAttributes redirectAttributes,
+                                         @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
         redirectAttributes.addFlashAttribute("message", "the brand has been saved successfully.  ");
 
         Long tenantId = TenantContext.getTenantId();
@@ -85,7 +82,6 @@ public class BrandController {
 
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-
 
             brand.setLogo(fileName);
             Brand savedBrand = service.saveBrand(brand);
@@ -104,10 +100,8 @@ public class BrandController {
 
     }
 
-
     @GetMapping("/brand/edit/{id}")
     public ModelAndView editCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
-
 
         try {
             ModelAndView model = new ModelAndView("/brands/new-brands-form");
@@ -116,10 +110,9 @@ public class BrandController {
 
             List<Category> listCategory = categoryService.listUsedForForm();
 
-
-            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected listName
+            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected
+            // listName
             return pagingAndSortingHelper.editForm(model, "brand", existCategory, id);
-
 
         } catch (CategoryNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
@@ -129,7 +122,9 @@ public class BrandController {
     }
 
     @PostMapping("/brands/save-edit-brand")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Brand brand, RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Brand brand,
+                                        RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile)
+            throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
 
@@ -155,7 +150,6 @@ public class BrandController {
         return new ModelAndView("redirect:/brands/brands");
     }
 
-
     @GetMapping("/brands/delete-brand/{id}")
     public ModelAndView deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 
@@ -177,13 +171,14 @@ public class BrandController {
         return new ModelAndView("redirect:/brands/brands");
     }
 
-
     @PostMapping("/delete-brands")
-    public ModelAndView deleteBrand(@RequestParam(name = "selectedForDelete", required = false) List<Integer> selectedForDelete, RedirectAttributes redirectAttributes) throws IOException, BrandNotFoundException, CategoryNotFoundException {
+    public ModelAndView deleteBrand(
+            @RequestParam(name = "selectedForDelete", required = false) List<Integer> selectedForDelete,
+            RedirectAttributes redirectAttributes)
+            throws IOException, BrandNotFoundException, CategoryNotFoundException {
 
         ModelAndView model = new ModelAndView("/brands/brands");
         redirectAttributes.addFlashAttribute("message", "the Brand ID: " + selectedForDelete + " has been Deleted");
-
 
         model.addObject("label", selectedForDelete);
 
@@ -195,7 +190,7 @@ public class BrandController {
         }
         return new ModelAndView("redirect:/brands/brands");
     }
-//
+    //
 
     @GetMapping("/brands/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
@@ -223,7 +218,3 @@ public class BrandController {
     }
 
 }
-
-
-
-

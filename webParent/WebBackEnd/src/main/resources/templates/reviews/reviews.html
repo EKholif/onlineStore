@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
 <body>
 <div class="container-fluid">
     <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
@@ -9,47 +10,49 @@
         <h2>Manage Reviews</h2>
     </div>
 
-    <div th:replace="~{support/fragments/standerd/search::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
     <div class="full-details">
-        <table
-                class="table table-bordered table-striped table-hover table-responsive-xl">
+        <table class="table table-bordered table-striped table-hover table-responsive-xl">
             <thead class="table-dark ">
             <tr>
-                <th th:replace="~{support/fragments/standerd/column_linkWithTag::contant('id', 'ID', 'none')}"/>
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('product', 'Product', 'none')}"/>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('id', 'ID', 'none')}"/>
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('customer', 'Customer', 'none')}"/>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('product', 'Product', 'none')}"/>
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('rating', 'Rating', 'none')}"/>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('customer', 'Customer', 'none')}"/>
                 <th
-                        th:replace="~{support/fragments/standerd/column_linkWithTag::contant('reviewTime', 'Review Time', 'none')}"/>
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('rating', 'Rating', 'none')}"/>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link_tag('reviewTime', 'Review Time', 'none')}"/>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="review : ${listReviews}">
                 <td>[[${review.id}]]</td>
-                <td><a
-                        class="link-detail-product"
-                        th:href="@{'/products/detail/' + ${review.product.id}}"> [[${review.product.shortName}]]
+                <td><a class="link-detail-product" th:href="@{'/products/detail/' + ${review.product.id}}">
+                    [[${review.product.shortName}]]
                 </a></td>
-                <td><a
-                        class="link-detail-customer"
-                        th:href="@{'/customers/detail/' + ${review.customer.id}}"> [[${review.customer.fullName}]]
-                </a></td>
+                <td>
+                    <a class="link-detail-customer" th:href="@{'/customers/detail/' + ${review.customer.id}}"
+                       th:if="${review.customer != null}">
+                        [[${review.customer.fullName}]]
+                    </a>
+                    <span class="text-secondary font-italic" th:unless="${review.customer != null}">Deleted
+                                Customer</span>
+                </td>
                 <td>[[${review.rating}]] <i class="far fa-star"></i></td>
                 <td>[[${review.reviewTime}]]</td>
-                <td><a
-                        class="fas fa-file-alt fa-2x icon-green link-detail-review"
-                        th:href="@{'/reviews/detail/' + ${review.id}}"
-                        title="View details of this review"></a> &nbsp;
-                    <div
-                            th:replace="~{support/fragments/format/edit :: content('review', '/reviews/edit/' + ${review.id})}"/>
+                <td><a class="fas fa-file-alt fa-2x icon-green link-detail-review"
+                       th:href="@{'/reviews/detail/' + ${review.id}}" title="View details of this review"></a>
                     &nbsp;
                     <div
-                            th:replace="~{support/fragments/format/delete :: content('review', ${review.id}, '/reviews/delete/' + ${review.id}, true)}"/>
+                            th:replace="~{support/fragments/standard/action_fragments :: edit('review', '/reviews/edit/' + ${review.id})}"/>
+                    &nbsp;
+                    <div
+                            th:replace="~{support/fragments/standard/action_fragments :: delete('review', ${review.id}, '/reviews/delete/' + ${review.id}, true)}"/>
                 </td>
             </tr>
             </tbody>
@@ -67,23 +70,22 @@
                 </div>
                 <div>
                     &nbsp; <span>[[${review.rating}]] <i class="far fa-star"></i></span>
-                    &nbsp; <a
-                        class="fas fa-file-alt fa-2x icon-green link-detail-review"
-                        th:href="@{'/reviews/detail/' + ${review.id}}"
-                        title="View details of this review"></a> &nbsp;
-                    <div
-                            th:replace="~{support/fragments/format/edit :: content('review', '/reviews/edit/' + ${review.id})}"/>
+                    &nbsp; <a class="fas fa-file-alt fa-2x icon-green link-detail-review"
+                              th:href="@{'/reviews/detail/' + ${review.id}}" title="View details of this review"></a>
                     &nbsp;
                     <div
-                            th:replace="~{support/fragments/format/delete :: content('review', ${review.id}, '/reviews/delete/' + ${review.id}, true)}"/>
+                            th:replace="~{support/fragments/standard/action_fragments :: edit('review', '/reviews/edit/' + ${review.id})}"/>
+                    &nbsp;
+                    <div
+                            th:replace="~{support/fragments/standard/action_fragments :: delete('review', ${review.id}, '/reviews/delete/' + ${review.id}, true)}"/>
                 </div>
             </div>
             <div>&nbsp;</div>
         </div>
     </div>
 
-    <div th:replace="~{orders/modal_fragments_confirm_modal::content}"></div>
-    <nav th:replace="~{support/fragments/standerd/paginate::content}"></nav>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+    <nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
 
 
     <div class="modal fade" id="xlargeModal">
@@ -98,7 +100,7 @@
         </div>
     </div>
 
-    <div th:replace="~{support/fragments/standerd/footer::content}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -10,7 +10,7 @@
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <div class="alert alert-success text-center" th:if="${message != null}">
@@ -25,8 +25,8 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link " data-bs-target="#general" data-bs-toggle="tab" id="general-tab"
-                        role="tab" type="button">General
+                <button class="nav-link " data-bs-target="#general" data-bs-toggle="tab" id="general-tab" role="tab"
+                        type="button">General
                 </button>
             </li>
 
@@ -37,8 +37,8 @@
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link" data-bs-target="#states" data-bs-toggle="tab" id="states-tab"
-                        role="tab" type="button">States
+                <button class="nav-link" data-bs-target="#states" data-bs-toggle="tab" id="states-tab" role="tab"
+                        type="button">States
                 </button>
             </li>
 
@@ -50,16 +50,14 @@
 
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" data-bs-target="#mail-template" data-bs-toggle="tab"
-                        id="mail-template-tab"
-                        role="tab" type="button">
+                        id="mail-template-tab" role="tab" type="button">
                     Mail Template
                 </button>
             </li>
 
             <li class="nav-item" role="presentation">
                 <button class="nav-link " data-bs-target="#payment-template" data-bs-toggle="tab"
-                        id="payment-template-tab"
-                        role="tab" type="button">
+                        id="payment-template-tab" role="tab" type="button">
                     payment Template
                 </button>
             </li>
@@ -71,27 +69,27 @@
         <div class="tab-content mt-3">
 
             <div class="tab-pane " id="general" role="tabpanel">
-                <div th:replace="~{settings/fregment-edit/general-fregment::content}"></div>
+                <div th:replace="~{settings/fragment-edit/general-fragment::content}"></div>
             </div>
 
             <div class="tab-pane" id="countries" role="tabpanel">
-                <div th:replace="~{settings/fregment-edit/countries-fregment::content}"></div>
+                <div th:replace="~{settings/fragment-edit/countries-fragment::content}"></div>
             </div>
 
             <div class="tab-pane" id="states" role="tabpanel">
-                <div th:replace="~{settings/fregment-edit/states-fregment::content}"></div>
+                <div th:replace="~{settings/fragment-edit/states-fragment::content}"></div>
             </div>
 
             <div aria-required="false" class="tab-pane" id="mail-server" role="tabpanel">
-                <div th:replace="~{settings/fregment-edit/mail-server-fregment::content}"></div>
+                <div th:replace="~{settings/fragment-edit/mail-server-fragment::content}"></div>
             </div>
 
             <div class="tab-pane active" id="mail-template" role="tabpanel">
-                <div th:replace="~{settings/fregment-edit/mail-templates-fregment::content}"></div>
+                <div th:replace="~{settings/fragment-edit/mail-templates-fragment::content}"></div>
             </div>
 
             <div class="tab-pane " id="payment-template" role="tabpanel">
-                <div th:replace="~{settings/fregment-edit/sitting-template/payment::content}"></div>
+                <div th:replace="~{settings/fragment-edit/setting-template/payment::content}"></div>
             </div>
 
         </div>
@@ -99,8 +97,8 @@
 </div>
 
 
-<div aria-atomic="true" aria-live="polite"
-     class="toast justify-content-center d-flex " data-delay="3000" role="alert">
+<div aria-atomic="true" aria-live="polite" class="toast justify-content-center d-flex " data-delay="3000"
+     role="alert">
     <div aria-atomic="true" aria-live="assertive" role="alert">
         <div class="toast-body">
             <span id="toastMessage"></span>
@@ -108,7 +106,7 @@
     </div>
 </div>
 
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 
 <script th:src="@{/js/countries_setting.js}" type="text/javascript"></script>
@@ -131,4 +129,5 @@
 </script>
 
 </body>
+
 </html>

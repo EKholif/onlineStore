@@ -1,10 +1,9 @@
 package com.onlineStore.admin.tenantTest;
 
-import com.onlineStore.admin.security.tenant.TenantContext;
 import com.onlineStoreCom.entity.brand.Brand;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
-import org.hibernate.engine.spi.FilterDefinition;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

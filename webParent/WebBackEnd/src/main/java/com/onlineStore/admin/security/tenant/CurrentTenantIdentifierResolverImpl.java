@@ -1,5 +1,6 @@
 package com.onlineStore.admin.security.tenant;
 
+import com.onlineStoreCom.tenant.TenantContext;
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.springframework.stereotype.Component;
 

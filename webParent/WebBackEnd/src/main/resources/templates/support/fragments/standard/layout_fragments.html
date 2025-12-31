@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<!-- Generic Search Form -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div> -->
+<div class="d-inline-flex mb-2" th:fragment="search_form">
+    <div>
+        <form class="d-inline-flex" th:action="@{${search}}">
+            <input name="sortField" th:value="${sortField}" type="hidden"/>
+            <input name="sortDir" th:value="${sortDir}" type="hidden"/>
+
+            <input class="form-control" name="keyWord" placeholder="Search User" required th:value="${keyWord}"
+                   type="search">
+
+            <input class="btn btn-outline-success" type="submit" value="Search"/>
+            <input class="btn btn-outline-secondary" onclick="clearFilter()" type="button" value="Clear"/>
+        </form>
+    </div>
+</div>
+
+<!-- Generic Alert Modal (Confirmation Prompt) -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div> -->
+<div th:fragment="modal">
+    <div class="modal fade text-center" data-bs-target="#modalDialog" data-bs-toggle="modal" id="confirmModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">Alert Message Box</h3>
+                    <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" href="" id="yesbutton">yes</a>
+                    <button class="btn btn-danger" data-bs-dismiss="modal" type="close">no</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Generic Modal Dialog Window (For details views) -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/layout_fragments :: modal_dialog}"></div> -->
+<div th:fragment="modal_dialog" th:remove="tag">
+    <div class="modal fade text-center modal-xl" data-bs-target="#modalDialog" id="detailModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Content loaded via AJAX -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Generic Success/Error Message -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/layout_fragments :: message}"></div> -->
+<div class="alert alert-success text-center" th:fragment="message" th:if="${message != null}">
+    [[${message}]]
+</div>
+
+<!-- Standard Footer -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div> -->
+<div th:fragment="footer">
+    <nav class="navbar navbar-bottom navbar-expand-lg bg-dark navbar-dark">
+        <button aria-controls="bottomNavbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#bottomNavbar" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="bottomNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Privacy Notice</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Returns & Refunds</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <p class="text-center">Copyright © 2025 GroupLink, Inc</p>
+
+    <script th:src="@{/js/logout.js}"></script>
+</div>
+
+</body>
+
+</html>

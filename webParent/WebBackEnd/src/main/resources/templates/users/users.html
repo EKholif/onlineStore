@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
@@ -12,7 +11,7 @@
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
 
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <form id="deleteForm" method="post" th:action="@{/deleteUsers}">
@@ -20,16 +19,19 @@
 
     <div class=" justify-content-center mb-2 mt-2 ">
         <button class="fas fa-user-minus fa-2x icon-red  " style="border: none; background: none;"
-                title="Delete Selected Users"
-                type="submit"></button>
+                title="Delete Selected Users" type="submit"></button>
 
-        <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/users/new-users-form}" title="Add User"></a>&nbsp;&nbsp;
+        <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/users/new-users-form}"
+           title="Add User"></a>&nbsp;&nbsp;
 
-        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/users/export/csv}" title="Export to CSV"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/users/export/csv}" title="Export to CSV"></a>
+        &nbsp;&nbsp;
 
-        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/users/export/pdf}" title="Export to PDF"></a> &nbsp;&nbsp;
+        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/users/export/pdf}" title="Export to PDF"></a>
+        &nbsp;&nbsp;
 
-        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/users/export/excel}" title="Export to Excel"></a>&nbsp;&nbsp;
+        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/users/export/excel}"
+           title="Export to Excel"></a>&nbsp;&nbsp;
     </div>
 
 
@@ -43,8 +45,8 @@
 
             <div class="col-4">
                 <span class="fas fa-user  fa-fade fa-2x icon-golden " th:if="${user.user_bio == null}"></span>
-                <img class="rounded mx-auto  d-block" style="width: 100px"
-                     th:if="${user.user_bio != null}" th:src="@{${user.getImagePath()}}"/>
+                <img class="rounded mx-auto  d-block" style="width: 100px" th:if="${user.user_bio != null}"
+                     th:src="@{${user.getImagePath()}}"/>
             </div>
 
             <div class="col-8">
@@ -52,22 +54,17 @@
                 <div> [[${user.getRoles}]]</div>
 
                 <div class="m-1">
-                    <a class="fas fa-edit px-2 icon-green"
-                       th:href="@{'users/edit/' + ${user.getId()}}"
+                    <a class="fas fa-edit px-2 icon-green" th:href="@{'users/edit/' + ${user.getId()}}"
                        title="Edit User"></a>
 
 
                     <a class="fas fa-trash px-2 icon-red delete-confirmation"
-                       th:href="@{'/delete-user/' + ${user.getId()}}"
-                       th:id="${user.id}"
-
-                       title="Delete User"></a>
+                       th:href="@{'/delete-user/' + ${user.getId()}}" th:id="${user.id}" title="Delete User"></a>
                     &nbsp;
 
                     <a class="fas fa-check-circle px-2 icon-green "
                        th:href="@{'/user/' + ${user.getId()} +'/enable/false' } "
-                       th:if="${user.isEnable() == true}"
-                       title="Disable User"></a>
+                       th:if="${user.isEnable() == true}" title="Disable User"></a>
                     &nbsp;
                     <a class="fas fa-circle px-2 icon-red" th:href="@{'/user/' + ${user.getId()} +'/enable/true' }"
                        th:if="${user.isEnable() == false}" title="Enable User"></a>
@@ -88,17 +85,26 @@
             <tr>
                 <th>Select</th>
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('id', 'User ID')}"></th>
+                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'User ID')}">
+                </th>
 
                 <th> User Photo</th>
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('firstName', 'First Name')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('lastName', 'Last Name')}"></th>
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('email', 'E-mail')}"></th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('firstName', 'First Name')}">
+                </th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('lastName', 'Last Name')}">
+                </th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('email', 'E-mail')}">
+                </th>
 
                 <th>Roles</th>
 
-                <th th:replace="~{support/fragments/standerd/colum_link::contant ('enable', 'Status')}"></th>
+                <th
+                        th:replace="~{support/fragments/standard/table_fragments :: column_link('enable', 'Status')}">
+                </th>
 
                 <th>Edit</th>
                 <th>Delete</th>
@@ -111,13 +117,14 @@
             <tr th:each="user: ${users}">
 
 
-                <td><input class="form-check-input " id="flexCheckDefault" name="selectedUsers" th:value="${user.id}"
-                           type="checkbox"></td>
+                <td><input class="form-check-input " id="flexCheckDefault" name="selectedUsers"
+                           th:value="${user.id}" type="checkbox"></td>
 
                 <td th:text="${user.getId()}"></td>
 
                 <td>
-                    <span class="fas fa-user  fa-fade fa-2x icon-golden " th:if="${user.user_bio == null}"></span>
+                            <span class="fas fa-user  fa-fade fa-2x icon-golden "
+                                  th:if="${user.user_bio == null}"></span>
                     <img class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"
                          th:if="${user.user_bio != null}" th:src=" @{${user.getImagePath()}}"/>
                 </td>
@@ -131,25 +138,22 @@
                 <td>
                     <a class="fas fa-check-circle px-2 icon-green "
                        th:href="@{'/user/' + ${user.getId} +'/enable/false' } "
-                       th:if="${user.isEnable == true}"
-                       title="Disable User"></a>
+                       th:if="${user.isEnable == true}" title="Disable User"></a>
                     <!--                                                      &nbsp;-->
-                    <a class="fas fa-circle px-2 icon-red" th:href="@{'/user/' + ${user.getId} +'/enable/true' }"
+                    <a class="fas fa-circle px-2 icon-red"
+                       th:href="@{'/user/' + ${user.getId} +'/enable/true' }"
                        th:if="${user.isEnable() == false}" title="Enable User"></a>
 
                 </td>
 
                 <td>
-                    <a class="fas fa-edit px-2 icon-green"
-                       th:href="@{'/users/edit/' + ${user.getId()}}"
+                    <a class="fas fa-edit px-2 icon-green" th:href="@{'/users/edit/' + ${user.getId()}}"
                        title="Edit User"></a>
                 </td>
 
 
                 <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                       th:href="@{'/delete-user/' + ${user.getId()}}"
-                       th:id="${user.id}"
-
+                       th:href="@{'/delete-user/' + ${user.getId()}}" th:id="${user.id}"
                        title="Delete User"></a></td>
             </tr>
             </tbody>
@@ -157,13 +161,13 @@
     </div>
 </form>
 
-<nav th:replace="~{support/fragments/standerd/paginate::content}"></nav>
+<nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
 
 
-<div th:replace="~{support/fragments::modal}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
 
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 
 <script th:src="@{/js/common.js}" type="text/javascript">
@@ -177,4 +181,5 @@
 
 
 </body>
+
 </html>

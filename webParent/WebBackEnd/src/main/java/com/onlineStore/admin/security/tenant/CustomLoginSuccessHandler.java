@@ -1,6 +1,7 @@
 package com.onlineStore.admin.security.tenant;
 
 import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -29,7 +30,8 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
             HttpSession session = request.getSession(true);
             session.setAttribute("TENANT_ID", tenantId);
 
-            // Also set ThreadLocal for the current request thread (optional, useful if filter runs in same thread)
+            // Also set ThreadLocal for the current request thread (optional, useful if
+            // filter runs in same thread)
             TenantContext.setTenantId(tenantId);
         }
 

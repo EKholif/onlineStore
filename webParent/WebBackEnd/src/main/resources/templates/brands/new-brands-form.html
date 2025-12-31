@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+>
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 
@@ -10,16 +10,13 @@
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 <div class="container-fluid">
 
 
-    <form th:action="@{${saveChanges}}" th:object="${brand}" method="post"
-
-          enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto"
-
-          onsubmit="return  checkUniqueName(this);">
+    <form enctype="multipart/form-data" method="post" onsubmit="return  checkUniqueName(this);" style="max-width: 7500px ; margin: 0 auto"
+          th:action="@{${saveChanges}}" th:object="${brand}">
 
         <input type="hidden" id="id" name="id" th:value="${id}"/>
 
@@ -46,8 +43,7 @@
                     <div class="mb-2">
 
                         <img class="img-thumbnail rounded-circle float-left " id="thumbnail" style="width: 200px"
-                             alt="Brand logo"
-                             th:src="@{${brand.getImagePath}}"/>
+                             alt="Brand logo" th:src="@{${brand.getImagePath}}"/>
 
                     </div>
                 </div>
@@ -82,17 +78,15 @@
 
         </div>
 
-        <div th:replace="~{support/fragments/standerd/save-and-rest-button::content}"></div>
+        <div th:replace="~{support/fragments/standard/form_fragments :: save_reset_buttons}"></div>
 
     </form>
 </div>
 
 
+<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
-
-<div th:replace="~{support/fragments::modal}"></div>
-
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 <script>
     Max_File_Size = 1042000;
     const windowLocationValue = `[[@{${name}}]]`;

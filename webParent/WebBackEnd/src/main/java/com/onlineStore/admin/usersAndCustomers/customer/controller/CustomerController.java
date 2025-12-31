@@ -1,14 +1,14 @@
 package com.onlineStore.admin.usersAndCustomers.customer.controller;
 
-import com.onlineStore.admin.setting.service.SettingService;
-import com.onlineStore.admin.usersAndCustomers.customer.service.CustomerService;
-import com.onlineStore.admin.security.tenant.TenantContext;
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.PageInfo;
+import com.onlineStore.admin.setting.service.SettingService;
+import com.onlineStore.admin.usersAndCustomers.customer.service.CustomerService;
+import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,11 +40,7 @@ public class CustomerController {
     @Autowired
     private SettingService settingService;
 
-
     private final String defaultRedirectURL = "redirect:/customer/customer";
-
-
-
 
     @GetMapping("/customer/customer")
     public ModelAndView listAllCustomers() {
@@ -61,56 +57,56 @@ public class CustomerController {
         ModelAndView model = new ModelAndView("customer/customer");
         PageInfo pageInfo = new PageInfo();
 
-        List<Customer> listByPage = service.listByPage
-                (pageInfo, pageNum, sortField, sortDir, keyWord);
+        List<Customer> listByPage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper
-                (model, "customer", sortField, sortDir, keyWord, pageNum, listByPage);
+        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "customer", sortField,
+                sortDir, keyWord, pageNum, listByPage);
 
         pagingAndSortingHelper.listByPage(pageInfo, "customer");
 
         return model;
 
     }
+
     @GetMapping("/customer/new-customer-form")
-    public ModelAndView showRegistrationForm ( ){
+    public ModelAndView showRegistrationForm() {
         ModelAndView model = new ModelAndView("customer/new-customer-form");
 
         Customer customer = new Customer();
         String pageTitle = "Customer Registration";
         List<Country> countriesList = service.listAllCountries();
-        NewFormHelper customerRegistratian = new NewFormHelper (pageTitle,countriesList);
-        return customerRegistratian.newForm(model,"customer",customer);
+        NewFormHelper customerRegistratian = new NewFormHelper(pageTitle, countriesList);
+        return customerRegistratian.newForm(model, "customer", customer);
 
     }
 
     @PostMapping("/customer/save-customer")
-    public ModelAndView saveNewCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes, HttpServletRequest request,
+    public ModelAndView saveNewCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes,
+                                        HttpServletRequest request,
                                         @RequestParam("fileImage") MultipartFile multipartFile) throws IOException, MessagingException {
         redirectAttributes.addFlashAttribute("message", "the Customer has been saved successfully.  ");
-          boolean newCustomer = customer.getId() ==null;
-          Customer savedCustomer;
+        boolean newCustomer = customer.getId() == null;
+        Customer savedCustomer;
         Long tenantId = TenantContext.getTenantId();
-           customer.setTenantId(tenantId);
+        customer.setTenantId(tenantId);
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
             customer.setImage(fileName);
-             savedCustomer = service.saveCustomer(customer);
+            savedCustomer = service.saveCustomer(customer);
 
             String dirName = "customers-photos/";
-           savePhoto(savedCustomer, multipartFile, dirName);
+            savePhoto(savedCustomer, multipartFile, dirName);
 
         } else {
 
-             savedCustomer = service.saveCustomer(customer);
+            savedCustomer = service.saveCustomer(customer);
         }
 
-        if (newCustomer){
+        if (newCustomer) {
 
             sendVerificationEmail(request, savedCustomer);
         }
-
 
         return listAllCustomers();
 
@@ -121,10 +117,10 @@ public class CustomerController {
         ModelAndView model = new ModelAndView("customer/new-customer-form");
         Customer customer = service.findById(id);
         List<Country> countriesList = service.listAllCountries();
-        String pageTitle =  String.format("Edit Customer (ID: %d)", id);
+        String pageTitle = String.format("Edit Customer (ID: %d)", id);
 
-        NewFormHelper customerRegistratian = new NewFormHelper (pageTitle,countriesList);
-        return customerRegistratian.editForm(model,"customer",customer,id);
+        NewFormHelper customerRegistratian = new NewFormHelper(pageTitle, countriesList);
+        return customerRegistratian.editForm(model, "customer", customer, id);
     }
 
     @GetMapping("/customer/delete/{id}")
@@ -140,7 +136,6 @@ public class CustomerController {
         return defaultRedirectURL;
     }
 
-
     @GetMapping("/customer/{id}/enable/{status}")
     public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
                                          RedirectAttributes redirectAttributes) {
@@ -152,8 +147,6 @@ public class CustomerController {
         return new ModelAndView("redirect:/customer/customer");
 
     }
-
-
 
     private void savePhoto(Customer customer, MultipartFile multipartFile, String dirName) throws IOException {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
@@ -168,10 +161,12 @@ public class CustomerController {
     }
 
     @PostMapping("/deleteCustomers")
-    public ModelAndView deleteModels(@RequestParam(name = "selectedModels", required = false) List<Integer> selectedModels,
-                                    RedirectAttributes redirectAttributes) throws CustomerNotFoundException, IOException {
+    public ModelAndView deleteModels(
+            @RequestParam(name = "selectedModels", required = false) List<Integer> selectedModels,
+            RedirectAttributes redirectAttributes) throws CustomerNotFoundException, IOException {
 
-        redirectAttributes.addFlashAttribute("message", "Customers ID: " + selectedModels + " has been successfully Deleted");
+        redirectAttributes.addFlashAttribute("message",
+                "Customers ID: " + selectedModels + " has been successfully Deleted");
 
         if (selectedModels != null && !selectedModels.isEmpty()) {
             for (Integer id : selectedModels) {
@@ -183,11 +178,8 @@ public class CustomerController {
         return listAllCustomers();
     }
 
-
-
-
-
-    private void sendVerificationEmail(HttpServletRequest request, Customer customer) throws IOException, MessagingException {
+    private void sendVerificationEmail(HttpServletRequest request, Customer customer)
+            throws IOException, MessagingException {
         // Fetch email settings
         EmailSettingBag emailSettings = settingService.getEmailSettings();
         JavaMailSenderImpl mailSender = Utility.prepareMailSender(emailSettings);
@@ -202,47 +194,30 @@ public class CustomerController {
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
         // Set placeholders
-//        content = content.replace("[[name]]", customer.getFullName());
-//        content = content.replace("[[Site]]", siteName);
-
-
-
+        // content = content.replace("[[name]]", customer.getFullName());
+        // content = content.replace("[[Site]]", siteName);
 
         // Add inline logo
-//        String logoPath = ".."+emailSettings.getSiteLogo();
-
-
-
+        // String logoPath = ".."+emailSettings.getSiteLogo();
 
         String logoPath = "/site-logo/dream-logo-print0200.png";
         File file = new File(logoPath);
 
         Resource logoResource = new ClassPathResource("site-logo/dream-logo-print0200.png");
 
-//        ClassPathResource logoResource = new ClassPathResource(file.getAbsolutePath());
-
-
+        // ClassPathResource logoResource = new
+        // ClassPathResource(file.getAbsolutePath());
 
         if (!logoResource.exists()) {
             throw new FileNotFoundException("Logo file not found at: " + file.getAbsolutePath());
         }
 
-
         // Set MIME type for the logo
         String contentType = URLConnection.guessContentTypeFromStream(logoResource.getInputStream());
         helper.addInline("siteLogo", logoResource, contentType);
 
-
-
-
         // Embed logo in the content
         content = content.replace("[[SITE_LOGO]]", "<img src='cid:siteLogo' alt='Site Logo'/>");
-
-
-
-
-
-
 
         // Add verification URL
         String verifyURL = Utility.getSiteURL(request) + "/verify?code=" + customer.getVerificationCode();
@@ -257,12 +232,5 @@ public class CustomerController {
         // Send the email
         mailSender.send(message);
     }
-
-
-
-
-
-
-
 
 }

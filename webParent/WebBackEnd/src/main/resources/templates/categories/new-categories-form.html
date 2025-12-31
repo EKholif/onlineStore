@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+>
 
-<head th:replace="~{support/fragments/standerd/header::content}"></head>
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
 
 <body>
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standerd/search::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
 <div class="container-fluid">
@@ -18,15 +18,11 @@
     <div class="container">
 
         <div class="border border-secondary rounded p-3">
-        <form th:action="@{${saveChanges}}" th:object="${category}" method="post"
-
-              enctype="multipart/form-data" style="max-width: 7500px ; margin: 0 auto"
-
-              onsubmit="return checkUnique(this);">
+            <form enctype="multipart/form-data" method="post" onsubmit="return checkUnique(this);" style="max-width: 7500px ; margin: 0 auto"
+                  th:action="@{${saveChanges}}" th:object="${category}">
 
 
-            <input type="hidden" id="id" name="id" th:value="${id}"/>
-
+                <input id="id" name="id" th:value="${id}" type="hidden"/>
 
 
                 <!--            <div th:replace="~{support/fragments::input-group-category(name,Name)}" ></div>-->
@@ -80,8 +76,8 @@
                         <input class="mb-2" type="file" id="fileImage" name="fileImage"
                                accept="image/jpg, image/jpeg, image/png"/>
                         <div class="mb-2">
-                            <img class="img-thumbnail rounded-circle float-left " id="thumbnail" style="width: 200px"
-                                 alt="product Photo"
+                            <img alt="product Photo" class="img-thumbnail rounded-circle float-left "
+                                 id="thumbnail" style="width: 200px"
                                  th:src="@{${category.getCatImagePath()}}"/>
 
                         </div>
@@ -92,22 +88,20 @@
             </div>
 
 
-            <div th:replace="~{support/fragments/standerd/save-and-rest-button::content}"></div>
+        <div th:replace="~{support/fragments/standard/form_fragments :: save_reset_buttons}"></div>
 
 
         </form>
 
 
-        <div th:replace="~{support/fragments::modal}"></div>
-
+        <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
 
 
     </div>
 
 
-
 </div>
-<div th:replace="~{support/fragments/standerd/footer::content}"></div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
 <script type="text/javascript" th:src="@{/js/commonCat.js}"></script>
 
@@ -130,4 +124,5 @@ var $ = jQuery; </script>
 
 
 </body>
+
 </html>
