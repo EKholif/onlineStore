@@ -9,139 +9,145 @@
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
 
-<h2 class="text-center">[[${pageTitle}]]</h2>
+<div class="container-fluid px-4">
+    <h2 class="text-center">[[${pageTitle}]]</h2>
 
-<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
-
-
-<form th:action="@{/categories/deleteCategories}" method="post" id="deleteForm">
-
-    <div class=" justify-content-center mb-2 mt-2  ">
-        <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" type="submit"
-                title="Delete Selected Categories"></button>
-
-        <a th:href="@{/categories/new-categories-form}" class="fas fa-user-plus fa-2x icon-d-green"
-           title="Add Category"></a>&nbsp;&nbsp;
-
-        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/categories/export/csv}" title="Export to CSV"></a>
-        &nbsp;&nbsp;
-
-        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/categories/export/pdf}" title="Export to PDF"></a>
-        &nbsp;&nbsp;
-
-        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/categories/export/excel}"
-           title="Export to Excel"></a>&nbsp;&nbsp;
-    </div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
-    <div th:if="${message != null}" class="alert alert-success text-center">
-        [[${message}]]
-    </div>
+    <form id="deleteForm" method="post" th:action="@{/categories/deleteCategories}">
+
+        <div class=" justify-content-center mb-2 mt-2  ">
+            <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" title="Delete Selected Categories"
+                    type="submit"></button>
+
+            <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/categories/new-categories-form}"
+               title="Add Category"></a>&nbsp;&nbsp;
+
+            <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/categories/export/csv}"
+               title="Export to CSV"></a>
+            &nbsp;&nbsp;
+
+            <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/categories/export/pdf}" title="Export to PDF"></a>
+            &nbsp;&nbsp;
+
+            <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/categories/export/excel}"
+               title="Export to Excel"></a>&nbsp;&nbsp;
+        </div>
 
 
-    <div class="full-details  less-details">
-        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered "
-               id="employeeTable">
-            <thead class="table-dark ">
-            <tr>
-
-                <th>Select</th>
-                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
-                <th>image</th>
-                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Name')}">
-                </th>
-                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('alias', 'Alias')}">
-                </th>
-                <th
-                        th:replace="~{support/fragments/standard/table_fragments :: column_link('parent', 'Parent')}">
-                </th>
-                <th
-                        th:replace="~{support/fragments/standard/table_fragments :: column_link('children', 'Children')}">
-                </th>
-                <th
-                        th:replace="~{support/fragments/standard/table_fragments :: column_link('status', 'Status')}">
-                </th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr th:each="category: ${categories}">
+        <div class="alert alert-success text-center" th:if="${message != null}">
+            [[${message}]]
+        </div>
 
 
-                <td>
-                    <input class="form-check-input delete-checkbox " type="checkbox" name="selectedCategory"
-                           th:value="${category.id}" id="flexCheckDefault">
-                </td>
+        <div class="full-details  less-details">
+            <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered "
+                   id="employeeTable">
+                <thead class="table-dark ">
+                <tr>
 
-                <td th:text="${category.id}"></td>
+                    <th>Select</th>
+                    <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}">
+                    </th>
+                    <th>image</th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Name')}">
+                    </th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('alias', 'Alias')}">
+                    </th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('parent', 'Parent')}">
+                    </th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('children', 'Children')}">
+                    </th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('status', 'Status')}">
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
 
-                <td>
-                            <span class="fas fa-user  fa-fade fa-2x icon-golden "
-                                  th:if="${category.getImage.isEmpty()}"></span>
-                    <img th:if="${category.image != null && !category.getImage.isEmpty() }"
-                         th:src=" @{${category.getCatImagePath()}}" class="rounded mx-auto  d-block"
-                         style="width: 40px; height: 40px;"/>
-
-                </td>
-
-
-                <td th:text="${category.name}"></td>
-                <td th:text="${category.alias}"></td>
-
-
-                <!--                              <td th:text="${category.parentIndentation() }"></td>-->
-
-                <td>
-                    <th:block th:each="cat : ${category.parent}">
-                        <span class="badge rounded-pill bg-secondary" th:text="${cat.name}"></span>
-                    </th:block>
-                </td>
-
-                <td>
-                    <th:block th:each="cat : ${category.children}">
-                        <span class="badge rounded-pill bg-secondary" th:text="${cat.name}"></span>
-                    </th:block>
-                </td>
+                <tbody>
+                <tr th:each="category: ${categories}">
 
 
-                <td>
-                    <a th:if="${category.isEnable == true}" class="fas fa-check-circle px-2 icon-green "
-                       th:href="@{'/category/' + ${category.getId} +'/enable/false' } "
-                       title="Disable Category"></a>
-                    <!--                                                      &nbsp;-->
-                    <a th:if="${category.isEnable() == false}" class="fas fa-circle px-2 icon-red"
-                       th:href="@{'/category/' + ${category.getId} +'/enable/true' }"
-                       title="Enable Category"></a>
+                    <td>
+                        <input class="form-check-input delete-checkbox " id="flexCheckDefault" name="selectedCategory"
+                               th:value="${category.id}" type="checkbox">
+                    </td>
 
-                </td>
+                    <td th:text="${category.id}"></td>
 
-                <td>
-                    <a class="fas fa-edit px-2 icon-green"
-                       th:href="@{'/categories/edit/' + ${category.getId()}}" title="Edit Category"></a>
-                </td>
+                    <td>
+                                <span class="fas fa-user  fa-fade fa-2x icon-golden "
+                                      th:if="${category.getImage.isEmpty()}"></span>
+                        <img class="rounded mx-auto  d-block"
+                             style="width: 40px; height: 40px;" th:if="${category.image != null && !category.getImage.isEmpty() }"
+                             th:src=" @{${category.getCatImagePath()}}"/>
 
-
-                <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
-                       th:href="@{'/delete-category/' + ${category.getId()}}" th:id="${category.id}"
-                       title="Delete Category"></a></td>
-            </tr>
+                    </td>
 
 
-            </tbody>
-
-        </table>
-
-    </div>
-</form>
-
-<div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
+                    <td th:text="${category.name}"></td>
+                    <td th:text="${category.alias}"></td>
 
 
-<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+                    <!--                              <td th:text="${category.parentIndentation() }"></td>-->
 
-<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+                    <td>
+                        <th:block th:each="cat : ${category.parent}">
+                            <span class="badge rounded-pill bg-secondary" th:text="${cat.name}"></span>
+                        </th:block>
+                    </td>
+
+                    <td>
+                        <th:block th:each="cat : ${category.children}">
+                            <span class="badge rounded-pill bg-secondary" th:text="${cat.name}"></span>
+                        </th:block>
+                    </td>
+
+
+                    <td>
+                        <a class="fas fa-check-circle px-2 icon-green " th:href="@{'/category/' + ${category.getId} +'/enable/false' } "
+                           th:if="${category.isEnable == true}"
+                           title="Disable Category"></a>
+                        <!--                                                      &nbsp;-->
+                        <a class="fas fa-circle px-2 icon-red" th:href="@{'/category/' + ${category.getId} +'/enable/true' }"
+                           th:if="${category.isEnable() == false}"
+                           title="Enable Category"></a>
+
+                    </td>
+
+                    <td>
+                        <a class="fas fa-edit px-2 icon-green"
+                           th:href="@{'/categories/edit/' + ${category.getId()}}" title="Edit Category"></a>
+                    </td>
+
+
+                    <td><a class="fas fa-trash px-2 icon-red delete-confirmation"
+                           th:href="@{'/delete-category/' + ${category.getId()}}" th:id="${category.id}"
+                           title="Delete Category"></a></td>
+                </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </form>
+
+    <div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
+
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
 
 
 <script type="text/javascript" th:src="@{/js/commonCat.js}"></script>

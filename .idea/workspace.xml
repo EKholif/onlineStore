@@ -8,151 +8,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/ThemeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/ThemeCssController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/settingBag/ThemeSettingBag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/theme_settings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/action_fragments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/actions/delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/actions/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/actions/save-and-rest-button.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/actions/status.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout/modal-dialog.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout/modal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout_fragments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/table/colum_link.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/table/column_linkWithTag.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/table/page-link.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/table_fragments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantAware.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/tenant/TenantContextFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/MultiTenancyIsolationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/TenantAwareEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/TenantAwareEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/ReviewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/vote/ReviewVoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/review/vote/ReviewVoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/review/ReviewRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/test/java/frontEnd/review/ReviewRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/article/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/article/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/article/paging/PagingAndSortingArgumentResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/article/paging/PagingAndSortingArgumentResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CurrentTenantIdentifierResolverImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CurrentTenantIdentifierResolverImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/CustomerUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/CustomerUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/UserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/UserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/SettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/service/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/service/SettingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/state/StateRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/state/StateRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/shipping/controller/ShippingRateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/shipping/controller/ShippingRateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/controller/CustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/article_detail_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/article_detail_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/article_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/article_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/articles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/delete.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/articles/status.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/brands/brands.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/brands/brands.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/brands/modal-dialog-fragments.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/brands/new-brands-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/brands/new-brands-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/role/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/role/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/categories/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/categories/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/categories/new-categories-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/categories/new-categories-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/convert/convert.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/convert/convert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/convert/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/new-customer-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/new-customer-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/customer/ss.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/ddd.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/403.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/500.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/error/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/modal_fragments.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/modal_fragments_confirm_modal.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/order_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/order_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/orders_shipper.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/orders_shipper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/search-form/search_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/search-form/search_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-edit/details-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-edit/discription-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-edit/overview-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-edit/products-image-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-edit/shipping-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/details-fregment-readonly.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/discription-fregment-readonly.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/overview-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/products-image-fregment-readonly.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/shipping-fregment-readonly.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/n.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/new-products-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/new-products-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/product_detail_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/product_detail_modal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/register/new-users-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/register/new-users-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reports/reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reports/reports.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/review_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/review_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/reviews/reviews.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/countries-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/discription-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/general-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/mail-server-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/mail-templates-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/mail_server/customer_verificationqq.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/mail_server/mail_templates/customer_verification.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/mail_server/mail_templates/order_confirmation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/mail_server/order_confirmatiofffn.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/products-image-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/shipping-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/sitting-template/payment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/fregment-edit/states-fregment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/shipping-rate/new-shipping-rate-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/shipping-rate/new-shipping-rate-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/shipping-rate/shipping-rate.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/shipping-rate/shipping-rate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/format/currency_input.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/format/delete.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/format/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/format/format_currency.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/format/format_time.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/format/search_form_and_message.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/drop-down-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/drop-down-menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/image_icon.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/image_icon.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/colum_link.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/column_linkWithTag.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/delete.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/modal-dialog.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/modal.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/page-link.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/paginate.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/save-and-rest-button.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standerd/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/new-users-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/new-users-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/standard/layout/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/EnableAllUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/EnableAllUtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterCheckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterCheckTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterDebugTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterDebugTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterEmptyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterEmptyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterMultipleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterMultipleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterNoDeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterNoDeleteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterRequestSimulationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterRequestSimulationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/TenantFilterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/UserRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantContextTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantContextTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterCheckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterCheckTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterHttpSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterHttpSessionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterManualTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterManualTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/test/counteryTest/userTest/tenant/TenantFilterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -515,7 +396,7 @@
       <workItem from="1765797069579" duration="4558000" />
       <workItem from="1767004163983" duration="37315000" />
       <workItem from="1767138082336" duration="6571000" />
-      <workItem from="1767187207633" duration="8234000" />
+      <workItem from="1767187207633" duration="11952000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -701,7 +582,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767140773758</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="README.md">
+      <option name="closed" value="true" />
+      <created>1767225008823</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1767225008826</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -754,7 +643,6 @@
       <path value="$PROJECT_DIR$/webParent/FrontEnd" />
     </ignored-roots>
     <MESSAGE value="backend src" />
-    <MESSAGE value="README.md" />
     <MESSAGE value="up to emailsender" />
     <MESSAGE value="updated" />
     <MESSAGE value="new Frontend" />
@@ -766,7 +654,8 @@
     <MESSAGE value="Add customer questions and answers functionality with related templates" />
     <MESSAGE value="Add question and voting functionality with related services and templates" />
     <MESSAGE value="Add article management features including repository, service, and controller implementations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add article management features including repository, service, and controller implementations" />
+    <MESSAGE value="README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

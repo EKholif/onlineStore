@@ -1,7 +1,7 @@
 package com.onlineStoreCom.entity.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+import com.onlineStoreCom.entity.setting.subsetting.AbstractIdEntity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -9,16 +9,14 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name="role")
+@Table(name = "role")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Role extends IdBasedEntity {
+public class Role extends AbstractIdEntity {
 
-
-
-         @Column(name= "name",length =40,nullable = false,unique = false )
-         private String name;
-         @Column(name= "descrption",length =150,nullable = false)
-         private String descrption;
+    @Column(name = "name", length = 40, nullable = false, unique = false)
+    private String name;
+    @Column(name = "descrption", length = 150, nullable = false)
+    private String descrption;
 
     @Column(name = "all_parent_ids", length = 256, nullable = true)
     private String allParentIDs;
@@ -26,7 +24,6 @@ public class Role extends IdBasedEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_Id")
     private Role parent;
-
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private Set<Role> children = new HashSet<>();
@@ -75,7 +72,6 @@ public class Role extends IdBasedEntity {
 
     }
 
-
     public String getName() {
         return name;
     }
@@ -99,15 +95,18 @@ public class Role extends IdBasedEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Role role = (Role) o;
-        return Objects.equals(id, role.id) && Objects.equals(name, role.name) && Objects.equals(descrption, role.descrption);
+        return Objects.equals(getId(), role.getId()) && Objects.equals(name, role.name)
+                && Objects.equals(descrption, role.descrption);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, descrption);
+        return Objects.hash(getId(), name, descrption);
     }
 
     @Override

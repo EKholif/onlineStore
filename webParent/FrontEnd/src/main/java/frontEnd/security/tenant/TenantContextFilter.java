@@ -1,7 +1,7 @@
-package com.onlineStore.admin.security.tenant;
+package frontEnd.security.tenant;
 
-import com.onlineStore.admin.security.StoreUserDetails;
 import com.onlineStoreCom.tenant.TenantContext;
+import frontEnd.security.CustomerUserDetails;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.FilterChain;
@@ -24,8 +24,8 @@ public class TenantContextFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-            HttpServletResponse response,
-            FilterChain chain)
+                                    HttpServletResponse response,
+                                    FilterChain chain)
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
@@ -47,15 +47,17 @@ public class TenantContextFilter extends OncePerRequestFilter {
             }
         }
 
-        // 2. [AG-TEN-BUG-001] Fallback: Get from SecurityContext (Robust for RememberMe
-        // / Session Timeout)
+        // 2. Fallback: Get from SecurityContext (Robust for RememberMe / Session
+        // Timeout)
         if (tenantId == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            if (authentication != null && authentication.getPrincipal() instanceof StoreUserDetails) {
-                StoreUserDetails userDetails = (StoreUserDetails) authentication.getPrincipal();
+            if (authentication != null && authentication.getPrincipal() instanceof CustomerUserDetails) {
+                CustomerUserDetails userDetails = (CustomerUserDetails) authentication.getPrincipal();
                 tenantId = userDetails.getTenantId();
+
+                // Self-Heal: Put back in Session and Context
                 TenantContext.setTenantId(tenantId);
-                request.getSession().setAttribute("TENANT_ID", tenantId); // Self-heal
+                request.getSession().setAttribute("TENANT_ID", tenantId);
             }
         }
 
@@ -63,10 +65,8 @@ public class TenantContextFilter extends OncePerRequestFilter {
         Session session = entityManager.unwrap(Session.class);
         if (tenantId != null && tenantId != 0) {
             session.enableFilter("tenantFilter").setParameter("tenantId", tenantId);
-            System.out.println("✅ [TenantContextFilter] Enabled Filter for TenantID: " + tenantId);
         } else {
             session.disableFilter("tenantFilter");
-            System.out.println("⚠️ [TenantContextFilter] Disabled Filter (TenantID is null/0)");
         }
 
         try {

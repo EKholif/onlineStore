@@ -1,10 +1,10 @@
 package com.onlineStoreCom.entity.users;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Filter;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,8 +13,8 @@ import java.util.Set;
 @Entity
 @Table(name = "'user'")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-
-public class User  extends IdBasedEntity {
+@Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+public class User extends IdBasedEntity {
 
     @Column(name = "email", length = 85, nullable = false)
     private String email;
@@ -33,9 +33,7 @@ public class User  extends IdBasedEntity {
     @Column(name = "user_bio")
     private String user_bio;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     @JsonIgnore
     private Set<Role> roles = new HashSet<>();
 
@@ -75,14 +73,12 @@ public class User  extends IdBasedEntity {
         this.enable = enable;
     }
 
-
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
 
     public String getEmail() {
         return email;
@@ -123,7 +119,7 @@ public class User  extends IdBasedEntity {
                 " id = '" + id + '\'' +
                 " firstName = '" + firstName + '\'' +
 
-                 "lastName = '" + lastName + '\'' +
+                "lastName = '" + lastName + '\'' +
 
                 " status = '" + enable + '\'' +
                 " TenantId = '" + getTenantId() + '\'' +
@@ -132,23 +128,26 @@ public class User  extends IdBasedEntity {
 
     @Transient
     public String getImagePath() {
-        String dirName =   "/user-photos/" ;
-        if ( id == null || user_bio == null) return "/images" + "\\" +"bob.png";
+        String dirName = "/user-photos/";
+        if (id == null || user_bio == null)
+            return "/images" + "\\" + "bob.png";
 
-
-        return dirName + this.id + '\\' +this.user_bio;
+        return dirName + this.id + '\\' + this.user_bio;
     }
+
     @Transient
     public String getImageDir() {
-        String dirName =   "user-photos\\" ;
-        if ( id == null || user_bio == null) return "\\images\\bob.png";
-        return dirName + this.id + '\\' ;
+        String dirName = "user-photos\\";
+        if (id == null || user_bio == null)
+            return "\\images\\bob.png";
+        return dirName + this.id + '\\';
     }
 
     public String getFullName() {
-        return firstName +" " + lastName;
+        return firstName + " " + lastName;
 
     }
+
     public boolean hasRole(String roleName) {
         Iterator<Role> iterator = roles.iterator();
 

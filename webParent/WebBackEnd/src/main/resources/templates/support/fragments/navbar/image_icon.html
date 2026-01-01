@@ -5,16 +5,12 @@
 <div th:fragment="content">
 
 
-
-    <img  type="button"
-         th:if="${#authorization.expression('isAuthenticated()')}"
-         th:src="${#authentication.principal.getImagePath}" id="account" class="rounded-circle dropdown-toggle float-sm-end "  style="width:40px" alt="User" />
+    <img alt="User"
+         class="rounded-circle float-sm-end " id="account" style="width:40px"
+         th:if="${#authorization.expression('isAuthenticated()')}" th:src="${#authentication.principal.getImagePath}"/>
 
 </div>
 
 </body>
 
 </html>
-
-
-

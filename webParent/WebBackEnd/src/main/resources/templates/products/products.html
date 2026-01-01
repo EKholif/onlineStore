@@ -9,134 +9,139 @@
 
 
 <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
-<h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
+<div class="container-fluid px-4">
+    <h2 class="text-center">[[${pageTitle}]]</h2>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
 
 
-<form th:action="@{/delete-Products}" method="post" id="deleteForm">
+    <form id="deleteForm" method="post" th:action="@{/delete-Products}">
 
-    <div class=" justify-content-center mb-2 mt-2 ">
-        <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" type="submit"
-                title="Delete Selected brands"></button>
+        <div class=" justify-content-center mb-2 mt-2 ">
+            <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" title="Delete Selected brands"
+                    type="submit"></button>
 
-        <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/products/new-products-form}"
-           title="Add brand"></a>&nbsp;&nbsp;
+            <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/products/new-products-form}"
+               title="Add brand"></a>&nbsp;&nbsp;
 
-        <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a>
-        &nbsp;&nbsp;
+            <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/brands/export/csv}" title="Export to CSV"></a>
+            &nbsp;&nbsp;
 
-        <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a>
-        &nbsp;&nbsp;
+            <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/brands/export/pdf}" title="Export to PDF"></a>
+            &nbsp;&nbsp;
 
-        <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}"
-           title="Export to Excel"></a>&nbsp;&nbsp;
-    </div>
-
-
-    <div th:if="${message != null}" class="alert alert-success text-center">
-        [[${message}]]
-    </div>
+            <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/brands/export/excel}"
+               title="Export to Excel"></a>&nbsp;&nbsp;
+        </div>
 
 
-    <div class="full-details  less-details">
-        <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered ">
-            <thead class="table-dark ">
-            <tr>
-
-                <th>Select</th>
-
-                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
-
-                <th
-                        th:replace="~{support/fragments/standard/table_fragments :: column_link('mainImage', 'Main Image')}">
-                </th>
+        <div class="alert alert-success text-center" th:if="${message != null}">
+            [[${message}]]
+        </div>
 
 
-                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Name')}">
-                </th>
+        <div class="full-details  less-details">
+            <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered ">
+                <thead class="table-dark ">
+                <tr>
+
+                    <th>Select</th>
+
+                    <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}">
+                    </th>
+
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('mainImage', 'Main Image')}">
+                    </th>
 
 
-                <th th:replace="~{support/fragments/standard/table_fragments :: column_link('brand', 'Brand')}">
-                </th>
-                <th
-                        th:replace="~{support/fragments/standard/table_fragments :: column_link('category', 'Category')}">
-                </th>
-                <th>Enable</th>
-                <th>View | Edit</th>
-                <th>Delete</th>
-
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr th:each="product: ${products}">
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Name')}">
+                    </th>
 
 
-                <td>
-                    <input class="form-check-input delete-checkbox " type="checkbox" name="selectedForDelete"
-                           th:value="${product.id}" id="flexCheckDefault">
-                </td>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('brand', 'Brand')}">
+                    </th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('category', 'Category')}">
+                    </th>
+                    <th>Enable</th>
+                    <th>View | Edit</th>
+                    <th>Delete</th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="product: ${products}">
 
 
-                <td th:text="${product.id}"></td>
+                    <td>
+                        <input class="form-check-input delete-checkbox " id="flexCheckDefault"
+                               name="selectedForDelete" th:value="${product.id}" type="checkbox">
+                    </td>
 
 
-                <td>
-                            <span class="fas fa-user  fa-fade fa-2x icon-golden "
-                                  th:if="${product.mainImage == null}"></span>
-                    <img th:if="${product.mainImage != null && !product.mainImage.isEmpty() }"
-                         th:src=" @{${product.getImagePath()}}" class="rounded mx-auto  d-block"
-                         style="width: 40px; height: 40px;"/>
-                </td>
+                    <td th:text="${product.id}"></td>
 
 
-                <td><a class="link-detail" th:href="@{'/products/detail/' + ${product.id}}"
-                       th:title="${product.name}">[[${product.name}]]</a></td>
+                    <td>
+                                <span class="fas fa-user  fa-fade fa-2x icon-golden "
+                                      th:if="${product.mainImage == null}"></span>
+                        <img class="rounded mx-auto  d-block"
+                             style="width: 40px; height: 40px;" th:if="${product.mainImage != null && !product.mainImage.isEmpty() }"
+                             th:src=" @{${product.getImagePath()}}"/>
+                    </td>
 
 
-                <td>
-                    <span class="badge rounded-pill bg-secondary">[[${product.brand.name}]]</span>
-                </td>
-
-                <td>
-                    <span class="badge rounded-pill bg-secondary">[[${product.category.name}]]</span>
-                </td>
-
-                <td>
-                    <div
-                            th:replace="~{support/fragments/standard/action_fragments :: status(${product.isEnable}, 'product', '/products/' + ${product.getId})}">
-                    </div>
-                </td>
+                    <td><a class="link-detail" th:href="@{'/products/detail/' + ${product.id}}"
+                           th:title="${product.name}">[[${product.name}]]</a></td>
 
 
-                <td><a class="fas fa-file-alt fa-2x icon-green link-detail"
-                       th:href="@{'/products/detail/' + ${product.id}}"
-                       title="View details of this product"></a>
+                    <td>
+                        <span class="badge rounded-pill bg-secondary">[[${product.brand.name}]]</span>
+                    </td>
 
-                    <a class="fas fa-edit fa-2x icon-green" th:href="@{'/products/edit/' + ${product.getId()}}"
-                       title="Edit Product"></a>
-                </td>
+                    <td>
+                        <span class="badge rounded-pill bg-secondary">[[${product.category.name}]]</span>
+                    </td>
 
-
-                <td><a class="fas fa-trash fa-2x icon-red delete-confirmation"
-                       th:href="@{'/products/delete-product/' + ${product.getId()}}" th:id="${product.id}"
-                       title="Delete Product"></a></td>
-            </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-</form>
-<div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
+                    <td>
+                        <div
+                                th:replace="~{support/fragments/standard/action_fragments :: status(${product.isEnable}, 'product', '/products/' + ${product.getId})}">
+                        </div>
+                    </td>
 
 
-<div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+                    <td><a class="fas fa-file-alt fa-2x icon-green link-detail"
+                           th:href="@{'/products/detail/' + ${product.id}}"
+                           title="View details of this product"></a>
 
-<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+                        <a class="fas fa-edit fa-2x icon-green"
+                           th:href="@{'/products/edit/' + ${product.getId()}}" title="Edit Product"></a>
+                    </td>
 
-<div th:replace="~{support/fragments/standard/layout_fragments :: modal_dialog}"></div>
+
+                    <td><a class="fas fa-trash fa-2x icon-red delete-confirmation"
+                           th:href="@{'/products/delete-product/' + ${product.getId()}}" th:id="${product.id}"
+                           title="Delete Product"></a></td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </form>
+    <div th:replace="~{support/fragments/standard/table_fragments :: pagination}"></div>
+
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal_dialog}"></div>
+</div>
 
 
 <script th:src="@{/js/commonCat.js}"></script>

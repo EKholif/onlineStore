@@ -28,6 +28,9 @@ public class WebSecurityConfig {
     @Lazy
     private OAuth2LoginSuccessHandler oauth2LoginHandler;
 
+    @Autowired
+    private frontEnd.security.tenant.TenantContextFilter tenantContextFilter;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -85,6 +88,11 @@ public class WebSecurityConfig {
                         .tokenValiditySeconds(14 * 24 * 60 * 60))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
+
+        // [AG-TEN-ARCH-002] Add TenantContextFilter
+        http.addFilterAfter(tenantContextFilter,
+                org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 

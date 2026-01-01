@@ -44,21 +44,11 @@ public class UserController {
         Session session = entityManager.unwrap(Session.class);
         org.hibernate.Filter filter = session.getEnabledFilter("tenantFilter");
 
-        if (filter != null) {
-            // [AG-TEN-TECH-002] Verify Tenant Filter is active for data isolation
-            if (filter != null) {
-                // Business Value: Ensures we are only fetching data for the current tenant.
-                // TODO: Replace System.out with proper Logger (SLF4J) for production readiness [AG-CORE-TECH-005]
-                System.out.println("🔥 tenantFilter parameter tenantId: " + filter.getName());
-            } else {
-                System.out.println("🔥 tenantFilter not enabled!    " + tenantId);
-            }
-        }
         return listByPage(1, "firstName", "dsc", null);
     }
 
     @GetMapping("/users/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
+    public ModelAndView listByPage(@RequestParam(name = "pageNum", defaultValue = "1") int pageNum,
                                    @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                                    @Param("keyWord") String keyWord) {
 

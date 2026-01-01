@@ -5,6 +5,7 @@ import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Filter;
 
 import java.io.File;
 import java.util.*;
@@ -12,9 +13,8 @@ import java.util.*;
 @Entity
 @Table(name = "products")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Product extends IdBasedEntity {
-
-
 
     @Column(unique = true, length = 256, nullable = false)
     private String name;
@@ -57,10 +57,8 @@ public class Product extends IdBasedEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<ProductImage> images = new HashSet<>();
 
-
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private final List<ProductDetails> details = new ArrayList<>();
-
 
     private int reviewCount;
     private float averageRating;
@@ -97,11 +95,10 @@ public class Product extends IdBasedEntity {
         this.reviewedByCustomer = reviewedByCustomer;
     }
 
-    @Transient private boolean customerCanReview;
-    @Transient private boolean reviewedByCustomer;
-
-
-
+    @Transient
+    private boolean customerCanReview;
+    @Transient
+    private boolean reviewedByCustomer;
 
     public Product(Integer id, String name, String alias) {
         this.id = id;
@@ -127,15 +124,16 @@ public class Product extends IdBasedEntity {
     }
 
     public void addProductDetails(String detailName, String detailValue, Long tenantId) {
-        this.details.add(new ProductDetails(detailName, detailValue,tenantId, this));
+        this.details.add(new ProductDetails(detailName, detailValue, tenantId, this));
     }
+
     public void addProductDetailsTenantId(Long tenantId) {
         this.details.add(new ProductDetails(tenantId, this));
     }
+
     public void addExtraImages(String imageName) {
 
         this.images.add(new ProductImage(imageName, this));
-
 
     }
 
@@ -157,8 +155,6 @@ public class Product extends IdBasedEntity {
 
     public Product() {
     }
-
-
 
     public String getName() {
         return name;
@@ -304,7 +300,6 @@ public class Product extends IdBasedEntity {
         this.brand = brand;
     }
 
-
     @Transient
     public float getDiscountPrice() {
         if (discountPercent > 0) {
@@ -313,12 +308,12 @@ public class Product extends IdBasedEntity {
         return this.price;
     }
 
-
     @Transient
     public String getImagePath() {
         String dirName = "/products-photos/";
 
-        if (id == null || mainImage == null) return "/images" + "\\" + "pngwing.com.png";
+        if (id == null || mainImage == null)
+            return "/images" + "\\" + "pngwing.com.png";
 
         return dirName + this.id + '\\' + this.mainImage;
     }
@@ -327,7 +322,8 @@ public class Product extends IdBasedEntity {
     public String getExtraImagesPath() {
         String dirName = "/products-photos/";
 
-        if (id == null || mainImage == null) return "/images" + "\\" + "pngwing.com.png";
+        if (id == null || mainImage == null)
+            return "/images" + "\\" + "pngwing.com.png";
 
         return dirName + this.id + '\\' + this.images;
     }
@@ -335,17 +331,18 @@ public class Product extends IdBasedEntity {
     @Transient
     public String getImageDir() {
         String dirName = "products-photos\\";
-        if (id == -1L || mainImage == null) return "\\images \\ bob.png";
+        if (id == -1L || mainImage == null)
+            return "\\images \\ bob.png";
         return dirName + this.id + '\\';
     }
 
     @Transient
     public String getExtraImageDir() {
         String dirName = "products-photos" + File.separator;
-        if (id == -1L || mainImage == null) return "\\images \\ bob.png";
+        if (id == -1L || mainImage == null)
+            return "\\images \\ bob.png";
         return dirName + this.id + File.separator + "extras";
     }
-
 
     @Transient
     public String getShortName() {
@@ -359,6 +356,5 @@ public class Product extends IdBasedEntity {
     public String getURI() {
         return "/p/" + this.alias;
     }
-
 
 }

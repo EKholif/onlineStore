@@ -17,12 +17,10 @@ public class CustomerUserDetails implements UserDetails {
 
     }
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
     }
-
 
     @Override
     public String getPassword() {
@@ -54,9 +52,6 @@ public class CustomerUserDetails implements UserDetails {
         return customer.isEnabled();
     }
 
-
-
-
     public String getUserEmail() {
         return customer.getEmail();
     }
@@ -76,7 +71,11 @@ public class CustomerUserDetails implements UserDetails {
     }
 
     public String getFullName() {
-        return customer.getFirstName() + " "+ customer.getLastName();
+        return customer.getFirstName() + " " + customer.getLastName();
+    }
+
+    public Long getTenantId() {
+        return customer.getTenantId();
     }
 
 }

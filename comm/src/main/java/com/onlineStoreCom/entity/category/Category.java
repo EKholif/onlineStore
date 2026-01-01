@@ -7,10 +7,10 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "categories")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Category extends IdBasedEntity implements Comparable<Category> {
 
     @Column(name = "name", length = 85, nullable = false, unique = true)
@@ -24,7 +24,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
 
     private boolean enable;
 
-
     public boolean isHasChildren() {
         return hasChildren;
     }
@@ -37,7 +36,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_Id")
     private Category parent;
-
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private Set<Category> children = new HashSet<>();
@@ -79,7 +77,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
 
     }
 
-
     public String getAllParentIDs() {
         return allParentIDs;
     }
@@ -88,7 +85,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
         this.allParentIDs = allParentIDs;
     }
 
-
     public void setLevel(int level) {
         this.level = level;
     }
@@ -96,7 +92,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
     public int getLevel() {
         return level;
     }
-
 
     public static Category copyIdAndName(Integer id, String name) {
         Category copyCategory = new Category();
@@ -117,7 +112,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
         copyCategory.setChildren(category.getChildren());
         copyCategory.setHasChildren(category.getChildren().size() > 0);
 
-
         return copyCategory;
     }
 
@@ -128,11 +122,9 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
 
     }
 
-
     public Category(Integer id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;
@@ -182,7 +174,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
         this.children = children;
     }
 
-
     public void setHasChildren(boolean hasChildren) {
         this.hasChildren = hasChildren;
     }
@@ -201,10 +192,10 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
     @Transient
     public String getImageDir() {
         String dirName = "categories-photos\\";
-        if (id < 0 || image == null) return "\\images \\ bob.png";
+        if (id < 0 || image == null)
+            return "\\images \\ bob.png";
         return dirName + this.id + '\\';
     }
-
 
     @Override
     public int compareTo(Category other) {
