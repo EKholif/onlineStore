@@ -13,11 +13,15 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 public class RoleRepositoryTest {
+
+    @org.junit.jupiter.api.BeforeEach
+    public void setUp() {
+        com.onlineStoreCom.tenant.TenantContext.setTenantId(1L);
+    }
 
     @Autowired
     private RoleRepository repo;
@@ -28,17 +32,14 @@ public class RoleRepositoryTest {
         Iterable<Role> listUsers = repo.findAll();
 
         for (Role role : listUsers) {
-//            System.out.println(role.getId() + " --" + role.getName());
+            // System.out.println(role.getId() + " --" + role.getName());
 
-//            repo.deleteById(role.getId());
+            // repo.deleteById(role.getId());
             System.out.println("repo.deleteById(" + role.getId() + "L);");
 
         }
 
-        }
-
-
-
+    }
 
     @Test
     public void testCreateFirstRole() {
@@ -62,7 +63,6 @@ public class RoleRepositoryTest {
         Role roleAssistant = new Role("Assistant", "manage questions and reviews");
         repo.saveAllAndFlush(List.of(roleSalesperson, roleEditor, roleShipper, roleAssistant));
     }
-
 
     @Test
     public void testDeleteRole() {

@@ -17,8 +17,8 @@
     <form id="deleteForm" method="post" th:action="@{/delete-Products}">
 
         <div class=" justify-content-center mb-2 mt-2 ">
-            <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" title="Delete Selected brands"
-                    type="submit"></button>
+            <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;"
+                    title="Delete Selected brands" type="submit"></button>
 
             <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/products/new-products-form}"
                title="Add brand"></a>&nbsp;&nbsp;
@@ -88,8 +88,8 @@
                     <td>
                                 <span class="fas fa-user  fa-fade fa-2x icon-golden "
                                       th:if="${product.mainImage == null}"></span>
-                        <img class="rounded mx-auto  d-block"
-                             style="width: 40px; height: 40px;" th:if="${product.mainImage != null && !product.mainImage.isEmpty() }"
+                        <img class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"
+                             th:if="${product.mainImage != null && !product.mainImage.isEmpty() }"
                              th:src=" @{${product.getImagePath()}}"/>
                     </td>
 
@@ -108,7 +108,7 @@
 
                     <td>
                         <div
-                                th:replace="~{support/fragments/standard/action_fragments :: status(${product.isEnable}, 'product', '/products/' + ${product.getId})}">
+                                th:replace="~{support/fragments/standard/action_fragments :: status(${product.enabled}, 'product', '/products/' + ${product.getId})}">
                         </div>
                     </td>
 

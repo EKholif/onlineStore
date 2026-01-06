@@ -14,8 +14,10 @@ import java.util.Set;
 /**
  * Custom implementation of Spring Security's UserDetails interface.
  * <p>
- * This class wraps the application's User entity and adapts it to Spring Security's
- * UserDetails interface. It provides the necessary user information and authorities
+ * This class wraps the application's User entity and adapts it to Spring
+ * Security's
+ * UserDetails interface. It provides the necessary user information and
+ * authorities
  * required for authentication and authorization.
  */
 public class StoreUserDetails implements UserDetails {
@@ -34,18 +36,19 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Returns the authorities granted to the user.
-     * 
-     * @return a collection of GrantedAuthority objects representing the user's roles
+     *
+     * @return a collection of GrantedAuthority objects representing the user's
+     *         roles
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Role> roles = user.getRoles();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        
+
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        
+
         return authorities;
     }
 
@@ -91,8 +94,9 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Indicates whether the user's credentials (password) has expired.
-     * 
-     * @return true if the user's credentials are valid (non-expired), false otherwise
+     *
+     * @return true if the user's credentials are valid (non-expired), false
+     *         otherwise
      */
     @Override
     public boolean isCredentialsNonExpired() {
@@ -106,9 +110,9 @@ public class StoreUserDetails implements UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return user.isEnable();
+        return user.isEnabled();
     }
-    
+
     /**
      * Gets the image path of the user.
      * 
@@ -126,6 +130,7 @@ public class StoreUserDetails implements UserDetails {
     public Integer getId() {
         return user.getId();
     }
+
     public Long getTenantId() {
         return user.getTenantId();
     }

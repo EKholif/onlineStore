@@ -1,6 +1,5 @@
 package com.onlineStore.admin.order;
 
-
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.order.*;
 import com.onlineStoreCom.entity.product.Product;
@@ -24,34 +23,43 @@ import static org.springframework.data.domain.Pageable.ofSize;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@org.springframework.boot.autoconfigure.domain.EntityScan({"com.onlineStoreCom.entity"})
 @Rollback(value = true)
 public class OrderRepositoryTests {
 
 	@Autowired
 	private OrderRepository repo;
-	@Autowired private TestEntityManager entityManager;
-	
+    @Autowired
+    private TestEntityManager entityManager;
+
+    @org.junit.jupiter.api.BeforeEach
+    public void setUp() {
+        com.onlineStoreCom.tenant.TenantContext.setTenantId(1L);
+    }
+
 	@Test
 	public void testCreateNewOrderWithSingleProduct() {
-		Customer customer = entityManager.find(Customer.class, 163);
-		Product product = entityManager.find(Product.class, 1);
-		
+        Customer customer = entityManager.getEntityManager().createQuery("SELECT c FROM Customer c", Customer.class)
+                .setMaxResults(1).getResultList().get(0);
+        Product product = entityManager.getEntityManager().createQuery("SELECT p FROM Product p", Product.class)
+                .setMaxResults(1).getResultList().get(0);
+
 		Order mainOrder = new Order();
 		mainOrder.setOrderTime(new Date());
 		mainOrder.setCustomer(customer);
 		mainOrder.copyAddressFromCustomer();
-		
+
 		mainOrder.setShippingCost(10);
 		mainOrder.setProductCost(product.getCost());
 		mainOrder.setTax(0);
 		mainOrder.setSubtotal(product.getPrice());
 		mainOrder.setTotal(product.getPrice() + 10);
-		
+
 		mainOrder.setPaymentMethod(PaymentMethod.CREDIT_CARD);
 		mainOrder.setStatus(OrderStatus.NEW);
 		mainOrder.setDeliverDate(new Date());
 		mainOrder.setDeliverDays(1);
-		
+
 		OrderDetail orderDetail = new OrderDetail();
 		orderDetail.setProduct(product);
 		orderDetail.setOrder(mainOrder);
@@ -60,25 +68,28 @@ public class OrderRepositoryTests {
 		orderDetail.setQuantity(1);
 		orderDetail.setSubtotal(product.getPrice());
 		orderDetail.setUnitPrice(product.getPrice());
-		
+
 		mainOrder.getOrderDetails().add(orderDetail);
-		
+
 		Order savedOrder = repo.save(mainOrder);
-		
-		assertThat(savedOrder.getId()).isGreaterThan(0);		
+
+        assertThat(savedOrder.getId()).isGreaterThan(0);
 	}
-	
+
 	@Test
 	public void testCreateNewOrderWithMultipleProducts() {
-		Customer customer = entityManager.find(Customer.class, 163);
-		Product product1 = entityManager.find(Product.class, 20);
-		Product product2 = entityManager.find(Product.class, 40);
-		
+        Customer customer = entityManager.getEntityManager().createQuery("SELECT c FROM Customer c", Customer.class)
+                .setMaxResults(1).getResultList().get(0);
+        Product product1 = entityManager.getEntityManager().createQuery("SELECT p FROM Product p", Product.class)
+                .setMaxResults(2).getResultList().get(0);
+        Product product2 = entityManager.getEntityManager().createQuery("SELECT p FROM Product p", Product.class)
+                .setMaxResults(2).getResultList().get(1);
+
 		Order mainOrder = new Order();
 		mainOrder.setOrderTime(new Date());
 		mainOrder.setCustomer(customer);
 		mainOrder.copyAddressFromCustomer();
-		
+
 		OrderDetail orderDetail1 = new OrderDetail();
 		orderDetail1.setProduct(product1);
 		orderDetail1.setOrder(mainOrder);
@@ -87,7 +98,7 @@ public class OrderRepositoryTests {
 		orderDetail1.setQuantity(1);
 		orderDetail1.setSubtotal(product1.getPrice());
 		orderDetail1.setUnitPrice(product1.getPrice());
-		
+
 		OrderDetail orderDetail2 = new OrderDetail();
 		orderDetail2.setProduct(product2);
 		orderDetail2.setOrder(mainOrder);
@@ -96,87 +107,83 @@ public class OrderRepositoryTests {
 		orderDetail2.setQuantity(2);
 		orderDetail2.setSubtotal(product2.getPrice() * 2);
 		orderDetail2.setUnitPrice(product2.getPrice());
-		
+
 		mainOrder.getOrderDetails().add(orderDetail1);
 		mainOrder.getOrderDetails().add(orderDetail2);
-		
+
 		mainOrder.setShippingCost(30);
 		mainOrder.setProductCost(product1.getCost() + product2.getCost());
 		mainOrder.setTax(0);
 		float subtotal = product1.getPrice() + product2.getPrice() * 2;
 		mainOrder.setSubtotal(subtotal);
 		mainOrder.setTotal(subtotal + 30);
-		
+
 		mainOrder.setPaymentMethod(PaymentMethod.CREDIT_CARD);
 		mainOrder.setStatus(OrderStatus.PACKAGED);
 		mainOrder.setDeliverDate(new Date());
 		mainOrder.setDeliverDays(3);
-		
-		Order savedOrder = repo.save(mainOrder);		
-		assertThat(savedOrder.getId()).isGreaterThan(0);		
+
+        Order savedOrder = repo.save(mainOrder);
+        assertThat(savedOrder.getId()).isGreaterThan(0);
 	}
-	
+
 	@Test
 	public void testListOrders() {
         Iterable<Order> orders = repo.findAllSet("Brian");
-		
+
 		assertThat(orders).hasSizeGreaterThan(0);
-		
+
 		orders.forEach(System.out::println);
 	}
-
 
 	@Test
 	public void testListPage() {
 
-		Pageable pageable =ofSize( 10);
-		Iterable<Order> orders = repo.findAll( pageable);
+        Pageable pageable = ofSize(10);
+        Iterable<Order> orders = repo.findAll(pageable);
 
 		assertThat(orders).hasSizeGreaterThan(0);
 
 		orders.forEach(System.out::println);
 	}
 
-
 	@Test
 	public void testUpdateOrder() {
-		Integer orderId = 2;
-		Order order = repo.findById(orderId).get();
-		
+        Order order = repo.findAll(Pageable.ofSize(1)).getContent().get(0);
+
 		order.setStatus(OrderStatus.SHIPPING);
 		order.setPaymentMethod(PaymentMethod.COD);
 		order.setOrderTime(new Date());
 		order.setDeliverDays(2);
-		
-		Order updatedOrder = repo.save(order);
+
+        Order updatedOrder = repo.save(order);
 
 		System.out.println(updatedOrder.getOrderDetails());
 		assertThat(updatedOrder.getStatus()).isEqualTo(OrderStatus.SHIPPING);
 	}
-	
-	@Test
+
+    @Test
 	public void testGetOrder() {
-		Integer orderId = 3;
-		Order order = repo.findById(orderId).get();
-		
+        Order order = repo.findAll(Pageable.ofSize(1)).getContent().get(0);
+
 		assertThat(order).isNotNull();
 		System.out.println(order);
 	}
-	
-	@Test
+
+    @Test
 	public void testDeleteOrder() {
-		Integer orderId = 3;
+        Order order = repo.findAll(Pageable.ofSize(1)).getContent().get(0);
+        Integer orderId = order.getId();
 		repo.deleteById(orderId);
-		
-		Optional<Order> result = repo.findById(orderId);
+
+        Optional<Order> result = repo.findById(orderId);
 		assertThat(result).isNotPresent();
 	}
-	
-	@Test
+
+    @Test
 	public void testUpdateOrderTracks() {
-		Integer orderId = 19;
-		Order order = repo.findById(orderId).get();
-		
+        Order order = repo.findAll(Pageable.ofSize(1)).getContent().get(0);
+
 		OrderTrack newTrack = new OrderTrack();
 		newTrack.setOrder(order);
 		newTrack.setUpdatedTime(new Date());
@@ -188,68 +195,67 @@ public class OrderRepositoryTests {
 		processingTrack.setUpdatedTime(new Date());
 		processingTrack.setStatus(OrderStatus.PROCESSING);
 		processingTrack.setNotes(OrderStatus.PROCESSING.defaultDescription());
-		
-		List<OrderTrack> orderTracks = order.getOrderTracks();
+
+        List<OrderTrack> orderTracks = order.getOrderTracks();
 		orderTracks.add(newTrack);
 		orderTracks.add(processingTrack);
-		
-		Order updatedOrder = repo.save(order);
-		
-		assertThat(updatedOrder.getOrderTracks()).hasSizeGreaterThan(1);
+
+        Order updatedOrder = repo.save(order);
+
+        assertThat(updatedOrder.getOrderTracks()).hasSizeGreaterThan(1);
 	}
-	
-	@Test
+
+    @Test
 	public void testAddTrackWithStatusNewToOrder() {
-		Integer orderId = 2;
-		Order order = repo.findById(orderId).get();
-		
+        Order order = repo.findAll(Pageable.ofSize(1)).getContent().get(0);
+
 		OrderTrack newTrack = new OrderTrack();
 		newTrack.setOrder(order);
 		newTrack.setUpdatedTime(new Date());
 		newTrack.setStatus(OrderStatus.NEW);
 		newTrack.setNotes(OrderStatus.NEW.defaultDescription());
-		
-		List<OrderTrack> orderTracks = order.getOrderTracks();
-		orderTracks.add(newTrack);		
+
+        List<OrderTrack> orderTracks = order.getOrderTracks();
+        orderTracks.add(newTrack);
 
 		Order updatedOrder = repo.save(order);
-		
-		assertThat(updatedOrder.getOrderTracks()).hasSizeGreaterThan(1);
+
+        assertThat(updatedOrder.getOrderTracks()).hasSizeGreaterThan(1);
 	}
 
 	@Test
 	public void testAddTratatusNewToOrder() {
-		Integer orderId = 34;
-		Order order = repo.findById(orderId).get();
-
+        Order order = repo.findAll(Pageable.ofSize(1)).getContent().get(0);
 
 		List<OrderTrack> orderTracks = order.getOrderTracks();
 
-		for (OrderTrack r  :orderTracks) {
-			System.out.println( "OrderTrack     "+ r.getStatus());
-			
+        for (OrderTrack r : orderTracks) {
+            System.out.println("OrderTrack     " + r.getStatus());
+
 		}
 
-
-
-//		assertThat(updatedOrder.getOrderTracks()).hasSizeGreaterThan(1);
+        // assertThat(updatedOrder.getOrderTracks()).hasSizeGreaterThan(1);
 	}
 
-
-	
 	@Test
 	public void testFindByOrderTimeBetween() throws ParseException {
+        // Create an order for today ensuring data exists
+        testCreateNewOrderWithSingleProduct();
+
 		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date startTime = dateFormatter.parse("2021-08-01");
-		Date endTime = dateFormatter.parse("2021-08-31");
-		
+        Date today = new Date();
+        // Set range to include today (e.g., start of month to end of month, or just
+        // generous range)
+        Date startTime = new Date(today.getTime() - (1000L * 60 * 60 * 24 * 30)); // 30 days ago
+        Date endTime = new Date(today.getTime() + (1000L * 60 * 60 * 24)); // Tomorrow
+
 		List<Order> listOrders = repo.findByOrderTimeBetween(startTime, endTime);
-		
-		assertThat(listOrders.size()).isGreaterThan(0);
-		
-		for (Order order : listOrders) {
-			System.out.printf("%s | %s | %.2f | %.2f | %.2f \n", 
-					order.getId(), order.getOrderTime(), order.getProductCost(), 
+
+        assertThat(listOrders.size()).isGreaterThan(0);
+
+        for (Order order : listOrders) {
+            System.out.printf("%s | %s | %.2f | %.2f | %.2f \n",
+                    order.getId(), order.getOrderTime(), order.getProductCost(),
 					order.getSubtotal(), order.getTotal());
 		}
 	}

@@ -1,6 +1,6 @@
 package com.onlineStore.admin.utility.paging;
 
-import com.onlineStore.admin.review.ReviewRepository;
+import com.onlineStore.admin.utility.SearchRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,30 +16,27 @@ public class PagingAndSortingHelper {
 	private final String sortDir;
 	private final String keyword;
 
-
-
 	public PagingAndSortingHelper(ModelAndViewContainer model, String listName,
-								  String sortField, String sortDir, String keyword) {
+                                  String sortField, String sortDir, String keyword) {
 		this.model = model;
 		this.listName = listName;
 		this.sortField = sortField;
 		this.sortDir = sortDir;
 		this.keyword = keyword;
 	}
-	
+
 	public void updateModelAttributes(int pageNum, Page<?> page) {
 		List<?> listItems = page.getContent();
 
-
 		int pageSize = page.getSize();
-		
+
 		long startCount = (long) (pageNum - 1) * pageSize + 1;
 		long endCount = startCount + pageSize - 1;
 		if (endCount > page.getTotalElements()) {
 			endCount = page.getTotalElements();
 		}
-		
-		model.addAttribute("currentPage", pageNum);
+
+        model.addAttribute("currentPage", pageNum);
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("startCount", startCount);
 		model.addAttribute("endCount", endCount);
@@ -48,7 +45,7 @@ public class PagingAndSortingHelper {
 		model.addAttribute(listName, listItems);
 	}
 
-    public void listEntities(int pageNum, int pageSize, ReviewRepository repo) {
+    public void listEntities(int pageNum, int pageSize, SearchRepository<?, ?> repo) {
 		Pageable pageable = createPageable(pageSize, pageNum);
 		Page<?> page = null;
 
@@ -60,12 +57,12 @@ public class PagingAndSortingHelper {
 
 		updateModelAttributes(pageNum, page);
 	}
-	
-	public Pageable createPageable(int pageSize, int pageNum) {
+
+    public Pageable createPageable(int pageSize, int pageNum) {
 		Sort sort = Sort.by(sortField);
 		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
-		return PageRequest.of(pageNum - 1, pageSize, sort);		
-	}	
+        return PageRequest.of(pageNum - 1, pageSize, sort);
+    }
 
 	public String getSortField() {
 		return sortField;
@@ -78,6 +75,5 @@ public class PagingAndSortingHelper {
 	public String getKeyword() {
 		return keyword;
 	}
-	
-	
+
 }

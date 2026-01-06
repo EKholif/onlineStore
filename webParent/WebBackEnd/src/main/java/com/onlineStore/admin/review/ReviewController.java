@@ -1,6 +1,5 @@
 package com.onlineStore.admin.review;
 
-
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.Review.Review;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 @Controller
 public class ReviewController {
@@ -28,7 +26,7 @@ public class ReviewController {
 
     @GetMapping("/reviews/page/{pageNum}")
     public String listByPage(
-            @PagingAndSortingParam(listName = "listReviews", moduleURL = "/reviews") PagingAndSortingHelper helper,
+            @PagingAndSortingParam(listName = "listReviews", moduleURL = "/reviews/page/") PagingAndSortingHelper helper,
             @PathVariable(name = "pageNum") int pageNum) {
 
         service.listByPage(pageNum, helper);

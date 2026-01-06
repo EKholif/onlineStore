@@ -51,11 +51,11 @@
                         &nbsp;
                         <a class="fas fa-check-circle px-2 icon-green "
                            th:href="@{'/user/' + ${user.getId()} +'/enable/false' } "
-                           th:if="${user.isEnable() == true}" title="Disable User"></a>
+                           th:if="${user.enabled == true}" title="Disable User"></a>
                         &nbsp;
                         <a class="fas fa-circle px-2 icon-red"
                            th:href="@{'/user/' + ${user.getId()} +'/enable/true' }"
-                           th:if="${user.isEnable() == false}" title="Enable User"></a>
+                           th:if="${user.enabled == false}" title="Enable User"></a>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     </th>
                     <th>Roles</th>
                     <th
-                            th:replace="~{support/fragments/standard/table_fragments :: column_link('enable', 'Status')}">
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('enabled', 'Status')}">
                     </th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -105,10 +105,10 @@
                     <td>
                         <a class="fas fa-check-circle px-2 icon-green "
                            th:href="@{'/user/' + ${user.getId} +'/enable/false' } "
-                           th:if="${user.isEnable == true}" title="Disable User"></a>
+                           th:if="${user.enabled == true}" title="Disable User"></a>
                         <a class="fas fa-circle px-2 icon-red"
                            th:href="@{'/user/' + ${user.getId} +'/enable/true' }"
-                           th:if="${user.isEnable() == false}" title="Enable User"></a>
+                           th:if="${user.enabled == false}" title="Enable User"></a>
                     </td>
                     <td>
                         <a class="fas fa-edit px-2 icon-green" th:href="@{'/users/edit/' + ${user.getId()}}"

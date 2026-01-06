@@ -4,17 +4,18 @@ import com.onlineStore.admin.brand.utility.BrandCsvExporter;
 import com.onlineStore.admin.brand.utility.BrandExcelExporter;
 import com.onlineStore.admin.brand.utility.BrandPdfExporter;
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.CategoryService;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.utility.FileUploadUtil;
+import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
+import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +26,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@RestController
+@Controller
 public class BrandController {
 
     @Autowired
@@ -34,26 +35,19 @@ public class BrandController {
     private CategoryService categoryService;
 
     @GetMapping("/brands/brands")
-    public ModelAndView listAllUsers() {
-        ModelAndView model = new ModelAndView("brands/brands");
-
-        return listByPage(1, "name", "dsc", null);
+    public String listAllBrands() {
+        return "redirect:/brands/page/1?sortField=name&sortDir=asc";
     }
 
     @GetMapping("/brands/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum, @Param("sortField") String sortField,
-                                   @Param("sortDir") String sortDir, @Param("keyWord") String keyWord) {
+    public String listByPage(
+            @PagingAndSortingParam(listName = "brands", moduleURL = "/brands/page/") PagingAndSortingHelper helper,
+            @PathVariable(name = "pageNum") int pageNum) {
 
-        ModelAndView model = new ModelAndView("brands/brands");
-        PageInfo pageInfo = new PageInfo();
+        Page<Brand> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(), helper.getKeyword());
+        helper.updateModelAttributes(pageNum, page);
 
-        List<Brand> listByPage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "brands", sortField, sortDir,
-                keyWord, pageNum, listByPage);
-
-        pagingAndSortingHelper.listByPage(pageInfo, "brands");
-        return model;
+        return "brands/brands";
     }
 
     @GetMapping("/brands/new-brands-form")
@@ -65,11 +59,12 @@ public class BrandController {
 
         model.addObject("label", " Category :");
         model.addObject("id", 0L);
+        model.addObject("brand", brand);
+        model.addObject("listItems", listCategory);
+        model.addObject("pageTitle", "Create new brand");
+        model.addObject("saveChanges", "/brands/save-brand");
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected
-        // listName
-        return pagingAndSortingHelper.newForm(model, "brand", brand);
-
+        return model;
     }
 
     @PostMapping("/brands/save-brand")
@@ -87,7 +82,7 @@ public class BrandController {
             Brand savedBrand = service.saveBrand(brand);
 
             String dirName = "brands-photos/";
-            String uploadDir = dirName + savedBrand.getId();
+            String uploadDir = dirName + tenantId + "/" + savedBrand.getId();
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -106,13 +101,19 @@ public class BrandController {
         try {
             ModelAndView model = new ModelAndView("/brands/new-brands-form");
 
-            Brand existCategory = service.findById(id);
+            Brand existBrand = service.findById(id);
 
             List<Category> listCategory = categoryService.listUsedForForm();
 
-            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("brands", listCategory); // Corrected
-            // listName
-            return pagingAndSortingHelper.editForm(model, "brand", existCategory, id);
+            model.addObject("brand", existBrand);
+            model.addObject("id", id);
+            model.addObject("listItems", listCategory);
+            model.addObject("pageTitle", " Edit : brand ID :  " + id);
+            model.addObject("saveChanges", "/brands/save-edit-brand");
+            model.addObject("label", " Category :"); // Kept from original context if needed, though logic might differ
+            // slightly.
+
+            return model;
 
         } catch (CategoryNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
@@ -138,7 +139,7 @@ public class BrandController {
 
             FileUploadUtil.cleanDir(updateBrand.getImageDir());
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-            String uploadDir = "brands-photos/" + updateBrand.getId();
+            String uploadDir = "brands-photos/" + updateBrand.getTenantId() + "/" + updateBrand.getId();
             brand.setLogo(fileName);
             BeanUtils.copyProperties(brand, updateBrand, "id");
 

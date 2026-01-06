@@ -37,7 +37,7 @@ public class StateRestController {
 	}
 
     @DeleteMapping("/states/delete/{id}")
-	public void delete(@PathVariable("id") String id) {
+    public void delete(@PathVariable("id") Integer id) {
 		repo.deleteById(id);
 	}
 }

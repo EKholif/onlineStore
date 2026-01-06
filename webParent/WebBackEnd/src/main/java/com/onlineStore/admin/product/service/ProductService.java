@@ -1,11 +1,7 @@
 package com.onlineStore.admin.product.service;
 
-
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.product.repository.ProductRepository;
-import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
-import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStoreCom.entity.product.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +20,9 @@ import java.util.Objects;
 @Transactional
 public class ProductService {
 
-
     public static final int PRODUCTS_PER_PAGE = 5;
     @Autowired
     private ProductRepository repository;
-
 
     public List<Product> listAll() {
 
@@ -44,7 +38,6 @@ public class ProductService {
         return repository.findById(id).isPresent();
     }
 
-
     public void deleteProduct(Integer id) throws CategoryNotFoundException {
         try {
             repository.deleteById(id);
@@ -54,7 +47,6 @@ public class ProductService {
             throw new CategoryNotFoundException("Could not find any Category with ID " + id);
         }
     }
-
 
     public Product saveProduct(Product product) {
 
@@ -68,16 +60,13 @@ public class ProductService {
 
         product.setAlias(product.getAlias().replace(" ", "_"));
 
-
         return repository.save(product);
     }
-
 
     public String checkUnique(Integer id, String name, String alias) {
         boolean isCreatingNew = (id == null || id == 0);
         Product productByName = repository.findByName(name);
         Product productByAlias = repository.findByAlias(alias);
-
 
         if (productByName != null && !Objects.equals(productByName.getId(), id)) {
 
@@ -91,68 +80,51 @@ public class ProductService {
         return "Ok";
     }
 
-
     public void UpdateProductEnableStatus(Integer id, Boolean enable) {
         repository.enableProduct(id, enable);
 
     }
 
-    public List<Product> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
+    public Page<Product> listByPage(int pageNum, String sortField, String sortDir, String keyWord) {
 
         Sort sort = Sort.by(sortField);
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
-        Pageable pageable = PageRequest.of(pageNum - 1, UserService.USERS_PER_PAGE, sort);
-
-        Page<Product> pageUsers = null;
+        Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);
 
         if (keyWord != null) {
-            pageUsers = repository.findAll(keyWord, pageable);
+            return repository.findAll(keyWord, pageable);
         } else {
-            pageUsers = repository.findAll(pageable);
+            return repository.findAll(pageable);
 
         }
-        pageInfo.setTotalElements(pageUsers.getTotalElements());
-        pageInfo.setTotalPages(pageUsers.getTotalPages());
-
-
-        return pageUsers.getContent();
-    }
-    public void searchProducts(int pageNum, PagingAndSortingHelper helper) {
-        Pageable pageable = helper.createPageable(PRODUCTS_PER_PAGE, pageNum);
-        String keyword = helper.getKeyword();
-        Page<Product> page = repository.searchProductsByName(keyword, pageable);
-        helper.updateModelAttributes(pageNum, page);
     }
 
-
-//    public List<Product> listByPage(PagingAndSorting pagingAndSorting) {
-//
-//        Page<Product> pageUsers = null;
-//        String keyWord = pagingAndSorting.getKeyWord();
-//
-//        Sort sort = Sort.by(pagingAndSorting.getSortField());
-//
-//        sort = pagingAndSorting.getSortDir().equals("asc") ? sort.ascending() : sort.descending();
-//        int pegNum = pagingAndSorting.getPageNum();
-//        Pageable pageable = PageRequest.of( pegNum - 1, PagingAndSorting.PRODUCTS_PER_PAGE, sort);
-//
-//        if (keyWord != null) {
-//            pageUsers = repository.findAll(keyWord, pageable);
-//        } else {
-//            pageUsers = repository.findAll(pageable);
-//
-//        }
-//
-//        PageInfo pageInfo = pagingAndSorting.getPageInfo();
-//        pageInfo.setTotalElements(pageUsers.getTotalElements());
-//        pageInfo.setTotalPages(pageUsers.getTotalPages());
-//
-//
-//        return pageUsers.getContent();
-//    }
-
+    // public List<Product> listByPage(PagingAndSorting pagingAndSorting) {
+    //
+    // Page<Product> pageUsers = null;
+    // String keyWord = pagingAndSorting.getKeyWord();
+    //
+    // Sort sort = Sort.by(pagingAndSorting.getSortField());
+    //
+    // sort = pagingAndSorting.getSortDir().equals("asc") ? sort.ascending() :
+    // sort.descending();
+    // int pegNum = pagingAndSorting.getPageNum();
+    // Pageable pageable = PageRequest.of( pegNum - 1,
+    // PagingAndSorting.PRODUCTS_PER_PAGE, sort);
+    //
+    // if (keyWord != null) {
+    // pageUsers = repository.findAll(keyWord, pageable);
+    // } else {
+    // pageUsers = repository.findAll(pageable);
+    //
+    // }
+    //
+    // PageInfo pageInfo = pagingAndSorting.getPageInfo();
+    // pageInfo.setTotalElements(pageUsers.getTotalElements());
+    // pageInfo.setTotalPages(pageUsers.getTotalPages());
+    //
+    //
+    // return pageUsers.getContent();
+    // }
 
 }
-
-
-

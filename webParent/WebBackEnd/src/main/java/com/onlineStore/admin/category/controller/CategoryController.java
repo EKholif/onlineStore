@@ -5,14 +5,15 @@ import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExpo
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
 import com.onlineStore.admin.category.services.CategoryService;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.utility.FileUploadUtil;
+import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
+import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,36 +24,26 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@RestController
-
+@org.springframework.stereotype.Controller
 public class CategoryController {
     @Autowired
     private CategoryService service;
 
     @GetMapping("/categories/categories")
-
-    public ModelAndView listAllCategories() {
-        ModelAndView model = new ModelAndView("categories/categories");
-
-        return listByPage(1, "name", "asc", null);
+    public String listAllCategories() {
+        return "redirect:/categories/page/1?sortField=name&sortDir=asc";
     }
 
     @GetMapping("/categories/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
-                                   @Param("keyWord") String keyWord) {
+    public String listByPage(
+            @PagingAndSortingParam(listName = "categories", moduleURL = "/categories/page/") PagingAndSortingHelper helper,
+            @PathVariable(name = "pageNum") int pageNum) {
 
-        ModelAndView model = new ModelAndView("categories/categories");
+        Page<Category> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
+                helper.getKeyword());
+        helper.updateModelAttributes(pageNum, page);
 
-        PageInfo pageInfo = new PageInfo();
-
-        List<Category> categoryPagePage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "categories", sortField,
-                sortDir, keyWord, pageNum, categoryPagePage);
-
-        return pagingAndSortingHelper.listByPage(pageInfo, "categories");
-
+        return "categories/categories";
     }
 
     @GetMapping("/categories/new-categories-form")
@@ -61,17 +52,18 @@ public class CategoryController {
         ModelAndView model = new ModelAndView("categories/new-categories-form");
 
         Category category = new Category();
-        category.setEnable(true);
+        category.setEnabled(true);
 
         List<Category> listCategory = service.listUsedForForm();
 
         model.addObject("id", 0L);
         model.addObject("label", "Parent Category :");
         model.addObject("category", category);
+        model.addObject("listItems", listCategory);
+        model.addObject("pageTitle", "Create new category");
+        model.addObject("saveChanges", "/categories/save-category");
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("categories", listCategory); // Corrected
-        // listName
-        return pagingAndSortingHelper.newForm(model, "category", category);
+        return model;
 
     }
 
@@ -92,7 +84,7 @@ public class CategoryController {
             Category savedCategory = service.saveCategory(category);
 
             String dirName = "categories-photos/";
-            String uploadDir = dirName + savedCategory.getId();
+            String uploadDir = dirName + tenantId + "/" + savedCategory.getId();
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -115,10 +107,13 @@ public class CategoryController {
             List<Category> listCategory = service.listUsedForForm();
 
             model.addObject("label", "Parent Category :");
+            model.addObject("category", existCategory);
+            model.addObject("id", id);
+            model.addObject("listItems", listCategory);
+            model.addObject("pageTitle", " Edit : category ID :  " + id);
+            model.addObject("saveChanges", "/categories/save-edit-category");
 
-            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("categories", listCategory); // Corrected
-            // listName
-            return pagingAndSortingHelper.editForm(model, "category", existCategory, id);
+            return model;
 
         } catch (CategoryNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
@@ -144,7 +139,7 @@ public class CategoryController {
 
             FileUploadUtil.cleanDir(updateCategory.getImageDir());
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-            String uploadDir = "categories-photos/" + updateCategory.getId();
+            String uploadDir = "categories-photos/" + updateCategory.getTenantId() + "/" + updateCategory.getId();
             category.setImage(fileName);
             BeanUtils.copyProperties(category, updateCategory, "id", "tenantId");
 

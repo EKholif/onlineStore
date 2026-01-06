@@ -20,15 +20,21 @@ public class PagingAndSortingArgumentResolver implements HandlerMethodArgumentRe
 		String sortDir = request.getParameter("sortDir");
 		String sortField = request.getParameter("sortField");
 		String keyword = request.getParameter("keyWord");
-		
-		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+
+        if (sortDir == null) {
+            sortDir = "asc";
+        }
+        if (sortField == null) {
+            sortField = "id"; // Default fallback
+        }
+
+        String reverseSortDir = "asc".equals(sortDir) ? "desc" : "asc";
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("reverseSortDir", reverseSortDir);
 		model.addAttribute("keyWord", keyword);
 		model.addAttribute("moduleURL", annotation.moduleURL());
 
-		
 		return new PagingAndSortingHelper(model, annotation.listName(),
 				sortField, sortDir, keyword);
 	}

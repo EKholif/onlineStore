@@ -63,7 +63,7 @@ public class ProductRepositoryTestN {
 
         for (Category user : getChildren) {
             System.out.println(user.getId() + " --" + user.getName() + "-- "
-                    + "--" + user.isEnable());
+                    + "--" + user.isEnabled());
         }
 
     }
@@ -82,7 +82,7 @@ public class ProductRepositoryTestN {
 
         for (Product user : listByCategory) {
             System.out.println(user.getId() + " --" + user.getName() + "-- "
-                    + "--" + user.isEnable());
+                    + "--" + user.isEnabled());
 
         }
     }
@@ -90,14 +90,13 @@ public class ProductRepositoryTestN {
     @Test
     public void FindAlProduct() {
 
-
         List<Product> listByCategory = productRepository.findAll();
         for (Product user : listByCategory) {
-            user.setEnable(true);
+            user.setEnabled(true);
 
             productRepository.saveAndFlush(user);
             System.out.println(user.getId() + " --" + user.getName() + "-- "
-                    + "--" + user.isEnable());
+                    + "--" + user.isEnabled());
 
         }
     }

@@ -3,18 +3,18 @@ package com.onlineStore.admin.product;
 import com.onlineStore.admin.brand.BrandNotFoundException;
 import com.onlineStore.admin.brand.BrandService;
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
 import com.onlineStore.admin.category.services.CategoryService;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.product.service.ProductService;
 import com.onlineStore.admin.utility.FileUploadUtil;
+import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
+import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.tenant.TenantContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@RestController
+@org.springframework.stereotype.Controller
 public class ProductController {
 
     @Autowired
@@ -35,17 +35,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    public static Integer USERS_PER_PAGE = 4;
-
     @GetMapping("/products/products")
-    public ModelAndView listAllUsers() {
-        ModelAndView model = new ModelAndView("products/products");
-
-        List<Product> listItems = productService.listAll();
-        model.addObject("products", listItems);
-        model.addObject("pageTitle", "products");
-
-        return listByPage(1, "name", "dsc", null);
+    public String listAllProducts() {
+        return "redirect:/products/page/1?sortField=name&sortDir=asc";
     }
 
     static void setProductDetails(String[] detailIDs, String[] detailNames,
@@ -69,23 +61,19 @@ public class ProductController {
     }
 
     @GetMapping("/products/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
-                                   @Param("keyWord") String keyWord) {
+    public String listByPage(
+            @PagingAndSortingParam(listName = "products", moduleURL = "/products/page/") PagingAndSortingHelper helper,
+            @PathVariable(name = "pageNum") int pageNum) {
 
-        ModelAndView model = new ModelAndView("products/products");
-        PageInfo pageInfo = new PageInfo();
+        Page<Product> page = productService.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
+                helper.getKeyword());
+        helper.updateModelAttributes(pageNum, page);
 
-        List<Product> listByPage = productService.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "products", sortField,
-                sortDir, keyWord, pageNum, listByPage);
-
-        return pagingAndSortingHelper.listByPage(pageInfo, "products");
+        return "products/products";
     }
 
     @GetMapping("/products/new-products-form")
-    public ModelAndView newBrandForm() {
+    public ModelAndView newProductForm() {
         ModelAndView model = new ModelAndView("products/new-products-form");
 
         List<Brand> listBrands = brandService.listAll();
@@ -102,19 +90,21 @@ public class ProductController {
         model.addObject("label-category", " Category :");
         // model.addObject("listCategory", listCategory);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("products", listCategory); // Corrected
-        // listName
-        return pagingAndSortingHelper.newForm(model, "product", product);
+        model.addObject("product", product);
+        model.addObject("listItems", listCategory);
+        model.addObject("pageTitle", "Create new product");
+        model.addObject("saveChanges", "/products/save-product");
 
+        return model;
     }
 
     @PostMapping("/products/save-product")
-    public ModelAndView saveNewUCategory(RedirectAttributes redirectAttributes,
-                                         @ModelAttribute Product product, @RequestParam(name = "fileImage") MultipartFile mainImageMultipartFile,
-                                         @RequestParam(name = "extraImage") MultipartFile[] extraImageMultipart,
-                                         @RequestParam(name = "detailIDs", required = false) String[] detailIDs,
-                                         @RequestParam(name = "detailNames", required = false) String[] detailNames,
-                                         @RequestParam(name = "detailValues", required = false) String[] detailValues) throws IOException {
+    public ModelAndView saveProduct(RedirectAttributes redirectAttributes,
+                                    @ModelAttribute Product product, @RequestParam(name = "fileImage") MultipartFile mainImageMultipartFile,
+                                    @RequestParam(name = "extraImage") MultipartFile[] extraImageMultipart,
+                                    @RequestParam(name = "detailIDs", required = false) String[] detailIDs,
+                                    @RequestParam(name = "detailNames", required = false) String[] detailNames,
+                                    @RequestParam(name = "detailValues", required = false) String[] detailValues) throws IOException {
 
         redirectAttributes.addFlashAttribute("message", "the brand has been saved successfully.  ");
 
@@ -138,14 +128,14 @@ public class ProductController {
             String fileName = StringUtils
                     .cleanPath(Objects.requireNonNull(mainImageMultipartFile.getOriginalFilename()));
             String dirName = "Products-photos/";
-            String uploadDir = dirName + saveProduct.getId();
+            String uploadDir = dirName + saveProduct.getTenantId() + "/" + saveProduct.getId();
             FileUploadUtil.saveFile(uploadDir, fileName, mainImageMultipartFile);
         }
 
         if (extraImageMultipart.length > 0) {
 
             String dirName = "Products-photos/";
-            String uploadDir = dirName + saveProduct.getId() + "/extras/";
+            String uploadDir = dirName + saveProduct.getTenantId() + "/" + saveProduct.getId() + "/extras/";
 
             for (MultipartFile extramultipartFile : extraImageMultipart) {
 
@@ -193,7 +183,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/edit/{id}")
-    public ModelAndView editCategory(@PathVariable("id") Integer id, RedirectAttributes ra) {
+    public ModelAndView editProduct(@PathVariable("id") Integer id, RedirectAttributes ra) {
 
         ModelAndView model = new ModelAndView("products/new-products-form");
 
@@ -215,11 +205,15 @@ public class ProductController {
         model.addObject("label-brand", " Brand Name :");
 
         model.addObject("label-category", " Category :");
-        model.addObject("listCategory", listCategory);
+        // model.addObject("listCategory", listCategory);
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("products", listCategory); // Corrected
-        // listName
-        return pagingAndSortingHelper.editForm(model, "product", product, id);
+        model.addObject("product", product);
+        model.addObject("id", id);
+        model.addObject("listItems", listCategory);
+        model.addObject("pageTitle", " Edit : product ID :  " + id);
+        model.addObject("saveChanges", "/products/save-edit-product");
+
+        return model;
 
     }
 
@@ -291,7 +285,7 @@ public class ProductController {
     }
 
     @PostMapping("/delete-Products")
-    public ModelAndView deleteBrand(
+    public ModelAndView deleteProducts(
             @RequestParam(name = "selectedForDelete", required = false) List<Integer> selectedForDelete,
             RedirectAttributes redirectAttributes)
             throws IOException, ProductNotFoundException, CategoryNotFoundException, BrandNotFoundException {

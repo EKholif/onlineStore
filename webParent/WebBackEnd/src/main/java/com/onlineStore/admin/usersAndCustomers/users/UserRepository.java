@@ -1,6 +1,5 @@
 package com.onlineStore.admin.usersAndCustomers.users;
 
-
 import com.onlineStoreCom.entity.users.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Integer countById(Integer id);
 
-    @Query("UPDATE User u set  u.enable=?2 WHERE u.id = ?1 ")
+    @Query("UPDATE User u set  u.enabled=?2 WHERE u.id = ?1 ")
     @Modifying
     void enableUser(Integer id, boolean enable);
 
@@ -26,7 +25,3 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             "u.lastName) LIKE %?1%")
     Page<User> findAll(String keyword, Pageable pageable);
 }
-
-
-
-

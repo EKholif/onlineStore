@@ -1,6 +1,5 @@
 package com.onlineStoreCom.entity.brand;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
@@ -12,8 +11,8 @@ import java.util.Set;
 @Entity
 @Table(name = "brands")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Brand extends IdBasedEntity {
-
 
     @Column(nullable = false, length = 45, unique = true)
     private String name;
@@ -22,17 +21,13 @@ public class Brand extends IdBasedEntity {
     private String logo;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "brands_categories",
-            joinColumns = @JoinColumn(name = "brand_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
+    @JoinTable(name = "brands_categories", joinColumns = @JoinColumn(name = "brand_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
     public Brand() {
     }
 
-    public Brand(Integer id,String name ) {
+    public Brand(Integer id, String name) {
         this.name = name;
         this.id = id;
     }
@@ -41,7 +36,6 @@ public class Brand extends IdBasedEntity {
         this.name = name;
         this.logo = "brand-logo.png";
     }
-
 
     public String getName() {
         return name;
@@ -67,25 +61,22 @@ public class Brand extends IdBasedEntity {
         this.categories = categories;
     }
 
-
-
     @Transient
     public String getImagePath() {
         String dirName = "/brands-photos/";
 
+        if (id == null || id < 0 || logo == null)
+            return "/images/bob.png";
 
-        if (id == null || id < 0 || logo == null) return "/images/bob.png";
-
-
-        return dirName + this.id + '\\' + this.logo;
+        return dirName + this.getTenantId() + "/" + this.id + "/" + this.logo;
     }
-
 
     @Transient
     public String getImageDir() {
-        String dirName = "brands-photos\\";
-        if (id == -1L || logo == null) return "\\images \\ bob.png";
-        return dirName + this.id + '\\';
+        String dirName = "brands-photos/";
+        if (id == -1L || logo == null)
+            return "/images/bob.png";
+        return dirName + this.getTenantId() + "/" + this.id + "/";
     }
 
     @Override
@@ -93,4 +84,3 @@ public class Brand extends IdBasedEntity {
         return "Brand [id=" + id + ", name=" + name + ", categories=" + categories + "]";
     }
 }
-

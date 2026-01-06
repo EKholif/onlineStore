@@ -20,7 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT p FROM Product p WHERE  CONCAT(p.id, ' ', p.name, ' ', p.alias ) LIKE %?1%")
     Page<Product> findAll(String keyword, Pageable pageable);
 
-    @Query("UPDATE Product p set  p.enable=?2 WHERE p.id = ?1 ")
+    @Query("UPDATE Product p set  p.enabled=?2 WHERE p.id = ?1 ")
     @Modifying
     Integer enableProduct(Integer id, boolean enable);
 

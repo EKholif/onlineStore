@@ -12,7 +12,6 @@ import java.util.List;
 
 public class CategoryExcelExporter extends AbstractExporter {
 
-
     private final XSSFWorkbook workbook;
     private XSSFSheet sheet;
 
@@ -36,7 +35,6 @@ public class CategoryExcelExporter extends AbstractExporter {
         }
     }
 
-
     private void createCell(XSSFRow row, int columnIndex, Object value, CellStyle style) {
 
         XSSFCell cell = row.createCell(columnIndex);
@@ -54,7 +52,6 @@ public class CategoryExcelExporter extends AbstractExporter {
         cell.setCellStyle(style);
     }
 
-
     public void export(List<Category> categoryList, HttpServletResponse response) throws IOException {
 
         super.export(response, "application/octet-stream", ".xlsx", "Category_");
@@ -62,7 +59,6 @@ public class CategoryExcelExporter extends AbstractExporter {
         writeHeader();
 
         writeDatelines(categoryList);
-
 
         ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
@@ -79,16 +75,15 @@ public class CategoryExcelExporter extends AbstractExporter {
         font.setFontHeight(14);
         cellStyle.setFont(font);
 
-
         for (Category category : categoryList) {
             XSSFRow row = sheet.createRow(rowIndex++);
             int columnIndex = 0;
             createCell(row, 0, category.getId(), cellStyle);
             createCell(row, 1, category.getName(), cellStyle);
             createCell(row, 2, category.getAlias(), cellStyle);
-//            createCell(row ,3 ,category.getParent().toString() ,cellStyle );
-//            createCell(row ,4 ,category.getChildren().toString(),cellStyle );
-            createCell(row, 5, category.isEnable(), cellStyle);
+            // createCell(row ,3 ,category.getParent().toString() ,cellStyle );
+            // createCell(row ,4 ,category.getChildren().toString(),cellStyle );
+            createCell(row, 5, category.isEnabled(), cellStyle);
         }
     }
 }

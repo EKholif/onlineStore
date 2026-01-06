@@ -46,7 +46,7 @@ public class CategoryRepositoryTest {
 
         for (Category user : getChildren) {
             System.out.println(user.getId() + " --" + user.getName() + "-- "
-                    + "--" + user.isEnable());
+                    + "--" + user.isEnabled());
         }
 
     }
@@ -65,7 +65,7 @@ public class CategoryRepositoryTest {
 
         for (Product user : listByCategory) {
             System.out.println(user.getId() + " --" + user.getName() + "-- "
-                    + "--" + user.isEnable());
+                    + "--" + user.isEnabled());
 
         }
     }

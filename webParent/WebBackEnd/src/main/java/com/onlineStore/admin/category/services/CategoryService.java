@@ -5,10 +5,7 @@ import com.onlineStore.admin.category.CategoryRepository;
 import com.onlineStoreCom.entity.category.Category;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -109,7 +106,7 @@ public class CategoryService {
         }
     }
 
-    public List<Category> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyWord) {
+    public Page<Category> listByPage(int pageNum, String sortField, String sortDir, String keyWord) {
 
         if (sortField == null || sortDir.isEmpty()) {
             sortField = "name";
@@ -125,85 +122,47 @@ public class CategoryService {
         if (keyWord != null && !keyWord.isEmpty()) {
 
             pageCategories = categoryRepo.findAll(keyWord, pageable);
+            List<Category> searchResult = pageCategories.getContent();
+            // For search, we might just return the repo page directly if hierarchy isn't
+            // needed or if searchResult is already what we want.
+            // But the original code called listHierarchicalCategories(searchResult,
+            // sortDir).
+            // And it seemed to return the full list?
+
+            // Original Code for keyword != null:
+            // pageCategories = categoryRepo.findAll(keyWord, pageable);
+            // searchResult = pageCategories.getContent();
+            // pageInfo.setTotalElements...
+            // return listHierarchicalCategories(searchResult, sortDir);
+
+            // Wait, listHierarchicalCategories expands the roots.
+            // If we return a Page, we need to wrap the expanded list.
+            // But the Expanded List might be larger than the Page Size???
+            // The original code says: "This is INTENTIONAL behavior to preserve UI
+            // hierarchy."
+            // "The PageInfo statistics should reflect the Roots".
+
+            List<Category> hierarchy = listHierarchicalCategories(searchResult, sortDir);
+            return new PageImpl<>(hierarchy, pageable, pageCategories.getTotalElements());
 
         } else {
-            pageCategories = categoryRepo.findRootCategories(pageable);
-        }
-
-        List<Category> searchResult = pageCategories.getContent();
-        List<Category> rootCategories = pageCategories.getContent();
-
-        pageInfo.setTotalElements(pageCategories.getTotalElements());
-        pageInfo.setTotalPages(pageCategories.getTotalPages());
-
-        List<Category> categoriesUsedInForm = new ArrayList<>();
-
-        if (keyWord != null && !keyWord.isEmpty()) {
-
-            for (Category category : searchResult) {
-                category.setHasChildren(!category.getChildren().isEmpty());
-            }
-
-            // Todo : fix listHierarchicalCategories to Category return by Page
-
-            /*
-             * AG-CAT-002: Hierarchical View Strategy
-             * We page by ROOT Categories (e.g. 5 roots per page).
-             * However, to display the tree structure, we must return the roots PLUSE their
-             * expanded sub-categories.
-             * This results in a list size > page size (e.g. 5 roots + 10 children = 15
-             * rows).
-             * This is INTENTIONAL behavior to preserve UI hierarchy.
-             * The PageInfo statistics should reflect the Roots (total pages of trees), not
-             * the total rows.
-             */
-            return listHierarchicalCategories(searchResult, sortDir);
-
-        } else {
-            /*
-             * AG-CAT-003: Row-Based Pagination Strategy
-             * User Requirement: Strict 5 rows per page.
-             * Previous strategy (Root-Based) caused confusing "view explosion" (5 roots ->
-             * 30+ rows).
-             * New Strategy:
-             * 1. Fetch ALL hierarchies (Memory Intensive - documented risk).
-             * 2. Flatten to list.
-             * 3. Apply standard pagination slicing (SubList).
-             */
-
-            // 1. Get ALL root categories (unsorted to build hierarchy correctly first, or
-            // sorted if needed)
-            // Ideally we need findAll() but built hierarchically.
-            // Reuse listUsedForForm() logic which builds the full sorted tree.
-            // But we need to support the 'sortDir' from arguments if possible,
-            // though listUsedForForm uses name/asc by default.
-
-            // For MVP, we use the existing hierarchical builder with the requested sort.
-
+            // ... AG-CAT-003 Row-Based Pagination ...
             List<Category> fullTree = new ArrayList<>();
-            // We need to fetch all roots to build a correct full tree for flattening
-            // But findRootCategories(pageable) is limited.
-            // We use findAll() and filter roots manually or use a repo method for all
-            // roots.
-
             // Optimization: Fetch all and build tree.
+            // Note: findRootCategories(unpaged) might return ALL roots.
             List<Category> allRoots = categoryRepo.findRootCategories(Pageable.unpaged()).getContent();
             fullTree = listHierarchicalCategories(allRoots, sortDir);
-
-            // 2. Update PageInfo with Total ROWS
-            pageInfo.setTotalElements(fullTree.size());
-            pageInfo.setTotalPages((int) Math.ceil((double) fullTree.size() / USERS_PER_PAGE));
 
             // 3. Slice the list for current Page
             int start = (pageNum - 1) * USERS_PER_PAGE;
             int end = Math.min(start + USERS_PER_PAGE, fullTree.size());
 
             if (start > fullTree.size()) {
-                return new ArrayList<>();
+                return new PageImpl<>(new ArrayList<>(), pageable, fullTree.size());
             }
 
             List<Category> pageContent = fullTree.subList(start, end);
-            return pageContent;
+            return new PageImpl<>(pageContent, pageable, fullTree.size());
 
         }
 

@@ -1,10 +1,10 @@
 package com.onlineStore.admin.usersAndCustomers.customer.controller;
 
-import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.setting.service.SettingService;
 import com.onlineStore.admin.usersAndCustomers.customer.service.CustomerService;
 import com.onlineStore.admin.utility.FileUploadUtil;
+import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
+import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -25,8 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URLConnection;
 import java.util.List;
@@ -43,29 +41,21 @@ public class CustomerController {
     private final String defaultRedirectURL = "redirect:/customer/customer";
 
     @GetMapping("/customer/customer")
-    public ModelAndView listAllCustomers() {
-        ModelAndView model = new ModelAndView("customer/customer");
+    public String listAllCustomers() {
 
-        return listByPage(1, "firstName", "dsc", null);
+        return "redirect:/customer/page/1?sortField=firstName&sortDir=asc";
     }
 
     @GetMapping("/customer/page/{pageNum}")
-    public ModelAndView listByPage(@PathVariable(name = "pageNum") int pageNum,
-                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
-                                   @Param("keyWord") String keyWord) {
+    public String listByPage(
+            @PagingAndSortingParam(listName = "customer", moduleURL = "/customer/page/") PagingAndSortingHelper helper,
+            @PathVariable(name = "pageNum") int pageNum) {
 
-        ModelAndView model = new ModelAndView("customer/customer");
-        PageInfo pageInfo = new PageInfo();
+        Page<Customer> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
+                helper.getKeyword());
+        helper.updateModelAttributes(pageNum, page);
 
-        List<Customer> listByPage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "customer", sortField,
-                sortDir, keyWord, pageNum, listByPage);
-
-        pagingAndSortingHelper.listByPage(pageInfo, "customer");
-
-        return model;
-
+        return "customer/customer";
     }
 
     @GetMapping("/customer/new-customer-form")
@@ -75,20 +65,30 @@ public class CustomerController {
         Customer customer = new Customer();
         String pageTitle = "Customer Registration";
         List<Country> countriesList = service.listAllCountries();
-        NewFormHelper customerRegistratian = new NewFormHelper(pageTitle, countriesList);
-        return customerRegistratian.newForm(model, "customer", customer);
 
+        model.addObject("customer", customer);
+        model.addObject("listItems", countriesList); // Assuming template uses listItems
+        model.addObject("pageTitle", pageTitle);
+        model.addObject("saveChanges", "/customer/save-customer");
+
+        return model;
     }
 
     @PostMapping("/customer/save-customer")
-    public ModelAndView saveNewCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes,
-                                        HttpServletRequest request,
-                                        @RequestParam("fileImage") MultipartFile multipartFile) throws IOException, MessagingException {
+    public String saveNewCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes,
+                                  HttpServletRequest request,
+                                  @RequestParam("fileImage") MultipartFile multipartFile) throws IOException, MessagingException {
         redirectAttributes.addFlashAttribute("message", "the Customer has been saved successfully.  ");
         boolean newCustomer = customer.getId() == null;
         Customer savedCustomer;
         Long tenantId = TenantContext.getTenantId();
         customer.setTenantId(tenantId);
+        if (!service.isEmailUnique(customer.getId(), customer.getEmail())) {
+            redirectAttributes.addFlashAttribute("message",
+                    "The email " + customer.getEmail() + " is already registered.");
+            return "redirect:/customer/customer";
+        }
+
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
@@ -119,8 +119,13 @@ public class CustomerController {
         List<Country> countriesList = service.listAllCountries();
         String pageTitle = String.format("Edit Customer (ID: %d)", id);
 
-        NewFormHelper customerRegistratian = new NewFormHelper(pageTitle, countriesList);
-        return customerRegistratian.editForm(model, "customer", customer, id);
+        model.addObject("customer", customer);
+        model.addObject("id", id);
+        model.addObject("listItems", countriesList);
+        model.addObject("pageTitle", pageTitle);
+        model.addObject("saveChanges", "/customer/save-customer");
+
+        return model;
     }
 
     @GetMapping("/customer/delete/{id}")
@@ -161,7 +166,7 @@ public class CustomerController {
     }
 
     @PostMapping("/deleteCustomers")
-    public ModelAndView deleteModels(
+    public String deleteModels(
             @RequestParam(name = "selectedModels", required = false) List<Integer> selectedModels,
             RedirectAttributes redirectAttributes) throws CustomerNotFoundException, IOException {
 
@@ -198,26 +203,20 @@ public class CustomerController {
         // content = content.replace("[[Site]]", siteName);
 
         // Add inline logo
-        // String logoPath = ".."+emailSettings.getSiteLogo();
-
-        String logoPath = "/site-logo/dream-logo-print0200.png";
-        File file = new File(logoPath);
-
+        // Use ClassPathResource to load from classpath/resources/site-logo
         Resource logoResource = new ClassPathResource("site-logo/dream-logo-print0200.png");
 
-        // ClassPathResource logoResource = new
-        // ClassPathResource(file.getAbsolutePath());
-
         if (!logoResource.exists()) {
-            throw new FileNotFoundException("Logo file not found at: " + file.getAbsolutePath());
+            // Fallback or skip logo if missing, avoid crashing
+            System.out.println("Wait: Logo file still not found in classpath.");
+        } else {
+            // Set MIME type for the logo
+            String contentType = URLConnection.guessContentTypeFromStream(logoResource.getInputStream());
+            helper.addInline("siteLogo", logoResource, contentType);
+
+            // Embed logo in the content
+            content = content.replace("[[SITE_LOGO]]", "<img src='cid:siteLogo' alt='Site Logo'/>");
         }
-
-        // Set MIME type for the logo
-        String contentType = URLConnection.guessContentTypeFromStream(logoResource.getInputStream());
-        helper.addInline("siteLogo", logoResource, contentType);
-
-        // Embed logo in the content
-        content = content.replace("[[SITE_LOGO]]", "<img src='cid:siteLogo' alt='Site Logo'/>");
 
         // Add verification URL
         String verifyURL = Utility.getSiteURL(request) + "/verify?code=" + customer.getVerificationCode();

@@ -11,9 +11,8 @@
         <div class="container-fluid   ">
 
             <a class="navbar-brand " th:href="@{/}">
-                <img alt="SITE LOGO" class="rounded-pill"
-                     style="width: 100px; height: 100px; object-fit: contain; background-color: transparent; "
-                     th:src="@{/images/tab.png}"/>
+                <img alt="SITE LOGO" class="rounded-pill theme-logo"
+                     style="object-fit: contain; background-color: transparent; " th:src="@{/images/tab.png}"/>
             </a>
 
             <div th:replace="~{support/fragments/navbar/navbar-toggler::content}"></div>
@@ -71,6 +70,24 @@
                                 </li>
                                 <li class="dropdown-item text-dark-emphasis"
                                     th:replace="~{support/fragments/navbar/nav_link::contant('products/new-products-form','New Product')}">
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('services','Services')}">
+                                </li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('services/new','New Service')}">
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('services','Services')}">
+                                </li>
+                                <li class="dropdown-item text-dark-emphasis"
+                                    th:replace="~{support/fragments/navbar/nav_link::contant('services/new','New Service')}">
                                 </li>
                             </ul>
                         </li>

@@ -1,24 +1,23 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.category.controller.PagingAndSortingHelper;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.UserCsvExporter;
 import com.onlineStore.admin.utility.UserExcelExporter;
 import com.onlineStore.admin.utility.UserPdfExporter;
+import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
+import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import jakarta.servlet.http.HttpServletResponse;
-import org.hibernate.Session;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,7 +28,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@RestController
+@org.springframework.stereotype.Controller
 public class UserController {
     @Autowired
     private UserService service;
@@ -37,50 +36,36 @@ public class UserController {
     private EntityManager entityManager;
 
     @GetMapping("/users/users")
-    public ModelAndView listAllUsers() {
-        ModelAndView model = new ModelAndView("users/users");
-
-        Long tenantId = TenantContext.getTenantId();
-        Session session = entityManager.unwrap(Session.class);
-        org.hibernate.Filter filter = session.getEnabledFilter("tenantFilter");
-
-        return listByPage(1, "firstName", "dsc", null);
+    public String listAllUsers() {
+        return "redirect:/users/page/1?sortField=firstName&sortDir=asc";
     }
 
     @GetMapping("/users/page/{pageNum}")
-    public ModelAndView listByPage(@RequestParam(name = "pageNum", defaultValue = "1") int pageNum,
-                                   @Param("sortField") String sortField, @Param("sortDir") String sortDir,
-                                   @Param("keyWord") String keyWord) {
+    public String listByPage(
+            @PagingAndSortingParam(listName = "users", moduleURL = "/users/page/") PagingAndSortingHelper helper,
+            @PathVariable(name = "pageNum") int pageNum) {
 
-        ModelAndView model = new ModelAndView("users/users");
-        PageInfo pageInfo = new PageInfo();
+        Page<User> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(), helper.getKeyword());
+        helper.updateModelAttributes(pageNum, page);
 
-        List<User> listByPage = service.listByPage(pageInfo, pageNum, sortField, sortDir, keyWord);
-
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper(model, "users", sortField, sortDir,
-                keyWord, pageNum, listByPage);
-
-        pagingAndSortingHelper.listByPage(pageInfo, "users");
-
-        return model;
+        return "users/users";
     }
 
     @GetMapping("/register/new-users-form")
-
     public ModelAndView newUser() {
-
         ModelAndView model = new ModelAndView("register/new-users-form");
 
         User user = new User();
         List<Role> listAllRoles = service.listAllRoles();
 
-        user.setEnable(true);
+        user.setEnabled(true);
         model.addObject("id", 0);
+        model.addObject("user", user);
+        model.addObject("listItems", listAllRoles);
+        model.addObject("pageTitle", "Create new user");
+        model.addObject("saveChanges", "/users/save-user");
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected
-        // listName
-        return pagingAndSortingHelper.newForm(model, "user", user);
-
+        return model;
     }
 
     @GetMapping("/users/new-users-form")
@@ -90,13 +75,14 @@ public class UserController {
         User user = new User();
         List<Role> listAllRoles = service.listAllRoles();
 
-        user.setEnable(true);
+        user.setEnabled(true);
         model.addObject("id", 0);
+        model.addObject("user", user);
+        model.addObject("listItems", listAllRoles);
+        model.addObject("pageTitle", "Create new user");
+        model.addObject("saveChanges", "/users/save-user");
 
-        PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected
-        // listName
-        return pagingAndSortingHelper.newForm(model, "user", user);
-
+        return model;
     }
 
     @PostMapping("/users/save-user")
@@ -138,7 +124,7 @@ public class UserController {
 
         User savedUser = service.saveUser(user);
 
-        String uploadDir = dirName + savedUser.getId();
+        String uploadDir = "user-photos/" + savedUser.getTenantId() + "/" + savedUser.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     }
@@ -151,11 +137,22 @@ public class UserController {
             User user = service.getUser(id);
             List<Role> listAllRoles = service.listAllRoles();
 
-            model.addObject("listItems", user.getRoles());
+            model.addObject("listItems", user.getRoles()); // Wait, this logic seems wrong in original code, passing
+            // user roles as listItems?
+            // Original code: model.addObject("listItems", user.getRoles());
+            // Then helper: model.addObject("listItems", listItems); (which was passed as
+            // listAllRoles to constructor)
+            // It seems the original code was overwriting "listItems" or confusing it.
+            // "listItems" in form usually means "Available Roles".
+            // I will assume listAllRoles is what's needed for the select box.
 
-            PagingAndSortingHelper pagingAndSortingHelper = new PagingAndSortingHelper("users", listAllRoles); // Corrected
-            // listName
-            return pagingAndSortingHelper.editForm(model, "user", user, id);
+            model.addObject("user", user);
+            model.addObject("id", id);
+            model.addObject("listItems", listAllRoles);
+            model.addObject("pageTitle", " Edit : user ID :  " + id);
+            model.addObject("saveChanges", "/users/save-edit-user"); // Note: removed trailing slash based on pattern
+
+            return model;
 
         } catch (UsernameNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
@@ -182,7 +179,7 @@ public class UserController {
 
                 FileUploadUtil.cleanDir(updateUser.getImageDir());
                 String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                String uploadDir = "user-photos/" + updateUser.getId();
+                String uploadDir = "user-photos/" + updateUser.getTenantId() + "/" + updateUser.getId();
                 user.setUser_bio(fileName);
                 BeanUtils.copyProperties(user, updateUser, "id", "password");
                 service.saveUpdatededUser(updateUser);

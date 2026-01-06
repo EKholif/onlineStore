@@ -28,8 +28,8 @@ public class User extends IdBasedEntity {
     @Column(name = "last_name", length = 85, nullable = false)
 
     private String lastName;
-    @Column(name = "enable")
-    private boolean enable;
+    @Column(name = "enabled")
+    private boolean enabled;
     @Column(name = "user_bio")
     private String user_bio;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -65,12 +65,12 @@ public class User extends IdBasedEntity {
         this.roles.add(role);
     }
 
-    public boolean isEnable() {
-        return enable;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public User(String email, String password, String firstName, String lastName) {
@@ -121,7 +121,7 @@ public class User extends IdBasedEntity {
 
                 "lastName = '" + lastName + '\'' +
 
-                " status = '" + enable + '\'' +
+                " status = '" + enabled + '\'' +
                 " TenantId = '" + getTenantId() + '\'' +
                 '}';
     }
@@ -130,17 +130,17 @@ public class User extends IdBasedEntity {
     public String getImagePath() {
         String dirName = "/user-photos/";
         if (id == null || user_bio == null)
-            return "/images" + "\\" + "bob.png";
+            return "/images/bob.png";
 
-        return dirName + this.id + '\\' + this.user_bio;
+        return dirName + this.getTenantId() + "/" + this.id + "/" + this.user_bio;
     }
 
     @Transient
     public String getImageDir() {
-        String dirName = "user-photos\\";
+        String dirName = "user-photos/";
         if (id == null || user_bio == null)
-            return "\\images\\bob.png";
-        return dirName + this.id + '\\';
+            return "/images/bob.png";
+        return dirName + this.getTenantId() + "/" + this.id + "/";
     }
 
     public String getFullName() {

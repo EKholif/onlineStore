@@ -1,10 +1,8 @@
 package com.onlineStoreCom.entity.shipping;
 
-
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "shipping_rates")
@@ -12,14 +10,13 @@ public class ShippingRate extends IdBasedEntity {
 
     private float rate;
     private int days;
-    @Column(name = "state_name")
+    @Column(name = "state")
     private String stateName;
     @Column(name = "cod_supported")
     private boolean codSupported;
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-
 
     public ShippingRate(float rate) {
         this.rate = rate;
@@ -41,9 +38,6 @@ public class ShippingRate extends IdBasedEntity {
     public void setStateName(String stateName) {
         this.stateName = stateName;
     }
-
-
-
 
     public float getRate() {
         return rate;
@@ -77,10 +71,10 @@ public class ShippingRate extends IdBasedEntity {
         this.country = country;
     }
 
-
     @Override
     public String toString() {
-        return "ShippingRate [id=" + id + ", rate=" + rate + ", days=" + days + ", codSupported=" + codSupported + ", country=" + country.getName() + ", state=" + stateName + "]";
+        return "ShippingRate [id=" + id + ", rate=" + rate + ", days=" + days + ", codSupported=" + codSupported
+                + ", country=" + country.getName() + ", state=" + stateName + "]";
     }
 
     @Override
@@ -93,14 +87,17 @@ public class ShippingRate extends IdBasedEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
         ShippingRate other = (ShippingRate) obj;
         if (id == null) {
             return other.id == null;
-        } else return id.equals(other.id);
+        } else
+            return id.equals(other.id);
     }
-
 
 }

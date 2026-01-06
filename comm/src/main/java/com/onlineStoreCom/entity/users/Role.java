@@ -1,7 +1,7 @@
 package com.onlineStoreCom.entity.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.onlineStoreCom.entity.setting.subsetting.AbstractIdEntity;
+import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -11,7 +11,8 @@ import java.util.Set;
 @Entity
 @Table(name = "role")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Role extends AbstractIdEntity {
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+public class Role extends IdBasedEntity {
 
     @Column(name = "name", length = 40, nullable = false, unique = false)
     private String name;

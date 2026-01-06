@@ -93,6 +93,7 @@ public class ShippingRateController {
             List<State> states = stateRepository.findAllByOrderByNameAsc();
             model.addObject("allStates", states);
 
+            @SuppressWarnings({"rawtypes", "unchecked"})
             EditForm helper = new EditForm(model, "listItems", "shipping-rate", "Shipping Rate", countries);
 
             return helper.editForm("shippingRate", shippingRate, id);

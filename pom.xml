@@ -17,6 +17,7 @@
     <modules>
         <module>comm</module>
         <module>webParent</module>
+        <module>services</module>
     </modules>
 
 </project>

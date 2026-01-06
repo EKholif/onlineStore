@@ -18,45 +18,27 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CustomerRepositoryTest {
 
-
     @Autowired
     private CustomersRepository customersRepository;
     @Autowired
     private CountryRepository countryRepository;
 
+    @Test
+    public void ListAllCustomer() {
 
+        java.util.List<Customer> customerList = customersRepository.findAll();
+        assertThat(customerList.size()).isGreaterThanOrEqualTo(0);
+    }
 
-   @Test
-    public void ListAllCustomer(){
+    @Test
+    public void TestsavedCustomer() {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        Customer customer = customersRepository.findByEmail("ehabkholif@gmail.com");
+        String rawPassword = "";
+        String encodedPassword = customer.getPassword();
+        boolean matches = passwordEncoder.matches(rawPassword, encodedPassword);
+        assertThat(matches).isTrue();
 
-//       List<Customer> customerList = customersRepository.findAll();
-
-       Customer customer = customersRepository.findById(36).get();
-       System.out.println(customer.getFirstName());
-       customer.setId(1);
-       customersRepository.save(customer);
-
-       System.out.println(customer.getId());
-
-//       customerList.forEach(c -> System.out.println(c.getCountry()));
-//
-//       assertThat(customerList.size()).isGreaterThan(0);
-   }
-
-
-
-
-
-@Test
-   public void TestsavedCustomer (){
-    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    Customer customer = customersRepository.findByEmail("ehabkholif@gmail.com");
-    String rawPassword = "";
-    String encodedPassword = customer.getPassword();
-    boolean matches = passwordEncoder.matches(rawPassword, encodedPassword);
-    assertThat(matches).isTrue();
-
-
-}
+    }
 
 }

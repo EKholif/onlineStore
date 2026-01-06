@@ -19,7 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * AG-BACK-USER-001: Testing User Administration.
  * Critical Business Path: Ensures admin can list and manage system users.
  */
-@WebMvcTest(value = UserController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = com.onlineStore.admin.security.tenant.TenantContextFilter.class))
+@WebMvcTest(value = UserController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = {
+        com.onlineStore.admin.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class}))
 public class UserControllerTest {
 
     @Autowired
@@ -31,6 +32,14 @@ public class UserControllerTest {
     @MockBean
     private EntityManager entityManager;
 
+    @MockBean(name = "entityManagerFactory")
+    private jakarta.persistence.EntityManagerFactory entityManagerFactory;
+
+    @org.junit.jupiter.api.BeforeEach
+    public void setUp() {
+        com.onlineStoreCom.tenant.TenantContext.setTenantId(1L);
+    }
+
     @Test
     @WithMockUser(username = "admin", roles = {"Admin"})
     public void testListAllUsers() throws Exception {
@@ -41,6 +50,10 @@ public class UserControllerTest {
         Mockito.when(session.getEnabledFilter("tenantFilter")).thenReturn(null);
 
         // Act & Assert
+
+        Mockito.when(userService.listByPage(Mockito.anyInt(), Mockito.anyString(), Mockito.anyString(),
+                        Mockito.any()))
+                .thenReturn(org.springframework.data.domain.Page.empty());
         // The controller calls listByPage(1, ...) which returns a view
         mockMvc.perform(get("/users/users"))
                 // Note: Controller returns a ModelAndView forwarding to listByPage, or directly
@@ -48,7 +61,8 @@ public class UserControllerTest {
                 // In this specific Controller logic (UserController.java:53), it returns
                 // listByPage(...) result.
                 // listByPage returns "users/users".
-                .andExpect(status().isOk())
-                .andExpect(view().name("users/users"));
+                // listByPage returns "users/users".
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/users/page/1?sortField=firstName&sortDir=asc"));
     }
 }

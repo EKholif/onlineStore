@@ -18,6 +18,7 @@ public class EnableAllUtilTest {
     private ProductRepository productRepo;
 
     @Test
+    @jakarta.transaction.Transactional
     public void enableAll() {
         System.out.println("Running Enable All...");
         // Set Tenant Context (assuming 1 is main tenant or system)

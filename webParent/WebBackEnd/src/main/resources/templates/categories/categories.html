@@ -18,8 +18,8 @@
     <form id="deleteForm" method="post" th:action="@{/categories/deleteCategories}">
 
         <div class=" justify-content-center mb-2 mt-2  ">
-            <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;" title="Delete Selected Categories"
-                    type="submit"></button>
+            <button class="fas fa-user-minus fa-2x icon-red " style="border: none; background: none;"
+                    title="Delete Selected Categories" type="submit"></button>
 
             <a class="fas fa-user-plus fa-2x icon-d-green" th:href="@{/categories/new-categories-form}"
                title="Add Category"></a>&nbsp;&nbsp;
@@ -64,7 +64,7 @@
                             th:replace="~{support/fragments/standard/table_fragments :: column_link('children', 'Children')}">
                     </th>
                     <th
-                            th:replace="~{support/fragments/standard/table_fragments :: column_link('status', 'Status')}">
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('enabled', 'Status')}">
                     </th>
                     <th></th>
                     <th></th>
@@ -76,8 +76,8 @@
 
 
                     <td>
-                        <input class="form-check-input delete-checkbox " id="flexCheckDefault" name="selectedCategory"
-                               th:value="${category.id}" type="checkbox">
+                        <input class="form-check-input delete-checkbox " id="flexCheckDefault"
+                               name="selectedCategory" th:value="${category.id}" type="checkbox">
                     </td>
 
                     <td th:text="${category.id}"></td>
@@ -85,8 +85,8 @@
                     <td>
                                 <span class="fas fa-user  fa-fade fa-2x icon-golden "
                                       th:if="${category.getImage.isEmpty()}"></span>
-                        <img class="rounded mx-auto  d-block"
-                             style="width: 40px; height: 40px;" th:if="${category.image != null && !category.getImage.isEmpty() }"
+                        <img class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"
+                             th:if="${category.image != null && !category.getImage.isEmpty() }"
                              th:src=" @{${category.getCatImagePath()}}"/>
 
                     </td>
@@ -112,13 +112,13 @@
 
 
                     <td>
-                        <a class="fas fa-check-circle px-2 icon-green " th:href="@{'/category/' + ${category.getId} +'/enable/false' } "
-                           th:if="${category.isEnable == true}"
-                           title="Disable Category"></a>
+                        <a class="fas fa-check-circle px-2 icon-green "
+                           th:href="@{'/category/' + ${category.getId} +'/enable/false' } "
+                           th:if="${category.enabled == true}" title="Disable Category"></a>
                         <!--                                                      &nbsp;-->
-                        <a class="fas fa-circle px-2 icon-red" th:href="@{'/category/' + ${category.getId} +'/enable/true' }"
-                           th:if="${category.isEnable() == false}"
-                           title="Enable Category"></a>
+                        <a class="fas fa-circle px-2 icon-red"
+                           th:href="@{'/category/' + ${category.getId} +'/enable/true' }"
+                           th:if="${category.enabled == false}" title="Enable Category"></a>
 
                     </td>
 

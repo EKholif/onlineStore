@@ -113,6 +113,17 @@
         <!-- iText dependencies -->
 
 
+        <dependency>
+            <groupId>com.onlineStore</groupId>
+            <artifactId>services</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.onlineStore</groupId>
+            <artifactId>comm</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 

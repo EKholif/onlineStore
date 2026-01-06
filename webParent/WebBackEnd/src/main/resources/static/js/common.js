@@ -66,7 +66,7 @@ $(document).ready(function () {
 
 */
 function clearFilter() {
-    window.location =  '/' + windowLocationValue;
+    window.location = '/' + windowLocationValue;
 }
 
 
@@ -80,7 +80,7 @@ function clearFilter() {
 
 $(document).ready(function () {
     $("#buttonCancel").on("click", function () {
-        window.location =  '/' + windowLocationValue;
+        window.location = '/' + windowLocationValue;
     });
 
     $("#fileImage").change(function () {
@@ -225,3 +225,14 @@ function checkPasswordMatch(confirmPassword) {
 }
 
 
+/*
+========================================================================================
+                                  Logout Handler
+========================================================================================
+*/
+$(document).ready(function () {
+    $("#logout").on("click", function (e) {
+        e.preventDefault();
+        document.logoutForm.submit();
+    });
+});

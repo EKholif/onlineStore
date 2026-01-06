@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+
+<div id="divProductDetails" th:fragment="content">
+
+
+    <th:block th:each="productDetails , status: ${product.details}">
+
+        <div class="flex flex-row align-items-center flex-wrap p-2 mt-2 " th:id="'divDetail'+ ${status.index}">
+
+
+            <input name="detailIDs" th:value=" ${status.index}" type="hidden"/>
+            <label class="col-sm-1 text-center ">Name</label>
+            <div class="col-sm-4">
+                <input class="form-control " maxlength="255" minlength="2" name="detailNames" placeholder=" product name detail  names"
+                       required
+                       th:value="${productDetails.name}" type="text "/>
+            </div>
+
+            <label class="col-sm-1 text-center ">Value</label>
+            <div class="col-sm-4">
+                <input class="form-control " maxlength="255" minlength="2" name="detailValues" placeholder="product name detail Values "
+                       required th:value="${productDetails.value}" type="text"/>
+            </div>
+
+            <a class="btn fas fa-times-circle fa-1x icon-red"
+               th:href="|javascript:removeDetailSectionById('divDetail' + ${status.index})|"
+               title="Remove this detail"></a>
+
+        </div>
+
+
+    </th:block>
+
+</div>
+
+
+</body>
+
+</html>

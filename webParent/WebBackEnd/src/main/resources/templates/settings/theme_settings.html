@@ -12,296 +12,298 @@
     </div>
 
     <div class="row">
-        <!-- Settings Panel -->
-        <div class="col-lg-6 mb-4">
+        <!-- Settings Panel (Left Side - Narrower & Modern) -->
+        <div class="col-lg-3 mb-4">
             <form id="themeForm" method="post" th:action="@{/settings/themes/save}">
                 <div class="alert alert-success text-center" th:if="${message != null}">
                     [[${message}]]
                 </div>
-
-                <div class="card shadow-sm">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs" id="themeTabs" role="tablist">
+                `
+                <div class="card shadow-sm border-0" style="background: #f8f9fa;">
+                    <div class="card-header bg-transparent border-bottom-0 pt-3 pb-0">
+                        <ul class="nav nav-pills nav-fill small" id="themeTabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" data-bs-target="#colors" data-bs-toggle="tab"
+                                <button class="nav-link active py-1" data-bs-target="#colors" data-bs-toggle="tab"
                                         id="colors-tab" role="tab" type="button">Colors
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-target="#dimensions" data-bs-toggle="tab"
-                                        id="dimensions-tab" role="tab" type="button">Dimensions
+                                <button class="nav-link py-1" data-bs-target="#dimensions" data-bs-toggle="tab"
+                                        id="dimensions-tab" role="tab" type="button">Sizes
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-target="#typography" data-bs-toggle="tab"
-                                        id="typography-tab" role="tab" type="button">Typography
+                                <button class="nav-link py-1" data-bs-target="#typography" data-bs-toggle="tab"
+                                        id="typography-tab" role="tab" type="button">Font
                                 </button>
                             </li>
                         </ul>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-3">
                         <div class="tab-content" id="themeTabsContent">
                             <!-- Colors Tab -->
                             <div class="tab-pane fade show active" id="colors" role="tabpanel">
-                                <h5 class="card-title text-secondary mb-3">Brand Colors</h5>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Primary Color:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-primary"
-                                               name="THEME_COLOR_PRIMARY" th:value="${THEME_COLOR_PRIMARY}"
-                                               type="color">
+                                <h6 class="text-uppercase text-muted small fw-bold mb-3">Brand</h6>
+                                <div class="mb-2">
+                                    <label class="small text-muted d-block mb-1">Primary Color</label>
+                                    <input class="form-control form-control-color w-100 theme-input"
+                                           data-var="--preview-primary" name="THEME_COLOR_PRIMARY"
+                                           style="height: 38px;" th:value="${THEME_COLOR_PRIMARY}" type="color">
                                     </div>
+                                <div class="mb-2">
+                                    <label class="small text-muted d-block mb-1">Secondary Color</label>
+                                    <input class="form-control form-control-color w-100 theme-input"
+                                           data-var="--preview-secondary" name="THEME_COLOR_SECONDARY"
+                                           style="height: 38px;" th:value="${THEME_COLOR_SECONDARY}" type="color">
                                 </div>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Secondary Color:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-secondary"
-                                               name="THEME_COLOR_SECONDARY" th:value="${THEME_COLOR_SECONDARY}"
-                                               type="color">
+
+                                <hr class="my-3">
+                                <h6 class="text-uppercase text-muted small fw-bold mb-3">Header & Footer</h6>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <label class="small text-muted d-block mb-1">Header BG</label>
+                                        <input class="form-control form-control-color w-100 theme-input"
+                                               data-var="--preview-header-bg" name="THEME_HEADER_BG"
+                                               style="height: 32px;" th:value="${THEME_HEADER_BG}" type="color">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="small text-muted d-block mb-1">Header Text</label>
+                                        <input class="form-control form-control-color w-100 theme-input"
+                                               data-var="--preview-header-color" name="THEME_HEADER_COLOR"
+                                               style="height: 32px;" th:value="${THEME_HEADER_COLOR}" type="color">
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <label class="small text-muted d-block mb-1">Footer BG</label>
+                                        <input class="form-control form-control-color w-100 theme-input"
+                                               data-var="--preview-footer-bg" name="THEME_FOOTER_BG"
+                                               style="height: 32px;" th:value="${THEME_FOOTER_BG}" type="color">
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <label class="small text-muted d-block mb-1">Footer Text</label>
+                                        <input class="form-control form-control-color w-100 theme-input"
+                                               data-var="--preview-footer-color" name="THEME_FOOTER_COLOR"
+                                               style="height: 32px;" th:value="${THEME_FOOTER_COLOR}" type="color">
                                     </div>
                                 </div>
 
                                 <hr class="my-3">
-                                <h5 class="card-title text-secondary mb-3">Header & Footer</h5>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Header BG:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-header-bg"
-                                               name="THEME_HEADER_BG" th:value="${THEME_HEADER_BG}"
+                                <h6 class="text-uppercase text-muted small fw-bold mb-3">Dropdowns</h6>
+                                <div class="row g-2">
+                                    <div class="col-4">
+                                        <label class="small text-muted d-block mb-1">BG</label>
+                                        <input class="form-control form-control-color w-100 theme-input"
+                                               data-var="--preview-dropdown-bg" name="THEME_HEADER_DROPDOWN_BG"
+                                               style="height: 32px;" th:value="${THEME_HEADER_DROPDOWN_BG}"
                                                type="color">
                                     </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Header Text:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-header-color"
-                                               name="THEME_HEADER_COLOR" th:value="${THEME_HEADER_COLOR}"
+                                    <div class="col-4">
+                                        <label class="small text-muted d-block mb-1">Text</label>
+                                        <input class="form-control form-control-color w-100 theme-input"
+                                               data-var="--preview-dropdown-color" name="THEME_HEADER_DROPDOWN_COLOR"
+                                               style="height: 32px;" th:value="${THEME_HEADER_DROPDOWN_COLOR}"
                                                type="color">
                                     </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Footer BG:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-footer-bg"
-                                               name="THEME_FOOTER_BG" th:value="${THEME_FOOTER_BG}"
-                                               type="color">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Footer Text:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-footer-color"
-                                               name="THEME_FOOTER_COLOR" th:value="${THEME_FOOTER_COLOR}"
-                                               type="color">
-                                    </div>
-                                </div>
-
-                                <hr class="my-3">
-                                <h5 class="card-title text-secondary mb-3">Header Dropdown</h5>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Dropdown BG:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-dropdown-bg"
-                                               name="THEME_HEADER_DROPDOWN_BG" th:value="${THEME_HEADER_DROPDOWN_BG}"
-                                               type="color">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Dropdown Text:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-dropdown-color"
-                                               name="THEME_HEADER_DROPDOWN_COLOR"
-                                               th:value="${THEME_HEADER_DROPDOWN_COLOR}"
-                                               type="color">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Hover BG:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-dropdown-hover-bg"
-                                               name="THEME_HEADER_DROPDOWN_HOVER_BG"
-                                               th:value="${THEME_HEADER_DROPDOWN_HOVER_BG}"
-                                               type="color">
-                                    </div>
-                                </div>
-
-                                <hr class="my-3">
-                                <h5 class="card-title text-secondary mb-3">Tables</h5>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Header BG:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-table-header-bg"
-                                               name="THEME_TABLE_HEADER_BG" th:value="${THEME_TABLE_HEADER_BG}"
-                                               type="color">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label class="col-sm-5 col-form-label">Header Text:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control form-control-color theme-input" data-var="--preview-table-header-color"
-                                               name="THEME_TABLE_HEADER_COLOR" th:value="${THEME_TABLE_HEADER_COLOR}"
-                                               type="color">
+                                    <div class="col-4">
+                                        <label class="small text-muted d-block mb-1">Hover</label>
+                                        <input class="form-control form-control-color w-100 theme-input"
+                                               data-var="--preview-dropdown-hover-bg"
+                                               name="THEME_HEADER_DROPDOWN_HOVER_BG" style="height: 32px;"
+                                               th:value="${THEME_HEADER_DROPDOWN_HOVER_BG}" type="color">
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Dimensions Tab -->
                             <div class="tab-pane fade" id="dimensions" role="tabpanel">
-                                <div class="form-group row mb-3">
-                                    <label class="col-sm-5 col-form-label">Header Height:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control theme-input" data-var="--preview-header-height"
-                                               name="THEME_HEADER_HEIGHT" placeholder="e.g. 100px"
-                                               th:value="${THEME_HEADER_HEIGHT}" type="text">
-                                    </div>
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Header Height (px)</label>
+                                    <input class="form-control theme-input" data-suffix="px"
+                                           data-var="--preview-header-height" min="50" name="THEME_HEADER_HEIGHT"
+                                           step="5"
+                                           th:value="${THEME_HEADER_HEIGHT != null ? THEME_HEADER_HEIGHT.replace('px','') : '60'}"
+                                           type="number">
                                 </div>
-                                <div class="form-group row mb-3">
-                                    <label class="col-sm-5 col-form-label">Footer Height:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control theme-input" data-var="--preview-footer-height"
-                                               name="THEME_FOOTER_HEIGHT" placeholder="e.g. auto or 60px"
-                                               th:value="${THEME_FOOTER_HEIGHT}" type="text">
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Footer Height (px)</label>
+                                    <input class="form-control theme-input" data-suffix="px"
+                                           data-var="--preview-footer-height" min="30" name="THEME_FOOTER_HEIGHT"
+                                           step="5"
+                                           th:value="${THEME_FOOTER_HEIGHT != null ? THEME_FOOTER_HEIGHT.replace('px','') : '40'}"
+                                           type="number">
                                     </div>
-                                </div>
-                                <div class="form-group row mb-3">
-                                    <label class="col-sm-5 col-form-label">Logo Width:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control theme-input" data-var="--preview-logo-width" name="THEME_LOGO_WIDTH"
-                                               placeholder="e.g. 100px" th:value="${THEME_LOGO_WIDTH}"
-                                               type="text">
-                                    </div>
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Logo Width (px)</label>
+                                    <input class="form-control theme-input" data-suffix="px"
+                                           data-var="--preview-logo-width" min="50" name="THEME_LOGO_WIDTH" step="10"
+                                           th:value="${THEME_LOGO_WIDTH != null ? THEME_LOGO_WIDTH.replace('px','') : '100'}"
+                                           type="number">
                                 </div>
                             </div>
 
                             <!-- Typography Tab -->
                             <div class="tab-pane fade" id="typography" role="tabpanel">
-                                <div class="form-group row mb-3">
-                                    <label class="col-sm-5 col-form-label">Font Family:</label>
-                                    <div class="col-sm-7">
-                                        <select class="form-control theme-input" data-var="--preview-font-family"
-                                                name="THEME_FONT_FAMILY" th:value="${THEME_FONT_FAMILY}">
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Font Family</label>
+                                    <select class="form-select theme-input" data-var="--preview-font-family"
+                                            name="THEME_FONT_FAMILY">
                                             <option th:selected="${THEME_FONT_FAMILY == 'Arial, sans-serif'}"
                                                     value="Arial, sans-serif">Arial
                                             </option>
-                                            <option th:selected="${THEME_FONT_FAMILY == '''Courier New'', monospace'}"
-                                                    value="'Courier New', monospace">
-                                                Courier New
+                                        <option th:selected="${THEME_FONT_FAMILY == '''Segoe UI'', sans-serif'}"
+                                                value="'Segoe UI', sans-serif">Segoe UI (Modern)
                                             </option>
-                                            <option th:selected="${THEME_FONT_FAMILY == '''Georgia'', serif'}"
-                                                    value="'Georgia', serif">Georgia
+                                        <option th:selected="${THEME_FONT_FAMILY == '''Inter'', sans-serif'}"
+                                                value="'Inter', sans-serif">Inter (Clean)
                                             </option>
-                                            <option th:selected="${THEME_FONT_FAMILY == '''Tahoma'', sans-serif'}"
-                                                    value="'Tahoma', sans-serif">
-                                                Tahoma
+                                        <option th:selected="${THEME_FONT_FAMILY == '''Roboto'', sans-serif'}"
+                                                value="'Roboto', sans-serif">Roboto
                                             </option>
-                                            <option th:selected="${THEME_FONT_FAMILY == '''Verdana'', sans-serif'}"
-                                                    value="'Verdana', sans-serif">
-                                                Verdana
-                                            </option>
-                                            <option th:selected="${THEME_FONT_FAMILY == '''Roboto'', sans-serif'}"
-                                                    value="'Roboto', sans-serif">
-                                                Roboto (Google)
+                                        <option th:selected="${THEME_FONT_FAMILY == '''Courier New'', monospace'}"
+                                                value="'Courier New', monospace">Courier New
                                             </option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form-group row mb-3">
-                                    <label class="col-sm-5 col-form-label">Base Font Size:</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control theme-input" data-var="--preview-font-size" name="THEME_FONT_SIZE"
-                                               placeholder="e.g. 16px" th:value="${THEME_FONT_SIZE}"
-                                               type="text">
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Base Font Size (px)</label>
+                                    <input class="form-control theme-input" data-suffix="px"
+                                           data-var="--preview-font-size" max="24" min="10" name="THEME_FONT_SIZE"
+                                           th:value="${THEME_FONT_SIZE != null ? THEME_FONT_SIZE.replace('px','') : '14'}"
+                                           type="number">
                                     </div>
+
+                                <div class="form-check form-switch mt-3">
+                                    <input class="form-check-input theme-input" data-var="--preview-font-weight"
+                                           id="boldSwitch" name="THEME_FONT_WEIGHT"
+                                           th:checked="${THEME_FONT_WEIGHT == 'bold'}" type="checkbox" value="bold">
+                                    <label class="form-check-label small" for="boldSwitch">Bold Font</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="text-center mt-4">
-                            <input class="btn btn-primary btn-lg px-5" type="submit" value="Save Changes">
+                        <div class="mt-4 pt-3 border-top text-center">
+                            <button class="btn btn-primary w-100" type="submit">
+                                <i class="fas fa-save me-2"></i> Save Changes
+                            </button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
 
-        <!-- Preview Panel (Sticky) -->
-        <div class="col-lg-6">
-            <!-- Adjusted top to 80px to avoid overlapping with main navbar, z-index 99 to be below dropdowns -->
+        <!-- Preview Panel (Right Side - Wider & Taller) -->
+        <div class="col-lg-9">
             <div class="sticky-top" style="top: 80px; z-index: 90;">
-                <div class="card shadow">
-                    <div class="card-header bg-secondary text-white py-2">
-                        <i class="fas fa-eye me-2"></i> Live Preview
+                <div class="card shadow-lg border-0">
+                    <div
+                            class="card-header bg-dark text-white py-2 d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-desktop me-2"></i> Live Preview</div>
+                        <span class="badge bg-secondary">Admin View</span>
                     </div>
-                    <div class="card-body p-0">
-                        <!-- Live Preview Frame -->
-                        <div class="border rounded" id="preview-frame"
-                             style="overflow: hidden; height: 350px; display: flex; flex-direction: column;">
+                    <div class="card-body p-0 bg-light">
+                        <!-- Live Preview Frame (Increased Height) -->
+                        <div class="border-0" id="preview-frame"
+                             style="overflow: hidden; height: 700px; display: flex; flex-direction: column; background: #f4f6f9;">
 
                             <!-- Mock Header -->
-                            <div class="d-flex align-items-center px-3" id="preview-header"
+                            <div class="d-flex align-items-center px-4 shadow-sm" id="preview-header"
                                  style="transition: all 0.3s;">
-                                <div class="me-3">
+                                <div class="me-4">
                                     <div
-                                            style="background: #ccc; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                            style="background: rgba(255,255,255,0.2); width: 80px; height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
                                         LOGO
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="preview-nav-item mx-2">Users</span>
-                                    <span class="preview-nav-item mx-2 dropdown-toggle">Products</span>
+                                    <span class="preview-nav-item mx-3 opacity-75">Users</span>
+                                    <span
+                                            class="preview-nav-item mx-3 opacity-100 fw-bold border-bottom border-2 border-white pb-1">Products</span>
+                                    <span class="preview-nav-item mx-3 opacity-75">Orders</span>
                                 </div>
-                                <div>User <i class="fas fa-user-circle"></i></div>
+                                <div>
+                                    <span class="me-2">Admin User</span> <i class="fas fa-user-circle fa-lg"></i>
+                                </div>
                             </div>
 
                             <!-- Mock Content -->
-                            <div class="p-4 flex-grow-1 bg-light" id="preview-content" style="overflow-y: auto;">
-                                <h3 class="mb-3">Dashboard Overview</h3>
-                                <p class="mb-3">This is how your content will look with the selected typography.</p>
+                            <div class="p-5 flex-grow-1" id="preview-content" style="overflow-y: auto;">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2 class="mb-0">Dashboard Overview</h2>
+                                    <button class="btn btn-primary shadow-sm"><i class="fas fa-plus me-1"></i> New
+                                        Item
+                                    </button>
+                                </div>
 
-                                <button class="btn btn-primary mb-3">Primary Button</button>
-                                <button class="btn btn-secondary mb-3">Secondary Button</button>
+                                <div class="row g-4 mb-4">
+                                    <div class="col-md-4">
+                                        <div class="card border-0 shadow-sm p-3">
+                                            <div class="text-muted small">Total Sales</div>
+                                            <div class="h3 mb-0">$12,450</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card border-0 shadow-sm p-3">
+                                            <div class="text-muted small">New Orders</div>
+                                            <div class="h3 mb-0">45</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card border-0 shadow-sm p-3">
+                                            <div class="text-muted small">Customers</div>
+                                            <div class="h3 mb-0">1,208</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <table class="table table-bordered mt-3">
-                                    <thead>
-                                    <tr id="preview-table-header">
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Test Item</td>
-                                        <td>Active</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Another Item</td>
-                                        <td>Pending</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header bg-white py-3">
+                                        <h5 class="mb-0 card-title">Recent Activity</h5>
+                                    </div>
+                                    <table class="table mb-0">
+                                        <thead id="preview-table-header">
+                                        <tr>
+                                            <th class="py-3 ps-4">ID</th>
+                                            <th class="py-3">Name</th>
+                                            <th class="py-3">Date</th>
+                                            <th class="py-3">Status</th>
+                                            <th class="py-3 text-end pe-4">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="ps-4">#1024</td>
+                                            <td><span class="fw-bold">Camera Lens</span></td>
+                                            <td>Oct 24, 2025</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                            <td class="text-end pe-4"><i
+                                                    class="fas fa-ellipsis-v text-muted"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ps-4">#1025</td>
+                                            <td><span class="fw-bold">Tripod Stand</span></td>
+                                            <td>Oct 25, 2025</td>
+                                            <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                            <td class="text-end pe-4"><i
+                                                    class="fas fa-ellipsis-v text-muted"></i></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 <!-- Mock Dropdown (Visual only) -->
-                                <div class="position-absolute shadow rounded p-2" id="preview-dropdown"
-                                     style="top: 60px; left: 650px; display: block; width: 150px;">
-                                    <div class="preview-dropdown-item p-1">Dropdown Link 1</div>
-                                    <div class="preview-dropdown-item p-1">Dropdown Link 2</div>
-                                    <div class="preview-dropdown-item p-1">Dropdown Link 3</div>
+                                <div class="position-absolute shadow rounded py-2 bg-white" id="preview-dropdown"
+                                     style="top: 70px; left: 800px; display: block; width: 180px; border: 1px solid rgba(0,0,0,0.1);">
+                                    <div class="preview-dropdown-item px-3 py-1">All Products</div>
+                                    <div class="preview-dropdown-item px-3 py-1 bg-light">Create New</div>
+                                    <div class="preview-dropdown-item px-3 py-1">Export Data</div>
                                 </div>
                             </div>
 
                             <!-- Mock Footer -->
-                            <div class="text-center d-flex align-items-center justify-content-center"
-                                 id="preview-footer"
-                                 style="transition: all 0.3s;">
-                                <small>Copyright © 2025 Company Name</small>
+                            <div class="text-center py-3 border-top" id="preview-footer"
+                                 style="transition: all 0.3s; font-size: 0.9rem;">
+                                <span>Control Panel &copy; 2025 OnlineStore</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer text-muted text-center" style="font-size: 0.8rem;">
-                        Visualization only. Layout may vary on actual pages.
                     </div>
                 </div>
             </div>
@@ -320,8 +322,25 @@
 
             function updatePreview() {
                 inputs.forEach(input => {
-                    const val = input.value;
+                    let val = input.value;
                     const name = input.name;
+                    const dataset = input.dataset;
+
+                    // Handle Number Inputs with Suffix
+                    if (dataset.suffix && input.type === 'number') {
+                        val = val + dataset.suffix;
+                    }
+
+                    // Handle Checkbox (Font Weight)
+                    if (input.type === 'checkbox') {
+                        val = input.checked ? 'bold' : 'normal';
+                        if (name === 'THEME_FONT_WEIGHT') {
+                            document.body.style.setProperty('--preview-font-weight', val);
+                            // Apply directly to content for ensuring visibility
+                            pContent.style.fontWeight = val;
+                            return;
+                        }
+                    }
 
                     // Map inputs to preview styles
                     if (name === 'THEME_HEADER_BG') pHeader.style.backgroundColor = val;
@@ -329,20 +348,24 @@
                         pHeader.style.color = val;
                         pHeader.querySelectorAll('.preview-nav-item').forEach(el => el.style.color = val);
                     }
-                    if (name === 'THEME_HEADER_HEIGHT') pHeader.style.minHeight = val;
+                    if (name === 'THEME_HEADER_HEIGHT') {
+                        pHeader.style.minHeight = val;
+                        pHeader.style.height = val;
+                    }
 
                     if (name === 'THEME_FOOTER_BG') pFooter.style.backgroundColor = val;
                     if (name === 'THEME_FOOTER_COLOR') pFooter.style.color = val;
-                    if (name === 'THEME_FOOTER_HEIGHT') pFooter.style.minHeight = (val === 'auto' ? '60px' : val);
+                    if (name === 'THEME_FOOTER_HEIGHT') {
+                        pFooter.style.minHeight = (val === 'autopx' || val === 'auto' ? '60px' : val);
+                    }
 
-                    if (name === 'THEME_TABLE_HEADER_BG') pTableHead.style.backgroundColor = val;
-                    if (name === 'THEME_TABLE_HEADER_COLOR') pTableHead.style.color = val;
-
-                    // Fake applied table header styles to cells (since tr background doesn't inherit cleanly to th in bootstrap without css)
                     if (name === 'THEME_TABLE_HEADER_BG') {
+                        pTableHead.style.backgroundColor = val;
+                        // Force TH background
                         pTableHead.querySelectorAll('th').forEach(th => th.style.backgroundColor = val);
                     }
                     if (name === 'THEME_TABLE_HEADER_COLOR') {
+                        pTableHead.style.color = val;
                         pTableHead.querySelectorAll('th').forEach(th => th.style.color = val);
                     }
 
@@ -356,8 +379,12 @@
 
                     // Logo width simulation
                     if (name === 'THEME_LOGO_WIDTH') {
-                        // Assuming mock logo div
-                        pHeader.querySelector('div > div').style.width = (parseInt(val) > 20 ? (parseInt(val) / 2) + 'px' : val); // Scale down for mini preview
+                        // Mock logo scaling
+                        const logoBox = pHeader.querySelector('div > div');
+                        const pixelVal = parseInt(val);
+                        if (logoBox) {
+                            logoBox.style.width = (pixelVal > 10 ? pixelVal + 'px' : val);
+                        }
                     }
                 });
             }

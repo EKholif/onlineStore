@@ -13,12 +13,13 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
-    @Query("UPDATE Category u set  u.enable=?2 WHERE u.id = ?1 ")
+    @Query("UPDATE Category u set  u.enabled=?2 WHERE u.id = ?1 ")
     @Modifying
     void enableCategory(Integer id, boolean enable);
 
-    @Query("UPDATE Category SET enable=true")
+    @Query("UPDATE Category SET enabled=true")
     @Modifying
+    @jakarta.transaction.Transactional
     void enableCategoryAll();
 
     @Query("SELECT u FROM Category u WHERE  CONCAT(u.id, ' ', u.name, ' ', u.alias) LIKE %?1%")

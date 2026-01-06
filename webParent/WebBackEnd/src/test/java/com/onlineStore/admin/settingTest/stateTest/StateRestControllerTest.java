@@ -1,6 +1,5 @@
 package com.onlineStore.admin.settingTest.stateTest;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.onlineStore.admin.setting.country.CountryRepository;
 import com.onlineStore.admin.setting.state.StateRepository;
@@ -27,13 +26,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 
-
 public class StateRestControllerTest {
 
+    @Autowired
+    MockMvc mockMvc;
+    @Autowired
+    ObjectMapper objectMapper;
 
-    @Autowired MockMvc mockMvc;
-
-    @Autowired ObjectMapper objectMapper;
+    @org.junit.jupiter.api.BeforeEach
+    public void setUp() {
+        com.onlineStoreCom.tenant.TenantContext.setTenantId(1L);
+    }
 
     @Autowired
     CountryRepository countryRepo;
@@ -62,7 +65,7 @@ public class StateRestControllerTest {
     @WithMockUser(username = "nam", password = "something", roles = "Admin")
     public void testCreateState() throws Exception {
         String url = "/states/save";
-        String countryId = "2";
+        Integer countryId = 2; // Country 2 must exist
         Country country = countryRepo.findById(countryId).get();
         State state = new State("Arizona", country);
 
@@ -75,7 +78,7 @@ public class StateRestControllerTest {
 
         String response = result.getResponse().getContentAsString();
         Integer stateId = Integer.parseInt(response);
-        Optional<State> findById = stateRepo.findById(String.valueOf(stateId));
+        Optional<State> findById = stateRepo.findById(stateId);
 
         Assertions.assertThat(findById.isPresent());
     }
@@ -84,7 +87,7 @@ public class StateRestControllerTest {
     @WithMockUser(username = "nam", password = "something", roles = "Admin")
     public void testUpdateState() throws Exception {
         String url = "/states/save";
-        String stateId = "9";
+        Integer stateId = 9; // State 9 must exist
         String stateName = "Alaska";
 
         State state = stateRepo.findById(stateId).get();
@@ -95,7 +98,7 @@ public class StateRestControllerTest {
                         .with(csrf()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(stateId));
+                .andExpect(content().string(String.valueOf(stateId)));
 
         Optional<State> findById = stateRepo.findById(stateId);
         Assertions.assertThat(findById.isPresent());
@@ -108,7 +111,7 @@ public class StateRestControllerTest {
     @Test
     @WithMockUser(username = "nam", password = "something", roles = "Admin")
     public void testDeleteState() throws Exception {
-        String stateId = "6";
+        Integer stateId = 6; // State 6 must exist
         String url = "/states/delete/" + stateId;
 
         mockMvc.perform(delete(url).with(csrf())).andExpect(status().isOk());

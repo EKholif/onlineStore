@@ -1,10 +1,8 @@
 package com.onlineStore.admin.usersAndCustomers.customer.service;
 
-
-import com.onlineStore.admin.usersAndCustomers.customer.repository.CustomersRepository;
 import com.onlineStore.admin.setting.country.CountryRepository;
+import com.onlineStore.admin.usersAndCustomers.customer.repository.CustomersRepository;
 import com.onlineStore.admin.utility.FileUploadUtil;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
@@ -40,11 +38,10 @@ public class CustomerService {
     public List<Customer> listAllUsers() {
         return customerRepo.findAll();
     }
+
     public Customer findById(Integer id) {
         return customerRepo.getReferenceById(id);
     }
-
-
 
     public void UdpateCustomerEnableStatus(Integer id, Boolean enable) {
         customerRepo.enableCustomer(id, enable);
@@ -60,20 +57,14 @@ public class CustomerService {
         customerRepo.deleteById(id);
     }
 
-
     public List<Country> listAllCountries() {
         return countryRepository.findAllByOrderByNameAsc();
     }
 
-
-    public List<Customer> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyword) {
+    public Page<Customer> listByPage(int pageNum, String sortField, String sortDir, String keyword) {
         Pageable pageable = createPageable(pageNum, sortField, sortDir);
 
-        Page<Customer> customersByPage = (keyword != null) ? customerRepo.findAll(keyword, pageable) : customerRepo.findAll(pageable);
-
-        setPageInfo(pageInfo, customersByPage);
-
-        return customersByPage.getContent();
+        return (keyword != null) ? customerRepo.findAll(keyword, pageable) : customerRepo.findAll(pageable);
     }
 
     private void savePhoto(Customer customer, MultipartFile multipartFile, String dirName) throws IOException {
@@ -93,32 +84,23 @@ public class CustomerService {
         return PageRequest.of(pageNum - 1, USERS_PER_PAGE, sort);
     }
 
-    private void setPageInfo(PageInfo pageInfo, Page<?> page) {
-        pageInfo.setTotalElements(page.getTotalElements());
-        pageInfo.setTotalPages(page.getTotalPages());
-    }
-
     public Customer saveCustomer(Customer customer) {
 
-
-
         if (customer.getPassword() == null || customer.getPassword().isEmpty()) {
-            Customer saved =customerRepo.getReferenceById(customer.getId());
+            Customer saved = customerRepo.getReferenceById(customer.getId());
             customer.setPassword(saved.getPassword());
             customer.setEnabled(true);
 
-        }else {
+        } else {
 
             encodePassword(customer);
             customer.setEnabled(true);
         }
 
-
         customer.setCreatedTime(new Date());
 
         String randomCode = RandomStringUtils.randomAlphabetic(64);
-        customer.setVerificationCode( randomCode);
-
+        customer.setVerificationCode(randomCode);
 
         return customerRepo.saveAndFlush(customer);
     }
@@ -130,4 +112,20 @@ public class CustomerService {
 
     }
 
+    public boolean isEmailUnique(Integer id, String email) {
+        Customer customerByEmail = customerRepo.findByEmail(email);
+        if (customerByEmail == null)
+            return true;
+
+        boolean isCreatingNew = (id == null);
+
+        if (isCreatingNew) {
+            return false;
+        } else {
+            if (customerByEmail.getId() != id) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

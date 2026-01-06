@@ -1,8 +1,6 @@
 package com.onlineStore.admin.usersAndCustomers.users.servcies;
 
-
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.category.services.PageInfo;
 import com.onlineStore.admin.usersAndCustomers.users.UserRepository;
 import com.onlineStore.admin.usersAndCustomers.users.role.RoleRepository;
 import com.onlineStoreCom.entity.users.Role;
@@ -33,11 +31,9 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     public List<User> listAllUsers() {
         return userRepo.findAll();
     }
-
 
     public List<Role> listAllRoles() {
         return roleRepo.findAll();
@@ -52,15 +48,13 @@ public class UserService {
         return userRepo.saveAndFlush(user);
     }
 
-
-    public List<User> listByPage(PageInfo pageInfo, int pageNum, String sortField, String sortDir, String keyword) {
+    public Page<User> listByPage(int pageNum, String sortField, String sortDir, String keyword) {
         Pageable pageable = createPageable(pageNum, sortField, sortDir);
 
-        Page<User> pageUsers = (keyword != null) ? userRepo.findAll(keyword, pageable) : userRepo.findAll(pageable);
-
-        setPageInfo(pageInfo, pageUsers);
-
-        return pageUsers.getContent();
+        if (keyword != null) {
+            return userRepo.findAll(keyword, pageable);
+        }
+        return userRepo.findAll(pageable);
     }
 
     private Pageable createPageable(int pageNum, String sortField, String sortDir) {
@@ -68,25 +62,17 @@ public class UserService {
         return PageRequest.of(pageNum - 1, USERS_PER_PAGE, sort);
     }
 
-    private void setPageInfo(PageInfo pageInfo, Page<?> page) {
-        pageInfo.setTotalElements(page.getTotalElements());
-        pageInfo.setTotalPages(page.getTotalPages());
-    }
-
-
     private void encodePassword(User user) {
 
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
     }
 
-
     public boolean isEmailUnique(Integer id, String email) {
         User userByEmail = userRepo.findByEmail(email);
 
         return userByEmail == null || userByEmail.getId().equals(id);
     }
-
 
     public User getUser(Integer id) throws UsernameNotFoundException {
         try {
@@ -101,7 +87,6 @@ public class UserService {
     public Boolean existsById(Integer id) {
         return userRepo.findById(id).isPresent();
     }
-
 
     public void deleteUser(Integer id) throws UsernameNotFoundException {
         try {
@@ -118,5 +103,3 @@ public class UserService {
 
     }
 }
-
-

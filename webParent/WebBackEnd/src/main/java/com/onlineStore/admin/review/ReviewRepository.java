@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-
 public interface ReviewRepository extends SearchRepository<Review, Integer> {
 
     @Query("SELECT r FROM Review r WHERE r.headline LIKE %?1% OR "

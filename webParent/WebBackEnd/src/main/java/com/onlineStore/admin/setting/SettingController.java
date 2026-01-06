@@ -74,7 +74,7 @@ public class SettingController {
             settingBag.setTenantId(tenantId);
 
             settingBag.updateSiteLogo(value);
-            String uploadDir = "site-logo";
+            String uploadDir = "site-logo/" + tenantId;
             FileUploadUtil.cleanDir(uploadDir);
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 

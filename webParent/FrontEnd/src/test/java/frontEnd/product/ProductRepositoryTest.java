@@ -31,7 +31,7 @@ public class ProductRepositoryTest {
         p.setFullDescription("Full");
         p.setCreatedTime(new Date());
         p.setUpdatedTime(new Date());
-        p.setEnable(true);
+        p.setEnabled(true);
         p.setInStock(true);
         p.setPrice(100);
         p.setDiscountPercent(10.0f); // 10% off
@@ -65,7 +65,5 @@ public class ProductRepositoryTest {
         }
 
     }
-
-
 
 }

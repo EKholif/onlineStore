@@ -15,13 +15,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(false)
-
+@Rollback(true)
 public class CountryRepositoryTest {
+
+    @org.junit.jupiter.api.BeforeEach
+    public void setUp() {
+        com.onlineStoreCom.tenant.TenantContext.setTenantId(1L);
+    }
 
     @Autowired
     private CountryRepository repo;
-
 
     @Test
     public void testCreateCountry() {
@@ -37,9 +40,9 @@ public class CountryRepositoryTest {
         assertThat(country.getId()).isGreaterThan(0);
     }
 
-
     @Test
     public void testListCountries() {
+        repo.save(new Country("France", "FR"));
         List<Country> listCountries = repo.findAllByOrderByNameAsc();
         listCountries.forEach(System.out::println);
 
@@ -48,7 +51,7 @@ public class CountryRepositoryTest {
 
     @Test
     public void testListAllCountries() {
-
+        repo.save(new Country("Germany", "DE"));
         Iterable<Country> listCountries = repo.findAllByOrderByNameAsc();
         System.out.println("🔥 test started 🔥");
         for (Country country : listCountries) {
@@ -57,41 +60,33 @@ public class CountryRepositoryTest {
             System.out.println(" - code   -" + country.getCode());
             System.out.println("🔥 test started 🔥");
         }
-
     }
 
     @Test
     public void testUpdateCountry() {
-        String id = "1";
+        Country country = repo.save(new Country("India", "IN"));
         String name = "Republic of India";
 
-        Country country = repo.findById(id).get();
         country.setName(name);
-
         Country updatedCountry = repo.save(country);
 
         assertThat(updatedCountry.getName()).isEqualTo(name);
     }
+
     @Test
     public void testGetCountry() {
-        String id = "1";
-        Country country = repo.findById(id).get();
-        assertThat(country).isNotNull();
+        Country country = repo.save(new Country("Japan", "JP"));
+        Optional<Country> found = repo.findById(country.getId());
+        assertThat(found).isPresent();
     }
 
     @Test
     public void testDeleteCountry() {
-        String id = "1";
+        Country country = repo.save(new Country("Kyoto", "KY"));
+        Integer id = country.getId();
         repo.deleteById(id);
 
         Optional<Country> findById = repo.findById(id);
-        assertThat(findById.isEmpty());
+        assertThat(findById).isEmpty();
     }
-
-
-
-
-    
-
-
 }

@@ -18,7 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Critical Business Path: Ensures admins and permitted roles can access and
  * manage orders.
  */
-@WebMvcTest(value = OrderController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = com.onlineStore.admin.security.tenant.TenantContextFilter.class))
+@WebMvcTest(value = OrderController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = {
+        com.onlineStore.admin.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class}))
 public class OrderControllerTest {
 
     @Autowired
@@ -32,6 +33,9 @@ public class OrderControllerTest {
 
     @MockBean
     private ProductService productService;
+
+    @MockBean(name = "entityManagerFactory")
+    private jakarta.persistence.EntityManagerFactory entityManagerFactory;
 
     @Test
     @WithMockUser(username = "admin", roles = {"Admin"})

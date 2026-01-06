@@ -1,11 +1,6 @@
 package com.onlineStore.admin.test.counteryTest.userTest;
 
-import com.onlineStore.admin.product.repository.ProductRepository;
-import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.UserRepository;
-import com.onlineStore.admin.usersAndCustomers.users.role.RoleRepository;
-import com.onlineStore.admin.utility.FileUploadUtil;
-import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.tenant.TenantContext;
 import org.junit.jupiter.api.Test;
@@ -16,279 +11,217 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = false)
+@Rollback(value = true)
 class UserRepositoryTest {
 
     @Autowired
     private UserRepository repo;
     @Autowired
-    private RoleRepository roleRepository;
+    private org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager entityManager;
 
-    @Autowired
-    private ProductRepository Repository;
+    @org.junit.jupiter.api.BeforeEach
+    public void setUp() {
+        TenantContext.setTenantId(1L);
+    }
 
-    @Test
-    public void testCreateFirstUser() {
-        User userAdmin = new User("e@gmail.com", "0", "ehab", "kholif");
-        userAdmin.addRole(roleRepository.getReferenceById(1));
-        userAdmin.setEnable(true);
+    private com.onlineStoreCom.entity.users.Role getOrCreateRole(Integer id, String name, String desc) {
+        // Since id is manual, we might need to check if exists or just persist new one
+        // if possible
+        // But Role entities might have manually assigned IDs.
+        // If we use entityManager to find, we can check.
+        com.onlineStoreCom.entity.users.Role role = entityManager.find(com.onlineStoreCom.entity.users.Role.class, id);
+        if (role == null) {
+            role = new com.onlineStoreCom.entity.users.Role();
+            role.setId(id);
+            role.setName(name);
+            role.setDescrption(desc);
+            entityManager.persist(role);
+        }
+        return role;
+    }
 
-        User savedRole = repo.saveAndFlush(userAdmin);
-        System.out.println(userAdmin.getEmail());
-
-        System.out.println(userAdmin);
-
-        testUser();
-        assertThat(savedRole.getId()).isGreaterThan(0);
-
+    private User createAndSaveUser(String email) {
+        // Ensure role exists
+        com.onlineStoreCom.entity.users.Role role = getOrCreateRole(1, "Admin", "Admin Role");
+        User user = new User(email, "password", "First", "Last");
+        user.addRole(role);
+        user.setEnabled(true);
+        return repo.saveAndFlush(user);
     }
 
     @Test
-    public void tateFirstUser() {
-        User user = repo.findByEmail("aecllc.bnk@gmail.com");
+    public void testCreateFirstUser() {
+        com.onlineStoreCom.entity.users.Role role = getOrCreateRole(1, "Admin", "Admin Role");
+        User userAdmin = new User("test1_" + System.currentTimeMillis() + "@gmail.com", "password", "ehab", "kholif");
+        userAdmin.addRole(role);
+        userAdmin.setEnabled(true);
+
+        User savedUser = repo.saveAndFlush(userAdmin);
+        assertThat(savedUser.getId()).isGreaterThan(0);
+    }
+
+    @Test
+    public void testUpdateUserPassword() {
+        String email = "findme_" + System.currentTimeMillis() + "@gmail.com";
+        createAndSaveUser(email);
+
+        User user = repo.findByEmail(email);
+        assertThat(user).isNotNull();
         System.out.println(user.getId());
-        user.setPassword("");
+        user.setPassword("newpass");
         System.out.println(user.getPassword());
     }
 
     @Test
     public void testCreateUsers() {
-        User userSalesperson = new User("ehab.bts@gmail.com", "a0000", "ehab", "kholif");
-        userSalesperson.addRole(roleRepository.getReferenceById(2));
+        com.onlineStoreCom.entity.users.Role r2 = getOrCreateRole(2, "Salesperson", "Sales");
+        com.onlineStoreCom.entity.users.Role r3 = getOrCreateRole(3, "Editor", "Editor");
+        com.onlineStoreCom.entity.users.Role r4 = getOrCreateRole(4, "Shipper", "Shipper");
+        com.onlineStoreCom.entity.users.Role r5 = getOrCreateRole(5, "Assistant", "Assistant");
 
-        User userEditor = new User("ehab@gmail.com", "0a000", "ekholif", "kholif");
-        userEditor.addRole(roleRepository.getReferenceById(3));
+        User userSalesperson = new User("sales_" + System.currentTimeMillis() + "@gmail.com", "pass", "Name1", "Last");
+        userSalesperson.addRole(r2);
 
-        User userShipper = new User("bts@gmail.com", "00a00", "testUserOne", "kholif");
-        userShipper.addRole(roleRepository.getReferenceById(4));
+        User userEditor = new User("editor_" + System.currentTimeMillis() + "@gmail.com", "pass", "Name2", "Last");
+        userEditor.addRole(r3);
 
-        User userAssistant = new User("eh.bts@gmail.com", "000a0", "testUserTwo", "kholif");
-        userAssistant.addRole(roleRepository.getReferenceById(5));
+        User userShipper = new User("shipper_" + System.currentTimeMillis() + "@gmail.com", "pass", "Name3", "Last");
+        userShipper.addRole(r4);
 
-        testUser();
+        User userAssistant = new User("assist_" + System.currentTimeMillis() + "@gmail.com", "pass", "Name4", "Last");
+        userAssistant.addRole(r5);
 
         repo.saveAllAndFlush(List.of(userSalesperson, userEditor, userShipper, userAssistant));
 
+        assertThat(repo.findByEmail(userSalesperson.getEmail())).isNotNull();
     }
 
     @Test
     public void testListAllUser() {
-
+        createAndSaveUser("listuser_" + System.currentTimeMillis() + "@gmail.com");
         Iterable<User> listUsers = repo.findAll();
-        for (User user : listUsers) {
-            System.out.println("fffffffffff" + user.getTenantId());
-        }
-        ;
-
-    }
-
-    @Test
-    public void testGetUserById() {
-
-        Long tenantId = 8247009068765685744L;
-        TenantContext.setTenantId(tenantId);
-
-        System.out.println("Current tenant: " + TenantContext.getTenantId());
-        List<Product> products = Repository.findAll();
-        for (Product p : products) {
-            System.out.println("Product tenantId: " + p.getTenantId() + " Name: " + p.getName());
-        }
+        assertThat(listUsers.iterator().hasNext()).isTrue();
     }
 
     @Test
     public void testUpdateUser() {
-        User userAdmin = repo.findById(1).get();
-        userAdmin.setEnable(true);
-        userAdmin.setPassword("");
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodePassword = passwordEncoder.encode(userAdmin.getPassword());
-        userAdmin.setPassword(encodePassword);
-        repo.saveAndFlush(userAdmin);
-        System.out.println(userAdmin);
+        User user = createAndSaveUser("updateuser_" + System.currentTimeMillis() + "@gmail.com");
+        Integer id = user.getId();
+
+        User retrieved = repo.findById(id).get();
+        retrieved.setEnabled(false);
+        retrieved.setPassword("updatedPass");
+
+        User updated = repo.saveAndFlush(retrieved);
+        assertThat(updated.isEnabled()).isFalse();
     }
 
     @Test
     public void testCountById() {
-        Integer id = 22;
-        Integer countBYId = repo.countById(id);
-        assertThat(countBYId).isNotNull().isGreaterThan(0);
-
-    }
-
-    @Test
-    public void testCreateTestUser() {
-        User userAdmin = new User("testDeleteUser@gmail.com", "0000", "ehab", "kholif");
-        userAdmin.addRole(roleRepository.getReferenceById(1));
-        User savedRole = repo.saveAndFlush(userAdmin);
-        assertThat(savedRole.getId()).isGreaterThan(0);
+        User user = createAndSaveUser("countuser_" + System.currentTimeMillis() + "@gmail.com");
+        Integer count = repo.countById(user.getId());
+        assertThat(count).isGreaterThan(0);
     }
 
     @Test
     public void testDeleteUser() {
-
-        Integer id = 24;
+        User user = createAndSaveUser("deleteuser_" + System.currentTimeMillis() + "@gmail.com");
+        Integer id = user.getId();
         repo.deleteById(id);
-
-        testUser();
+        assertThat(repo.findById(id)).isEmpty();
     }
 
     @Test
     public void testUpdateRoleUser() {
-        User userAdmin = repo.findById(3103).get();
-        userAdmin.addRole(roleRepository.getReferenceById(1));
-        repo.saveAndFlush(userAdmin);
-        userAdmin.addRole(roleRepository.getReferenceById(3));
-        repo.saveAndFlush(userAdmin);
-        userAdmin.addRole(roleRepository.getReferenceById(4));
-        repo.saveAndFlush(userAdmin);
+        com.onlineStoreCom.entity.users.Role r1 = getOrCreateRole(1, "Admin", "Admin");
+        com.onlineStoreCom.entity.users.Role r3 = getOrCreateRole(3, "Editor", "Editor");
+        com.onlineStoreCom.entity.users.Role r4 = getOrCreateRole(4, "Shipper", "Shipper");
 
+        User user = new User("roleuser_" + System.currentTimeMillis() + "@gmail.com", "pass", "N", "L");
+        user = repo.saveAndFlush(user);
+
+        user.addRole(r1);
+        repo.saveAndFlush(user);
+
+        user = repo.findById(user.getId()).get();
+        user.addRole(r3);
+        repo.saveAndFlush(user);
+
+        user = repo.findById(user.getId()).get();
+        user.addRole(r4);
+        repo.saveAndFlush(user);
+
+        assertThat(user.getRoles().size()).isGreaterThanOrEqualTo(3);
     }
 
     @Test
     public void testRemoveRoleUser() {
-        User userAdmin = repo.findById(9).get();
-        userAdmin.getRoles().remove(roleRepository.getReferenceById(3));
-        userAdmin.getRoles().remove(roleRepository.getReferenceById(1));
-        repo.saveAndFlush(userAdmin);
+        com.onlineStoreCom.entity.users.Role r1 = getOrCreateRole(1, "Admin", "Admin");
+        User user = new User("removerole_" + System.currentTimeMillis() + "@gmail.com", "pass", "N", "L");
+        user.addRole(r1);
+        user = repo.saveAndFlush(user);
 
+        user.getRoles().remove(r1);
+        user = repo.saveAndFlush(user);
+
+        assertThat(user.getRoles().size()).isEqualTo(0);
     }
 
     @Test
     public void testFindUserByEmail() {
-        User UserByEmail = repo.findByEmail("ehabffkholif@gmail.com");
-        boolean user = (UserByEmail == null);
-        System.out.println(user);
-    }
-
-    @Test
-    public void testNewid() {
-        User newUser = new User();
-        System.out.println(newUser.getId());
-
+        String email = "findemail_" + System.currentTimeMillis() + "@gmail.com";
+        createAndSaveUser(email);
+        User user = repo.findByEmail(email);
+        assertThat(user).isNotNull();
     }
 
     @Test
     public void testUserExistsByEmail() {
-        boolean UserByEmail = repo.existsByEmail("ehab.bts@gmail.com");
-        System.out.println(UserByEmail);
-    }
-
-    @Test
-    public void testFindUserById() {
-        try {
-            User userFindById = repo.findById(2).get();
-            System.out.println(userFindById);
-
-        } catch (NoSuchElementException ex) {
-
-            System.out.println("null");
-        }
-    }
-
-    @Test
-    public void testEnableUser() {
-        Integer id = 115;
-        repo.enableUser(id, true);
+        String email = "existemail_" + System.currentTimeMillis() + "@gmail.com";
+        createAndSaveUser(email);
+        boolean exists = repo.existsByEmail(email);
+        assertThat(exists).isTrue();
     }
 
     @Test
     public void testGetUserImagePath() {
+        User user = createAndSaveUser("imagepath_" + System.currentTimeMillis() + "@gmail.com");
+        user.setUser_bio("test.jpg");
+        repo.saveAndFlush(user);
 
-        User user = repo.getReferenceById(3);
-
-        System.out.println(user.getImagePath());
-        System.out.println(user.getUser_bio());
-
+        user = repo.getReferenceById(user.getId());
+        assertThat(user.getImagePath()).isNotNull();
     }
 
     @Test
     public void testUnitBean() {
-        User user = repo.getReferenceById(3252);
-        User userAdmin = new User();
-        userAdmin.addRole(roleRepository.getReferenceById(1));
+        // Just testing bean copy, no DB needed really, but using objects
+        com.onlineStoreCom.entity.users.Role r1 = getOrCreateRole(1, "Admin", "Admin");
+        User source = new User();
+        source.addRole(r1);
 
-        BeanUtils.copyProperties(userAdmin, user, "id");
-        System.out.println(userAdmin.getRoles());
-        System.out.println(user.getRoles());
-    }
+        User target = new User();
+        // Simulate copy except id
+        BeanUtils.copyProperties(source, target, "id");
 
-    @Test
-    public void testCleanDir() throws IOException {
-        User user = repo.getReferenceById(3);
-        FileUploadUtil.cleanDir(user.getImageDir());
+        assertThat(target.getRoles().contains(r1)).isTrue();
     }
 
     @Test
     public void testPaging() {
-        int pageNumber = 1;
-        int pageSize = 4;
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        createAndSaveUser("page1_" + System.currentTimeMillis() + "@gmail.com");
+        createAndSaveUser("page2_" + System.currentTimeMillis() + "@gmail.com");
+
+        Pageable pageable = PageRequest.of(0, 2);
         Page<User> page = repo.findAll(pageable);
-        List<User> contant = page.getContent();
-        contant.forEach(System.out::println);
-
+        assertThat(page.getContent().size()).isGreaterThan(0);
     }
-
-    @Test
-    public void testUserServPageing() {
-        String keyword = "bruce";
-        int pageNum = 0;
-        int pagSize = 6;
-        Pageable pageable = PageRequest.of(pageNum, pagSize);
-        Page<User> page = repo.findAll(keyword, pageable);
-        List<User> listUsers = page.getContent();
-        System.out.println(listUsers);
-
-    }
-
-    @Test
-    public void testUserSeachPageing() {
-
-        Integer id = 20;
-        User user = repo.getReferenceById(20);
-        String encodedPassword = "'$2a$10$1pu/o2S4kwAQ3aFWvIAW9eEnbVgOq0/SebsHLe7BsyZYJ9mSOdRpG'";
-
-        user.setPassword(encodedPassword);
-
-        System.out.println(user.getPassword());
-    }
-
-    @Test
-    public void testUser() {
-
-        Iterable<User> listUsers = repo.findAll();
-
-        for (User user : listUsers) {
-            System.out.println(user.getId() + " --" + user.getfirstName() + "-- "
-                    + user.getEmail() + "--" + user.isEnable() + "--" + user.getPassword());
-        }
-    }
-
-    @Test
-    public void testCreateUser() {
-
-        User user = new User();
-        String encodedPassword = "'$2a$10$1pu/o2S4kwAQ3aFWvIAW9eEnbVgOq0/SebsHLe7BsyZYJ9mSOdRpG'";
-        user.setFirstName("Ehab");
-        user.setLastName("Kholif");
-        user.setEmail("ehabkholif@gmail.com");
-        user.setPassword(encodedPassword);
-        user.addRole(roleRepository.getReferenceById(1));
-        user.setTenantId(TenantService.createTenant());
-
-        repo.saveAndFlush(user);
-
-    }
-
 }

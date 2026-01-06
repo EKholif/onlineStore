@@ -81,7 +81,7 @@ public class CategoryPdfCategoryExporter extends AbstractExporter {
             table.addCell(category.getName());
 
             table.addCell(category.getAlias());
-            table.addCell(category.isEnable() ? "Enabled" : "Disabled");
+            table.addCell(category.isEnabled() ? "Enabled" : "Disabled");
         }
     }
 
@@ -90,7 +90,6 @@ public class CategoryPdfCategoryExporter extends AbstractExporter {
         headerFont.setColor(WHITE);
 
         PdfPCell cell = new PdfPCell();
-
 
         cell.setBackgroundColor(BLUE);
         cell.setPadding(5);

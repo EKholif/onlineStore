@@ -1,6 +1,5 @@
 package com.onlineStore.admin.test.counteryTest;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import jakarta.persistence.EntityManager;
@@ -23,8 +22,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 
-
 public class CounteryRestControllerTest {
+
+    @org.junit.jupiter.api.BeforeEach
+    public void setUp() {
+        com.onlineStoreCom.tenant.TenantContext.setTenantId(1L);
+    }
 
     @Autowired
     MockMvc mockMvc;
@@ -32,7 +35,6 @@ public class CounteryRestControllerTest {
     ObjectMapper objectMapper;
     @Autowired
     EntityManager entityManager;
-
 
     @Test
     @WithMockUser(username = "ehab", password = "", roles = "Admin")
@@ -49,11 +51,9 @@ public class CounteryRestControllerTest {
 
     }
 
-
     @Test
     @WithMockUser(username = "ehab", password = "", roles = "Admin")
     public void saveCountryTest() throws Exception {
-
 
         String url = "/setting/save";
         String countryName = "Canada";
@@ -73,7 +73,6 @@ public class CounteryRestControllerTest {
         Country saveCountry = entityManager.find(Country.class, countryID);
 
         assertThat(saveCountry.getName()).isEqualTo(countryName);
-
 
     }
 
@@ -96,9 +95,7 @@ public class CounteryRestControllerTest {
 
         Country findById = entityManager.find(Country.class, countryId);
 
-
         Assertions.assertThat(findById).isNotNull();
-
 
         assertThat(findById.getName()).isEqualTo(countryName);
     }
@@ -113,7 +110,5 @@ public class CounteryRestControllerTest {
         Country findById = entityManager.find(Country.class, countryId);
         Assertions.assertThat(findById).isNull();
     }
-
-
 
 }

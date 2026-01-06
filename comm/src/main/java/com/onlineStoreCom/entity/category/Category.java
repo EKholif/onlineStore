@@ -22,7 +22,8 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
     @Column(name = "image", length = 125, nullable = true)
     private String image;
 
-    private boolean enable;
+    @Column(name = "enabled")
+    private boolean enabled;
 
     public boolean isHasChildren() {
         return hasChildren;
@@ -69,10 +70,10 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
 
     }
 
-    public Category(String name, String alias, boolean enable, Category parent) {
+    public Category(String name, String alias, boolean enabled, Category parent) {
         this.name = name;
         this.alias = alias;
-        this.enable = enable;
+        this.enabled = enabled;
         this.parent = parent;
 
     }
@@ -107,7 +108,7 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
         copyCategory.setName(category.getName());
         copyCategory.setImage(category.getImage());
         copyCategory.setAlias(category.getAlias());
-        copyCategory.setEnable(category.isEnable());
+        copyCategory.setEnabled(category.isEnabled());
         copyCategory.setParent(category.getParent());
         copyCategory.setChildren(category.getChildren());
         copyCategory.setHasChildren(category.getChildren().size() > 0);
@@ -150,12 +151,12 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
         this.image = image;
     }
 
-    public boolean isEnable() {
-        return enable;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Category getParent() {
@@ -186,15 +187,15 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
             return "/images/bob.png";
         }
 
-        return dirName + this.id + '/' + this.image;
+        return dirName + this.getTenantId() + "/" + this.id + '/' + this.image;
     }
 
     @Transient
     public String getImageDir() {
-        String dirName = "categories-photos\\";
+        String dirName = "categories-photos/";
         if (id < 0 || image == null)
-            return "\\images \\ bob.png";
-        return dirName + this.id + '\\';
+            return "/images/bob.png";
+        return dirName + this.getTenantId() + "/" + this.id + "/";
     }
 
     @Override

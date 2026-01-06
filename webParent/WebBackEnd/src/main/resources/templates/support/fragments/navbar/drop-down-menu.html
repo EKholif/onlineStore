@@ -9,9 +9,6 @@
         <input type="submit">
     </form>
 
-    <form method="post" name="logoutForm" th:action="@{/logout}" th:hidden="true">
-        <input type="submit">
-    </form>
 
     <ul class="dropdown-menu dropdown-menu-end" style="right: 0 !important; left: auto !important;">
         <li class="dropdown-item icon-d-green" th:text="${#authentication.principal.getFullName}"></li>

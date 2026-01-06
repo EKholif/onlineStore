@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Main controller for handling root and authentication-related requests.
  * <p>
  * This controller manages the main entry points of the application including
- * the home page and login page. It handles redirections and authentication checks.
+ * the home page and login page. It handles redirections and authentication
+ * checks.
  * 
  * @Controller - Marks this class as a Spring MVC controller
  */
@@ -53,10 +54,12 @@ public class MainController {
     @GetMapping("/login")
     public String viewLoginPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("MainController.viewLoginPage called. Auth: " + authentication);
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            System.out.println("MainController: returning login view");
             return "login";
         }
-
+        System.out.println("MainController: redirecting to /");
         return "redirect:/";
     }
 }
