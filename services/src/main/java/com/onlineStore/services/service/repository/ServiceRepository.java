@@ -1,7 +1,7 @@
 package com.onlineStore.services.service.repository;
 
-import com.onlineStore.services.common.repository.SearchRepository;
 import com.onlineStoreCom.entity.service.Service;
+import com.onlineStore.services.common.repository.SearchRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

@@ -1,9 +1,9 @@
 package com.onlineStoreCom.entity.booking;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.entity.service.Service;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
-import com.onlineStoreCom.entity.users.User;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Filter;
 

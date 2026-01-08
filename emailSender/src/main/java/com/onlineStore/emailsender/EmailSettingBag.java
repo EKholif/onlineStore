@@ -32,7 +32,7 @@ public class EmailSettingBag extends SettingBag {
     }
 
     public String getSmtpSecured() {
-        return super.getValue("STMP_SECURED");
+        return super.getValue("SMTP_SECURED");
     }
 
     public String getFromAddress() {

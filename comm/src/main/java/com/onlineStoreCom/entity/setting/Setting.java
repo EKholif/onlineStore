@@ -1,6 +1,7 @@
 package com.onlineStoreCom.entity.setting;
 
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+
 import jakarta.persistence.*;
 
 @Entity

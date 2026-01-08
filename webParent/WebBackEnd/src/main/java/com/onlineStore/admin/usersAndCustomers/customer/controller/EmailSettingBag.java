@@ -32,7 +32,7 @@ public class EmailSettingBag extends SettingBag {
     }
 
     public String getSmtpSecured() {
-        return super.getValue("STMP_SECURED");
+        return super.getValue("SMTP_SECURED");
     }
 
     public String getFromAddress() {
@@ -58,8 +58,6 @@ public class EmailSettingBag extends SettingBag {
     public String getOrderConfirmationContent() {
         return super.getValue("ORDER_CONFIRMATION_CONTENT");
     }
-
-
 
     public String getSiteName() {
         return super.getValue("SITE_NAME");

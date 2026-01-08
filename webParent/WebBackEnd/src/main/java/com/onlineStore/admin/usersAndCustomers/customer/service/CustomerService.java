@@ -1,7 +1,7 @@
 package com.onlineStore.admin.usersAndCustomers.customer.service;
 
-import com.onlineStore.admin.setting.country.CountryRepository;
 import com.onlineStore.admin.usersAndCustomers.customer.repository.CustomersRepository;
+import com.onlineStore.admin.setting.country.CountryRepository;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;

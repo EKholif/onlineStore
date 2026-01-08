@@ -20,20 +20,20 @@
 						<div>
 							Product Cost:
 							<div
-									th:replace="~{support/fragments/format/format_currency::content(${detail.productCost})}"></div>
+									th:replace="~{support/fragments/standard/format_fragments ::currency(${detail.productCost})}"></div>
 						</div>
 						<div>`
 							Subtotal: [[${detail.quantity}]] X
 							<div
-									th:replace="~{support/fragments/format/format_currency::content(${detail.unitPrice})}"></div>
+									th:replace="~{support/fragments/standard/format_fragments::currency(${detail.unitPrice})}"></div>
 							=
 							<div
-									th:replace="~{support/fragments/format/format_currency::content(${detail.subtotal})}"></div>
+									th:replace="~{support/fragments/standard/format_fragments::currency(${detail.subtotal})}"></div>
 						</div>
 						<div>
 							Shipping Cost:
 							<div
-									th:replace="~{support/fragments/format/format_currency::content(${detail.shippingCost})}"></div>
+									th:replace="~{support/fragments/standard/format_fragments::currency(${detail.shippingCost})}"></div>
 						</div>
 					</th:block>
 				</div>

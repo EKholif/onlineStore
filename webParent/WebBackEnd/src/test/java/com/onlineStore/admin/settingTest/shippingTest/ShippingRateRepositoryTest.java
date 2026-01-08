@@ -1,8 +1,8 @@
 package com.onlineStore.admin.settingTest.shippingTest;
 
 import com.onlineStore.admin.setting.country.CountryRepository;
-import com.onlineStore.admin.setting.state.StateRepository;
 import com.onlineStore.admin.shipping.repository.ShippingRateRepository;
+import com.onlineStore.admin.setting.state.StateRepository;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.shipping.ShippingRate;

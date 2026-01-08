@@ -3,13 +3,13 @@ package com.onlineStore.admin.settingTest;
 import com.onlineStore.admin.setting.country.SettingRepository;
 import com.onlineStoreCom.entity.setting.Setting;
 import com.onlineStoreCom.entity.setting.SettingCategory;
-import com.onlineStoreCom.tenant.TenantContext;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
+import com.onlineStoreCom.tenant.TenantContext;
 
 import java.util.ArrayList;
 import java.util.List;

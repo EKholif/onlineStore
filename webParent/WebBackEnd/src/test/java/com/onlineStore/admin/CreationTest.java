@@ -1,13 +1,20 @@
 package com.onlineStore.admin;
 
 import com.onlineStore.admin.brand.reposetry.BrandRepository;
+import com.onlineStore.admin.security.StoreUserDetails;
 import com.onlineStore.admin.usersAndCustomers.users.UserRepository;
 import com.onlineStoreCom.entity.brand.Brand;
+import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.tenant.TenantContext;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

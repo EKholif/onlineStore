@@ -2,6 +2,7 @@ package com.onlineStore.admin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Main entry point for the Online Store Admin Backend application.

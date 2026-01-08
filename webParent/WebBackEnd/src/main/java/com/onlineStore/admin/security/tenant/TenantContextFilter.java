@@ -36,44 +36,50 @@ public class TenantContextFilter extends OncePerRequestFilter {
             return;
         }
 
-        Long tenantId = TenantContext.getTenantId();
+        try {
+            Long tenantId = TenantContext.getTenantId();
 
-        // 1. Try to get from Session (Fastest)
-        if (tenantId == null) {
-            Object val = request.getSession().getAttribute("TENANT_ID");
-            if (val instanceof Long) {
-                tenantId = (Long) val;
-                TenantContext.setTenantId(tenantId);
+            // 1. Try to get from Session (Fastest)
+            if (tenantId == null) {
+                Object val = request.getSession().getAttribute("TENANT_ID");
+                if (val instanceof Long) {
+                    tenantId = (Long) val;
+                    TenantContext.setTenantId(tenantId);
+                }
             }
-        }
 
-        // 2. [AG-TEN-BUG-001] Fallback: Get from SecurityContext (Robust for RememberMe
-        // / Session Timeout)
-        if (tenantId == null) {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            if (authentication != null && authentication.getPrincipal() instanceof StoreUserDetails) {
-                StoreUserDetails userDetails = (StoreUserDetails) authentication.getPrincipal();
-                tenantId = userDetails.getTenantId();
-                TenantContext.setTenantId(tenantId);
-                request.getSession().setAttribute("TENANT_ID", tenantId); // Self-heal
+            // 2. [AG-TEN-BUG-001] Fallback: Get from SecurityContext
+            if (tenantId == null) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                if (authentication != null && authentication.getPrincipal() instanceof StoreUserDetails) {
+                    StoreUserDetails userDetails = (StoreUserDetails) authentication.getPrincipal();
+                    tenantId = userDetails.getTenantId();
+                    TenantContext.setTenantId(tenantId);
+                    request.getSession().setAttribute("TENANT_ID", tenantId); // Self-heal
+                }
             }
-        }
 
-        // 3. Apply Hibernate Filter
-        Session session = entityManager.unwrap(Session.class);
-        if (tenantId != null && tenantId != 0) {
+            // [AG-ARCH-SEC-002] Fail-Fast: Block request if TenantID is missing
+            if (tenantId == null || tenantId == 0) {
+                System.err.println("⛔ [TenantContextFilter] Access Denied: No TenantID found for " + path);
+                response.sendError(HttpServletResponse.SC_FORBIDDEN, "Tenant Context Missing");
+                return;
+            }
+
+            // [AG-ARCH-OBS-001] MDC Logging
+            org.slf4j.MDC.put("tenantId", String.valueOf(tenantId));
+
+            // 3. Apply Hibernate Filter
+            Session session = entityManager.unwrap(Session.class);
             session.enableFilter("tenantFilter").setParameter("tenantId", tenantId);
             System.out.println("✅ [TenantContextFilter] Enabled Filter for TenantID: " + tenantId);
-        } else {
-            session.disableFilter("tenantFilter");
-            System.out.println("⚠️ [TenantContextFilter] Disabled Filter (TenantID is null/0)");
-        }
 
-        try {
             chain.doFilter(request, response);
+
         } finally {
-            // clear ThreadLocal to avoid leak between requests
+            // clear ThreadLocal & MDC to avoid leak
             TenantContext.clear();
+            org.slf4j.MDC.clear();
         }
     }
 }

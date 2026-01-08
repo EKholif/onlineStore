@@ -19,6 +19,7 @@ public class FilterConfig {
         FilterRegistrationBean<TenantContextFilter> registration = new FilterRegistrationBean<>();
         registration.setFilter(tenantContextFilter);
         registration.addUrlPatterns("/*");
+        registration.setEnabled(false);
         return registration;
     }
 }

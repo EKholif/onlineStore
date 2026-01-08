@@ -1,5 +1,7 @@
 package com.onlineStore.admin.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.onlineStore.services.service.repository.ServiceRepository;
 import com.onlineStoreCom.entity.service.Service;
 import com.onlineStoreCom.entity.service.ServiceLocationType;
@@ -9,8 +11,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)

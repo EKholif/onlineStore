@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <div id="divProductDetails" th:fragment="content">
+        <th:block th:each="productDetails : ${product.details}">
+            <div class="flex flex-row align-items-center flex-wrap p-2 mt-2 border-bottom">
+                <label class="col-sm-1 text-center font-weight-bold">Name:</label>
+                <div class="col-sm-4">
+                    <span th:text="${productDetails.name}"></span>
+                </div>
+
+                <label class="col-sm-1 text-center font-weight-bold">Value:</label>
+                <div class="col-sm-4">
+                    <span th:text="${productDetails.value}"></span>
+                </div>
+            </div>
+        </th:block>
+    </div>
+
+</body>
+
+</html>
