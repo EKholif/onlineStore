@@ -1,0 +1,10 @@
+business_scenarios:
+  order_creation:
+    steps:
+      - validate_tenant_status
+      - validate_user_role
+      - check_inventory
+      - persist_order
+    rules_applied:
+      - Tenant Isolation
+      - User Role Validation

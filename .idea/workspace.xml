@@ -8,65 +8,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/tenant/Tenant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/tenant/TenantStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/repo/TenantRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/security/tenant/TenantContextFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/security/tenant/TenantJwtHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/debug/FrontEndTenantTraceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/FrontEndFilterRegistrationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/services-photos/5/10/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/debug/TenantTraceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/jwt/TenantJwtHelperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterRegistrationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/tenant/SuperAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/tenant/TenantRegistrationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/tenant/TenantService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/articals/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/articals/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/base/CatalogItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/Setting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingBag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/00-intent.yml" beforeDir="false" afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/00-intent.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/01-core-principles.yml" beforeDir="false" afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/01-core-principles.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/02-rule-mapping.yml" beforeDir="false" afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/02-rule-mapping.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/03-business-scenarios.yml" beforeDir="false" afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/03-business-scenarios.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/04-ai-prompts.yml" beforeDir="false" afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/04-ai-prompts.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/05-pitch-deck.yml" beforeDir="false" afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/05-pitch-deck.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/06-governance.yml" beforeDir="false" afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/06-governance.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/Currency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/HierarchicalEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/HierarchicalEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/IdBasedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/IdBasedEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/security/tenant/TenantContextFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/security/tenant/TenantContextFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/project_manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/project_manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/onlineStore-BackEnd.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/FrontEndApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/FrontEndApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/tenant/TenantContextFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/SettingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/SettingFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/WebBackEndApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/WebBackEndApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/config/KnowledgeBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/config/KnowledgeBootstrap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/MainControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/MainControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/category/controller/CategoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/category/controller/CategoryControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/product/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/product/ProductControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/MultiTenancyIsolationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/MultiTenancyIsolationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantFilterAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantFilterAspect.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -437,7 +397,7 @@
       <workItem from="1767569839997" duration="295000" />
       <workItem from="1767570166704" duration="1428000" />
       <workItem from="1767692102314" duration="34393000" />
-      <workItem from="1767921536327" duration="11129000" />
+      <workItem from="1767921536327" duration="14769000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />

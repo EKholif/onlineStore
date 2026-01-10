@@ -1,0 +1,11 @@
+governance:
+  feature_addition_steps:
+    - add_or_update_rules
+    - update_rule_mapping
+    - implement_code
+  forbidden:
+    - code_first_changes
+    - silent_business_logic_changes
+  compliance_check:
+    - all_rules_must_have_mapping
+    - all_new_features_must_update_knowledge

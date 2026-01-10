@@ -19,8 +19,9 @@ public class TenantFilterAspect {
     @PersistenceContext
     private EntityManager entityManager;
 
-    // Intercept ANY public method in ANY Service class (handling typo 'servcies')
-    @Before("execution(* com.onlineStore.admin..service..*(..)) || execution(* com.onlineStore.admin..servcies..*(..))")
+    // Intercept ANY public method in ANY Service class (Matches *Service class name
+    // suffix)
+    @Before("execution(* com.onlineStore..*Service.*(..))")
     public void enforceTenantFilter() {
         Long tenantId = TenantContext.getTenantId();
 

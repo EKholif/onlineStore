@@ -27,6 +27,11 @@ public class TenantListener {
      */
     @jakarta.persistence.PostLoad
     public void verifyDataIntegrity(Object entity) {
+        // [AG-TEN-SEC-006] Allow Global Data (Countries, States, etc.)
+        if (entity instanceof GlobalData) {
+            return;
+        }
+
         if (entity instanceof TenantAware) {
             TenantAware tenantAware = (TenantAware) entity;
             Long entityTenantId = tenantAware.getTenantId();

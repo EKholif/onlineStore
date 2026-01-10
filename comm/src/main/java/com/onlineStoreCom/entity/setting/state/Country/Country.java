@@ -10,10 +10,11 @@ import jakarta.persistence.Table;
 
 import java.util.Set;
 
+import com.onlineStoreCom.tenant.GlobalData;
+
 @Entity
 @Table(name = "countries")
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id = 0 or tenant_id is null)")
-public class Country extends IdBasedEntity {
+public class Country extends IdBasedEntity implements GlobalData {
 
     @Column(nullable = false, length = 45)
     private String name;

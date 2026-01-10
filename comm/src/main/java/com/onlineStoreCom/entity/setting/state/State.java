@@ -4,10 +4,11 @@ import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
+import com.onlineStoreCom.tenant.GlobalData;
+
 @Entity
 @Table(name = "states")
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id is null)")
-public class State extends IdBasedEntity {
+public class State extends IdBasedEntity implements GlobalData {
 
     @Column(nullable = false, length = 45)
     private String name;

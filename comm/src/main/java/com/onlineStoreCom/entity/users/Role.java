@@ -8,12 +8,14 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.onlineStoreCom.tenant.GlobalData;
+
 @Entity
 @Table(name = "role")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id = 0 or tenant_id is null)")
 @ExcludeSuperclassListeners
-public class Role extends HierarchicalEntity<Role> {
+public class Role extends HierarchicalEntity<Role> implements GlobalData {
 
     @Column(name = "name", length = 40, nullable = false, unique = false)
     private String name;

@@ -56,6 +56,7 @@ public class WebSecurityConfig {
         http
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**").permitAll()
                         .requestMatchers("/users/**", "/get_shipping_cost/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/customer/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")
@@ -83,10 +84,5 @@ public class WebSecurityConfig {
         http.addFilterAfter(tenantContextFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**");
     }
 }

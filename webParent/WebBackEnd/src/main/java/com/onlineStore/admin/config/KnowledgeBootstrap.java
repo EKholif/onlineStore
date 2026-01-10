@@ -17,6 +17,9 @@ public class KnowledgeBootstrap {
         load("04-ai-prompts.yml");
         load("05-pitch-deck.yml");
         load("06-governance.yml");
+        load("07-shared-reference-data.yml");
+        load("08-tenant-isolation.yml");
+        load("10-storage-structure.yml");
 
         System.out.println("✅ Knowledge System loaded successfully");
     }

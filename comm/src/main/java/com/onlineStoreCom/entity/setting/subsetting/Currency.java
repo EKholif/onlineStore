@@ -2,10 +2,11 @@ package com.onlineStoreCom.entity.setting.subsetting;
 
 import jakarta.persistence.*;
 
+import com.onlineStoreCom.tenant.GlobalData;
+
 @Entity
 @Table(name = "currencies")
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id = 0 or tenant_id is null)")
-public class Currency extends IdBasedEntity {
+public class Currency extends IdBasedEntity implements GlobalData {
 
 	@Column(nullable = false, length = 64)
 	private String name;

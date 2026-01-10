@@ -13733,3 +13733,650 @@ java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Curr
 
 2026-01-10T16:50:20.171+02:00 DEBUG 77704 --- [http-nio-710-exec-9] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
 2026-01-10T16:50:20.175+02:00 DEBUG 77704 --- [http-nio-710-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T16:53:42.140+02:00  INFO 77704 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T16:53:42.146+02:00  INFO 77704 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T16:53:42.159+02:00  INFO 77704 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-10T17:02:20.204+02:00  INFO 63372 --- [restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 63372 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-10T17:02:20.207+02:00  INFO 63372 --- [restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-10T17:02:20.326+02:00  INFO 63372 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-10T17:02:20.326+02:00  INFO 63372 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-10T17:02:21.765+02:00  INFO 63372 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T17:02:22.115+02:00  INFO 63372 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 332 ms. Found 19 JPA repository interfaces.
+2026-01-10T17:02:24.602+02:00  INFO 63372 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-10T17:02:24.625+02:00  INFO 63372 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-10T17:02:24.626+02:00  INFO 63372 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-10T17:02:24.768+02:00  INFO 63372 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-10T17:02:24.769+02:00  INFO 63372 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4442 ms
+2026-01-10T17:02:25.078+02:00  INFO 63372 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T17:02:25.237+02:00  INFO 63372 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-10T17:02:25.239+02:00  INFO 63372 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-10T17:02:25.601+02:00  INFO 63372 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:02:25.911+02:00  INFO 63372 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T17:02:25.957+02:00  INFO 63372 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-10T17:02:26.473+02:00  INFO 63372 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3070b390
+2026-01-10T17:02:26.476+02:00  INFO 63372 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-10T17:02:27.590+02:00  INFO 63372 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:02:30.288+02:00  INFO 63372 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-10T17:02:30.820+02:00  INFO 63372 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:02:31.131+02:00  INFO 63372 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-10T17:02:31.131+02:00  INFO 63372 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-10T17:02:31.895+02:00  INFO 63372 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-10T17:02:34.248+02:00  WARN 63372 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T17:02:35.354+02:00  INFO 63372 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-10T17:02:35.436+02:00  INFO 63372 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ad920ad, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@bd83200, org.springframework.security.web.context.SecurityContextHolderFilter@4be718d0, org.springframework.security.web.header.HeaderWriterFilter@1b7b4c9b, org.springframework.security.web.csrf.CsrfFilter@4f4b3733, org.springframework.security.web.authentication.logout.LogoutFilter@4c1774ab, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@745abf41, com.onlineStoreCom.security.tenant.TenantContextFilter@3193a8c3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5bb5f2e4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e188f2f, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@13927037, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@42ba5d2, org.springframework.security.web.access.ExceptionTranslationFilter@45b97696, org.springframework.security.web.access.intercept.AuthorizationFilter@1a7460c8]
+2026-01-10T17:02:35.444+02:00  WARN 63372 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:02:35.444+02:00  INFO 63372 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2026-01-10T17:02:35.444+02:00  WARN 63372 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:02:35.444+02:00  INFO 63372 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2026-01-10T17:02:35.445+02:00  WARN 63372 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:02:35.445+02:00  INFO 63372 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2026-01-10T17:02:35.445+02:00  WARN 63372 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:02:35.445+02:00  INFO 63372 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/css/**']
+2026-01-10T17:02:36.126+02:00  INFO 63372 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-10T17:02:36.223+02:00  INFO 63372 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-10T17:02:36.243+02:00  INFO 63372 --- [restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 16.733 seconds (process running for 18.014)
+2026-01-10T17:02:36.309+02:00 DEBUG 63372 --- [restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+2026-01-10T17:02:36.530+02:00  INFO 63372 --- [RMI TCP Connection(2)-192.168.1.3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-10T17:02:36.530+02:00  INFO 63372 --- [RMI TCP Connection(2)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-10T17:02:36.533+02:00  INFO 63372 --- [RMI TCP Connection(2)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-01-10T17:02:46.759+02:00 DEBUG 63372 --- [http-nio-710-exec-4] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:02:46.924+02:00 DEBUG 63372 --- [http-nio-710-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.email=?
+2026-01-10T17:02:46.969+02:00 DEBUG 63372 --- [http-nio-710-exec-4] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:02:47.197+02:00 DEBUG 63372 --- [http-nio-710-exec-7] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 5
+2026-01-10T17:02:47.220+02:00 DEBUG 63372 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ? order by u1_0.first_name limit ?,?
+2026-01-10T17:02:47.224+02:00 DEBUG 63372 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:02:47.691+02:00  WARN 63372 --- [http-nio-710-exec-7] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#1]
+2026-01-10T17:02:47.738+02:00 DEBUG 63372 --- [http-nio-710-exec-10] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:02:47.744+02:00 DEBUG 63372 --- [http-nio-710-exec-10] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:02:51.422+02:00 DEBUG 63372 --- [http-nio-710-exec-5] org.hibernate.SQL                        : select s1_0.id,s1_0.alias,s1_0.buffer_time,s1_0.cost,s1_0.created_time,s1_0.discount_percent,s1_0.duration,s1_0.enabled,s1_0.full_description,s1_0.location_type,s1_0.main_image,s1_0.name,s1_0.price,s1_0.short_description,s1_0.tenant_id,s1_0.updated_time from services s1_0 order by s1_0.name limit ?,?
+2026-01-10T17:02:51.443+02:00 ERROR 63372 --- [http-nio-710-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [1]] with root cause
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [1]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:51) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.readPage(SimpleJpaRepository.java:697) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:449) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:426) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:288) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:164) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy180.findAll(Unknown Source) ~[na:na]
+	at com.onlineStore.services.service.ServiceService.listByPage(ServiceService.java:37) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:751) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:751) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703) ~[spring-aop-6.0.12.jar:6.0.12]
+	at com.onlineStore.services.service.ServiceService$$SpringCGLIB$$0.listByPage(<generated>) ~[classes/:na]
+	at com.onlineStore.admin.service.ServiceController.listByPage(ServiceController.java:41) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.13.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.13.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:66) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:110) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:101) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at com.onlineStoreCom.security.tenant.TenantContextFilter.doFilterInternal(TenantContextFilter.java:95) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at java.base/java.lang.Thread.run(Thread.java:1589) ~[na:na]
+
+2026-01-10T17:02:51.627+02:00 DEBUG 63372 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:02:51.628+02:00 DEBUG 63372 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:02:57.224+02:00  INFO 63372 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:02:57.228+02:00  INFO 63372 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T17:02:57.236+02:00  INFO 63372 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-10T17:42:05.319+02:00  INFO 80724 --- [restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 80724 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-10T17:42:05.321+02:00  INFO 80724 --- [restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-10T17:42:05.395+02:00  INFO 80724 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-10T17:42:05.395+02:00  INFO 80724 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-10T17:42:06.502+02:00  INFO 80724 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T17:42:06.665+02:00  INFO 80724 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 144 ms. Found 19 JPA repository interfaces.
+2026-01-10T17:42:08.143+02:00  INFO 80724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-10T17:42:08.157+02:00  INFO 80724 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-10T17:42:08.157+02:00  INFO 80724 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-10T17:42:08.244+02:00  INFO 80724 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-10T17:42:08.244+02:00  INFO 80724 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2848 ms
+2026-01-10T17:42:08.426+02:00  INFO 80724 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T17:42:08.551+02:00  INFO 80724 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-10T17:42:08.556+02:00  INFO 80724 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-10T17:42:08.844+02:00  INFO 80724 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:42:09.042+02:00  INFO 80724 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T17:42:09.073+02:00  INFO 80724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-10T17:42:09.472+02:00  INFO 80724 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2aa83c86
+2026-01-10T17:42:09.474+02:00  INFO 80724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-10T17:42:10.015+02:00  INFO 80724 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:42:11.361+02:00  INFO 80724 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-10T17:42:11.445+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : alter table countries add column tenant_id bigint
+2026-01-10T17:42:11.887+02:00  INFO 80724 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:42:12.089+02:00  INFO 80724 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-10T17:42:12.089+02:00  INFO 80724 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-10T17:42:12.144+02:00 ERROR 80724 --- [restartedMain] o.a.catalina.session.StandardManager     : Exception loading sessions from persistent storage
+
+java.io.InvalidClassException: com.onlineStoreCom.entity.users.Role; local class incompatible: stream classdesc serialVersionUID = -6645780275360308313, local class serialVersionUID = -7940265220969899051
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:597) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2076) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1925) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2248) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1760) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:538) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:496) ~[na:na]
+	at java.base/java.util.HashMap.readObject(HashMap.java:1558) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1101) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2442) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2280) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1760) ~[na:na]
+	at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2625) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2476) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2280) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1760) ~[na:na]
+	at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2625) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2476) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2280) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1760) ~[na:na]
+	at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2625) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2476) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2280) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1760) ~[na:na]
+	at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2625) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2476) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2280) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1760) ~[na:na]
+	at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2625) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2476) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2280) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1760) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:538) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:496) ~[na:na]
+	at org.apache.catalina.session.StandardSession.doReadObject(StandardSession.java:1415) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.session.StandardSession.readObjectData(StandardSession.java:985) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.session.StandardManager.doLoad(StandardManager.java:210) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.session.StandardManager.load(StandardManager.java:156) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.session.StandardManager.startInternal(StandardManager.java:346) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4877) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:846) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:241) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:918) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:489) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:602) ~[spring-context-6.0.12.jar:6.0.12]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-10T17:42:12.596+02:00  INFO 80724 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-10T17:42:14.405+02:00  WARN 80724 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T17:42:15.398+02:00  INFO 80724 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-10T17:42:15.487+02:00  INFO 80724 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@59a33bc8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a1d6926, org.springframework.security.web.context.SecurityContextHolderFilter@14a2f0bc, org.springframework.security.web.header.HeaderWriterFilter@1447af12, org.springframework.security.web.csrf.CsrfFilter@3be968c9, org.springframework.security.web.authentication.logout.LogoutFilter@1e484c1c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5a2d341e, com.onlineStoreCom.security.tenant.TenantContextFilter@69f68590, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5482d89f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1de16e3a, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@34964d26, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fc753aa, org.springframework.security.web.access.ExceptionTranslationFilter@5d9d14d0, org.springframework.security.web.access.intercept.AuthorizationFilter@1d9e08d4]
+2026-01-10T17:42:15.495+02:00  WARN 80724 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:42:15.496+02:00  INFO 80724 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2026-01-10T17:42:15.496+02:00  WARN 80724 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:42:15.496+02:00  INFO 80724 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2026-01-10T17:42:15.496+02:00  WARN 80724 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:42:15.496+02:00  INFO 80724 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2026-01-10T17:42:15.496+02:00  WARN 80724 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:42:15.496+02:00  INFO 80724 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/css/**']
+2026-01-10T17:42:16.180+02:00  INFO 80724 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-10T17:42:16.272+02:00  INFO 80724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-10T17:42:16.294+02:00  INFO 80724 --- [restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 11.688 seconds (process running for 13.001)
+2026-01-10T17:42:16.312+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Starting Global Data Normalization...
+2026-01-10T17:42:16.337+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE countries MODIFY tenant_id BIGINT NULL
+2026-01-10T17:42:16.361+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for countries: tenant_id is now NULLABLE.
+2026-01-10T17:42:16.362+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : UPDATE countries SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:42:16.364+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 Countries to Global (NULL).
+2026-01-10T17:42:16.364+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE states MODIFY tenant_id BIGINT NULL
+2026-01-10T17:42:16.381+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for states: tenant_id is now NULLABLE.
+2026-01-10T17:42:16.381+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : UPDATE states SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:42:16.384+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 States to Global (NULL).
+2026-01-10T17:42:16.384+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE currencies MODIFY tenant_id BIGINT NULL
+2026-01-10T17:42:16.394+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for currencies: tenant_id is now NULLABLE.
+2026-01-10T17:42:16.395+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : UPDATE currencies SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:42:16.396+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 Currencies to Global (NULL).
+2026-01-10T17:42:16.396+02:00  INFO 80724 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migration Complete.
+2026-01-10T17:42:16.411+02:00 DEBUG 80724 --- [restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+2026-01-10T17:42:16.860+02:00  INFO 80724 --- [RMI TCP Connection(5)-192.168.1.3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-10T17:42:16.861+02:00  INFO 80724 --- [RMI TCP Connection(5)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-10T17:42:16.864+02:00  INFO 80724 --- [RMI TCP Connection(5)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-01-10T17:54:48.028+02:00  WARN 80724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m38s354ms584µs800ns).
+2026-01-10T17:55:10.142+02:00 DEBUG 80724 --- [http-nio-710-exec-7] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:55:10.421+02:00 DEBUG 80724 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.email=?
+2026-01-10T17:55:10.532+02:00 DEBUG 80724 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:55:10.834+02:00 DEBUG 80724 --- [http-nio-710-exec-10] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:55:10.864+02:00 DEBUG 80724 --- [http-nio-710-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ? order by u1_0.first_name limit ?,?
+2026-01-10T17:55:10.868+02:00 DEBUG 80724 --- [http-nio-710-exec-10] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:55:11.288+02:00  WARN 80724 --- [http-nio-710-exec-10] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#1]
+2026-01-10T17:55:11.367+02:00 DEBUG 80724 --- [http-nio-710-exec-4] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:55:11.370+02:00 DEBUG 80724 --- [http-nio-710-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:55:15.022+02:00 DEBUG 80724 --- [http-nio-710-exec-7] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:55:15.028+02:00 DEBUG 80724 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select r1_0.id,r1_0.all_parent_ids,r1_0.descrption,r1_0.name,r1_0.parent_id,r1_0.tenant_id from role r1_0 where (r1_0.tenant_id = ? or r1_0.tenant_id = 0 or r1_0.tenant_id is null) and r1_0.tenant_id = ?
+2026-01-10T17:55:15.202+02:00 DEBUG 80724 --- [http-nio-710-exec-10] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:55:15.204+02:00 DEBUG 80724 --- [http-nio-710-exec-10] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:55:17.772+02:00 DEBUG 80724 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:55:17.775+02:00 DEBUG 80724 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.tenant_id from countries c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:55:17.915+02:00 DEBUG 80724 --- [http-nio-710-exec-7] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:55:17.917+02:00 DEBUG 80724 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:55:18.020+02:00  WARN 80724 --- [http-nio-710-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2026-01-10T17:55:24.280+02:00 DEBUG 80724 --- [http-nio-710-exec-3] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:55:24.286+02:00 DEBUG 80724 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ?
+2026-01-10T17:55:24.292+02:00 DEBUG 80724 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.symbol,c1_0.tenant_id from currencies c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:55:24.444+02:00 DEBUG 80724 --- [http-nio-710-exec-7] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:55:24.448+02:00 DEBUG 80724 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:55:36.414+02:00 DEBUG 80724 --- [http-nio-710-exec-8] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:55:36.419+02:00 DEBUG 80724 --- [http-nio-710-exec-8] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-10T17:55:36.547+02:00 DEBUG 80724 --- [http-nio-710-exec-9] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:55:36.548+02:00 DEBUG 80724 --- [http-nio-710-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:55:56.811+02:00  INFO 80724 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:55:56.817+02:00  INFO 80724 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T17:55:56.829+02:00  INFO 80724 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-10T17:56:02.558+02:00  INFO 73248 --- [restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 73248 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-10T17:56:02.559+02:00  INFO 73248 --- [restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-10T17:56:02.608+02:00  INFO 73248 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-10T17:56:02.609+02:00  INFO 73248 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-10T17:56:03.473+02:00  INFO 73248 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T17:56:03.602+02:00  INFO 73248 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 19 JPA repository interfaces.
+2026-01-10T17:56:04.862+02:00  INFO 73248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-10T17:56:04.871+02:00  INFO 73248 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-10T17:56:04.872+02:00  INFO 73248 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-10T17:56:04.945+02:00  INFO 73248 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-10T17:56:04.945+02:00  INFO 73248 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2334 ms
+2026-01-10T17:56:05.107+02:00  INFO 73248 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T17:56:05.222+02:00  INFO 73248 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-10T17:56:05.227+02:00  INFO 73248 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-10T17:56:05.466+02:00  INFO 73248 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:56:05.654+02:00  INFO 73248 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T17:56:05.682+02:00  INFO 73248 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-10T17:56:06.044+02:00  INFO 73248 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4032b8c2
+2026-01-10T17:56:06.047+02:00  INFO 73248 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-10T17:56:06.676+02:00  INFO 73248 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:56:08.004+02:00  INFO 73248 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-10T17:56:08.457+02:00  INFO 73248 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:56:08.642+02:00  INFO 73248 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-10T17:56:08.642+02:00  INFO 73248 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-10T17:56:09.028+02:00  INFO 73248 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-10T17:56:10.677+02:00  WARN 73248 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T17:56:11.563+02:00  INFO 73248 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-10T17:56:11.633+02:00  INFO 73248 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3cad9342, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5d291a7e, org.springframework.security.web.context.SecurityContextHolderFilter@12dbd6f9, org.springframework.security.web.header.HeaderWriterFilter@ebb8a63, org.springframework.security.web.csrf.CsrfFilter@7280a68a, org.springframework.security.web.authentication.logout.LogoutFilter@1bee0d29, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1a3f6b52, com.onlineStoreCom.security.tenant.TenantContextFilter@5196824e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2e053cc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6d62e6e6, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@48dd5700, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@53bea06d, org.springframework.security.web.access.ExceptionTranslationFilter@4733fc45, org.springframework.security.web.access.intercept.AuthorizationFilter@32c8d980]
+2026-01-10T17:56:11.638+02:00  WARN 73248 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:56:11.638+02:00  INFO 73248 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2026-01-10T17:56:11.639+02:00  WARN 73248 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:56:11.639+02:00  INFO 73248 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2026-01-10T17:56:11.639+02:00  WARN 73248 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:56:11.639+02:00  INFO 73248 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2026-01-10T17:56:11.639+02:00  WARN 73248 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:56:11.639+02:00  INFO 73248 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/css/**']
+2026-01-10T17:56:12.115+02:00  INFO 73248 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-10T17:56:12.191+02:00  INFO 73248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-10T17:56:12.204+02:00  INFO 73248 --- [restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 10.205 seconds (process running for 11.186)
+2026-01-10T17:56:12.220+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Starting Global Data Normalization...
+2026-01-10T17:56:12.245+02:00 DEBUG 73248 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE countries MODIFY tenant_id BIGINT NULL
+2026-01-10T17:56:12.321+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for countries: tenant_id is now NULLABLE.
+2026-01-10T17:56:12.321+02:00 DEBUG 73248 --- [restartedMain] org.hibernate.SQL                        : UPDATE countries SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:56:12.322+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 Countries to Global (NULL).
+2026-01-10T17:56:12.324+02:00 DEBUG 73248 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE states MODIFY tenant_id BIGINT NULL
+2026-01-10T17:56:12.337+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for states: tenant_id is now NULLABLE.
+2026-01-10T17:56:12.337+02:00 DEBUG 73248 --- [restartedMain] org.hibernate.SQL                        : UPDATE states SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:56:12.339+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 States to Global (NULL).
+2026-01-10T17:56:12.340+02:00 DEBUG 73248 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE currencies MODIFY tenant_id BIGINT NULL
+2026-01-10T17:56:12.353+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for currencies: tenant_id is now NULLABLE.
+2026-01-10T17:56:12.353+02:00 DEBUG 73248 --- [restartedMain] org.hibernate.SQL                        : UPDATE currencies SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:56:12.354+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 Currencies to Global (NULL).
+2026-01-10T17:56:12.354+02:00  INFO 73248 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migration Complete.
+2026-01-10T17:56:12.369+02:00 DEBUG 73248 --- [restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+2026-01-10T17:56:13.001+02:00  INFO 73248 --- [RMI TCP Connection(4)-192.168.1.3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-10T17:56:13.001+02:00  INFO 73248 --- [RMI TCP Connection(4)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-10T17:56:13.003+02:00  INFO 73248 --- [RMI TCP Connection(4)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-10T17:56:18.522+02:00 DEBUG 73248 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:56:18.640+02:00 DEBUG 73248 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-10T17:56:19.513+02:00 DEBUG 73248 --- [http-nio-710-exec-7] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:56:19.515+02:00 DEBUG 73248 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:56:20.896+02:00 DEBUG 73248 --- [http-nio-710-exec-9] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:56:20.898+02:00 DEBUG 73248 --- [http-nio-710-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-10T17:56:21.068+02:00 DEBUG 73248 --- [http-nio-710-exec-2] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:56:21.072+02:00 DEBUG 73248 --- [http-nio-710-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:56:22.750+02:00 DEBUG 73248 --- [http-nio-710-exec-3] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:56:22.756+02:00 DEBUG 73248 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.tenant_id from countries c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:56:22.938+02:00 DEBUG 73248 --- [http-nio-710-exec-9] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:56:22.940+02:00 DEBUG 73248 --- [http-nio-710-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:56:23.082+02:00  WARN 73248 --- [http-nio-710-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2026-01-10T17:56:37.133+02:00 DEBUG 73248 --- [http-nio-710-exec-4] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:56:37.186+02:00 DEBUG 73248 --- [http-nio-710-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.email=?
+2026-01-10T17:56:37.204+02:00 DEBUG 73248 --- [http-nio-710-exec-4] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:56:37.406+02:00 DEBUG 73248 --- [http-nio-710-exec-7] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 5
+2026-01-10T17:56:37.433+02:00 DEBUG 73248 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ? order by u1_0.first_name limit ?,?
+2026-01-10T17:56:37.437+02:00 DEBUG 73248 --- [http-nio-710-exec-7] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:56:37.750+02:00  WARN 73248 --- [http-nio-710-exec-7] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#1]
+2026-01-10T17:56:37.792+02:00 DEBUG 73248 --- [http-nio-710-exec-6] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:56:37.795+02:00 DEBUG 73248 --- [http-nio-710-exec-6] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:56:40.245+02:00 DEBUG 73248 --- [http-nio-710-exec-4] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 5
+2026-01-10T17:56:40.246+02:00 DEBUG 73248 --- [http-nio-710-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.tenant_id from countries c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:56:40.353+02:00 DEBUG 73248 --- [http-nio-710-exec-8] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:56:40.355+02:00 DEBUG 73248 --- [http-nio-710-exec-8] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:56:40.437+02:00  WARN 73248 --- [http-nio-710-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2026-01-10T17:56:48.799+02:00  INFO 73248 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:56:48.802+02:00  INFO 73248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T17:56:48.808+02:00  INFO 73248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-10T17:57:11.663+02:00  INFO 16912 --- [restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 16912 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-10T17:57:11.665+02:00  INFO 16912 --- [restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-10T17:57:11.713+02:00  INFO 16912 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-10T17:57:11.713+02:00  INFO 16912 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-10T17:57:12.524+02:00  INFO 16912 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T17:57:12.647+02:00  INFO 16912 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 19 JPA repository interfaces.
+2026-01-10T17:57:13.811+02:00  INFO 16912 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-10T17:57:13.818+02:00  INFO 16912 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-10T17:57:13.820+02:00  INFO 16912 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-10T17:57:13.881+02:00  INFO 16912 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-10T17:57:13.882+02:00  INFO 16912 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2167 ms
+2026-01-10T17:57:14.028+02:00  INFO 16912 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T17:57:14.104+02:00  INFO 16912 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-10T17:57:14.108+02:00  INFO 16912 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-10T17:57:14.286+02:00  INFO 16912 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:57:14.422+02:00  INFO 16912 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T17:57:14.438+02:00  INFO 16912 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-10T17:57:14.714+02:00  INFO 16912 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a209ecf
+2026-01-10T17:57:14.715+02:00  INFO 16912 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-10T17:57:15.208+02:00  INFO 16912 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-10T17:57:16.261+02:00  INFO 16912 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-10T17:57:16.636+02:00  INFO 16912 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:57:16.819+02:00  INFO 16912 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-10T17:57:16.819+02:00  INFO 16912 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-10T17:57:17.180+02:00  INFO 16912 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-10T17:57:18.756+02:00  WARN 16912 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T17:57:19.569+02:00  INFO 16912 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-10T17:57:19.637+02:00  INFO 16912 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5e0dbbea, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@77fa175d, org.springframework.security.web.context.SecurityContextHolderFilter@5013d92d, org.springframework.security.web.header.HeaderWriterFilter@32658b51, org.springframework.security.web.csrf.CsrfFilter@648f6bd3, org.springframework.security.web.authentication.logout.LogoutFilter@139632a9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1d56911f, com.onlineStoreCom.security.tenant.TenantContextFilter@662d3f01, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a7a71aa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@81e86b6, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@4b27ca3f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74c84b79, org.springframework.security.web.access.ExceptionTranslationFilter@147803b4, org.springframework.security.web.access.intercept.AuthorizationFilter@36047776]
+2026-01-10T17:57:19.643+02:00  WARN 16912 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:57:19.643+02:00  INFO 16912 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2026-01-10T17:57:19.643+02:00  WARN 16912 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:57:19.643+02:00  INFO 16912 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2026-01-10T17:57:19.643+02:00  WARN 16912 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:57:19.643+02:00  INFO 16912 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2026-01-10T17:57:19.643+02:00  WARN 16912 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-10T17:57:19.643+02:00  INFO 16912 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/css/**']
+2026-01-10T17:57:20.129+02:00  INFO 16912 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-10T17:57:20.205+02:00  INFO 16912 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-10T17:57:20.219+02:00  INFO 16912 --- [restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 9.073 seconds (process running for 9.92)
+2026-01-10T17:57:20.233+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Starting Global Data Normalization...
+2026-01-10T17:57:20.254+02:00 DEBUG 16912 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE countries MODIFY tenant_id BIGINT NULL
+2026-01-10T17:57:20.280+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for countries: tenant_id is now NULLABLE.
+2026-01-10T17:57:20.281+02:00 DEBUG 16912 --- [restartedMain] org.hibernate.SQL                        : UPDATE countries SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:57:20.283+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 Countries to Global (NULL).
+2026-01-10T17:57:20.283+02:00 DEBUG 16912 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE states MODIFY tenant_id BIGINT NULL
+2026-01-10T17:57:20.296+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for states: tenant_id is now NULLABLE.
+2026-01-10T17:57:20.296+02:00 DEBUG 16912 --- [restartedMain] org.hibernate.SQL                        : UPDATE states SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:57:20.298+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 States to Global (NULL).
+2026-01-10T17:57:20.298+02:00 DEBUG 16912 --- [restartedMain] org.hibernate.SQL                        : ALTER TABLE currencies MODIFY tenant_id BIGINT NULL
+2026-01-10T17:57:20.308+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Modified Schema for currencies: tenant_id is now NULLABLE.
+2026-01-10T17:57:20.310+02:00 DEBUG 16912 --- [restartedMain] org.hibernate.SQL                        : UPDATE currencies SET tenant_id = NULL WHERE tenant_id = 1
+2026-01-10T17:57:20.310+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migrated 0 Currencies to Global (NULL).
+2026-01-10T17:57:20.310+02:00  INFO 16912 --- [restartedMain] c.o.a.config.GlobalDataMigrationRunner   : 🌍 [GlobalDataMigration] Migration Complete.
+2026-01-10T17:57:20.321+02:00 DEBUG 16912 --- [restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+2026-01-10T17:57:20.654+02:00  INFO 16912 --- [RMI TCP Connection(2)-192.168.1.3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-10T17:57:20.655+02:00  INFO 16912 --- [RMI TCP Connection(2)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-10T17:57:20.656+02:00  INFO 16912 --- [RMI TCP Connection(2)-192.168.1.3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-10T17:58:36.137+02:00 DEBUG 16912 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 5
+2026-01-10T17:58:36.261+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.tenant_id from countries c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:58:37.160+02:00 DEBUG 16912 --- [http-nio-710-exec-3] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:58:37.183+02:00 DEBUG 16912 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:58:37.660+02:00  WARN 16912 --- [http-nio-710-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2026-01-10T17:58:52.743+02:00 DEBUG 16912 --- [http-nio-710-exec-9] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 5
+2026-01-10T17:58:52.748+02:00 DEBUG 16912 --- [http-nio-710-exec-9] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.tenant_id from countries c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:58:52.926+02:00 DEBUG 16912 --- [http-nio-710-exec-2] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:58:52.932+02:00 DEBUG 16912 --- [http-nio-710-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:58:53.060+02:00  WARN 16912 --- [http-nio-710-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2026-01-10T17:59:05.029+02:00 DEBUG 16912 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:05.069+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.email=?
+2026-01-10T17:59:05.092+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:05.287+02:00 DEBUG 16912 --- [http-nio-710-exec-3] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:59:05.302+02:00 DEBUG 16912 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ? order by u1_0.first_name limit ?,?
+2026-01-10T17:59:05.307+02:00 DEBUG 16912 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:05.521+02:00  WARN 16912 --- [http-nio-710-exec-3] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#1]
+2026-01-10T17:59:05.561+02:00 DEBUG 16912 --- [http-nio-710-exec-9] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:05.565+02:00 DEBUG 16912 --- [http-nio-710-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:59:08.098+02:00 DEBUG 16912 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:59:08.101+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.tenant_id from countries c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:59:08.224+02:00 DEBUG 16912 --- [http-nio-710-exec-3] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:08.226+02:00 DEBUG 16912 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:59:08.315+02:00  WARN 16912 --- [http-nio-710-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2026-01-10T17:59:12.137+02:00 DEBUG 16912 --- [http-nio-710-exec-8] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 11
+2026-01-10T17:59:12.142+02:00 DEBUG 16912 --- [http-nio-710-exec-8] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ?
+2026-01-10T17:59:12.149+02:00 DEBUG 16912 --- [http-nio-710-exec-8] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.symbol,c1_0.tenant_id from currencies c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:59:12.297+02:00 DEBUG 16912 --- [http-nio-710-exec-3] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:12.305+02:00 DEBUG 16912 --- [http-nio-710-exec-3] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:59:21.399+02:00 DEBUG 16912 --- [http-nio-710-exec-6] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:21.399+02:00 DEBUG 16912 --- [http-nio-710-exec-6] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.email=?
+2026-01-10T17:59:21.403+02:00 DEBUG 16912 --- [http-nio-710-exec-6] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:21.569+02:00 DEBUG 16912 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-10T17:59:21.572+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ? order by u1_0.first_name limit ?,?
+2026-01-10T17:59:21.574+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:21.577+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:21.577+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:21.581+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:21.583+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id,r1_1.tenant_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-10T17:59:21.593+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select count(u1_0.id) from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ?
+2026-01-10T17:59:21.819+02:00 DEBUG 16912 --- [http-nio-710-exec-5] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:21.824+02:00 DEBUG 16912 --- [http-nio-710-exec-5] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:59:21.921+02:00  WARN 16912 --- [http-nio-710-exec-1] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#5]
+2026-01-10T17:59:21.921+02:00  WARN 16912 --- [http-nio-710-exec-1] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#1]
+2026-01-10T17:59:21.922+02:00  WARN 16912 --- [http-nio-710-exec-1] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#3]
+2026-01-10T17:59:21.922+02:00  WARN 16912 --- [http-nio-710-exec-1] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#4]
+2026-01-10T17:59:23.312+02:00 DEBUG 16912 --- [http-nio-710-exec-5] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-10T17:59:23.315+02:00 DEBUG 16912 --- [http-nio-710-exec-5] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.tenant_id from countries c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:59:23.472+02:00 DEBUG 16912 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:23.475+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:59:23.595+02:00  WARN 16912 --- [http-nio-710-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2026-01-10T17:59:26.734+02:00 DEBUG 16912 --- [http-nio-710-exec-6] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-10T17:59:26.740+02:00 DEBUG 16912 --- [http-nio-710-exec-6] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-10T17:59:26.876+02:00 DEBUG 16912 --- [http-nio-710-exec-1] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:26.877+02:00 DEBUG 16912 --- [http-nio-710-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:59:28.868+02:00 DEBUG 16912 --- [http-nio-710-exec-10] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-10T17:59:28.872+02:00 DEBUG 16912 --- [http-nio-710-exec-10] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ?
+2026-01-10T17:59:28.876+02:00 DEBUG 16912 --- [http-nio-710-exec-10] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.symbol,c1_0.tenant_id from currencies c1_0 where (c1_0.tenant_id = ? or c1_0.tenant_id = 0 or c1_0.tenant_id is null) and c1_0.tenant_id = ? order by c1_0.name
+2026-01-10T17:59:28.978+02:00 DEBUG 16912 --- [http-nio-710-exec-4] c.o.a.s.tenant.TenantFilterAspect        : ⚠️ [TenantFilterAspect] Service execution without TenantID
+2026-01-10T17:59:28.984+02:00 DEBUG 16912 --- [http-nio-710-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+2026-01-10T17:59:43.950+02:00  INFO 16912 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T17:59:43.954+02:00  INFO 16912 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T17:59:43.961+02:00  INFO 16912 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -50,9 +50,20 @@ public class TenantContextFilter extends OncePerRequestFilter {
         try {
             Long tenantId = null;
 
+            // 0. Try Query Parameter (Explicit Override for Testing)
+            String paramTenant = request.getParameter("tenantId");
+            if (paramTenant != null && !paramTenant.isEmpty()) {
+                try {
+                    tenantId = Long.parseLong(paramTenant);
+                    LOGGER.debug("Found Tenant ID in Query Param: {}", tenantId);
+                } catch (NumberFormatException e) {
+                    LOGGER.warn("Invalid Tenant ID in Query Param: {}", paramTenant);
+                }
+            }
+
             // 1. Try Header (X-Tenant-ID) - Good for API/Postman
             String headerTenant = request.getHeader("X-Tenant-ID");
-            if (headerTenant != null && !headerTenant.isEmpty()) {
+            if (tenantId == null && headerTenant != null && !headerTenant.isEmpty()) {
                 try {
                     tenantId = Long.parseLong(headerTenant);
                     LOGGER.debug("Found Tenant ID in Header: {}", tenantId);
@@ -82,12 +93,17 @@ public class TenantContextFilter extends OncePerRequestFilter {
             if (tenantId != null) {
                 TenantContext.setTenantId(tenantId);
                 enableHibernateFilter(tenantId);
+
+                // [AG-TEN-SEC-007] Persist to Session so subsequent requests (CSS/Images) know
+                // the tenant
+                if (request.getSession().getAttribute("TENANT_ID") == null ||
+                        !request.getSession().getAttribute("TENANT_ID").equals(tenantId)) {
+                    request.getSession().setAttribute("TENANT_ID", tenantId);
+                    LOGGER.debug("Persisted Tenant ID {} to Session.", tenantId);
+                }
             } else {
                 LOGGER.debug("No Tenant ID found for request: {}. Defaulting to System (0).", path);
                 // [AG-TEN-SEC-005] FAIL SAFE: Always enable the filter.
-                // If no tenant is present, enforce '0' (System) to prevent cross-tenant data
-                // leak.
-                // Without this, Hibernate ignores the @Filter completely and returns ALL data.
                 TenantContext.setTenantId(0L);
                 enableHibernateFilter(0L);
             }
@@ -109,11 +125,9 @@ public class TenantContextFilter extends OncePerRequestFilter {
     }
 
     private boolean isExcluded(String path) {
-        return path.equals("/login") ||
-                path.startsWith("/css") ||
-                path.startsWith("/js") ||
-                path.startsWith("/images") ||
-                path.startsWith("/webjars") ||
-                path.startsWith("/assets");
+        // [AG-TEN-SEC-004] Do NOT exclude static resources.
+        // We need TenantContext for CSS (Theme) and Images (Logo).
+        // Only exclude explicit login endpoint avoiding circular checks?
+        return path.equals("/login");
     }
 }

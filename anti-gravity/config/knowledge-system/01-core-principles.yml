@@ -1,0 +1,7 @@
+core_principles:
+  - name: Business Before Code
+    description: All business logic must be understood before implementation
+  - name: Multi-Tenancy Foundation
+    description: Multi-Tenancy is the system's identity
+  - name: AI as Partner
+    description: AI assists but never decides alone
