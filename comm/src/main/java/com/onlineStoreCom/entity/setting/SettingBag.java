@@ -4,7 +4,7 @@ import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 
 import java.util.List;
 
-public class SettingBag   extends IdBasedEntity {
+public class SettingBag extends IdBasedEntity {
     private final List<Setting> listSettings;
 
     public SettingBag(List<Setting> listSettings) {
@@ -12,12 +12,23 @@ public class SettingBag   extends IdBasedEntity {
     }
 
     public Setting get(String key) {
-        int index = listSettings.indexOf(new Setting(key));
-        if (index >= 0) {
-            return listSettings.get(index);
+        Setting defaultSetting = null;
+
+        for (Setting setting : listSettings) {
+            if (setting.getKey().equals(key)) {
+                // If we find a tenant-specific setting (non-zero/non-null tenant), return it
+                // immediately (it overrides default)
+                // Assuming '0' is system default.
+                Long tid = setting.getTenantId();
+                if (tid != null && tid != 0) {
+                    return setting;
+                }
+                // Otherwise keep it as a candidate for default
+                defaultSetting = setting;
+            }
         }
 
-        return null;
+        return defaultSetting;
     }
 
     public String getValue(String key) {
@@ -40,10 +51,8 @@ public class SettingBag   extends IdBasedEntity {
         return listSettings;
     }
 
-
     public List<Setting> getAllSettings() {
         return this.listSettings;
     }
-
 
 }

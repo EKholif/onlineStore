@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Business Path: Admin catalog management.
  */
 @WebMvcTest(value = ProductController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = {
-        com.onlineStore.admin.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class}))
+        com.onlineStoreCom.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class }))
 public class ProductControllerTest {
 
     @Autowired
@@ -46,7 +46,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @com.onlineStore.admin.security.WithMockStoreUser(username = "admin", roles = {"Admin"})
+    @com.onlineStore.admin.security.WithMockStoreUser(username = "admin", roles = { "Admin" })
     public void testListAllProducts() throws Exception {
         when(productService.listAll()).thenReturn(Collections.emptyList());
 

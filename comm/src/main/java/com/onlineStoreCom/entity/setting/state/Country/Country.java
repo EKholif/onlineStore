@@ -1,6 +1,5 @@
 package com.onlineStoreCom.entity.setting.state.Country;
 
-
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
@@ -13,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "countries")
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id = 0 or tenant_id is null)")
 public class Country extends IdBasedEntity {
 
     @Column(nullable = false, length = 45)
@@ -24,9 +24,9 @@ public class Country extends IdBasedEntity {
     @OneToMany(mappedBy = "country")
     private Set<State> states;
 
-
     @OneToMany(mappedBy = "country")
     private Set<Customer> customers;
+
     public Country() {
 
     }
@@ -40,7 +40,6 @@ public class Country extends IdBasedEntity {
         this.name = name;
         this.code = code;
     }
-
 
     public Country(String name, String code) {
         this.name = name;
@@ -71,6 +70,5 @@ public class Country extends IdBasedEntity {
     public String toString() {
         return code + " - " + name;
     }
-
 
 }

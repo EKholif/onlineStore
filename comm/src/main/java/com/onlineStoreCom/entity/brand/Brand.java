@@ -4,14 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Filter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "brands")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Brand extends IdBasedEntity {
 
     @Column(nullable = false, length = 45, unique = true)

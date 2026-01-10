@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * Main entry point for the Online Store Admin Backend application.
  */
-@SpringBootApplication(scanBasePackages = {"com.onlineStore.admin", "com.onlineStore.services"})
-@org.springframework.boot.autoconfigure.domain.EntityScan({"com.onlineStoreCom.entity"})
+@SpringBootApplication(scanBasePackages = { "com.onlineStore.admin", "com.onlineStore.services", "com.onlineStoreCom" })
+@org.springframework.boot.autoconfigure.domain.EntityScan({ "com.onlineStoreCom.entity" })
 public class WebBackEndApplication {
 
     public static void main(String[] args) {

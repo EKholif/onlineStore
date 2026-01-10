@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@SpringBootApplication
-@EntityScan({"com.onlineStoreCom.entity"})
+@SpringBootApplication(scanBasePackages = { "frontEnd", "com.onlineStoreCom" })
+@EntityScan({ "com.onlineStoreCom.entity" })
 public class FrontEndApplication {
 
     public static void main(String[] args) {

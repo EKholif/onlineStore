@@ -13,20 +13,27 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
+    @Query("SELECT p FROM Product p WHERE p.name = ?1")
     Product findByName(String name);
 
+    @Query("SELECT p FROM Product p WHERE p.alias = ?1")
     Product findByAlias(String alias);
 
-    @Query("SELECT p FROM Product p WHERE  CONCAT(p.id, ' ', p.name, ' ', p.alias ) LIKE %?1%")
+    @Query("SELECT p FROM Product p WHERE (CONCAT(p.id, ' ', p.name, ' ', p.alias) LIKE %?1%)")
     Page<Product> findAll(String keyword, Pageable pageable);
 
-    @Query("UPDATE Product p set  p.enabled=?2 WHERE p.id = ?1 ")
+    @Query("UPDATE Product p set p.enabled=?2 WHERE p.id = ?1")
     @Modifying
     Integer enableProduct(Integer id, boolean enable);
 
-    // [AG-TEN-RISK-001] Manual Tenant Check for Native Query
-    // Business Value: Preventing data leak by enforcing tenant isolation on native
-    // updates.
+    // [AG-TEN-RISK-001] Native Query must still be careful, but user rejected
+    // manual WHERE in standard queries.
+    // Keeping this one safe as it is NATIVE SQL and Hibernate Filter doesn't apply
+    // to Native SQL automatically without specific config.
+    // However, user said "filter not passing", implying they want global
+    // protection.
+    // I will revert standard JPQL queries first.
+
     @Query(value = "UPDATE products SET enable=true WHERE tenant_id = :tenantId", nativeQuery = true)
     @Modifying
     @Transactional

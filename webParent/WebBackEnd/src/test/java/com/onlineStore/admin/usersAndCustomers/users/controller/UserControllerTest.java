@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Critical Business Path: Ensures admin can list and manage system users.
  */
 @WebMvcTest(value = UserController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = {
-        com.onlineStore.admin.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class}))
+        com.onlineStoreCom.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class }))
 public class UserControllerTest {
 
     @Autowired
@@ -41,7 +41,7 @@ public class UserControllerTest {
     }
 
     @Test
-    @WithMockUser(username = "admin", roles = {"Admin"})
+    @WithMockUser(username = "admin", roles = { "Admin" })
     public void testListAllUsers() throws Exception {
         // Arrange
         Session session = Mockito.mock(Session.class);
@@ -52,7 +52,7 @@ public class UserControllerTest {
         // Act & Assert
 
         Mockito.when(userService.listByPage(Mockito.anyInt(), Mockito.anyString(), Mockito.anyString(),
-                        Mockito.any()))
+                Mockito.any()))
                 .thenReturn(org.springframework.data.domain.Page.empty());
         // The controller calls listByPage(1, ...) which returns a view
         mockMvc.perform(get("/users/users"))

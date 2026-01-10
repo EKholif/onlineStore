@@ -14,6 +14,8 @@
     1.  **Login:** User logs in -> `TenantId` fetched from `users` table -> Stored in `Session`.
     2.  **Request:** `TenantContextFilter` extracts ID from Session -> Sets `TenantContext` -> Enables Hibernate Filter.
     3.  **Query:** All queries automatically filter by `tenant_id`.
+- **Shared Data Exception:** Reference entities (e.g., `Country`, `State`) are shared across all tenants.
+    -   **Strategy:** `@Filter` logic is overridden to allow `tenant_id = :tenantId OR tenant_id IS NULL`.
 
 ## 2. Architecture Overview & UML
 - **Stack:** Spring Boot 3, Hibernate 6, Thymeleaf, MySQL.

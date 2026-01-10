@@ -8,74 +8,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/brands-photos/1/57/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/brands-photos/5/92/8efe822f44e536affa464ac16a603483.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/brands-photos/57/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/brands-photos/7/93/cookiebar-x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/brands-photos/7/94/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/categories-photos/7/34/4c90e10e_4824e185.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/categories-photos/7/35/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/63/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/66/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/70/14f38f8cfd0b5389a211054b20083b8c.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/71/turtle-star.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/72/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/73/8efe822f44e536affa464ac16a603483.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/74/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/customers-photos/75/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-06.0.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/products-photos/7/139/8ae17bbee4fec22955ebdabca400a629.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/services-photos/7/8/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/site-logo/dream-logo-print0200.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/details-fregment-readonly.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/discription-fregment-readonly.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/overview-fregment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/products-image-fregment-readonly.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/fregment-readonly/shipping-fregment-readonly.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaFixTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaInspectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/setting/ThemeControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenant-7/brands-photos/57/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/7/229/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/7/230/8efe822f44e536affa464ac16a603483.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/user-photos/7/231/48a5abce_4de5ad0f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/tenant/Tenant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/tenant/TenantStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/repo/TenantRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/security/tenant/TenantContextFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/security/tenant/TenantJwtHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/debug/FrontEndTenantTraceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/FrontEndFilterRegistrationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/services-photos/5/10/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/debug/TenantTraceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/jwt/TenantJwtHelperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterRegistrationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/tenant/SuperAdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/tenant/TenantRegistrationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/tenant/TenantService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/booking/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/booking/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/articals/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/articals/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/base/CatalogItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/service/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/Setting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingBag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/HierarchicalEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/HierarchicalEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/IdBasedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/IdBasedEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/emailSender/src/main/java/com/onlineStore/emailsender/EmailSettingBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/emailSender/src/main/java/com/onlineStore/emailsender/EmailSettingBag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/src/main/java/com/onlineStore/services/service/ServiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/src/main/java/com/onlineStore/services/service/ServiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/src/main/java/com/onlineStore/services/service/repository/ServiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/src/main/java/com/onlineStore/services/service/repository/ServiceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/EmailSettingBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/EmailSettingBag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/tenant/TenantListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/project_manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/project_manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/onlineStore-BackEnd.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/FrontEndApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/FrontEndApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/category/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/product/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/security/tenant/TenantContextFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/SettingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/SettingFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/JpaConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/WebBackEndApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/WebBackEndApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/brand/BrandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/services/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/ProductSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/order/ProductSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/PdfConvertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/PdfConvertController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/product/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/CustomLoginSuccessHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/FilterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/service/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/service/ServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/controller/EmailSettingBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/controller/EmailSettingBag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/utility/UserPdfExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/utility/UserPdfExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/utility/paging/PagingAndSortingHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/utility/paging/PagingAndSortingHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/security/tenant/TenantContextFilter.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/order_details_modal-fragment/order-details-modal-products.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/order_details_modal-fragment/order-details-modal-products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/order_details_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/orders/order_details_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/product_detail_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/products/product_detail_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/CreationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/CreationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/MainControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/MainControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/service/ServiceRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/service/ServiceRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/SettingRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/SettingRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/ThemeServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/ThemeServiceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/shippingTest/ShippingRateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/shippingTest/ShippingRateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/category/controller/CategoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/category/controller/CategoryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/order/OrderControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/product/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/product/ProductControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/MultiTenancyIsolationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/tenantTest/MultiTenancyIsolationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,47 +111,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.codeium.enabled": "true",
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/resources/templates/products",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15234375",
-    "project.structure.side.proportion": "0.24421832",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/resources/templates/products&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15234375&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.24421832&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;module&quot;,
+      &quot;repository&quot;
     ],
-    "DatabaseDriversLRU": [
-      "mysql"
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\resources\templates\products" />
@@ -218,17 +209,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductRepositoryTestN" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FrontEnd" />
+    <configuration name="MultiTenancyIsolationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="frontEnd.product.*" />
+          <option name="PATTERN" value="com.onlineStore.admin.tenantTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="frontEnd.product" />
-      <option name="MAIN_CLASS_NAME" value="frontEnd.product.ProductRepositoryTestN" />
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.tenantTest" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.tenantTest.MultiTenancyIsolationTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MultiTenancyIsolationTest.testTwoTenantsDataIsolation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.onlineStore.admin.tenantTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.tenantTest" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.tenantTest.MultiTenancyIsolationTest" />
+      <option name="METHOD_NAME" value="testTwoTenantsDataIsolation" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -249,33 +256,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductRepositoryTest.testFindOnSale" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FrontEnd" />
+    <configuration name="TenantFilterCheckTest.testFilterAppliedOnSameEntityManager" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebBackEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="frontEnd.product.*" />
+          <option name="PATTERN" value="com.onlineStore.admin.tenantTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="frontEnd.product" />
-      <option name="MAIN_CLASS_NAME" value="frontEnd.product.ProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testFindOnSale" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductRepositoryTest.testFindOnSle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FrontEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="frontEnd.product.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="frontEnd.product" />
-      <option name="MAIN_CLASS_NAME" value="frontEnd.product.ProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testFindOnSle" />
+      <option name="PACKAGE_NAME" value="com.onlineStore.admin.tenantTest" />
+      <option name="MAIN_CLASS_NAME" value="com.onlineStore.admin.tenantTest.TenantFilterCheckTest" />
+      <option name="METHOD_NAME" value="testFilterAppliedOnSameEntityManager" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -336,9 +327,9 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.DataMigrationTest" />
-      <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSale" />
-      <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSle" />
-      <item itemvalue="JUnit.ProductRepositoryTestN" />
+      <item itemvalue="JUnit.MultiTenancyIsolationTest" />
+      <item itemvalue="JUnit.MultiTenancyIsolationTest.testTwoTenantsDataIsolation" />
+      <item itemvalue="JUnit.TenantFilterCheckTest.testFilterAppliedOnSameEntityManager" />
       <item itemvalue="JUnit.ProductRepositoryTestN.FindAlProduct" />
       <item itemvalue="Spring Boot.EmailSenderApplication" />
       <item itemvalue="Spring Boot.WebBackEndApplication" />
@@ -346,11 +337,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TenantFilterCheckTest.testFilterAppliedOnSameEntityManager" />
+        <item itemvalue="JUnit.MultiTenancyIsolationTest.testTwoTenantsDataIsolation" />
+        <item itemvalue="JUnit.MultiTenancyIsolationTest" />
         <item itemvalue="JUnit.DataMigrationTest" />
         <item itemvalue="JUnit.ProductRepositoryTestN.FindAlProduct" />
-        <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSle" />
-        <item itemvalue="JUnit.ProductRepositoryTest.testFindOnSale" />
-        <item itemvalue="JUnit.ProductRepositoryTestN" />
       </list>
     </recent_temporary>
   </component>
@@ -445,7 +436,8 @@
       <workItem from="1767569192882" duration="226000" />
       <workItem from="1767569839997" duration="295000" />
       <workItem from="1767570166704" duration="1428000" />
-      <workItem from="1767692102314" duration="22104000" />
+      <workItem from="1767692102314" duration="34393000" />
+      <workItem from="1767921536327" duration="11129000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />

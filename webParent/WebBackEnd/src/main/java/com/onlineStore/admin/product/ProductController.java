@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     static void setProductDetails(String[] detailIDs, String[] detailNames,
-                                  String[] detailValues, Product product, Long tenantId) {
+            String[] detailValues, Product product, Long tenantId) {
         if (detailNames == null || detailNames.length == 0)
             return;
 
@@ -64,6 +64,14 @@ public class ProductController {
     public String listByPage(
             @PagingAndSortingParam(listName = "products", moduleURL = "/products/page/") PagingAndSortingHelper helper,
             @PathVariable(name = "pageNum") int pageNum) {
+
+        System.out.println("🔍 [ProductController] Requested Page: " + pageNum);
+        System.out.println("   > Current TenantContext ID: " + TenantContext.getTenantId());
+
+        // Check Session Attribute manually as a cross-reference
+        // Request context is not easily available here without injecting
+        // HttpServletRequest,
+        // relying on TenantContext which should be set by Filter.
 
         Page<Product> page = productService.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
                 helper.getKeyword());
@@ -100,11 +108,11 @@ public class ProductController {
 
     @PostMapping("/products/save-product")
     public ModelAndView saveProduct(RedirectAttributes redirectAttributes,
-                                    @ModelAttribute Product product, @RequestParam(name = "fileImage") MultipartFile mainImageMultipartFile,
-                                    @RequestParam(name = "extraImage") MultipartFile[] extraImageMultipart,
-                                    @RequestParam(name = "detailIDs", required = false) String[] detailIDs,
-                                    @RequestParam(name = "detailNames", required = false) String[] detailNames,
-                                    @RequestParam(name = "detailValues", required = false) String[] detailValues) throws IOException {
+            @ModelAttribute Product product, @RequestParam(name = "fileImage") MultipartFile mainImageMultipartFile,
+            @RequestParam(name = "extraImage") MultipartFile[] extraImageMultipart,
+            @RequestParam(name = "detailIDs", required = false) String[] detailIDs,
+            @RequestParam(name = "detailNames", required = false) String[] detailNames,
+            @RequestParam(name = "detailValues", required = false) String[] detailValues) throws IOException {
 
         redirectAttributes.addFlashAttribute("message", "the brand has been saved successfully.  ");
 
@@ -121,7 +129,7 @@ public class ProductController {
     }
 
     private void saveUpLoadImages(MultipartFile mainImageMultipartFile,
-                                  MultipartFile[] extraImageMultipart, Product saveProduct) throws IOException {
+            MultipartFile[] extraImageMultipart, Product saveProduct) throws IOException {
 
         if (!mainImageMultipartFile.isEmpty()) {
 
@@ -172,7 +180,7 @@ public class ProductController {
 
     @GetMapping("/products/{id}/enabled/{status}")
     public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
-                                         RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) {
         productService.UpdateProductEnableStatus(id, enable);
         String status = enable ? "enable" : " disable";
         String message = " the user Id :   " + id + " has bean  " + status;
@@ -243,12 +251,12 @@ public class ProductController {
 
     @PostMapping("/products/save-edit-product")
     public ModelAndView saveUpdaterUser(@RequestParam(name = "id") int id, RedirectAttributes redirectAttributes,
-                                        @ModelAttribute Product product,
-                                        @RequestParam("fileImage") MultipartFile mainImageMultipartFile,
-                                        @RequestParam("extraImage") MultipartFile[] extraImageMultipart,
-                                        @RequestParam(name = "detailIDs", required = false) String[] detailIDs,
-                                        @RequestParam(name = "detailNames", required = false) String[] detailNames,
-                                        @RequestParam(name = "detailValues", required = false) String[] detailValues)
+            @ModelAttribute Product product,
+            @RequestParam("fileImage") MultipartFile mainImageMultipartFile,
+            @RequestParam("extraImage") MultipartFile[] extraImageMultipart,
+            @RequestParam(name = "detailIDs", required = false) String[] detailIDs,
+            @RequestParam(name = "detailNames", required = false) String[] detailNames,
+            @RequestParam(name = "detailValues", required = false) String[] detailValues)
             throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");

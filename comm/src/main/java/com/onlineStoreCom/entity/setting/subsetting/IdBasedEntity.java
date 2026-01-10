@@ -23,5 +23,5 @@ public class IdBasedEntity extends TenantAwareEntity implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-    }
+	}
 }

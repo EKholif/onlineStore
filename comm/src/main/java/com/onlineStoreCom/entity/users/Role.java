@@ -1,7 +1,7 @@
 package com.onlineStoreCom.entity.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+import com.onlineStoreCom.entity.setting.subsetting.HierarchicalEntity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -10,63 +10,20 @@ import java.util.Set;
 
 @Entity
 @Table(name = "role")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
-public class Role extends IdBasedEntity {
+@ExcludeSuperclassListeners
+public class Role extends HierarchicalEntity<Role> {
 
     @Column(name = "name", length = 40, nullable = false, unique = false)
     private String name;
+
     @Column(name = "descrption", length = 150, nullable = false)
     private String descrption;
 
-    @Column(name = "all_parent_ids", length = 256, nullable = true)
-    private String allParentIDs;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_Id")
-    private Role parent;
-
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
-    private Set<Role> children = new HashSet<>();
-
-    @Transient
-    private boolean hasChildren;
-
     public Role(String roleName) {
         super();
-    }
-
-    public String getAllParentIDs() {
-
-        return allParentIDs;
-    }
-
-    public void setAllParentIDs(String allParentIDs) {
-        this.allParentIDs = allParentIDs;
-    }
-
-    public Role getParent() {
-        return parent;
-    }
-
-    public void setParent(Role parent) {
-        this.parent = parent;
-    }
-
-    public Set<Role> getChildren() {
-        return children;
-    }
-
-    public void setChildren(Set<Role> children) {
-        this.children = children;
-    }
-
-    public boolean isHasChildren() {
-        return hasChildren;
-    }
-
-    public void setHasChildren(boolean hasChildren) {
-        this.hasChildren = hasChildren;
+        this.name = roleName;
     }
 
     public Role() {

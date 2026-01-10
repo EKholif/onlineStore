@@ -1,17 +1,18 @@
 package com.onlineStoreCom.entity.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+import com.onlineStoreCom.entity.setting.subsetting.HierarchicalEntity;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Filter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "categories")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
-public class Category extends IdBasedEntity implements Comparable<Category> {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+public class Category extends HierarchicalEntity<Category> implements Comparable<Category> {
 
     @Column(name = "name", length = 85, nullable = false, unique = true)
     private String name;
@@ -25,27 +26,12 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
     @Column(name = "enabled")
     private boolean enabled;
 
-    public boolean isHasChildren() {
-        return hasChildren;
-    }
-
-    @Column(name = "all_parent_ids", length = 256, nullable = true)
-    private String allParentIDs;
-
+    // Level is specific to Category for display formatting? Or general?
+    // Keeping it here for now unless Role uses it too. Role didn't seem to have
+    // 'level'.
     private int level;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_Id")
-    private Category parent;
-
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
-    private Set<Category> children = new HashSet<>();
-
-    @Transient
-    private boolean hasChildren;
-
     public Category(String name) {
-
         this.name = name;
     }
 
@@ -54,36 +40,25 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
 
     public Category(String name, Category parent) {
         this(name);
-        this.parent = parent;
+        setParent(parent);
     }
 
     public Category(Integer id, String name, String alias) {
         this.id = id;
         this.name = name;
         this.alias = alias;
-
     }
 
     public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
-
     }
 
     public Category(String name, String alias, boolean enabled, Category parent) {
         this.name = name;
         this.alias = alias;
         this.enabled = enabled;
-        this.parent = parent;
-
-    }
-
-    public String getAllParentIDs() {
-        return allParentIDs;
-    }
-
-    public void setAllParentIDs(String allParentIDs) {
-        this.allParentIDs = allParentIDs;
+        setParent(parent);
     }
 
     public void setLevel(int level) {
@@ -120,7 +95,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
         Category copycategory = copyFull(Category);
         copycategory.setName(name);
         return copycategory;
-
     }
 
     public Category(Integer id) {
@@ -159,26 +133,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
         this.enabled = enabled;
     }
 
-    public Category getParent() {
-        return parent;
-    }
-
-    public void setParent(Category parent) {
-        this.parent = parent;
-    }
-
-    public Set<Category> getChildren() {
-        return children;
-    }
-
-    public void setChildren(Set<Category> children) {
-        this.children = children;
-    }
-
-    public void setHasChildren(boolean hasChildren) {
-        this.hasChildren = hasChildren;
-    }
-
     @Transient
     public String getCatImagePath() {
         String dirName = "/categories-photos/";
@@ -200,8 +154,6 @@ public class Category extends IdBasedEntity implements Comparable<Category> {
 
     @Override
     public int compareTo(Category other) {
-        // Implement comparison logic based on the natural ordering of Category objects
-        // For example, compare by name
         return this.getName().compareTo(other.getName());
     }
 }

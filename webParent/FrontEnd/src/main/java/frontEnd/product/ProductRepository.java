@@ -16,41 +16,42 @@ import java.util.Set;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    Product findByAlias(String alias);
+        @Query(value = "SELECT * FROM products WHERE alias = ?1", nativeQuery = true)
+        Product findByAlias(String alias);
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true "
-            + "AND p.category.enabled= true " + "AND (p.category.id = ?1 )")
-    Set<Product> setProductByCategory(Integer categoryId);
+        @Query(value = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id "
+                        + "WHERE p.enabled = 1 AND c.enabled = 1 AND c.id = ?1", nativeQuery = true)
+        Set<Product> setProductByCategory(Integer categoryId);
 
-    @Query("SELECT p FROM Product p WHERE p.category.enabled = true AND p.category.alias LIKE CONCAT('%', :keyword, '%') ORDER BY p.name ASC")
-    Page<Product> findAll(@Param("keyword") String keyword, Pageable pageable);
+        @Query(value = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id "
+                        + "WHERE c.enabled = 1 AND c.alias LIKE CONCAT('%', :keyword, '%') "
+                        + "ORDER BY p.name ASC", nativeQuery = true)
+        Page<Product> findAll(@Param("keyword") String keyword, Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true AND p.discountPercent > 0.0 ORDER BY p.name ASC")
-    Page<Product> pageProductOnSale(Pageable pageable);
+        @Query(value = "SELECT * FROM products WHERE enabled = 1 AND discount_percent > 0.0 ORDER BY name ASC", nativeQuery = true)
+        Page<Product> pageProductOnSale(Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true AND p.discountPercent > 0 ORDER BY p.name ASC")
-    List<Product> findAllOnSale();
+        @Query(value = "SELECT * FROM products WHERE enabled = 1 AND discount_percent > 0 ORDER BY name ASC", nativeQuery = true)
+        List<Product> findAllOnSale();
 
-    @Query("SELECT p FROM Product p WHERE p.category.enabled = true AND p.category.alias LIKE %?1% ORDER BY p.name ASC")
-    Page<Product> findAllByProduct(String keyword, Pageable pageable);
+        @Query(value = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id "
+                        + "WHERE c.enabled = 1 AND c.alias LIKE CONCAT('%', ?1, '%') "
+                        + "ORDER BY p.name ASC", nativeQuery = true)
+        Page<Product> findAllByProduct(String keyword, Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true AND p.category.enabled = true AND p.category.alias LIKE CONCAT('%', :keyword, '%')")
-    Page<Product> search(@Param("keyword") String keyword, Pageable pageable);
+        @Query(value = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id "
+                        + "WHERE p.enabled = 1 AND c.enabled = 1 AND c.alias LIKE CONCAT('%', :keyword, '%')", nativeQuery = true)
+        Page<Product> search(@Param("keyword") String keyword, Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true AND CONCAT(p.id, ' ', p.name, ' ', p.alias) LIKE %?1%")
-    Page<Product> findAllBYPage(String keyword, Pageable pageable);
+        @Query(value = "SELECT p.* FROM products p WHERE p.enabled = 1 "
+                        + "AND CONCAT(p.id, ' ', p.name, ' ', p.alias) LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
+        Page<Product> findAllBYPage(String keyword, Pageable pageable);
 
-    // @Query(
-    // value = "SELECT * FROM shop.products WHERE enabled = true AND " +
-    // "MATCH(name, short_description, full_description) AGAINST (?1)",
-    // nativeQuery = true
-    // )
-    // Page<Product> search(String keyword, Pageable pageable);
-
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE products p SET p.average_rating = COALESCE((SELECT AVG(r.rating) FROM reviews r WHERE r.product_id = ?1), 0),"
-            + " p.review_count = (SELECT COUNT(r.id) FROM reviews r WHERE r.product_id = ?1) WHERE p.id = ?1", nativeQuery = true)
-    void updateReviewCountAndAverageRating(Integer productId);
+        @Modifying
+        @Transactional
+        @Query(value = "UPDATE products p SET p.average_rating = COALESCE((SELECT AVG(r.rating) FROM reviews r WHERE r.product_id = ?1), 0),"
+                        + " p.review_count = (SELECT COUNT(r.id) FROM reviews r WHERE r.product_id = ?1) "
+                        + "WHERE p.id = ?1 AND p.tenant_id = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()}", nativeQuery = true)
+        void updateReviewCountAndAverageRating(Integer productId);
 
 }

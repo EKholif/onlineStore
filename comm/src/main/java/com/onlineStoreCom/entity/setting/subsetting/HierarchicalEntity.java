@@ -19,7 +19,7 @@ public abstract class HierarchicalEntity<T extends IdBasedEntity> extends IdBase
     private String allParentIDs;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
+    @JoinColumn(name = "parent_id", columnDefinition = "INT")
     private T parent;
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)

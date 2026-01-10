@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Business Path: Admin catalog classification.
  */
 @WebMvcTest(value = CategoryController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = {
-        com.onlineStore.admin.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class}))
+        com.onlineStoreCom.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class }))
 public class CategoryControllerTest {
 
     @Autowired
@@ -35,7 +35,7 @@ public class CategoryControllerTest {
     }
 
     @Test
-    @WithMockUser(username = "admin", roles = {"Admin"})
+    @WithMockUser(username = "admin", roles = { "Admin" })
     public void testListAllCategories() throws Exception {
         mockMvc.perform(get("/categories/categories"))
                 .andExpect(status().is3xxRedirection())

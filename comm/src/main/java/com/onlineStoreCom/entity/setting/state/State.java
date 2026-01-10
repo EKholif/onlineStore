@@ -1,12 +1,12 @@
 package com.onlineStoreCom.entity.setting.state;
 
-
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "states")
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id is null)")
 public class State extends IdBasedEntity {
 
     @Column(nullable = false, length = 45)
@@ -45,6 +45,5 @@ public class State extends IdBasedEntity {
     public String toString() {
         return "State [id=" + id + ", name=" + name + "]";
     }
-
 
 }

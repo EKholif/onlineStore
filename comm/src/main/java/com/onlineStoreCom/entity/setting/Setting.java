@@ -5,28 +5,28 @@ import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "settings", uniqueConstraints = @UniqueConstraint(columnNames = {"`key`", "tenant_id"}))
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+@Table(name = "settings", uniqueConstraints = @UniqueConstraint(columnNames = { "`key`", "tenant_id" }))
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id = 0 or tenant_id is null)")
 public class Setting extends IdBasedEntity {
 	@Column(name = "`key`", nullable = false, length = 128)
 	private String key;
 
-    @Column(nullable = false, length = 2024)
+	@Column(nullable = false, length = 2024)
 	private String value;
 
-    @Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 	@Column(length = 45, nullable = false)
 	private SettingCategory category;
 
 	public Setting() {
 
-    }
+	}
 
-    public Setting(String key) {
+	public Setting(String key) {
 		this.key = key;
 	}
 
-    public Setting(String key, String value, SettingCategory category) {
+	public Setting(String key, String value, SettingCategory category) {
 		this.key = key;
 		this.value = value;
 		this.category = category;
@@ -74,10 +74,10 @@ public class Setting extends IdBasedEntity {
 			return false;
 		Setting other = (Setting) obj;
 		if (key == null) {
-            return other.key == null;
-        } else
-            return key.equals(other.key);
-    }
+			return other.key == null;
+		} else
+			return key.equals(other.key);
+	}
 
 	@Override
 	public String toString() {

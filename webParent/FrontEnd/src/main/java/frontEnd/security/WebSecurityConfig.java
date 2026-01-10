@@ -22,83 +22,92 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-    @Autowired
-    private CustomerOAuth2UserService oAuth2UserService;
-    @Autowired
-    @Lazy
-    private OAuth2LoginSuccessHandler oauth2LoginHandler;
+        @Autowired
+        private CustomerOAuth2UserService oAuth2UserService;
+        @Autowired
+        @Lazy
+        private OAuth2LoginSuccessHandler oauth2LoginHandler;
 
-    @Autowired
-    private frontEnd.security.tenant.TenantContextFilter tenantContextFilter;
+        @Autowired
+        private com.onlineStoreCom.security.tenant.TenantContextFilter tenantContextFilter;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+        @Bean
+        public PasswordEncoder passwordEncoder() {
+                return new BCryptPasswordEncoder();
+        }
 
-    @Autowired
-    private CustomerLoginSuccessHandler loginSuccessHandler;
+        @Autowired
+        private CustomerLoginSuccessHandler loginSuccessHandler;
 
-    @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
+        @Bean
+        public AuthenticationManager authenticationManager(
+                        AuthenticationConfiguration authConfig) throws Exception {
+                return authConfig.getAuthenticationManager();
+        }
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        @Bean
+        public DaoAuthenticationProvider authenticationProvider() {
+                DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 
-        authenticationProvider.setUserDetailsService(customerDetailsService());
-        authenticationProvider.setPasswordEncoder(passwordEncoder());
-        return authenticationProvider;
-    }
+                authenticationProvider.setUserDetailsService(customerDetailsService());
+                authenticationProvider.setPasswordEncoder(passwordEncoder());
+                return authenticationProvider;
+        }
 
-    @Bean
-    public CustomerDetailsService customerDetailsService() {
+        @Bean
+        public CustomerDetailsService customerDetailsService() {
 
-        return new CustomerDetailsService();
-    }
+                return new CustomerDetailsService();
+        }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        @Bean
+        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+                http
 
-                .authenticationProvider(authenticationProvider())
-                .authorizeHttpRequests((requests) -> requests
+                                .authenticationProvider(authenticationProvider())
+                                .authorizeHttpRequests((requests) -> requests
 
-                        .requestMatchers("/customer").authenticated()
+                                                .requestMatchers("/customer").authenticated()
 
-                        .anyRequest().permitAll()
+                                                .anyRequest().permitAll()
 
-                )
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .usernameParameter("email")
-                        .successHandler(loginSuccessHandler) // Register handler
-                        .permitAll())
-                .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/login")
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .userService(oAuth2UserService))
-                        .successHandler(oauth2LoginHandler))
-                .logout(LogoutConfigurer::permitAll)
-                .rememberMe(rememberMe -> rememberMe
-                        .key("CYVQIRJvzrmS8i8crsH5u3IpPpYk2-TF7VUCswd_jXTTAmwxObxmFXML9oi_xxd-muzNiEcRE68S7tXo1DZn1TQevkK1YFVV")
-                        .tokenValiditySeconds(14 * 24 * 60 * 60))
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
+                                )
+                                .formLogin(form -> form
+                                                .loginPage("/login")
+                                                .usernameParameter("email")
+                                                .successHandler(loginSuccessHandler) // Register handler
+                                                .permitAll())
+                                .oauth2Login(oauth2 -> oauth2
+                                                .loginPage("/login")
+                                                .userInfoEndpoint(userInfo -> userInfo
+                                                                .userService(oAuth2UserService))
+                                                .successHandler(oauth2LoginHandler))
+                                .logout(LogoutConfigurer::permitAll)
+                                .rememberMe(rememberMe -> rememberMe
+                                                .key("CYVQIRJvzrmS8i8crsH5u3IpPpYk2-TF7VUCswd_jXTTAmwxObxmFXML9oi_xxd-muzNiEcRE68S7tXo1DZn1TQevkK1YFVV")
+                                                .tokenValiditySeconds(14 * 24 * 60 * 60))
+                                .sessionManagement(session -> session
+                                                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
-        // [AG-TEN-ARCH-002] Add TenantContextFilter
-        http.addFilterAfter(tenantContextFilter,
-                org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+                // [AG-TEN-ARCH-002] Add TenantContextFilter
+                http.addFilterAfter(tenantContextFilter,
+                                org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
-    }
+                // [AG-TEN-ARCH-003] Add SettingFilter AFTER TenantContextFilter to ensure
+                // Tenant is resolved
+                http.addFilterAfter(settingFilter(), com.onlineStoreCom.security.tenant.TenantContextFilter.class);
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**");
-    }
+                return http.build();
+        }
+
+        @Bean
+        public WebSecurityCustomizer webSecurityCustomizer() {
+                return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**");
+        }
+
+        @Bean
+        public frontEnd.setting.SettingFilter settingFilter() {
+                return new frontEnd.setting.SettingFilter();
+        }
 
 }

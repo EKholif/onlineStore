@@ -1,6 +1,5 @@
 package frontEnd.category;
 
-
 import com.onlineStoreCom.entity.category.Category;
 import frontEnd.product.CategoryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import java.util.Set;
 @Service
 public class CategoryService {
 
-
     public static final Long USERS_PER_PAGE = 5L;
     @Autowired
     private CategoryRepository repo;
@@ -24,7 +22,7 @@ public class CategoryService {
         List<Category> listEnabledCategories = repo.findAllEnabled();
 
         listEnabledCategories.forEach(category -> {
-            Set<Category> children = repo.getChildren(category);
+            Set<Category> children = repo.getChildren(category.getId());
 
             if (children == null || children.isEmpty()) {
                 listNoChildrenCategories.add(category);
@@ -34,22 +32,16 @@ public class CategoryService {
         return listNoChildrenCategories;
     }
 
-
     public List<Category> listNoParentCategories() {
 
-//        List<Category> listNoParentCategories = new ArrayList<>();
+        // List<Category> listNoParentCategories = new ArrayList<>();
 
         List<Category> listEnabledCategories = repo.findAllEnabled();
 
-        List<Category> listNoParentCategories =  repo.notParentCategory();
-
+        List<Category> listNoParentCategories = repo.notParentCategory();
 
         return listNoParentCategories;
     }
-
-
-
-
 
     public Category getCategory(String alias) throws CategoryNotFoundException {
 
@@ -72,22 +64,20 @@ public class CategoryService {
 
         List<Category> listParents = new ArrayList<>();
 
-        Category parent = repo.getParent(child);
+        Category parent = repo.getParent(child.getId());
 
         while (parent != null) {
             listParents.add(0, parent);
-            parent = repo.getParent(parent);
+            parent = repo.getParent(parent.getId());
         }
-//        listParents.add(child);
+        // listParents.add(child);
         return listParents;
     }
 
-
     public Set<Category> listCategoryChildren(Category category) {
 
-        Set<Category> listCategoryChildren = repo.getChildren(category);
+        Set<Category> listCategoryChildren = repo.getChildren(category.getId());
 
         return listCategoryChildren;
     }
 }
-

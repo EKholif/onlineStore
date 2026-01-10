@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "'user'")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class User extends IdBasedEntity {
 

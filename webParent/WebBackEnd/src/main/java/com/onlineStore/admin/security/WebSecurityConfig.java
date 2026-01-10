@@ -1,7 +1,7 @@
 package com.onlineStore.admin.security;
 
 import com.onlineStore.admin.security.tenant.CustomLoginSuccessHandler;
-import com.onlineStore.admin.security.tenant.TenantContextFilter;
+import com.onlineStoreCom.security.tenant.TenantContextFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,7 +56,7 @@ public class WebSecurityConfig {
         http
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/users/**","/get_shipping_cost/**").hasAnyAuthority("Admin", "Editor")
+                        .requestMatchers("/users/**", "/get_shipping_cost/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/customer/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
@@ -65,25 +65,21 @@ public class WebSecurityConfig {
                         .requestMatchers("/settings/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/shipping-rate/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/orders_shipper/update//**").hasAnyAuthority("Shipper")
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .usernameParameter("email")
                         .successHandler(customLoginSuccessHandler)
-                        .permitAll()
-                )
+                        .permitAll())
                 .rememberMe(rememberMe -> rememberMe.key("BqRqADxmG8iRXXLvwIZ47NY4")
                         .tokenValiditySeconds(14 * 24 * 60 * 60))
                 .logout(logout -> logout.permitAll())
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin())
-                        .contentSecurityPolicy(csp ->
-                                csp.policyDirectives("frame-ancestors 'self' http://localhost:710")
-                        )
-                );
+                        .contentSecurityPolicy(
+                                csp -> csp.policyDirectives("frame-ancestors 'self' http://localhost:710")));
 
-        // add TenantContextFilter into the security filter chain once (after authentication filter)
+        // [AG-TEN-ARCH-002] Add Unified TenantContextFilter from comm module
         http.addFilterAfter(tenantContextFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

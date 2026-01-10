@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * manage orders.
  */
 @WebMvcTest(value = OrderController.class, excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(type = org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE, classes = {
-        com.onlineStore.admin.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class}))
+        com.onlineStoreCom.security.tenant.TenantContextFilter.class, com.onlineStore.admin.JpaConfig.class }))
 public class OrderControllerTest {
 
     @Autowired
@@ -38,7 +38,7 @@ public class OrderControllerTest {
     private jakarta.persistence.EntityManagerFactory entityManagerFactory;
 
     @Test
-    @WithMockUser(username = "admin", roles = {"Admin"})
+    @WithMockUser(username = "admin", roles = { "Admin" })
     public void testListFirstPage() throws Exception {
         mockMvc.perform(get("/orders"))
                 .andExpect(status().isFound()) // 302 Redirect
