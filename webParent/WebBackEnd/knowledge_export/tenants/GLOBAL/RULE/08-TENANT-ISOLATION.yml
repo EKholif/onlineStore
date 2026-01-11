@@ -1,7 +1,7 @@
 id: 08-TENANT-ISOLATION
 type: RULE
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
-                                                                 previousVersion: null, updatedAt: '2026-01-11T04:30:36.100405700', version: 0.1.0 }
+                                                                 previousVersion: null, updatedAt: '2026-01-11T15:23:57.537511500', version: 0.1.0 }
 personas: null
 content:
   rule: { id: TENANT_ASSET_ISOLATION, name: Tenant Asset Isolation, status: enforced,
