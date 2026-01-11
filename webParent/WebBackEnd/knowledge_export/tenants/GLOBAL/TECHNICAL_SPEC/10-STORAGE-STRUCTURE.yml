@@ -1,7 +1,7 @@
 id: 10-STORAGE-STRUCTURE
 type: TECHNICAL_SPEC
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
-                                                                 previousVersion: null, updatedAt: '2026-01-11T15:23:57.538683', version: 0.1.0 }
+                                                                 previousVersion: null, updatedAt: '2026-01-11T15:40:42.110101900', version: 0.1.0 }
 personas: null
 content:
   storage_structure: { root: /storage }

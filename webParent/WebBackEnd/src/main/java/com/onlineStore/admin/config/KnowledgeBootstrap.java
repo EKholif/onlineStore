@@ -502,7 +502,8 @@ public class KnowledgeBootstrap {
         if (data.containsKey("decision") || filename.contains("decision")) {
             return "DESIGN_DECISION";
         }
-        if (data.containsKey("business") || data.containsKey("scenario")) {
+        // AG-KNOWLEDGE-TYPE-003: Check for business/scenario keywords in any key
+        if (hasKeyContaining(data, "business") || hasKeyContaining(data, "scenario")) {
             return "BUSINESS_LOGIC";
         }
         if (data.containsKey("governance") || data.containsKey("policy")) {
@@ -530,7 +531,17 @@ public class KnowledgeBootstrap {
             return "MAPPING";
         }
 
+
         // Default fallback
         return "UNSTRUCTURED";
+    }
+
+    /**
+     * AG-KNOWLEDGE-TYPE-004: Helper to check if any key contains a keyword
+     * Makes detection more flexible for variations like "business_scenarios"
+     */
+    private boolean hasKeyContaining(java.util.Map<String, Object> data, String keyword) {
+        return data.keySet().stream()
+                .anyMatch(key -> key.toLowerCase().contains(keyword.toLowerCase()));
     }
 }

@@ -8,10 +8,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/07-shared-reference-data (2).yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/anti-gravity/config/knowledge-system/anti_gravity_knowledge_system.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dumps/Dump20260111.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-152357.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-153315.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-154042.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/22pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid10476.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid14688.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid17136.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid19396.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid2144.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid26432.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid29040.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid30912.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid31760.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid37108.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/hs_err_pid38588.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" afterDir="false" />
@@ -24,7 +37,16 @@
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/03-BUSINESS-SCENARIOS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_preview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-04.1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-05.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-06.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-07.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-08.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-09.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-10.0.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/config/KnowledgeBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/config/KnowledgeBootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/tenant-7/brands-photos/57/8c02662811277bacd09ea2389c572119.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,7 +417,7 @@
       <workItem from="1767569839997" duration="295000" />
       <workItem from="1767570166704" duration="1428000" />
       <workItem from="1767692102314" duration="34393000" />
-      <workItem from="1767921536327" duration="26538000" />
+      <workItem from="1767921536327" duration="27942000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -613,7 +635,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768118474368</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Refactor YAML files for improved formatting and consistency across knowledge system configurations">
+      <option name="closed" value="true" />
+      <created>1768137976146</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1768137976146</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -681,7 +711,8 @@
     <MESSAGE value="Implement multi-tenancy support with TenantContext, TenantAware interface, and TenantListener" />
     <MESSAGE value="Add service management features with BookingStatus and ServiceLocationType enums, Service entity, and ServiceRepository" />
     <MESSAGE value="Refactor knowledge system configuration and implement new hierarchical asset structure for tenant management" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor knowledge system configuration and implement new hierarchical asset structure for tenant management" />
+    <MESSAGE value="Refactor YAML files for improved formatting and consistency across knowledge system configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor YAML files for improved formatting and consistency across knowledge system configurations" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
