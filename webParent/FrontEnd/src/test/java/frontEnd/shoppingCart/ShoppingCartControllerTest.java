@@ -3,12 +3,15 @@ package frontEnd.shoppingCart;
 import com.onlineStoreCom.entity.customer.Customer;
 import frontEnd.customer.CustomerService;
 import frontEnd.customerAddress.AddressService;
+import frontEnd.security.CustomerUserDetails;
 import frontEnd.security.oauth.CustomerAuthenticationHelper;
 import frontEnd.shipping.ShippingRateService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
@@ -54,8 +57,10 @@ public class ShoppingCartControllerTest {
     @MockBean
     private frontEnd.customer.CustomerRepository customerRepository; // Needed by some filters likely
 
+    @MockBean
+    private jakarta.persistence.EntityManagerFactory entityManagerFactory;
+
     @Test
-    @org.springframework.security.test.context.support.WithMockUser(username = "john@example.com", password = "password", roles = "CUSTOMER")
     public void testViewCart_AuthenticatedCustomer() throws Exception {
         // Arrange
         Customer customer = new Customer();
@@ -63,6 +68,13 @@ public class ShoppingCartControllerTest {
         customer.setFirstName("John");
         customer.setLastName("Doe");
         customer.setEmail("john@example.com");
+        customer.setPassword("password");
+        customer.setEnabled(true);
+
+        CustomerUserDetails userDetails = new CustomerUserDetails(customer);
+        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails, null,
+                userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(auth);
 
         when(customerAuthHelper.getEmailOfAuthenticatedCustomer(any())).thenReturn("john@example.com");
         when(customerService.getCustomerByEmail("john@example.com")).thenReturn(customer);

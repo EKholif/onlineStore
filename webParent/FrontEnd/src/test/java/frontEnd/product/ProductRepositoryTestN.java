@@ -59,7 +59,7 @@ public class ProductRepositoryTestN {
 
         Integer id = 4;
         Category category = categoryRepository.getReferenceById(id);
-        Set<Category> getChildren = categoryRepository.getChildren(category);
+        Set<Category> getChildren = categoryRepository.getChildren(category.getId());
 
         for (Category user : getChildren) {
             System.out.println(user.getId() + " --" + user.getName() + "-- "

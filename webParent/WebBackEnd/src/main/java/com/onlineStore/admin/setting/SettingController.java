@@ -68,13 +68,16 @@ public class SettingController {
     private void saveSiteLogo(MultipartFile multipartFile, GeneralSettingBag settingBag) throws IOException {
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-            String value = "/site-logo/" + fileName;
 
             Long tenantId = TenantContext.getTenantId();
+
+            // AG-ASSET-PATH-006: Use new hierarchical structure for site logo (profile)
+            String value = "/tenants/" + tenantId + "/assets/profile/" + fileName;
+
             settingBag.setTenantId(tenantId);
 
             settingBag.updateSiteLogo(value);
-            String uploadDir = "site-logo/" + tenantId;
+            String uploadDir = "tenants/" + tenantId + "/assets/profile";
             FileUploadUtil.cleanDir(uploadDir);
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 

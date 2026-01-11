@@ -60,7 +60,7 @@ public class ReviewRepositoryTests {
         com.onlineStoreCom.entity.setting.state.Country.Country country = new com.onlineStoreCom.entity.setting.state.Country.Country();
         country.setName("Test Country " + System.currentTimeMillis());
         country.setCode("TC" + (System.currentTimeMillis() % 100));
-        country.setTenantId(1L);
+        // country.setTenantId(1L); // Removed as Country is shared
         country = entityManager.persist(country);
 
         customer.setTenantId(0L);

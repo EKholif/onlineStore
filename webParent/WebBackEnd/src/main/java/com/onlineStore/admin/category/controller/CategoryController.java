@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -140,7 +139,9 @@ public class CategoryController {
 
             FileUploadUtil.cleanDir(updateCategory.getImageDir());
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-            String uploadDir = "categories-photos/" + updateCategory.getTenantId() + "/" + updateCategory.getId();
+            // AG-ASSET-PATH-012: Update path for category updates
+            String uploadDir = "tenants/" + updateCategory.getTenantId() + "/assets/categories/"
+                    + updateCategory.getId();
             category.setImage(fileName);
             BeanUtils.copyProperties(category, updateCategory, "id", "tenantId");
 

@@ -1,8 +1,8 @@
 package com.onlineStore.admin.settingTest.shippingTest;
 
 import com.onlineStore.admin.setting.country.CountryRepository;
-import com.onlineStore.admin.shipping.repository.ShippingRateRepository;
 import com.onlineStore.admin.setting.state.StateRepository;
+import com.onlineStore.admin.shipping.repository.ShippingRateRepository;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.entity.setting.state.State;
 import com.onlineStoreCom.entity.shipping.ShippingRate;
@@ -41,11 +41,11 @@ class ShippingRateRepositoryTest {
     @Test
     public void testCreateShippingRateInIndia() {
         Country country = new Country("Test Country", "TC");
-        country.setTenantId(1L);
+        // country.setTenantId(1L);
         country = entityManager.persist(country);
 
         State getState = new State("Test State", country);
-        getState.setTenantId(1L);
+        // getState.setTenantId(1L);
         getState = entityManager.persist(getState);
 
         String state = getState.getName();
@@ -122,7 +122,7 @@ class ShippingRateRepositoryTest {
 
                 newState.setName(stateName);
                 newState.setCountry(country);
-                newState.setTenantId(1L);
+                // newState.setTenantId(1L);
                 stateRepository.save(newState);
 
                 ShippingRate shippingRate = repo.findByStateName(stateName);

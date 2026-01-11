@@ -4,11 +4,9 @@ import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStore.services.service.ServiceService;
-
 import com.onlineStoreCom.entity.service.Service;
 import com.onlineStoreCom.entity.service.ServiceLocationType;
 import com.onlineStoreCom.exception.ServiceNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -61,7 +59,8 @@ public class ServiceController {
             service.setMainImage(fileName);
             Service savedService = serviceService.save(service);
 
-            String uploadDir = "services-photos/" + savedService.getTenantId() + "/" + savedService.getId();
+            // AG-ASSET-PATH-007: Use new hierarchical structure for services
+            String uploadDir = "tenants/" + savedService.getTenantId() + "/assets/services/" + savedService.getId();
             FileUploadUtil.cleanDir(uploadDir);
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         } else {

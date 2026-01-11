@@ -3,20 +3,18 @@ package com.onlineStore.admin.brand;
 import com.onlineStore.admin.brand.utility.BrandCsvExporter;
 import com.onlineStore.admin.brand.utility.BrandExcelExporter;
 import com.onlineStore.admin.brand.utility.BrandPdfExporter;
-
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
-import org.springframework.data.domain.Page;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -83,8 +81,8 @@ public class BrandController {
             brand.setLogo(fileName);
             Brand savedBrand = service.saveBrand(brand);
 
-            String dirName = "brands-photos/";
-            String uploadDir = dirName + tenantId + "/" + savedBrand.getId();
+            // AG-ASSET-PATH-001: Use new hierarchical asset structure
+            String uploadDir = "tenants/" + tenantId + "/assets/brands/" + savedBrand.getId();
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -141,7 +139,8 @@ public class BrandController {
 
             FileUploadUtil.cleanDir(updateBrand.getImageDir());
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-            String uploadDir = "brands-photos/" + updateBrand.getTenantId() + "/" + updateBrand.getId();
+            // AG-ASSET-PATH-002: Use new hierarchical asset structure for updates
+            String uploadDir = "tenants/" + updateBrand.getTenantId() + "/assets/brands/" + updateBrand.getId();
             brand.setLogo(fileName);
             BeanUtils.copyProperties(brand, updateBrand, "id");
 

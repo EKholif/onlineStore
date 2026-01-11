@@ -25,10 +25,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
         @Query(value = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id "
                         + "WHERE c.enabled = 1 AND c.alias LIKE CONCAT('%', :keyword, '%') "
-                        + "ORDER BY p.name ASC", nativeQuery = true)
+                + "ORDER BY p.name ASC", countQuery = "SELECT count(p.id) FROM products p JOIN categories c ON p.category_id = c.id WHERE c.enabled = 1 AND c.alias LIKE CONCAT('%', :keyword, '%')", nativeQuery = true)
         Page<Product> findAll(@Param("keyword") String keyword, Pageable pageable);
 
-        @Query(value = "SELECT * FROM products WHERE enabled = 1 AND discount_percent > 0.0 ORDER BY name ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM products WHERE enabled = 1 AND discount_percent > 0.0 ORDER BY name ASC", countQuery = "SELECT count(id) FROM products WHERE enabled = 1 AND discount_percent > 0.0", nativeQuery = true)
         Page<Product> pageProductOnSale(Pageable pageable);
 
         @Query(value = "SELECT * FROM products WHERE enabled = 1 AND discount_percent > 0 ORDER BY name ASC", nativeQuery = true)
@@ -36,15 +36,15 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
         @Query(value = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id "
                         + "WHERE c.enabled = 1 AND c.alias LIKE CONCAT('%', ?1, '%') "
-                        + "ORDER BY p.name ASC", nativeQuery = true)
+                + "ORDER BY p.name ASC", countQuery = "SELECT count(p.id) FROM products p JOIN categories c ON p.category_id = c.id WHERE c.enabled = 1 AND c.alias LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
         Page<Product> findAllByProduct(String keyword, Pageable pageable);
 
         @Query(value = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id "
-                        + "WHERE p.enabled = 1 AND c.enabled = 1 AND c.alias LIKE CONCAT('%', :keyword, '%')", nativeQuery = true)
+                + "WHERE p.enabled = 1 AND c.enabled = 1 AND c.alias LIKE CONCAT('%', :keyword, '%')", countQuery = "SELECT count(p.id) FROM products p JOIN categories c ON p.category_id = c.id WHERE p.enabled = 1 AND c.enabled = 1 AND c.alias LIKE CONCAT('%', :keyword, '%')", nativeQuery = true)
         Page<Product> search(@Param("keyword") String keyword, Pageable pageable);
 
         @Query(value = "SELECT p.* FROM products p WHERE p.enabled = 1 "
-                        + "AND CONCAT(p.id, ' ', p.name, ' ', p.alias) LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
+                + "AND CONCAT(p.id, ' ', p.name, ' ', p.alias) LIKE CONCAT('%', ?1, '%')", countQuery = "SELECT count(p.id) FROM products p WHERE p.enabled = 1 AND CONCAT(p.id, ' ', p.name, ' ', p.alias) LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
         Page<Product> findAllBYPage(String keyword, Pageable pageable);
 
         @Modifying

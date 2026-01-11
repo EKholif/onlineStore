@@ -1,0 +1,41 @@
+[04:23:11] === Starting Manual Asset Migration ===
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\user-photos -> assets/users
+[04:23:11] OK: [4][users] Alfred.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Alfred.png
+[04:23:11] OK: [4][users] Ali Raza.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Ali Raza.png
+[04:23:11] OK: [4][users] Allada Pavan.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Allada Pavan.png
+[04:23:11] OK: [4][users] Amina Elshal.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Amina Elshal.png
+[04:23:11] OK: [4][users] Ammanolla.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Ammanolla.png
+[04:23:11] OK: [4][users] Anna Maria.jpg -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Anna Maria.jpg
+[04:23:11] OK: [4][users] Bill Feeny.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Bill Feeny.png
+[04:23:11] OK: [4][users] Bruce Kitchell.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Bruce Kitchell.png
+[04:23:11] OK: [4][users] Dave Kumar.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Dave Kumar.png
+[04:23:11] OK: [4][users] default-user.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\default-user.png
+[04:23:11] OK: [4][users] Frederick Santos.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Frederick Santos.png
+[04:23:11] OK: [4][users] Isaac Henry.jpg -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Isaac Henry.jpg
+[04:23:11] OK: [4][users] Jack Bruce.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Jack Bruce.png
+[04:23:11] OK: [4][users] KentHervey.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\KentHervey.png
+[04:23:11] OK: [4][users] Matthew.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Matthew.png
+[04:23:11] OK: [4][users] Mike Gates.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Mike Gates.png
+[04:23:11] OK: [4][users] Mithun Kumar Majumdar.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Mithun Kumar Majumdar.png
+[04:23:11] OK: [4][users] Mohamed Zirri.jpg -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Mohamed Zirri.jpg
+[04:23:11] OK: [4][users] Muhammad Evran.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Muhammad Evran.png
+[04:23:11] OK: [4][users] namhm.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\namhm.png
+[04:23:11] OK: [4][users] Nathi_Sangweni.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Nathi_Sangweni.png
+[04:23:11] OK: [4][users] Pedro Quintero.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Pedro Quintero.png
+[04:23:11] OK: [4][users] Satya Narayana.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Satya Narayana.png
+[04:23:11] OK: [4][users] Svetlana Stasovska.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\users\1\Svetlana Stasovska.png
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\brands-photos -> assets/brands
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\categories-photos -> assets/categories
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\products-photos -> assets/products
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\services-photos -> assets/services
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\customers-photos -> assets/customers
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\customer-photos -> assets/customers
+[04:23:11] OK: [72][customers] 72\AREmoji_20230816_122317_1544.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\72\assets\customers\72\AREmoji_20230816_122317_1544.png
+[04:23:11] Processing: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\site-logo -> assets/profile
+[04:23:11] OK: [4][profile] 8c02662811277bacd09ea2389c572119.png -> c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\tenants\4\assets\profile\1\8c02662811277bacd09ea2389c572119.png
+[04:23:11] ===========================================
+[04:23:11] MIGRATION SUMMARY
+[04:23:11] Total Files Moved: 26
+[04:23:11] Total Errors: 0
+[04:23:11] ===========================================
+[04:23:11] Migration complete! Log saved to: c:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\logs\manual-migration-20260111-042311.log

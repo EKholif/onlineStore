@@ -16,6 +16,10 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
+        // AG-ASSET-PATH-005: New hierarchical asset structure
+        addResourceHandler(registry, "tenants");
+
+        // Legacy paths - kept for backward compatibility
         addResourceHandler(registry, "categories-photos");
         addResourceHandler(registry, "customers-photos");
 

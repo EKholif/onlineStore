@@ -64,24 +64,28 @@ public class Brand extends IdBasedEntity {
 
     @Transient
     public String getImagePath() {
-        String dirName = "/brands-photos/";
+        // AG-ASSET-PATH-003: Web path for brand images
+        String dirName = "/tenants/";
 
         if (id == null || id < 0 || logo == null)
             return "/images/bob.png";
 
-        return dirName + this.getTenantId() + "/" + this.id + "/" + this.logo;
+        return dirName + this.getTenantId() + "/assets/brands/" + this.id + "/" + this.logo;
     }
 
     @Transient
     public String getImageDir() {
-        String dirName = "brands-photos/";
+        // AG-ASSET-PATH-004: File system path for brand images
+        String dirName = "tenants/";
         if (id == -1L || logo == null)
             return "/images/bob.png";
-        return dirName + this.getTenantId() + "/" + this.id + "/";
+        return dirName + this.getTenantId() + "/assets/brands/" + this.id + "/";
     }
 
     @Override
     public String toString() {
-        return "Brand [id=" + id + ", name=" + name + ", categories=" + categories + "]";
+        // AG-TENANT-GUARD-001: Don't include categories to avoid lazy loading
+        // cross-tenant data
+        return "Brand [id=" + id + ", name=" + name + "]";
     }
 }

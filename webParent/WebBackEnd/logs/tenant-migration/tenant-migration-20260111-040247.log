@@ -1,0 +1,8 @@
+=== Tenant Migration Log Started: 2026-01-11T04:02:47.092107500 ===
+[04:02:47] [5] [brands] 97 -> 97 [OK]
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 126
+Total Files Moved: 1
+Errors: 0
+=========================================

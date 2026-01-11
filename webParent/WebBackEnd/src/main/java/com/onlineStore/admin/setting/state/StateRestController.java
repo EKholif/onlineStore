@@ -31,7 +31,7 @@ public class StateRestController {
     @PostMapping("/states/save")
 	public String save(@RequestBody State state) {
 		Long tenantId = TenantContext.getTenantId();
-		state.setTenantId(tenantId);
+        // state.setTenantId(tenantId); // Removed: State is shared
 		State savedState = repo.save(state);
 		return String.valueOf(savedState.getId());
 	}

@@ -194,9 +194,10 @@ public class Service extends IdBasedEntity {
 
     @Transient
     public String getImagePath() {
-        String dirName = "/services-photos/";
+        // AG-ASSET-PATH-008: Web path for service images
+        String dirName = "/tenants/";
         if (id == null || mainImage == null)
             return "/images/default-service.png";
-        return dirName + this.getTenantId() + "/" + this.id + "/" + this.mainImage;
+        return dirName + this.getTenantId() + "/assets/services/" + this.id + "/" + this.mainImage;
     }
 }

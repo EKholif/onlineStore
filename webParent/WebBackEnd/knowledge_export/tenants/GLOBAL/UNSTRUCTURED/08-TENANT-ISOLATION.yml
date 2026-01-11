@@ -1,0 +1,21 @@
+id: 08-TENANT-ISOLATION
+type: UNSTRUCTURED
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
+                                                                 previousVersion: null, updatedAt: '2026-01-11T04:27:08.077531300', version: 0.1.0 }
+personas: null
+content:
+  rule: { id: TENANT_ASSET_ISOLATION, name: Tenant Asset Isolation, status: enforced,
+          priority: critical }
+  description:
+    summary: |
+      Every tenant must have fully isolated storage. No asset may be shared or accessed across tenants.
+  storage: { root_path: /storage/tenants, tenant_path_pattern: '/storage/tenants/{tenantId}' }
+  folders:
+    profile:
+      replaces: site-logo
+      purpose: [ brand_identity, logo, cover_image, theme_assets ]
+  security: { cross_tenant_access: forbidden, shared_write_access: false, validation_required: true }
+  enforced_by:
+    services: [ TenantStorageService, UploadService ]
+    components: [ TenantContextResolver, StoragePolicyValidator ]
+  business_impact: [ data_isolation, legal_compliance, investor_readiness, ai_context_accuracy ]

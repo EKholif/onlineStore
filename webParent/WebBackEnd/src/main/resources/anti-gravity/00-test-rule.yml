@@ -1,0 +1,16 @@
+id: "RULE-001-TEST"
+type: "RULE"
+personas:
+  - "TENANT"
+  - "DEV"
+content:
+  title: "Test Rule for Knowledge Loader"
+  description: "This is a dummy rule to verify that the Knowledge Loader is working correctly."
+  constraints:
+    - "Must be present"
+    - "Must be valid"
+versioning:
+  version: "1.0.0"
+  previousVersion: null
+  updatedAt: "2026-01-11T12:00:00"
+  backwardCompatible: true
