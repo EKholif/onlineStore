@@ -1,11 +1,11 @@
 id: 01-CORE-PRINCIPLES
 type: PRINCIPLE
-versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
-                                                                 previousVersion: null, updatedAt: '2026-01-12T15:28:50.979642700', version: 0.1.0 }
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
+  previousVersion: null, updatedAt: '2026-01-12T17:15:23.696908600', version: 0.1.0}
 personas: null
 content:
   core_principles:
-    - { name: Business Before Code, description: All business logic must be understood
-      before implementation }
-    - { name: Multi-Tenancy Foundation, description: Multi-Tenancy is the system's identity }
-    - { name: AI as Partner, description: AI assists but never decides alone }
+  - {name: Business Before Code, description: All business logic must be understood
+      before implementation}
+  - {name: Multi-Tenancy Foundation, description: Multi-Tenancy is the system's identity}
+  - {name: AI as Partner, description: AI assists but never decides alone}

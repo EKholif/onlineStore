@@ -1,16 +1,16 @@
 id: 10-STORAGE-STRUCTURE
 type: TECHNICAL_SPEC
-versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
-                                                                 previousVersion: null, updatedAt: '2026-01-12T15:28:50.995344500', version: 0.1.0 }
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
+  previousVersion: null, updatedAt: '2026-01-12T17:15:23.721275200', version: 0.1.0}
 personas: null
 content:
-  storage_structure: { root: /storage }
-  tenants: { enabled: true, path: '/storage/tenants/{tenantId}' }
-  default_folders: [ profile, services, customers, categories, brands, users ]
+  storage_structure: {root: /storage}
+  tenants: {enabled: true, path: '/storage/tenants/{tenantId}'}
+  default_folders: [profile, services, customers, categories, brands, users]
   folder_purposes:
     profile:
       description: Tenant brand identity
-      contains: [ logo, cover, brand_assets ]
-    services: { description: Service related images }
-    customers: { description: Customer uploaded assets }
-  rules: { auto_create_on_tenant_creation: true, delete_on_tenant_removal: true, ai_scan_allowed: true }
+      contains: [logo, cover, brand_assets]
+    services: {description: Service related images}
+    customers: {description: Customer uploaded assets}
+  rules: {auto_create_on_tenant_creation: true, delete_on_tenant_removal: true, ai_scan_allowed: true}

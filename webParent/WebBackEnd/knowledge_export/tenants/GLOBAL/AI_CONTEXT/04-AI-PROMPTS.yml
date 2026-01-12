@@ -1,19 +1,19 @@
 id: 04-AI-PROMPTS
 type: AI_CONTEXT
-versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
-                                                                 previousVersion: null, updatedAt: '2026-01-12T15:28:50.984778300', version: 0.1.0 }
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
+  previousVersion: null, updatedAt: '2026-01-12T17:15:23.707804400', version: 0.1.0}
 personas: null
 content:
   ai_agents:
     support:
-      knowledge_sources: [ tenant_lifecycle, business_rules, FAQ ]
-      allowed: [ answer_questions, guide_onboarding, troubleshoot ]
-      forbidden: [ modify_code ]
+      knowledge_sources: [tenant_lifecycle, business_rules, FAQ]
+      allowed: [answer_questions, guide_onboarding, troubleshoot]
+      forbidden: [modify_code]
     developer:
-      knowledge_sources: [ core_rules, architecture_rules, rule_mapping ]
-      allowed: [ add_features, refactor_code, optimize_performance ]
-      forbidden: [ break_tenant_model, remove_validation ]
+      knowledge_sources: [core_rules, architecture_rules, rule_mapping]
+      allowed: [add_features, refactor_code, optimize_performance]
+      forbidden: [break_tenant_model, remove_validation]
     sales:
-      knowledge_sources: [ value_proposition, ideal_customer_profile, pricing_plans ]
-      allowed: [ qualify_leads, explain_features, write_emails ]
-      forbidden: [ promise_unimplemented_features ]
+      knowledge_sources: [value_proposition, ideal_customer_profile, pricing_plans]
+      allowed: [qualify_leads, explain_features, write_emails]
+      forbidden: [promise_unimplemented_features]

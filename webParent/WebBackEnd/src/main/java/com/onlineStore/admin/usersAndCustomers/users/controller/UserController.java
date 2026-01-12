@@ -166,51 +166,54 @@ public class UserController {
     public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute User user,
                                         RedirectAttributes redirectAttributes,
                                         @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
-        redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
+        try {
+            redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
 
-        User updateUser = service.getUser(id);
+            User updateUser = service.getUser(id);
 
-        if (user.getPassword().isEmpty()) {
+            if (user.getPassword().isEmpty()) {
 
-            if (multipartFile.isEmpty()) {
-                BeanUtils.copyProperties(user, updateUser, "id", "user_bio", "password");
-                service.saveUpdatededUser(updateUser);
+                if (multipartFile.isEmpty()) {
+                    BeanUtils.copyProperties(user, updateUser, "id", "user_bio", "password");
+                    service.saveUpdatededUser(updateUser);
 
-            } else if (!multipartFile.isEmpty()) {
+                } else if (!multipartFile.isEmpty()) {
 
-                FileUploadUtil.cleanDir(updateUser.getImageDir());
-                String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                // AG-ASSET-PATH-002: Use centralized path from Entity
-                String uploadDir = updateUser.getImageDir();
-                user.setUser_bio(fileName);
-                BeanUtils.copyProperties(user, updateUser, "id", "password");
-                service.saveUpdatededUser(updateUser);
-                FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+                    FileUploadUtil.cleanDir(updateUser.getImageDir());
+                    String fileName = StringUtils
+                            .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+                    // AG-ASSET-PATH-002: Use centralized path from Entity
+                    String uploadDir = updateUser.getImageDir();
+                    user.setUser_bio(fileName);
+                    BeanUtils.copyProperties(user, updateUser, "id", "password");
+                    service.saveUpdatededUser(updateUser);
+                    FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
+                }
+
+            } else {
+
+                if (multipartFile.isEmpty()) {
+
+                    BeanUtils.copyProperties(user, updateUser, "id", "user_bio");
+
+                    service.saveUser(updateUser);
+
+                } else if (!multipartFile.isEmpty()) {
+
+                    FileUploadUtil.cleanDir(updateUser.getImageDir());
+                    String fileName = StringUtils
+                            .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+                    String uploadDir = updateUser.getImageDir();
+                    user.setUser_bio(fileName);
+                    BeanUtils.copyProperties(user, updateUser, "id");
+                    service.saveUser(updateUser);
+                    FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+                }
             }
-
-        } else {
-
-            if (multipartFile.isEmpty()) {
-
-                BeanUtils.copyProperties(user, updateUser, "id", "user_bio");
-
-                service.saveUser(updateUser);
-
-            } else if (!multipartFile.isEmpty()) {
-
-                FileUploadUtil.cleanDir(updateUser.getImageDir());
-
-                String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                // AG-ASSET-PATH-003: Use centralized path from Entity
-                String uploadDir = updateUser.getImageDir();
-                user.setUser_bio(fileName);
-                BeanUtils.copyProperties(user, updateUser, "id");
-                service.saveUser(updateUser);
-                FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
-            }
-
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
         }
         String fristPartEmail = user.getEmail().split("@")[0];
         return new ModelAndView("redirect:/users/page/1?sortField=id&sortDir=asc&keyWord=" + fristPartEmail);

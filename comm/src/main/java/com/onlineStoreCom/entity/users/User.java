@@ -138,7 +138,7 @@ public class User extends IdBasedEntity {
 
     @Transient
     public String getImageDir() {
-        if (id == null || user_bio == null)
+        if (id == null)
             return null; // Return null instead of dummy path for directory cleaning safety
 
         // AG-ASSET-PATH-004: Standardized tenant asset path

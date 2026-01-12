@@ -1,12 +1,12 @@
 id: 00-INTENT
 type: INTENT
-versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
-                                                                 previousVersion: null, updatedAt: '2026-01-12T15:28:50.975620', version: 0.1.0 }
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
+  previousVersion: null, updatedAt: '2026-01-12T17:15:23.694908300', version: 0.1.0}
 personas: null
 content:
   intent:
     purpose: |
       Build Multi-Tenant SaaS Platform using Spring Boot, fully extendable and AI-ready.
-    non_goals: [ single-tenant application, demo-only project, tied to one customer ]
+    non_goals: [single-tenant application, demo-only project, tied to one customer]
     vision: |
       Turn Anti-Gravity into a Knowledge-Driven Product, able to serve AI, investors, customers, and the market.
