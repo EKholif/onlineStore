@@ -128,19 +128,22 @@ public class User extends IdBasedEntity {
 
     @Transient
     public String getImagePath() {
-        String dirName = "/user-photos/";
         if (id == null || user_bio == null)
             return "/images/bob.png";
 
-        return dirName + this.getTenantId() + "/" + this.id + "/" + this.user_bio;
+        // AG-ASSET-PATH-004: Standardized tenant asset path
+        // Returns: /tenants/{tenantId}/assets/users/{id}/{filename}
+        return "/tenants/" + this.getTenantId() + "/assets/users/" + this.id + "/" + this.user_bio;
     }
 
     @Transient
     public String getImageDir() {
-        String dirName = "user-photos/";
         if (id == null || user_bio == null)
-            return "/images/bob.png";
-        return dirName + this.getTenantId() + "/" + this.id + "/";
+            return null; // Return null instead of dummy path for directory cleaning safety
+
+        // AG-ASSET-PATH-004: Standardized tenant asset path
+        // Returns: tenants/{tenantId}/assets/users/{id}/
+        return "tenants/" + this.getTenantId() + "/assets/users/" + this.id + "/";
     }
 
     public String getFullName() {

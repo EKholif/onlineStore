@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Documentation: Anti-Gravity</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #7f8c8d;
+        }
+
+        .box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            margin: 20px 0;
+        }
+
+        .alert {
+            background: #fff3cd;
+            padding: 20px;
+            border-left: 5px solid #ffc107;
+            color: #856404;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .diagram {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px dashed #ccc;
+            background: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Anti-Gravity Platform Documentation</h1>
+<p><strong>Intent:</strong> Build a Knowledge-Driven Multi-Tenant SaaS Platform.</p>
+
+<div class="box">
+    <h3>🚀 Core Value Proposition</h3>
+    <p>Unlike traditional platforms, Anti-Gravity enforces its architecture <strong>at runtime</strong>. It doesn't
+        just work; it ensures it <em>keeps working correctly</em> by blocking bad code patterns automatically.</p>
+</div>
+
+<h2>1. Architecture Overview</h2>
+<p>The system is built on three pillars:</p>
+<ol>
+    <li><strong>Knowledge System:</strong> A set of YAML files defining the "Laws" of the platform.</li>
+    <li><strong>Governance Layer:</strong> Code that reads these laws (e.g., <code>ArchitectureWatchdog</code>).
+    </li>
+    <li><strong>Execution Layer:</strong> The Spring Boot application that obeys these laws.</li>
+</ol>
+
+<h2>2. Storage & Isolation</h2>
+<div class="diagram">
+    <strong>Storage Model</strong><br>
+    <code>ROOT</code><br>
+    ↓<br>
+    <code>/tenants</code><br>
+    ↙ &nbsp; &nbsp; ↘<br>
+    <code>/1 (Tenant A)</code> &nbsp; <code>/2 (Tenant B)</code><br>
+    ↓ &nbsp; &nbsp; &nbsp; &nbsp; ↓<br>
+    <code>/assets</code> &nbsp; &nbsp; <code>/assets</code>
+</div>
+<p>This structure is <strong>enforced</strong>. Writing files anywhere else (like <code>/user-photos</code>)
+    triggers a <span style="color:red; font-weight:bold;">Security Exception</span>.</p>
+
+<h2>3. Automated Compliance</h2>
+<div class="alert">
+    <strong>⚠️ Watchdog Active</strong><br>
+    The system monitors the file system 24/7. Developing features that violate architectural rules will result in
+    immediate runtime errors and logged violations.
+</div>
+
+<h2>4. Reference</h2>
+<ul>
+    <li>Technical Rules: <code>src/main/resources/anti-gravity/*.yml</code></li>
+    <li>Violations Log: <code>project-reports/runtime_violation_report.md</code></li>
+    <li>Status Dashboard: <code>project-reports/watchdog_status_report.html</code></li>
+</ul>
+
+</body>
+
+</html>

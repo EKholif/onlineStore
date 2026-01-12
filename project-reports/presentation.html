@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Presentation: Architecture Watchdog</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            background: #222;
+            color: white;
+        }
+
+        .slide {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            box-sizing: border-box;
+            display: none;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.5s;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #3498db;
+            margin-bottom: 0.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 1em;
+        }
+
+        ul {
+            text-align: left;
+            font-size: 1.8rem;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            opacity: 0.7;
+        }
+
+        button:hover {
+            opacity: 1;
+        }
+
+        code {
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #f1c40f;
+            font-family: monospace;
+        }
+
+        .highlight {
+            border-left: 5px solid #2ecc71;
+            padding-left: 20px;
+            background: rgba(46, 204, 113, 0.1);
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active" id="slide-1">
+    <h1>Architecture Watchdog</h1>
+    <h3>Runtime Defense for Multi-Tenant Integrity</h3>
+    <p style="margin-top: 50px; opacity: 0.6;">2026-01-12 | Anti-Gravity AI</p>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide-2">
+    <h2>The Problem</h2>
+    <ul>
+        <li>🛑 <strong>Drift:</strong> "Quick fixes" become permanent legacy debt.</li>
+        <li>🛑 <strong>Leakage:</strong> Saving files to root breaks tenant isolation.</li>
+        <li>🛑 <strong>Invisibility:</strong> Violations are silent until it's too late.</li>
+    </ul>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="slide-3">
+    <h2>The Solution: Active Defense</h2>
+    <div style="display: flex; gap: 30px; justify-content: center; width: 100%;">
+        <div style="background: #333; padding: 30px; border-radius: 10px; flex: 1;">
+            <h3>🛡️ Gatekeeper</h3>
+            <p>Blocks bad paths instantly</p>
+        </div>
+        <div style="background: #333; padding: 30px; border-radius: 10px; flex: 1;">
+            <h3>🐕 Watchdog</h3>
+            <p>Monitors disk 24/7</p>
+        </div>
+        <div style="background: #333; padding: 30px; border-radius: 10px; flex: 1;">
+            <h3>🚨 Alerts</h3>
+            <p>Real-time Dashboard</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" id="slide-4">
+    <h2>Real-World Scenarios</h2>
+    <ul>
+        <li><strong>Scenario 1:</strong> Dev tries to verify functionality with <code>/test</code> folder <br>👉
+            <strong>WATCHDOG DETECTS</strong></li>
+        <li><strong>Scenario 2:</strong> Code bugs and uses hardcoded path <code>site-logo</code> <br>👉
+            <strong>GATEKEEPER BLOCKS</strong></li>
+    </ul>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" id="slide-5">
+    <h2>Evidence</h2>
+    <div class="highlight" style="text-align: left; padding: 20px; font-family: monospace; font-size: 1.2rem;">
+        🚨 ARCHITECTURE VIOLATION [LEGACY_PATH_CREATION]<br>
+        Message: Prohibited legacy folder created: .../site-logo<br>
+        Rule: ALL_ASSETS_MUST_BE_TENANT_ISOLATED
+    </div>
+    <p><em>(From <code>watchdog_status_report.html</code>)</em></p>
+</div>
+
+<div class="controls">
+    <button onclick="prevSlide()">❮ Prev</button>
+    <button onclick="nextSlide()">Next ❯</button>
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function showSlide(n) {
+        document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+        document.getElementById('slide-' + n).classList.add('active');
+    }
+
+    function nextSlide() {
+        if (currentSlide < totalSlides) {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 1) {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+</script>
+</body>
+
+</html>

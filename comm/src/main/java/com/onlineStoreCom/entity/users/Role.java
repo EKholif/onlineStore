@@ -2,18 +2,18 @@ package com.onlineStoreCom.entity.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.setting.subsetting.HierarchicalEntity;
-import jakarta.persistence.*;
-
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
 import com.onlineStoreCom.tenant.GlobalData;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ExcludeSuperclassListeners;
+import jakarta.persistence.Table;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "role")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId or tenant_id = 0 or tenant_id is null)")
+// AG-SHARED-DATA-001: Role is GlobalData - no tenant filter needed
 @ExcludeSuperclassListeners
 public class Role extends HierarchicalEntity<Role> implements GlobalData {
 

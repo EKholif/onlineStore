@@ -7,10 +7,13 @@ import org.springframework.stereotype.Component;
 public class KnowledgeBootstrap {
 
     private final com.onlineStore.admin.knowledge.KnowledgeRegistry knowledgeRegistry;
+    private final com.onlineStore.admin.knowledge.SystemArchitectureAuditor systemAuditor;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public KnowledgeBootstrap(com.onlineStore.admin.knowledge.KnowledgeRegistry knowledgeRegistry) {
+    public KnowledgeBootstrap(com.onlineStore.admin.knowledge.KnowledgeRegistry knowledgeRegistry,
+                              com.onlineStore.admin.knowledge.SystemArchitectureAuditor systemAuditor) {
         this.knowledgeRegistry = knowledgeRegistry;
+        this.systemAuditor = systemAuditor;
     }
 
     @PostConstruct
@@ -38,6 +41,7 @@ public class KnowledgeBootstrap {
             reorganizeAssets();
             generateHtmlPreview();
             generateFolderStructure();
+            systemAuditor.runAudit();
 
         } catch (Exception e) {
             System.err.println("❌ Critical Error initializing Knowledge System: " + e.getMessage());
@@ -527,10 +531,6 @@ public class KnowledgeBootstrap {
         if (filename.contains("reference") || filename.contains("data")) {
             return "REFERENCE_DATA";
         }
-        if (filename.contains("mapping")) {
-            return "MAPPING";
-        }
-
 
         // Default fallback
         return "UNSTRUCTURED";

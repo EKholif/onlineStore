@@ -13,7 +13,8 @@ import java.util.List;
 /**
  * Represents a customer in the online store system.
  * This entity extends AbstractAddressWithCountry to include address information
- * and adds customer-specific fields like email, password, and authentication details.
+ * and adds customer-specific fields like email, password, and authentication
+ * details.
  * It's used for user authentication, profile management, and order processing.
  */
 @Entity
@@ -77,7 +78,7 @@ public class Customer extends AbstractAddressWithCountry {
         this.cartItems = cartItems;
     }
 
-    //   Ehab newAdd
+    // Ehab newAdd
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> cartItems = new ArrayList<>();
 
@@ -119,6 +120,72 @@ public class Customer extends AbstractAddressWithCountry {
     // ... [Other getters and setters with similar documentation]
 
     /**
+     * Gets the filename of the customer's profile image.
+     *
+     * @return The filename of the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * Sets the filename of the customer's profile image.
+     *
+     * @param image The filename to set
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public AuthenticationType getAuthenticationType() {
+        return authenticationType;
+    }
+
+    public void setAuthenticationType(AuthenticationType authenticationType) {
+        this.authenticationType = authenticationType;
+    }
+
+    public String getRestPasswordToken() {
+        return restPasswordToken;
+    }
+
+    public void setRestPasswordToken(String restPasswordToken) {
+        this.restPasswordToken = restPasswordToken;
+    }
+
+    /**
      * Gets the full name of the customer by combining first and last name.
      *
      * @return The full name of the customer
@@ -158,66 +225,15 @@ public class Customer extends AbstractAddressWithCountry {
             return this.image;
         }
 
-        String dirName = "/customers-photos/";
-        if (id == null || image == null) return "/images" + "\\" + "bob.png";
-        return dirName + this.id + '\\' + this.image;
+        if (id == null || image == null)
+            return "/images/bob.png";
+
+        // AG-ASSET-PATH-004: Standardized tenant asset path
+        // Returns: /tenants/{tenantId}/assets/customers/{id}/{filename}
+        return "/tenants/" + this.getTenantId() + "/assets/customers/" + this.id + "/" + this.image;
     }
 
-    public String getVerificationCode() {
-        return verificationCode;
-    }
-
-    public void setVerificationCode(String verificationCode) {
-        this.verificationCode = verificationCode;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Date getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public AuthenticationType getAuthenticationType() {
-        return authenticationType;
-    }
-
-    public void setAuthenticationType(AuthenticationType authenticationType) {
-        this.authenticationType = authenticationType;
-    }
-
-    public String getRestPasswordToken() {
-        return restPasswordToken;
-    }
-
-    public void setRestPasswordToken(String restPasswordToken) {
-        this.restPasswordToken = restPasswordToken;
-    }
+    // ... (rest of methods)
 
     /**
      * Gets the directory path for storing the customer's images.
@@ -226,8 +242,11 @@ public class Customer extends AbstractAddressWithCountry {
      */
     @Transient
     public String getImageDir() {
-        String dirName = "customers-photos\\";
-        if (id == null || image == null) return "\\images \\ bob.png";
-        return dirName + this.id + '\\';
+        if (id == null)
+            return null;
+
+        // AG-ASSET-PATH-004: Standardized tenant asset path
+        // Returns: tenants/{tenantId}/assets/customers/{id}/
+        return "tenants/" + this.getTenantId() + "/assets/customers/" + this.id + "/";
     }
 }

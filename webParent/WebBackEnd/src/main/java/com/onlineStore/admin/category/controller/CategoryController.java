@@ -83,8 +83,7 @@ public class CategoryController {
             category.setImage(fileName);
             Category savedCategory = service.saveCategory(category);
 
-            String dirName = "categories-photos/";
-            String uploadDir = dirName + tenantId + "/" + savedCategory.getId();
+            String uploadDir = "tenants/" + tenantId + "/assets/categories/" + savedCategory.getId();
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 

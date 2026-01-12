@@ -15,7 +15,14 @@ public class KnowledgeLoaderTest {
     @Test
     public void testKnowledgeLoader() {
         KnowledgeRegistry registry = new KnowledgeRegistry();
-        KnowledgeBootstrap bootstrap = new KnowledgeBootstrap(registry);
+        // Mock the auditor (simplest way is null or a dummy if not used in
+        // loadKnowledge logic that affects this test)
+        // Since runAudit() is called in postConstruct but we are calling loadKnowledge
+        // manually,
+        // passing null might throw NPE if loadKnowledge calls runAudit.
+        // Let's create a dummy.
+        com.onlineStore.admin.knowledge.SystemArchitectureAuditor auditor = new com.onlineStore.admin.knowledge.SystemArchitectureAuditor();
+        KnowledgeBootstrap bootstrap = new KnowledgeBootstrap(registry, auditor);
 
         // Run the loader
         bootstrap.loadKnowledge();

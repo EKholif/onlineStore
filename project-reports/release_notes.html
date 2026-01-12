@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Release Notes: Architecture Watchdog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .meta {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .tag-security {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .tag-feature {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .tag-change {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c0392b;
+        }
+
+        .impact-box {
+            border-left: 4px solid #f39c12;
+            background-color: #fff8e1;
+            padding: 15px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 Release Notes</h1>
+    <div class="meta">
+        <strong>Release:</strong> Architecture Watchdog & Security Hardening<br>
+        <strong>Version:</strong> 1.1.0-WATCHDOG<br>
+        <strong>Date:</strong> 2026-01-12
+    </div>
+</header>
+
+<div class="section">
+    <h2>🛡️ Security & Compliance</h2>
+    <p>This release makes the platform <strong>Secure by Design</strong> regarding asset handling.</p>
+    <ul>
+        <li><span class="tag tag-security">SECURITY</span> <strong>Strict Tenant Isolation:</strong> The system now
+            forcefully blocks any file operation that attempts to write outside a tenant's designated sandbox
+            (<code>tenants/{id}/...</code>). This eliminates the risk of cross-tenant data leakage via file uploads.
+        </li>
+        <li><span class="tag tag-feature">FEATURE</span> <strong>Runtime Architecture Watchdog:</strong> A new
+            "Watchdog" service continuously monitors the server's file system. It instantly detects and alerts if
+            any "legacy" folder structures (like <code>user-photos</code> in root) are created, ensuring the
+            architecture remains clean over time.
+        </li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>🛠️ What Changed?</h2>
+    <ul>
+        <li><strong>ArchitectureWatchdogService:</strong> Background service implemented to watch file system
+            events.
+        </li>
+        <li><strong>ViolationRegistry:</strong> Central logging for architectural violations, generating
+            <code>runtime_violation_report.md</code>.
+        </li>
+        <li><strong>FileUploadUtil:</strong> Updated with <code>validatePath()</code> to enforce strict path rules
+            and Tenant Context matching.
+        </li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>⚠️ Impact on Developers</h2>
+    <div class="impact-box">
+        <strong>Breaking Change for Legacy Code:</strong>
+        <p>Any code attempting to save files to identifying "Legacy Paths" (e.g., <code>/site-logo</code>,
+            <code>/products-photos</code>) or referencing paths without a valid Tenant ID will now throw a
+            <code>SecurityException</code> or <code>IllegalArgumentException</code>.</p>
+        <p><strong>Action:</strong> Ensure all file operations occur within a valid <code>TenantContext</code> and
+            use the standard path structure: <code>tenants/{id}/assets/{type}/...</code></p>
+    </div>
+</div>
+
+</body>
+
+</html>

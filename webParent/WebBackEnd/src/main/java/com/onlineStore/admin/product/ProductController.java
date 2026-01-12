@@ -8,13 +8,13 @@ import com.onlineStore.admin.product.service.ProductService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
-import org.springframework.data.domain.Page;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.tenant.TenantContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -135,15 +135,16 @@ public class ProductController {
 
             String fileName = StringUtils
                     .cleanPath(Objects.requireNonNull(mainImageMultipartFile.getOriginalFilename()));
-            String dirName = "Products-photos/";
-            String uploadDir = dirName + saveProduct.getTenantId() + "/" + saveProduct.getId();
+            // AG-ASSET-PATH-004: Strict tenant asset hierarchy
+            String uploadDir = "tenants/" + saveProduct.getTenantId() + "/assets/products/" + saveProduct.getId();
             FileUploadUtil.saveFile(uploadDir, fileName, mainImageMultipartFile);
         }
 
         if (extraImageMultipart.length > 0) {
 
-            String dirName = "Products-photos/";
-            String uploadDir = dirName + saveProduct.getTenantId() + "/" + saveProduct.getId() + "/extras/";
+            // AG-ASSET-PATH-005: Strict tenant asset hierarchy for extras
+            String uploadDir = "tenants/" + saveProduct.getTenantId() + "/assets/products/" + saveProduct.getId()
+                    + "/extras/";
 
             for (MultipartFile extramultipartFile : extraImageMultipart) {
 

@@ -2,17 +2,20 @@ package com.onlineStoreCom.entity.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.setting.subsetting.HierarchicalEntity;
+import com.onlineStoreCom.tenant.TenantAware;
+import com.onlineStoreCom.tenant.TenantListener;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Filter;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "categories")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
-public class Category extends HierarchicalEntity<Category> implements Comparable<Category> {
+@EntityListeners(TenantListener.class)
+public class Category extends HierarchicalEntity<Category> implements Comparable<Category>, TenantAware {
+
+    @Column(name = "tenant_id", updatable = false)
+    private Long tenantId;
 
     @Column(name = "name", length = 85, nullable = false, unique = true)
     private String name;
@@ -59,6 +62,16 @@ public class Category extends HierarchicalEntity<Category> implements Comparable
         this.alias = alias;
         this.enabled = enabled;
         setParent(parent);
+    }
+
+    @Override
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    @Override
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
     public void setLevel(int level) {

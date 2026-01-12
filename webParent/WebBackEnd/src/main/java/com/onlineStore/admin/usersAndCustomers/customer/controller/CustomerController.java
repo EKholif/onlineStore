@@ -5,7 +5,6 @@ import com.onlineStore.admin.usersAndCustomers.customer.service.CustomerService;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
-import org.springframework.data.domain.Page;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
@@ -16,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -26,8 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URLConnection;
 import java.util.List;
@@ -98,8 +95,8 @@ public class CustomerController {
             customer.setImage(fileName);
             savedCustomer = service.saveCustomer(customer);
 
-            String dirName = "customers-photos/";
-            savePhoto(savedCustomer, multipartFile, dirName);
+            // AG-FIX: Removed legacy dirName "customers-photos/"
+            savePhoto(savedCustomer, multipartFile, null);
 
         } else {
 
@@ -163,7 +160,8 @@ public class CustomerController {
 
         Customer savedCustomer = service.saveCustomer(customer);
 
-        String uploadDir = dirName + savedCustomer.getId();
+        // AG-ASSET-PATH-002: Use centralized path
+        String uploadDir = savedCustomer.getImageDir();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     }
@@ -207,7 +205,8 @@ public class CustomerController {
 
         // Add inline logo
         // Use ClassPathResource to load from classpath/resources/site-logo
-        Resource logoResource = new ClassPathResource("site-logo/dream-logo-print0200.png");
+        // AG-FIX-LEGACY: Removed hardcoded 'site-logo' directory access.
+        Resource logoResource = new ClassPathResource("static/images/logo.png");
 
         if (!logoResource.exists()) {
             // Fallback or skip logo if missing, avoid crashing

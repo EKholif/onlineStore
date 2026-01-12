@@ -1,19 +1,13 @@
 package com.onlineStoreCom.entity.setting.subsetting;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OrderBy;
-import jakarta.persistence.Transient;
+import com.onlineStoreCom.entity.BaseIdEntity;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @MappedSuperclass
-public abstract class HierarchicalEntity<T extends IdBasedEntity> extends IdBasedEntity {
+public abstract class HierarchicalEntity<T extends BaseIdEntity> extends BaseIdEntity {
 
     @Column(name = "all_parent_ids", length = 256, nullable = true)
     private String allParentIDs;

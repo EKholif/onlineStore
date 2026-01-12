@@ -1,0 +1,16 @@
+id: 05-PITCH-DECK
+type: BUSINESS_PITCH
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
+                                                                 previousVersion: null, updatedAt: '2026-01-11T18:39:34.179901', version: 0.1.0 }
+personas: null
+content:
+  pitch_deck:
+    slides:
+      - { title: Vision, source: intent }
+      - { title: Problem, source: core_principles }
+      - { title: Solution, source: architecture }
+      - { title: Product, source: business_scenarios + ai_agents }
+      - { title: Technology Moat, source: multi_tenant_model }
+      - { title: Business Model, source: revenue_streams + pricing_rules }
+      - { title: Scalability, source: tenant_isolation + stateless_design }
+      - { title: Financial Metrics, source: MRR + CAC + LTV + Growth }

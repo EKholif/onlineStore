@@ -19,15 +19,8 @@ public class MvcConfig implements WebMvcConfigurer {
         // AG-ASSET-PATH-005: New hierarchical asset structure
         addResourceHandler(registry, "tenants");
 
-        // Legacy paths - kept for backward compatibility
-        addResourceHandler(registry, "categories-photos");
-        addResourceHandler(registry, "customers-photos");
-
-        addResourceHandler(registry, "user-photos");
-        addResourceHandler(registry, "brands-photos");
-        addResourceHandler(registry, "products-photos");
-        addResourceHandler(registry, "pdf-convert");
-        addResourceHandler(registry, "site-logo");
+        // Legacy paths removed to strictly enforce tenant isolation and hierarchy
+        // All assets must now be accessed via /tenants/{id}/assets/...
     }
 
     private void addResourceHandler(ResourceHandlerRegistry registry, String pathPattern) {

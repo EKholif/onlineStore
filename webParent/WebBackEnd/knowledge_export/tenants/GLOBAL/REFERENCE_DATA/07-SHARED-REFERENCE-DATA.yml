@@ -1,7 +1,7 @@
 id: 07-SHARED-REFERENCE-DATA
 type: REFERENCE_DATA
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
-                                                                 previousVersion: null, updatedAt: '2026-01-11T15:40:42.106899900', version: 0.1.0 }
+                                                                 previousVersion: null, updatedAt: '2026-01-12T15:28:50.993344700', version: 0.1.0 }
 personas: null
 content:
   shared_reference_data:

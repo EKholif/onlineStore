@@ -1,11 +1,11 @@
 package com.onlineStore.admin.pdfConvert;
 
 import com.itextpdf.text.DocumentException;
-
 import com.onlineStore.admin.pdfConvert.convertUtile.*;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.convertPdf.FileConvert;
 import com.onlineStoreCom.entity.convertPdf.FileExtension;
+import com.onlineStoreCom.tenant.TenantContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -60,8 +60,8 @@ public class PdfConvertController {
 
             FileConvert savedInput = service.save(fileConvert);
 
-            String dirName = "fileConvert/";
-            String uploadDir = dirName + savedInput.getId() + "/";
+            String uploadDir = "tenants/" + TenantContext.getTenantId() + "/assets/pdf-convert/" + savedInput.getId()
+                    + "/";
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -170,203 +170,5 @@ public class PdfConvertController {
         return pdfOutFilePath;
     }
 
-    // ModelAndView model = new ModelAndView("convert/convert");
-    //
-    // FileConvert fileConvert = new FileConvert();
-    //
-    //
-    // model.addObject("pageTitle", "File Converter");
-    // model.addObject("label", "Parent Category :");
-    // model.addObject("category", fileConvert);
-
-    // return model;
-
-    // }
-
-    //
-    //// todo : rundom id
-    //
-    //
-    // @PostMapping("/categories/save-category")
-    // public ModelAndView saveNewUCategory(@ModelAttribute Category category,
-    // RedirectAttributes redirectAttributes
-    // , @RequestParam("fileImage") MultipartFile multipartFile)
-    // throws IOException {
-    // redirectAttributes.addFlashAttribute("message", "the category has been saved
-    // successfully. ");
-    //
-    //
-    // if (!multipartFile.isEmpty()) {
-    // String fileName =
-    // StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-    //
-    // category.setImage(fileName);
-    // Category savedCategory = service.saveCategory(category);
-    //
-    // String dirName = "categories-photos/";
-    // String uploadDir = dirName + savedCategory.getId();
-    //
-    // FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-    //
-    // } else {
-    //
-    // service.saveCategory(category);
-    // }
-    //
-    // return new ModelAndView("redirect:/categories/categories");
-    //
-    //
-    // }
-    //
-    // @GetMapping("/categories/edit/{id}")
-    // public ModelAndView editCategory(@PathVariable(name = "id") long id,
-    // RedirectAttributes redirectAttributes) {
-    // ModelAndView model = new ModelAndView("categories/new-categories-form");
-    //
-    //
-    // try {
-    //
-    // Category existCategory = service.findById(id);
-    // List<Category> listCategory = service.listUsedForForm();
-    //
-    // model.addObject("label", "Parent Category :");
-    //
-    // PagingAndSortingHelper pagingAndSortingHelper = new
-    // PagingAndSortingHelper("categories", listCategory); // Corrected listName
-    // return pagingAndSortingHelper.editForm(model, "category", existCategory, id);
-    //
-    //
-    // } catch (CategoryNotFoundException ex) {
-    // redirectAttributes.addFlashAttribute("message", ex.getMessage());
-    // return new ModelAndView("redirect:/categories/categories");
-    //
-    //
-    // }
-    // }
-    //
-    // @PostMapping("/categories/save-edit-category/")
-    // public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Long id,
-    // @ModelAttribute Category category, RedirectAttributes redirectAttributes,
-    // @RequestParam("fileImage") MultipartFile multipartFile) throws
-    // CategoryNotFoundException, IOException {
-    //
-    // redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + "
-    // has been updated successfully. ");
-    //
-    // Category updateCategory = service.findById(id);
-    //
-    //
-    // if (multipartFile.isEmpty()) {
-    // BeanUtils.copyProperties(category, updateCategory, "id", "image");
-    // service.saveCategory(updateCategory);
-    //
-    // } else if (!multipartFile.isEmpty()) {
-    //
-    // FileUploadUtil.cleanDir(updateCategory.getImageDir());
-    // String fileName =
-    // StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-    // String uploadDir = "categories-photos/" + updateCategory.getId();
-    // category.setImage(fileName);
-    // BeanUtils.copyProperties(category, updateCategory, "id");
-    //
-    // service.saveCategory(updateCategory);
-    // FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-    //
-    // }
-    //
-    // return new ModelAndView("redirect:/categories/categories");
-    // }
-    //
-    //
-    // @GetMapping("/delete-category/{id}")
-    // public ModelAndView deleteCategory(@PathVariable(name = "id") Long id,
-    // RedirectAttributes redirectAttributes) throws CategoryNotFoundException,
-    // IOException {
-    //
-    // try {
-    // if (service.existsById(id)) {
-    // FileUploadUtil.cleanDir(service.findById(id).getImageDir());
-    //
-    // service.deleteCategory(id);
-    // redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + "
-    // has been Deleted");
-    // } else {
-    // redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + "
-    // Category Not Found");
-    //
-    // }
-    //
-    // return new ModelAndView("redirect:/categories/categories");
-    // } catch (CategoryNotFoundException | IOException ex) {
-    // redirectAttributes.addFlashAttribute("message", " Category Not Found");
-    // }
-    // return new ModelAndView("redirect:/categories/categories");
-    // }
-    //
-    //
-    // @GetMapping("/category/{id}/enable/{status}")
-    // public ModelAndView UpdateUserStatus(@PathVariable("id") Long id,
-    // @PathVariable("status") boolean enable,
-    // RedirectAttributes redirectAttributes) {
-    // service.UpdateCategoryEnableStatus(id, enable);
-    // String status = enable ? "enable" : " disable";
-    // String message = " the user Id : " + id + " has bean " + status;
-    // redirectAttributes.addFlashAttribute("message", message);
-    //
-    // return new ModelAndView("redirect:/categories/categories");
-    //
-    // }
-    //
-    // @PostMapping("/categories/deleteCategories")
-    // public ModelAndView deleteCategory(@RequestParam(name = "selectedCategory",
-    // required = false) List<Long> selectedCategory,
-    // RedirectAttributes redirectAttributes) throws CategoryNotFoundException,
-    // IOException {
-    //
-    // redirectAttributes.addFlashAttribute("message", "the Category ID: " +
-    // selectedCategory + " has been Deleted");
-    // ModelAndView model = new ModelAndView("categories/categories");
-    //
-    // model.addObject("label", selectedCategory);
-    //
-    // if (selectedCategory != null && !selectedCategory.isEmpty()) {
-    // for (Long id : selectedCategory) {
-    // FileUploadUtil.cleanDir(service.findById(id).getImageDir());
-    // service.deleteCategory(id);
-    // }
-    // }
-    // return new ModelAndView("redirect:/categories/categories");
-    // }
-    //
-    //
-    // @GetMapping("/categories/export/csv")
-    // public void exportToCsv(HttpServletResponse response) throws IOException {
-    // List<Category> listCategories = service.listUsedForForm();
-    // CategoryCsvCategoryExporter userCsvExporter = new
-    // CategoryCsvCategoryExporter();
-    // userCsvExporter.export(listCategories, response);
-    //
-    // }
-    //
-    // @GetMapping("/categories/export/excel")
-    // public void exportToExcel(HttpServletResponse response) throws IOException {
-    // List<Category> categoryList = service.listUsedForForm();
-    //
-    // CategoryExcelExporter categoryExcelExporter = new CategoryExcelExporter();
-    // categoryExcelExporter.export(categoryList, response);
-    //
-    //
-    // }
-    //
-    // @GetMapping("/categories/export/pdf")
-    // public void exportToPdf(HttpServletResponse response) throws IOException {
-    // List<Category> categoryList = service.listUsedForForm();
-    //
-    // CategoryPdfCategoryExporter categoryPdfCategoryExporter = new
-    // CategoryPdfCategoryExporter();
-    // categoryPdfCategoryExporter.export(categoryList, response);
-    //
-    // }
-    //
-
+    // AG-CLEANUP: Removed 200+ lines of dead legacy code.
 }

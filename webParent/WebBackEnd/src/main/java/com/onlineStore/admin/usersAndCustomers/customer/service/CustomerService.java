@@ -1,7 +1,7 @@
 package com.onlineStore.admin.usersAndCustomers.customer.service;
 
-import com.onlineStore.admin.usersAndCustomers.customer.repository.CustomersRepository;
 import com.onlineStore.admin.setting.country.CountryRepository;
+import com.onlineStore.admin.usersAndCustomers.customer.repository.CustomersRepository;
 import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.exception.CustomerNotFoundException;
@@ -113,7 +113,15 @@ public class CustomerService {
     }
 
     public boolean isEmailUnique(Integer id, String email) {
-        Customer customerByEmail = customerRepo.findByEmail(email);
+        Long tenantId = com.onlineStoreCom.tenant.TenantContext.getTenantId();
+        System.out.println("AG-DEBUG: [isEmailUnique] Check for email: '" + email + "' @ TenantID: " + tenantId);
+
+        // AG-TENANT-ISO-001: Check uniqueness ONLY within the current tenant scope
+        Customer customerByEmail = customerRepo.findByEmailAndTenantId(email, tenantId);
+
+        System.out.println("AG-DEBUG: [isEmailUnique] Result found: "
+                + (customerByEmail != null ? "YES (ID: " + customerByEmail.getId() + ")" : "NO"));
+
         if (customerByEmail == null)
             return true;
 

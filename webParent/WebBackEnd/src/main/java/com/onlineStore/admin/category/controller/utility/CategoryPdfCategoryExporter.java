@@ -52,7 +52,16 @@ public class CategoryPdfCategoryExporter extends AbstractExporter {
             headerTable.setWidthPercentage(10);
 
             // Add logo
-            Image logo = Image.getInstance("categories-photos/rr.png");
+            // AG-FIX-LEGACY: Removed dependencies on legacy folders
+            Image logo = null;
+            try {
+                logo = Image.getInstance(getClass().getResource("/static/images/logo.png"));
+            } catch (Exception e) {
+                // Ignore missing logo
+            }
+
+            if (logo == null)
+                return;
 
             float percentage = 10f; // Adjust this value as needed
             float width = logo.getWidth() * percentage / 100;

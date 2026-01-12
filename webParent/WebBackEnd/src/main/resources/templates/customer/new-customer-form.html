@@ -176,7 +176,8 @@
 
     customerURL = "[[@{/states/list_by_country/}]]";
     Max_File_Size = 1042000;
-    var custUrl = "[[@{/check_email}]]";
+    // AG-FIX: Point to Customer-specific endpoint
+    var custUrl = "[[@{/customers/check_email}]]";
     defultImage = "[[@{/images/pngwing.com.png}]]";
 
     $(document).ready(function () {

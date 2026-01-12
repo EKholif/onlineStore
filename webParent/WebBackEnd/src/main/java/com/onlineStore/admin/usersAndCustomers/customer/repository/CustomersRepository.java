@@ -1,6 +1,5 @@
 package com.onlineStore.admin.usersAndCustomers.customer.repository;
 
-
 import com.onlineStoreCom.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +14,9 @@ public interface CustomersRepository extends JpaRepository<Customer, Integer> {
     @Query("SELECT c FROM Customer c WHERE c.email =?1")
     Customer findByEmail(String email);
 
+    // AG-TENANT-ISO-001: Explicit tenant-scoped check
+    Customer findByEmailAndTenantId(String email, Long tenantId);
+
     boolean existsByEmail(String email);
 
     Integer countById(Integer id);
@@ -27,14 +29,4 @@ public interface CustomersRepository extends JpaRepository<Customer, Integer> {
             "C.lastName) LIKE %?1%")
     Page<Customer> findAll(String keyword, Pageable pageable);
 
-
-
-
-
-
-
 }
-
-
-
-

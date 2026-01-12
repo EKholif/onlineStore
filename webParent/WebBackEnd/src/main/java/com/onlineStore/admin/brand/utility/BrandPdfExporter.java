@@ -52,7 +52,18 @@ public class BrandPdfExporter extends AbstractExporter {
             headerTable.setWidthPercentage(10);
 
             // Add logo
-            Image logo = Image.getInstance("categories-photos/rr.png");
+            // AG-FIX-LEGACY: Load generic logo or use tenant-specific logic in future
+            // usage of hardcoded 'categories-photos' is strictly forbidden.
+            // Using generic placeholder from classpath if available, else skipping.
+            Image logo = null;
+            try {
+                logo = Image.getInstance(getClass().getResource("/static/images/logo.png"));
+            } catch (Exception e) {
+                // Fallback or ignore if no default logo
+            }
+
+            if (logo == null)
+                return; // Skip if no logo found
 
             float percentage = 10f; // Adjust this value as needed
             float width = logo.getWidth() * percentage / 100;
@@ -80,7 +91,6 @@ public class BrandPdfExporter extends AbstractExporter {
             table.addCell(String.valueOf(brand.getId()));
             table.addCell(brand.getName());
 
-
         }
 
     }
@@ -90,7 +100,6 @@ public class BrandPdfExporter extends AbstractExporter {
         headerFont.setColor(WHITE);
 
         PdfPCell cell = new PdfPCell();
-
 
         cell.setBackgroundColor(BLUE);
         cell.setPadding(5);

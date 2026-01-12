@@ -1,0 +1,24 @@
+# Architecture Watchdog Implementation
+
+- [x] Analyze existing architecture rules and knowledge components <!-- id: 0 -->
+    - [x] Review `ArchitectureEnforcementTest.java` for rules reuse <!-- id: 1 -->
+    - [x] Review `KnowledgeBootstrap.java` <!-- id: 2 -->
+    - [x] Create `implementation_plan.md` <!-- id: 3 -->
+- [/] Implement Core Watchdog Service <!-- id: 4 -->
+    - [x] Create `ArchitectureWatchdogService` in `WebBackEnd` <!-- id: 5 -->
+    - [x] Implement `FileSystemMonitor` (Java WatchService) <!-- id: 6 -->
+    - [x] Implement violation logging and reporting structure <!-- id: 7 -->
+- [x] Implement Runtime Monitors <!-- id: 8 -->
+    - [x] Asset operation interceptors (AOP/Listeners) <!-- id: 9 -->
+    - [x] Tenant path validation logic <!-- id: 10 -->
+    - [x] Legacy path detection <!-- id: 11 -->
+- [/] Create Reporting Mechanisms <!-- id: 12 -->
+    - [x] `runtime_violation_report.md` generation <!-- id: 13 -->
+    - [x] `watchdog_status_report.html` generation <!-- id: 14 -->
+- [x] Verification and Testing <!-- id: 15 -->
+    - [x] Verify file system monitoring works <!-- id: 16 -->
+    - [x] Verify asset violation detection <!-- id: 17 -->
+    - [x] Manual test of reporting <!-- id: 18 -->
+- [x] Release Documentation <!-- id: 19 -->
+    - [x] Generate `release_notes.md` <!-- id: 20 -->
+    - [x] Generate `release_notes.html` <!-- id: 21 -->
