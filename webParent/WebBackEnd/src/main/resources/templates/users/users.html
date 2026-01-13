@@ -35,8 +35,8 @@
         <div class="less-details ">
             <div class="row m-1" th:each="user: ${users}" tr>
                 <div class="col-4">
-                    <span class="fas fa-user  fa-fade fa-2x icon-golden " th:if="${user.user_bio == null}"></span>
-                    <img class="rounded mx-auto  d-block" style="width: 100px" th:if="${user.user_bio != null}"
+                    <span class="fas fa-user  fa-fade fa-2x icon-golden " th:if="${user.photos == null}"></span>
+                    <img class="rounded mx-auto  d-block" style="width: 100px" th:if="${user.photos != null}"
                          th:src="@{${user.getImagePath()}}"/>
                 </div>
                 <div class="col-8">
@@ -94,9 +94,9 @@
                     <td th:text="${user.getId()}"></td>
                     <td>
                                 <span class="fas fa-user  fa-fade fa-2x icon-golden "
-                                      th:if="${user.user_bio == null}"></span>
+                                      th:if="${user.photos == null}"></span>
                         <img class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"
-                             th:if="${user.user_bio != null}" th:src=" @{${user.getImagePath()}}"/>
+                             th:if="${user.photos != null}" th:src=" @{${user.getImagePath()}}"/>
                     </td>
                     <td th:text="${user.getfirstName}"></td>
                     <td th:text="${user.getLastName}"></td>

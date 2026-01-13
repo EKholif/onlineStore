@@ -1,7 +1,7 @@
 id: 00-INTENT
 type: INTENT
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
-  previousVersion: null, updatedAt: '2026-01-12T17:15:23.694908300', version: 0.1.0}
+  previousVersion: null, updatedAt: '2026-01-13T16:41:36.897800600', version: 0.1.0}
 personas: null
 content:
   intent:

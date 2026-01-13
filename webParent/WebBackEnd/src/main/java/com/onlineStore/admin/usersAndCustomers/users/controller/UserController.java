@@ -1,6 +1,7 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 import com.onlineStore.admin.UsernameNotFoundException;
+import com.onlineStore.admin.security.StoreUserDetails;
 import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
@@ -120,7 +121,7 @@ public class UserController {
     private void savePhoto(User user, MultipartFile multipartFile, String dirName) throws IOException {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
-        user.setUser_bio(fileName);
+        user.setPhotos(fileName);
 
         User savedUser = service.saveUser(user);
 
@@ -174,7 +175,7 @@ public class UserController {
             if (user.getPassword().isEmpty()) {
 
                 if (multipartFile.isEmpty()) {
-                    BeanUtils.copyProperties(user, updateUser, "id", "user_bio", "password");
+                    BeanUtils.copyProperties(user, updateUser, "id", "photos", "password");
                     service.saveUpdatededUser(updateUser);
 
                 } else if (!multipartFile.isEmpty()) {
@@ -184,7 +185,7 @@ public class UserController {
                             .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                     // AG-ASSET-PATH-002: Use centralized path from Entity
                     String uploadDir = updateUser.getImageDir();
-                    user.setUser_bio(fileName);
+                    user.setPhotos(fileName);
                     BeanUtils.copyProperties(user, updateUser, "id", "password");
                     service.saveUpdatededUser(updateUser);
                     FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
@@ -195,7 +196,7 @@ public class UserController {
 
                 if (multipartFile.isEmpty()) {
 
-                    BeanUtils.copyProperties(user, updateUser, "id", "user_bio");
+                    BeanUtils.copyProperties(user, updateUser, "id", "photos");
 
                     service.saveUser(updateUser);
 
@@ -205,12 +206,20 @@ public class UserController {
                     String fileName = StringUtils
                             .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                     String uploadDir = updateUser.getImageDir();
-                    user.setUser_bio(fileName);
+                    user.setPhotos(fileName);
                     BeanUtils.copyProperties(user, updateUser, "id");
                     service.saveUser(updateUser);
                     FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
                 }
             }
+            // AG-SEC-FIX: Refresh Security Context to reflected changes immediately in UI
+            // (e.g. Navbar)
+            StoreUserDetails userDetails = new StoreUserDetails(service.getUser(user.getId()));
+            org.springframework.security.core.Authentication authentication = new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
+                    userDetails, userDetails.getPassword(), userDetails.getAuthorities());
+            org.springframework.security.core.context.SecurityContextHolder.getContext()
+                    .setAuthentication(authentication);
+
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

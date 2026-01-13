@@ -8,26 +8,116 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-150630.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151026.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151342.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151353.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151401.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151409.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151509.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152148.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152324.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152518.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152525.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152530.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152539.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152632.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152850.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/customer/controller/CustomerRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/usersAndCustomers/customer/service/CustomerUniqueEmailTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/brands/96/45f5eba5_a6843230.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/customers/85/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/menu/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/menu/MenuType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/section/ArticleSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/section/BrandSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/section/CategorySection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/section/ProductSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/section/Section.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/section/SectionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161404.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161725.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161823.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161845.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162236.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162301.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162313.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162319.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162503.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-163104.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-163120.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-163135.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-170543.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-170913.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-171523.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-171545.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-171553.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014557.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014606.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014633.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014652.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014704.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014817.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014939.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-015124.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020214.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020221.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020222.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020310.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020808.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023122.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023515.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023527.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023624.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023634.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023857.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023902.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024110.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024118.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024210.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024221.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024232.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024250.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024734.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024741.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-12.0.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-13.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/menu/MenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/menu/MenuNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/menu/MenuRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/menu/MenuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/AllCategoriesSectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/ArticleSectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/BrandSectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/CategorySectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/GeneralSectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/ProductSectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/SectionNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/SectionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/SectionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/SectionUnmoveableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/section/TextSectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/menus/menu_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/all_categories_section_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/article_section_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/brand_section_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/category_section_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/general_section_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/product_section_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/sections.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/text_section_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/menu/MenuControllerTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/menu/MenuRepositoryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/menu/MenuServiceTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/section/GeneralSectionControllerTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/section/SectionRepositoryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/section/SectionServiceTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/customers/10/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/customers/7/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/products/69/8ae17bbee4fec22955ebdabca400a629.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/products/69/extras/45f5eba5_a6843230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/products/73/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/users/18/8efe822f44e536affa464ac16a603483.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/users/2/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/users/36/8efe822f44e536affa464ac16a603483.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/users/6/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/brands/92/45f5eba5_a6843230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/brands/97/45f5eba5_a6843230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/categories/36/3c5f02a6_75b2d7c2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/categories/37/8ae17bbee4fec22955ebdabca400a629.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/customers/84/8efe822f44e536affa464ac16a603483.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/customers/84/Alienware-Logo-head-while.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/customers/85/3fc349d6beaed0138151295960278aeb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/customers/86/14f38f8cfd0b5389a211054b20083b8c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/products/152/8ae17bbee4fec22955ebdabca400a629.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/products/152/extras/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/services/9/50938e2c_c780cf3d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/users/260/alienware_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/users/261/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/users/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
@@ -37,14 +127,21 @@
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/RULE/RULE-001-TEST.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/RULE/RULE-001-TEST.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_preview.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-12.md" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-12.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/ThemeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/ThemeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/usersAndCustomers/users/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/theme_settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/theme_settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/drop-down-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/drop-down-menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/users/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/brands/97/8c02662811277bacd09ea2389c572119.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/users/261/8efe822f44e536affa464ac16a603483.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +205,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/resources/anti-gravity",
+    "last_opened_file_path": "C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/resources/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -122,6 +219,7 @@
   },
   "keyToStringList": {
     "ChangesTree.GroupingKeys": [
+      "directory",
       "module",
       "repository"
     ],
@@ -132,11 +230,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\resources\templates\products" />
-      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\resources\templates\articles" />
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\resources\templates" />
-      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\comm\src\main\java\com\onlineStoreCom\entity\exception" />
-      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\java\com\onlineStore\admin\article" />
+      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\test\java\com\onlineStore\admin" />
+      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\java\com\onlineStore\admin" />
+      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\comm\src\main\java\com\onlineStoreCom\entity" />
+      <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\comm\src\main\java\com\onlineStoreCom\entity\menu" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\resources\anti-gravity" />
@@ -415,7 +513,7 @@
       <workItem from="1767569839997" duration="295000" />
       <workItem from="1767570166704" duration="1428000" />
       <workItem from="1767692102314" duration="34393000" />
-      <workItem from="1767921536327" duration="40433000" />
+      <workItem from="1767921536327" duration="52532000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -657,13 +755,27 @@
       <option name="project" value="LOCAL" />
       <updated>1768224687118</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Add tenant migration logs, refactor user and controller code for improved email uniqueness checks and formatting">
+      <option name="closed" value="true" />
+      <created>1768230932496</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1768230932496</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1ae978fb-079d-4afd-9783-e5a0451142ff" value="TOOL_WINDOW" />
+        <entry key="5d6bcfa8-0151-4110-b11b-763c2cf5a45c" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -681,6 +793,56 @@
     </option>
     <option name="TAB_STATES">
       <map>
+        <entry key="1ae978fb-079d-4afd-9783-e5a0451142ff">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
+        <entry key="5d6bcfa8-0151-4110-b11b-763c2cf5a45c">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -728,7 +890,8 @@
     <MESSAGE value="Refactor YAML files for improved formatting and consistency across knowledge system configurations" />
     <MESSAGE value="Add tenant migration logs and refactor YAML files for improved formatting" />
     <MESSAGE value="Add tenant migration logs, cleanup logs, and refactor YAML files for improved formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tenant migration logs, cleanup logs, and refactor YAML files for improved formatting" />
+    <MESSAGE value="Add tenant migration logs, refactor user and controller code for improved email uniqueness checks and formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add tenant migration logs, refactor user and controller code for improved email uniqueness checks and formatting" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -193,9 +193,10 @@ public class ThemeController {
 
         // Dropdown Overrides (Scoped to navbar-top)
         css.append(".navbar-top .dropdown-menu { background-color: var(--theme-header-dropdown-bg) !important; }\n");
-        css.append(".navbar-top .dropdown-item { color: var(--theme-header-dropdown-color) !important; }\n");
         css.append(
-                ".navbar-top .dropdown-item:hover { background-color: var(--theme-header-dropdown-hover-bg, #6c757d) !important; color: #fff !important; }\n");
+                ".navbar-top .dropdown-item, .navbar-top .dropdown-menu .nav-link { color: var(--theme-header-dropdown-color) !important; }\n");
+        css.append(
+                ".navbar-top .dropdown-item:hover, .navbar-top .dropdown-menu .nav-link:hover { background-color: var(--theme-header-dropdown-hover-bg, #6c757d) !important; color: #fff !important; }\n");
 
         css.append("body { font-family: var(--theme-font-family, sans-serif) !important; }\n");
         css.append("body { font-size: var(--theme-font-size, 14px); }\n");

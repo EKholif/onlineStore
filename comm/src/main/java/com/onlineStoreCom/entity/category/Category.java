@@ -3,6 +3,7 @@ package com.onlineStoreCom.entity.category;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.setting.subsetting.HierarchicalEntity;
 import com.onlineStoreCom.tenant.TenantAware;
+import com.onlineStoreCom.tenant.TenantContext;
 import com.onlineStoreCom.tenant.TenantListener;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Filter;
@@ -148,21 +149,27 @@ public class Category extends HierarchicalEntity<Category> implements Comparable
 
     @Transient
     public String getCatImagePath() {
-        String dirName = "/categories-photos/";
-
-        if (id == null || id < 0 || image == null || image.isEmpty()) {
+        if (id == null || image == null || image.isEmpty()) {
             return "/images/bob.png";
         }
-
-        return dirName + this.getTenantId() + "/" + this.id + '/' + this.image;
+        Long effectiveTenantId = this.tenantId;
+        if (effectiveTenantId == null) {
+            effectiveTenantId = TenantContext.getTenantId();
+        }
+        // AG-ASSET-PATH-005: Standardized tenant asset path
+        return "/tenants/" + effectiveTenantId + "/assets/categories/" + this.id + "/" + this.image;
     }
 
     @Transient
     public String getImageDir() {
-        String dirName = "categories-photos/";
-        if (id < 0 || image == null)
-            return "/images/bob.png";
-        return dirName + this.getTenantId() + "/" + this.id + "/";
+        if (id == null)
+            return null;
+        Long effectiveTenantId = this.tenantId;
+        if (effectiveTenantId == null) {
+            effectiveTenantId = TenantContext.getTenantId();
+        }
+        // AG-ASSET-PATH-005: Standardized tenant asset path
+        return "tenants/" + effectiveTenantId + "/assets/categories/" + this.id + "/";
     }
 
     @Override

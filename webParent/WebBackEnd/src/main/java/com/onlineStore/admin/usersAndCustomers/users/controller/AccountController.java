@@ -38,7 +38,7 @@ public class AccountController {
             model.addObject("listAllRoles", user.getRoles());
             model.addObject("pageTitle", "Edit User " + user.getfirstName() + " (ID: " + id + ")");
             model.addObject("listAllRoles", listAllRoles);
-            model.addObject("saveChanges", "/save-edit-user");
+            model.addObject("saveChanges", "/users/save-edit-user");
             model.addObject("id", id);
             return model;
 
@@ -46,15 +46,7 @@ public class AccountController {
             redirectAttributes.addFlashAttribute("message", ex.getMessage());
             return new ModelAndView("redirect:/users");
 
-
         }
     }
 
-
 }
-
-
-
-
-
-

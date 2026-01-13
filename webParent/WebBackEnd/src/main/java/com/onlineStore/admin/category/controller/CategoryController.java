@@ -83,7 +83,7 @@ public class CategoryController {
             category.setImage(fileName);
             Category savedCategory = service.saveCategory(category);
 
-            String uploadDir = "tenants/" + tenantId + "/assets/categories/" + savedCategory.getId();
+            String uploadDir = savedCategory.getImageDir();
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -139,8 +139,7 @@ public class CategoryController {
             FileUploadUtil.cleanDir(updateCategory.getImageDir());
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
             // AG-ASSET-PATH-012: Update path for category updates
-            String uploadDir = "tenants/" + updateCategory.getTenantId() + "/assets/categories/"
-                    + updateCategory.getId();
+            String uploadDir = updateCategory.getImageDir();
             category.setImage(fileName);
             BeanUtils.copyProperties(category, updateCategory, "id", "tenantId");
 

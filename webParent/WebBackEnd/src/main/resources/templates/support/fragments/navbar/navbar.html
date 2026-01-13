@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
@@ -25,7 +27,7 @@
                            data-bs-toggle="dropdown" href="#" role="button">
                             Manage Users
                         </a>
-                        <ul class="dropdown-menu bg-dark">
+                        <ul class="dropdown-menu">
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('users/users','Users')}">
                             </li>
@@ -41,6 +43,8 @@
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('customer/new-customer-form','New customer')}">
                             </li>
+
+
                         </ul>
                     </li>
 
@@ -49,7 +53,7 @@
                                data-bs-toggle="dropdown" href="#" role="button">
                                 Category Product
                             </a>
-                            <ul class="dropdown-menu bg-dark">
+                            <ul class="dropdown-menu">
                                 <li class="dropdown-item text-dark-emphasis"
                                     th:replace="~{support/fragments/navbar/nav_link::contant('categories/categories','categories')}">
                                 </li>
@@ -97,7 +101,7 @@
                            data-bs-toggle="dropdown" href="#" role="button">
                             Settings
                         </a>
-                        <ul class="dropdown-menu bg-dark">
+                        <ul class="dropdown-menu">
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('settings','settings')}">
                             </li>
@@ -112,7 +116,7 @@
                            data-bs-toggle="dropdown" href="#" role="button">
                             Shipping
                         </a>
-                        <ul class="dropdown-menu bg-dark">
+                        <ul class="dropdown-menu">
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('shipping-rate','Shipping Rate')}">
                             </li>
@@ -127,7 +131,7 @@
                            data-bs-toggle="dropdown" href="#" role="button">
                             Order
                         </a>
-                        <ul class="dropdown-menu bg-dark">
+                        <ul class="dropdown-menu">
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('orders','Orders')}">
                             </li>
@@ -143,6 +147,17 @@
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('articles','Articles')}">
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/menus}">Menus</a>
+                            </li>
+                            </th:block>
+
+                            <th:block sec:authorize="hasAuthority('Editor')">
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/sections}">Home Page</a>
+                                </li>
+                            </th:block>
                         </ul>
                     </li>
 
@@ -151,7 +166,7 @@
                            data-bs-toggle="dropdown" href="#" role="button">
                             Content
                         </a>
-                        <ul class="dropdown-menu bg-dark">
+                        <ul class="dropdown-menu">
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('convert/convert','PdfConvert')}">
                             </li>
@@ -174,10 +189,8 @@
                     </ul>
                 </div>
             </div>
-</div>
     </nav>
 </div>
-
 </body>
 
 </html>

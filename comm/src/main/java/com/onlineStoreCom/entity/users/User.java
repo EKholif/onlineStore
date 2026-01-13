@@ -126,14 +126,25 @@ public class User extends IdBasedEntity {
                 '}';
     }
 
+    @Column(name = "photos", length = 64)
+    private String photos;
+
     @Transient
     public String getImagePath() {
-        if (id == null || user_bio == null)
+        if (id == null || photos == null)
             return "/images/bob.png";
 
         // AG-ASSET-PATH-004: Standardized tenant asset path
         // Returns: /tenants/{tenantId}/assets/users/{id}/{filename}
-        return "/tenants/" + this.getTenantId() + "/assets/users/" + this.id + "/" + this.user_bio;
+        return "/tenants/" + this.getTenantId() + "/assets/users/" + this.id + "/" + this.photos;
+    }
+
+    public String getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String photos) {
+        this.photos = photos;
     }
 
     @Transient
