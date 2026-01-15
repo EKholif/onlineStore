@@ -1,12 +1,10 @@
 package com.onlineStoreCom.security.tenant;
 
 import com.onlineStoreCom.tenant.TenantContext;
-import com.onlineStoreCom.tenant.TenantDetails;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
@@ -49,6 +47,14 @@ public class TenantContextFilter extends OncePerRequestFilter {
 
         try {
             Long tenantId = null;
+            String serverName = request.getServerName();
+            if (serverName.equalsIgnoreCase("localhost")) {
+                String hostHeader = request.getHeader("Host");
+                if (hostHeader != null) {
+                    serverName = hostHeader.split(":")[0];
+                }
+            }
+            System.out.println("DEBUG: TenantContextFilter processing: " + path + ", ServerName: " + serverName);
 
             // 0. Try Query Parameter (Explicit Override for Testing)
             String paramTenant = request.getParameter("tenantId");
@@ -72,7 +78,40 @@ public class TenantContextFilter extends OncePerRequestFilter {
                 }
             }
 
-            // 2. Try JWT Cookie (ACCESS_TOKEN)
+            // 2. Try Subdomain (ServerName) [AG-TENANT-PROTOCOL] - High Priority
+            if (tenantId == null) {
+                // String serverName = request.getServerName(); // Removed duplicate
+                String tenantKey = extractTenantKey(serverName);
+
+                if (tenantKey != null) {
+                    try {
+                        System.out.println("DEBUG: Resolving tenantKey: " + tenantKey);
+                        // Native Query used to decouple from Repository in Filter
+                        Object result = entityManager.createNativeQuery("SELECT id FROM tenants WHERE code = :code")
+                                .setParameter("code", tenantKey)
+                                .getSingleResult();
+                        System.out.println("DEBUG: Query Result: " + result);
+
+                        if (result != null) {
+                            tenantId = ((Number) result).longValue();
+                            LOGGER.debug("Found Tenant ID in Subdomain: {} -> {}", tenantKey, tenantId);
+                        }
+                    } catch (jakarta.persistence.NoResultException e) {
+                        System.err.println("DEBUG: Tenant Not Found (NoResult) for key: " + tenantKey);
+                        LOGGER.warn("Tenant not found for key: {}. Native Query failed.", tenantKey);
+                        // [AG-TEN-SEC-008] Handle Invalid Tenant Logic
+                        handleInvalidTenant(request, response);
+                        return; // Stop filter chain
+                    } catch (Exception e) {
+                        System.err.println("DEBUG: Exception resolving tenant: " + e.getMessage());
+                        e.printStackTrace();
+                        LOGGER.error("Error resolving tenant from subdomain: {}. Exception: {}", tenantKey,
+                                e.getMessage(), e);
+                    }
+                }
+            }
+
+            // 3. Try JWT Cookie (ACCESS_TOKEN)
             if (tenantId == null && jwtHelper != null) {
                 tenantId = jwtHelper.extractTenantIdFromRequest(request);
                 if (tenantId != null) {
@@ -80,7 +119,7 @@ public class TenantContextFilter extends OncePerRequestFilter {
                 }
             }
 
-            // 3. Try Session (Fallback)
+            // 4. Try Session (Fallback)
             if (tenantId == null) {
                 Object sessionVal = request.getSession().getAttribute("TENANT_ID");
                 if (sessionVal instanceof Long) {
@@ -108,11 +147,31 @@ public class TenantContextFilter extends OncePerRequestFilter {
                 enableHibernateFilter(0L);
             }
 
+            if (tenantId != null) {
+                response.addHeader("X-Tenant-ID", String.valueOf(tenantId));
+            }
             chain.doFilter(request, response);
 
         } finally {
             TenantContext.clear();
         }
+    }
+
+    private void handleInvalidTenant(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // [AG-TEN-SEC-008] STRICT ISOLATION RECOVERY
+        // If tenant is invalid or missing, redirect to central landing page
+        // Hardcoded for now, potential to move to properties
+        String landingPage = "http://www.localhost:720"; // Or external landing
+
+        // Avoid infinite redirect loop if we are already on the landing page
+        String serverName = request.getServerName();
+        if (serverName.equalsIgnoreCase("www.localhost") || serverName.equalsIgnoreCase("localhost")) {
+            // We are on landing, just proceed (Tenant ID 0 will be set later)
+            return;
+        }
+
+        LOGGER.warn("Invalid Tenant for host: {}. Redirecting to Landing Page: {}", serverName, landingPage);
+        response.sendRedirect(landingPage);
     }
 
     private void enableHibernateFilter(Long tenantId) {
@@ -129,5 +188,27 @@ public class TenantContextFilter extends OncePerRequestFilter {
         // We need TenantContext for CSS (Theme) and Images (Logo).
         // Only exclude explicit login endpoint avoiding circular checks?
         return path.equals("/login");
+    }
+
+    private String extractTenantKey(String serverName) {
+        if (serverName == null || serverName.equalsIgnoreCase("localhost"))
+            return null;
+
+        // Guard: IP address (simple check)
+        if (serverName.matches("^\\d+\\.\\d+\\.\\d+\\.\\d+$"))
+            return null;
+
+        String[] parts = serverName.split("\\.");
+
+        // Guard: www
+        if (parts[0].equalsIgnoreCase("www"))
+            return null;
+
+        // Return first part as tenant key
+        if (parts.length > 0) {
+            return parts[0];
+        }
+
+        return null;
     }
 }

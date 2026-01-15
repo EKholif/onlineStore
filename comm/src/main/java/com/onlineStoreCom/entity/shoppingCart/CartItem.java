@@ -11,24 +11,23 @@ import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "cart_items")
-public class CartItem extends IdBasedEntity{
-	
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+public class CartItem extends IdBasedEntity {
+
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-
-
 	@ManyToOne
-	@JoinColumn(name = "product_id")	
+    @JoinColumn(name = "product_id")
 	private Product product;
-	
+
 	private int quantity;
-	
+
 	@Transient
 	private float shippingCost;
-	
-	public CartItem() {
+
+    public CartItem() {
 	}
 
 	public Customer getCustomer() {
@@ -57,7 +56,8 @@ public class CartItem extends IdBasedEntity{
 
 	@Override
 	public String toString() {
-		return "CartItem [id=" + id + ", customer=" + customer.getFullName() + ", product=" + product.getShortName() + ", quantity=" + quantity
+        return "CartItem [id=" + id + ", customer=" + customer.getFullName() + ", product=" + product.getShortName()
+                + ", quantity=" + quantity
 				+ "]";
 	}
 
@@ -68,12 +68,11 @@ public class CartItem extends IdBasedEntity{
 
 	@Transient
 	public float getShippingCost() {
-		return this.shippingCost=shippingCost;
+        return this.shippingCost = shippingCost;
 	}
 
 	public void setShippingCost(float shippingCost) {
 		this.shippingCost = shippingCost;
 	}
-	
-	
+
 }

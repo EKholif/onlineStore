@@ -1,0 +1,21 @@
+consistency_report:
+  timestamp: 2026-01-14T22:59:59.506984900Z
+  tenants:
+    - id: 1
+      name: Master Platform
+      actions:
+        - Seeded default theme settings
+        - Seeded default GENERAL settings (Site Name, Logo, Copyright)
+        - Seeded default CURRENCY settings (Base Currency: USD)
+    - id: 4
+      name: Online Store
+      actions:
+    - id: 5
+      name: Hotel Booking
+      actions:
+    - id: 6
+      name: Car Rental
+      actions:
+    - id: 7
+      name: Restaurant
+      actions:

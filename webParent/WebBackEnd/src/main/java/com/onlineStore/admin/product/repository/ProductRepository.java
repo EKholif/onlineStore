@@ -34,10 +34,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     // protection.
     // I will revert standard JPQL queries first.
 
-    @Query(value = "UPDATE products SET enable=true WHERE tenant_id = :tenantId", nativeQuery = true)
+    // [AG-TEN-RISK-001] Refactored to JPQL to utilize Hibernate Tenant Filter
+    @Query("UPDATE Product p SET p.enabled = true")
     @Modifying
     @Transactional
-    void enableProductAll(@Param("tenantId") Long tenantId);
+    void enableProductAll();
 
     @Query("SELECT p FROM Product p WHERE p.name LIKE %?1%")
     public Page<Product> searchProductsByName(String keyword, Pageable pageable);

@@ -71,6 +71,9 @@
                     </th>
                     <th> User Photo</th>
                     <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('tenantId', 'Tenant Id')}">
+                    </th>
+                    <th
                             th:replace="~{support/fragments/standard/table_fragments :: column_link('firstName', 'First Name')}">
                     </th>
                     <th
@@ -98,6 +101,7 @@
                         <img class="rounded mx-auto  d-block" style="width: 40px; height: 40px;"
                              th:if="${user.photos != null}" th:src=" @{${user.getImagePath()}}"/>
                     </td>
+                    <td th:text="${user.tenantId}"></td>
                     <td th:text="${user.getfirstName}"></td>
                     <td th:text="${user.getLastName}"></td>
                     <td th:text="${user.getEmail}"></td>

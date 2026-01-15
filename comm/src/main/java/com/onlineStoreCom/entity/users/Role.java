@@ -23,6 +23,11 @@ public class Role extends HierarchicalEntity<Role> implements GlobalData {
     @Column(name = "descrption", length = 150, nullable = false)
     private String descrption;
 
+    @Override
+    public Integer getId() {
+        return super.getId();
+    }
+
     public Role(String roleName) {
         super();
         this.name = roleName;

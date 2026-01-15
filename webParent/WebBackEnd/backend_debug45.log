@@ -1,0 +1,379 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.onlineStore:WebBackEnd >---------------------
+[INFO] Building WebBackEnd 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.1.4:run (default-cli) > test-compile @ WebBackEnd >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ WebBackEnd ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 187 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ WebBackEnd ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 170 source files with javac [debug release 19] to target\classes
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/convertUtile/ExcelToPdfConverter.java: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\java\com\onlineStore\admin\pdfConvert\convertUtile\ExcelToPdfConverter.java uses or overrides a deprecated API.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/convertUtile/ExcelToPdfConverter.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/governance/watchdog/FileSystemMonitor.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/governance/watchdog/FileSystemMonitor.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ WebBackEnd ---
+[INFO] skip non existing resourceDirectory C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ WebBackEnd ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 63 source files with javac [debug release 19] to target\test-classes
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaInspectionTest.java: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\test\java\com\onlineStore\admin\SchemaInspectionTest.java uses unchecked or unsafe operations.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaInspectionTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] <<< spring-boot:3.1.4:run (default-cli) < test-compile @ WebBackEnd <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.1.4:run (default-cli) @ WebBackEnd ---
+[INFO] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T20:13:54.446+02:00  INFO 20840 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 20840 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-14T20:13:54.448+02:00  INFO 20840 --- [  restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-14T20:13:54.506+02:00  INFO 20840 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-14T20:13:54.507+02:00  INFO 20840 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-14T20:13:55.250+02:00  INFO 20840 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T20:13:55.364+02:00  INFO 20840 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 21 JPA repository interfaces.
+2026-01-14T20:13:56.654+02:00  INFO 20840 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-14T20:13:56.666+02:00  INFO 20840 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T20:13:56.668+02:00  INFO 20840 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T20:13:56.740+02:00  INFO 20840 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T20:13:56.741+02:00  INFO 20840 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2232 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-14T20:13:56.853+02:00  INFO 20840 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T20:13:56.899+02:00  INFO 20840 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-14T20:13:56.902+02:00  INFO 20840 --- [  restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-14T20:13:57.027+02:00  INFO 20840 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T20:13:57.145+02:00  INFO 20840 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T20:13:57.160+02:00  INFO 20840 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-14T20:13:57.487+02:00  INFO 20840 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d20045f
+2026-01-14T20:13:57.489+02:00  INFO 20840 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-14T20:13:57.919+02:00  INFO 20840 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T20:13:58.916+02:00  INFO 20840 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T20:13:59.456+02:00  INFO 20840 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T20:13:59.669+02:00  INFO 20840 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-14T20:13:59.669+02:00  INFO 20840 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-14T20:14:00.053+02:00  INFO 20840 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+? Anti-Gravity Knowledge System is starting...
+? Loading knowledge file: 00-intent.yml
+   + Registered: 00-INTENT (INTENT)
+? Loading knowledge file: 00-test-rule.yml
+   + Registered: RULE-001-TEST (RULE)
+? Loading knowledge file: 01-core-principles.yml
+   + Registered: 01-CORE-PRINCIPLES (PRINCIPLE)
+? Loading knowledge file: 02-rule-mapping.yml
+   + Registered: 02-RULE-MAPPING (UNSTRUCTURED)
+? Loading knowledge file: 03-business-scenarios.yml
+   + Registered: 03-BUSINESS-SCENARIOS (BUSINESS_LOGIC)
+? Loading knowledge file: 04-ai-prompts.yml
+   + Registered: 04-AI-PROMPTS (AI_CONTEXT)
+? Loading knowledge file: 05-pitch-deck.yml
+   + Registered: 05-PITCH-DECK (BUSINESS_PITCH)
+? Loading knowledge file: 06-governance.yml
+   + Registered: 06-GOVERNANCE (GOVERNANCE)
+? Loading knowledge file: 07-shared-reference-data.yml
+   + Registered: 07-SHARED-REFERENCE-DATA (REFERENCE_DATA)
+? Loading knowledge file: 08-tenant-isolation.yml
+   + Registered: 08-TENANT-ISOLATION (RULE)
+? Loading knowledge file: 10-storage-structure.yml
+   + Registered: 10-STORAGE-STRUCTURE (TECHNICAL_SPEC)
+? Knowledge System loaded successfully. Total entries: 11
+? Starting Asset Reorganization with Logging...
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 0
+Errors: 0
+=========================================
+? Generated HTML Preview: knowledge_preview.html
+? Generated Folder Structure: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\knowledge_export\tenants
+?? Autonomous Architecture & Runtime Auditor [READ-ONLY MODE] scanning...
+System Audit Completed: WARNINGS
+? Architecture Watchdog starting...
+2026-01-14T20:14:00.944+02:00  INFO 20840 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for tenants
+2026-01-14T20:14:00.946+02:00  INFO 20840 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for .
+? Architecture Watchdog is active and monitoring.
+2026-01-14T20:14:00.947+02:00  INFO 20840 --- [Watchdog-Thread] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: FileSystemMonitor thread started.
+2026-01-14T20:14:01.997+02:00  WARN 20840 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T20:14:02.768+02:00  INFO 20840 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-14T20:14:02.832+02:00  INFO 20840 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@53e854e5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7cb86baa, org.springframework.security.web.context.SecurityContextHolderFilter@1581f682, org.springframework.security.web.header.HeaderWriterFilter@53e10ee7, org.springframework.security.web.csrf.CsrfFilter@3fe356b9, org.springframework.security.web.authentication.logout.LogoutFilter@7cb17cbf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6b289ae8, com.onlineStoreCom.security.tenant.TenantContextFilter@51e02b97, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@304efa11, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6676fd93, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@6c16bc57, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@578dee00, org.springframework.security.web.access.ExceptionTranslationFilter@2266a6f5, org.springframework.security.web.access.intercept.AuthorizationFilter@37611404]
+2026-01-14T20:14:03.222+02:00  INFO 20840 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-14T20:14:03.319+02:00  INFO 20840 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-14T20:14:03.333+02:00  INFO 20840 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 9.393 seconds (process running for 10.088)
+2026-01-14T20:14:03.416+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ================================================================================
+2026-01-14T20:14:03.416+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : 🔧 FIXING TENANT 4 DATA MIGRATION
+2026-01-14T20:14:03.416+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ================================================================================
+2026-01-14T20:14:03.436+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE categories SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.439+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 categories: tenant_id 1 → 4
+2026-01-14T20:14:03.440+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE brands SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.441+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 brands: tenant_id 1 → 4
+2026-01-14T20:14:03.442+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE products SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.445+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 products: tenant_id 1 → 4
+2026-01-14T20:14:03.446+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        :     DELETE FROM settings
+    WHERE tenant_id = 1
+    AND `key` IN (
+        SELECT `key` FROM (
+            SELECT `key` FROM settings WHERE tenant_id = 4
+        ) as temp
+    )
+
+2026-01-14T20:14:03.448+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ⚠️ Deleted 10 duplicate settings from Tenant 1
+2026-01-14T20:14:03.449+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE settings SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.450+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 settings: tenant_id 1 → 4
+2026-01-14T20:14:03.450+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE customers SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.451+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 customers: tenant_id 1 → 4
+2026-01-14T20:14:03.453+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE orders SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.454+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 orders: tenant_id 1 → 4
+2026-01-14T20:14:03.454+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE reviews SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.457+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 reviews: tenant_id 1 → 4
+2026-01-14T20:14:03.457+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE articles SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.459+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE menus SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.461+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE sections SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-14T20:14:03.462+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed Content: 0 articles, 0 menus, 0 sections
+2026-01-14T20:14:03.474+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        :     SELECT COUNT(*) FROM brands_categories bc
+    JOIN brands b ON bc.brand_id = b.id
+    JOIN categories c ON bc.category_id = c.id
+    WHERE b.tenant_id = 4 AND c.tenant_id = 1
+
+2026-01-14T20:14:03.492+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : 📊 Remaining cross-tenant refs (Tenant 4 brands → Tenant 1 categories): 0
+2026-01-14T20:14:03.492+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ✅ ALL CROSS-TENANT REFERENCES RESOLVED!
+2026-01-14T20:14:03.493+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.CorrectTenant4Data   : ================================================================================
+================================================================================
+? LIVE DEBUG: Tenant 4 ? Tenant 5 Cross-References
+================================================================================
+
+? CATEGORIES:
+2026-01-14T20:14:03.499+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 4
+2026-01-14T20:14:03.501+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 5
+  Tenant 4 categories: 33
+  Tenant 5 categories: 2
+
+?? BRANDS:
+2026-01-14T20:14:03.502+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 4
+2026-01-14T20:14:03.503+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 5
+  Tenant 4 brands: 77
+  Tenant 5 brands: 3
+
+?? PRODUCTS:
+2026-01-14T20:14:03.504+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 4
+2026-01-14T20:14:03.504+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 5
+  Tenant 4 products: 107
+  Tenant 5 products: 1
+
+? CROSS-TENANT REFERENCES (4 ? 5):
+2026-01-14T20:14:03.505+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        :     SELECT c.id, c.name, c.tenant_id, p.id, p.name, p.tenant_id
+    FROM categories c
+    JOIN categories p ON c.parent_id = p.id
+    WHERE c.tenant_id = 4 AND p.tenant_id = 5
+
+  Categories (Tenant 4) with parent (Tenant 5): 0
+2026-01-14T20:14:03.507+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        :     SELECT bc.brand_id, b.name, b.tenant_id, bc.category_id, c.name, c.tenant_id
+    FROM brands_categories bc
+    JOIN brands b ON bc.brand_id = b.id
+    JOIN categories c ON bc.category_id = c.id
+    WHERE b.tenant_id = 4 AND c.tenant_id = 5
+
+  Brands (Tenant 4) linked to categories (Tenant 5): 0
+2026-01-14T20:14:03.508+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        :     SELECT p.id, p.name, p.tenant_id, p.category_id, c.name, c.tenant_id
+    FROM products p
+    JOIN categories c ON p.category_id = c.id
+    WHERE p.tenant_id = 4 AND c.tenant_id = 5
+
+  Products (Tenant 4) with category (Tenant 5): 0
+2026-01-14T20:14:03.510+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        :     SELECT p.id, p.name, p.tenant_id, p.brand_id, b.name, b.tenant_id
+    FROM products p
+    JOIN brands b ON p.brand_id = b.id
+    WHERE p.tenant_id = 4 AND b.tenant_id = 5
+
+  Products (Tenant 4) with brand (Tenant 5): 0
+
+? CROSS-TENANT REFERENCES (5 ? 4):
+2026-01-14T20:14:03.511+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        :     SELECT bc.brand_id, b.name, b.tenant_id, bc.category_id, c.name, c.tenant_id
+    FROM brands_categories bc
+    JOIN brands b ON bc.brand_id = b.id
+    JOIN categories c ON bc.category_id = c.id
+    WHERE b.tenant_id = 5 AND c.tenant_id = 4
+
+  Brands (Tenant 5) linked to categories (Tenant 4): 0
+
+================================================================================
+? DEBUG COMPLETE
+================================================================================
+2026-01-14T20:14:03.516+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : 🕵️ STARTING MIGRATION VERIFICATION 🕵️
+2026-01-14T20:14:03.516+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 1
+2026-01-14T20:14:03.517+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 4
+2026-01-14T20:14:03.518+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [products       ] Tenant 1: 0 | Tenant 4: 107 | Status: ✅ Clean
+2026-01-14T20:14:03.518+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 1
+2026-01-14T20:14:03.520+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 4
+2026-01-14T20:14:03.520+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [categories     ] Tenant 1: 0 | Tenant 4: 33 | Status: ✅ Clean
+2026-01-14T20:14:03.520+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 1
+2026-01-14T20:14:03.521+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 4
+2026-01-14T20:14:03.521+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [brands         ] Tenant 1: 0 | Tenant 4: 77 | Status: ✅ Clean
+2026-01-14T20:14:03.521+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM customers WHERE tenant_id = 1
+2026-01-14T20:14:03.522+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM customers WHERE tenant_id = 4
+2026-01-14T20:14:03.523+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [customers      ] Tenant 1: 0 | Tenant 4: 43 | Status: ✅ Clean
+2026-01-14T20:14:03.523+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM orders WHERE tenant_id = 1
+2026-01-14T20:14:03.524+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM orders WHERE tenant_id = 4
+2026-01-14T20:14:03.525+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [orders         ] Tenant 1: 0 | Tenant 4: 160 | Status: ✅ Clean
+2026-01-14T20:14:03.525+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM reviews WHERE tenant_id = 1
+2026-01-14T20:14:03.525+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM reviews WHERE tenant_id = 4
+2026-01-14T20:14:03.527+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [reviews        ] Tenant 1: 0 | Tenant 4: 5 | Status: ✅ Clean
+2026-01-14T20:14:03.527+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM articles WHERE tenant_id = 1
+2026-01-14T20:14:03.529+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM articles WHERE tenant_id = 4
+2026-01-14T20:14:03.530+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [articles       ] Tenant 1: 0 | Tenant 4: 9 | Status: ✅ Clean
+2026-01-14T20:14:03.530+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM menus WHERE tenant_id = 1
+2026-01-14T20:14:03.531+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM menus WHERE tenant_id = 4
+2026-01-14T20:14:03.532+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [menus          ] Tenant 1: 0 | Tenant 4: 0 | Status: ✅ Clean
+2026-01-14T20:14:03.532+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM sections WHERE tenant_id = 1
+2026-01-14T20:14:03.533+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM sections WHERE tenant_id = 4
+2026-01-14T20:14:03.533+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [sections       ] Tenant 1: 0 | Tenant 4: 0 | Status: ✅ Clean
+2026-01-14T20:14:03.533+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM settings WHERE tenant_id = 1
+2026-01-14T20:14:03.534+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : SELECT COUNT(*) FROM settings WHERE tenant_id = 4
+2026-01-14T20:14:03.535+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : [settings       ] Tenant 1: 0 | Tenant 4: 39 | Status: ✅ Clean
+2026-01-14T20:14:03.536+02:00  INFO 20840 --- [  restartedMain] c.onlineStore.admin.MigrationVerifier    : 🕵️ VERIFICATION COMPLETE. Check verification_result.txt 🕵️
+? RUNNING DATA REPAIR: Fixing Broken Category Hierarchies...
+2026-01-14T20:14:03.545+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+? DATA REPAIR COMPLETE: Cross-tenant parents removed.
+2026-01-14T20:14:03.551+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : STARTING TENANT DATA VERIFICATION & SEEDING (Phase 6)
+2026-01-14T20:14:03.591+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select t1_0.id,t1_0.code,t1_0.created_at,t1_0.name,t1_0.parent_id,t1_0.status from tenants t1_0
+2026-01-14T20:14:03.606+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Master Platform [ID: 1, Code: 'master']
+2026-01-14T20:14:03.629+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.631+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : No theme settings found. Seeding default.
+2026-01-14T20:14:03.643+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.660+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.photos,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ?
+2026-01-14T20:14:03.666+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.671+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.675+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.676+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : No GENERAL settings found. Seeding defaults.
+2026-01-14T20:14:03.677+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.679+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.680+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.683+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.684+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : No CURRENCY_ID setting found. Seeding default (USD).
+2026-01-14T20:14:03.686+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.name,c1_0.symbol from currencies c1_0
+2026-01-14T20:14:03.688+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.690+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.691+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.693+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.694+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.696+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : insert into settings (category,`key`,tenant_id,value) values (?,?,?,?)
+2026-01-14T20:14:03.697+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Online Store [ID: 4, Code: 'tenant4']
+2026-01-14T20:14:03.699+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.703+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.photos,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ?
+2026-01-14T20:14:03.707+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.709+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.710+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.711+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.712+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.714+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.715+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.715+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.717+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.718+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.719+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.719+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.720+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.722+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.723+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.724+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.726+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.727+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.728+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.728+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.730+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.731+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.733+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.737+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.742+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.743+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Hotel Booking [ID: 5, Code: 'hotel']
+2026-01-14T20:14:03.746+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.751+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.photos,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ?
+2026-01-14T20:14:03.753+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.754+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.755+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.756+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.759+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.763+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.764+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Car Rental [ID: 6, Code: 'car']
+2026-01-14T20:14:03.768+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.771+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.photos,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ?
+2026-01-14T20:14:03.772+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.774+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.777+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.779+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Restaurant [ID: 7, Code: 'food']
+2026-01-14T20:14:03.781+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.784+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.photos,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ?
+2026-01-14T20:14:03.785+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.786+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.787+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-14T20:14:03.789+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.793+02:00 DEBUG 20840 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-14T20:14:03.797+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Consistency report written to: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\consistency_report.yaml
+2026-01-14T20:14:03.797+02:00  INFO 20840 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : TENANT DATA VERIFICATION COMPLETED. Report generated.
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.tenant.Tenant.children#1]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.tenant.Tenant.children#4]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.tenant.Tenant.children#5]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.tenant.Tenant.children#6]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.tenant.Tenant.children#7]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#1]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#5]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#4]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#2]
+2026-01-14T20:14:03.801+02:00  WARN 20840 --- [  restartedMain] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#3]
+2026-01-14T20:16:35.767+02:00  INFO 20840 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2026-01-14T20:16:35.784+02:00  INFO 20840 --- [       Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-14T20:16:35.787+02:00  WARN 20840 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1674)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1589)
+? Stopping Architecture Watchdog...
+2026-01-14T20:16:35.796+02:00  INFO 20840 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T20:16:35.799+02:00  INFO 20840 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-14T20:16:35.804+02:00  INFO 20840 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T20:16:35.885+02:00  INFO 20840 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 20840 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-14T20:16:35.885+02:00  INFO 20840 --- [  restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:54 min
+[INFO] Finished at: 2026-01-14T20:16:36+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.1.4:run (default-cli) on project WebBackEnd: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

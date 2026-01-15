@@ -1,0 +1,19 @@
+id: 02-RULE-MAPPING
+type: UNSTRUCTURED
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
+                                                                 previousVersion: null, updatedAt: '2026-01-13T17:44:43.251510700', version: 0.1.0 }
+personas: null
+content:
+  rules:
+    - name: Tenant Isolation
+      allowed: [ tenant_id filter, JWT-resolved tenant, system admin in system context ]
+      forbidden: [ cross-tenant access, hardcoded tenant ]
+      classes:
+        primary: [ JwtAuthenticationFilter, TenantContextHolder, BaseTenantRepository ]
+        secondary: [ HibernateFilter ]
+      test_coverage: [ integration per tenant, negative cross-tenant test ]
+    - name: Layered Architecture
+      allowed: Controller → Service → Repository
+      forbidden: [ business logic in Controller, direct Repository calls ]
+      classes:
+        primary: [ AllControllers, AllServices, BaseRepository ]

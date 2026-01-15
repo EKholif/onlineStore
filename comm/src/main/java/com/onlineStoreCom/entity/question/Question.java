@@ -10,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "questions")
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Question extends IdBasedEntity {
 
     @Column(name = "question_content", nullable = false, length = 500)

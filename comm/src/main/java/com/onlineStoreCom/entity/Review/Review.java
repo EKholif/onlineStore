@@ -16,6 +16,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "reviews")
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Review extends IdBasedEntity {
 
     /**

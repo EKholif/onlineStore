@@ -1,0 +1,1492 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.onlineStore:WebBackEnd >---------------------
+[INFO] Building WebBackEnd 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.1.4:run (default-cli) > test-compile @ WebBackEnd >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ WebBackEnd ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 185 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ WebBackEnd ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 162 source files with javac [debug release 19] to target\classes
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/convertUtile/ExcelToPdfConverter.java: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\java\com\onlineStore\admin\pdfConvert\convertUtile\ExcelToPdfConverter.java uses or overrides a deprecated API.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/convertUtile/ExcelToPdfConverter.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/governance/watchdog/FileSystemMonitor.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/governance/watchdog/FileSystemMonitor.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ WebBackEnd ---
+[INFO] skip non existing resourceDirectory C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ WebBackEnd ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 62 source files with javac [debug release 19] to target\test-classes
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaInspectionTest.java: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\test\java\com\onlineStore\admin\SchemaInspectionTest.java uses unchecked or unsafe operations.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaInspectionTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] <<< spring-boot:3.1.4:run (default-cli) < test-compile @ WebBackEnd <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.1.4:run (default-cli) @ WebBackEnd ---
+[INFO] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T00:46:06.733+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 83828 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-14T00:46:06.736+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-14T00:46:06.787+02:00  INFO 83828 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-14T00:46:06.789+02:00  INFO 83828 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-14T00:46:07.656+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T00:46:07.830+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 162 ms. Found 21 JPA repository interfaces.
+2026-01-14T00:46:09.041+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-14T00:46:09.046+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T00:46:09.046+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T00:46:09.119+02:00  INFO 83828 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T00:46:09.119+02:00  INFO 83828 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2330 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-14T00:46:09.243+02:00  INFO 83828 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T00:46:09.291+02:00  INFO 83828 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-14T00:46:09.293+02:00  INFO 83828 --- [  restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-14T00:46:09.433+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:46:09.564+02:00  INFO 83828 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T00:46:09.579+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-14T00:46:09.830+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c0d56d1
+2026-01-14T00:46:09.830+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-14T00:46:10.276+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:46:11.337+02:00  INFO 83828 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T00:46:11.766+02:00  INFO 83828 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T00:46:11.956+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-14T00:46:11.956+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-14T00:46:12.265+02:00  INFO 83828 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+? Anti-Gravity Knowledge System is starting...
+? Loading knowledge file: 00-intent.yml
+   + Registered: 00-INTENT (INTENT)
+? Loading knowledge file: 00-test-rule.yml
+   + Registered: RULE-001-TEST (RULE)
+? Loading knowledge file: 01-core-principles.yml
+   + Registered: 01-CORE-PRINCIPLES (PRINCIPLE)
+? Loading knowledge file: 02-rule-mapping.yml
+   + Registered: 02-RULE-MAPPING (UNSTRUCTURED)
+? Loading knowledge file: 03-business-scenarios.yml
+   + Registered: 03-BUSINESS-SCENARIOS (BUSINESS_LOGIC)
+? Loading knowledge file: 04-ai-prompts.yml
+   + Registered: 04-AI-PROMPTS (AI_CONTEXT)
+? Loading knowledge file: 05-pitch-deck.yml
+   + Registered: 05-PITCH-DECK (BUSINESS_PITCH)
+? Loading knowledge file: 06-governance.yml
+   + Registered: 06-GOVERNANCE (GOVERNANCE)
+? Loading knowledge file: 07-shared-reference-data.yml
+   + Registered: 07-SHARED-REFERENCE-DATA (REFERENCE_DATA)
+? Loading knowledge file: 08-tenant-isolation.yml
+   + Registered: 08-TENANT-ISOLATION (RULE)
+? Loading knowledge file: 10-storage-structure.yml
+   + Registered: 10-STORAGE-STRUCTURE (TECHNICAL_SPEC)
+? Knowledge System loaded successfully. Total entries: 11
+? Starting Asset Reorganization with Logging...
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 0
+Errors: 0
+=========================================
+? Generated HTML Preview: knowledge_preview.html
+? Generated Folder Structure: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\knowledge_export\tenants
+?? Autonomous Architecture & Runtime Auditor [READ-ONLY MODE] scanning...
+System Audit Completed: WARNINGS
+? Architecture Watchdog starting...
+2026-01-14T00:46:13.063+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for tenants
+2026-01-14T00:46:13.065+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for .
+? Architecture Watchdog is active and monitoring.
+2026-01-14T00:46:13.065+02:00  INFO 83828 --- [Watchdog-Thread] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: FileSystemMonitor thread started.
+2026-01-14T00:46:14.594+02:00  WARN 83828 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T00:46:15.451+02:00  INFO 83828 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-14T00:46:15.521+02:00  INFO 83828 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a4590d1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47ea1fd8, org.springframework.security.web.context.SecurityContextHolderFilter@36b04253, org.springframework.security.web.header.HeaderWriterFilter@60d374b9, org.springframework.security.web.csrf.CsrfFilter@48990046, org.springframework.security.web.authentication.logout.LogoutFilter@1132fe7a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@59468089, com.onlineStoreCom.security.tenant.TenantContextFilter@77eb950, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@647e3f0c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@439f27fe, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@74d5157b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@722e851f, org.springframework.security.web.access.ExceptionTranslationFilter@9e10153, org.springframework.security.web.access.intercept.AuthorizationFilter@71a5ed75]
+2026-01-14T00:46:15.896+02:00  WARN 83828 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-01-14T00:46:15.967+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-14T00:46:15.980+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 9.69 seconds (process running for 10.258)
+? RUNNING DATA REPAIR: Fixing Broken Category Hierarchies...
+2026-01-14T00:46:16.073+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+? DATA REPAIR COMPLETE: Cross-tenant parents removed.
+2026-01-14T00:46:16.080+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : STARTING TENANT DATA VERIFICATION & SEEDING (Phase 6)
+2026-01-14T00:46:16.141+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select t1_0.id,t1_0.code,t1_0.created_at,t1_0.name,t1_0.parent_id,t1_0.status from tenants t1_0
+2026-01-14T00:46:16.163+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Master Platform [1]
+2026-01-14T00:46:16.164+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Created missing asset directory: tenants\1\assets\profile
+2026-01-14T00:46:16.196+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [1] tried to access data of Tenant [6]
+2026-01-14T00:46:16.206+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Master Platform
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [1] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy200.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy175.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:116) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:84) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:61) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:46:16.220+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Online Store [4]
+2026-01-14T00:46:16.223+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [6]
+2026-01-14T00:46:16.232+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Online Store
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy200.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy175.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:116) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:84) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:61) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:46:16.234+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Hotel Booking [5]
+2026-01-14T00:46:16.236+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [6]
+2026-01-14T00:46:16.242+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Hotel Booking
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy200.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy175.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:116) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:84) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:61) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:46:16.244+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Car Rental [6]
+2026-01-14T00:46:16.244+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Created missing asset directory: tenants\6\assets\profile
+2026-01-14T00:46:16.246+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [6] tried to access data of Tenant [11]
+2026-01-14T00:46:16.253+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Car Rental
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [6] tried to access data of Tenant [11]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy200.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy175.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:116) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:84) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:61) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:46:16.257+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Restaurant [7]
+2026-01-14T00:46:16.258+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Created missing asset directory: tenants\7\assets\users
+2026-01-14T00:46:16.259+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Created missing asset directory: tenants\7\assets\brands
+2026-01-14T00:46:16.261+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Created missing asset directory: tenants\7\assets\products
+2026-01-14T00:46:16.264+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [7] tried to access data of Tenant [6]
+2026-01-14T00:46:16.268+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Restaurant
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [7] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy200.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy175.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:116) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:84) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:61) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:46:16.273+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Consistency report written to: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\consistency_report.yaml
+2026-01-14T00:46:16.274+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : TENANT DATA VERIFICATION COMPLETED. Report generated.
+2026-01-14T00:47:32.513+02:00  INFO 83828 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-01-14T00:47:32.525+02:00  INFO 83828 --- [       Thread-1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-14T00:47:32.531+02:00  WARN 83828 --- [       Thread-1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1674)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1589)
+? Stopping Architecture Watchdog...
+2026-01-14T00:47:32.540+02:00  INFO 83828 --- [       Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T00:47:32.544+02:00  INFO 83828 --- [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-14T00:47:32.551+02:00  INFO 83828 --- [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T00:47:32.638+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 83828 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-14T00:47:32.638+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-14T00:47:32.915+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T00:47:32.979+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 21 JPA repository interfaces.
+2026-01-14T00:47:33.226+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-14T00:47:33.226+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T00:47:33.226+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T00:47:33.249+02:00  INFO 83828 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T00:47:33.249+02:00  INFO 83828 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 611 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-14T00:47:33.296+02:00  INFO 83828 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T00:47:33.304+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:47:33.304+02:00  INFO 83828 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T00:47:33.304+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-01-14T00:47:33.317+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@72ba1480
+2026-01-14T00:47:33.317+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-01-14T00:47:33.391+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:47:33.673+02:00  INFO 83828 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T00:47:34.006+02:00  INFO 83828 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T00:47:34.133+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-14T00:47:34.133+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+? Anti-Gravity Knowledge System is starting...
+? Loading knowledge file: 00-intent.yml
+   + Registered: 00-INTENT (INTENT)
+? Loading knowledge file: 00-test-rule.yml
+   + Registered: RULE-001-TEST (RULE)
+? Loading knowledge file: 01-core-principles.yml
+   + Registered: 01-CORE-PRINCIPLES (PRINCIPLE)
+? Loading knowledge file: 02-rule-mapping.yml
+   + Registered: 02-RULE-MAPPING (UNSTRUCTURED)
+? Loading knowledge file: 03-business-scenarios.yml
+   + Registered: 03-BUSINESS-SCENARIOS (BUSINESS_LOGIC)
+? Loading knowledge file: 04-ai-prompts.yml
+   + Registered: 04-AI-PROMPTS (AI_CONTEXT)
+? Loading knowledge file: 05-pitch-deck.yml
+   + Registered: 05-PITCH-DECK (BUSINESS_PITCH)
+? Loading knowledge file: 06-governance.yml
+   + Registered: 06-GOVERNANCE (GOVERNANCE)
+? Loading knowledge file: 07-shared-reference-data.yml
+   + Registered: 07-SHARED-REFERENCE-DATA (REFERENCE_DATA)
+? Loading knowledge file: 08-tenant-isolation.yml
+   + Registered: 08-TENANT-ISOLATION (RULE)
+? Loading knowledge file: 10-storage-structure.yml
+   + Registered: 10-STORAGE-STRUCTURE (TECHNICAL_SPEC)
+? Knowledge System loaded successfully. Total entries: 11
+? Starting Asset Reorganization with Logging...
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 0
+Errors: 0
+=========================================
+? Generated HTML Preview: knowledge_preview.html
+? Generated Folder Structure: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\knowledge_export\tenants
+?? Autonomous Architecture & Runtime Auditor [READ-ONLY MODE] scanning...
+System Audit Completed: WARNINGS
+? Architecture Watchdog starting...
+2026-01-14T00:47:34.466+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for tenants
+2026-01-14T00:47:34.467+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for .
+? Architecture Watchdog is active and monitoring.
+2026-01-14T00:47:34.467+02:00  INFO 83828 --- [Watchdog-Thread] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: FileSystemMonitor thread started.
+2026-01-14T00:47:35.204+02:00  WARN 83828 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T00:47:35.601+02:00  INFO 83828 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-14T00:47:35.627+02:00  INFO 83828 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1afff981, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30eb716d, org.springframework.security.web.context.SecurityContextHolderFilter@6d953083, org.springframework.security.web.header.HeaderWriterFilter@2ac99292, org.springframework.security.web.csrf.CsrfFilter@67b96cf4, org.springframework.security.web.authentication.logout.LogoutFilter@19a2e27e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5d85fea7, com.onlineStoreCom.security.tenant.TenantContextFilter@10b74b7f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@41673f09, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b4c9892, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@53ba567b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@42e9c111, org.springframework.security.web.access.ExceptionTranslationFilter@47e7a6d9, org.springframework.security.web.access.intercept.AuthorizationFilter@3e129596]
+2026-01-14T00:47:35.765+02:00  WARN 83828 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-01-14T00:47:35.782+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-14T00:47:35.789+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 3.174 seconds (process running for 90.067)
+? RUNNING DATA REPAIR: Fixing Broken Category Hierarchies...
+2026-01-14T00:47:35.793+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+? DATA REPAIR COMPLETE: Cross-tenant parents removed.
+2026-01-14T00:47:35.796+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : STARTING TENANT DATA VERIFICATION & SEEDING (Phase 6)
+2026-01-14T00:47:35.796+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select t1_0.id,t1_0.code,t1_0.created_at,t1_0.name,t1_0.parent_id,t1_0.status from tenants t1_0
+2026-01-14T00:47:35.801+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Master Platform [1]
+2026-01-14T00:47:35.819+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [1] tried to access data of Tenant [6]
+2026-01-14T00:47:35.823+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Master Platform
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [1] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy225.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy211.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:47:35.825+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Online Store [4]
+2026-01-14T00:47:35.827+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [6]
+2026-01-14T00:47:35.831+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Online Store
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy225.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy211.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:47:35.833+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Hotel Booking [5]
+2026-01-14T00:47:35.835+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [6]
+2026-01-14T00:47:35.838+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Hotel Booking
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy225.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy211.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:47:35.838+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Car Rental [6]
+2026-01-14T00:47:35.841+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [6] tried to access data of Tenant [11]
+2026-01-14T00:47:35.844+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Car Rental
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [6] tried to access data of Tenant [11]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy225.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy211.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:47:35.846+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Restaurant [7]
+2026-01-14T00:47:35.849+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [7] tried to access data of Tenant [6]
+2026-01-14T00:47:35.851+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Restaurant
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [7] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy225.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy5/jdk.proxy5.$Proxy211.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:47:35.854+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Consistency report written to: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\consistency_report.yaml
+2026-01-14T00:47:35.854+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : TENANT DATA VERIFICATION COMPLETED. Report generated.
+2026-01-14T00:47:35.857+02:00  INFO 83828 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-01-14T00:47:47.638+02:00  INFO 83828 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2026-01-14T00:47:47.656+02:00  INFO 83828 --- [       Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-14T00:47:47.662+02:00  WARN 83828 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1674)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1589)
+? Stopping Architecture Watchdog...
+2026-01-14T00:47:47.669+02:00  INFO 83828 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T00:47:47.670+02:00  INFO 83828 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-01-14T00:47:47.675+02:00  INFO 83828 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T00:47:47.779+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 83828 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-14T00:47:47.779+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-14T00:47:48.153+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T00:47:48.219+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 21 JPA repository interfaces.
+2026-01-14T00:47:48.746+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-14T00:47:48.746+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T00:47:48.746+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T00:47:48.785+02:00  INFO 83828 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T00:47:48.786+02:00  INFO 83828 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1006 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-14T00:47:48.867+02:00  INFO 83828 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T00:47:48.888+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:47:48.888+02:00  INFO 83828 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T00:47:48.890+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-01-14T00:47:48.906+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6cd0f45a
+2026-01-14T00:47:48.906+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-01-14T00:47:49.035+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:47:49.840+02:00  INFO 83828 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T00:47:50.538+02:00  INFO 83828 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T00:47:50.897+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-14T00:47:50.897+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+? Anti-Gravity Knowledge System is starting...
+? Loading knowledge file: 00-intent.yml
+   + Registered: 00-INTENT (INTENT)
+? Loading knowledge file: 00-test-rule.yml
+   + Registered: RULE-001-TEST (RULE)
+? Loading knowledge file: 01-core-principles.yml
+   + Registered: 01-CORE-PRINCIPLES (PRINCIPLE)
+? Loading knowledge file: 02-rule-mapping.yml
+   + Registered: 02-RULE-MAPPING (UNSTRUCTURED)
+? Loading knowledge file: 03-business-scenarios.yml
+   + Registered: 03-BUSINESS-SCENARIOS (BUSINESS_LOGIC)
+? Loading knowledge file: 04-ai-prompts.yml
+   + Registered: 04-AI-PROMPTS (AI_CONTEXT)
+? Loading knowledge file: 05-pitch-deck.yml
+   + Registered: 05-PITCH-DECK (BUSINESS_PITCH)
+? Loading knowledge file: 06-governance.yml
+   + Registered: 06-GOVERNANCE (GOVERNANCE)
+? Loading knowledge file: 07-shared-reference-data.yml
+   + Registered: 07-SHARED-REFERENCE-DATA (REFERENCE_DATA)
+? Loading knowledge file: 08-tenant-isolation.yml
+   + Registered: 08-TENANT-ISOLATION (RULE)
+? Loading knowledge file: 10-storage-structure.yml
+   + Registered: 10-STORAGE-STRUCTURE (TECHNICAL_SPEC)
+? Knowledge System loaded successfully. Total entries: 11
+? Starting Asset Reorganization with Logging...
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 0
+Errors: 0
+=========================================
+? Generated HTML Preview: knowledge_preview.html
+? Generated Folder Structure: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\knowledge_export\tenants
+?? Autonomous Architecture & Runtime Auditor [READ-ONLY MODE] scanning...
+System Audit Completed: WARNINGS
+? Architecture Watchdog starting...
+2026-01-14T00:47:51.822+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for tenants
+2026-01-14T00:47:51.823+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for .
+? Architecture Watchdog is active and monitoring.
+2026-01-14T00:47:51.823+02:00  INFO 83828 --- [Watchdog-Thread] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: FileSystemMonitor thread started.
+2026-01-14T00:47:53.137+02:00  WARN 83828 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T00:47:54.080+02:00  INFO 83828 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-14T00:47:54.196+02:00  INFO 83828 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@672585fb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@714faed9, org.springframework.security.web.context.SecurityContextHolderFilter@612209fc, org.springframework.security.web.header.HeaderWriterFilter@1a374f80, org.springframework.security.web.csrf.CsrfFilter@7c95ae2, org.springframework.security.web.authentication.logout.LogoutFilter@7e5b8453, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@209d8a3e, com.onlineStoreCom.security.tenant.TenantContextFilter@40c05774, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2cf14170, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2fac0084, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@246fb62, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3dcf06b4, org.springframework.security.web.access.ExceptionTranslationFilter@4b091af0, org.springframework.security.web.access.intercept.AuthorizationFilter@1760238d]
+2026-01-14T00:47:54.673+02:00  WARN 83828 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-01-14T00:47:54.691+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-14T00:47:54.703+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 6.956 seconds (process running for 108.982)
+? RUNNING DATA REPAIR: Fixing Broken Category Hierarchies...
+2026-01-14T00:47:54.706+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+? DATA REPAIR COMPLETE: Cross-tenant parents removed.
+2026-01-14T00:47:54.706+02:00  INFO 83828 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-01-14T00:47:56.296+02:00  INFO 83828 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 166 class path changes (2 additions, 0 deletions, 164 modifications)
+2026-01-14T00:47:56.306+02:00  INFO 83828 --- [       Thread-9] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-14T00:47:56.306+02:00  WARN 83828 --- [       Thread-9] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1674)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1589)
+? Stopping Architecture Watchdog...
+2026-01-14T00:47:56.317+02:00  INFO 83828 --- [       Thread-9] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T00:47:56.317+02:00  INFO 83828 --- [       Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-01-14T00:47:56.323+02:00  INFO 83828 --- [       Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T00:47:56.433+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 83828 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-14T00:47:56.435+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-14T00:47:56.930+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T00:47:57.019+02:00  INFO 83828 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 21 JPA repository interfaces.
+2026-01-14T00:47:57.346+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-14T00:47:57.346+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T00:47:57.346+02:00  INFO 83828 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T00:47:57.380+02:00  INFO 83828 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T00:47:57.382+02:00  INFO 83828 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 943 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-14T00:47:57.544+02:00  INFO 83828 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T00:47:57.563+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:47:57.565+02:00  INFO 83828 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T00:47:57.565+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-01-14T00:47:57.582+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e04c6f8
+2026-01-14T00:47:57.582+02:00  INFO 83828 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-01-14T00:47:57.665+02:00  INFO 83828 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T00:47:57.951+02:00  INFO 83828 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T00:47:58.288+02:00  INFO 83828 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T00:47:58.388+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-14T00:47:58.388+02:00  INFO 83828 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+? Anti-Gravity Knowledge System is starting...
+? Loading knowledge file: 00-intent.yml
+   + Registered: 00-INTENT (INTENT)
+? Loading knowledge file: 00-test-rule.yml
+   + Registered: RULE-001-TEST (RULE)
+? Loading knowledge file: 01-core-principles.yml
+   + Registered: 01-CORE-PRINCIPLES (PRINCIPLE)
+? Loading knowledge file: 02-rule-mapping.yml
+   + Registered: 02-RULE-MAPPING (UNSTRUCTURED)
+? Loading knowledge file: 03-business-scenarios.yml
+   + Registered: 03-BUSINESS-SCENARIOS (BUSINESS_LOGIC)
+? Loading knowledge file: 04-ai-prompts.yml
+   + Registered: 04-AI-PROMPTS (AI_CONTEXT)
+? Loading knowledge file: 05-pitch-deck.yml
+   + Registered: 05-PITCH-DECK (BUSINESS_PITCH)
+? Loading knowledge file: 06-governance.yml
+   + Registered: 06-GOVERNANCE (GOVERNANCE)
+? Loading knowledge file: 07-shared-reference-data.yml
+   + Registered: 07-SHARED-REFERENCE-DATA (REFERENCE_DATA)
+? Loading knowledge file: 08-tenant-isolation.yml
+   + Registered: 08-TENANT-ISOLATION (RULE)
+? Loading knowledge file: 10-storage-structure.yml
+   + Registered: 10-STORAGE-STRUCTURE (TECHNICAL_SPEC)
+? Knowledge System loaded successfully. Total entries: 11
+? Starting Asset Reorganization with Logging...
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 0
+Errors: 0
+=========================================
+? Generated HTML Preview: knowledge_preview.html
+? Generated Folder Structure: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\knowledge_export\tenants
+?? Autonomous Architecture & Runtime Auditor [READ-ONLY MODE] scanning...
+System Audit Completed: WARNINGS
+? Architecture Watchdog starting...
+2026-01-14T00:47:58.837+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for tenants
+2026-01-14T00:47:58.840+02:00  INFO 83828 --- [  restartedMain] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for .
+? Architecture Watchdog is active and monitoring.
+2026-01-14T00:47:58.840+02:00  INFO 83828 --- [Watchdog-Thread] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: FileSystemMonitor thread started.
+2026-01-14T00:47:59.687+02:00  WARN 83828 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T00:48:00.188+02:00  INFO 83828 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-14T00:48:00.229+02:00  INFO 83828 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@307d22e6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f71f548, org.springframework.security.web.context.SecurityContextHolderFilter@648d10c7, org.springframework.security.web.header.HeaderWriterFilter@6344107b, org.springframework.security.web.csrf.CsrfFilter@638221cd, org.springframework.security.web.authentication.logout.LogoutFilter@78afc6cc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@13b7d030, com.onlineStoreCom.security.tenant.TenantContextFilter@4bcb0b4e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1673c9d2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@37ace2e0, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@1528ed2c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32ea80c6, org.springframework.security.web.access.ExceptionTranslationFilter@19071f3b, org.springframework.security.web.access.intercept.AuthorizationFilter@20f1fa43]
+2026-01-14T00:48:00.400+02:00  WARN 83828 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-01-14T00:48:00.436+02:00  INFO 83828 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 710 (http) with context path ''
+2026-01-14T00:48:00.446+02:00  INFO 83828 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 4.04 seconds (process running for 114.726)
+? RUNNING DATA REPAIR: Fixing Broken Category Hierarchies...
+2026-01-14T00:48:00.451+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+? DATA REPAIR COMPLETE: Cross-tenant parents removed.
+2026-01-14T00:48:00.456+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : STARTING TENANT DATA VERIFICATION & SEEDING (Phase 6)
+2026-01-14T00:48:00.456+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select t1_0.id,t1_0.code,t1_0.created_at,t1_0.name,t1_0.parent_id,t1_0.status from tenants t1_0
+2026-01-14T00:48:00.462+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Master Platform [1]
+2026-01-14T00:48:00.489+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [1] tried to access data of Tenant [6]
+2026-01-14T00:48:00.491+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Master Platform
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [1] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy274.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy260.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:48:00.494+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Online Store [4]
+2026-01-14T00:48:00.496+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [6]
+2026-01-14T00:48:00.496+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Online Store
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy274.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy260.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:48:00.500+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Hotel Booking [5]
+2026-01-14T00:48:00.501+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [6]
+2026-01-14T00:48:00.503+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Hotel Booking
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [5] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy274.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy260.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:48:00.505+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Car Rental [6]
+2026-01-14T00:48:00.506+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [6] tried to access data of Tenant [11]
+2026-01-14T00:48:00.506+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Car Rental
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [6] tried to access data of Tenant [11]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy274.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy260.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:48:00.510+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Verifying Tenant: Restaurant [7]
+2026-01-14T00:48:00.510+02:00 DEBUG 83828 --- [  restartedMain] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where s1_0.category=?
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [7] tried to access data of Tenant [6]
+2026-01-14T00:48:00.513+02:00 ERROR 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Error verifying tenant: Restaurant
+
+java.lang.SecurityException: ⛔ SECURITY ALERT: Data Guard Blocked Access! Current Tenant [7] tried to access data of Tenant [6]
+	at com.onlineStoreCom.tenant.TenantListener.verifyDataIntegrity(TenantListener.java:56) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.hibernate.jpa.event.internal.ListenerCallback.performCallback(ListenerCallback.java:55) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.callback(CallbackRegistryImpl.java:123) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.jpa.event.internal.CallbackRegistryImpl.postLoad(CallbackRegistryImpl.java:106) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.internal.DefaultPostLoadEventListener.onPostLoad(DefaultPostLoadEventListener.java:42) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.lambda$postLoad$0(JdbcValuesSourceProcessingStateStandardImpl.java:183) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.postLoad(JdbcValuesSourceProcessingStateStandardImpl.java:175) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesSourceProcessingStateStandardImpl.finishUp(JdbcValuesSourceProcessingStateStandardImpl.java:165) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:206) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:361) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:168) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.list(JdbcSelectExecutorStandardImpl.java:93) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:31) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$0(ConcreteSqmSelectQueryPlan.java:110) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:303) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:244) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:518) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:367) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:119) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy274.getResultList(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.4.jar:3.1.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.12.jar:6.0.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.12.jar:6.0.12]
+	at jdk.proxy7/jdk.proxy7.$Proxy260.findByCategory(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTheme(TenantDataSeeder.java:122) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.verifyTenant(TenantDataSeeder.java:90) ~[classes/:na]
+	at com.onlineStore.admin.tenant.TenantDataSeeder.run(TenantDataSeeder.java:64) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+
+2026-01-14T00:48:00.514+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : Consistency report written to: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\consistency_report.yaml
+2026-01-14T00:48:00.514+02:00  INFO 83828 --- [  restartedMain] c.o.admin.tenant.TenantDataSeeder        : TENANT DATA VERIFICATION COMPLETED. Report generated.
+2026-01-14T00:48:00.517+02:00  INFO 83828 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:38 min
+[INFO] Finished at: 2026-01-14T00:48:34+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.1.4:run (default-cli) on project WebBackEnd: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

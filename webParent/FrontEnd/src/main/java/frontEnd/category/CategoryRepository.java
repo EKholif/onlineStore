@@ -9,30 +9,38 @@ import java.util.Set;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
-    @Query(value = "SELECT c.* FROM categories c JOIN categories p ON c.parent_id = p.id "
-            + "WHERE c.enabled = 1 AND p.enabled = 1 ORDER BY c.name ASC", nativeQuery = true)
-    List<Category> findAllEnabled();
+        // [AG-TEN-FIX-002] Removed parent.enabled check to prevent cross-tenant JOIN
+        // leak
+        @Query("SELECT c FROM Category c WHERE c.tenantId = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()} AND c.enabled = true ORDER BY c.name ASC")
+        List<Category> findAllEnabled();
 
-    @Query(value = "SELECT c.* FROM categories c JOIN categories p ON c.parent_id = p.id "
-            + "WHERE c.enabled = 1 AND p.enabled = 1 AND c.parent_id = ?1", nativeQuery = true)
-    Set<Category> getChildren(Integer categoryId);
+        // [AG-TEN-FIX-002] Removed parent.enabled check to prevent cross-tenant JOIN
+        // leak
+        // [AG-TEN-FIX-002] Removed parent.enabled check to prevent cross-tenant JOIN
+        // leak
+        // Fixed "Cannot resolve symbol 'id'" by comparing Entity directly
+        @Query("SELECT c FROM Category c WHERE c.tenantId = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()} AND c.enabled = true AND c.parent = ?1")
+        Set<Category> getChildren(Category parent);
 
-    @Query(value = "SELECT p.* FROM categories c JOIN categories p ON c.parent_id = p.id "
-            + "WHERE c.enabled = 1 AND p.enabled = 1 AND c.id = ?1", nativeQuery = true)
-    Category getParent(Integer categoryId);
+        // [AG-TEN-FIX-002] Removed parent.enabled check to prevent cross-tenant JOIN
+        // leak
+        @Query("SELECT c.parent FROM Category c WHERE c.tenantId = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()} AND c.enabled = true AND c.id = ?1")
+        Category getParent(Integer categoryId);
 
-    @Query(value = "SELECT * FROM categories WHERE enabled = 1 AND parent_id IS NULL", nativeQuery = true)
-    List<Category> notParentCategory();
+        @Query("SELECT c FROM Category c WHERE c.tenantId = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()} AND c.enabled = true AND c.parent IS NULL")
+        List<Category> notParentCategory();
 
-    @Query(value = "SELECT c.* FROM categories c JOIN categories p ON c.parent_id = p.id "
-            + "WHERE c.enabled = 1 AND p.enabled = 1 AND c.alias = ?1", nativeQuery = true)
-    Category findByAliasEnabled(String alias);
+        // [AG-TEN-FIX-002] Removed parent.enabled check to prevent cross-tenant JOIN
+        // leak
+        @Query("SELECT c FROM Category c WHERE c.tenantId = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()} AND c.enabled = true AND c.alias = ?1")
+        Category findByAliasEnabled(String alias);
 
-    @Query(value = "SELECT c.* FROM categories c JOIN categories p ON c.parent_id = p.id "
-            + "WHERE c.enabled = 1 AND p.enabled = 1 AND c.name = ?1", nativeQuery = true)
-    Category findByNameEnabled(String name);
+        // [AG-TEN-FIX-002] Removed parent.enabled check to prevent cross-tenant JOIN
+        // leak
+        @Query("SELECT c FROM Category c WHERE c.tenantId = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()} AND c.enabled = true AND c.name = ?1")
+        Category findByNameEnabled(String name);
 
-    @Query(value = "SELECT * FROM categories WHERE parent_id IS NULL AND enabled = 1 AND alias = ?1", nativeQuery = true)
-    Category findByAliasParent(String alias);
+        @Query("SELECT c FROM Category c WHERE c.tenantId = :#{T(com.onlineStoreCom.tenant.TenantContext).getTenantId()} AND c.parent IS NULL AND c.enabled = true AND c.alias = ?1")
+        Category findByAliasParent(String alias);
 
 }

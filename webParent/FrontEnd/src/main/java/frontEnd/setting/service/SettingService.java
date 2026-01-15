@@ -1,9 +1,7 @@
 package frontEnd.setting.service;
 
-
 import com.onlineStoreCom.entity.setting.Setting;
 import com.onlineStoreCom.entity.setting.SettingCategory;
-import com.onlineStoreCom.entity.setting.subsetting.Currency;
 import frontEnd.setting.EmailSettingBag;
 import frontEnd.setting.repository.CurrencyRepository;
 import frontEnd.setting.repository.GeneralSettingBag;
@@ -15,11 +13,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class SettingService {
-	@Autowired private SettingRepository settingRepo;
-	@Autowired private CurrencyRepository currencyRepo;
+    @Autowired
+    private SettingRepository settingRepo;
+    @Autowired
+    private CurrencyRepository currencyRepo;
 
 	public GeneralSettingBag getGeneralSettings() {
 		List<Setting> settings = settingRepo.findByTwoCategories(SettingCategory.GENERAL, SettingCategory.CURRENCY);
@@ -30,18 +29,16 @@ public class SettingService {
 	public List<Setting> getGenlSettings() {
 		List<Setting> settings = settingRepo.findByTwoCategories(SettingCategory.GENERAL, SettingCategory.CURRENCY);
 
-		return  settings;
+        return settings;
 	}
 
 	public void saveAll(Iterable<Setting> settings) {
 		settingRepo.saveAll(settings);
 	}
 
-
-    public List<Setting> settingList(){
+    public List<Setting> settingList() {
         return settingRepo.findAll();
     }
-
 
 	public EmailSettingBag getEmailSettings() {
 		List<Setting> settings = settingRepo.findByCategory(SettingCategory.MAIL_SERVER);
@@ -61,6 +58,11 @@ public class SettingService {
 		return new PaymentSettingBag(settings);
 	}
 
+    // [AG-FE-THEME-002] Support for Theme Guard
+    public List<Setting> getThemeSettings() {
+        return settingRepo.findByCategory(SettingCategory.THEME);
+    }
+
 	public String getCurrencyCode() {
 		Setting setting = settingRepo.findByKey("CURRENCY_ID");
 		Integer currencyId = Integer.parseInt(setting.getValue());
@@ -68,6 +70,5 @@ public class SettingService {
 
 		return currency;
 	}
-
 
 }

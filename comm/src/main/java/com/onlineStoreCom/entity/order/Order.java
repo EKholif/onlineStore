@@ -20,7 +20,7 @@ import java.util.*;
  */
 @Entity
 @Table(name = "orders")
-
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Order extends AbstractAddress {
 
     @Column(nullable = false, length = 45)

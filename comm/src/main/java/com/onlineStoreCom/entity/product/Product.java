@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.brand.Brand;
 import com.onlineStoreCom.entity.category.Category;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
+import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Filter;
 
-import java.io.File;
 import java.util.*;
 
 @Entity
@@ -321,38 +321,55 @@ public class Product extends IdBasedEntity {
 
     @Transient
     public String getImagePath() {
-        String dirName = "/products-photos/";
-
         if (id == null || mainImage == null)
-            return "/images/pngwing.com.png";
+            return "/images/image-thumbnail.png";
 
-        return dirName + this.getTenantId() + "/" + this.id + "/" + this.mainImage;
+        Long effectiveTenantId = this.getTenantId();
+        if (effectiveTenantId == null) {
+            effectiveTenantId = TenantContext.getTenantId();
+        }
+
+        // AG-ASSET-PATH-006: Entity-First Protocol
+        // Returns: /tenants/{tenantId}/{getId}/assets/products/{filename}
+        return "/tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/" + this.mainImage;
     }
 
     @Transient
     public String getExtraImagesPath() {
-        String dirName = "/products-photos/";
-
-        if (id == null || mainImage == null)
-            return "/images/pngwing.com.png";
-
-        return dirName + this.getTenantId() + "/" + this.id + "/" + this.images;
+        if (id == null) {
+            return "/images/image-thumbnail.png"; // Or meaningful default
+        }
+        Long effectiveTenantId = this.getTenantId();
+        if (effectiveTenantId == null) {
+            effectiveTenantId = TenantContext.getTenantId();
+        }
+        // AG-ASSET-PATH-006: Entity-First Protocol
+        return "/tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/extras/";
     }
 
     @Transient
     public String getImageDir() {
-        String dirName = "products-photos/";
-        if (id == -1L || mainImage == null)
-            return "/images/bob.png";
-        return dirName + this.getTenantId() + "/" + this.id + "/";
+        if (id == null)
+            return null;
+        Long effectiveTenantId = this.getTenantId();
+        if (effectiveTenantId == null) {
+            effectiveTenantId = TenantContext.getTenantId();
+        }
+        // AG-ASSET-PATH-006: Entity-First Protocol
+        return "tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/";
     }
 
     @Transient
     public String getExtraImageDir() {
-        String dirName = "products-photos/";
-        if (id == -1L || mainImage == null)
-            return "/images/bob.png";
-        return dirName + this.getTenantId() + "/" + this.id + "/extras";
+        if (id == null)
+            return null;
+        Long effectiveTenantId = this.getTenantId();
+        if (effectiveTenantId == null) {
+            effectiveTenantId = TenantContext.getTenantId();
+        }
+        // AG-ASSET-PATH-006: Entity-First Protocol
+        // Returns: tenants/{tenantId}/{id}/assets/products/extras/
+        return "tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/extras/";
     }
 
     @Transient

@@ -48,6 +48,8 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     // void disableCategoryTree(Integer categoryId);
 
     // FIX: Remove parent if it belongs to a different tenant (Data Cleanup)
+    // [AG-TEN-RISK-001] Maintained Native Query due only to MySQL Join-Update
+    // limitations in JPQL
     @Modifying
     @Query(value = "UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id", nativeQuery = true)
     void fixBrokenHierarchies();

@@ -23,7 +23,7 @@ public class ReviewVoteService {
 	public VoteResult undoVote(ReviewVote vote, Integer reviewId, VoteType voteType) {
 		voteRepo.delete(vote);
         // [AG-TEN-RISK-001] Pass TenantID for secure update
-        reviewRepo.updateVoteCount(reviewId, com.onlineStoreCom.tenant.TenantContext.getTenantId());
+        reviewRepo.updateVoteCount(reviewId);
 		Integer voteCount = reviewRepo.getVoteCount(reviewId);
 
 		return VoteResult.success("You have unvoted " + voteType + " that review.", voteCount);
@@ -66,7 +66,7 @@ public class ReviewVoteService {
 		System.out.println(" \uD83D\uDD25 test Saved vote ID: \uD83D\uDD25  " + vote.getId());
 
         // [AG-TEN-RISK-001] Pass TenantID for secure update
-        reviewRepo.updateVoteCount(reviewId, com.onlineStoreCom.tenant.TenantContext.getTenantId());
+        reviewRepo.updateVoteCount(reviewId);
 		Integer voteCount = reviewRepo.getVoteCount(reviewId);
 
         return VoteResult.success("You have successfully voted " + voteType + " that review.",

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" content="text/css" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+
+    <title>403</title>
+
+
+</head>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" type="text/css"/>
+<script th:src="@{/webjars/jquery/3.7.0/jquery.min.js}" type="text/javascript"></script>
+<link rel="stylesheet" th:href="@{/fontawesome/all.css}" type="text/css"/>
+<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+<link rel="stylesheet" th:href="@{/css/stylesheet.css}" type="text/css"/>
+
+
+<body>
+
+
+<!--===============================================================================-->
+<!--                                 colum_link             -->
+
+<!--===============================================================================-->
+
+<th th:fragment="colum_link (fieldName, columnLable)">
+    <a class="text-white " th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                            +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+                            '&keyWord='+ keyWord: ''}}">
+        [[${columnLable}]]
+
+
+        <span th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"
+              th:if="${sortField== fieldName}"></span>
+
+    </a>
+</th>
+
+
+<div th:replace="~{fragments/sortDropdown :: sort_dropdown(
+                ${moduleURL}, ${currentPage}, ${sortField}, ${sortDir}, ${keyWord})}">
+</div>
+
+
+<!--===============================================================================-->
+<!--                                Product colum_link             -->
+
+<!--===============================================================================-->
+
+<th th:fragment="colum_link_product (fieldName, columnLable)">
+    <a
+            class="text-white " th:href="@{${moduleURL}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                            +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+                            '&keyWord='+ keyWord: ' '}}">
+        [[${columnLable}]]
+    </a>
+
+    <span th:class="${sortDir=='asc'? 'fas fa-sort-up': 'fas fa-sort-down'}"
+          th:if="${sortField== fieldName}"></span>
+</th>
+
+
+<!--===============================================================================-->
+<!--                                 message          -->
+
+<!--===============================================================================-->
+
+<div th:fragment="message">
+
+    <div class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+</div>
+
+
+<!--===============================================================================-->
+
+<!--               page_link      -->
+
+<!--===============================================================================-->
+
+
+<a class="page-link" th:fragment="page_link(pageNum,label)"
+   th:href="@{${moduleURL}+ ${pageNum} +'?sortField='+${sortField} +'&sortDir='+ ${sortDir} + ${keyWord!=null ?
+             '&keyWord='+ keyWord: ' '}}">[[${label}]]
+</a>
+
+
+<!--===============================================================================-->
+
+<!--Nav bar item link -->
+<!--===============================================================================-->
+
+// // sec:authorize="hasAnyAuthority('
+
+
+<li th:fragment="nav-link(fieldName,label)">
+
+    <!--            class="nav-item mx-n0 "  sec:authorize="hasAuthority('Admin')">-->
+
+    <a class="nav-link" th:href="@{'/' + ${fieldName}}">[[${label}]]</a>
+</li>
+
+
+<!--===============================================================================-->
+
+<!--Nav bar item link -->
+<!--===============================================================================-->
+
+// // sec:authorize="hasAnyAuthority('
+
+
+<div class="nav-item mx-n0 "
+
+     sec:authorize="hasAuthority('Admin')" th:fragment="nav-linkV2(fieldName,label)">
+
+    <a class="nav-link" th:href="@{'/' + ${fieldName}}">[[${label}]]</a>
+</div>
+
+
+<!--===============================================================================-->
+<button class="navbar-toggler"
+
+        data-bs-target="#topNavbar" data-bs-toggle="collapse" th:fragment="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon "></span>
+</button>
+<!--===============================================================================-->
+<!--                   Page Header with navbar -->
+
+<!--===============================================================================-->
+
+<div th:fragment="navbar">
+
+
+    <nav class="navbar  navbar-expand-md bg-dark navbar-dark ">
+        <div class="container-fluid ">
+
+            <a class="navbar-brand " th:href="@{/}">
+                <img alt="SITE LOGO" class="rounded-pill"
+                     style="width: 150px; height: 150px; object-fit: contain; background-color: transparent; "
+                     th:src="@{/images/rr.png}"/>
+            </a>
+
+            <button th:replace="~{support/fragments::navbar-toggler}"></button>
+
+            <div class="collapse navbar-collapse  " id="topNavbar">
+                <ul class="navbar-nav ">
+                    <li th:replace="~{support/fragments::nav-link('users/users','Users')}"></li>
+                    <li th:replace="~{support/fragments::nav-link('users/new-users-form','New Users')}"></li>
+
+                    <li th:replace="~{support/fragments::nav-link('customer/customer','customer')}"></li>
+                    <li th:replace="~{support/fragments::nav-link('customer/new-customer-form','New customer')}"></li>
+
+                    <li th:replace="~{support/fragments::nav-link('categories/categories','categories')}"></li>
+                    <li th:replace="~{support/fragments::nav-link('categories/new-categories-form','New category')}"></li>
+
+                    <li th:replace="~{support/fragments::nav-link('brands/brands','Brand')}"></li>
+                    <li th:replace="~{support/fragments::nav-link('brands/new-brands-form','New Brand')}"></li>
+
+
+                    <li th:replace="~{support/fragments::nav-link('products/products','Products')}"></li>
+                    <li th:replace="~{support/fragments::nav-link('products/new-products-form','New Product')}"></li>
+
+                    <li th:replace="~{support/fragments::nav-link('settings','settings')}"></li>
+
+                    <li th:replace="~{support/fragments::nav-link('convert/convert','PdfConvert')}"></li>
+
+
+                    <li class="nav-item ">
+                        <!--                          <div th:replace="~{support/fragments::imageicon}" ></div>-->
+                        <div th:replace="~{support/fragments/standerd/navbar/image_icon::content}"></div>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <div th:replace="~{support/fragments::dropdown}"></div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" data-bs-toggle="dropdown"></a>
+
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<!--===============================================================================-->
+<!--                   Page Header with navbar var2 -->
+
+<!--===============================================================================-->
+
+
+<!-- Navbar start -->
+<div th:fragment="navbarV2">
+    <div class="container-fluid fixed-top p-xxl-5">
+        <div class="container topbar bg-primary d-none d-lg-block">
+            <div class="d-flex justify-content-between">
+                <div class="top-info ps-2">
+                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a class="text-white"
+                                                                                                     href="#">123
+                        Street, New York</a></small>
+                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a class="text-white"
+                                                                                              href="#">Email@Example.com</a></small>
+                </div>
+                <div class="top-link pe-2">
+                    <a class="text-white" href="#"><small class="text-white mx-2">Privacy Policy</small>/</a>
+                    <a class="text-white" href="#"><small class="text-white mx-2">Terms of Use</small>/</a>
+                    <a class="text-white" href="#"><small class="text-white ms-2">Sales and Refunds</small></a>
+                </div>
+            </div>
+        </div>
+        <div class="container px-0">
+            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                <a class="navbar-brand" href="index.html"><h1 class="text-primary display-6">Group Link</h1></a>
+                <button class="navbar-toggler py-2 px-3" data-bs-target="#navbarCollapse" data-bs-toggle="collapse"
+                        type="button">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <div th:replace="~{support/fragments::nav-link('users/users','Users')}"></div>
+                        <div th:replace="~{support/fragments::nav-link('users/new-users-form','New Users')}"></div>
+
+                        <div th:replace="~{support/fragments::nav-link('categories/categories','categories')}"></div>
+                        <div th:replace="~{support/fragments::nav-link('categories/new-categories-form','New category')}"></div>
+
+                        <div th:replace="~{support/fragments::nav-link('brands/brands','Brand')}"></div>
+                        <div th:replace="~{support/fragments::nav-link('brands/new-brands-form','New Brand')}"></div>
+
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Pages</a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
+
+                                <div th:replace="~{support/fragments::dropdown}"></div>
+
+
+                            </div>
+                        </div>
+                        <div th:replace="~{support/fragments::nav-link('products/products','Products')}"></div>
+                        <div th:replace="~{support/fragments::nav-link('products/new-products-form','New Product')}"></div>
+
+                    </div>
+                    <div class="d-flex m-3 me-0">
+                        <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                                data-bs-target="#searchModal" data-bs-toggle="modal"><i
+                                class="fas fa-search text-primary"></i></button>
+                        <a class="position-relative me-4 my-auto" href="#">
+                            <i class="fa fa-shopping-bag fa-2x"></i>
+                            <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                  style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                        </a>
+                        <a class="my-auto" href="#">
+                            <div th:replace="~{support/fragments::imageicon}"></div>
+                            <!--                          <div th:replace="~{support/fragments/standerd/image_icon::content}" ></div>-->
+
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+<!-- Navbar End -->
+
+
+<!--===============================================================================-->
+<!-- not in use yet-->
+
+<!--===============================================================================-->
+
+
+<ul class="navbar-nav"
+    th:fragment="navbar1">
+    <li th:each="item : ${navbarItems}">
+    <li th:replace="support/fragments::nav-link(${item.url}, ${item.label})"></li>
+    </li>
+</ul>
+<!--===============================================================================-->
+
+<!--                                         Search input                            -->
+<!--===============================================================================-->
+
+<div th:fragment="search">
+    <div class="d-inline-flex mb-2 ">
+        <div>
+            <form class="d-inline-flex " th:action="@{${search} }">
+                <input name="sortField" th:value="${sortField}" type="hidden"/>
+                <input name="sortDir" th:value="${sortDir}" type="hidden"/>
+
+                <input class="form-control " name="keyWord" placeholder="Search User" required th:value="${keyWord}"
+                       type="search">
+
+                <input class="btn btn-outline-success" type="submit" value="Search"/>
+                <input class="btn btn-outline-secondary" onclick="clearFilter()" type="button" value="Clear"/>
+            </form>
+        </div>
+    </div>
+</div>
+<!--&lt;!&ndash;===============================================================================&ndash;&gt;-->
+
+<!--                                         DropDown menu   -->
+<!--===============================================================================-->
+
+
+<div th:fragment="dropdown">
+    <form method="post" name="logoutForm" th:action="@{/logout}" th:hidden="true">
+        <input type="submit">
+    </form>
+    <div class="dropdown">
+
+        <a class="nav-link" data-bs-toggle="dropdown"></a>
+
+        <ul class=" dropdown-menu ">
+            <li><a class="dropdown-item" id="logout">Log out</a></li>
+            <li><a class="dropdown-item" th:href="@{/account}">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Link 3</a></li>
+        </ul>
+    </div>
+
+
+</div>
+<!--===============================================================================-->
+<!--                   Icon Image    -->
+
+<!--===============================================================================-->
+<div class=" float-sm-end ">
+
+    <img alt="User" class="rounded-circle dropdown-toggle float-sm-end "
+         id="account" style="width:25px" th:fragment="imageicon" type="button"/>
+    <span class="fas fa-user fa-2 icon-green fa-2x float-sm-end"></span>
+</div>
+
+
+<!--===============================================================================-->
+<!--                  footer    -->
+
+<!--===============================================================================-->
+
+<div th:fragment="footer">
+    <p class="text-center text-primary display-3">[[${COPYRIGHT}]]</p>
+    <p class="text-center"> [[${COPYRIGHT}]] </p>
+</div>
+
+
+<!--===============================================================================-->
+<!--                 input-group row Category   -->
+
+<!--===============================================================================-->
+
+<div class="input-group row" th:fragment="input-group-category(name,label)">
+    <label class="col-sm-4 col-form-label">[[${label}]]</label>
+    <div class="col-sm-8">
+        <input class="form-control col-4 mb-4" minlength="2" required th:field="*{name}" th:placeholder="${label}"
+               type="text"/>
+    </div>
+</div>
+
+
+<!--===============================================================================-->
+<!--                 input-group row Category  image -->
+
+<!--===============================================================================-->
+
+<div class="form row" th:fragment="input-group-category-image(label)">
+    <label class="col-sm-4 col-form-label">[[${label}]]</label>
+    <div class="col-sm-8 ">
+        <input accept="image/jpg, image/jpeg, image/png" class="mb-2" id="fileImage" name="image" type="file"/>
+        <img alt="product Photo" class="img-thumbnail rounded-circle float-left " id="thumbnail" style="width: 200px"
+             th:src="@{${categoty}}"/>
+    </div>
+</div>
+
+
+<!--===============================================================================-->
+<!--                Cancel and rest buttons -->
+
+<!--===============================================================================-->
+
+<div class="text-center pe-3" th:fragment="save-and-rest-buttons">
+    <button class="btn btn-primary " type="submit">Save</button>
+    <button class="btn btn-danger " id="buttonCancel" type="reset">Rest</button>
+</div>
+
+
+<!--===============================================================================-->
+<!--                    paginate  -->
+
+<!--===============================================================================-->
+
+
+<nav aria-label="paginate" class="text-center flex mb-1" th:fragment="paginate">
+    <div th:if="${totalItems>0}">
+        <span class="align-content-end"> showing users # [[${startCont}]] to [[${endCount}]] of [[${totalItems}]]</span>
+    </div>
+    <div th:unless="${totalItems>0}">
+
+        <span> No [[${url}]] Found</span>
+    </div>
+
+    <div th:if="${totalPages>1}">
+
+
+        <ul class="pagination justify-content-center flex-wrap">
+
+            <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                <a th:replace="~{support/fragments::page_link(1,'First')}"/></a>
+            </li>
+
+            <li class="page-item " th:classappend="${currentPage ==1 ?'disabled':''}">
+                <a th:replace="~{support/fragments::page_link(${currentPage >= 2 ? (currentPage - 1) : 1}, 'Previous')}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${currentPage ==i ?'active':''}"
+                th:each="i :${#numbers.sequence(1,totalPages)} ">
+                <a th:replace="~{support/fragments::page_link(${i}, ${i})}"/></a>
+            </li>
+
+
+            <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                <a th:replace="~{support/fragments::page_link(${currentPage >= totalPages ? totalPages : (currentPage + 1)}, 'Next')}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${currentPage ==totalPages ?'disabled':''}">
+                <a th:replace="~{support/fragments::page_link(${totalPages}, 'Last')}"/></a>
+            </li>
+
+        </ul>
+
+
+    </div>
+</nav>
+
+<!--===============================================================================-->
+<!--                   status         -->
+
+<!--===============================================================================-->
+
+
+<div th:fragment="status(enabled, entityName, entityURL)" th:remove="tag">
+    <a class="fas fa-check-circle fa-2x icon-green"
+       th:href="@{${entityURL} + '/enabled/false'}"
+       th:if="${enabled == true}"
+       th:title="'Disable this ' + ${entityName}"></a> <a
+        class="fas fa-circle fa-2x icon-dark" th:href="@{${entityURL} + '/enabled/true'}"
+        th:if="${enabled == false}"
+        th:title="'Enable this ' + ${entityName}"></a>
+</div>
+
+
+<!--===============================================================================-->
+<!--                   Edit         -->
+
+<!--===============================================================================-->
+
+
+<div th:fragment="edit(entityName, editURL)" th:remove="tag">
+    <a class="fas fa-edit fa-2x icon-green" th:href="@{${editURL}}"
+       th:title="'Edit this ' + ${entityName}"></a>
+</div>
+
+
+<!--===============================================================================-->
+<!--                   Delete         -->
+
+<!--===============================================================================-->
+
+
+<div th:fragment="delete(entityName, entityId, deleteURL, visible)" th:remove="tag">
+    <th:block th:if="${visible}">
+        <a class="fas fa-trash fa-2x icon-dark link-delete"
+           th:entityId="${entityId}" th:href="@{${deleteURL}}"
+           th:title="'Delete this ' + ${entityName}"></a>
+    </th:block>
+</div>
+
+
+<!--===============================================================================-->
+<!--                   modal   Dialog          -->
+
+<!--===============================================================================-->
+
+
+<div th:fragment="modal">
+    <div class="modal fade text-center" data-bs-target="#modalDialog" data-bs-toggle="modal" id="confirmModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle"> Alert Message Box </h3>
+                    <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" href="" id="yesbutton">yes</a>
+
+
+                    <button class="btn btn-danger" data-bs-dismiss="modal" type="close">no</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+

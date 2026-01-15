@@ -1,6 +1,6 @@
 package com.onlineStore.emailsender;
 
-import com.onlineStoreCom.entity.order.Order;
+
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;

@@ -28,7 +28,6 @@ public class CustomerService {
         return countryRepository.findAllByOrderByNameAsc();
     }
 
-
     public boolean isEmailUnique(Integer id, String email) {
         Customer customerByEmail = customerRepository.findByEmail(email);
 
@@ -39,7 +38,8 @@ public class CustomerService {
             return customerByEmail == null;
         } else {
             // لو الإيميل مش موجود أصلاً، يبقى فريد
-            if (customerByEmail == null) return true;
+            if (customerByEmail == null)
+                return true;
 
             // لو الإيميل موجود، لكن لنفس الـ ID (يعني بيعدل نفسه)، يبقى فريد برضه
             return customerByEmail.getId().equals(id);
@@ -49,7 +49,6 @@ public class CustomerService {
     public Customer saveCustomer(Customer customer) {
 
         boolean existingCustomer = customer.getId() != null;
-
 
         if (existingCustomer) {
             customer.setEnabled(true);
@@ -78,7 +77,6 @@ public class CustomerService {
 
         return customerRepository.saveAndFlush(customer);
     }
-
 
     public String updaterest_password(String email) throws CustomerNotFoundException {
         Customer customer = customerRepository.findByEmail(email);
@@ -126,7 +124,6 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-
     public Customer findById(Integer id) {
         return customerRepository.getReferenceById(id);
     }
@@ -135,9 +132,7 @@ public class CustomerService {
         return findById(id).getFullName();
     }
 
-
     public void updateAuthenticationType(Customer customer, AuthenticationType type, String countryCode) {
-
 
         Country newCountry = countryRepository.findByCode(countryCode);
         Country existingCountry = customer.getCountry();
@@ -150,18 +145,18 @@ public class CustomerService {
             customerRepository.updateAuthenticationType(customer.getId(), type);
         }
 
-
     }
 
-    public void addNewCustomerUponOAuthLogin(String name, String email, String countryCode, AuthenticationType authenticationType, String picture) {
+    public void addNewCustomerUponOAuthLogin(String name, String email, String countryCode,
+                                             AuthenticationType authenticationType, String picture) {
         Customer customer = new Customer();
         customer.setEmail(email);
         setName(name, customer);
         customer.setImage(picture);
 
-        //	To do :  removed when multi-tenant is implemented   Ehab
-        customer.setTenantId(0L);
-
+        // [AG-TEN-FIX-001] FIXED: Use TenantContext to assign OAuth users to the
+        // correct tenant
+        customer.setTenantId(com.onlineStoreCom.tenant.TenantContext.getTenantId());
 
         customer.setEnabled(true);
         customer.setCreatedTime(new Date());
@@ -175,7 +170,6 @@ public class CustomerService {
         customer.setCountry(countryRepository.findByCode(countryCode));
         saveCustomer(customer);
     }
-
 
     private void setName(String name, Customer customer) {
         String[] nameArray = name.split(" ");

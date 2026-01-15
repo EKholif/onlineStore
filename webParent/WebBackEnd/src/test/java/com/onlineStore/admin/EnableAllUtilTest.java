@@ -29,7 +29,7 @@ public class EnableAllUtilTest {
 
         // Enable All Products
         // [AG-TEN-RISK-001] Secure Bulk Update
-        productRepo.enableProductAll(1L);
+        productRepo.enableProductAll();
 
         System.out.println("All Products and Categories Enabled!");
     }

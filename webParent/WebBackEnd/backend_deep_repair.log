@@ -1,0 +1,128 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.onlineStore:WebBackEnd >---------------------
+[INFO] Building WebBackEnd 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.1.4:run (default-cli) > test-compile @ WebBackEnd >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ WebBackEnd ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 185 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ WebBackEnd ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 163 source files with javac [debug release 19] to target\classes
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/convertUtile/ExcelToPdfConverter.java: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\main\java\com\onlineStore\admin\pdfConvert\convertUtile\ExcelToPdfConverter.java uses or overrides a deprecated API.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/pdfConvert/convertUtile/ExcelToPdfConverter.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/governance/watchdog/FileSystemMonitor.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/governance/watchdog/FileSystemMonitor.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ WebBackEnd ---
+[INFO] skip non existing resourceDirectory C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ WebBackEnd ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 62 source files with javac [debug release 19] to target\test-classes
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaInspectionTest.java: C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\src\test\java\com\onlineStore\admin\SchemaInspectionTest.java uses unchecked or unsafe operations.
+[INFO] /C:/Users/enoam/OneDrive/onlineStore/onlineStore/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/SchemaInspectionTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] <<< spring-boot:3.1.4:run (default-cli) < test-compile @ WebBackEnd <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.1.4:run (default-cli) @ WebBackEnd ---
+[INFO] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T01:41:17.193+02:00  INFO 31972 --- [  restartedMain] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 31972 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\WebBackEnd)
+2026-01-14T01:41:17.194+02:00  INFO 31972 --- [  restartedMain] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-14T01:41:17.256+02:00  INFO 31972 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-14T01:41:17.256+02:00  INFO 31972 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-14T01:41:18.037+02:00  INFO 31972 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T01:41:18.179+02:00  INFO 31972 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 134 ms. Found 21 JPA repository interfaces.
+2026-01-14T01:41:20.560+02:00  INFO 31972 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 710 (http)
+2026-01-14T01:41:20.580+02:00  INFO 31972 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T01:41:20.580+02:00  INFO 31972 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T01:41:20.771+02:00  INFO 31972 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T01:41:20.771+02:00  INFO 31972 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3515 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-14T01:41:21.111+02:00  INFO 31972 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T01:41:21.233+02:00  INFO 31972 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-14T01:41:21.238+02:00  INFO 31972 --- [  restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-14T01:41:21.625+02:00  INFO 31972 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T01:41:22.200+02:00  INFO 31972 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T01:41:22.293+02:00  INFO 31972 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-14T01:41:23.288+02:00  INFO 31972 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@262126f6
+2026-01-14T01:41:23.298+02:00  INFO 31972 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-14T01:41:24.730+02:00  INFO 31972 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T01:41:27.152+02:00  INFO 31972 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T01:41:27.639+02:00  INFO 31972 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T01:41:27.857+02:00  INFO 31972 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-14T01:41:27.857+02:00  INFO 31972 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-14T01:41:28.227+02:00  INFO 31972 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-14T01:41:28.882+02:00  WARN 31972 --- [  restartedMain] c.o.admin.category.CategoryDataRepair    : 🔧 RUNNING DEEP CATEGORY DATA REPAIR...
+2026-01-14T01:41:28.928+02:00  WARN 31972 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'categoryDataRepair': Invocation of init method failed
+2026-01-14T01:41:28.929+02:00  INFO 31972 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T01:41:28.933+02:00  INFO 31972 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-14T01:41:28.943+02:00  INFO 31972 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-14T01:41:28.944+02:00  INFO 31972 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-14T01:41:28.971+02:00  INFO 31972 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-14T01:41:29.000+02:00 ERROR 31972 --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'categoryDataRepair': Invocation of init method failed
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:222) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:419) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1762) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) ~[spring-context-6.0.12.jar:6.0.12]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608) ~[spring-context-6.0.12.jar:6.0.12]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-3.1.4.jar:3.1.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-3.1.4.jar:3.1.4]
+	at com.onlineStore.admin.WebBackEndApplication.main(WebBackEndApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.4.jar:3.1.4]
+Caused by: jakarta.persistence.TransactionRequiredException: Executing an update/delete query
+	at org.hibernate.internal.AbstractSharedSessionContract.checkTransactionNeededForUpdateOperation(AbstractSharedSessionContract.java:471) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at org.hibernate.query.spi.AbstractQuery.executeUpdate(AbstractQuery.java:633) ~[hibernate-core-6.2.9.Final.jar:6.2.9.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:405) ~[spring-orm-6.0.12.jar:6.0.12]
+	at jdk.proxy4/jdk.proxy4.$Proxy170.executeUpdate(Unknown Source) ~[na:na]
+	at com.onlineStore.admin.category.CategoryDataRepair.fixBrokenParents(CategoryDataRepair.java:59) ~[classes/:na]
+	at com.onlineStore.admin.category.CategoryDataRepair.deepRepair(CategoryDataRepair.java:34) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:401) ~[spring-beans-6.0.12.jar:6.0.12]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:219) ~[spring-beans-6.0.12.jar:6.0.12]
+	... 21 common frames omitted
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.514 s
+[INFO] Finished at: 2026-01-14T01:41:29+02:00
+[INFO] ------------------------------------------------------------------------

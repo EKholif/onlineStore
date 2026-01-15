@@ -20,6 +20,7 @@ import java.util.List;
 @Entity
 @Table(name = "customers")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Customer extends AbstractAddressWithCountry {
 
     /**
@@ -228,9 +229,9 @@ public class Customer extends AbstractAddressWithCountry {
         if (id == null || image == null)
             return "/images/bob.png";
 
-        // AG-ASSET-PATH-004: Standardized tenant asset path
-        // Returns: /tenants/{tenantId}/assets/customers/{id}/{filename}
-        return "/tenants/" + this.getTenantId() + "/assets/customers/" + this.id + "/" + this.image;
+        // AG-ASSET-PATH-004: Entity-First Protocol
+        // Returns: /tenants/{tenantId}/{id}/assets/customers/{filename}
+        return "/tenants/" + this.getTenantId() + "/" + this.id + "/assets/customers/" + this.image;
     }
 
     // ... (rest of methods)
@@ -245,8 +246,8 @@ public class Customer extends AbstractAddressWithCountry {
         if (id == null)
             return null;
 
-        // AG-ASSET-PATH-004: Standardized tenant asset path
-        // Returns: tenants/{tenantId}/assets/customers/{id}/
-        return "tenants/" + this.getTenantId() + "/assets/customers/" + this.id + "/";
+        // AG-ASSET-PATH-004: Entity-First Protocol
+        // Returns: tenants/{tenantId}/{id}/assets/customers/
+        return "tenants/" + this.getTenantId() + "/" + this.id + "/assets/customers/";
     }
 }

@@ -156,8 +156,8 @@ public class Category extends HierarchicalEntity<Category> implements Comparable
         if (effectiveTenantId == null) {
             effectiveTenantId = TenantContext.getTenantId();
         }
-        // AG-ASSET-PATH-005: Standardized tenant asset path
-        return "/tenants/" + effectiveTenantId + "/assets/categories/" + this.id + "/" + this.image;
+        // AG-ASSET-PATH-005: Entity-First Protocol
+        return "/tenants/" + effectiveTenantId + "/" + this.id + "/assets/categories/" + this.image;
     }
 
     @Transient
@@ -168,8 +168,8 @@ public class Category extends HierarchicalEntity<Category> implements Comparable
         if (effectiveTenantId == null) {
             effectiveTenantId = TenantContext.getTenantId();
         }
-        // AG-ASSET-PATH-005: Standardized tenant asset path
-        return "tenants/" + effectiveTenantId + "/assets/categories/" + this.id + "/";
+        // AG-ASSET-PATH-005: Entity-First Protocol
+        return "tenants/" + effectiveTenantId + "/" + this.id + "/assets/categories/";
     }
 
     @Override

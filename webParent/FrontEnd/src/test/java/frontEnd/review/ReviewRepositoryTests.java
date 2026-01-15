@@ -80,8 +80,8 @@ public class ReviewRepositoryTests {
 	@Test
 	public void testUpdateVoteCount() {
         Integer reviewId = 23;
-        // [AG-TEN-RISK-001] Provide TenantID for test isolation checks
-        repo.updateVoteCount(reviewId, 1L); // Assuming Tenant 1 for tests
+        // [AG-TEN-RISK-001] Refactored to JPQL - Tenant managed by Context/Filter
+        repo.updateVoteCount(reviewId);
 
         Optional<Review> reviewOpt = repo.findById(reviewId);
         if (reviewOpt.isPresent()) {

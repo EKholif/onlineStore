@@ -3,8 +3,6 @@ package com.onlineStoreCom.entity.product;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
 
-import java.io.File;
-
 /**
  * Represents an image associated with a product.
  * <p>
@@ -27,7 +25,8 @@ public class ProductImage extends IdBasedEntity {
 
     // ---------------- Constructors ----------------
 
-    public ProductImage() { }
+    public ProductImage() {
+    }
 
     public ProductImage(String name, Product product) {
         this.name = name;
@@ -36,11 +35,21 @@ public class ProductImage extends IdBasedEntity {
 
     // ---------------- Getters & Setters ----------------
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public Product getProduct() { return product; }
-    public void setProduct(Product product) { this.product = product; }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     // ---------------- Utility Methods ----------------
 
@@ -54,9 +63,16 @@ public class ProductImage extends IdBasedEntity {
      */
     @Transient
     public String getImagePath() {
-        String dirName = "products-photos" + File.separator;
-        if (this == null) return "/images/pngwing.com.png";
+        if (this.product == null || this.product.getId() == null)
+            return "/images/pngwing.com.png";
 
-        return "/products-photos/" + product.getId() + "/extras/" + this.name;
+        // AG-ASSET-PATH-006: Entity-First Protocol
+        // Returns: /tenants/{tenantId}/{productId}/assets/products/extras/{filename}
+        Long effectiveTenantId = this.product.getTenantId();
+        if (effectiveTenantId == null)
+            effectiveTenantId = 0L;
+
+        return "/tenants/" + effectiveTenantId + "/" + this.product.getId()
+                + "/assets/products/extras/" + this.name;
     }
 }

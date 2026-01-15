@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,12 +33,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
 	@Modifying
 	@Transactional
-    // [AG-TEN-RISK-001] Manual Tenant Check for Native Query
-    @Query(nativeQuery = true, value = "UPDATE shop.reviews " +
-            "SET votes = COALESCE((SELECT SUM(v.votes) FROM shop.reviews_votes v WHERE v.review_id = ?1), 0) " +
-            "WHERE id = ?1 AND tenant_id = ?2" // Security: Enforce Tenant Isolation
-    )
-    void updateVoteCount(Integer reviewId, Long tenantId);
+    @Query("UPDATE Review r SET r.votes = COALESCE(CAST((SELECT SUM(rv.votes) FROM ReviewVote rv WHERE rv.review.id = :reviewId) AS int), 0) WHERE r.id = :reviewId")
+    void updateVoteCount(@Param("reviewId") Integer reviewId);
 
 	@Query("SELECT r.votes FROM Review r WHERE r.id = ?1")
 	public Integer getVoteCount(Integer reviewId);

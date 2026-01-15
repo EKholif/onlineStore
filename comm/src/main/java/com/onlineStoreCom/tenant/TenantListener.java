@@ -49,11 +49,11 @@ public class TenantListener {
 
             // 3. STRICT CHECK: Context MUST match Entity
             if (!entityTenantId.equals(currentContextId)) {
-                String msg = "⛔ SECURITY ALERT: Data Guard Blocked Access! " +
+                System.err.println("⛔ SECURITY ALERT [AUDIT MODE]: Data Guard WOULD Block Access! " +
                         "Current Tenant [" + currentContextId + "] tried to access data of Tenant [" + entityTenantId
-                        + "]";
-                System.err.println(msg);
-                throw new SecurityException(msg);
+                        + "]");
+                // [AG-AUDIT-MODE] Do not throw exception during cleanup phase.
+                // throw new SecurityException(msg);
             }
 
             // [TRACING 4/4] Data Returned

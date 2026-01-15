@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{support/fragments/standard/layout/header::content}"></head>
 
@@ -96,20 +94,6 @@
                             </ul>
                         </li>
 
-                    <li class="nav-item dropdown">
-                        <a aria-expanded="false" class="nav-link dropdown-toggle icon-navbar"
-                           data-bs-toggle="dropdown" href="#" role="button">
-                            Settings
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item text-dark-emphasis"
-                                th:replace="~{support/fragments/navbar/nav_link::contant('settings','settings')}">
-                            </li>
-                            <li class="dropdown-item text-dark-emphasis"
-                                th:replace="~{support/fragments/navbar/nav_link::contant('settings/themes','Themes')}">
-                            </li>
-                        </ul>
-                    </li>
 
                     <li class="nav-item dropdown">
                         <a aria-expanded="false" class="nav-link dropdown-toggle icon-navbar"
@@ -129,6 +113,29 @@
                     <li class="nav-item dropdown">
                         <a aria-expanded="false" class="nav-link dropdown-toggle icon-navbar"
                            data-bs-toggle="dropdown" href="#" role="button">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item text-dark-emphasis"
+                                th:replace="~{support/fragments/navbar/nav_link::contant('settings','settings')}">
+                            </li>
+                            <li class="dropdown-item text-dark-emphasis"
+                                th:replace="~{support/fragments/navbar/nav_link::contant('settings/themes','Themes')}">
+                            </li>
+                            <li class="dropdown-item text-dark-emphasis"
+                                th:replace="~{support/fragments/navbar/nav_link::contant('settings/frontend','Frontend Settings')}">
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" class="nav-link dropdown-toggle icon-navbar"
+                           data-bs-toggle="dropdown" href="#" role="button">
                             Order
                         </a>
                         <ul class="dropdown-menu">
@@ -144,6 +151,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
+
                             <li class="dropdown-item text-dark-emphasis"
                                 th:replace="~{support/fragments/navbar/nav_link::contant('articles','Articles')}">
                             </li>
@@ -158,6 +166,7 @@
                                     <a class="nav-link" th:href="@{/sections}">Home Page</a>
                                 </li>
                             </th:block>
+
                         </ul>
                     </li>
 

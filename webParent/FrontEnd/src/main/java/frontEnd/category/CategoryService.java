@@ -22,7 +22,7 @@ public class CategoryService {
         List<Category> listEnabledCategories = repo.findAllEnabled();
 
         listEnabledCategories.forEach(category -> {
-            Set<Category> children = repo.getChildren(category.getId());
+            Set<Category> children = repo.getChildren(category);
 
             if (children == null || children.isEmpty()) {
                 listNoChildrenCategories.add(category);
@@ -35,8 +35,6 @@ public class CategoryService {
     public List<Category> listNoParentCategories() {
 
         // List<Category> listNoParentCategories = new ArrayList<>();
-
-        List<Category> listEnabledCategories = repo.findAllEnabled();
 
         List<Category> listNoParentCategories = repo.notParentCategory();
 
@@ -76,7 +74,7 @@ public class CategoryService {
 
     public Set<Category> listCategoryChildren(Category category) {
 
-        Set<Category> listCategoryChildren = repo.getChildren(category.getId());
+        Set<Category> listCategoryChildren = repo.getChildren(category);
 
         return listCategoryChildren;
     }

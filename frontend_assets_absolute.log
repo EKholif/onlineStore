@@ -1,0 +1,1476 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.onlineStore:FrontEnd >----------------------
+[INFO] Building FrontEnd 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.1.4:run (default-cli) > test-compile @ FrontEnd >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ FrontEnd ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 160 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ FrontEnd ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 97 source files with javac [debug release 19] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ FrontEnd ---
+[INFO] skip non existing resourceDirectory C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ FrontEnd ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 27 source files with javac [debug release 19] to target\test-classes
+[INFO] 
+[INFO] <<< spring-boot:3.1.4:run (default-cli) < test-compile @ FrontEnd <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.1.4:run (default-cli) @ FrontEnd ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T02:53:32.919+02:00  INFO 67376 --- [  restartedMain] frontEnd.FrontEndApplication             : Starting FrontEndApplication using Java 19.0.1 with PID 67376 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd)
+2026-01-14T02:53:32.921+02:00  INFO 67376 --- [  restartedMain] frontEnd.FrontEndApplication             : The following 1 profile is active: "default"
+2026-01-14T02:53:32.970+02:00  INFO 67376 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-14T02:53:32.970+02:00  INFO 67376 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-14T02:53:33.955+02:00  INFO 67376 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T02:53:34.062+02:00  INFO 67376 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 18 JPA repository interfaces.
+2026-01-14T02:53:34.794+02:00  INFO 67376 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 720 (http)
+2026-01-14T02:53:34.804+02:00  INFO 67376 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T02:53:34.804+02:00  INFO 67376 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T02:53:34.891+02:00  INFO 67376 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T02:53:34.891+02:00  INFO 67376 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1921 ms
+2026-01-14T02:53:35.036+02:00  INFO 67376 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T02:53:35.112+02:00  INFO 67376 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-14T02:53:35.117+02:00  INFO 67376 --- [  restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-14T02:53:35.302+02:00  INFO 67376 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T02:53:35.456+02:00  INFO 67376 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T02:53:35.476+02:00  INFO 67376 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-14T02:53:35.865+02:00  INFO 67376 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6656c69f
+2026-01-14T02:53:35.867+02:00  INFO 67376 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-14T02:53:36.476+02:00  INFO 67376 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T02:53:37.762+02:00  INFO 67376 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T02:53:38.217+02:00  INFO 67376 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T02:53:38.512+02:00  INFO 67376 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-14T02:53:39.012+02:00  INFO 67376 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-14T02:53:39.012+02:00  INFO 67376 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter settingFilterRegistration was not registered (disabled)
+2026-01-14T02:53:40.196+02:00  WARN 67376 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T02:53:40.300+02:00  INFO 67376 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-01-14T02:53:40.890+02:00  INFO 67376 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-14T02:53:40.959+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2729c57c, org.springframework.security.web.session.ForceEagerSessionCreationFilter@1507c9da, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21f87320, org.springframework.security.web.context.SecurityContextHolderFilter@1f337ff1, org.springframework.security.web.header.HeaderWriterFilter@3522d9fa, org.springframework.security.web.csrf.CsrfFilter@664daac, org.springframework.security.web.authentication.logout.LogoutFilter@3323f62c, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@37963455, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@2e955301, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@db15f7c, com.onlineStoreCom.security.tenant.TenantContextFilter@389bc9a0, frontEnd.setting.SettingFilter@7694aebf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b872073, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66b7a15c, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@25123b29, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@645faca, org.springframework.security.web.session.SessionManagementFilter@5949bc7a, org.springframework.security.web.access.ExceptionTranslationFilter@a5bca7d, org.springframework.security.web.access.intercept.AuthorizationFilter@7381d640]
+2026-01-14T02:53:40.963+02:00  WARN 67376 --- [  restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-14T02:53:40.963+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2026-01-14T02:53:40.965+02:00  WARN 67376 --- [  restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-14T02:53:40.965+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2026-01-14T02:53:40.965+02:00  WARN 67376 --- [  restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-14T02:53:40.965+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2026-01-14T02:53:41.221+02:00  WARN 67376 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-01-14T02:53:41.285+02:00  INFO 67376 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 720 (http) with context path ''
+2026-01-14T02:53:41.301+02:00  INFO 67376 --- [  restartedMain] frontEnd.FrontEndApplication             : Started FrontEndApplication in 8.721 seconds (process running for 9.245)
+2026-01-14T02:54:00.996+02:00  INFO 67376 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-01-14T02:54:01.012+02:00  INFO 67376 --- [       Thread-1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-14T02:54:01.015+02:00  WARN 67376 --- [       Thread-1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1674)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1589)
+2026-01-14T02:54:01.022+02:00  INFO 67376 --- [       Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T02:54:01.022+02:00  INFO 67376 --- [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-14T02:54:01.033+02:00  INFO 67376 --- [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2026-01-14T02:54:01.115+02:00  INFO 67376 --- [  restartedMain] frontEnd.FrontEndApplication             : Starting FrontEndApplication using Java 19.0.1 with PID 67376 (C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd\target\classes started by enoam in C:\Users\enoam\OneDrive\onlineStore\onlineStore\webParent\FrontEnd)
+2026-01-14T02:54:01.115+02:00  INFO 67376 --- [  restartedMain] frontEnd.FrontEndApplication             : The following 1 profile is active: "default"
+2026-01-14T02:54:01.451+02:00  INFO 67376 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-14T02:54:01.489+02:00  INFO 67376 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 18 JPA repository interfaces.
+2026-01-14T02:54:01.586+02:00  INFO 67376 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 720 (http)
+2026-01-14T02:54:01.587+02:00  INFO 67376 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-14T02:54:01.587+02:00  INFO 67376 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-14T02:54:01.620+02:00  INFO 67376 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-14T02:54:01.620+02:00  INFO 67376 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 503 ms
+2026-01-14T02:54:01.649+02:00  INFO 67376 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-14T02:54:01.662+02:00  INFO 67376 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T02:54:01.662+02:00  INFO 67376 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-14T02:54:01.663+02:00  INFO 67376 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-01-14T02:54:01.678+02:00  INFO 67376 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@578b7bd4
+2026-01-14T02:54:01.683+02:00  INFO 67376 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-01-14T02:54:01.765+02:00  INFO 67376 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-14T02:54:02.046+02:00  INFO 67376 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-14T02:54:02.355+02:00  INFO 67376 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-14T02:54:02.471+02:00  INFO 67376 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-14T02:54:02.471+02:00  INFO 67376 --- [  restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter settingFilterRegistration was not registered (disabled)
+2026-01-14T02:54:02.892+02:00  WARN 67376 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-14T02:54:02.909+02:00  INFO 67376 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-01-14T02:54:03.190+02:00  INFO 67376 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-01-14T02:54:03.206+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@225bd932, org.springframework.security.web.session.ForceEagerSessionCreationFilter@d059c92, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@18c36b08, org.springframework.security.web.context.SecurityContextHolderFilter@7a1f200e, org.springframework.security.web.header.HeaderWriterFilter@488a8fd4, org.springframework.security.web.csrf.CsrfFilter@6e559c35, org.springframework.security.web.authentication.logout.LogoutFilter@2bb4a8b8, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@1037e8db, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@4b3bdd1f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1ec862d2, com.onlineStoreCom.security.tenant.TenantContextFilter@7f5916c, frontEnd.setting.SettingFilter@4e0da0de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4164dca0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d8c0f77, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@7f58eaf9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@20f445cb, org.springframework.security.web.session.SessionManagementFilter@38e9a712, org.springframework.security.web.access.ExceptionTranslationFilter@695a435e, org.springframework.security.web.access.intercept.AuthorizationFilter@7198b9f8]
+2026-01-14T02:54:03.209+02:00  WARN 67376 --- [  restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-14T02:54:03.209+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2026-01-14T02:54:03.209+02:00  WARN 67376 --- [  restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-14T02:54:03.209+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2026-01-14T02:54:03.209+02:00  WARN 67376 --- [  restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2026-01-14T02:54:03.209+02:00  INFO 67376 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2026-01-14T02:54:03.256+02:00  WARN 67376 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-01-14T02:54:03.270+02:00  INFO 67376 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 720 (http) with context path ''
+2026-01-14T02:54:03.278+02:00  INFO 67376 --- [  restartedMain] frontEnd.FrontEndApplication             : Started FrontEndApplication in 2.188 seconds (process running for 31.222)
+2026-01-14T02:54:03.280+02:00  INFO 67376 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-01-14T02:54:27.588+02:00  INFO 67376 --- [-nio-720-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-14T02:54:27.588+02:00  INFO 67376 --- [-nio-720-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-14T02:54:27.589+02:00  INFO 67376 --- [-nio-720-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: 127.0.0.1
+?? THEME GUARD WARNING: Tenant [0] has no theme. Falling back to System Defaults.
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /favicon.ico, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /favicon.ico, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /favicon.ico, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /favicon.ico, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+?? THEME GUARD WARNING: Tenant [null] has no theme. Falling back to System Defaults.
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-brands-400.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /favicon.ico, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+?? THEME GUARD WARNING: Tenant [null] has no theme. Falling back to System Defaults.
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-brands-400.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /orders, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /cart, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG SHIPPING: Address Country: Canada
+DEBUG SHIPPING: Address State/City used for search: 'ON'
+DEBUG SHIPPING: Rate found within address: NULL
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Query Result: 4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /Payments, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /address_book, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /address_book, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /account, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /registration, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Query Result: 4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /states/list_by_country/16, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /registration, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /states/list_by_country/16, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /attributes, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+2026-01-14T03:01:10.830+02:00 ERROR 67376 --- [-nio-720-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "org.springframework.security.oauth2.core.user.OAuth2User.getAttributes()" because "user" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.oauth2.core.user.OAuth2User.getAttributes()" because "user" is null
+	at frontEnd.security.oauth.ShowAttributes.showAttributes(ShowAttributes.java:31) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.13.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.13.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:66) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:110) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:101) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at frontEnd.setting.SettingFilter.doFilter(SettingFilter.java:39) ~[classes/:na]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at com.onlineStoreCom.security.tenant.TenantContextFilter.doFilterInternal(TenantContextFilter.java:155) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181) ~[spring-security-oauth2-client-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.ForceEagerSessionCreationFilter.doFilterInternal(ForceEagerSessionCreationFilter.java:45) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at java.base/java.lang.Thread.run(Thread.java:1589) ~[na:na]
+
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /about, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /attributes, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+2026-01-14T03:01:13.829+02:00 ERROR 67376 --- [nio-720-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "org.springframework.security.oauth2.core.user.OAuth2User.getAttributes()" because "user" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.oauth2.core.user.OAuth2User.getAttributes()" because "user" is null
+	at frontEnd.security.oauth.ShowAttributes.showAttributes(ShowAttributes.java:31) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.13.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.13.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:66) ~[spring-webmvc-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:110) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:101) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at frontEnd.setting.SettingFilter.doFilter(SettingFilter.java:39) ~[classes/:na]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at com.onlineStoreCom.security.tenant.TenantContextFilter.doFilterInternal(TenantContextFilter.java:155) ~[comm-0.0.2-SNAPSHOT.jar:0.0.2-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181) ~[spring-security-oauth2-client-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.ForceEagerSessionCreationFilter.doFilterInternal(ForceEagerSessionCreationFilter.java:45) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.4.jar:6.1.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.12.jar:6.0.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.13.jar:10.1.13]
+	at java.base/java.lang.Thread.run(Thread.java:1589) ~[na:na]
+
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /orders, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /webfonts/fa-solid-900.woff2, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /css/stylesheet.css, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /star-rating/css/star-rating.css, ServerName: tenant4.localhost
+DEBUG: TenantContextFilter processing: /fontawesome/all.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.css, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /star-rating/themes/krajee-svg/theme.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: TenantContextFilter processing: /star-rating/js/star-rating.js, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+DEBUG: TenantContextFilter processing: /favicon.ico, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+DEBUG: TenantContextFilter processing: /, ServerName: tenant4.localhost
+DEBUG: Resolving tenantKey: tenant4
+DEBUG: Query Result: 4
+COPYRIGHT == > Copyright (C) 2021 by Numan and its affiliates
+CURRENCY_ID == > 1
+CURRENCY_SYMBOL == > $
+CURRENCY_SYMBOL_POSITION == > Before price
+DECIMAL_DIGITS == > 2
+DECIMAL_POINT_TYPE == > POINT
+SITE_LOGO == > /tenants/4/assets/profile/8efe822f44e536affa464ac16a603483.png
+SITE_NAME == > Numan Shop
+THOUSANDS_POINT_TYPE == > COMMA
+? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+Security guard active: ? SECURITY ALERT: Data Guard Blocked Access! Current Tenant [4] tried to access data of Tenant [1]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15:42 min
+[INFO] Finished at: 2026-01-14T03:09:06+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.1.4:run (default-cli) on project FrontEnd: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
