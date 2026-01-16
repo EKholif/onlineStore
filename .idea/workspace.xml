@@ -7,133 +7,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/controller/FrontendThemeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-183235.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-183832.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-185902.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-190039.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-190257.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-033105.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-040650.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-042106.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-042144.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-042429.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-210122.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-210511.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-210615.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-210955.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-211818.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-212249.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-212513.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-212827.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-213607.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-15.0.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-16.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/ReportsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/BaseThemeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/FrontendThemeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/frontend_theme_settings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/11/assets/profile/node-debug-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/11/assets/users/33/aks-tools.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/brands/98/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/customers/10/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/customers/18/14f38f8cfd0b5389a211054b20083b8c.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/customers/7/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/products/69/8ae17bbee4fec22955ebdabca400a629.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/products/69/extras/45f5eba5_a6843230.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/products/73/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/profile/1/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/profile/4c90e10e_4824e185.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Alfred.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Ali Raza.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Allada Pavan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Amina Elshal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Ammanolla.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Anna Maria.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Bill Feeny.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Bruce Kitchell.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Dave Kumar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Frederick Santos.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Isaac Henry.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Jack Bruce.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/KentHervey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Matthew.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Mike Gates.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Mithun Kumar Majumdar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Mohamed Zirri.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Muhammad Evran.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Nathi_Sangweni.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Pedro Quintero.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Satya Narayana.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/Svetlana Stasovska.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/default-user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/1/namhm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/18/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/2/9b5b8b8f9ab1c264a71e36b63785f661.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/36/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/4/assets/users/6/8c02662811277bacd09ea2389c572119.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/profile/Alienware-Logo-head-while.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/4/assets/users/36/14f38f8cfd0b5389a211054b20083b8c.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/profile/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/users/34/rstudio.png" afterDir="false" />
+    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="Add frontend theme settings management and update related files">
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260116-214350.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/report/ReportManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/tenants/5/assets/users/262/ccloud_retina.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/SettingCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/ThemeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/ThemeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_assets_absolute.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_assets_fix.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_debug_v2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_debug_v3.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_final.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_final_test.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_final_v2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_final_v3.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_fresh_start.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_leak_fix.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_restart.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_security_safe.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend_verified.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/tenant-migration/tenant-migration-20260111-183848.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/tenant-migration/tenant-migration-20260111-183934.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/tenant-migration/tenant-migration-20260113-174443.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd-2026-01-09.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd-2026-01-10.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd-2026-01-11.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd-2026-01-12.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/frontend_debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/hs_err_pid14992.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/hs_err_pid24972.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/hs_err_pid28372.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/hs_err_pid30768.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/repository/SettingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/repository/SettingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/service/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/service/SettingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/service/ThemeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/java/frontEnd/setting/service/ThemeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/static/css/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/footer/footer_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/footer/footer_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/header/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/header/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/FrontEnd/src/main/resources/templates/supports/navbar/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_brand_inference.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_clean.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_codes_debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_debug45.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_deep_repair.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_deep_repair_v2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_delete_orphans.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_delete_unused.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_diagnostic.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_final_fix.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_final_fix_v2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_find_parents.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_fix_debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_fix_tenant4.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_restart.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_seeder_debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_seeder_final.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_seeder_final_v2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/backend_seeder_final_v3.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/brand/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/category/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/customer/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dumps/D1 (1).sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dumps/Dump20260111.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" afterDir="false" />
@@ -145,285 +29,11 @@
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/knowledge_preview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/cleanup-20260112-020917.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/cleanup-20260112-031651.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/cleanup-20260112-031721.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/manual-migration-20260111-042311.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-035423.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-035724.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040247.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040255.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040426.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040445.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040542.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040601.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040634.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040719.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-040756.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-041101.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-041437.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-041522.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-041932.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-041942.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-041958.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-042536.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-042701.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-042708.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-042735.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-042820.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-043036.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-152357.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-153315.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-154042.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-165730.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-170016.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-170024.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-174356.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-174405.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-175915.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-180002.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-180007.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260111-180951.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-012649.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-013122.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-013716.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-013942.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-013954.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-015557.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-021207.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-022026.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-022155.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-022307.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-030936.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-030940.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-031804.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-032133.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-080618.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-082129.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-082525.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-144553.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-145019.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-145048.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-145101.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-145109.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-150630.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151026.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151342.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151353.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151401.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151409.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-151509.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152148.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152324.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152518.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152525.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152530.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152539.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152632.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-152850.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161404.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161725.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161823.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-161845.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162236.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162301.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162313.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162319.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-162503.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-163104.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-163120.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-163135.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-170543.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-170913.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-171523.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-171545.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260112-171553.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014557.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014606.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014633.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014652.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014704.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014817.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-014939.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-015124.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020214.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020221.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020222.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020310.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-020808.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023122.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023515.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023527.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023624.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023634.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023857.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-023902.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024110.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024118.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024210.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024221.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024232.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024250.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024734.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-024741.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-025317.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-025341.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-025505.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-025524.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-025742.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-025759.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-025955.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-030015.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-030644.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-030658.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-032914.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-032938.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-033059.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-033140.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-035136.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-035150.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-035733.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-035746.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-035800.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-040225.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-040531.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-040641.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-040738.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-040939.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-041140.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-041226.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-041419.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-041612.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-041725.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-042830.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-042902.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-043202.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-043210.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-043450.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-043513.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-043610.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-043658.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-043844.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-044310.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-091643.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-091925.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-163552.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-163622.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-163629.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-163631.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-163955.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164014.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164136.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164146.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164154.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164215.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164219.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164223.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164339.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164349.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164408.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164435.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164530.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-164625.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-183120.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-183931.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-184637.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-184912.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260113-185452.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004448.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004612.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004734.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004751.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004758.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004803.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004858.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-004936.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-011705.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-012028.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-012131.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-012159.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-012347.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-012402.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-014233.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-014244.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-014302.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-014957.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-015010.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-015030.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-023146.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-023159.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-023212.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-023335.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-024122.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-024434.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-024627.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-030415.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-030547.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-030841.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-030849.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-031440.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-031452.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-031507.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-160528.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-162017.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-163124.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-163142.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-164630.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-164843.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-164928.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-183424.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-183523.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-185709.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-193235.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-193247.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-193256.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-193346.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194020.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194032.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194040.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194127.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194256.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194303.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194322.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194334.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194342.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194431.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194505.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194534.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194541.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194627.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194649.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194657.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-194821.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-201400.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-201657.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-202538.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-204456.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-205551.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260114-205844.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-005929.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-005953.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-022859.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-030116.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-031905.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-033037.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-034138.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/logs/tenant-migration/tenant-migration-20260115-034252.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-11.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-12.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-13.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-14.0.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-15.md" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-15.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-16.md" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-16.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/debug/FixCrossTenantData.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/debug/FixCrossTenantData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/ThemeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/ThemeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/service/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/setting/service/SettingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/theme_settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/settings/theme_settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/support/fragments/navbar/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/shippingTest/ShippingRateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/settingTest/shippingTest/ShippingRateRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/test_output.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/verification_result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/verification_result.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/sections.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/resources/templates/sections/sections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/menu/MenuRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/test/java/com/onlineStore/admin/menu/MenuRepositoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -788,7 +398,7 @@
       <workItem from="1768399425020" duration="6073000" />
       <workItem from="1768408061237" duration="22346000" />
       <workItem from="1768494142033" duration="7947000" />
-      <workItem from="1768526964418" duration="6693000" />
+      <workItem from="1768526964418" duration="10192000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -1054,7 +664,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768445025856</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add frontend theme settings management and update related files">
+      <option name="closed" value="true" />
+      <created>1768592583010</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1768592583010</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1194,12 +812,21 @@
     <MESSAGE value="Add tenant migration logs, cleanup logs, and refactor YAML files for improved formatting" />
     <MESSAGE value="Add tenant migration logs, refactor user and controller code for improved email uniqueness checks and formatting" />
     <MESSAGE value="Add new section types and implement menu and section management features" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new section types and implement menu and section management features" />
+    <MESSAGE value="Add frontend theme settings management and update related files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add frontend theme settings management and update related files" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLIntegrityConstraintViolationException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="jdk.proxy4.$Proxy153" memberName="h" />

@@ -15,7 +15,7 @@ import java.util.Set;
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Brand extends IdBasedEntity {
 
-    @Column(nullable = false, length = 45, unique = true)
+    @Column(nullable = false, length = 45)
     private String name;
 
     @Column(nullable = false, length = 128)

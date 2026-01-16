@@ -50,7 +50,7 @@ public class MenuRepositoryTests {
     public void testCreateHeaderMenu() {
         Menu menu = new Menu();
         menu.setType(MenuType.HEADER);
-        menu.setTitle("About Shopme");
+        menu.setTitle("About online shop");
         menu.setAlias("about");
         menu.setEnabled(true);
         menu.setPosition(1);

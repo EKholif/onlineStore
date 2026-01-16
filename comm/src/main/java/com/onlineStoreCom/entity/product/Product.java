@@ -17,7 +17,7 @@ import java.util.*;
 public class Product extends IdBasedEntity {
 
     // --- Inherited from CatalogItem ---
-    @Column(unique = true, length = 256, nullable = false)
+    @Column(length = 256, nullable = false)
     protected String name;
 
     @Column(unique = true, length = 256, nullable = false)

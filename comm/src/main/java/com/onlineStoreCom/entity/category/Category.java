@@ -18,10 +18,10 @@ public class Category extends HierarchicalEntity<Category> implements Comparable
     @Column(name = "tenant_id", updatable = false)
     private Long tenantId;
 
-    @Column(name = "name", length = 85, nullable = false, unique = true)
+    @Column(name = "name", length = 85, nullable = false)
     private String name;
 
-    @Column(name = "alias", length = 85, nullable = false, unique = true)
+    @Column(name = "alias", length = 85, nullable = false)
     private String alias;
 
     @Column(name = "image", length = 125, nullable = true)

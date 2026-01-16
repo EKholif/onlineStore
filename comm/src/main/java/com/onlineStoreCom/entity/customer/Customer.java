@@ -26,7 +26,7 @@ public class Customer extends AbstractAddressWithCountry {
     /**
      * The unique email address of the customer, used for login
      */
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private String email;
 
     /**
