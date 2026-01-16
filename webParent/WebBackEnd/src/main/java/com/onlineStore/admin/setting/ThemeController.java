@@ -1,10 +1,9 @@
 package com.onlineStore.admin.setting;
 
-import com.onlineStore.admin.setting.service.SettingService;
 import com.onlineStore.admin.setting.settingBag.ThemeSettingBag;
 import com.onlineStoreCom.entity.setting.Setting;
+import com.onlineStoreCom.entity.setting.SettingCategory;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +13,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-public class ThemeController {
+public class ThemeController extends BaseThemeController {
 
-    @Autowired
-    private SettingService service;
+    private static final String PREFIX = "THEME";
+    private static final SettingCategory CATEGORY = SettingCategory.THEME;
 
     @GetMapping("/settings/themes")
     public String viewThemeSettings(Model model,
@@ -26,47 +25,13 @@ public class ThemeController {
         List<Setting> listSettings = themeSettings.list();
 
         // Ensure defaults exist in the list (view only, unless saved)
-        checkAndAddDefaults(listSettings, userDetails.getTenantId());
+        checkAndAddDefaults(listSettings, userDetails.getTenantId(), PREFIX, CATEGORY);
 
         for (Setting setting : listSettings) {
             model.addAttribute(setting.getKey(), setting.getValue());
         }
 
         return "settings/theme_settings";
-    }
-
-    private void checkAndAddDefaults(List<Setting> listSettings, Long tenantId) {
-        addIfMissing(listSettings, "THEME_COLOR_PRIMARY", "#007bff", tenantId);
-        addIfMissing(listSettings, "THEME_COLOR_SECONDARY", "#6c757d", tenantId);
-        addIfMissing(listSettings, "THEME_TABLE_HEADER_BG", "#343a40", tenantId);
-        addIfMissing(listSettings, "THEME_TABLE_HEADER_COLOR", "#ffffff", tenantId);
-
-        // Header & Footer Defaults
-        addIfMissing(listSettings, "THEME_HEADER_BG", "#000000", tenantId);
-        addIfMissing(listSettings, "THEME_HEADER_COLOR", "#ffffff", tenantId);
-        addIfMissing(listSettings, "THEME_FOOTER_BG", "#343a40", tenantId);
-        addIfMissing(listSettings, "THEME_FOOTER_COLOR", "#ffffff", tenantId);
-
-        // Header Dropdown Defaults
-        addIfMissing(listSettings, "THEME_HEADER_DROPDOWN_BG", "#343a40", tenantId);
-        addIfMissing(listSettings, "THEME_HEADER_DROPDOWN_COLOR", "#ffffff", tenantId);
-        addIfMissing(listSettings, "THEME_HEADER_DROPDOWN_HOVER_BG", "#6c757d", tenantId);
-        addIfMissing(listSettings, "THEME_HEADER_DROPDOWN_HOVER_BG", "#6c757d", tenantId);
-    }
-
-    private void addIfMissing(List<Setting> list, String key, String defaultValue, Long tenantId) {
-        boolean found = false;
-        for (Setting s : list) {
-            if (s.getKey().equals(key)) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            Setting setting = new Setting(key, defaultValue, com.onlineStoreCom.entity.setting.SettingCategory.THEME);
-            setting.setTenantId(tenantId);
-            list.add(setting);
-        }
     }
 
     @PostMapping("/settings/themes/save")
@@ -76,68 +41,12 @@ public class ThemeController {
         List<Setting> listSettings = themeSettings.list();
         Long tenantId = userDetails.getTenantId();
 
-        // Colors
-        saveSetting(listSettings, request, "THEME_COLOR_PRIMARY", tenantId);
-        saveSetting(listSettings, request, "THEME_COLOR_SECONDARY", tenantId);
-        saveSetting(listSettings, request, "THEME_TABLE_HEADER_BG", tenantId);
-        saveSetting(listSettings, request, "THEME_TABLE_HEADER_COLOR", tenantId);
-
-        saveSetting(listSettings, request, "THEME_HEADER_BG", tenantId);
-        saveSetting(listSettings, request, "THEME_HEADER_COLOR", tenantId);
-        saveSetting(listSettings, request, "THEME_FOOTER_BG", tenantId);
-        saveSetting(listSettings, request, "THEME_FOOTER_COLOR", tenantId);
-
-        saveSetting(listSettings, request, "THEME_HEADER_DROPDOWN_BG", tenantId);
-        saveSetting(listSettings, request, "THEME_HEADER_DROPDOWN_COLOR", tenantId);
-        saveSetting(listSettings, request, "THEME_HEADER_DROPDOWN_HOVER_BG", tenantId);
-
-        // Dimensions with px suffix
-        saveSettingWithSuffix(listSettings, request, "THEME_HEADER_HEIGHT", "px", tenantId);
-        saveSettingWithSuffix(listSettings, request, "THEME_FOOTER_HEIGHT", "px", tenantId);
-        saveSettingWithSuffix(listSettings, request, "THEME_LOGO_WIDTH", "px", tenantId);
-        saveSettingWithSuffix(listSettings, request, "THEME_FONT_SIZE", "px", tenantId);
-
-        // Font Weight (Checkbox handling)
-        String weight = request.getParameter("THEME_FONT_WEIGHT");
-        updateSettingValue(listSettings, "THEME_FONT_WEIGHT", weight == null ? "normal" : weight, tenantId);
+        saveCommonSettings(listSettings, request, tenantId, PREFIX, CATEGORY);
 
         service.saveAll(listSettings);
         ra.addFlashAttribute("message", "Theme settings have been saved.");
 
         return "redirect:/settings/themes";
-    }
-
-    private void saveSetting(List<Setting> list, HttpServletRequest request, String key, Long tenantId) {
-        String value = request.getParameter(key);
-        if (value != null) {
-            updateSettingValue(list, key, value, tenantId);
-        }
-    }
-
-    private void saveSettingWithSuffix(List<Setting> list, HttpServletRequest request, String key, String suffix,
-                                       Long tenantId) {
-        String value = request.getParameter(key);
-        if (value != null && !value.isEmpty()) {
-            updateSettingValue(list, key, value + suffix, tenantId);
-        }
-    }
-
-    private void updateSettingValue(List<Setting> list, String key, String value, Long tenantId) {
-        Setting setting = null;
-        for (Setting s : list) {
-            if (s.getKey().equals(key)) {
-                setting = s;
-                break;
-            }
-        }
-
-        if (setting != null) {
-            setting.setValue(value);
-        } else {
-            Setting settingNew = new Setting(key, value, com.onlineStoreCom.entity.setting.SettingCategory.THEME);
-            settingNew.setTenantId(tenantId);
-            list.add(settingNew);
-        }
     }
 
     @GetMapping(value = "/css/theme.css", produces = "text/css")
@@ -149,28 +58,11 @@ public class ThemeController {
 
         // Ensure defaults are present for CSS generation
         if (userDetails != null) {
-            checkAndAddDefaults(listSettings, userDetails.getTenantId());
+            checkAndAddDefaults(listSettings, userDetails.getTenantId(), PREFIX, CATEGORY);
         }
 
         StringBuilder css = new StringBuilder();
-        css.append(":root {\n");
-
-        for (Setting setting : listSettings) {
-            String key = setting.getKey();
-            String value = setting.getValue();
-            String varName = "--theme-" + key.replace("THEME_", "").replace("_", "-").toLowerCase();
-            css.append(String.format("    %s: %s;\n", varName, value));
-
-            // Map specific theme vars to Bootstrap for deeper integration
-            if ("THEME_COLOR_PRIMARY".equals(key)) {
-                css.append(String.format("    --bs-primary: %s;\n", value));
-                css.append(String.format("    --bs-link-color: %s;\n", value));
-            }
-            if ("THEME_COLOR_SECONDARY".equals(key)) {
-                css.append(String.format("    --bs-secondary: %s;\n", value));
-            }
-        }
-        css.append("}\n\n");
+        css.append(generateCommonCss(listSettings, PREFIX));
 
         // Global Overrides
         css.append(
@@ -190,6 +82,8 @@ public class ThemeController {
                 ".table-header thead th { background-color: var(--theme-table-header-bg) !important; color: var(--theme-table-header-color) !important; }\n");
         css.append(
                 ".table-dark { --bs-table-bg: var(--theme-table-header-bg); --bs-table-color: var(--theme-table-header-color); }\n");
+        css.append(
+                ".table { --bs-table-color: var(--theme-table-row-color); --bs-table-bg: var(--theme-table-row-bg); --bs-table-border-color: var(--theme-table-border-color); --bs-table-hover-bg: var(--theme-table-hover-bg); }\n");
 
         // Dropdown Overrides (Scoped to navbar-top)
         css.append(".navbar-top .dropdown-menu { background-color: var(--theme-header-dropdown-bg) !important; }\n");

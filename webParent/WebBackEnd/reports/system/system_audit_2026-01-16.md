@@ -1,0 +1,253 @@
+# System Architecture Audit Report
+
+**Execution Time:** 2026-01-16T21:36:07.403974600
+**Status:** WARNINGS
+
+## 1. Audit Log
+
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 1
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 10
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 100
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 101
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 102
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 103
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 104
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 105
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 106
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 107
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 11
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 113
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 117
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 12
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 120
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 121
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 124
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 126
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 13
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 133
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 134
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 139
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 14
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 144
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 15
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 16
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 163
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 164
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 168
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 17
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 170
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 171
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 175
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 176
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 18
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 19
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 2
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 20
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 21
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 22
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 23
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 24
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 25
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 26
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 27
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 28
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 29
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 30
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 31
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 32
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 33
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 34
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 35
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 36
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 37
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 38
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 39
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 4
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 40
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 41
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 42
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 43
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 44
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 45
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 46
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 47
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 48
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 49
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 5
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 50
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 51
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 52
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 53
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 54
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 55
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 56
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 57
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 58
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 59
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 6
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 60
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 61
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 62
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 63
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 64
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 65
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 66
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 67
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 68
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 69
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 7
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 70
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 71
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 72
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 73
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 74
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 75
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 76
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 77
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 78
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 79
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 8
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 80
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 81
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 82
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 83
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 84
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 85
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 86
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 87
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 88
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 89
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 9
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 90
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 91
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 92
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 93
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 94
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 95
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 96
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 97
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 98
+    - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 4]: Unknown folder: 99
+    - *Action:* Verify purpose

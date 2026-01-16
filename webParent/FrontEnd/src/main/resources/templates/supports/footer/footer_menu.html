@@ -5,32 +5,27 @@
 <div th:fragment="content">
 
     <div>
-                    <nav class="navbar navbar-expand-lg gradient-custom-blue  navbar-dark mt-5">
-                        <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#bottomNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse " id="bottomNavbar">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link" href="">About Us</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="">Privacy
-                                    Notice</a></li>
-                                <li class="nav-item"><a class="nav-link" href="">Returns
-                                    &amp; Refunds</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div th:fragment="footer" >
+        <nav class="navbar navbar-bottom navbar-expand-lg navbar-dark mt-5">
+            <button class="navbar-toggler " data-bs-target="#bottomNavbar" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="bottomNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="">About Us</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="">Privacy
+                        Notice</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Returns
+                        &amp; Refunds</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div th:fragment="footer">
 
-                    <p class="text-center"> [[${COPYRIGHT}]] </p>
+        <p class="text-center"> [[${COPYRIGHT}]] </p>
 
-                </div>
-
-
-
-
-
+    </div>
 
 
 </div>
@@ -38,6 +33,3 @@
 </body>
 
 </html>
-
-
-

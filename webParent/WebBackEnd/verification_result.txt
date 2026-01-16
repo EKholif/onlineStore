@@ -9,4 +9,4 @@ VERIFICATION REPORT
 [articles       ] Tenant 1: 0 | Tenant 4: 9 | Status: ✅ Clean
 [menus          ] Tenant 1: 0 | Tenant 4: 0 | Status: ✅ Clean
 [sections       ] Tenant 1: 0 | Tenant 4: 0 | Status: ✅ Clean
-[settings       ] Tenant 1: 0 | Tenant 4: 39 | Status: ✅ Clean
+[settings       ] Tenant 1: 0 | Tenant 4: 67 | Status: ✅ Clean

@@ -6,7 +6,7 @@
 <body>
 <div th:fragment="content">
 
-    <nav class="navbar  navbar-expand-lg gradient-custom-blue    navbar-dark ">
+    <nav class="navbar navbar-top navbar-expand-lg navbar-dark ">
         <div class="container-fluid ">
 
             <a class="navbar-brand " th:href="@{/}">
@@ -39,7 +39,8 @@
 
                         <span class="fas fa-user fa-2 icon-green fa-2x float-sm-end"></span>
 
-                        <li class="nav-item "><a class="nav-link" onclick="window.location.href = this.href + '?redirect=' + encodeURIComponent(window.location.pathname + window.location.search); return false;"
+                        <li class="nav-item "><a class="nav-link"
+                                                 onclick="window.location.href = this.href + '?redirect=' + encodeURIComponent(window.location.pathname + window.location.search); return false;"
                                                  th:href="@{/login}">Login</a>
                         </li>
 

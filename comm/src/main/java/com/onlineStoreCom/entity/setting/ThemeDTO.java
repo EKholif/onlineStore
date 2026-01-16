@@ -1,22 +1,34 @@
 package com.onlineStoreCom.entity.setting;
 
 public class ThemeDTO {
+
     private String primaryColor;
     private String secondaryColor;
+
     private String headerBg;
     private String headerColor;
+
     private String footerBg;
     private String footerColor;
+
     private String fontFamily;
     private String fontSize;
     private String fontWeight;
-    // Add raw map for flexibility or other fields as needed
 
     public ThemeDTO() {
     }
 
-    public ThemeDTO(String primaryColor, String secondaryColor, String headerBg, String headerColor,
-                    String footerBg, String footerColor, String fontFamily, String fontSize, String fontWeight) {
+    public ThemeDTO(
+            String primaryColor,
+            String secondaryColor,
+            String headerBg,
+            String headerColor,
+            String footerBg,
+            String footerColor,
+            String fontFamily,
+            String fontSize,
+            String fontWeight
+    ) {
         this.primaryColor = primaryColor;
         this.secondaryColor = secondaryColor;
         this.headerBg = headerBg;
@@ -28,7 +40,6 @@ public class ThemeDTO {
         this.fontWeight = fontWeight;
     }
 
-    // Getters and Setters
     public String getPrimaryColor() {
         return primaryColor;
     }

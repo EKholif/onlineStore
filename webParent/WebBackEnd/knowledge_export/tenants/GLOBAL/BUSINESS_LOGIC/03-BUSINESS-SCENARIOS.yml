@@ -1,7 +1,7 @@
 id: 03-BUSINESS-SCENARIOS
 type: BUSINESS_LOGIC
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
-  previousVersion: null, updatedAt: '2026-01-15T04:42:54.402459700', version: 0.1.0}
+                                                                previousVersion: null, updatedAt: '2026-01-16T21:36:07.313825900', version: 0.1.0 }
 personas: null
 content:
   business_scenarios:

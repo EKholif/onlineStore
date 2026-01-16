@@ -22,7 +22,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest(showSql = true)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = true)
+@Rollback(value = false)
 class ShippingRateRepositoryTest {
     @Autowired
     private ShippingRateRepository repo;
@@ -70,6 +70,14 @@ class ShippingRateRepositoryTest {
     public void testListAll() {
 
         List<ShippingRate> shippingRateList = repo.findAll();
+
+        for (ShippingRate shippingRate : shippingRateList) {
+
+            shippingRate.setTenantId(4l);
+
+            System.out.println(shippingRate.getTenantId() + " : " + shippingRate.getRate());
+
+        }
 
         shippingRateList.forEach(c -> System.out.println(c.getCountry()));
 

@@ -63,6 +63,10 @@ public class SettingService {
         return settingRepo.findByCategory(SettingCategory.THEME);
     }
 
+    public List<Setting> getFrontendThemeSettings() {
+        return settingRepo.findByCategory(SettingCategory.FRONTEND_THEME);
+    }
+
 	public String getCurrencyCode() {
 		Setting setting = settingRepo.findByKey("CURRENCY_ID");
 		Integer currencyId = Integer.parseInt(setting.getValue());

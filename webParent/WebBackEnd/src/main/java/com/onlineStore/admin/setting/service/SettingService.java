@@ -60,6 +60,11 @@ public class SettingService {
         return new com.onlineStore.admin.setting.settingBag.ThemeSettingBag(settings);
     }
 
+    public com.onlineStore.admin.setting.settingBag.ThemeSettingBag getFrontendThemeSettings() {
+        List<Setting> settings = settingRepo.findByCategory(SettingCategory.FRONTEND_THEME);
+        return new com.onlineStore.admin.setting.settingBag.ThemeSettingBag(settings);
+    }
+
     // public String getCurrencyCode() {
     // Setting setting = settingRepo.findByKey("CURRENCY_ID");
     // Integer currencyId = Integer.parseInt(setting.getValue());

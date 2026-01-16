@@ -18,7 +18,7 @@ import java.util.List;
  * availability (Stop 500 Errors).
  */
 @Component
-@Order(10) // Run after diagnostics
+@Order(1) // Run FIRST before diagnostics
 public class FixCrossTenantData implements CommandLineRunner {
 
     @Autowired

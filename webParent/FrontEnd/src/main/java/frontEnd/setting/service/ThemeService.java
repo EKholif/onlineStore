@@ -39,14 +39,19 @@ public class ThemeService {
 
     private ThemeDTO mapToDTO(Map<String, String> map) {
         return new ThemeDTO(
-                map.get("THEME_COLOR_PRIMARY"),
-                map.get("THEME_COLOR_SECONDARY"),
-                map.get("THEME_HEADER_BG"),
-                map.get("THEME_HEADER_COLOR"),
-                map.get("THEME_FOOTER_BG"),
-                map.get("THEME_FOOTER_COLOR"),
-                map.get("THEME_FONT_FAMILY"),
-                map.get("THEME_FONT_SIZE"),
-                map.get("THEME_FONT_WEIGHT"));
+                map.get("FRONTEND_THEME_COLOR_PRIMARY"),
+                map.get("FRONTEND_THEME_COLOR_SECONDARY"),
+
+                map.get("FRONTEND_THEME_HEADER_BG"),
+                map.get("FRONTEND_THEME_HEADER_COLOR"),
+
+                map.get("FRONTEND_THEME_FOOTER_BG"),
+                map.get("FRONTEND_THEME_FOOTER_COLOR"),
+
+                map.get("FRONTEND_THEME_FONT_FAMILY"),
+                map.get("FRONTEND_THEME_FONT_SIZE"),
+                map.get("FRONTEND_THEME_FONT_WEIGHT")
+        );
     }
+
 }
