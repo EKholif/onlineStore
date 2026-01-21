@@ -49,7 +49,7 @@ public class SettingController {
 
     @PostMapping("/settings/save_general")
     public String saveGeneralSettings(@RequestParam("fileImage") MultipartFile multipartFile,
-                                      HttpServletRequest request, RedirectAttributes ra) throws IOException {
+            HttpServletRequest request, RedirectAttributes ra) throws IOException {
         GeneralSettingBag settingBag = service.getGeneralSettings();
 
         Long tenantId = TenantContext.getTenantId();
@@ -72,12 +72,12 @@ public class SettingController {
             Long tenantId = TenantContext.getTenantId();
 
             // AG-ASSET-PATH-006: Use new hierarchical structure for site logo (profile)
-            String value = "/tenants/" + tenantId + "/assets/profile/" + fileName;
+            String value = "/tenants/" + tenantId + "/profile/" + fileName;
 
             settingBag.setTenantId(tenantId);
 
             settingBag.updateSiteLogo(value);
-            String uploadDir = "tenants/" + tenantId + "/assets/profile";
+            String uploadDir = "webParent/WebBackEnd/tenants/" + tenantId + "/profile";
             FileUploadUtil.cleanDir(uploadDir);
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 

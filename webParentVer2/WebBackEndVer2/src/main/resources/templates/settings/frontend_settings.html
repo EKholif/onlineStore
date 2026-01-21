@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header :: content}"></head>
+
+<body>
+<div class="container-fluid">
+    <div th:replace="~{support/fragments/navbar/navbar :: content}"></div>
+
+    <div class="text-center">
+        <h2>Frontend Settings</h2>
+    </div>
+
+    <div class="row">
+        <!-- Settings Panel -->
+        <div class="col-lg-3 mb-4">
+            <form id="frontendSettingsForm" method="post" th:action="@{/settings/frontend/save}">
+                <div class="alert alert-success text-center" th:if="${message != null}">
+                    [[${message}]]
+                </div>
+
+                <div class="card shadow-sm border-0" style="background: #f8f9fa;">
+                    <div class="card-header bg-transparent border-bottom-0 pt-3 pb-0">
+                        <ul class="nav nav-pills nav-fill small" id="frontendTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active py-1" data-bs-target="#general" data-bs-toggle="tab"
+                                        id="general-tab" role="tab" type="button">General
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link py-1" data-bs-target="#config" data-bs-toggle="tab"
+                                        id="config-tab" role="tab" type="button">Config
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="tab-content" id="frontendTabsContent">
+                            <!-- General Tab -->
+                            <div class="tab-pane fade show active" id="general" role="tabpanel">
+                                <h6 class="text-uppercase text-muted small fw-bold mb-3">Status</h6>
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Maintenance Mode</label>
+                                    <select class="form-select frontend-input" id="maintenanceMode"
+                                            name="FRONTEND_MAINTENANCE_MODE">
+                                        <option th:selected="${FRONTEND_MAINTENANCE_MODE == 'false'}" value="false">
+                                            Disabled (Live)
+                                        </option>
+                                        <option th:selected="${FRONTEND_MAINTENANCE_MODE == 'true'}" value="true">
+                                            Enabled (Offline)
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <hr class="my-3">
+                                <h6 class="text-uppercase text-muted small fw-bold mb-3">API Access</h6>
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Public API</label>
+                                    <select class="form-select frontend-input" id="publicApi"
+                                            name="FRONTEND_ENABLE_PUBLIC_API">
+                                        <option th:selected="${FRONTEND_ENABLE_PUBLIC_API == 'true'}" value="true">
+                                            Enabled
+                                        </option>
+                                        <option th:selected="${FRONTEND_ENABLE_PUBLIC_API == 'false'}"
+                                                value="false">Disabled
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Config Tab -->
+                            <div class="tab-pane fade" id="config" role="tabpanel">
+                                <div class="mb-3">
+                                    <label class="small text-muted d-block mb-1">Pagination Size</label>
+                                    <input class="form-control frontend-input" max="100"
+                                           min="1" name="FRONTEND_PAGINATION_SIZE" th:value="${FRONTEND_PAGINATION_SIZE}" type="number">
+                                    <small class="text-muted" style="font-size: 0.7rem;">Items per page on
+                                        frontend</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-top text-center">
+                            <button class="btn btn-primary w-100" type="submit">
+                                <i class="fas fa-save me-2"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Preview Panel (Reused Layout) -->
+        <div class="col-lg-9">
+            <div class="sticky-top" style="top: 80px; z-index: 90;">
+                <div class="card shadow-lg border-0">
+                    <div
+                            class="card-header bg-dark text-white py-2 d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-desktop me-2"></i> Frontend Live Simulation</div>
+                        <span class="badge bg-info">Simulation</span>
+                    </div>
+                    <div class="card-body p-0 bg-light">
+                        <!-- Live Preview Frame -->
+                        <div class="border-0" id="preview-frame"
+                             style="overflow: hidden; height: 700px; display: flex; flex-direction: column; background: #fff; position: relative;">
+
+                            <!-- Maintenance Overlay -->
+                            <div id="maintenance-overlay"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 100; display: none; align-items: center; justify-content: center; flex-direction: column;">
+                                <div class="text-center">
+                                    <i class="fas fa-tools fa-3x text-secondary mb-3"></i>
+                                    <h3>Under Maintenance</h3>
+                                    <p class="text-muted">We will be back shortly.</p>
+                                </div>
+                            </div>
+
+                            <!-- Mock Header -->
+                            <div class="d-flex align-items-center px-4 py-3 shadow-sm bg-white border-bottom">
+                                <div class="fw-bold h5 mb-0 me-4">STOREFRONT</div>
+                                <div class="flex-grow-1">
+                                    <span class="mx-2 text-primary">Home</span>
+                                    <span class="mx-2 text-dark">Shop</span>
+                                    <span class="mx-2 text-dark">Contact</span>
+                                </div>
+                                <div>
+                                        <span class="badge bg-success small" id="api-status-indicator">API
+                                            Connected</span>
+                                    <button class="btn btn-sm btn-outline-dark ms-3">Cart (0)</button>
+                                </div>
+                            </div>
+
+                            <!-- Mock Content -->
+                            <div class="p-5 flex-grow-1" style="overflow-y: auto;">
+                                <h4>Featured Products</h4>
+                                <p class="text-muted mb-4">Showing <span id="pagination-preview">10</span> items per
+                                    page.</p>
+
+                                <div class="row g-4">
+                                    <!-- Mock Items -->
+                                    <div class="col-md-3" th:each="i : ${#numbers.sequence(1, 4)}">
+                                        <div class="card border-0 shadow-sm h-100">
+                                            <div class="bg-light card-img-top" style="height: 150px;"></div>
+                                            <div class="card-body p-3">
+                                                <h6 class="card-title">Product Demo [[${i}]]</h6>
+                                                <p class="card-text text-primary fw-bold">$99.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputs = document.querySelectorAll('.frontend-input');
+            const maintenanceOverlay = document.getElementById('maintenance-overlay');
+            const apiIndicator = document.getElementById('api-status-indicator');
+            const paginationPreview = document.getElementById('pagination-preview');
+
+            function updatePreview() {
+                inputs.forEach(input => {
+                    let val = input.value;
+                    const name = input.name;
+
+                    if (name === 'FRONTEND_MAINTENANCE_MODE') {
+                        maintenanceOverlay.style.display = (val === 'true') ? 'flex' : 'none';
+                    }
+
+                    if (name === 'FRONTEND_ENABLE_PUBLIC_API') {
+                        if (val === 'true') {
+                            apiIndicator.textContent = "API Connected";
+                            apiIndicator.className = "badge bg-success small";
+                        } else {
+                            apiIndicator.textContent = "API Unavailable";
+                            apiIndicator.className = "badge bg-danger small";
+                        }
+                    }
+
+                    if (name === 'FRONTEND_PAGINATION_SIZE') {
+                        paginationPreview.textContent = val ? val : 10;
+                    }
+                });
+            }
+
+            inputs.forEach(input => {
+                input.addEventListener('input', updatePreview);
+                input.addEventListener('change', updatePreview);
+            });
+
+            // Initial run
+            updatePreview();
+        });
+    </script>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+</body>
+
+</html>

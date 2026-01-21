@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle},'none')"/>
+<body>
+<div class="container-fluid">
+    <div th:replace="navigation :: menu"></div>
+
+    <div>
+        <h2>Home Page Customization | [[${pageTitle}]]</h2>
+    </div>
+
+    <form method="post" onsubmit="processBeforeSubmit()" th:action="@{/sections/save/article}" th:object="${section}">
+        <input th:field="*{id}" type="hidden"/>
+        <input th:field="*{type}" type="hidden"/>
+        <input th:field="*{sectionOrder}" type="hidden"/>
+
+        <div class="border border-secondary rounded p-3">
+            <div th:replace="sections/general_section_form :: content">General Section Form</div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Articles:</label>
+                <div class="col-sm-10">
+                    <div>
+                        <select class="form-control" id="articles" multiple style="resize: vertical; height: 200px">
+                            <option th:each="article : ${listArticles}" th:text="${article.title}"
+                                    th:value="${article.id}"/>
+                        </select>
+                    </div>
+                    <div>
+                        <input class="btn btn-secondary m-3" id="buttonAddArticle" type="button"
+                               value="Choose Article"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Chosen Articles:</label>
+                <div class="col-sm-10">
+                    <div>
+                        <select class="form-control" id="chosenArticles" multiple="multiple" name="chosenArticles"
+                                style="resize: vertical; height: 150px">
+                            <th:block th:each="articleSection : ${section.articleSections}">
+                                <option th:text="${articleSection.article.title}"
+                                        th:value="${articleSection.article.id} + '-' + ${articleSection.id}"/>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="m-2">
+                        <a class="fas fa-trash icon-dark" href="" id="linkRemoveArticle"
+                           title="Remove this article"></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="fas fa-chevron-up icon-dark" href="" id="linkMoveArticleUp"
+                           title="Move this article up"></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="fas fa-chevron-down icon-dark" href="" id="linkMoveArticleDown"
+                           title="Move this article down"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p class="text-center">
+                    <input class="btn btn-primary m-3" type="submit" value="Save"/>
+                    <input class="btn btn-secondary" id="buttonCancel" type="button" value="Cancel"/>
+                </p>
+            </div>
+        </div>
+    </form>
+
+    <div th:replace="fragments :: footer"></div>
+</div>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    moduleURL = "[[@{/sections}]]";
+
+</script>
+<script th:src="@{/js/common_form.js}"></script>
+<script th:src="@{/js/article_section_form.js}"></script>
+</body>
+</html>

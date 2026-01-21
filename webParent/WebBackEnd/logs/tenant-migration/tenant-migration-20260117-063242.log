@@ -1,0 +1,22 @@
+=== Tenant Migration Log Started: 2026-01-17T06:32:42.081774200 ===
+[06:32:42] [4] [brands] 98 -> 98 [OK]
+[06:32:42] [4] [customers] 10 -> 10 [OK]
+[06:32:42] [4] [customers] 18 -> 18 [OK]
+[06:32:42] [4] [customers] 7 -> 7 [OK]
+[06:32:42] [4] [products] 69 -> 69 [OK]
+[06:32:42] [4] [products] 73 -> 73 [OK]
+[06:32:42] [4] [profile] 1 -> 1 [OK]
+[06:32:42] [4] [profile] 4c90e10e_4824e185.png -> 4c90e10e_4824e185.png [OK]
+[06:32:42] [4] [profile] Alienware-Logo-head-while.png -> Alienware-Logo-head-while.png [OK]
+[06:32:42] [4] [users] 1 -> 1 [OK]
+[06:32:42] [4] [users] 18 -> 18 [OK]
+[06:32:42] [4] [users] 2 -> 2 [OK]
+[06:32:42] [4] [users] WARNING: Collision. Renaming 36 -> 36_1768624362223
+[06:32:42] [4] [users] 36 -> 36_1768624362223 [OK]
+[06:32:42] [4] [users] 6 -> 6 [OK]
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 14
+Errors: 0
+=========================================

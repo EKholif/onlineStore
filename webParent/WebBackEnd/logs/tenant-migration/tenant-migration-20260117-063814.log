@@ -1,0 +1,36 @@
+=== Tenant Migration Log Started: 2026-01-17T06:38:14.119964900 ===
+[06:38:14] [11] [users] WARNING: Collision. Renaming 33 -> 33_1768624694125
+[06:38:14] [11] [users] 33 -> 33_1768624694125 [OK]
+[06:38:14] [4] [customers] WARNING: Collision. Renaming 10 -> 10_1768624694139
+[06:38:14] [4] [customers] 10 -> 10_1768624694139 [OK]
+[06:38:14] [4] [customers] WARNING: Collision. Renaming 18 -> 18_1768624694141
+[06:38:14] [4] [customers] 18 -> 18_1768624694141 [OK]
+[06:38:14] [4] [customers] WARNING: Collision. Renaming 7 -> 7_1768624694144
+[06:38:14] [4] [customers] 7 -> 7_1768624694144 [OK]
+[06:38:14] [4] [products] WARNING: Collision. Renaming 69 -> 69_1768624694147
+[06:38:14] [4] [products] 69 -> 69_1768624694147 [OK]
+[06:38:14] [4] [products] WARNING: Collision. Renaming 73 -> 73_1768624694151
+[06:38:14] [4] [products] 73 -> 73_1768624694151 [OK]
+[06:38:14] [4] [users] WARNING: Collision. Renaming 18 -> 18_1768624694154
+[06:38:14] [4] [users] 18 -> 18_1768624694154 [OK]
+[06:38:14] [4] [users] WARNING: Collision. Renaming 36 -> 36_1768624694156
+[06:38:14] [4] [users] 36 -> 36_1768624694156 [OK]
+[06:38:14] [4] [users] WARNING: Collision. Renaming 6 -> 6_1768624694158
+[06:38:14] [4] [users] 6 -> 6_1768624694158 [OK]
+[06:38:14] [5] [categories] WARNING: Collision. Renaming 36 -> 36_1768624694162
+[06:38:14] [5] [categories] 36 -> 36_1768624694162 [OK]
+[06:38:14] [5] [categories] WARNING: Collision. Renaming 37 -> 37_1768624694164
+[06:38:14] [5] [categories] 37 -> 37_1768624694164 [OK]
+[06:38:14] [5] [products] WARNING: Collision. Renaming 152 -> 152_1768624694169
+[06:38:14] [5] [products] 152 -> 152_1768624694169 [OK]
+[06:38:14] [5] [users] WARNING: Collision. Renaming 259 -> 259_1768624694173
+[06:38:14] [5] [users] 259 -> 259_1768624694173 [OK]
+[06:38:14] [5] [users] 262 -> 262 [OK]
+[06:38:14] [5] [users] WARNING: Collision. Renaming 34 -> 34_1768624694176
+[06:38:14] [5] [users] 34 -> 34_1768624694176 [OK]
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 15
+Errors: 0
+=========================================

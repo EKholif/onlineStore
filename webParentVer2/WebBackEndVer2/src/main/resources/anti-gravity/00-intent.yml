@@ -1,0 +1,11 @@
+intent:
+  purpose: >
+    Build Multi-Tenant SaaS Platform using Spring Boot,
+    fully extendable and AI-ready.
+  non_goals:
+    - single-tenant application
+    - demo-only project
+    - tied to one customer
+  vision: >
+    Turn Anti-Gravity into a Knowledge-Driven Product,
+    able to serve AI, investors, customers, and the market.

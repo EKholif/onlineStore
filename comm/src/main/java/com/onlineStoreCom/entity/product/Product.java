@@ -330,8 +330,8 @@ public class Product extends IdBasedEntity {
         }
 
         // AG-ASSET-PATH-006: Entity-First Protocol
-        // Returns: /tenants/{tenantId}/{getId}/assets/products/{filename}
-        return "/tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/" + this.mainImage;
+        // Returns: /tenants/{tenantId}/assets/products/{getId}/{filename}
+        return "/tenants/" + effectiveTenantId + "/assets/products/" + this.id + "/" + this.mainImage;
     }
 
     @Transient
@@ -344,7 +344,7 @@ public class Product extends IdBasedEntity {
             effectiveTenantId = TenantContext.getTenantId();
         }
         // AG-ASSET-PATH-006: Entity-First Protocol
-        return "/tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/extras/";
+        return "/tenants/" + effectiveTenantId + "/assets/products/" + this.id + "/extras/";
     }
 
     @Transient
@@ -356,7 +356,7 @@ public class Product extends IdBasedEntity {
             effectiveTenantId = TenantContext.getTenantId();
         }
         // AG-ASSET-PATH-006: Entity-First Protocol
-        return "tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/";
+        return "tenants/" + effectiveTenantId + "/assets/products/" + this.id + "/";
     }
 
     @Transient
@@ -368,8 +368,8 @@ public class Product extends IdBasedEntity {
             effectiveTenantId = TenantContext.getTenantId();
         }
         // AG-ASSET-PATH-006: Entity-First Protocol
-        // Returns: tenants/{tenantId}/{id}/assets/products/extras/
-        return "tenants/" + effectiveTenantId + "/" + this.id + "/assets/products/extras/";
+        // Returns: tenants/{tenantId}/assets/products/{id}/extras/
+        return "tenants/" + effectiveTenantId + "/assets/products/" + this.id + "/extras/";
     }
 
     @Transient

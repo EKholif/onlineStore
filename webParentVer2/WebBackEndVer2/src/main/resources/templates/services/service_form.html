@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="container-fluid">
+    <div class="text-center">
+        <h2>[[${pageTitle}]]</h2>
+    </div>
+
+    <form class="style-form-background" enctype="multipart/form-data" method="post"
+          style="max-width: 800px; margin: 0 auto" th:action="@{/services/save}" th:object="${service}">
+
+        <input th:field="*{id}" type="hidden"/>
+
+        <div class="border border-secondary rounded p-3">
+            <!-- Name -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Service Name:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" maxlength="128" minlength="2" required th:field="*{name}"
+                           type="text"/>
+                </div>
+            </div>
+
+            <!-- Alias -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Alias:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" maxlength="128" minlength="2"
+                           placeholder="Leave blank for auto-generation" th:field="*{alias}" type="text"/>
+                </div>
+            </div>
+
+            <!-- Duration & Buffer -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Duration (min):</label>
+                <div class="col-sm-8">
+                    <input class="form-control" min="0" required th:field="*{duration}" type="number"/>
+                </div>
+            </div>
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Buffer Time (min):</label>
+                <div class="col-sm-8">
+                    <input class="form-control" min="0" required th:field="*{bufferTime}" type="number"/>
+                </div>
+            </div>
+
+            <!-- Pricing -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Price:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" min="0" required step="0.01" th:field="*{price}" type="number"/>
+                </div>
+            </div>
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Cost:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" min="0" required step="0.01" th:field="*{cost}" type="number"/>
+                </div>
+            </div>
+
+            <!-- Location Type -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Location Type:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" th:field="*{locationType}">
+                        <option th:each="type : ${locationTypes}" th:text="${type}" th:value="${type}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Enabled -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Enabled:</label>
+                <div class="col-sm-8">
+                    <input th:field="*{enabled}" type="checkbox"/>
+                </div>
+            </div>
+
+            <!-- Main Image -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Main Image:</label>
+                <div class="col-sm-8">
+                    <input th:field="*{mainImage}" type="hidden"/>
+                    <input accept="image/png, image/jpeg" class="mb-2" id="fileImage" name="fileImage"
+                           type="file"/>
+                    <img alt="Image Preview" class="img-fluid" id="thumbnail" style="max-width: 150px; max-height: 150px;"
+                         th:src="@{${service.getImagePath()}}"/>
+                </div>
+            </div>
+
+            <!-- Short Description -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Short Description:</label>
+                <div class="col-sm-8">
+                        <textarea class="form-control" maxlength="512" minlength="5" required rows="3"
+                                  th:field="*{shortDescription}"></textarea>
+                </div>
+            </div>
+            <!-- Full Description -->
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label">Full Description:</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" rows="5" th:field="*{fullDescription}"></textarea>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-center">
+                <input class="btn btn-primary m-3" type="submit" value="Save"/>
+                <input class="btn btn-secondary" id="buttonCancel" type="button" value="Cancel"/>
+            </div>
+        </div>
+    </form>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script type="text/javascript">
+    moduleURL = "[[@{/services}]]";
+
+    $(document).ready(function () {
+        $("#buttonCancel").on("click", function () {
+            window.location = moduleURL;
+        });
+
+        $("#fileImage").change(function () {
+            if (!this.files || !this.files[0]) return;
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#thumbnail").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+    });
+</script>
+<script th:src="@{/js/common-form.js}"></script>
+</body>
+
+</html>

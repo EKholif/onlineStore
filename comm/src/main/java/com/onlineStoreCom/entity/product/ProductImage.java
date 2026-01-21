@@ -72,7 +72,7 @@ public class ProductImage extends IdBasedEntity {
         if (effectiveTenantId == null)
             effectiveTenantId = 0L;
 
-        return "/tenants/" + effectiveTenantId + "/" + this.product.getId()
-                + "/assets/products/extras/" + this.name;
+        return "/tenants/" + effectiveTenantId + "/assets/products/" + this.product.getId()
+                + "/extras/" + this.name;
     }
 }

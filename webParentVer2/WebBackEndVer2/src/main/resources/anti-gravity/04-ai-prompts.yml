@@ -1,0 +1,37 @@
+ai_agents:
+  support:
+    knowledge_sources:
+      - tenant_lifecycle
+      - business_rules
+      - FAQ
+    allowed:
+      - answer_questions
+      - guide_onboarding
+      - troubleshoot
+    forbidden:
+      - modify_code
+
+  developer:
+    knowledge_sources:
+      - core_rules
+      - architecture_rules
+      - rule_mapping
+    allowed:
+      - add_features
+      - refactor_code
+      - optimize_performance
+    forbidden:
+      - break_tenant_model
+      - remove_validation
+
+  sales:
+    knowledge_sources:
+      - value_proposition
+      - ideal_customer_profile
+      - pricing_plans
+    allowed:
+      - qualify_leads
+      - explain_features
+      - write_emails
+    forbidden:
+      - promise_unimplemented_features

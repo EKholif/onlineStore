@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="content" th:remove="tag">
+
+    <div class="form-group row p-3 ">
+        <label class="col-sm-2 col-form-label ">Name</label>
+        <div class="col-sm-10">
+            <input class="form-control " th:field="*{name}" type="text" readonly />
+        </div>
+    </div>
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Alias</label>
+        <div class="col-sm-10">
+            <input class="form-control " th:field="*{alias}" type="text" readonly />
+        </div>
+    </div>
+
+    <div class="form-group row  p-3">
+        <label class="col-sm-2 col-form-label ">Brand Name</label>
+        <div class="col-sm-10">
+            <input class="form-control" th:value="${product.brand.name}" type="text" readonly />
+        </div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="col-sm-2 col-form-label">Category Name</label>
+        <div class="col-sm-10">
+             <input class="form-control" th:value="${product.category.name}" type="text" readonly />
+        </div>
+    </div>
+
+    <div class="form-group row  p-3">
+        <label class="col-sm-2 col-form-label p-0">Enable</label>
+        <div class="col-sm-10 ">
+            <input class="checkboxes  pe-5" th:field="*{enabled}" type="checkbox" disabled/>
+        </div>
+    </div>
+
+    <div class="form-group row  p-3">
+        <label class="col-sm-2 col-form-label p-0">In Stock</label>
+        <div class="col-sm-10 ">
+            <input class="checkboxes  pe-5" th:field="*{inStock}" type="checkbox" disabled/>
+        </div>
+    </div>
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Cost</label>
+        <div class="col-sm-10">
+            <input class="form-control " th:field="*{cost}" type="number" readonly/>
+        </div>
+    </div>
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Price</label>
+        <div class="col-sm-10">
+            <input class="form-control " th:field="*{price}" type="number" readonly/>
+        </div>
+    </div>
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Discount</label>
+        <div class="col-sm-10">
+            <input class="form-control " th:field="*{discountPercent}" type="number" readonly/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

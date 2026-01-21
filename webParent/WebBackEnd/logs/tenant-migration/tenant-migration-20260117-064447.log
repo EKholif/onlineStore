@@ -1,0 +1,8 @@
+=== Tenant Migration Log Started: 2026-01-17T06:44:47.476167800 ===
+[06:44:47] [5] [users] 262 -> 262 [OK]
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 1
+Errors: 0
+=========================================

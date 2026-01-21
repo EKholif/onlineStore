@@ -19,13 +19,14 @@ public class FileUploadUtil {
         if (tenantId == null) {
             throw new IllegalStateException("Tenant context not found for asset storage.");
         }
+        // AG-ASSET-PATH-FIX: Standardized path
         return "tenants/" + tenantId + "/assets/" + type + "/" + entityId;
     }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FileUploadUtil.class);
 
     public static void saveFile(String uploadDir, String filename,
-                                MultipartFile multipartFile) throws IOException {
+            MultipartFile multipartFile) throws IOException {
 
         validatePath(uploadDir);
 
@@ -50,8 +51,8 @@ public class FileUploadUtil {
 
     private static void validatePath(String uploadDir) {
         // Architecture Rule: Assets MUST be stored only under
-        // tenants/{tenantId}/assets/{type}/
-        if (!uploadDir.startsWith("tenants/")) {
+        // tenants/{tenantId}/{type}/{id}/
+        if (!uploadDir.startsWith("webParent/WebBackEnd/tenants/") && !uploadDir.startsWith("tenants/")) {
             // Exception: Common system assets might be allowed?
             // For now, strict enforcement as per "Critical rules"
             // But we need to be careful about not breaking "Knowledge" export which might
@@ -61,7 +62,7 @@ public class FileUploadUtil {
                 return;
 
             LOGGER.error("🚨 ARCHITECTURE VIOLATION: Attempt to write to prohibited path: " + uploadDir);
-            throw new IllegalArgumentException("Architecture Violation: Assets must be stored in tenants/{id}/assets/");
+            throw new IllegalArgumentException("Architecture Violation: Assets must be stored in tenants/{id}/{type}/");
         }
 
         // Tenant Isolation Check
@@ -73,6 +74,50 @@ public class FileUploadUtil {
                         + " tried to write to " + uploadDir);
                 throw new SecurityException("Cross-tenant write attempt denied.");
             }
+        }
+    }
+
+    /**
+     * Migration Tool: Attempt to rename folders from old structure (tenants/4/11)
+     * to new structure (tenants/4/customers/11).
+     * WARNING: This assumes ID collision is handled or unlikely for minimal data.
+     * Manual review recommended if IDs overlap between types.
+     */
+    public static void migrateLegacyFolders(Long tenantId, String defaultType) {
+        LOGGER.info("Starting migration for tenant: " + tenantId);
+        String tenantRoot = "tenants/" + tenantId;
+        Path rootPath = Paths.get(tenantRoot);
+
+        if (!Files.exists(rootPath))
+            return;
+
+        try {
+            Files.list(rootPath).forEach(path -> {
+                if (Files.isDirectory(path)) {
+                    String dirName = path.getFileName().toString();
+                    // If directory name is just a number, it's a legacy folder
+                    if (dirName.matches("\\d+")) {
+                        try {
+                            // Strategy: Move to 'customers' by default or 'users' if specified
+                            // This is a naive heuristic for emergency fix.
+                            String targetType = defaultType != null ? defaultType : "customers";
+                            Path targetDir = rootPath.resolve(targetType).resolve(dirName);
+
+                            if (!Files.exists(targetDir.getParent())) {
+                                Files.createDirectories(targetDir.getParent());
+                            }
+
+                            LOGGER.info("Migrating legacy folder: " + path + " -> " + targetDir);
+                            Files.move(path, targetDir, StandardCopyOption.ATOMIC_MOVE);
+
+                        } catch (IOException e) {
+                            LOGGER.error("Failed to migrate folder: " + path, e);
+                        }
+                    }
+                }
+            });
+        } catch (IOException e) {
+            LOGGER.error("Migration directory scan failed", e);
         }
     }
 

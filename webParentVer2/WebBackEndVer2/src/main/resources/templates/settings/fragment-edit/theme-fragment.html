@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="content" th:remove="tag">
+    <form enctype="multipart/form-data" method="post" th:action="@{/settings/save_theme}">
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Primary Color:</label>
+            <div class="col-sm-8">
+                <input class="form-control" name="THEME_COLOR" style="width: 100px; height: 50px;" th:value="${THEME_COLOR}"
+                       type="color">
+                <small class="form-text text-muted">Main brand color (Buttons, Links)</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Secondary Color:</label>
+            <div class="col-sm-8">
+                <input class="form-control" name="THEME_SEC_COLOR" style="width: 100px; height: 50px;" th:value="${THEME_SEC_COLOR}"
+                       type="color">
+                <small class="form-text text-muted">Secondary accents (Footer, Highlights)</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Font Family:</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="THEME_FONT_FAMILY">
+                    <option th:selected="${THEME_FONT_FAMILY == '''Inter'', sans-serif'}"
+                            value="'Inter', sans-serif">Inter (Modern Sans)
+                    </option>
+                    <option th:selected="${THEME_FONT_FAMILY == '''Roboto'', sans-serif'}"
+                            value="'Roboto', sans-serif">Roboto (Google Default)
+                    </option>
+                    <option th:selected="${THEME_FONT_FAMILY == '''Open Sans'', sans-serif'}"
+                            value="'Open Sans', sans-serif">Open Sans
+                    </option>
+                    <option th:selected="${THEME_FONT_FAMILY == '''Lato'', sans-serif'}" value="'Lato', sans-serif">
+                        Lato
+                    </option>
+                    <option th:selected="${THEME_FONT_FAMILY == '''Playfair Display'', serif'}"
+                            value="'Playfair Display', serif">Playfair Display (Serif)
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <input class="btn btn-primary m-3" type="submit" value="Save Theme Settings"/>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

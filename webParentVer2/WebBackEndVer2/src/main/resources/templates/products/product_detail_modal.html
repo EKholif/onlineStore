@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>[[${pageTitle}]]</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/texteditor/richtext.min.css}"/>
+    <script type="text/javascript" th:src="@{/texteditor/jquery.richtext.js}"></script>
+
+
+</head>
+
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+<div class="modal-header">
+    <h3 class="modal-title" id="modalTitle"> Product Details </h3>
+    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#overview"
+                    type="button" role="tab">Overview
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#description"
+                    type="button" role="tab">Description
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-target="#images" data-bs-toggle="tab" id="messages-tab" role="tab"
+                    type="button">Images
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-target="#details" data-bs-toggle="tab" id="details-tab" role="tab"
+                    type="button">Details
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab">
+                Shipping
+            </button>
+        </li>
+
+
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active p-3" id="overview" role="tabpanel">
+
+
+            <div th:replace="~{products/fregment-readonly/overview-fregment::content}"></div>
+
+        </div>
+        <div class="tab-pane" id="description" role="tabpanel">
+            <div th:replace="~{products/fregment-readonly/discription-fregment-readonly::content}"></div>
+        </div>
+
+
+        <div class="tab-pane" id="images" role="tabpanel">
+
+            <div th:replace="~{products/fregment-readonly/products-image-fregment-readonly::content}"></div>
+
+        </div>
+
+
+        <div class="tab-pane p-3" id="details" role="tabpanel">
+            <div th:replace="~{products/fregment-readonly/details-fregment-readonly::content}"></div>
+
+
+        </div>
+
+
+        <div class="tab-pane p-3" id="shipping" role="tabpanel">
+            <div th:replace="~{products/fregment-readonly/shipping-fregment-readonly::content}"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">done</button>
+</div>
+
+
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</body>
+
+</html>

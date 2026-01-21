@@ -149,6 +149,7 @@
 
             <div class="collapse navbar-collapse  " id="topNavbar">
                 <ul class="navbar-nav ">
+                    <li th:replace="~{support/fragments::nav-link('admin/dashboard/analytics','Dashboard')}"></li>
                     <li th:replace="~{support/fragments::nav-link('users/users','Users')}"></li>
                     <li th:replace="~{support/fragments::nav-link('users/new-users-form','New Users')}"></li>
 
@@ -166,6 +167,7 @@
                     <li th:replace="~{support/fragments::nav-link('products/new-products-form','New Product')}"></li>
 
                     <li th:replace="~{support/fragments::nav-link('settings','settings')}"></li>
+                    <li th:replace="~{support/fragments::nav-link('settings/rewards','Rewards')}"></li>
 
                     <li th:replace="~{support/fragments::nav-link('convert/convert','PdfConvert')}"></li>
 

@@ -18,8 +18,8 @@
         <module>comm</module>
         <module>webParent</module>
         <module>services</module>
+
+        <module>webParentVer2</module>
     </modules>
 
 </project>
-
-

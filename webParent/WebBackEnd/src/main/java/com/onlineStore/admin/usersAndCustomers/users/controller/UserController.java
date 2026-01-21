@@ -88,8 +88,8 @@ public class UserController {
 
     @PostMapping("/users/save-user")
     public ModelAndView saveNewUser(@ModelAttribute User user,
-                                    RedirectAttributes redirectAttributes,
-                                    @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
+            RedirectAttributes redirectAttributes,
+            @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         redirectAttributes.addFlashAttribute("message", "the user   has been saved successfully.  ");
         String dirName = FileUploadUtil.getStoragePath(user.getId(), "users");
 
@@ -126,7 +126,7 @@ public class UserController {
         User savedUser = service.saveUser(user);
 
         // AG-ASSET-PATH-001: Strict tenant asset hierarchy
-        String uploadDir = "tenants/" + savedUser.getTenantId() + "/assets/users/" + savedUser.getId();
+        String uploadDir = "webParent/WebBackEnd/tenants/" + savedUser.getTenantId() + "/users/" + savedUser.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     }
@@ -165,8 +165,8 @@ public class UserController {
 
     @PostMapping("/users/save-edit-user")
     public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute User user,
-                                        RedirectAttributes redirectAttributes,
-                                        @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
+            RedirectAttributes redirectAttributes,
+            @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         try {
             redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
 
@@ -255,7 +255,7 @@ public class UserController {
 
     @GetMapping("/user/{id}/enable/{status}")
     public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
-                                         RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) {
         service.UdpateUserEnableStatus(id, enable);
         String status = enable ? "enable" : " disable";
         String message = " the user Id  " + id + "  has bean  " + status;
@@ -266,7 +266,7 @@ public class UserController {
 
     @PostMapping("/deleteUsers")
     public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Integer> selectedUsers,
-                                    RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
+            RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Users ID: " + selectedUsers + " has been Deleted");
 

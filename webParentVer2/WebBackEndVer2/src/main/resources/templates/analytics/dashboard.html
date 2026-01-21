@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+
+    <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+    <div class="container-fluid px-4">
+        <h2 class="text-center mt-3">Business Intelligence Dashboard</h2>
+
+        <div class="row mt-4">
+            <!-- Earnings (Total) Card -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Total Earnings</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <div
+                                        th:replace="~{support/fragments/standard/format_fragments :: currency(${totalSales})}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders (Total) Card -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Total Orders</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${totalOrders}">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Sales Overview (Last 7 Days)</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <!-- Placeholder for ChartJS -->
+                            <h5 class="text-center text-gray-500">Sales Chart Coming Soon</h5>
+                            <p class="text-center">Recent Orders: [[${recentOrdersCount}]]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+    </div>
+
+    <script th:src="@{/js/common.js}" type="text/javascript"></script>
+
+</body>
+
+</html>

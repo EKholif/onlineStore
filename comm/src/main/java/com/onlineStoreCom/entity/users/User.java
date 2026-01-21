@@ -32,6 +32,10 @@ public class User extends IdBasedEntity {
     private boolean enabled;
     @Column(name = "user_bio")
     private String user_bio;
+
+    @Column(name = "last_login_time")
+    private java.util.Date lastLoginTime;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     @JsonIgnore
@@ -51,6 +55,14 @@ public class User extends IdBasedEntity {
 
     public void setUser_bio(String user_bio) {
         this.user_bio = user_bio;
+    }
+
+    public java.util.Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(java.util.Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
     public Set<Role> getRoles() {
@@ -134,7 +146,7 @@ public class User extends IdBasedEntity {
         if (id == null || photos == null)
             return "/images/bob.png";
 
-        // AG-ASSET-PATH-004: Standardized tenant asset path
+        // AG-ASSET-PATH-006: Standardized tenant asset path
         // Returns: /tenants/{tenantId}/assets/users/{id}/{filename}
         return "/tenants/" + this.getTenantId() + "/assets/users/" + this.id + "/" + this.photos;
     }
@@ -152,7 +164,7 @@ public class User extends IdBasedEntity {
         if (id == null)
             return null; // Return null instead of dummy path for directory cleaning safety
 
-        // AG-ASSET-PATH-004: Standardized tenant asset path
+        // AG-ASSET-PATH-006: Standardized tenant asset path
         // Returns: tenants/{tenantId}/assets/users/{id}/
         return "tenants/" + this.getTenantId() + "/assets/users/" + this.id + "/";
     }

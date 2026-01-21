@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="text-center icon-red   mt-3">
+    <h2 class="fas fa-exclamation-triangle fa-5x  "></h2>
+    <h2 class=" ">Error </h2>
+</div>
+
+
+<div class="container-fluid">
+
+
+    <div class="m-3 text-center icon-red">
+        <h2>Sorry, the requested page could not be found </h2>
+    </div>
+
+
+</div>
+
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+</body>
+
+</html>

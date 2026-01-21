@@ -1,0 +1,370 @@
+2026-01-19T16:47:47.122+02:00  INFO 17996 --- [main] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 17996 (E:\onlineStore_Active\webParentVer2\WebBackEndVer2\target\classes started by enoam in E:\onlineStore_Active)
+2026-01-19T16:47:47.132+02:00  INFO 17996 --- [main] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-19T16:47:59.324+02:00  INFO 17996 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-19T16:48:00.048+02:00  INFO 17996 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 689 ms. Found 24 JPA repository interfaces.
+2026-01-19T16:48:04.666+02:00  INFO 17996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 744 (http)
+2026-01-19T16:48:04.694+02:00  INFO 17996 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-19T16:48:04.696+02:00  INFO 17996 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2026-01-19T16:48:05.044+02:00  INFO 17996 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-19T16:48:05.045+02:00  INFO 17996 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 17829 ms
+2026-01-19T16:48:06.046+02:00  INFO 17996 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-19T16:48:06.220+02:00  INFO 17996 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2026-01-19T16:48:06.231+02:00  INFO 17996 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-19T16:48:06.636+02:00  INFO 17996 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-19T16:48:07.115+02:00  INFO 17996 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-19T16:48:07.166+02:00  INFO 17996 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-19T16:48:07.991+02:00  INFO 17996 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@72c704f1
+2026-01-19T16:48:07.995+02:00  INFO 17996 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-19T16:48:09.757+02:00  INFO 17996 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-19T16:48:16.268+02:00  INFO 17996 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-19T16:48:17.746+02:00  INFO 17996 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-19T16:48:18.586+02:00  INFO 17996 --- [main] o.s.boot.web.servlet.RegistrationBean    : Filter tenantFilterRegistration was not registered (disabled)
+2026-01-19T16:48:18.587+02:00  INFO 17996 --- [main] o.s.boot.web.servlet.RegistrationBean    : Filter tenantContextFilterRegistration was not registered (disabled)
+2026-01-19T16:48:20.054+02:00  INFO 17996 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-19T16:48:25.311+02:00  INFO 17996 --- [main] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for tenants
+2026-01-19T16:48:25.313+02:00  INFO 17996 --- [main] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: Registered monitor for .
+2026-01-19T16:48:25.314+02:00  INFO 17996 --- [Architecture-Watchdog-Thread] c.o.a.g.watchdog.FileSystemMonitor       : Watchdog: FileSystemMonitor thread started.
+2026-01-19T16:48:29.595+02:00  WARN 17996 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-19T16:48:33.492+02:00  INFO 17996 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 5 endpoint(s) beneath base path '/actuator'
+2026-01-19T16:48:33.858+02:00  INFO 17996 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@66a683ea, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@32e0e20b, org.springframework.security.web.context.SecurityContextHolderFilter@6f55a3e3, org.springframework.security.web.header.HeaderWriterFilter@3f8f80d3, org.springframework.security.web.csrf.CsrfFilter@3a3bd68c, org.springframework.security.web.authentication.logout.LogoutFilter@5c5eec57, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@15682f4a, com.onlineStoreCom.security.tenant.TenantContextFilter@4540aade, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19503dfa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3de624fd, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@431bd70b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b0b4083, org.springframework.security.web.access.ExceptionTranslationFilter@783e1529, org.springframework.security.web.access.intercept.AuthorizationFilter@523ee4d6]
+2026-01-19T16:48:35.646+02:00  INFO 17996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 744 (http) with context path ''
+2026-01-19T16:48:35.703+02:00  INFO 17996 --- [main] c.o.admin.WebBackEndApplication          : Started WebBackEndApplication in 49.471 seconds (process running for 50.496)
+2026-01-19T16:48:35.760+02:00  INFO 17996 --- [main] c.o.admin.CorrectTenant0To4Data          : ================================================================================
+2026-01-19T16:48:35.761+02:00  INFO 17996 --- [main] c.o.admin.CorrectTenant0To4Data          : 🔧 MIGRATING DATA: TENANT 0 -> TENANT 4 (SKIPPED FOR ASSET MIGRATION)
+2026-01-19T16:48:35.762+02:00  INFO 17996 --- [main] c.o.admin.CorrectTenant0To4Data          : ================================================================================
+2026-01-19T16:48:35.770+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ================================================================================
+2026-01-19T16:48:35.771+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : 🔧 FIXING TENANT 4 DATA MIGRATION
+2026-01-19T16:48:35.771+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ================================================================================
+2026-01-19T16:48:35.856+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE categories SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.865+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 categories: tenant_id 1 → 4
+2026-01-19T16:48:35.867+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE brands SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.874+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 brands: tenant_id 1 → 4
+2026-01-19T16:48:35.877+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE products SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.889+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 products: tenant_id 1 → 4
+2026-01-19T16:48:35.891+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     DELETE FROM settings
+    WHERE tenant_id = 1
+    AND `key` IN (
+        SELECT `key` FROM (
+            SELECT `key` FROM settings WHERE tenant_id = 4
+        ) as temp
+    )
+
+2026-01-19T16:48:35.907+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ⚠️ Deleted 0 duplicate settings from Tenant 1
+2026-01-19T16:48:35.908+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE settings SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.912+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 settings: tenant_id 1 → 4
+2026-01-19T16:48:35.913+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE customers SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.919+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 customers: tenant_id 1 → 4
+2026-01-19T16:48:35.920+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE orders SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.925+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 orders: tenant_id 1 → 4
+2026-01-19T16:48:35.930+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE reviews SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.933+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed 0 reviews: tenant_id 1 → 4
+2026-01-19T16:48:35.934+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE articles SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.946+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE menus SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.952+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE sections SET tenant_id = 4 WHERE tenant_id = 1
+2026-01-19T16:48:35.955+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ Fixed Content: 0 articles, 0 menus, 0 sections
+2026-01-19T16:48:36.015+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT COUNT(*) FROM brands_categories bc
+    JOIN brands b ON bc.brand_id = b.id
+    JOIN categories c ON bc.category_id = c.id
+    WHERE b.tenant_id = 4 AND c.tenant_id = 1
+
+2026-01-19T16:48:36.100+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : 📊 Remaining cross-tenant refs (Tenant 4 brands → Tenant 1 categories): 0
+2026-01-19T16:48:36.101+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ✅ ALL CROSS-TENANT REFERENCES RESOLVED!
+2026-01-19T16:48:36.102+02:00  INFO 17996 --- [main] c.onlineStore.admin.CorrectTenant4Data   : ================================================================================
+2026-01-19T16:48:36.107+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT c.id, c.tenant_id, p.id, p.tenant_id
+    FROM categories c
+    JOIN categories p ON c.parent_id = p.id
+    WHERE c.tenant_id != p.tenant_id
+
+2026-01-19T16:48:36.111+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT p.id, p.tenant_id, c.id, c.tenant_id
+    FROM products p
+    JOIN categories c ON p.category_id = c.id
+    WHERE p.tenant_id != c.tenant_id
+
+2026-01-19T16:48:36.119+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT p.id, p.tenant_id, b.id, b.tenant_id
+    FROM products p
+    JOIN brands b ON p.brand_id = b.id
+    WHERE p.tenant_id != b.tenant_id
+
+2026-01-19T16:48:36.124+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     DELETE bc FROM brands_categories bc
+    JOIN brands b ON bc.brand_id = b.id
+    JOIN categories c ON bc.category_id = c.id
+    WHERE b.tenant_id != c.tenant_id
+
+2026-01-19T16:48:36.128+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT o.id, o.tenant_id, c.id, c.tenant_id
+    FROM orders o
+    JOIN customers c ON o.customer_id = c.id
+    WHERE o.tenant_id != c.tenant_id
+
+2026-01-19T16:48:36.132+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT od.id, o.tenant_id, p.id, p.tenant_id
+    FROM order_details od
+    JOIN orders o ON od.order_id = o.id
+    JOIN products p ON od.product_id = p.id
+    WHERE o.tenant_id != p.tenant_id
+
+2026-01-19T16:48:36.150+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 4
+2026-01-19T16:48:36.153+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 5
+2026-01-19T16:48:36.156+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 4
+2026-01-19T16:48:36.159+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 5
+2026-01-19T16:48:36.164+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 4
+2026-01-19T16:48:36.170+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 5
+2026-01-19T16:48:36.175+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT c.id, c.name, c.tenant_id, p.id, p.name, p.tenant_id
+    FROM categories c
+    JOIN categories p ON c.parent_id = p.id
+    WHERE c.tenant_id = 4 AND p.tenant_id = 5
+
+2026-01-19T16:48:36.181+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT bc.brand_id, b.name, b.tenant_id, bc.category_id, c.name, c.tenant_id
+    FROM brands_categories bc
+    JOIN brands b ON bc.brand_id = b.id
+    JOIN categories c ON bc.category_id = c.id
+    WHERE b.tenant_id = 4 AND c.tenant_id = 5
+
+2026-01-19T16:48:36.187+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT p.id, p.name, p.tenant_id, p.category_id, c.name, c.tenant_id
+    FROM products p
+    JOIN categories c ON p.category_id = c.id
+    WHERE p.tenant_id = 4 AND c.tenant_id = 5
+
+2026-01-19T16:48:36.191+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT p.id, p.name, p.tenant_id, p.brand_id, b.name, b.tenant_id
+    FROM products p
+    JOIN brands b ON p.brand_id = b.id
+    WHERE p.tenant_id = 4 AND b.tenant_id = 5
+
+2026-01-19T16:48:36.199+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT bc.brand_id, b.name, b.tenant_id, bc.category_id, c.name, c.tenant_id
+    FROM brands_categories bc
+    JOIN brands b ON bc.brand_id = b.id
+    JOIN categories c ON bc.category_id = c.id
+    WHERE b.tenant_id = 5 AND c.tenant_id = 4
+
+2026-01-19T16:48:36.216+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT c.id, c.name, c.tenant_id AS child_tenant,
+           p.id AS parent_id, p.name AS parent_name, p.tenant_id AS parent_tenant
+    FROM categories c
+    JOIN categories p ON c.parent_id = p.id
+    WHERE c.tenant_id != p.tenant_id
+    ORDER BY c.tenant_id, p.tenant_id
+
+2026-01-19T16:48:36.221+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT c.id, c.name, p.id, p.name, p.tenant_id
+    FROM categories c
+    JOIN categories p ON c.parent_id = p.id
+    WHERE c.tenant_id = 4 AND c.tenant_id != p.tenant_id
+
+2026-01-19T16:48:36.225+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        :     SELECT c.id, c.name, c.tenant_id, c.parent_id
+    FROM categories c
+    WHERE c.parent_id IS NOT NULL
+    AND c.parent_id NOT IN (SELECT id FROM categories)
+
+2026-01-19T16:48:36.237+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : 🕵️ STARTING MIGRATION VERIFICATION 🕵️
+2026-01-19T16:48:36.239+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 1
+2026-01-19T16:48:36.244+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM products WHERE tenant_id = 4
+2026-01-19T16:48:36.248+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [products       ] Tenant 1: 0 | Tenant 4: 108 | Status: ✅ Clean
+2026-01-19T16:48:36.249+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 1
+2026-01-19T16:48:36.252+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM categories WHERE tenant_id = 4
+2026-01-19T16:48:36.255+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [categories     ] Tenant 1: 0 | Tenant 4: 33 | Status: ✅ Clean
+2026-01-19T16:48:36.256+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 1
+2026-01-19T16:48:36.260+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM brands WHERE tenant_id = 4
+2026-01-19T16:48:36.263+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [brands         ] Tenant 1: 0 | Tenant 4: 77 | Status: ✅ Clean
+2026-01-19T16:48:36.265+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM customers WHERE tenant_id = 1
+2026-01-19T16:48:36.268+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM customers WHERE tenant_id = 4
+2026-01-19T16:48:36.272+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [customers      ] Tenant 1: 0 | Tenant 4: 43 | Status: ✅ Clean
+2026-01-19T16:48:36.273+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM orders WHERE tenant_id = 1
+2026-01-19T16:48:36.277+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM orders WHERE tenant_id = 4
+2026-01-19T16:48:36.280+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [orders         ] Tenant 1: 0 | Tenant 4: 160 | Status: ✅ Clean
+2026-01-19T16:48:36.280+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM reviews WHERE tenant_id = 1
+2026-01-19T16:48:36.284+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM reviews WHERE tenant_id = 4
+2026-01-19T16:48:36.286+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [reviews        ] Tenant 1: 0 | Tenant 4: 66 | Status: ✅ Clean
+2026-01-19T16:48:36.287+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM articles WHERE tenant_id = 1
+2026-01-19T16:48:36.290+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM articles WHERE tenant_id = 4
+2026-01-19T16:48:36.294+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [articles       ] Tenant 1: 0 | Tenant 4: 9 | Status: ✅ Clean
+2026-01-19T16:48:36.294+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM menus WHERE tenant_id = 1
+2026-01-19T16:48:36.296+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM menus WHERE tenant_id = 4
+2026-01-19T16:48:36.299+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [menus          ] Tenant 1: 0 | Tenant 4: 0 | Status: ✅ Clean
+2026-01-19T16:48:36.301+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM sections WHERE tenant_id = 1
+2026-01-19T16:48:36.303+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM sections WHERE tenant_id = 4
+2026-01-19T16:48:36.306+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [sections       ] Tenant 1: 0 | Tenant 4: 0 | Status: ✅ Clean
+2026-01-19T16:48:36.307+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM settings WHERE tenant_id = 1
+2026-01-19T16:48:36.311+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : SELECT COUNT(*) FROM settings WHERE tenant_id = 4
+2026-01-19T16:48:36.315+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : [settings       ] Tenant 1: 0 | Tenant 4: 67 | Status: ✅ Clean
+2026-01-19T16:48:36.318+02:00  INFO 17996 --- [main] c.onlineStore.admin.MigrationVerifier    : 🕵️ VERIFICATION COMPLETE. Check verification_result.txt 🕵️
+2026-01-19T16:48:36.482+02:00  INFO 17996 --- [http-nio-744-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-19T16:48:36.483+02:00  INFO 17996 --- [http-nio-744-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-19T16:48:36.501+02:00  INFO 17996 --- [http-nio-744-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2026-01-19T16:48:36.830+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select p1_0.id,p1_0.alias,p1_0.average_rating,p1_0.brand_id,p1_0.category_id,p1_0.cost,p1_0.created_time,p1_0.discount_percent,p1_0.enabled,p1_0.full_description,p1_0.height,p1_0.in_stock,p1_0.length,p1_0.main_image,p1_0.name,p1_0.price,p1_0.review_count,p1_0.short_description,p1_0.tenant_id,p1_0.updated_time,p1_0.weight,p1_0.width from products p1_0
+2026-01-19T16:48:37.049+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.062+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.067+02:00 DEBUG 17996 --- [http-nio-744-exec-1] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:37.068+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.075+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.079+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.083+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.087+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.118+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.123+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.133+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.139+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.144+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.149+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.153+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.160+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.165+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.172+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.179+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.183+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.188+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.193+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.197+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.205+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.209+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.217+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.221+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.230+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.235+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.239+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.242+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.246+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.250+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.254+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.259+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.263+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.269+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.275+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.279+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.284+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.288+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.291+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.296+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.300+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.304+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.305+02:00  WARN 17996 --- [http-nio-744-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [196] milliseconds.
+2026-01-19T16:48:37.309+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.313+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.318+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.322+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.327+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.330+02:00 DEBUG 17996 --- [http-nio-744-exec-1] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-19T16:48:37.332+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.335+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.344+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.351+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.354+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.361+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.366+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.370+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.373+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.377+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.382+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.388+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.393+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.398+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.401+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.405+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.410+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.415+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.421+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.424+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.427+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.432+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.435+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.441+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.444+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.450+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.458+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select b1_0.id,b1_0.logo,b1_0.name,b1_0.tenant_id from brands b1_0 where b1_0.id=?
+2026-01-19T16:48:37.463+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.id=?
+2026-01-19T16:48:37.495+02:00 DEBUG 17996 --- [http-nio-744-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_login_time,u1_0.last_name,u1_0.password,u1_0.photos,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.email=?
+2026-01-19T16:48:37.527+02:00 DEBUG 17996 --- [http-nio-744-exec-1] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-19T16:48:37.766+02:00 DEBUG 17996 --- [http-nio-744-exec-2] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:37.822+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:37.929+02:00 DEBUG 17996 --- [http-nio-744-exec-3] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-19T16:48:37.980+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.enabled,u1_0.first_name,u1_0.last_login_time,u1_0.last_name,u1_0.password,u1_0.photos,u1_0.tenant_id,u1_0.user_bio from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ? order by u1_0.first_name limit ?,?
+2026-01-19T16:48:37.986+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-19T16:48:37.993+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-19T16:48:37.996+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-19T16:48:38.001+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-19T16:48:38.006+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select r1_0.user_id,r1_1.id,r1_1.all_parent_ids,r1_1.descrption,r1_1.name,r1_1.parent_id from user_roles r1_0 join role r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=?
+2026-01-19T16:48:38.081+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select count(u1_0.id) from `'user'` u1_0 where u1_0.tenant_id = ? and u1_0.tenant_id = ?
+2026-01-19T16:48:41.361+02:00 DEBUG 17996 --- [http-nio-744-exec-4] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:41.381+02:00 DEBUG 17996 --- [http-nio-744-exec-5] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:41.419+02:00 DEBUG 17996 --- [http-nio-744-exec-4] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:41.565+02:00  WARN 17996 --- [http-nio-744-exec-3] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#5]
+2026-01-19T16:48:41.565+02:00  WARN 17996 --- [http-nio-744-exec-3] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#1]
+2026-01-19T16:48:41.565+02:00  WARN 17996 --- [http-nio-744-exec-3] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#3]
+2026-01-19T16:48:41.565+02:00  WARN 17996 --- [http-nio-744-exec-3] o.h.c.spi.AbstractPersistentCollection   : HHH000506: Detaching an uninitialized collection with enabled filters from a session: [com.onlineStoreCom.entity.users.Role.children#4]
+2026-01-19T16:48:42.644+02:00 DEBUG 17996 --- [http-nio-744-exec-7] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.652+02:00 DEBUG 17996 --- [http-nio-744-exec-8] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.652+02:00 DEBUG 17996 --- [http-nio-744-exec-9] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.668+02:00 DEBUG 17996 --- [main] org.hibernate.SQL                        : UPDATE categories c JOIN categories p ON c.parent_id = p.id SET c.parent_id = NULL WHERE c.tenant_id != p.tenant_id
+2026-01-19T16:48:42.707+02:00 DEBUG 17996 --- [http-nio-744-exec-10] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.708+02:00 DEBUG 17996 --- [http-nio-744-exec-1] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.715+02:00 DEBUG 17996 --- [http-nio-744-exec-10] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-19T16:48:42.716+02:00 DEBUG 17996 --- [http-nio-744-exec-2] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.719+02:00 DEBUG 17996 --- [http-nio-744-exec-10] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-19T16:48:42.739+02:00 DEBUG 17996 --- [http-nio-744-exec-6] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.739+02:00 DEBUG 17996 --- [http-nio-744-exec-4] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.777+02:00 DEBUG 17996 --- [http-nio-744-exec-5] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.850+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.854+02:00 DEBUG 17996 --- [http-nio-744-exec-7] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.912+02:00 DEBUG 17996 --- [http-nio-744-exec-8] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.934+02:00 DEBUG 17996 --- [http-nio-744-exec-9] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:42.955+02:00 DEBUG 17996 --- [http-nio-744-exec-2] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:44.368+02:00 DEBUG 17996 --- [http-nio-744-exec-10] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:48:53.774+02:00 DEBUG 17996 --- [http-nio-744-exec-6] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:12.241+02:00 DEBUG 17996 --- [http-nio-744-exec-8] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:12.287+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:12.330+02:00 DEBUG 17996 --- [http-nio-744-exec-3] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-19T16:50:12.351+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.parent_id,c1_0.tenant_id from categories c1_0 where c1_0.tenant_id = ? and c1_0.parent_id is null
+2026-01-19T16:50:12.366+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.395+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.399+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.407+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.414+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.420+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.425+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.429+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.432+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.435+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.439+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.444+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.448+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.451+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.454+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.457+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.464+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.466+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.493+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.498+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.501+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.506+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.510+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.513+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.515+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.520+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.523+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.530+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.535+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.538+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.540+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.545+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:12.549+02:00 DEBUG 17996 --- [http-nio-744-exec-3] org.hibernate.SQL                        : select c1_0.parent_id,c1_0.id,c1_0.alias,c1_0.all_parent_ids,c1_0.enabled,c1_0.image,c1_0.level,c1_0.name,c1_0.tenant_id from categories c1_0 where c1_0.parent_id=? order by c1_0.name
+2026-01-19T16:50:13.087+02:00 DEBUG 17996 --- [http-nio-744-exec-9] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.089+02:00 DEBUG 17996 --- [http-nio-744-exec-2] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.090+02:00 DEBUG 17996 --- [http-nio-744-exec-10] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.092+02:00 DEBUG 17996 --- [http-nio-744-exec-4] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.093+02:00 DEBUG 17996 --- [http-nio-744-exec-6] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.140+02:00 DEBUG 17996 --- [http-nio-744-exec-9] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.152+02:00 DEBUG 17996 --- [http-nio-744-exec-6] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.166+02:00 DEBUG 17996 --- [http-nio-744-exec-4] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.172+02:00 DEBUG 17996 --- [http-nio-744-exec-4] c.o.a.s.tenant.TenantFilterAspect        : 🛡️ [TenantFilterAspect] Enforced Filter for TenantID: 4
+2026-01-19T16:50:13.176+02:00 DEBUG 17996 --- [http-nio-744-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.category,s1_0.`key`,s1_0.tenant_id,s1_0.value from settings s1_0 where (s1_0.tenant_id = ? or s1_0.tenant_id = 0 or s1_0.tenant_id is null) and s1_0.tenant_id = ? and s1_0.category=?
+2026-01-19T16:50:13.176+02:00 DEBUG 17996 --- [http-nio-744-exec-9] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.190+02:00 DEBUG 17996 --- [http-nio-744-exec-2] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.825+02:00 DEBUG 17996 --- [http-nio-744-exec-7] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.827+02:00 DEBUG 17996 --- [http-nio-744-exec-5] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.846+02:00 DEBUG 17996 --- [http-nio-744-exec-4] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.849+02:00 DEBUG 17996 --- [http-nio-744-exec-1] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.849+02:00 DEBUG 17996 --- [http-nio-744-exec-9] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.850+02:00 DEBUG 17996 --- [http-nio-744-exec-8] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.908+02:00 DEBUG 17996 --- [http-nio-744-exec-6] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.955+02:00 DEBUG 17996 --- [http-nio-744-exec-10] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:13.977+02:00 DEBUG 17996 --- [http-nio-744-exec-8] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T16:50:19.663+02:00 DEBUG 17996 --- [http-nio-744-exec-2] org.hibernate.SQL                        : SELECT id FROM tenants WHERE code = ?
+2026-01-19T18:12:39.737+02:00  WARN 17996 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h13m1s199ms913µs200ns).
+2026-01-19T19:09:33.439+02:00  WARN 17996 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=55m53s455ms137µs800ns).
+2026-01-19T19:12:16.988+02:00  WARN 17996 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s483ms122µs800ns).
+2026-01-19T19:25:41.421+02:00  WARN 17996 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m24s421ms144µs400ns).

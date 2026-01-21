@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="container-fluid px-4">
+    <h2 class="text-center">[[${pageTitle}]]</h2>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
+
+    <form id="deleteForm" method="post" th:action="@{/services/delete}">
+        <div class=" justify-content-center mb-2 mt-2 ">
+            <!-- Add Button -->
+            <a class="fas fa-plus-circle fa-2x icon-d-green" th:href="@{/services/new}"
+               title="Add Service"></a>&nbsp;&nbsp;
+
+            <!-- Export Buttons (Placeholders for now) -->
+            <a class="fas fa-file-csv fa-2x icon-primary" th:href="@{/services/export/csv}"
+               title="Export to CSV"></a>
+            &nbsp;&nbsp;
+            <a class="fas fa-file-pdf fa-2x icon-red" th:href="@{/services/export/pdf}" title="Export to PDF"></a>
+            &nbsp;&nbsp;
+            <a class="fas fa-file-excel fa-2x icon-d-green" th:href="@{/services/export/excel}"
+               title="Export to Excel"></a>&nbsp;&nbsp;
+        </div>
+
+        <div class="alert alert-success text-center" th:if="${message != null}">
+            [[${message}]]
+        </div>
+
+        <!-- Mobile View (Less Details) -->
+        <div class="less-details ">
+            <div class="row m-1" th:each="service: ${listServices}" tr>
+                <div class="col-4">
+                    <img class="rounded mx-auto d-block" style="width: 100px"
+                         th:src="@{${service.getImagePath()}}"/>
+                </div>
+                <div class="col-8">
+                    <div class="fw-bold">[[${service.name}]]</div>
+                    <div>Duration: [[${service.duration}]] min</div>
+                    <div>Price: [[${service.price}]]</div>
+                    <div class="m-1">
+                        <a class="fas fa-edit px-2 icon-green" th:href="@{'/services/edit/' + ${service.id}}"
+                           title="Edit Service"></a>
+                        <a class="fas fa-trash px-2 icon-red delete-confirmation"
+                           th:href="@{'/services/delete/' + ${service.id}}" th:id="${service.id}"
+                           title="Delete Service"></a>
+                        &nbsp;
+                        <a class="fas fa-check-circle px-2 icon-green "
+                           th:href="@{'/services/' + ${service.id} +'/enabled/false' } "
+                           th:if="${service.enabled == true}" title="Disable Service"></a>
+                        &nbsp;
+                        <a class="fas fa-circle px-2 icon-red"
+                           th:href="@{'/services/' + ${service.id} +'/enabled/true' }"
+                           th:if="${service.enabled == false}" title="Enable Service"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop View (Full Details) -->
+        <div class="full-details">
+            <table class="table table-responsive me-sm-1 table-header table-striped  table-bordered ">
+                <thead class="table-dark ">
+                <tr>
+                    <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}">
+                    </th>
+                    <th>Image</th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Service Name')}">
+                    </th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('duration', 'Duration')}">
+                    </th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('price', 'Price')}">
+                    </th>
+                    <th>Location</th>
+                    <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('enabled', 'Status')}">
+                    </th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="service: ${listServices}">
+                    <td th:text="${service.id}"></td>
+                    <td>
+                        <img class="rounded mx-auto d-block" style="width: 50px; height: 50px;"
+                             th:src="@{${service.getImagePath()}}"/>
+                    </td>
+                    <td th:text="${service.name}"></td>
+                    <td>[[${service.duration}]] min</td>
+                    <td>[[${service.price}]]</td>
+                    <td th:text="${service.locationType}"></td>
+                    <td>
+                        <a class="fas fa-check-circle px-2 icon-green "
+                           th:href="@{'/services/' + ${service.id} +'/enabled/false' } "
+                           th:if="${service.enabled == true}" title="Disable Service"></a>
+                        <a class="fas fa-circle px-2 icon-red"
+                           th:href="@{'/services/' + ${service.id} +'/enabled/true' }"
+                           th:if="${service.enabled == false}" title="Enable Service"></a>
+                    </td>
+                    <td>
+                        <a class="fas fa-edit px-2 icon-green" th:href="@{'/services/edit/' + ${service.id}}"
+                           title="Edit Service"></a>
+                        <a class="fas fa-trash px-2 icon-red delete-confirmation"
+                           th:href="@{'/services/delete/' + ${service.id}}" th:id="${service.id}"
+                           title="Delete Service"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+    <nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script th:src="@{/js/common.js}" type="text/javascript"></script>
+<script>
+    const windowLocationValue = "[[@{/services}]]";
+</script>
+
+</body>
+
+</html>

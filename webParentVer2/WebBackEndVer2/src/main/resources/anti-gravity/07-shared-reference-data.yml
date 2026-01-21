@@ -1,0 +1,172 @@
+# FIXED: Converted invalid separators to comments to fix YAML syntax.
+shared_reference_data:
+
+  metadata:
+    owner: Anti-Gravity Platform
+    purpose: >
+      Define global and semi-global reference data shared across all tenants.
+      These objects are NOT tenant-owned and must follow strict governance rules.
+    versioning_strategy: semantic
+    default_cache_strategy: READ_ONLY
+
+  # ============================
+  # CURRENCY
+  # ============================
+  currency:
+    scope: GLOBAL
+    description: >
+      Supported currencies across the platform.
+      Shared by all tenants and immutable at runtime.
+    standards:
+      iso: ISO_4217
+    governance:
+      editable_by:
+        - SYSTEM_ADMIN
+      tenant_access: READ_ONLY
+      mutable: false
+    entity:
+      name: Currency
+      table: currencies
+      base_class: GlobalReferenceEntity
+    fields:
+      - code
+      - name
+      - symbol
+      - decimal_places
+    usage:
+      - pricing
+      - invoices
+      - payments
+      - reports
+    cache:
+      enabled: true
+      ttl: INFINITE
+    seed:
+      required: true
+      version: 2025.1
+
+  # ============================
+  # COUNTRY
+  # ============================
+  country:
+    scope: GLOBAL
+    description: >
+      Countries supported by the platform.
+      Used for tenant profile, taxation, shipping and compliance.
+    standards:
+      iso: ISO_3166
+    governance:
+      editable_by:
+        - SYSTEM_ADMIN
+      tenant_access: READ_ONLY
+      mutable: false
+    entity:
+      name: Country
+      table: countries
+      base_class: GlobalReferenceEntity
+    fields:
+      - code
+      - name
+      - phone_code
+      - currency_code
+    usage:
+      - tenant_profile
+      - tax_engine
+      - shipping
+      - localization
+    cache:
+      enabled: true
+      ttl: INFINITE
+    seed:
+      required: true
+      version: 2025.1
+
+  # ============================
+  # STATE / PROVINCE
+  # ============================
+  state:
+    scope: SEMI_GLOBAL
+    description: >
+      States or provinces bound to a country.
+      Shared globally but filtered by parent country.
+    governance:
+      editable_by:
+        - SYSTEM_ADMIN
+      tenant_access: READ_ONLY
+      mutable: false
+    relations:
+      parent:
+        entity: Country
+        field: country_code
+    entity:
+      name: State
+      table: states
+      base_class: GlobalReferenceEntity
+    fields:
+      - code
+      - name
+      - country_code
+    usage:
+      - addresses
+      - tax_calculation
+      - shipping_zones
+    cache:
+      enabled: true
+      ttl: INFINITE
+    seed:
+      required: true
+      version: 2025.1
+
+  # ============================
+  # LANGUAGE
+  # ============================
+  language:
+    scope: GLOBAL
+    description: >
+      Supported languages for UI and communication.
+    standards:
+      iso: ISO_639
+    governance:
+      editable_by:
+        - SYSTEM_ADMIN
+      tenant_access: READ_ONLY
+      mutable: false
+    entity:
+      name: Language
+      table: languages
+      base_class: GlobalReferenceEntity
+    fields:
+      - code
+      - name
+      - direction
+    usage:
+      - ui_localization
+      - emails
+      - notifications
+    cache:
+      enabled: true
+      ttl: INFINITE
+
+  # ============================
+  # TIMEZONE
+  # ============================
+  timezone:
+    scope: GLOBAL
+    description: >
+      Supported timezones across the platform.
+    standards:
+      source: IANA
+    governance:
+      editable_by:
+        - SYSTEM_ADMIN
+      tenant_access: READ_ONLY
+      mutable: false
+    entity:
+      name: Timezone
+      table: timezones
+      base_class: GlobalReferenceEntity
+    fields:
+      - code
+      - utc_offset
+    usage:
+      - scheduling

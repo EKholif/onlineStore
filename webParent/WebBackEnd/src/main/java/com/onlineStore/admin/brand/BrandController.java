@@ -69,7 +69,7 @@ public class BrandController {
 
     @PostMapping("/brands/save-brand")
     public ModelAndView saveNewUCategory(@ModelAttribute Brand brand, RedirectAttributes redirectAttributes,
-                                         @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+            @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
         redirectAttributes.addFlashAttribute("message", "the brand has been saved successfully.  ");
 
         Long tenantId = TenantContext.getTenantId();
@@ -82,7 +82,7 @@ public class BrandController {
             Brand savedBrand = service.saveBrand(brand);
 
             // AG-ASSET-PATH-001: Use new hierarchical asset structure
-            String uploadDir = "tenants/" + tenantId + "/assets/brands/" + savedBrand.getId();
+            String uploadDir = "webParent/WebBackEnd/tenants/" + tenantId + "/brands/" + savedBrand.getId();
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -124,7 +124,7 @@ public class BrandController {
 
     @PostMapping("/brands/save-edit-brand")
     public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Brand brand,
-                                        RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile)
+            RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile)
             throws CategoryNotFoundException, IOException {
 
         redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
@@ -140,7 +140,8 @@ public class BrandController {
             FileUploadUtil.cleanDir(updateBrand.getImageDir());
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
             // AG-ASSET-PATH-002: Use new hierarchical asset structure for updates
-            String uploadDir = "tenants/" + updateBrand.getTenantId() + "/assets/brands/" + updateBrand.getId();
+            String uploadDir = "webParent/WebBackEnd/tenants/" + updateBrand.getTenantId() + "/brands/"
+                    + updateBrand.getId();
             brand.setLogo(fileName);
             BeanUtils.copyProperties(brand, updateBrand, "id");
 

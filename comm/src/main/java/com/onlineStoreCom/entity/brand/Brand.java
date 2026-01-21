@@ -68,7 +68,7 @@ public class Brand extends IdBasedEntity {
 
     @Transient
     public String getImagePath() {
-        // AG-ASSET-PATH-003: Web path for brand images
+        // AG-ASSET-PATH-006: Web path for brand images
         String dirName = "/tenants/";
 
         if (id == null || id < 0 || logo == null)
@@ -79,7 +79,7 @@ public class Brand extends IdBasedEntity {
 
     @Transient
     public String getImageDir() {
-        // AG-ASSET-PATH-004: File system path for brand images
+        // AG-ASSET-PATH-006: File system path for brand images
         String dirName = "tenants/";
         if (id == -1L || logo == null)
             return "/images/bob.png";

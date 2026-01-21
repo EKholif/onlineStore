@@ -33,8 +33,8 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsService();
+    public org.springframework.security.core.userdetails.UserDetailsService userDetailsService() {
+        return new StoreUserDetailsService();
     }
 
     @Bean
@@ -56,7 +56,7 @@ public class WebSecurityConfig {
         http
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**").permitAll()
+                        .requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**", "/tracking/**").permitAll()
                         .requestMatchers("/users/**", "/get_shipping_cost/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/customer/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")
@@ -75,10 +75,8 @@ public class WebSecurityConfig {
                 .rememberMe(rememberMe -> rememberMe.key("BqRqADxmG8iRXXLvwIZ47NY4")
                         .tokenValiditySeconds(14 * 24 * 60 * 60))
                 .logout(logout -> logout.permitAll())
-                .headers(headers -> headers
-                        .frameOptions(frame -> frame.sameOrigin())
-                        .contentSecurityPolicy(
-                                csp -> csp.policyDirectives("frame-ancestors 'self' http://localhost:710")));
+                .headers(headers -> headers.contentSecurityPolicy(csp -> csp.policyDirectives("frame-ancestors 'self' http://localhost:710")))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/tracking/**"));
 
         // [AG-TEN-ARCH-002] Add Unified TenantContextFilter from comm module
         http.addFilterAfter(tenantContextFilter, UsernamePasswordAuthenticationFilter.class);

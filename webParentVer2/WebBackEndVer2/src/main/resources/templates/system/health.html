@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="container-fluid px-4">
+    <h2 class="text-center mt-3">System Health Dashboard</h2>
+
+    <div class="row mt-4">
+        <!-- System Status -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                System Status</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${healthStatus}">UP</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-server fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Threads -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Active Threads</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${activeThreads}">25</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-network-wired fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disk Usage -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Disk Usage
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" th:text="${diskUsagePercent} + '%'">50%</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar"
+                                             th:style="'width: ' + ${diskUsagePercent} + '%'" aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <small th:text="${diskUsed} + ' / ' + ${diskTotal}"></small>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hdd fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JVM Memory -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                JVM Memory</div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" th:text="${jvmUsagePercent} + '%'">18%</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-warning" role="progressbar"
+                                             th:style="'width: ' + ${jvmUsagePercent} + '%'" aria-valuenow="18" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                             <small th:text="${jvmUsed} + ' / ' + ${jvmMax}"></small>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-memory fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Detailed Health Info -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Detailed Component Status</h6>
+        </div>
+        <div class="card-body">
+             <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="component : ${healthDetails.components}">
+                        <td th:text="${component.key}"></td>
+                        <td th:text="${component.value.status}"></td>
+                         <td th:text="${component.value.details}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script th:src="@{/js/common.js}" type="text/javascript"></script>
+
+</body>
+</html>

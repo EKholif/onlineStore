@@ -1,0 +1,30 @@
+rules:
+  - name: Tenant Isolation
+    allowed:
+      - tenant_id filter
+      - JWT-resolved tenant
+      - system admin in system context
+    forbidden:
+      - cross-tenant access
+      - hardcoded tenant
+    classes:
+      primary:
+        - JwtAuthenticationFilter
+        - TenantContextHolder
+        - BaseTenantRepository
+      secondary:
+        - HibernateFilter
+    test_coverage:
+      - integration per tenant
+      - negative cross-tenant test
+
+  - name: Layered Architecture
+    allowed: Controller → Service → Repository
+    forbidden:
+      - business logic in Controller
+      - direct Repository calls
+    classes:
+      primary:
+        - AllControllers
+        - AllServices
+        - BaseRepository

@@ -49,8 +49,8 @@ public class PdfConvertController {
 
     @PostMapping("/convert/save-fileConvert")
     public ModelAndView newConvertForm(@ModelAttribute FileConvert fileConvert, RedirectAttributes redirectAttributes,
-                                       @RequestParam("fileUpload") MultipartFile multipartFile,
-                                       @RequestParam("selectedExtension") String selectedExtension) throws IOException, DocumentException {
+            @RequestParam("fileUpload") MultipartFile multipartFile,
+            @RequestParam("selectedExtension") String selectedExtension) throws IOException, DocumentException {
 
         redirectAttributes.addFlashAttribute("message", "the File   has been Converted successfully.  ");
 
@@ -60,7 +60,8 @@ public class PdfConvertController {
 
             FileConvert savedInput = service.save(fileConvert);
 
-            String uploadDir = "tenants/" + TenantContext.getTenantId() + "/assets/pdf-convert/" + savedInput.getId()
+            String uploadDir = "webParent/WebBackEnd/tenants/" + TenantContext.getTenantId() + "/pdf-convert/"
+                    + savedInput.getId()
                     + "/";
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
@@ -135,7 +136,7 @@ public class PdfConvertController {
 
     public String fromPDf(String InputFilePath,
 
-                          String pdfOutFilePath) throws DocumentException, IOException {
+            String pdfOutFilePath) throws DocumentException, IOException {
 
         String selectedExtension = getFileExtension(pdfOutFilePath);
 

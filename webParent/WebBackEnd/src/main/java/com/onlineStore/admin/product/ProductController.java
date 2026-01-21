@@ -135,15 +135,16 @@ public class ProductController {
 
             String fileName = StringUtils
                     .cleanPath(Objects.requireNonNull(mainImageMultipartFile.getOriginalFilename()));
-            // AG-ASSET-PATH-004: Strict tenant asset hierarchy
-            String uploadDir = "tenants/" + saveProduct.getTenantId() + "/assets/products/" + saveProduct.getId();
+            String uploadDir = "webParent/WebBackEnd/tenants/" + saveProduct.getTenantId() + "/products/"
+                    + saveProduct.getId();
             FileUploadUtil.saveFile(uploadDir, fileName, mainImageMultipartFile);
         }
 
         if (extraImageMultipart.length > 0) {
 
             // AG-ASSET-PATH-005: Strict tenant asset hierarchy for extras
-            String uploadDir = "tenants/" + saveProduct.getTenantId() + "/assets/products/" + saveProduct.getId()
+            String uploadDir = "webParent/WebBackEnd/tenants/" + saveProduct.getTenantId() + "/products/"
+                    + saveProduct.getId()
                     + "/extras/";
 
             for (MultipartFile extramultipartFile : extraImageMultipart) {

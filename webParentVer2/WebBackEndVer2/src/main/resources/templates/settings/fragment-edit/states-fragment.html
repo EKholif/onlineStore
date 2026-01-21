@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+
+<div th:fragment="content" th:remove="tag">
+
+    <div>
+        <p>Use this page to manage states/provinces which will be chosen
+            by visitors in the customer registration form. Click Load Country
+            List first.</p>
+    </div>
+    <div>
+        <input class="btn btn-primary m-2" id="buttonLoadCountriesForStates"
+               type="button" value="Load Country List"/>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Selected Country:</label>
+        <div class="col-sm-10">
+            <select class="form-control m-2" id="dropDownCountriesForStates">
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">All States/Provinces:</label>
+        <div class="col-sm-10">
+            <select class="form-control m-2" id="dropDownStates" size="3"
+                    style="height: 300px">
+            </select>
+        </div>
+    </div>
+
+    <form id="formState">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label mt-2" id="labelStateName">State/Province
+                Name:</label>
+            <div class="col-sm-6">
+                <input class="form-control mt-2" id="fieldStateName" maxlength="45"
+                       minlength="3" required type="text"/>
+            </div>
+            <div class="col-lg-4 mt-2">
+                <input class="btn btn-secondary mr-2" id="buttonAddState" type="button"
+                       value="New"/> <input class="btn btn-secondary mr-2"
+                                                               disabled="disabled" id="buttonUpdateState"
+                                                               type="button" value="Update"/>
+                <input
+                        class="btn btn-secondary" disabled="disabled" id="buttonDeleteState"
+                        type="button" value="Delete"/>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</body>
+
+</html>

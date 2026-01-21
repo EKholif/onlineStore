@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+<h2 class="text-center">[[${pageTitle}]]</h2>
+<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
+
+
+<div class="container-fluid">
+
+
+    <div class="container">
+
+        <div class="border border-secondary rounded p-3">
+            <form enctype="multipart/form-data" method="post" onsubmit="return checkUnique(this);"
+                  style="max-width: 7500px ; margin: 0 auto" th:action="@{${saveChanges}}" th:object="${category}">
+
+
+                <input id="id" name="id" th:value="${id}" type="hidden"/>
+
+
+                <!--            <div th:replace="~{support/fragments::input-group-category(name,Name)}" ></div>-->
+
+                <div class="input-group row">
+                    <label class="col-sm-4 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="*{name}" required minlength="2" placeholder="enter first name"
+                               class="form-control col-4 mb-2"/>
+                    </div>
+                </div>
+
+
+                <div class="input-group row">
+                    <label class="col-sm-4 col-form-label">Alias</label>
+                    <div class="col-sm-8">
+
+                        <input type="text" th:field="*{alias}" id="alies" placeholder="enter last name"
+                               class="form-control col-2 mb-2"/>
+                    </div>
+                </div>
+
+
+                <div class="input-group row">
+                    <label class="col-sm-4 col-form-label">[[${label}]]</label>
+                    <div class="col-sm-8">
+                        <select class="form-control mb-2" th:field="*{parent}">
+                            <option value="0"> [No Parent]</option>
+
+                            <th:block th:each="cat : ${listItems}">
+                                <option th:value="${cat.id}"> [[${cat.name}]]</option>
+
+                            </th:block>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Enabled:</label>
+                    <div class="col-sm-8">
+                        <input class="text-center mb-2" th:field="*{enabled}" type="checkbox"/>
+                    </div>
+                </div>
+
+
+                <div class="form row">
+                    <label class="col-sm-4 col-form-label">[[${label}]]</label>
+                    <div class="col-sm-8 mb-2 ">
+                        <input type="hidden" th:field="*{image}"/>
+                        <input class="mb-2" type="file" id="fileImage" name="fileImage"
+                               accept="image/jpg, image/jpeg, image/png"/>
+                        <div class="mb-2">
+                            <img alt="product Photo" class="img-thumbnail rounded-circle float-left " id="thumbnail"
+                                 style="width: 200px" th:src="@{${category.getCatImagePath()}}"/>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        <div th:replace="~{support/fragments/standard/form_fragments :: save_reset_buttons}"></div>
+
+
+        </form>
+
+
+        <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+
+
+    </div>
+
+
+</div>
+<div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+
+<script type="text/javascript" th:src="@{/js/commonCat.js}"></script>
+
+<script type="text/javascript">
+
+
+    Max_File_Size = 1042000;
+
+
+    const windowLocationValue = `[[@{${name}}]]`;
+
+    const url = "[[@{'/check_unique'}]]";
+
+
+</script>
+
+<script>$j = jQuery.noConflict();
+
+var $ = jQuery; </script>
+
+
+</body>
+
+</html>

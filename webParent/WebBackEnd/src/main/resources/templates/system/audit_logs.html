@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+
+    <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+    <div class="container-fluid px-4">
+        <h2 class="text-center mt-3">Audit Logs</h2>
+
+        <!-- Search/Filter -->
+        <div class="card mb-4 mt-4">
+            <div class="card-body">
+                <form th:action="@{/admin/system/audit-logs/page}" method="get" class="form-inline">
+                    <input type="hidden" name="sortField" th:value="${sortField}">
+                    <input type="hidden" name="sortDir" th:value="${sortDir}">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <input type="text" name="keyword" th:value="${keyword}" class="form-control"
+                                placeholder="Search logs...">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        <div class="col-auto">
+                            <a th:href="@{/admin/system/audit-logs}" class="btn btn-secondary">Clear</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">System Activity</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>
+                                    <a th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage} + '&sortField=id&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}"
+                                        class="text-white">ID</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage} + '&sortField=timestamp&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}"
+                                        class="text-white">Timestamp</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage} + '&sortField=tenantId&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}"
+                                        class="text-white">Tenant</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage} + '&sortField=module&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}"
+                                        class="text-white">Module</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage} + '&sortField=action&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}"
+                                        class="text-white">Action</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage} + '&sortField=userEmail&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}"
+                                        class="text-white">User</a>
+                                </th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="log : ${listLogs}">
+                                <td th:text="${log.id}"></td>
+                                <td th:text="${#temporals.format(log.timestamp, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td th:text="${log.tenantId}"></td>
+                                <td><span class="badge badge-info text-dark" th:text="${log.module}"></span></td>
+                                <td th:text="${log.action}"></td>
+                                <td th:text="${log.userEmail}"></td>
+                                <td th:text="${log.details}"></td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(listLogs)}">
+                                <td colspan="7" class="text-center">No logs found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div th:if="${totalPages > 1}">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{'/admin/system/audit-logs/page?pageNum=1&sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">First</a>
+                            </li>
+                            <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage - 1} + '&sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Previous</a>
+                            </li>
+
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Page [[${currentPage}]] of [[${totalPages}]]</a>
+                            </li>
+
+                            <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${currentPage + 1} + '&sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Next</a>
+                            </li>
+                            <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{'/admin/system/audit-logs/page?pageNum=' + ${totalPages} + '&sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+
+        <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+    </div>
+
+    <script th:src="@{/js/common.js}" type="text/javascript"></script>
+
+</body>
+
+</html>

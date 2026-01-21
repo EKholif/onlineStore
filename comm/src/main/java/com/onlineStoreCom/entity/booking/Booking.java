@@ -1,92 +1,104 @@
 package com.onlineStoreCom.entity.booking;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.onlineStoreCom.entity.users.User;
-import com.onlineStoreCom.entity.service.Service;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Filter;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "bookings")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Booking extends IdBasedEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "service_id", nullable = false)
-    private Service service;
-
-    // Customer who booked (assumed User entity represents customers too, or we
-    // might need a distinct Customer entity if the system separates them)
-    // Based on user_information, User seems to be the main actor.
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private User customer;
-
-    @Column(name = "booking_time", nullable = false)
-    private LocalDateTime bookingTime;
-
-    @Column(name = "end_time", nullable = false)
-    private LocalDateTime endTime;
+    @Column(nullable = false, length = 150)
+    private String name; // Doctor Name, Room Name, or Class Name
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 20, nullable = false)
-    private BookingStatus status;
+    @Column(name = "booking_type", nullable = false, length = 20)
+    private BookingType bookingType;
 
-    @Column(length = 1024)
-    private String notes;
+    @Column(name = "customer_name", nullable = false, length = 150)
+    private String customerName;
+
+    @Column(name = "start_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startTime;
+
+    @Column(name = "end_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endTime;
+
+    @Column(length = 20)
+    private String status; // PENDING, CONFIRMED, CANCELLED
+
+    @Column(length = 500)
+    private String details; // Extra details like "Room 101" or "Chapter 4"
+
+    @Column(name = "tenant_id")
+    private Long tenantId;
 
     public Booking() {
     }
 
-    public Service getService() {
-        return service;
+    public String getName() {
+        return name;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public User getCustomer() {
-        return customer;
+    public BookingType getBookingType() {
+        return bookingType;
     }
 
-    public void setCustomer(User customer) {
-        this.customer = customer;
+    public void setBookingType(BookingType bookingType) {
+        this.bookingType = bookingType;
     }
 
-    public LocalDateTime getBookingTime() {
-        return bookingTime;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setBookingTime(LocalDateTime bookingTime) {
-        this.bookingTime = bookingTime;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public LocalDateTime getEndTime() {
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
-    public BookingStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(BookingStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getDetails() {
+        return details;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 }

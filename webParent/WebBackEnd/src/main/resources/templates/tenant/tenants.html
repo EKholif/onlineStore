@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+
+    <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+    <div class="container-fluid px-4">
+        <h2 class="text-center mt-3">Tenant Management</h2>
+
+        <div th:if="${message != null}" class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${error != null}" class="alert alert-danger text-center">
+            [[${error}]]
+        </div>
+
+        <div class="card shadow mb-4 mt-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Registered Tenants</h6>
+                <a th:href="@{/register_tenant}" class="btn btn-primary btn-sm visually-hidden">Add New Tenant</a>
+                <!-- Hiding Add for now as per plan, or use existing register -->
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Status</th>
+                                <th>Created At</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="tenant : ${tenants}">
+                                <td th:text="${tenant.id}"></td>
+                                <td th:text="${tenant.name}"></td>
+                                <td th:text="${tenant.code}"></td>
+                                <td>
+                                    <span th:if="${tenant.status.name() == 'ACTIVE'}"
+                                        class="badge bg-success">Active</span>
+                                    <span th:if="${tenant.status.name() == 'SUSPENDED'}"
+                                        class="badge bg-danger">Suspended</span>
+                                    <span th:if="${tenant.status.name() == 'PENDING'}"
+                                        class="badge bg-warning">Pending</span>
+                                </td>
+                                <td th:text="${#dates.format(tenant.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+                                <td>
+                                    <a th:if="${tenant.status.name() != 'ACTIVE'}"
+                                        th:href="@{'/admin/tenants/' + ${tenant.id} + '/enable'}"
+                                        class="btn btn-success btn-sm" title="Enable">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                    <a th:if="${tenant.status.name() == 'ACTIVE'}"
+                                        th:href="@{'/admin/tenants/' + ${tenant.id} + '/suspend'}"
+                                        class="btn btn-danger btn-sm" title="Suspend"
+                                        onclick="return confirm('Are you sure you want to suspend this tenant? Users will not be able to login.');">
+                                        <i class="fas fa-ban"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(tenants)}">
+                                <td colspan="6" class="text-center">No tenants found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+    </div>
+
+    <script th:src="@{/js/common.js}" type="text/javascript"></script>
+
+</body>
+
+</html>

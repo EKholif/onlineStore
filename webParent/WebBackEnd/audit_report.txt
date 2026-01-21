@@ -1,0 +1,209 @@
+====================================================================================================
+ENTITY IMAGE AUDIT REPORT
+Format: EntityType | EntityID | EntityName | TenantID | ImagePath
+====================================================================================================
+User       | 2     | Allada Pavan                   | 4     | default-logo.png
+User       | 4     | Muhammad Evran                 | 4     | default-logo.png
+User       | 5     | Kent Hervey                    | 4     | default-logo.png
+User       | 6     | Alfred Ephraim                 | 4     | 8c02662811277bacd09ea2389c572119.png
+User       | 7     | Nathi Sangweni                 | 4     | default-logo.png
+User       | 8     | Ammanolla Shirisha             | 4     | default-logo.png
+User       | 9     | Bill Feeny                     | 4     | default-logo.png
+User       | 10    | Frederick delos Santos         | 4     | default-logo.png
+User       | 11    | Ana Maria                      | 4     | default-logo.png
+User       | 12    | Satya Narayana1                | 4     | default-logo.png
+User       | 13    | Matthew Efoli                  | 4     | default-logo.png
+User       | 14    | Dave Kumar                     | 4     | default-logo.png
+User       | 15    | Jack Bruce                     | 4     | default-logo.png
+User       | 16    | Mohamed Zirri                  | 4     | default-logo.png
+User       | 17    | Mithun Kumar Majumdar          | 4     | default-logo.png
+User       | 18    | Ali Raza                       | 4     | 8c02662811277bacd09ea2389c572119.png
+User       | 19    | Isaac Henry                    | 4     | default-logo.png
+User       | 20    | Svetlana Stasovska             | 4     | default-logo.png
+User       | 21    | Mike Gates                     | 4     | default-logo.png
+User       | 22    | Pedro Quintero                 | 4     | default-logo.png
+User       | 23    | Amina Elshal                   | 4     | default-logo.png
+User       | 25    | Ehab Kholif                    | 4     | default-logo.png
+User       | 32    | Super Admin                    | 1     | default-logo.png
+User       | 33    | Admin [0]                      | 11    | aks-tools.png
+User       | 34    | Admin [hotel]                  | 5     | rstudio.png
+User       | 35    | Admin [car]                    | 6     | default-logo.png
+User       | 36    | Admin [food]                   | 4     | 8c02662811277bacd09ea2389c572119.png
+User       | 37    | Ehab Kholif                    | 1     | default-logo.png
+User       | 229   | Ehab Kholif                    | 7     | default-logo.png
+User       | 230   | Ehab Kholif                    | 7     | default-logo.png
+User       | 231   | Ehab Kholif                    | 7     | default-logo.png
+User       | 259   | Ehab Kholif                    | 5     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+User       | 260   | Ehab Kholif                    | 5     | default-logo.png
+User       | 261   | Ehab Kholif                    | 5     | default-logo.png
+User       | 262   | Ehab Kholif                    | 5     | ccloud_retina.png
+Product    | 1     | Canon EOS M50 Mirrorless Vl... | 4     | canon eos m50.png
+Product    | 2     | Sony ZV-1 Camera for Conten... | 4     | Sony ZV-1 main.png
+Product    | 3     | Panasonic Lumix FZ80 4K Dig... | 4     | Lumix FZ80 main.png
+Product    | 4     | Pelican 1200 Case With Foam... | 4     | Pelican 1200 Case main.png
+Product    | 5     | Pelican 1040 Micro Case (Bl... | 4     | Pelican 1040 Micro Case 1.png
+Product    | 6     | Verizon Prepaid - Apple iPh... | 4     | Verizon Apple iPhone 6S main.png
+Product    | 7     | Samsung Galaxy Note II, Whi... | 4     | Samsung Galaxy Note 2 main.png
+Product    | 8     | Samsung 860 EVO 500GB 2.5 I... | 4     | Samsung 500GB SSD main 2.png
+Product    | 9     | Canon PowerShot ELPH 180 Di... | 4     | Powershot ELPH 180 main.png
+Product    | 10    | Olympus Tough TG-6 Waterpro... | 4     | Olympus Tough main.png
+Product    | 11    | Sony a7 III (ILCE7M3K/B) Fu... | 4     | Sony a7 III main.png
+Product    | 12    | CADeN Camera Backpack Bag      | 4     | CADeN Camera Backpack open.png
+Product    | 14    | AmazonBasics Large DSLR Cam... | 4     | AmazonBasics Large DSLR Camera Bag.png
+Product    | 15    | Nikon SB-700 AF Speedlight ... | 4     | Nikon Flash 1.png
+Product    | 16    | Canon Speedlite 470EX-AI, A... | 4     | Canon Speedlite main.png
+Product    | 17    | Sony External Flash with Wi... | 4     | Sony Flash 1.png
+Product    | 18    | Neewer TT560 Flash Speedlite   | 4     | Neewer TT560 Flash Speedlite.png
+Product    | 19    | Canon EF 50mm f/1.8 STM Lens   | 4     | Canon EF 50mm main.png
+Product    | 20    | Nikon AF-S Nikkor 50mm f/1.... | 4     | Nikon AF-S Nikkor.png
+Product    | 21    | Canon EF 75-300mm f/4-5.6 I... | 4     | Canon EF 75-300mm 1.png
+Product    | 22    | Sigma 150-600mm 5-6.3 Conte... | 4     | Sigma 150-600mm main.png
+Product    | 23    | Bosch BT150 Compact Extenda... | 4     | Bosch BT150 main.png
+Product    | 24    | Joby JB01507 GorillaPod 3K Kit | 4     | Joby JB01507 main.png
+Product    | 25    | GoPro Shorty Mini Extension... | 4     | GoPro Tripod main.png
+Product    | 26    | Manfrotto Element Aluminum ... | 4     | Manfrotto Monopod main.png
+Product    | 27    | Samsung Galaxy S7 G930P 32G... | 4     | Samsung Galaxy S7 front.png
+Product    | 28    | Samsung Galaxy S6 Edge, Bla... | 4     | Samsung Galaxy S6 Edge front.png
+Product    | 29    | Google Pixel 3a XL Verizon ... | 4     | Google Pixel 3a - front.png
+Product    | 30    | LG G Flex, Titan Silver 32G... | 4     | LG G Flex front.png
+Product    | 31    | LG Optimus Exceed 2 (Verizo... | 4     | LG Optimus Exceed 2 main.png
+Product    | 32    | LG G6 H872 32GB T-Mobile Ca... | 4     | LG G6 T-Mobile main.png
+Product    | 33    | TracFone Motorola Moto G6 4... | 4     | TracFone Motorola Moto G6 main.png
+Product    | 34    | Pantech Pocket, Black (AT&T)   | 4     | Pantech Pocket main.png
+Product    | 35    | Samsung Galaxy S10 Factory ... | 4     | Samsung Galaxy S10 main.png
+Product    | 36    | Samsung Galaxy A20s A207M 3... | 4     | Samsung Galaxy A20s main.png
+Product    | 37    | Samsung Galaxy S20 Ultra 5G... | 4     | Samsung Galaxy S20 main.png
+Product    | 38    | Apple iPhone XS, 256GB , Sp... | 4     | iPhone XS 256GB 1.png
+Product    | 39    | Apple iPhone 7 Plus, 32GB, ... | 4     | iPhone 7 Plus main.png
+Product    | 40    | Apple iPhone X, 64GB, Space... | 4     | iPhone X 64GB main.png
+Product    | 41    | Google Pixel 4 - Just Black... | 4     | Google Pixel 4 main.png
+Product    | 42    | Moto G Power 3-Day Battery1... | 4     | Motor G Power main.png
+Product    | 43    | Huawei P30 Lite (128GB, 4GB... | 4     | Huawai P30 Lite main.png
+Product    | 44    | Xiaomi Redmi Note 9S 6.67" ... | 4     | Redmi Note 9S main.png
+Product    | 45    | HOVAMP iPhone Charger, MFi ... | 4     | HOVAMP iPhone Charger 5pack main.png
+Product    | 46    | iPhone Charger Cord 4Pack i... | 4     | Aioneus iphone charger cord main.png
+Product    | 47    | USB C Cable, XIAE 5Pack (3/... | 4     | XIAE USB C Cable main.png
+Product    | 48    | Micro USB Cable, 10ft 3 Pac... | 4     | Everyworth Micro USB Cable 3pack.png
+Product    | 49    | Samsung Electronics EVO Sel... | 4     | Samsung EVO Select 256GB microSD main.png
+Product    | 50    | SanDisk 128GB Extreme micro... | 4     | SanDisk 128GB main.png
+Product    | 51    | SanDisk 32GB Ultra microSDH... | 4     | SanDisk Ultra 32GB main.png
+Product    | 52    | Samsung PRO Endurance 128GB... | 4     | Samsung PRO 128GB main.png
+Product    | 53    | Lexar High-Performance 633x... | 4     | Lexar 512GB main.png
+Product    | 54    | Manfrotto PIXI Mini Tripod,... | 4     | Manfrotto Tripod main.png
+Product    | 55    | Nulaxy A4 Cell Phone Stand,... | 4     | Nulaxy A4 main.png
+Product    | 56    | Phone Ring Holder Finger Ki... | 4     | Fitfort Phone Ring Holder main.png
+Product    | 57    | PopSockets PopWallet+ with ... | 4     | PopWallet main.png
+Product    | 58    | SHAWE Phone Holder Bed Goos... | 4     | Shawe Phone holder main.png
+Product    | 59    | Lenovo IdeaCentre AIO 3, 24... | 4     | Lenovo IdeaCenter main.png
+Product    | 60    | Acer Aspire TC-885-UA92 Des... | 4     | Aspire TC-885-UA92 main.png
+Product    | 61    | Dell Inspiron 27 AIO, 27 in... | 4     | Dell Inspiron 27 AIO main.png
+Product    | 62    | Lenovo IdeaCentre 3 Desktop... | 4     | IdeaCentre 3 main 2.png
+Product    | 63    | Dell OptiPlex 7070 Desktop ... | 4     | Dell OptiPlex main.png
+Product    | 64    | Intel NUC 10 Performance Ki... | 4     | Intel NUC main.png
+Product    | 65    | Lenovo Flex 5 14" 2-in-1 La... | 4     | Lenovo Flex 5 main.png
+Product    | 66    | Acer Aspire 5 Slim Laptop, ... | 4     | Acer Aspire 5 Slim Laptop main.png
+Product    | 67    | ASUS VivoBook L203MA Laptop    | 4     | ASUS VivoBook main.png
+Product    | 68    | HP Chromebook 14-Inch HD La... | 4     | HP Chromebook main.png
+Product    | 69    | Acer Swift 3 Thin & Light L... | 4     | 8ae17bbee4fec22955ebdabca400a629.png
+Product    | 70    | ASUS TUF Gaming A15 Gaming ... | 4     | ASUS TUF Gaming main.png
+Product    | 71    | Lenovo Legion 5 Gaming Laptop  | 4     | Lenovo Legion main.png
+Product    | 72    | Acer Chromebook Spin 11 CP3... | 4     | Acer Chromebook Spin main.png
+Product    | 73    | 2020 Dell Inspiron 3000 15.... | 4     | 8c02662811277bacd09ea2389c572119.png
+Product    | 74    | Samsung Galaxy Tab A 8.0" 3... | 4     | Galaxy Tab A main.png
+Product    | 75    | Samsung Galaxy Tab S6 Lite ... | 4     | Galaxy Tab S6 Lite main.png
+Product    | 76    | Microsoft Surface Pro 7 – 1... | 4     | Surface Pro 7 main.png
+Product    | 77    | Lenovo Tab M10 Plus Tablet,... | 4     | Lenovo Tab M10 Plus main.png
+Product    | 78    | Lenovo Tab M8 Tablet, 8" HD... | 4     | Lenovo Tab M8 main.png
+Product    | 79    | Apple iPad 6 with WiFi, 128... | 4     | iPad 6 main.png
+Product    | 80    | Dragon Touch Notepad K10 Ta... | 4     | Dragon Touch Notepad K10 Tablet main.png
+Product    | 81    | AMD Ryzen 5 3600X 6-Core, 1... | 4     | AMD Ryzen 5 Box.png
+Product    | 82    | Intel Core i5-9400F Desktop... | 4     | Intel Core i5 main.png
+Product    | 83    | Intel Core i9-9900K Desktop... | 4     | Intel Core i9 main box.png
+Product    | 84    | XFX Radeon RX 580 GTS XXX E... | 4     | XFX Radeon RX 580 main.png
+Product    | 85    | MSI Gaming GeForce GTX 1660... | 4     | MSI GeForce main.png
+Product    | 86    | Western Digital 1TB WD Blue... | 4     | Western Digital 1TB 1.png
+Product    | 87    | Western Digital 4TB WD Blac... | 4     | Western Digital 4TB main.png
+Product    | 88    | Seagate BarraCuda 2TB Inter... | 4     | Seagate BarraCuda 2TB main.png
+Product    | 89    | Asus 24x DVD-RW Serial-ATA ... | 4     | Asus 24x DVD-RW main.png
+Product    | 90    | LG WH16NS40 Super Multi Blu... | 4     | LG WH16NS40 main.png
+Product    | 91    | LG Electronics 14x SATA Blu... | 4     | LG Bluray main.png
+Product    | 92    | ASUS Rog Thor 1200 Certifie... | 4     | Asus Rog Thor 1200 main.png
+Product    | 93    | Corsair SF Series, SF600, 6... | 4     | Corsair SF600 main.png
+Product    | 94    | Thermaltake Smart 500W 80+ ... | 4     | Thermaltake 500W main.png
+Product    | 95    | Western Digital 500GB WD Bl... | 4     | Western Digital 500GB SSD main.png
+Product    | 96    | Kingston 240GB A400 SATA 3 ... | 4     | Kingston 240GB SSD main.png
+Product    | 97    | Asus Xonar AE Sound Board      | 4     | Xonar main.png
+Product    | 98    | Creative Sound Blaster Audi... | 4     | Sound Blaster main.png
+Product    | 99    | Corsair Vengeance LPX 16GB ... | 4     | Corsair 16GB main.png
+Product    | 100   | Crucial 8GB Single DDR4 240... | 4     | Crucial 8GB DDR main.png
+Product    | 101   | HyperX Fury 16GB 2666MHz DD... | 4     | HyperX 16GB main.png
+Product    | 102   | Asus AM4 TUF Gaming X570-Pl... | 4     | Asus AM4 TUF main.png
+Product    | 103   | Asus Prime Z390-A Motherboa... | 4     | Asus Prime main.png
+Product    | 104   | Gigabyte B450M DS3H Motherb... | 4     | Gigabyte B450M main.png
+Product    | 105   | TP-Link WiFi 6 AX3000 PCIe ... | 4     | TPLink AX3000 main.png
+Product    | 106   | TP-Link AC1200 PCIe WiFi Ca... | 4     | TPLink AC1200 main.png
+Product    | 107   | Test Discount Product 17670... | 4     | test.png
+Product    | 120   | Test Product Review            | 4     | main.png
+Product    | 139   | sssssssq                       | 7     | 8ae17bbee4fec22955ebdabca400a629.png
+Product    | 152   | Create new                     | 5     | 8c02662811277bacd09ea2389c572119.png
+Product    | 168   | Prod 1                         | 4     | img.png
+Category   | 1     | Electronics                    | 4     | electronics.png
+Category   | 2     | Camera & Photo                 | 4     | camera.jpg
+Category   | 3     | Computers                      | 4     | computers.png
+Category   | 4     | Cell Phones & Accessories      | 4     | cellphones.png
+Category   | 5     | Desktops                       | 4     | desktop computers.png
+Category   | 6     | Laptops                        | 4     | laptop computers.png
+Category   | 7     | Tablets                        | 4     | tablets.png
+Category   | 8     | Computer Components            | 4     | computer components.png
+Category   | 9     | Bags & Cases                   | 4     | bags_cases.png
+Category   | 10    | Digital Cameras                | 4     | digital cameras.png
+Category   | 11    | Flashes                        | 4     | flashes.png
+Category   | 12    | Lenses                         | 4     | lenses.png
+Category   | 13    | Tripods & Monopods             | 4     | tripods_monopods.png
+Category   | 14    | Carrier Cell Phones            | 4     | carrier cellphones.png
+Category   | 15    | Unlocked Cell Phones           | 4     | unlocked cellphones.png
+Category   | 16    | Accessories                    | 4     | cellphone accessories.png
+Category   | 17    | Cables & Adapters              | 4     | cables and adapters.png
+Category   | 18    | MicroSD Cards                  | 4     | microsd cards.png
+Category   | 19    | Stands                         | 4     | cellphone_stands.png
+Category   | 20    | Cases                          | 4     | cellphone cases.png
+Category   | 21    | Headphones                     | 4     | headphones.png
+Category   | 22    | CPU Processors Unit            | 4     | computer processors.png
+Category   | 23    | Graphic Cards                  | 4     | graphic cards.png
+Category   | 24    | Internal Hard Drives           | 4     | internal hard drive.png
+Category   | 25    | Internal Optical Drives        | 4     | internal optical drives.png
+Category   | 26    | Power Supplies                 | 4     | power supplies.png
+Category   | 27    | Solid State Drives             | 4     | solid state drives.png
+Category   | 28    | Sound Cards                    | 4     | sound cards.png
+Category   | 29    | Memory                         | 4     | computer memory.png
+Category   | 30    | Motherboard                    | 4     | motherboards.png
+Category   | 31    | Network Cards                  | 4     | network cards.png
+Category   | 34    | sssssss1a                      | 3     | 4c90e10e_4824e185.png
+Category   | 35    | sssssssa                       | 3     | 8c02662811277bacd09ea2389c572119.png
+Category   | 36    | sssssss                        | 5     | 3c5f02a6_75b2d7c2.png
+Category   | 37    | Xiaomi Redmi Note 9S 6.67" ... | 5     | 8ae17bbee4fec22955ebdabca400a629.png
+Category   | 64    | Parent Cat                     | 4     | default.png
+Category   | 65    | Child Cat                      | 4     | default.png
+Category   | 66    | category                       | 5     | Apigee-512-color.png
+Customer   | 7     | Alex Stevenson                 | 4     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 10    | Ahjaja Thaker                  | 4     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 18    | Alisa Willcox                  | 4     | 14f38f8cfd0b5389a211054b20083b8c.png
+Customer   | 42    | Ehab Kholif                    | 4     | https://lh3.googleusercontent.com/a/ACg8ocIUx0rVhUGeF1DCZduMFeiIJydS60WVFtbmhoXsVXEl9N1Tj0U5iQ=s96-c
+Customer   | 63    | Ehab Kholif                    | 7     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 66    | Ehab Kholif                    | 7     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 70    | Ehab Kholif                    | 7     | 14f38f8cfd0b5389a211054b20083b8c.png
+Customer   | 71    | Ehab Kholif                    | 7     | turtle-star.png
+Customer   | 72    | Ehab Kholif                    | 7     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 73    | Ehab Kholif                    | 7     | 8efe822f44e536affa464ac16a603483.png
+Customer   | 74    | Ehab Kholif                    | 7     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 75    | Ehab Kholif                    | 7     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 77    | Ehab Kholif                    | 7     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+Customer   | 86    | Ehab Kholif                    | 5     | 14f38f8cfd0b5389a211054b20083b8c.png
+Customer   | 87    | Ehab Kholif                    | 4     | 3fc349d6beaed0138151295960278aeb.png
+Customer   | 88    | Ehab Kholif                    | 4     | 14f38f8cfd0b5389a211054b20083b8c.png
+Customer   | 90    | Ehab Kholif                    | 4     | 3c5f02a6_75b2d7c2.png
+Customer   | 96    | Ehab Kholif                    | 5     | remote-wsl-nightly.png
+Customer   | 97    | Ehab Kholif                    | 5     | 9b5b8b8f9ab1c264a71e36b63785f661.png
+====================================================================================================
+AUDIT COMPLETE
+====================================================================================================

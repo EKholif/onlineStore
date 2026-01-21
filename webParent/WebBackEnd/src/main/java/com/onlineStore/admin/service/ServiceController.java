@@ -52,7 +52,7 @@ public class ServiceController {
 
     @PostMapping("/services/save")
     public String saveService(Service service, RedirectAttributes ra,
-                              @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+            @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
 
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -60,7 +60,8 @@ public class ServiceController {
             Service savedService = serviceService.save(service);
 
             // AG-ASSET-PATH-007: Use new hierarchical structure for services
-            String uploadDir = "tenants/" + savedService.getTenantId() + "/assets/services/" + savedService.getId();
+            String uploadDir = "webParent/WebBackEnd/tenants/" + savedService.getTenantId() + "/services/"
+                    + savedService.getId();
             FileUploadUtil.cleanDir(uploadDir);
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         } else {
@@ -101,7 +102,7 @@ public class ServiceController {
 
     @GetMapping("/services/{id}/enabled/{status}")
     public String updateServiceEnabledStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enabled,
-                                             RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) {
         serviceService.updateServiceEnabledStatus(id, enabled);
         String status = enabled ? "enabled" : "disabled";
         String message = "The Service ID " + id + " has been " + status;

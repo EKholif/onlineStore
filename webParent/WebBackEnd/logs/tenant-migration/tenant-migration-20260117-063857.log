@@ -1,0 +1,10 @@
+=== Tenant Migration Log Started: 2026-01-17T06:38:57.781068300 ===
+[06:38:57] [5] [customers] WARNING: Collision. Renaming 86 -> 86_1768624737807
+[06:38:57] [5] [customers] 86 -> 86_1768624737807 [OK]
+[06:38:57] [5] [users] 262 -> 262 [OK]
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 124
+Total Files Moved: 2
+Errors: 0
+=========================================

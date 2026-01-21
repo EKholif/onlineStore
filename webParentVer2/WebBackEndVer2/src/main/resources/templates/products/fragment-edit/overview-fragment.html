@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="content" th:remove="tag">
+
+    <div class="form-group row p-3 ">
+        <label class="col-sm-2 col-form-label ">Name</label>
+        <div class="col-sm-10">
+            <input class="form-control " maxlength="256" minlength="2" placeholder="Please enter the Product name" required
+                   th:field="*{name}" type="text"/>
+        </div>
+    </div>
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Alias</label>
+        <div class="col-sm-10">
+            <input class="form-control " id="alias" maxlength="256" minlength="2" placeholder="Default is product name (spaces are replaced by dashes)" required
+                   th:field="*{alias}" type="text"/>
+        </div>
+    </div>
+
+
+    <div class="form-group row  p-3">
+        <label class="col-sm-2 col-form-label ">Brand Name</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="brand" required th:field="*{brand}">
+                <th:block th:each="brand :${listBrands}">
+                    <option id="brandA " th:value="${brand.id}">[[${brand.name}]]</option>
+                </th:block>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group row p-3">
+        <label class="col-sm-2 col-form-label">Category Name</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="categories" required th:field="*{category}">
+                <option th:each="cat : ${product.category != null ? product.brand.categories : listCategory}"
+                        th:text="${cat.name}" th:value="${cat.id}">
+                </option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group row  p-3">
+        <label class="col-sm-2 col-form-label p-0">Enable</label>
+        <div class="col-sm-10 ">
+            <input class="checkboxes  pe-5" th:field="*{enabled}" type="checkbox"/>
+        </div>
+    </div>
+
+    <div class="form-group row  p-3">
+        <label class="col-sm-2 col-form-label p-0">In Stock</label>
+        <div class="col-sm-10 ">
+            <input class="checkboxes  pe-5" th:field="*{inStock}" type="checkbox"/>
+        </div>
+    </div>
+
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Cost</label>
+        <div class="col-sm-10">
+            <input class="form-control " step="0.01" th:field="*{cost}" type="number"/>
+        </div>
+    </div>
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Price</label>
+        <div class="col-sm-10">
+            <input class="form-control " step="0.01" th:field="*{price}" type="number"/>
+        </div>
+    </div>
+
+    <div class="form-group  row p-3">
+        <label class="col-sm-2 col-form-label ">Discount</label>
+        <div class="col-sm-10">
+            <input class="form-control " step="0.01" th:field="*{discountPercent}" type="number"/>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+</body>
+
+</html>

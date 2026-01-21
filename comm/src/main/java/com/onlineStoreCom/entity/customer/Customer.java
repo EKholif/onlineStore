@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "customers")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Customer extends AbstractAddressWithCountry {
 
@@ -46,6 +46,9 @@ public class Customer extends AbstractAddressWithCountry {
      */
     private boolean enabled;
 
+    @Column(name = "points_balance")
+    private Integer pointsBalance = 0;
+
     /**
      * The date and time when the customer account was created
      */
@@ -70,6 +73,9 @@ public class Customer extends AbstractAddressWithCountry {
      */
     @Column(name = "rest_password_token", length = 30)
     private String restPasswordToken;
+
+    @Column(name = "last_login_time")
+    private Date lastLoginTime;
 
     public List<CartItem> getCartItems() {
         return cartItems;
@@ -146,6 +152,14 @@ public class Customer extends AbstractAddressWithCountry {
         this.enabled = enabled;
     }
 
+    public Integer getPointsBalance() {
+        return pointsBalance;
+    }
+
+    public void setPointsBalance(Integer pointsBalance) {
+        this.pointsBalance = pointsBalance;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -184,6 +198,14 @@ public class Customer extends AbstractAddressWithCountry {
 
     public void setRestPasswordToken(String restPasswordToken) {
         this.restPasswordToken = restPasswordToken;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
     /**
@@ -229,9 +251,9 @@ public class Customer extends AbstractAddressWithCountry {
         if (id == null || image == null)
             return "/images/bob.png";
 
-        // AG-ASSET-PATH-004: Entity-First Protocol
-        // Returns: /tenants/{tenantId}/{id}/assets/customers/{filename}
-        return "/tenants/" + this.getTenantId() + "/" + this.id + "/assets/customers/" + this.image;
+        // AG-ASSET-PATH-006: Entity-First Protocol
+        // Returns: /tenants/{tenantId}/assets/customers/{id}/{filename}
+        return "/tenants/" + this.getTenantId() + "/assets/customers/" + this.id + "/" + this.image;
     }
 
     // ... (rest of methods)
@@ -246,8 +268,8 @@ public class Customer extends AbstractAddressWithCountry {
         if (id == null)
             return null;
 
-        // AG-ASSET-PATH-004: Entity-First Protocol
-        // Returns: tenants/{tenantId}/{id}/assets/customers/
-        return "tenants/" + this.getTenantId() + "/" + this.id + "/assets/customers/";
+        // AG-ASSET-PATH-006: Entity-First Protocol
+        // Returns: tenants/{tenantId}/assets/customers/{id}/
+        return "tenants/" + this.getTenantId() + "/assets/customers/" + this.id + "/";
     }
 }

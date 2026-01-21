@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+
+<div th:fragment="content" id="divProductDetails">
+
+
+    <th:block th:each="productDetails , status: ${product.details}">
+
+        <div th:id="'divDetail'+ ${status.index}" class="flex flex-row align-items-center flex-wrap p-2 mt-2 ">
+
+
+            <input type="hidden" name="detailIDs" th:value=" ${status.index}"/>
+            <label class="col-sm-1 text-center ">Name</label>
+            <div class="col-sm-4">
+                <input type="text " class="form-control " name="detailNames" required minlength="2"
+                       placeholder=" product name detail  names" readonly
+                       maxlength="255" th:value="${productDetails.name}"/>
+            </div>
+
+            <label class="col-sm-1 text-center ">Value</label>
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control " name="detailValues" required minlength="2"
+                       placeholder="product name detail Values " maxlength="255" th:value="${productDetails.value}"/>
+            </div>
+
+
+        </div>
+
+
+    </th:block>
+
+
+</div>
+
+
+</body>
+
+</html>

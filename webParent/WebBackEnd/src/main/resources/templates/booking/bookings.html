@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+
+    <div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+    <div class="container-fluid px-4">
+        <h2 class="text-center">Manage Bookings</h2>
+
+        <div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
+
+        <div class="mb-3 text-center">
+            <a class="btn btn-outline-secondary" th:classappend="${selectedType == null} ? 'active'"
+                th:href="@{/bookings}">All</a>
+            <a class="btn btn-outline-secondary" th:classappend="${selectedType?.name() == 'DOCTOR'} ? 'active'"
+                th:href="@{/bookings/page/1?type=DOCTOR}">Doctor</a>
+            <a class="btn btn-outline-secondary" th:classappend="${selectedType?.name() == 'HOTEL'} ? 'active'"
+                th:href="@{/bookings/page/1?type=HOTEL}">Hotel</a>
+            <a class="btn btn-outline-secondary" th:classappend="${selectedType?.name() == 'LESSON'} ? 'active'"
+                th:href="@{/bookings/page/1?type=LESSON}">Lesson</a>
+        </div>
+
+        <div class="text-center">
+            <a class="fas fa-plus-circle fa-2x icon-d-green" th:href="@{/bookings/new}" title="Add New Booking"></a>
+        </div>
+
+        <div class="alert alert-success text-center" th:if="${message != null}">
+            [[${message}]]
+        </div>
+
+        <div class="full-details mt-3">
+            <table class="table table-responsive me-sm-1 table-header table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th th:replace="~{support/fragments/standard/table_fragments :: column_link('id', 'ID')}"></th>
+                        <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('name', 'Name/Resource')}">
+                        </th>
+                        <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('customerName', 'Customer')}">
+                        </th>
+                        <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('bookingType', 'Type')}">
+                        </th>
+                        <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('startTime', 'Start Time')}">
+                        </th>
+                        <th
+                            th:replace="~{support/fragments/standard/table_fragments :: column_link('status', 'Status')}">
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="booking : ${listBookings}">
+                        <td th:text="${booking.id}"></td>
+                        <td th:text="${booking.name}"></td>
+                        <td th:text="${booking.customerName}"></td>
+                        <td th:text="${booking.bookingType}"></td>
+                        <td th:text="${booking.startTime}"></td>
+                        <td th:text="${booking.status}"></td>
+                        <td>
+                            <a class="fas fa-edit px-2 icon-green" th:href="@{'/bookings/edit/' + ${booking.id}}"
+                                title="Edit Booking"></a>
+                            <a class="fas fa-trash px-2 icon-red delete-confirmation"
+                                th:href="@{'/bookings/delete/' + ${booking.id}}" th:id="${booking.id}"
+                                title="Delete Booking"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <nav th:replace="~{support/fragments/standard/table_fragments :: pagination}"></nav>
+        <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+        <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+    </div>
+
+    <script th:src="@{/js/common.js}" type="text/javascript"></script>
+    <script>
+        const windowLocationValue = "[[@{/bookings}]]";
+    </script>
+</body>
+
+</html>

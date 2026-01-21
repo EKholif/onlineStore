@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<!-- Generic Edit Button -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/action_fragments :: edit('User', '/users/edit/1')}"></div> -->
+<div th:fragment="edit(entityName, editURL)" th:remove="tag">
+    <a class="fas fa-edit fa-2x icon-green" th:href="@{${editURL}}" th:title="'Edit this ' + ${entityName}"></a>
+</div>
+
+<!-- Generic Delete Button -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/action_fragments :: delete('User', 1, '/users/delete/1', true)}"></div> -->
+<div th:fragment="delete(entityName, entityId, deleteURL, visible)" th:remove="tag">
+    <th:block th:if="${visible}">
+        <a class="fas fa-trash fa-2x icon-dark link-delete" th:entityId="${entityId}" th:href="@{${deleteURL}}"
+           th:title="'Delete this ' + ${entityName}"></a>
+    </th:block>
+</div>
+
+<!-- Generic Status Toggle (Enable/Disable) -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/action_fragments :: status(true, 'User', '/users/1')}"></div> -->
+<div th:fragment="status(enabled, entityName, entityURL)" th:remove="tag">
+    <a class="fas fa-check-circle fa-2x icon-green" th:href="@{${entityURL} + '/enabled/false'}"
+       th:if="${enabled == true}" th:title="'Disable this ' + ${entityName}"></a>
+
+    <a class="fas fa-circle fa-2x icon-dark" th:href="@{${entityURL} + '/enabled/true'}" th:if="${enabled == false}"
+       th:title="'Enable this ' + ${entityName}"></a>
+</div>
+
+<!-- Generic Save & Reset Buttons -->
+<!-- Usage: <div th:replace="~{support/fragments/standard/action_fragments :: save_reset}"></div> -->
+<div class="text-center pe-3 mt-2 mb-3" th:fragment="save_reset">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-danger" id="buttonCancel" type="reset">Reset</button>
+    <!-- Typo 'Rest' fixed to 'Reset' if intended, kept label as Reset -->
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="container-fluid px-4">
+    <h2 class="text-center">[[${pageTitle}]]</h2>
+
+    <div class="justify-content-center mb-2 mt-2">
+        <a class="fas fa-folder-plus fa-2x icon-d-green" th:href="@{/menus/new}" title="Add New Menu Item"></a>
+    </div>
+
+    <div class="alert alert-success text-center" th:if="${message != null}">
+        [[${message}]]
+    </div>
+
+    <div class="full-details">
+        <table class="table table-responsive me-sm-1 table-header table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th class="hideable-column">Article</th>
+                <th>Status</th>
+                <th>Position</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="menuItem : ${listMenuItems}">
+                <td>[[${menuItem.id}]]</td>
+                <td>[[${menuItem.title}]]</td>
+                <td>[[${menuItem.type}]]</td>
+                <td class="hideable-column">
+                    <a class="link-detail" th:href="@{'/articles/detail/' + ${menuItem.article.id}}"
+                       th:title="${menuItem.article.title}">[[${menuItem.article.title}]]</a>
+                </td>
+                <td>
+                    <a class="fas fa-check-circle px-2 icon-green"
+                       th:href="@{'/menus/' + ${menuItem.id} + '/enabled/false'}"
+                       th:if="${menuItem.enabled == true}" title="Disable Menu Item"></a>
+                    <a class="fas fa-circle px-2 icon-red"
+                       th:href="@{'/menus/' + ${menuItem.id} + '/enabled/true'}"
+                       th:if="${menuItem.enabled == false}" title="Enable Menu Item"></a>
+                </td>
+                <td>
+                    <a class="fas fa-chevron-up fa-2x icon-green" th:href="@{'/menus/up/' + ${menuItem.id}}"
+                       title="Move Up"></a>
+                    <span class="m-2">[[${menuItem.position}]]</span>
+                    <a class="fas fa-chevron-down fa-2x icon-green" th:href="@{'/menus/down/' + ${menuItem.id}}"
+                       title="Move Down"></a>
+                </td>
+                <td>
+                    <a class="fas fa-edit px-2 icon-green" th:href="@{'/menus/edit/' + ${menuItem.id}}"
+                       title="Edit Menu Item"></a>
+                </td>
+                <td>
+                    <a class="fas fa-trash px-2 icon-red delete-confirmation"
+                       th:href="@{'/menus/delete/' + ${menuItem.id}}" th:id="${menuItem.id}"
+                       title="Delete Menu Item"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="less-details">
+        <div class="row m-1" th:each="menuItem : ${listMenuItems}">
+            <div class="col-2">[[${menuItem.id}]]</div>
+            <div class="col-10">
+                <div><b>[[${menuItem.title}]]</b></div>
+                <div>Type: [[${menuItem.type}]]</div>
+                <div class="mt-1">
+                    <a class="fas fa-edit px-2 icon-green" th:href="@{'/menus/edit/' + ${menuItem.id}}"></a>
+                    <a class="fas fa-trash px-2 icon-red delete-confirmation"
+                       th:href="@{'/menus/delete/' + ${menuItem.id}}" th:id="${menuItem.id}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script th:src="@{/js/common.js}" type="text/javascript"></script>
+<script th:src="@{/js/common_list.js}" type="text/javascript"></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/menus}]]";
+    entityName = "menu item";
+</script>
+
+</body>
+
+</html>
