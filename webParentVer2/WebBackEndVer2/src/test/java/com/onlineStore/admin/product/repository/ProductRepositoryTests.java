@@ -1,5 +1,6 @@
 package com.onlineStore.admin.product.repository;
 
+import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-@Rollback(false)
+@Rollback(true)
 public class ProductRepositoryTests {
 
     @Autowired
@@ -58,5 +59,50 @@ public class ProductRepositoryTests {
 
         Product updated = repo.findByAlias("prod-1");
         assertThat(updated.isEnabled()).isTrue();
+    }
+
+    @Test
+    public void testSaveProductType() {
+        Product p = new Product("Service Prod");
+        p.setAlias("service-prod");
+        p.setShortDescription("Short");
+        p.setFullDescription("Full");
+        p.setMainImage("img.png");
+        p.setTenantId(1L);
+        p.setProductType(com.onlineStoreCom.entity.product.ProductType.SERVICE);
+        p.setCreatedTime(new java.util.Date());
+        p.setUpdatedTime(new java.util.Date());
+
+        repo.save(p);
+
+        entityManager.flush();
+        entityManager.clear();
+
+        Product saved = repo.findByAlias("service-prod");
+        assertThat(saved.getProductType()).isEqualTo(com.onlineStoreCom.entity.product.ProductType.SERVICE);
+    }
+
+    @Test
+    public void testSaveProductWithFlags() {
+        Product p = new Product("Booking Prod");
+        p.setAlias("booking-prod");
+        p.setShortDescription("Short");
+        p.setFullDescription("Full");
+        p.setMainImage("img.png");
+        p.setTenantId(1L);
+        p.setProductType(com.onlineStoreCom.entity.product.ProductType.BOOKING);
+        p.setHasShipping(false);
+        p.setHasScheduling(true);
+        p.setCreatedTime(new java.util.Date());
+        p.setUpdatedTime(new java.util.Date());
+
+        repo.save(p);
+
+        entityManager.flush();
+        entityManager.clear();
+
+        Product saved = repo.findByAlias("booking-prod");
+        assertThat(saved.getHasShipping()).isFalse();
+        assertThat(saved.getHasScheduling()).isTrue();
     }
 }

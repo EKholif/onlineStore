@@ -2,7 +2,6 @@ package com.onlineStore.admin.brand;
 
 import com.onlineStore.admin.brand.reposetry.BrandRepository;
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStoreCom.entity.brand.Brand;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +84,7 @@ public class BrandService {
                 return "Duplicate";
 
         } else {
-            if (brandByName != null && brandByName.getId() != id) {
+            if (brandByName != null && !brandByName.getId().equals(id)) {
                 return "Duplicate";
             }
         }

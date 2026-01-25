@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="container-fluid">
+    <h2 class="text-center mt-3">[[${pageTitle}]]</h2>
+
+    <div class="full-details mt-3">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Source Tenant</th>
+                <th>Reference</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tx : ${transactions}">
+                <td>[[${tx.id}]]</td>
+                <td>[[${tx.transactionDate}]]</td>
+                <td>
+                    <span class="badge bg-secondary">[[${tx.type}]]</span>
+                </td>
+                <td class="text-success fw-bold">
+                    $[[${#numbers.formatDecimal(tx.amount, 1, 2)}]]
+                </td>
+                <td>Tenant ID: [[${tx.sourceTenantId}]]</td>
+                <td>[[${tx.referenceId}]]</td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(transactions)}">
+                <td class="text-center" colspan="6">No transactions found.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script th:src="@{/js/common.js}"></script>
+</body>
+</html>

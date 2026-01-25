@@ -3,12 +3,11 @@ package com.onlineStoreCom.entity.users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineStoreCom.entity.setting.subsetting.HierarchicalEntity;
 import com.onlineStoreCom.tenant.GlobalData;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ExcludeSuperclassListeners;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -22,6 +21,17 @@ public class Role extends HierarchicalEntity<Role> implements GlobalData {
 
     @Column(name = "descrption", length = 150, nullable = false)
     private String descrption;
+
+    /**
+     * AG-RBAC-PERM-002: Role Permissions Collection
+     * <p>
+     * Purpose:
+     * - Maps role to its associated permissions
+     * - Enables hasPermission() helper for authorization checks
+     * - Supports dynamic permission management
+     */
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private Set<RolePermission> permissions = new HashSet<>();
 
     @Override
     public Integer getId() {
@@ -72,6 +82,32 @@ public class Role extends HierarchicalEntity<Role> implements GlobalData {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), name, descrption);
+    }
+
+    public Set<RolePermission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<RolePermission> permissions) {
+        this.permissions = permissions;
+    }
+
+    /**
+     * AG-RBAC-CHECK-001: Permission Check Helper
+     * <p>
+     * Purpose:
+     * - Fast permission lookup for authorization checks
+     * - Used by PermissionEvaluator and @PreAuthorize
+     * <p>
+     * Example:
+     * - if (role.hasPermission("MANAGE_TENANTS")) { ... }
+     */
+    public boolean hasPermission(String permissionName) {
+        if (permissions == null || permissions.isEmpty()) {
+            return false;
+        }
+        return permissions.stream()
+                .anyMatch(p -> p.getPermission().equalsIgnoreCase(permissionName));
     }
 
     @Override

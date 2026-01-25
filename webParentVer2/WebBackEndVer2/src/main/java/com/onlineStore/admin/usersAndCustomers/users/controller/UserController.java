@@ -11,8 +11,6 @@ import com.onlineStore.admin.utility.UserPdfExporter;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
-import com.onlineStoreCom.entity.users.Role;
-import com.onlineStoreCom.entity.users.User;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
 import jakarta.servlet.http.HttpServletResponse;
@@ -46,7 +44,8 @@ public class UserController {
             @PagingAndSortingParam(listName = "users", moduleURL = "/users/page/") PagingAndSortingHelper helper,
             @PathVariable(name = "pageNum") int pageNum) {
 
-        Page<User> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(), helper.getKeyword());
+        Page<com.onlineStoreCom.entity.users.User> page = service.listByPage(pageNum, helper.getSortField(),
+                helper.getSortDir(), helper.getKeyword());
         helper.updateModelAttributes(pageNum, page);
 
         return "users/users";
@@ -56,8 +55,8 @@ public class UserController {
     public ModelAndView newUser() {
         ModelAndView model = new ModelAndView("register/new-users-form");
 
-        User user = new User();
-        List<Role> listAllRoles = service.listAllRoles();
+        com.onlineStoreCom.entity.users.User user = new com.onlineStoreCom.entity.users.User();
+        List<com.onlineStoreCom.entity.users.Role> listAllRoles = service.listAllRoles();
 
         user.setEnabled(true);
         model.addObject("id", 0);
@@ -73,8 +72,8 @@ public class UserController {
     public ModelAndView newUserForm() {
         ModelAndView model = new ModelAndView("users/new-users-form");
 
-        User user = new User();
-        List<Role> listAllRoles = service.listAllRoles();
+        com.onlineStoreCom.entity.users.User user = new com.onlineStoreCom.entity.users.User();
+        List<com.onlineStoreCom.entity.users.Role> listAllRoles = service.listAllRoles();
 
         user.setEnabled(true);
         model.addObject("id", 0);
@@ -87,7 +86,7 @@ public class UserController {
     }
 
     @PostMapping("/users/save-user")
-    public ModelAndView saveNewUser(@ModelAttribute User user,
+    public ModelAndView saveNewUser(@ModelAttribute com.onlineStoreCom.entity.users.User user,
             RedirectAttributes redirectAttributes,
             @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         redirectAttributes.addFlashAttribute("message", "the user   has been saved successfully.  ");
@@ -118,12 +117,13 @@ public class UserController {
         return entity.getTenantId();
     }
 
-    private void savePhoto(User user, MultipartFile multipartFile, String dirName) throws IOException {
+    private void savePhoto(com.onlineStoreCom.entity.users.User user, MultipartFile multipartFile, String dirName)
+            throws IOException {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
         user.setPhotos(fileName);
 
-        User savedUser = service.saveUser(user);
+        com.onlineStoreCom.entity.users.User savedUser = service.saveUser(user);
 
         // AG-ASSET-PATH-001: Strict tenant asset hierarchy
         String uploadDir = FileUploadUtil.getStoragePath(savedUser.getId(), "users");
@@ -136,8 +136,8 @@ public class UserController {
 
         ModelAndView model = new ModelAndView("users/new-users-form");
         try {
-            User user = service.getUser(id);
-            List<Role> listAllRoles = service.listAllRoles();
+            com.onlineStoreCom.entity.users.User user = service.getUser(id);
+            List<com.onlineStoreCom.entity.users.Role> listAllRoles = service.listAllRoles();
 
             model.addObject("listItems", user.getRoles()); // Wait, this logic seems wrong in original code, passing
             // user roles as listItems?
@@ -164,18 +164,19 @@ public class UserController {
     }
 
     @PostMapping("/users/save-edit-user")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute User user,
+    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id,
+                                        @ModelAttribute com.onlineStoreCom.entity.users.User user,
             RedirectAttributes redirectAttributes,
             @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         try {
             redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
 
-            User updateUser = service.getUser(id);
+            com.onlineStoreCom.entity.users.User updateUser = service.getUser(id);
 
             if (user.getPassword().isEmpty()) {
 
                 if (multipartFile.isEmpty()) {
-                    BeanUtils.copyProperties(user, updateUser, "id", "photos", "password");
+                    BeanUtils.copyProperties(user, updateUser, "id", "photos", "password", "tenants", "roles");
                     service.saveUpdatededUser(updateUser);
 
                 } else if (!multipartFile.isEmpty()) {
@@ -186,7 +187,7 @@ public class UserController {
                     // AG-ASSET-PATH-002: Use centralized path from Entity
                     String uploadDir = updateUser.getImageDir();
                     user.setPhotos(fileName);
-                    BeanUtils.copyProperties(user, updateUser, "id", "password");
+                    BeanUtils.copyProperties(user, updateUser, "id", "password", "tenants", "roles");
                     service.saveUpdatededUser(updateUser);
                     FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -196,7 +197,7 @@ public class UserController {
 
                 if (multipartFile.isEmpty()) {
 
-                    BeanUtils.copyProperties(user, updateUser, "id", "photos");
+                    BeanUtils.copyProperties(user, updateUser, "id", "photos", "tenants", "roles");
 
                     service.saveUser(updateUser);
 
@@ -207,7 +208,7 @@ public class UserController {
                             .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                     String uploadDir = updateUser.getImageDir();
                     user.setPhotos(fileName);
-                    BeanUtils.copyProperties(user, updateUser, "id");
+                    BeanUtils.copyProperties(user, updateUser, "id", "tenants", "roles");
                     service.saveUser(updateUser);
                     FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
                 }
@@ -282,7 +283,7 @@ public class UserController {
 
     @GetMapping("/users/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
-        List<User> listUsers = service.listAllUsers();
+        List<com.onlineStoreCom.entity.users.User> listUsers = service.listAllUsers();
         UserCsvExporter userCsvExporter = new UserCsvExporter();
         userCsvExporter.export(listUsers, response);
 
@@ -290,7 +291,7 @@ public class UserController {
 
     @GetMapping("/users/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
-        List<User> listUsers = service.listAllUsers();
+        List<com.onlineStoreCom.entity.users.User> listUsers = service.listAllUsers();
         UserExcelExporter userExcelExporter = new UserExcelExporter();
         userExcelExporter.export(listUsers, response);
 
@@ -298,7 +299,7 @@ public class UserController {
 
     @GetMapping("/users/export/pdf")
     public void exportToPdf(HttpServletResponse response) throws IOException {
-        List<User> listUsers = service.listAllUsers();
+        List<com.onlineStoreCom.entity.users.User> listUsers = service.listAllUsers();
         UserPdfExporter UserPdfExporter = new UserPdfExporter();
         UserPdfExporter.export(listUsers, response);
 

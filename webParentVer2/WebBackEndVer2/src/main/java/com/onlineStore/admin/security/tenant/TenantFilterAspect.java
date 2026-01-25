@@ -26,7 +26,15 @@ public class TenantFilterAspect {
         Long tenantId = TenantContext.getTenantId();
 
         if (tenantId != null) {
-            // [STRICT ENFORCEMENT]
+            // AG-FIX-PLATFORM-ADMIN-002: Platform Admin (Tenant 0) should see ALL data
+            // Do NOT apply tenant filter for Tenant 0 - they have cross-tenant visibility
+            // [STRICT ENFORCEMENT] CONSTANT FILTERING
+            // AG-FIX-PLATFORM-ADMIN-002: Root Tenant (0) is NO LONGER a super-user.
+            // They must face the same data isolation as everyone else to prevent leaks.
+            // Access to other tenants must be explicit via Impersonation (Switching
+            // Context).
+
+            // [STRICT ENFORCEMENT] For non-Platform tenants
             // We do NOT rely on the Web Filter alone. We force the Hibernate Filter
             // to be active on the current EntityManager Session right before execution.
             Session session = entityManager.unwrap(Session.class);

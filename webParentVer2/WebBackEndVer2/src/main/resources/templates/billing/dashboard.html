@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="container-fluid">
+    <h2 class="text-center mt-3">[[${pageTitle}]]</h2>
+
+    <div class="row m-3">
+        <!-- Revenue Card -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total Transactions</div>
+                <div class="card-body">
+                    <h5 class="card-title display-4" id="totalTxDisplay">Loading...</h5>
+                    <p class="card-text">Recorded financial events.</p>
+                </div>
+            </div>
+
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">Total Revenue</div>
+                <div class="card-body">
+                    <h5 class="card-title display-4" id="totalRevenueDisplay">Loading...</h5>
+                    <p class="card-text">Total Commission & Fees</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Revenue by Tenant</div>
+                <div class="card-body">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Transaction Types</div>
+                <div class="card-body">
+                    <canvas id="typeChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <!-- Platform Plans -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Platform Plans
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Plan Name</th>
+                            <th>Price</th>
+                            <th>Cycle</th>
+                            <th>Commission</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="plan : ${plans}">
+                            <td>[[${plan.name}]]</td>
+                            <td>$[[${plan.price}]]</td>
+                            <td>[[${plan.billingCycle}]]</td>
+                            <td>[[${plan.commissionRate}]]%</td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(plans)}">
+                            <td colspan="4">No plans defined.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col-12 text-center">
+            <a class="btn btn-outline-dark btn-lg" th:href="@{/billing/transactions}">View Full Ledger</a>
+        </div>
+    </div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/billing_dashboard.js}"></script>
+</body>
+</html>

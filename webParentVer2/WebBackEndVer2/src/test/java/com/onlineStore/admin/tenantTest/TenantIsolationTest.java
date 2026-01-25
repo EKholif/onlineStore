@@ -1,6 +1,6 @@
 package com.onlineStore.admin.tenantTest;
 
-import com.onlineStore.admin.product.repository.ProductRepository;
+import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest

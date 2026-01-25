@@ -1,6 +1,7 @@
 package com.onlineStore.admin.review;
 
-import com.onlineStore.admin.product.repository.ProductRepository;
+import com.onlineStore.services.service.repository.ProductRepository;
+import com.onlineStore.services.service.repository.ReviewRepository;
 import com.onlineStoreCom.entity.Review.Review;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.product.Product;

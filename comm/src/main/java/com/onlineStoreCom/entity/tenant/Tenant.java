@@ -1,6 +1,7 @@
 package com.onlineStoreCom.entity.tenant;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -24,6 +25,20 @@ public class Tenant implements Serializable {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
+
+    @Column(name = "active", nullable = false)
+    private boolean active = true;
+
+    @Column(name = "level", nullable = false)
+    private int level = 0;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public Tenant() {
     }
@@ -73,6 +88,14 @@ public class Tenant implements Serializable {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)

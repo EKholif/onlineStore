@@ -2,9 +2,11 @@ package com.onlineStore.admin.review;
 
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
+import com.onlineStore.services.service.ReviewService;
 import com.onlineStoreCom.entity.Review.Review;
 import com.onlineStoreCom.entity.exception.ReviewNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,9 @@ public class ReviewController {
             @PagingAndSortingParam(listName = "listReviews", moduleURL = "/reviews/page/") PagingAndSortingHelper helper,
             @PathVariable(name = "pageNum") int pageNum) {
 
-        service.listByPage(pageNum, helper);
+        Page<Review> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
+                helper.getKeyword());
+        helper.updateModelAttributes(pageNum, page);
 
         return "reviews/reviews";
     }

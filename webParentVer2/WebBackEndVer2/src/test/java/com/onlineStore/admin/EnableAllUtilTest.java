@@ -1,7 +1,7 @@
 package com.onlineStore.admin;
 
 import com.onlineStore.admin.category.CategoryRepository;
-import com.onlineStore.admin.product.repository.ProductRepository;
+import com.onlineStore.services.service.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

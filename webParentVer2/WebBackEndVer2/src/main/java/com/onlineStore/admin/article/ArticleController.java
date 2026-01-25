@@ -3,9 +3,11 @@ package com.onlineStore.admin.article;
 import com.onlineStore.admin.article.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.article.paging.PagingAndSortingParam;
 import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.services.service.ArticleService;
 import com.onlineStoreCom.entity.articals.Article;
 import com.onlineStoreCom.entity.exception.ArticleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,9 @@ public class ArticleController {
     @GetMapping("/articles/page/{pageNum}")
     public String listByPage(@PagingAndSortingParam(moduleURL = "/articles", listName = "listArticles") PagingAndSortingHelper helper,
                              @PathVariable(name = "pageNum") int pageNum) {
-        service.listByPage(pageNum, helper);
+        Page<Article> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
+                helper.getKeyword());
+        helper.updateModelAttributes(pageNum, page);
         return "articles/articles";
     }
 

@@ -37,6 +37,9 @@ public class ProductControllerTest {
     @MockBean
     private SettingService settingService;
 
+    @MockBean
+    private com.onlineStore.admin.usersAndCustomers.users.servcies.UserService userService;
+
     @MockBean(name = "entityManagerFactory")
     private jakarta.persistence.EntityManagerFactory entityManagerFactory;
 
@@ -53,5 +56,83 @@ public class ProductControllerTest {
         mockMvc.perform(get("/products/products"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/products/page/1?sortField=name&sortDir=asc"));
+    }
+
+    @Test
+    @com.onlineStore.admin.security.WithMockStoreUser(username = "admin", roles = {"Admin"})
+    public void testNewProductForm_ServiceType() throws Exception {
+        mockMvc.perform(get("/products/new-products-form").param("type", "SERVICE"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("products/new-products-form"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                        .attribute(
+                                "product",
+                                org.hamcrest.Matchers.hasProperty("productType",
+                                        org.hamcrest.Matchers.is(
+                                                com.onlineStoreCom.entity.product.ProductType.SERVICE))))
+                .andExpect(
+                        org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                                .attribute("product",
+                                        org.hamcrest.Matchers.hasProperty(
+                                                "hasShipping",
+                                                org.hamcrest.Matchers.is(
+                                                        false))))
+                .andExpect(
+                        org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                                .attribute("product",
+                                        org.hamcrest.Matchers.hasProperty(
+                                                "hasScheduling",
+                                                org.hamcrest.Matchers.is(
+                                                        true))));
+    }
+
+    @Test
+    @com.onlineStore.admin.security.WithMockStoreUser(username = "admin", roles = {"Admin"})
+    public void testNewProductForm_BookingType() throws Exception {
+        mockMvc.perform(get("/products/new-products-form").param("type", "BOOKING"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("products/new-products-form"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                        .attribute(
+                                "product",
+                                org.hamcrest.Matchers.hasProperty("productType",
+                                        org.hamcrest.Matchers.is(
+                                                com.onlineStoreCom.entity.product.ProductType.BOOKING))))
+                .andExpect(
+                        org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                                .attribute("product",
+                                        org.hamcrest.Matchers.hasProperty(
+                                                "hasShipping",
+                                                org.hamcrest.Matchers.is(
+                                                        false))))
+                .andExpect(
+                        org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                                .attribute("product",
+                                        org.hamcrest.Matchers.hasProperty(
+                                                "hasScheduling",
+                                                org.hamcrest.Matchers.is(
+                                                        true))));
+    }
+
+    @Test
+    @com.onlineStore.admin.security.WithMockStoreUser(username = "admin", roles = {"Admin"})
+    public void testNewProductForm_Default() throws Exception {
+        mockMvc.perform(get("/products/new-products-form"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("products/new-products-form"))
+                .andExpect(
+                        org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                                .attribute("product",
+                                        org.hamcrest.Matchers.hasProperty(
+                                                "hasShipping",
+                                                org.hamcrest.Matchers
+                                                        .is(true))))
+                .andExpect(
+                        org.springframework.test.web.servlet.result.MockMvcResultMatchers.model()
+                                .attribute("product",
+                                        org.hamcrest.Matchers.hasProperty(
+                                                "hasScheduling",
+                                                org.hamcrest.Matchers.is(
+                                                        false))));
     }
 }

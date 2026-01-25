@@ -1,7 +1,6 @@
 package com.onlineStore.admin;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -12,7 +11,7 @@ import java.util.stream.Stream;
  * Runners to move files from `tenants/{id}/assets/{type}` to
  * `tenants/{id}/{type}`.
  */
-@Component
+// @Component
 public class AssetRelocationRunner implements CommandLineRunner {
 
     private final Path rootDir = Paths.get("tenants");

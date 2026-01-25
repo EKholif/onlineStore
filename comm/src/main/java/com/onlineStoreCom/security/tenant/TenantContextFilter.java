@@ -1,6 +1,8 @@
 package com.onlineStoreCom.security.tenant;
 
 import com.onlineStoreCom.tenant.TenantContext;
+import io.micrometer.tracing.BaggageInScope;
+import io.micrometer.tracing.Tracer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.FilterChain;
@@ -34,6 +36,9 @@ public class TenantContextFilter extends OncePerRequestFilter {
 
     @Autowired(required = false)
     private TenantJwtHelper jwtHelper; // Interface for JWT extraction to decouple dependencies
+
+    @Autowired(required = false)
+    private Tracer tracer; // Micrometer Tracer for distributed tracing
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -133,6 +138,23 @@ public class TenantContextFilter extends OncePerRequestFilter {
                 TenantContext.setTenantId(tenantId);
                 enableHibernateFilter(tenantId);
 
+                // [AG-OBS-TRACE-001] Propagate tenant-id into trace baggage for observability
+                // WHY: This ensures every trace span carries the tenant ID, enabling:
+                // - Tenant-scoped trace filtering in observability platforms
+                // - Audit trail correlation (which tenant triggered which operation)
+                // - Performance analysis per tenant
+                if (tracer != null && tracer.currentSpan() != null) {
+                    try {
+                        tracer.currentSpan().tag("tenant.id", String.valueOf(tenantId));
+                        // Set baggage (propagates across service boundaries via HTTP headers)
+                        BaggageInScope baggageInScope = tracer.createBaggageInScope("tenant-id",
+                                String.valueOf(tenantId));
+                        LOGGER.debug("Set tenant-id={} in trace baggage", tenantId);
+                    } catch (Exception e) {
+                        LOGGER.warn("Failed to set tenant-id in trace baggage: {}", e.getMessage());
+                    }
+                }
+
                 // [AG-TEN-SEC-007] Persist to Session so subsequent requests (CSS/Images) know
                 // the tenant
                 if (request.getSession().getAttribute("TENANT_ID") == null ||
@@ -145,6 +167,16 @@ public class TenantContextFilter extends OncePerRequestFilter {
                 // [AG-TEN-SEC-005] FAIL SAFE: Always enable the filter.
                 TenantContext.setTenantId(0L);
                 enableHibernateFilter(0L);
+
+                // Set tenant-id=0 in trace baggage for platform requests
+                if (tracer != null && tracer.currentSpan() != null) {
+                    try {
+                        tracer.currentSpan().tag("tenant.id", "0");
+                        BaggageInScope baggageInScope = tracer.createBaggageInScope("tenant-id", "0");
+                    } catch (Exception e) {
+                        LOGGER.warn("Failed to set tenant-id=0 in trace baggage: {}", e.getMessage());
+                    }
+                }
             }
 
             if (tenantId != null) {
@@ -186,8 +218,10 @@ public class TenantContextFilter extends OncePerRequestFilter {
     private boolean isExcluded(String path) {
         // [AG-TEN-SEC-004] Do NOT exclude static resources.
         // We need TenantContext for CSS (Theme) and Images (Logo).
-        // Only exclude explicit login endpoint avoiding circular checks?
-        return path.equals("/login");
+
+        // [AG-TEN-SEC-009] FIX: Do NOT exclude /login.
+        // We MUST resolve tenant BEFORE login to prevent cross-tenant data leaks.
+        return false;
     }
 
     private String extractTenantKey(String serverName) {
@@ -210,5 +244,27 @@ public class TenantContextFilter extends OncePerRequestFilter {
         }
 
         return null;
+    }
+
+    private boolean canAccessTenant(Long targetTenantId, HttpServletRequest request) {
+        // [AG-HIERARCHY-001] Hierarchy Awareness Logic
+        // 1. Get Authentication (if exists)
+        // 2. If User is SUPER ADMIN (Tenant 0) -> Allow All
+        // 3. If User is PARENT ADMIN (Tenant X) -> Allow X and Children of X
+
+        // Simplified Logic for Filter Speed:
+        // We trust the "X-Tenant-ID" or Subdomain primarily.
+        // The SECURITY LAYER (WebSecurityConfig) + Controller Logic will validate if
+        // the USER
+        // actually has rights to this tenant.
+        // The Filter's job is just to SET the context so the DB can be queried.
+
+        // HOWEVER, for "Switch View", we need to ensure we don't accidentally set a
+        // context
+        // to a random tenant if we are not allowed.
+
+        // Current implementation: We allow SETTING the context.
+        // Access Control is delegated to Method Security / Controller logic.
+        return true;
     }
 }

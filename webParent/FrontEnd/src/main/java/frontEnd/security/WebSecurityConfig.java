@@ -89,8 +89,10 @@ public class WebSecurityConfig {
                                 .sessionManagement(session -> session
                                                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
-                // [AG-TEN-ARCH-002] Add TenantContextFilter
-                http.addFilterAfter(tenantContextFilter,
+                // [AG-TEN-ARCH-002] Add TenantContextFilter BEFORE Authentication
+                // This ensures the Hibernate Filter is enabled before UserDetailsService
+                // queries the DB.
+                http.addFilterBefore(tenantContextFilter,
                                 org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
 
                 // [AG-TEN-ARCH-003] Add SettingFilter AFTER TenantContextFilter to ensure

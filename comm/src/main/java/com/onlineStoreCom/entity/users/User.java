@@ -41,6 +41,9 @@ public class User extends IdBasedEntity {
     @JsonIgnore
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserTenant> tenants = new HashSet<>();
+
     public User() {
     }
 
@@ -185,6 +188,19 @@ public class User extends IdBasedEntity {
         }
 
         return false;
+    }
+
+    public Set<UserTenant> getTenants() {
+        return tenants;
+    }
+
+    public void setTenants(Set<UserTenant> tenants) {
+        this.tenants = tenants;
+    }
+
+    public void addTenant(com.onlineStoreCom.entity.tenant.Tenant tenant) {
+        UserTenant userTenant = new UserTenant(this, tenant);
+        this.tenants.add(userTenant);
     }
 
 }

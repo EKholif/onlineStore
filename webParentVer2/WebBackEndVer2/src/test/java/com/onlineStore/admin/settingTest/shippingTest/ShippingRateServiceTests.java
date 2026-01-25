@@ -1,13 +1,8 @@
 package com.onlineStore.admin.settingTest.shippingTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.util.Optional;
-
-import com.onlineStore.admin.product.repository.ProductRepository;
 import com.onlineStore.admin.shipping.repository.ShippingRateRepository;
 import com.onlineStore.admin.shipping.service.ShippingRateService;
+import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStoreCom.entity.exception.ShippingRateNotFoundException;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.shipping.ShippingRate;
@@ -19,6 +14,11 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(SpringExtension.class)

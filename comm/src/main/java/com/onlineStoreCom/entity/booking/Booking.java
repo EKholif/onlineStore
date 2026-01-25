@@ -2,6 +2,7 @@ package com.onlineStoreCom.entity.booking;
 
 import com.onlineStoreCom.entity.setting.subsetting.IdBasedEntity;
 import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Entity
@@ -20,10 +21,12 @@ public class Booking extends IdBasedEntity {
 
     @Column(name = "start_time")
     @Temporal(TemporalType.TIMESTAMP)
+    @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date startTime;
 
     @Column(name = "end_time")
     @Temporal(TemporalType.TIMESTAMP)
+    @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date endTime;
 
     @Column(length = 20)

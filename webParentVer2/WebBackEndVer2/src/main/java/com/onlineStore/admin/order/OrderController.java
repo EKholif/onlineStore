@@ -48,6 +48,14 @@ public class OrderController {
         return defaultRedirectURL;
     }
 
+    /**
+     * Tenant: My Orders Alias
+     */
+    @GetMapping("/my-orders")
+    public String viewMyOrders() {
+        return defaultRedirectURL;
+    }
+
     @GetMapping("/orders/page/{pageNum}")
     public String listByPage(
             @PagingAndSortingParam(listName = "listOrders", moduleURL = "/orders/page/") PagingAndSortingHelper helper,

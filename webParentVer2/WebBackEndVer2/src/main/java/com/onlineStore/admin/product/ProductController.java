@@ -40,6 +40,24 @@ public class ProductController {
         return "redirect:/products/page/1?sortField=name&sortDir=asc";
     }
 
+    /**
+     * Root: Manage Platform Products
+     */
+    @GetMapping("/products/manage")
+    public String managePlatformProducts() {
+        // Enforce Root? Service layer handles it, but semantic URL checks help.
+        // For now, redirect to standard list.
+        return "redirect:/products/page/1?sortField=name&sortDir=asc";
+    }
+
+    /**
+     * Tenant: Manage My Products
+     */
+    @GetMapping("/my-products")
+    public String manageMyProducts() {
+        return "redirect:/products/page/1?sortField=name&sortDir=asc";
+    }
+
     static void setProductDetails(String[] detailIDs, String[] detailNames,
             String[] detailValues, Product product, Long tenantId) {
         if (detailNames == null || detailNames.length == 0)
@@ -81,13 +99,27 @@ public class ProductController {
     }
 
     @GetMapping("/products/new-products-form")
-    public ModelAndView newProductForm() {
+    public ModelAndView newProductForm(
+            @RequestParam(name = "type", required = false) com.onlineStoreCom.entity.product.ProductType type) {
         ModelAndView model = new ModelAndView("products/new-products-form");
 
         List<Brand> listBrands = brandService.listAll();
         List<Category> listCategory = categoryService.listUsedForForm();
 
         Product product = new Product();
+        if (type != null) {
+            product.setProductType(type);
+            // AG-UNIFIED-003: Pre-configure flags based on type
+            if (type == com.onlineStoreCom.entity.product.ProductType.SERVICE ||
+                    type == com.onlineStoreCom.entity.product.ProductType.BOOKING) {
+                product.setHasShipping(false);
+                product.setHasScheduling(true);
+            } else {
+                product.setHasShipping(true);
+                product.setHasScheduling(false);
+            }
+        }
+
         Integer numberOfExistingExtraImage = product.getImages().size();
 
         model.addObject("numberOfExistingExtraImage", numberOfExistingExtraImage);
@@ -96,7 +128,7 @@ public class ProductController {
         model.addObject("label", "Main Image");
 
         model.addObject("label-category", " Category :");
-        // model.addObject("listCategory", listCategory);
+        model.addObject("listCategory", listCategory);
 
         model.addObject("product", product);
         model.addObject("listItems", listCategory);
@@ -118,6 +150,29 @@ public class ProductController {
 
         Long tenantId = TenantContext.getTenantId();
         product.setTenantId(tenantId);
+
+        // --- AG-UNIFIED-002: Smart Defaults (Backend Enforcement) ---
+        if (!product.getHasDescription()) {
+            // Satisfy NOT NULL constraint with whitespace
+            product.setShortDescription(" ");
+            product.setFullDescription(" ");
+        }
+
+        if (!product.getHasShipping()) {
+            // Reset physical attributes
+            product.setWeight(0);
+            product.setLength(0);
+            product.setWidth(0);
+            product.setHeight(0);
+            // Services/Digital items are always "available" (or managed by Booking Slots)
+            product.setInStock(true);
+        }
+
+        if (!product.getHasScheduling()) {
+            // Ensure no stale booking data
+            product.setBookingSlots(0);
+        }
+        // -----------------------------------------------------------
 
         setMainImageName(mainImageMultipartFile, product);
         setExtraImageNames(extraImageMultipart, product);
@@ -262,6 +317,14 @@ public class ProductController {
 
         Product updateProduct = productService.findById(id);
         Long tenantId = TenantContext.getTenantId();
+
+        // AG-MARKETPLACE-003: Protect Global Products from Tenant modification
+        if (updateProduct.getTenantId() != null && updateProduct.getTenantId() == 0L
+                && (tenantId != null && tenantId != 0L)) {
+            redirectAttributes.addFlashAttribute("message",
+                    "Error: You cannot edit Global Products directly. Please duplicate it to your catalog.");
+            return new ModelAndView("redirect:/products/products");
+        }
 
         setProductDetails(detailIDs, detailNames, detailValues, updateProduct, tenantId);
 

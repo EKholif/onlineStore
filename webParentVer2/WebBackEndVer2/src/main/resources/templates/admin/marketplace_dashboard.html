@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{support/fragments/standard/layout_fragments :: page_head('Marketplace Dashboard', 'none')}"></head>
+<body>
+<div class="container-fluid">
+    <div th:replace="~{support/fragments/standard/layout_fragments :: hidden_side_menu_small_srcreen}"></div>
+
+    <div th:replace="~{support/fragments/navbar/navbar :: navbar}"></div>
+
+    <div class="m-3">
+        <h2>Platform Marketplace Dashboard</h2>
+        <div class="alert alert-info">
+            <strong>Welcome, Platform Administrator!</strong> Use this dashboard to manage the global
+            marketplace/platform settings.
+        </div>
+    </div>
+
+    <!-- Platform Overview Cards -->
+    <div class="row m-3">
+        <div class="col-sm-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Platform Products</div>
+                <div class="card-body">
+                    <h5 class="card-title">Manage Catalog</h5>
+                    <p class="card-text">Add or edit global products available for resale.</p>
+                    <a class="btn btn-light" th:href="@{/products/manage}">Manage Products</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Tenants & Resellers</div>
+                <div class="card-body">
+                    <h5 class="card-title">Manage Tenants</h5>
+                    <h2 id="tenantCount" th:text="${activeTenants != null ? activeTenants : 0}">...</h2>
+                    <p class="card-text">Active stores powered by platform.</p>
+                    <a class="btn btn-light" th:href="@{/tenants/manage}">Manage Tenants</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Platform Revenue</div>
+                <div class="card-body">
+                    <h5 class="card-title">Billing & Income</h5>
+                    <div class="d-flex align-items-center">
+                        <h2 id="platformRevenue"
+                            th:text="${platformRevenue != null ? '$' + #numbers.formatDecimal(platformRevenue, 0, 'COMMA', 2, 'POINT') : '$0.00'}">
+                            ...</h2>
+                    </div>
+                    <p class="card-text">Total commissions collected (Today).</p>
+                    <a class="btn btn-light" th:href="@{/billing/dashboard}">View Finances</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Platform Analytics Details -->
+    <div class="row m-3" th:if="${platformKeywords != null}">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Global Search Trends (Top 5)</div>
+                <ul class="list-group list-group-flush list-group-horizontal-sm">
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-fill"
+                        th:each="kw : ${platformKeywords}">
+                        <span class="fw-bold" th:text="${kw.keyword}">Keyword</span>
+                        <span class="badge bg-secondary rounded-pill" th:text="${kw.count}">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Quick Actions -->
+    <div class="card m-3">
+        <div class="card-header">
+            Quick Actions
+        </div>
+        <div class="card-body">
+            <a class="btn btn-outline-primary m-1" th:href="@{/subscriptions/plans}">Manage Plans</a>
+            <a class="btn btn-outline-secondary m-1" th:href="@{/settings}">Platform Settings</a>
+        </div>
+    </div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script th:src="@{/js/common.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script th:src="@{/js/marketplace_dashboard.js}"></script>
+</body>
+</html>

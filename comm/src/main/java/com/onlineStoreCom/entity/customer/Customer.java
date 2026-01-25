@@ -18,7 +18,9 @@ import java.util.List;
  * It's used for user authentication, profile management, and order processing.
  */
 @Entity
-@Table(name = "customers")
+@Table(name = "customers", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"email", "tenant_id"})
+})
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @org.hibernate.annotations.Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Customer extends AbstractAddressWithCountry {

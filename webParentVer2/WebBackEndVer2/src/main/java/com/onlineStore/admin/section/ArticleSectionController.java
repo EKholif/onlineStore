@@ -1,6 +1,6 @@
 package com.onlineStore.admin.section;
 
-import com.onlineStore.admin.article.ArticleService;
+import com.onlineStore.services.service.ArticleService;
 import com.onlineStoreCom.entity.articals.Article;
 import com.onlineStoreCom.entity.section.ArticleSection;
 import com.onlineStoreCom.entity.section.Section;

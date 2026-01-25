@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{support/fragments/standard/layout_fragments :: page_head('Tenant Management', 'none')}"></head>
+<body>
+<div class="container-fluid">
+    <div th:replace="~{support/fragments/standard/layout_fragments :: hidden_side_menu_small_srcreen}"></div>
+
+    <div th:replace="~{support/fragments/navbar/navbar :: navbar}"></div>
+
+    <div class="m-3">
+        <h2>Tenant Management</h2>
+        <a class="btn btn-primary" th:href="@{/tenants/new}">Add New Tenant</a>
+    </div>
+
+    <div class="m-3">
+        <table class="table table-bordered table-striped table-hover table-responsive-xl">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tenant : ${tenants}">
+                <td>[[${tenant.id}]]</td>
+                <td>[[${tenant.code}]]</td>
+                <td>[[${tenant.name}]]</td>
+                <td>
+                    <span class="badge badge-success" th:if="${tenant.status.name() == 'ACTIVE'}">Active</span>
+                    <span class="badge badge-secondary" th:unless="${tenant.status.name() == 'ACTIVE'}">[[${tenant.status}]]</span>
+                </td>
+                <td>[[${tenant.createdAt}]]</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" th:href="@{'/tenants/edit/' + ${tenant.id}}">Edit</a>
+                    <a class="btn btn-sm btn-outline-warning" th:href="@{'/billing/impersonate/' + ${tenant.id}}">Impersonate</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(tenants)}">
+                <td class="text-center" colspan="6">No tenants found.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script th:src="@{/js/common.js}"></script>
+</body>
+</html>

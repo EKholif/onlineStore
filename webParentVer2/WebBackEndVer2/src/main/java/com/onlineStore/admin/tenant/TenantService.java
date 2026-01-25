@@ -111,8 +111,22 @@ public class TenantService {
         Setting setting = new Setting(key, value, category);
         settingRepository.save(setting);
     }
-    public List<Tenant> listAllTenants() {
+
+    public List<Tenant> listAll() {
         return (List<Tenant>) tenantRepository.findAll();
+    }
+
+    public Tenant create(Tenant tenant) {
+        // Simple create wrapper for internal usage or controller usage
+        return tenantRepository.save(tenant);
+    }
+
+    public List<Tenant> listAllTenants() {
+        return listAll();
+    }
+
+    public List<Tenant> listChildren(Long parentId) {
+        return tenantRepository.findByParentId(parentId);
     }
 
     public Tenant getTenant(Long id) {

@@ -1,13 +1,11 @@
 package com.onlineStore.admin.shipping.service;
 
 
-
-
 import com.onlineStore.admin.category.CategoryNotFoundException;
-import com.onlineStore.admin.product.repository.ProductRepository;
 import com.onlineStore.admin.setting.country.CountryRepository;
 import com.onlineStore.admin.shipping.ShippingRateAlreadyExistsException;
 import com.onlineStore.admin.shipping.repository.ShippingRateRepository;
+import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStoreCom.entity.exception.ShippingRateNotFoundException;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.setting.state.Country.Country;

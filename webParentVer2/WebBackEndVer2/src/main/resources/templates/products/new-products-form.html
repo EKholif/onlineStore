@@ -1,186 +1,330 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
-
+<head th:replace="~{support/fragments/standard/layout/header :: content}"></head>
 
 <body>
 
-
-<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+<div th:replace="~{support/fragments/navbar/navbar :: content}"></div>
 
 <h2 class="text-center">[[${pageTitle}]]</h2>
-<div th:replace="~{support/fragments/standard/layout_fragments :: search_form}"></div>
-
 
 <div class="container-fluid">
 
-
-    <form enctype="multipart/form-data" method="post" onsubmit="return check_unique_product(this);" th:action="@{${saveChanges}}"
+    <form enctype="multipart/form-data" method="post" onsubmit="return checkUniqueProduct(this);" th:action="@{${saveChanges}}"
           th:object="${product}">
+
         <input type="hidden" id="id" name="id" th:value="${id}"/>
-        <!--        <input type="hidden" th:field="*{product.id}" /> <input-->
-        <div id="categoryId" th:if="${product.category != null}" th:value="${product.category.id}" type="hidden"/>
+        <input id="categoryId" th:if="${product.category != null}" th:value="${product.category.id}" type="hidden"/>
 
-        <div>
-            <!-- Nav tabs -->
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#overview"
-                            type="button" role="tab">Overview
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#description"
-                            type="button" role="tab">Description
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#images"
-                            type="button" role="tab">Images
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details"
-                            type="button" role="tab">Details
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-bs-target="#shipping" data-bs-toggle="tab" role="tab"
-                            type="button">
-                        Shipping
-                    </button>
-                </li>
+        <!-- AG-UNIFIED-003: Product Builder Layout -->
+        <div class="row">
+            <!-- Left Column: Content Builder -->
+            <div class="col-md-9">
 
+                <!-- 1. Identity & Configuration -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0 text-primary"><i class="fas fa-cube me-2"></i>1. Product Identity</h5>
+                    </div>
+                    <div class="card-body">
+                        <div th:replace="~{products/fragment-edit/overview-fragment :: content}"></div>
 
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-
-                <div class="tab-pane active" id="overview" role="tabpanel">
-                    <div th:replace="~{products/fragment-edit/overview-fragment::content}"></div>
-                </div>
-
-                <div class="tab-pane" id="description" role="tabpanel">
-                    <div th:replace="~{products/fragment-edit/discription-fragment::content}"></div>
-                </div>
-
-                <div class="tab-pane" id="images" role="tabpanel">
-                    <div th:replace="~{products/fragment-edit/products-image-fragment::content}"></div>
-                </div>
-
-                <div aria-required="false" class="tab-pane" id="details" role="tabpanel">
-
-                    <div th:replace="~{products/fragment-edit/details-fragment::content}"></div>
-
-                    <div class="p-5">
-                        <button class="btn btn-primary " type="button" onclick="addExtraDetails()">Add More</button>
+                        <!-- Feature Flags (Control Panel) -->
+                        <div class="bg-light p-3 rounded mt-3 border">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="text-muted mb-0"><i class="fas fa-sliders-h me-2"></i>Active Modules</h6>
+                                <small class="text-muted">Turn on features as needed</small>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="form-check form-switch">
+                                        <input checked class="form-check-input" id="togglePricing" type="checkbox">
+                                        <!-- New Pricing Toggle -->
+                                        <label class="form-check-label fw-bold" for="togglePricing">Pricing</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" id="toggleDescription" th:field="*{hasDescription}"
+                                               type="checkbox">
+                                        <label class="form-check-label fw-bold"
+                                               for="toggleDescription">Description</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" id="toggleShipping" th:field="*{hasShipping}"
+                                               type="checkbox">
+                                        <label class="form-check-label fw-bold" for="toggleShipping">Shipping</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" id="toggleScheduling" th:field="*{hasScheduling}"
+                                               type="checkbox">
+                                        <label class="form-check-label fw-bold" for="toggleScheduling">Booking</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tab-pane" id="shipping" role="tabpanel">
-                    <div th:replace="~{products/fragment-edit/shipping-fragment::content}"></div>
+                <!-- 2. Commerce (Pricing) - NEW SEPARATE CARD -->
+                <div class="card mb-4 shadow-sm" id="section-pricing">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="fas fa-tag me-2"></i>2. Pricing & Cost</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">Cost (Purchase Price)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input class="form-control" placeholder="0.00" step="0.01" th:field="*{cost}"
+                                           type="number">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Selling Price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input class="form-control" placeholder="0.00" step="0.01" th:field="*{price}"
+                                           type="number">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Discount %</label>
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="0" step="0.01" th:field="*{discountPercent}"
+                                           type="number">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Product Story -->
+                <div class="card mb-4 shadow-sm" id="section-description">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="fas fa-align-left me-2"></i>3. Product Story</h5>
+                    </div>
+                    <div class="card-body">
+                        <div th:replace="~{products/fragment-edit/discription-fragment :: content}"></div>
+                    </div>
+                </div>
+
+                <!-- 4. Visual Gallery -->
+                <div class="card mb-4 shadow-sm" id="section-images">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="fas fa-images me-2"></i>4. Visual Gallery</h5>
+                    </div>
+                    <div class="card-body">
+                        <div th:replace="~{products/fragment-edit/products-image-fragment :: content}"></div>
+                    </div>
+                </div>
+
+                <!-- 5. Logistics (Shipping) -->
+                <div class="card mb-4 shadow-sm" id="section-shipping">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="fas fa-truck me-2"></i>5. Logistics & Stock</h5>
+                    </div>
+                    <div class="card-body">
+                        <div th:replace="~{products/fragment-edit/shipping-fragment :: content}"></div>
+                    </div>
+                </div>
+
+
+                <!-- 6. Scheduling & Availability (New) -->
+                <div class="card mb-4 shadow-sm" id="section-scheduling" style="display:none;">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>6. Scheduling & Availability</h5>
+                    </div>
+                    <div class="card-body">
+                        <div th:replace="~{products/fragment-edit/scheduling-fragment :: content}"></div>
+                    </div>
+                </div>
+
+                <!-- 7. Technical Details -->
+                <div class="card mb-4 shadow-sm" id="section-details">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i>5. Technical Requirements</h5>
+                    </div>
+                    <div class="card-body">
+                        <div th:replace="~{products/fragment-edit/details-fragment :: content}"></div>
+                        <div class="mt-3">
+                            <button class="btn btn-outline-primary btn-sm" onclick="addExtraDetails()" type="button">
+                                <i class="fas fa-plus me-1"></i>Add Specification
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
-            <div th:replace="~{support/fragments/standard/form_fragments :: save_reset_buttons}"></div>
+            <!-- Right Column: Actions -->
+            <div class="col-md-3">
+                <div class="card shadow-sm sticky-top" style="top: 100px; z-index: 100;">
+                    <div class="card-body d-grid gap-3">
+                        <button class="btn btn-primary btn-lg" type="submit">
+                            <i class="fas fa-save me-2"></i>Save Product
+                        </button>
+                        <button class="btn btn-secondary" onclick="history.back()" type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </form>
-
-
 </div>
 
-
 <div th:replace="~{support/fragments/standard/layout_fragments :: modal}"></div>
-
 <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
 
-<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+<script th:src="@{/js/common-form.js}"></script>
 
-<script type="text/javascript">
-
-    extraImagesCount = 0;
-
-    dropdownBrands = $("#brand");
-    dropdownCategories = $("#categories");
-    product_short_description = $("#product_short_description")
-    product_full_description = $("#product_full_description")
-    brandModuleURL = "[[@{/list-categories}]]";
-    Max_File_Size = 1042000;
-
-    defultImage = "[[@{/images/pngwing.com.png}]]";
+<script>
+    const dropdownBrands = $("#brand");
+    const dropdownCategories = $("#categories");
+    const brandModuleURL = "[[@{/list-categories}]]";
+    const defaultImage = "[[@{/images/pngwing.com.png}]]";
+    const MAX_FILE_SIZE = 1042000;
 
     $(document).ready(function () {
-        product_short_description = $("#productSortDescription").richText();
-        product_full_description = $("#productFullDescription").richText();
-        getCategories();
+        $("#productSortDescription").richText();
+        $("#productFullDescription").richText();
 
+        loadCategories();
 
-        dropdownBrands.change(function () {
-            getCategories();
+        // Initial State Check
+        updateBuilderState();
 
-        })
-    })
+        dropdownBrands.on("change", loadCategories);
+        $("#productType").on("change", handleTypeChange);
 
+        // Listen to Feature Toggles
+        $(".form-check-input").on("change", updateBuilderState);
+    });
 
-    function getCategories() {
+    function handleTypeChange() {
+        const type = $("#productType").val();
+
+        // Smart Presets based on Type
+        console.log("Switching to Type:", type);
+
+        if (type === "PHYSICAL") {
+            $("#togglePricing").prop("checked", true);
+            $("#toggleShipping").prop("checked", true);
+            $("#toggleScheduling").prop("checked", false);
+            $("#toggleDescription").prop("checked", true);
+        } else if (type === "SERVICE") {
+            $("#togglePricing").prop("checked", true);
+            $("#toggleShipping").prop("checked", false);
+            $("#toggleScheduling").prop("checked", true); // Enable Booking/Duration fields
+            $("#toggleDescription").prop("checked", true);
+        } else if (type === "BOOKING") {
+            $("#togglePricing").prop("checked", true);
+            $("#toggleShipping").prop("checked", false);
+            $("#toggleScheduling").prop("checked", true);
+            $("#toggleDescription").prop("checked", true);
+        } else if (type === "DIGITAL") {
+            $("#togglePricing").prop("checked", true);
+            $("#toggleShipping").prop("checked", false);
+            $("#toggleScheduling").prop("checked", false);
+            $("#toggleDescription").prop("checked", true);
+        } else if (type === "SUBSCRIPTION") {
+            $("#togglePricing").prop("checked", true); // Subscriptions have price
+            $("#toggleShipping").prop("checked", false); // Usually digital/service
+            $("#toggleScheduling").prop("checked", false);
+            $("#toggleDescription").prop("checked", true);
+        }
+
+        updateBuilderState();
+    }
+
+    function updateBuilderState() {
+        // 1. Read Toggles
+        const hasDescription = $("#toggleDescription").is(":checked");
+        const hasShipping = $("#toggleShipping").is(":checked");
+        const hasScheduling = $("#toggleScheduling").is(":checked");
+        const hasDetails = $("#toggleDetails").is(":checked");
+
+        // 2. Apply Visibility (Slide Animation)
+        toggleSection("#section-description", hasDescription);
+        toggleSection("#section-shipping", hasShipping);
+        toggleSection("#section-details", hasDetails);
+
+        // 3. Handle Product Type Specifics (Scheduling fields inside Overview)
+        // Ag-Consolidation: Now using dedicated card #section-scheduling
+        toggleSection("#section-scheduling", hasScheduling);
+
+        // Note: Service Duration / Booking Slots are now inside #section-scheduling
+        // So we don't need to toggle them individually unless we want finer control.
+
+        // Subscription special case (if needed)
+        const type = $("#productType").val();
+        if (type === "SUBSCRIPTION") {
+            $("#divSubscriptionInterval").slideDown();
+        } else {
+            $("#divSubscriptionInterval").slideUp();
+        }
+
+        // Physical Stock special case
+        if (hasShipping) {
+            $("#divStock").slideDown();
+        } else {
+            $("#divStock").slideUp();
+        }
+    }
+
+    function toggleSection(selector, shouldShow) {
+        if (shouldShow) {
+            $(selector).slideDown();
+        } else {
+            $(selector).slideUp();
+        }
+    }
+
+    function loadCategories() {
+        const brandId = dropdownBrands.val();
         dropdownCategories.empty();
+        if (!brandId) return;
 
-        var brandId = dropdownBrands.val();
-        url = brandModuleURL + "/" + brandId + "/category";
-
-        $.get(url)
-            .done(function (responseJson) {
-                $.each(responseJson, function (index, category) {
-                    $("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
+        $.get(`${brandModuleURL}/${brandId}/category`)
+            .done(res => {
+                $.each(res, (_, c) => {
+                    $("<option>").val(c.id).text(c.name).appendTo(dropdownCategories);
                 });
             })
-            .fail(function () {
-                $("<option>").val("").text("Failed to load categories").appendTo(dropdownCategories);
+            .fail(() => {
+                $("<option>").text("Failed to load categories").appendTo(dropdownCategories);
             });
-
     }
 
+    function checkUniqueProduct(form) {
+        // Legacy unique check logic preserved
+        const url = "[[@{/check_unique_product}]]";
+        const params = {
+            id: $("#id").val(),
+            name: $("#name").val(),
+            alias: $("#alias").val(),
+            _csrf: $("input[name='_csrf']").val()
+        };
 
-    function check_unique_product(form) {
-        url = "[[@{/check_unique_product}]]";
-        var id = $("#id").val();
-        var name = $("#name").val();
-        var alias = $("#alias").val();
-        var csrf = $("input[name='_csrf']").val();
-        var params = {id: id, name: name, alias: alias, _csrf: csrf};
-
-
-        return sendAjaxRequest(url, params, form);
-    }
-
-    function sendAjaxRequest(url, params, form) {
         $.post(url, params, function (response) {
-            showmodalDialog("response");
-            if (response === "Ok") {
-
-                form.submit();
-            } else if (response === "DuplicateName") {
-                showmodalDialog("Warning", "There is another Category having the name: " + params.name);
-            } else if (response === "DuplicateAlies") {
-                showmodalDialog("Warning", "There is another Category having the Alies: " + params.alias);
-            } else {
-                showmodalDialog("Warning", "Unknown response from server: " + response);
-            }
-        }).fail(function () {
-            console.error("Failed to connect to the server");
-            console.log(params.id, params.name, params.alies, url);
-            showmodalDialog("Failed to connect to the server", url);
-        });
+            if (response === "Ok") form.submit();
+            else if (response === "DuplicateName") showmodalDialog("Warning", "Product name already exists");
+            else if (response === "DuplicateAlias") showmodalDialog("Warning", "Product alias already exists");
+            else showmodalDialog("Warning", response);
+        }).fail(() => showmodalDialog("Error", "Failed to connect to server"));
 
         return false;
     }
-
-
 </script>
-</body>
 
+</body>
 </html>

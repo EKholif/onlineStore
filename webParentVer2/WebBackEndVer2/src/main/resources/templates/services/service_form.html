@@ -12,7 +12,8 @@
     </div>
 
     <form class="style-form-background" enctype="multipart/form-data" method="post"
-          style="max-width: 800px; margin: 0 auto" th:action="@{/services/save}" th:object="${service}">
+          style="max-width: 800px; margin: 0 auto" th:action="@{/services/save(${_csrf.parameterName}=${_csrf.token})}"
+          th:object="${service}">
 
         <input th:field="*{id}" type="hidden"/>
 

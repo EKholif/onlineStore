@@ -27,7 +27,7 @@ public class MenuRepositoryTests {
     @Autowired
     private jakarta.persistence.EntityManager entityManager;
     @Autowired
-    private com.onlineStore.admin.article.ArticleRepository articleRepo;
+    private com.onlineStore.services.service.repository.ArticleRepository articleRepo;
 
     @BeforeEach
     public void setup() {

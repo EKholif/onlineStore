@@ -2,9 +2,12 @@ package com.onlineStore.admin.booking;
 
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
+import com.onlineStore.services.service.BookingService;
 import com.onlineStoreCom.entity.booking.Booking;
 import com.onlineStoreCom.entity.booking.BookingType;
+import com.onlineStoreCom.entity.exception.BookingNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,20 +34,28 @@ public class BookingController {
             @RequestParam(name = "type", required = false) BookingType type,
             Model model) {
 
-        service.listByPage(pageNum, helper, type);
+        Page<Booking> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
+                helper.getKeyword(), type);
+        helper.updateModelAttributes(pageNum, page);
+
         model.addAttribute("selectedType", type);
         return "booking/bookings";
     }
 
     @GetMapping("/bookings/new")
     public String newBooking(Model model) {
-        model.addAttribute("booking", new Booking());
-        model.addAttribute("pageTitle", "Create New Booking");
-        return "booking/booking_form";
+        // AG-CONSOLIDATION-001: Redirect to Unified Product Builder
+        return "redirect:/products/new-products-form?type=BOOKING";
     }
 
     @PostMapping("/bookings/save")
     public String saveBooking(Booking booking, RedirectAttributes ra) {
+        // AG-TENANT-FIX: Explicitly assign Tenant ID
+        Long tenantId = com.onlineStoreCom.tenant.TenantContext.getTenantId();
+        if (booking.getTenantId() == null) {
+            booking.setTenantId(tenantId);
+        }
+
         service.save(booking);
         ra.addFlashAttribute("message", "The booking has been saved successfully.");
         return "redirect:/bookings";

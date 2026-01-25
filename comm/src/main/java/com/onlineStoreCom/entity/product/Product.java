@@ -13,7 +13,8 @@ import java.util.*;
 @Entity
 @Table(name = "products")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-@Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
+// AG-MARKETPLACE-001: Allow reading Global Products (0) + Tenant Products
+@Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId OR tenant_id = 0)")
 public class Product extends IdBasedEntity {
 
     // --- Inherited from CatalogItem ---
@@ -47,7 +48,42 @@ public class Product extends IdBasedEntity {
 
     @Column(name = "discount_percent")
     protected float discountPercent;
-    // ----------------------------------
+
+    // --- AG-PRICING-002: Flexible Product Types ---
+    @Enumerated(EnumType.STRING)
+    @Column(name = "product_type", nullable = false, length = 50)
+    private ProductType productType = ProductType.PHYSICAL;
+
+    @Column(name = "service_duration")
+    private String serviceDuration; // e.g. "30 Min", "1 Hour"
+
+    @Column(name = "subscription_interval")
+    private String subscriptionInterval; // e.g. "MONTHLY", "YEARLY"
+
+    @Column(name = "booking_slots")
+    private Integer bookingSlots; // Available slots per session
+
+    // --- AG-UNIFIED-001: Feature Flags (Product Builder) ---
+    @Column(name = "has_description")
+    private Boolean hasDescription = true; // Wrapper Boolean to handle DB Nulls
+
+    @Column(name = "has_extra_details")
+    private Boolean hasExtraDetails = true;
+
+    @Column(name = "track_stock")
+    private Boolean trackStock = true;
+
+    @Column(name = "has_shipping")
+    private Boolean hasShipping = true;
+
+    @Column(name = "has_scheduling")
+    private Boolean hasScheduling = false;
+
+    @Column(name = "has_location")
+    private Boolean hasLocation = false;
+    // -------------------------------------------------------
+
+    // ----------------------------------------------
 
     @Column(name = "in_stock")
     private boolean inStock;
@@ -186,6 +222,132 @@ public class Product extends IdBasedEntity {
         this.discountPercent = discountPercent;
     }
 
+    // --- Accessors for New Fields ---
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public String getServiceDuration() {
+        return serviceDuration;
+    }
+
+    public void setServiceDuration(String serviceDuration) {
+        this.serviceDuration = serviceDuration;
+    }
+
+    public String getSubscriptionInterval() {
+        return subscriptionInterval;
+    }
+
+    public void setSubscriptionInterval(String subscriptionInterval) {
+        this.subscriptionInterval = subscriptionInterval;
+    }
+
+    public Integer getBookingSlots() {
+        return bookingSlots;
+    }
+
+    public void setBookingSlots(Integer bookingSlots) {
+        this.bookingSlots = bookingSlots;
+    }
+
+    public boolean isInStock() {
+        return inStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        this.inStock = inStock;
+    }
+
+    public float getLength() {
+        return length;
+    }
+
+    public void setLength(float length) {
+        this.length = length;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    // --- Accessors for Feature Flags ---
+
+    public Boolean getHasDescription() {
+        return hasDescription != null ? hasDescription : true; // Default True
+    }
+
+    public void setHasDescription(Boolean hasDescription) {
+        this.hasDescription = hasDescription;
+    }
+
+    public Boolean getHasExtraDetails() {
+        return hasExtraDetails != null ? hasExtraDetails : true; // Default True
+    }
+
+    public void setHasExtraDetails(Boolean hasExtraDetails) {
+        this.hasExtraDetails = hasExtraDetails;
+    }
+
+    public Boolean getTrackStock() {
+        return trackStock != null ? trackStock : true; // Default True
+    }
+
+    public void setTrackStock(Boolean trackStock) {
+        this.trackStock = trackStock;
+    }
+
+    public Boolean getHasShipping() {
+        return hasShipping != null ? hasShipping : true; // Default True
+    }
+
+    public void setHasShipping(Boolean hasShipping) {
+        this.hasShipping = hasShipping;
+    }
+
+    public Boolean getHasScheduling() {
+        return hasScheduling != null ? hasScheduling : false; // Default False
+    }
+
+    public void setHasScheduling(Boolean hasScheduling) {
+        this.hasScheduling = hasScheduling;
+    }
+
+    public Boolean getHasLocation() {
+        return hasLocation != null ? hasLocation : false; // Default False
+    }
+
+    public void setHasLocation(Boolean hasLocation) {
+        this.hasLocation = hasLocation;
+    }
+
+    // --- End Accessors ---
+
     @Transient
     public float getDiscountPrice() {
         if (discountPercent > 0) {
@@ -279,45 +441,7 @@ public class Product extends IdBasedEntity {
         this.brand = brand;
     }
 
-    public boolean isInStock() {
-        return inStock;
-    }
 
-    public void setInStock(boolean inStock) {
-        this.inStock = inStock;
-    }
-
-    public float getLength() {
-        return length;
-    }
-
-    public void setLength(float length) {
-        this.length = length;
-    }
-
-    public float getWidth() {
-        return width;
-    }
-
-    public void setWidth(float width) {
-        this.width = width;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
 
     @Transient
     public String getImagePath() {

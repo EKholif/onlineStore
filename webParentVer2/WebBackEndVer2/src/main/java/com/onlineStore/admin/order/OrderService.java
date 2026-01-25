@@ -110,6 +110,9 @@ public class OrderService {
         }
     }
 
+    @Autowired
+    private org.springframework.context.ApplicationEventPublisher eventPublisher;
+
 	public void updateStatus(Integer orderId, String status) {
 		Order orderInDB = orderRepo.findById(orderId).get();
 		OrderStatus statusToUpdate = OrderStatus.valueOf(status);
@@ -127,7 +130,16 @@ public class OrderService {
 
             orderInDB.setStatus(statusToUpdate);
 
-            orderRepo.save(orderInDB);
+            Order savedOrder = orderRepo.save(orderInDB);
+
+            // AG-BILLING-EVENT-001: Trigger Revenue Calculation on Completion
+            if (statusToUpdate == OrderStatus.DELIVERED) {
+                // Publish event efficiently
+                eventPublisher.publishEvent(new com.onlineStore.admin.order.event.OrderCompletedEvent(
+                        this,
+                        savedOrder,
+                        com.onlineStoreCom.tenant.TenantContext.getTenantId()));
+            }
 		}
 
     }

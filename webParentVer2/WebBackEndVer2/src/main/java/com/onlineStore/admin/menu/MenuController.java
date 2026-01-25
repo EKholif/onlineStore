@@ -1,6 +1,6 @@
 package com.onlineStore.admin.menu;
 
-import com.onlineStore.admin.article.ArticleService;
+import com.onlineStore.services.service.ArticleService;
 import com.onlineStoreCom.entity.articals.Article;
 import com.onlineStoreCom.entity.menu.Menu;
 import org.springframework.beans.factory.annotation.Autowired;

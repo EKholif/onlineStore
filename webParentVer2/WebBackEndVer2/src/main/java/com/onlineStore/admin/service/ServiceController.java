@@ -44,15 +44,17 @@ public class ServiceController {
 
     @GetMapping("/services/new")
     public String newService(Model model) {
-        model.addAttribute("service", new Service());
-        model.addAttribute("pageTitle", "Create New Service");
-        model.addAttribute("locationTypes", ServiceLocationType.values());
-        return "services/service_form";
+        // AG-CONSOLIDATION-001: Redirect to Unified Product Builder
+        return "redirect:/products/new-products-form?type=SERVICE";
     }
 
     @PostMapping("/services/save")
     public String saveService(Service service, RedirectAttributes ra,
                               @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+
+        // AG-TENANT-FIX: Explicitly assign Tenant ID
+        Long tenantId = com.onlineStoreCom.tenant.TenantContext.getTenantId();
+        service.setTenantId(tenantId);
 
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());

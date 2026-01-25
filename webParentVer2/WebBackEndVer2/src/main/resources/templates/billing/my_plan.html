@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{support/fragments/standard/layout/header::content}"></head>
+<body>
+
+<div th:replace="~{support/fragments/navbar/navbar::content}"></div>
+
+<div class="container-fluid">
+    <h2 class="text-center mt-3">[[${pageTitle}]]</h2>
+
+    <div class="row m-3 justify-content-center">
+        <div class="col-md-6">
+            <div class="alert alert-info text-center">
+                <h4><i class="fas fa-info-circle"></i> Subscription Details</h4>
+                <p class="mt-3">[[${message}]]</p>
+                <hr>
+                <p>Contact Platform Support to upgrade your plan.</p>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{support/fragments/standard/layout_fragments :: footer}"></div>
+</div>
+
+<script th:src="@{/js/common.js}"></script>
+</body>
+</html>

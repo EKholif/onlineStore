@@ -47,6 +47,11 @@ public class TenantListener {
                 return;
             }
 
+            // AG-FIX-PLATFORM-ADMIN-003: [STRICT ENFORCEMENT]
+            // Root Tenant (0) is NO LONGER exempt. Access requires explicit context
+            // switching.
+            // if (currentContextId == 0L) { return; }
+
             // 3. STRICT CHECK: Context MUST match Entity
             if (!entityTenantId.equals(currentContextId)) {
                 System.err.println("⛔ SECURITY ALERT [AUDIT MODE]: Data Guard WOULD Block Access! " +
