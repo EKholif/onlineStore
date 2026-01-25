@@ -34,7 +34,7 @@ public class UserDetailsService implements org.springframework.security.core.use
         User user = userRepository.findByEmail(email);
 
         if (user != null) {
-            return new StoreUserDetails(user);
+            return new StoreBackendUserDetails(user);
         }
 
         throw new UsernameNotFoundException("Could not find user with email: " + email);

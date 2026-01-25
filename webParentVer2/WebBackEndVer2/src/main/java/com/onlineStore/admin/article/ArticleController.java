@@ -2,7 +2,7 @@ package com.onlineStore.admin.article;
 
 import com.onlineStore.admin.article.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.article.paging.PagingAndSortingParam;
-import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.services.service.ArticleService;
 import com.onlineStoreCom.entity.articals.Article;
 import com.onlineStoreCom.entity.exception.ArticleNotFoundException;
@@ -48,7 +48,7 @@ public class ArticleController {
 
     @PostMapping("/articles/save")
     public String saveArticle(Article article, RedirectAttributes ra,
-                              @AuthenticationPrincipal StoreUserDetails userDetails) {
+                              @AuthenticationPrincipal StoreBackendUserDetails userDetails) {
 
         service.save(article, userDetails.getUser());
 

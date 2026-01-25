@@ -83,7 +83,7 @@ public class CategoryController {
             category.setImage(fileName);
             Category savedCategory = service.saveCategory(category);
 
-            String uploadDir = savedCategory.getImageDir();
+            String uploadDir = FileUploadUtil.getStoragePath(savedCategory.getId(), "categories");
 
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -136,10 +136,10 @@ public class CategoryController {
 
         } else if (!multipartFile.isEmpty()) {
 
-            FileUploadUtil.cleanDir(updateCategory.getImageDir());
+            FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(updateCategory.getId(), "categories"));
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
             // AG-ASSET-PATH-012: Update path for category updates
-            String uploadDir = updateCategory.getImageDir();
+            String uploadDir = FileUploadUtil.getStoragePath(updateCategory.getId(), "categories");
             category.setImage(fileName);
             BeanUtils.copyProperties(category, updateCategory, "id", "tenantId");
 
@@ -157,7 +157,7 @@ public class CategoryController {
 
         try {
             if (service.existsById(id)) {
-                FileUploadUtil.cleanDir(service.findById(id).getImageDir());
+                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.findById(id).getId(), "categories"));
 
                 service.deleteCategory(id);
                 redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + " has been Deleted");
@@ -199,7 +199,7 @@ public class CategoryController {
 
         if (selectedCategory != null && !selectedCategory.isEmpty()) {
             for (Integer id : selectedCategory) {
-                FileUploadUtil.cleanDir(service.findById(id).getImageDir());
+                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.findById(id).getId(), "categories"));
                 service.deleteCategory(id);
             }
         }

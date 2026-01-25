@@ -22,7 +22,7 @@ public class FrontendSettingsController {
 
     @GetMapping("/settings/frontend")
     public String viewFrontendSettings(Model model,
-                                       @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+                                       @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         FrontendSettingBag settings = service.getFrontendSettings();
         List<Setting> listSettings = settings.list();
 
@@ -58,7 +58,7 @@ public class FrontendSettingsController {
 
     @PostMapping("/settings/frontend/save")
     public String saveFrontendSettings(HttpServletRequest request, RedirectAttributes ra,
-                                       @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+                                       @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         FrontendSettingBag settings = service.getFrontendSettings();
         List<Setting> listSettings = settings.list();
         Long tenantId = userDetails.getTenantId();

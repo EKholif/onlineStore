@@ -1,17 +1,6 @@
 package com.onlineStore.admin.setting;
 
-import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.setting.service.SettingService;
 import com.onlineStore.admin.setting.settingBag.ThemeSettingBag;
 import com.onlineStoreCom.entity.setting.Setting;
@@ -24,7 +13,14 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.onlineStore.admin.security.StoreUserDetails;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class ThemeControllerTest {
 
@@ -42,7 +38,7 @@ public class ThemeControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
-    @org.junit.jupiter.api.Disabled("Fails due to MockMvc/Principal serialization issue causing NPE in StoreUserDetails. Verified manually.")
+    @org.junit.jupiter.api.Disabled("Fails due to MockMvc/Principal serialization issue causing NPE in StoreBackendUserDetails. Verified manually.")
     @Test
     public void testSaveThemeSettings() throws Exception {
         // Arrange
@@ -53,7 +49,8 @@ public class ThemeControllerTest {
         when(service.getThemeSettings()).thenReturn(bag);
 
         // Use subclass to avoid Mockito/Serialization issues with the User field
-        StoreUserDetails stubUserDetails = new StoreUserDetails(new com.onlineStoreCom.entity.users.User()) {
+        StoreBackendUserDetails stubUserDetails = new StoreBackendUserDetails(
+                new com.onlineStoreCom.entity.users.User()) {
             private static final long serialVersionUID = 1L;
 
             @Override

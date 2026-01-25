@@ -20,7 +20,7 @@ public class ThemeController extends BaseThemeController {
 
     @GetMapping("/settings/themes")
     public String viewThemeSettings(Model model,
-                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         ThemeSettingBag themeSettings = service.getThemeSettings();
         List<Setting> listSettings = themeSettings.list();
 
@@ -36,7 +36,7 @@ public class ThemeController extends BaseThemeController {
 
     @PostMapping("/settings/themes/save")
     public String saveThemeSettings(HttpServletRequest request, RedirectAttributes ra,
-                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         ThemeSettingBag themeSettings = service.getThemeSettings();
         List<Setting> listSettings = themeSettings.list();
         Long tenantId = userDetails.getTenantId();
@@ -52,7 +52,7 @@ public class ThemeController extends BaseThemeController {
     @GetMapping(value = "/css/theme.css", produces = "text/css")
     @org.springframework.web.bind.annotation.ResponseBody
     public String getThemeCss(
-            @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+            @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         ThemeSettingBag themeSettings = service.getThemeSettings();
         List<Setting> listSettings = themeSettings.list();
 

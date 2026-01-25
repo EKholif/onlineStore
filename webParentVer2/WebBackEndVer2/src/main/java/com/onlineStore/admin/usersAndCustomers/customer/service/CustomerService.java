@@ -85,22 +85,55 @@ public class CustomerService {
     }
 
     public Customer saveCustomer(Customer customer) {
+        boolean isUpdating = (customer.getId() != null);
 
-        if (customer.getPassword() == null || customer.getPassword().isEmpty()) {
-            Customer saved = customerRepo.getReferenceById(customer.getId());
-            customer.setPassword(saved.getPassword());
-            customer.setEnabled(true);
+        if (isUpdating) {
+            Customer existingCustomer = customerRepo.findById(customer.getId()).orElse(null);
 
+            if (existingCustomer != null) {
+                // Preserve Password if empty
+                if (customer.getPassword() == null || customer.getPassword().trim().isEmpty()) {
+                    customer.setPassword(existingCustomer.getPassword());
+                } else {
+                    encodePassword(customer);
+                }
+
+                // Preserve critical system fields
+                customer.setCreatedTime(existingCustomer.getCreatedTime());
+                customer.setVerificationCode(existingCustomer.getVerificationCode());
+                customer.setAuthenticationType(existingCustomer.getAuthenticationType());
+                customer.setRestPasswordToken(existingCustomer.getRestPasswordToken());
+
+                // Keep enabled status from DB if not explicitly handled (or force true if
+                // desired logic)
+                // Assuming admin form might change enabled status, but if null preserve?
+                // For safety in this context (Admin saving), usually we override with Form
+                // data.
+                // But createdTime MUST be preserved.
+
+                // If the form didn't pass "enabled", it might be false.
+                // However, the original code FORCED "true".
+                // Let's preserve DB value if the input object seems "incomplete" regarding
+                // status
+                // But usually Admin form has "Enabled" checkbox.
+                // If admin unchecks it, it comes as false.
+                // So we should respect the incoming `customer.isEnabled()` if it's bound.
+                // BUT original code set it to true ALWAYS. Let's assume user wants to control
+                // it via form
+                // or preserve if not in form.
+                // For now: Preserve logic of setting createdTime/verificationCode.
+
+            } else {
+                // Should not happen if ID exists
+                encodePassword(customer); // Fallback
+            }
         } else {
-
+            // New Customer
             encodePassword(customer);
+            customer.setCreatedTime(new Date());
+            customer.setVerificationCode(RandomStringUtils.randomAlphabetic(64));
             customer.setEnabled(true);
         }
-
-        customer.setCreatedTime(new Date());
-
-        String randomCode = RandomStringUtils.randomAlphabetic(64);
-        customer.setVerificationCode(randomCode);
 
         return customerRepo.saveAndFlush(customer);
     }

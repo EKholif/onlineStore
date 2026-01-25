@@ -377,8 +377,10 @@ public class ProductController {
         try {
             if (productService.existsById(id)) {
 
-                FileUploadUtil.deleteDir(productService.findById(id).getExtraImageDir());
-                FileUploadUtil.deleteDir(productService.findById(id).getImageDir());
+                // AG-ASSET-PATH-005: Strict tenant asset hierarchy for extras
+                String storagePath = FileUploadUtil.getStoragePath(productService.findById(id).getId(), "products");
+                FileUploadUtil.deleteDir(storagePath + "/extras/");
+                FileUploadUtil.deleteDir(storagePath);
                 productService.deleteProduct(id);
                 return "the Product ID: " + id + " has been Deleted";
             } else {

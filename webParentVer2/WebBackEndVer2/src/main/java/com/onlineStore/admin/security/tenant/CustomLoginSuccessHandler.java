@@ -1,13 +1,13 @@
 package com.onlineStore.admin.security.tenant;
 
-import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -26,8 +26,8 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
         Object principal = authentication.getPrincipal();
 
-        if (principal instanceof StoreUserDetails) {
-            StoreUserDetails user = (StoreUserDetails) principal;
+        if (principal instanceof StoreBackendUserDetails) {
+            StoreBackendUserDetails user = (StoreBackendUserDetails) principal;
             Long tenantId = user.getTenantId();
 
             System.out.println("🔐 [CustomLoginSuccessHandler] Login Success!");

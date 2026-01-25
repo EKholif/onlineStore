@@ -162,7 +162,7 @@ public class BrandController {
 
         try {
             if (service.existsById(id)) {
-                FileUploadUtil.cleanDir(service.findById(id).getImageDir());
+                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.findById(id).getId(), "brands"));
 
                 service.delete(id);
                 redirectAttributes.addFlashAttribute("message", "the Brand ID: " + id + " has been Deleted");
@@ -191,7 +191,7 @@ public class BrandController {
 
         if (selectedForDelete != null && !selectedForDelete.isEmpty()) {
             for (Integer id : selectedForDelete) {
-                FileUploadUtil.cleanDir(service.findById(id).getImageDir());
+                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.findById(id).getId(), "brands"));
                 service.delete(id);
             }
         }

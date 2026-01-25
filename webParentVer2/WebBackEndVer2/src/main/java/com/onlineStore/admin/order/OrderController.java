@@ -1,7 +1,7 @@
 package com.onlineStore.admin.order;
 
 import com.onlineStore.admin.product.service.ProductService;
-import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.setting.service.SettingService;
 import com.onlineStore.admin.setting.settingBag.CurrencySettingBag;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
@@ -63,7 +63,7 @@ public class OrderController {
             @RequestParam(name = "sortField", defaultValue = "orderTime") String sortField,
             @RequestParam(name = "sortDir", defaultValue = "desc") String sortDir,
             @RequestParam(name = "keyWord", required = false) String keyWord,
-            HttpServletRequest request, @AuthenticationPrincipal StoreUserDetails loggedUser) {
+            HttpServletRequest request, @AuthenticationPrincipal StoreBackendUserDetails loggedUser) {
 
         orderService.listByPage(pageNum, helper);
         loadCurrencySetting(request);
@@ -85,7 +85,7 @@ public class OrderController {
 
     @GetMapping("/orders/detail/{id}")
     public String viewOrderDetails(@PathVariable("id") Integer id, Model model, RedirectAttributes ra,
-                                   HttpServletRequest request, @AuthenticationPrincipal StoreUserDetails loggedUser) {
+                                   HttpServletRequest request, @AuthenticationPrincipal StoreBackendUserDetails loggedUser) {
         try {
             Order order = orderService.get(id);
             loadCurrencySetting(request);

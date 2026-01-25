@@ -20,7 +20,7 @@ public class FrontendThemeController extends BaseThemeController {
 
     @GetMapping("/settings/frontend-theme")
     public String viewThemeSettings(Model model,
-                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         ThemeSettingBag themeSettings = service.getFrontendThemeSettings();
         List<Setting> listSettings = themeSettings.list();
 
@@ -35,7 +35,7 @@ public class FrontendThemeController extends BaseThemeController {
 
     @PostMapping("/settings/frontend-theme/save")
     public String saveThemeSettings(HttpServletRequest request, RedirectAttributes ra,
-                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+                                    @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         ThemeSettingBag themeSettings = service.getFrontendThemeSettings();
         List<Setting> listSettings = themeSettings.list();
         Long tenantId = userDetails.getTenantId();
@@ -51,7 +51,7 @@ public class FrontendThemeController extends BaseThemeController {
     @GetMapping(value = "/css/frontend_theme.css", produces = "text/css")
     @org.springframework.web.bind.annotation.ResponseBody
     public String getThemeCss(
-            @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreUserDetails userDetails) {
+            @org.springframework.security.core.annotation.AuthenticationPrincipal com.onlineStore.admin.security.StoreBackendUserDetails userDetails) {
         ThemeSettingBag themeSettings = service.getFrontendThemeSettings();
         List<Setting> listSettings = themeSettings.list();
 

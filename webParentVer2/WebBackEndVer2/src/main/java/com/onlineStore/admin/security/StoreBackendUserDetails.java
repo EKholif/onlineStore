@@ -20,17 +20,17 @@ import java.util.Set;
  * authorities
  * required for authentication and authorization.
  */
-public class StoreUserDetails implements UserDetails {
+public class StoreBackendUserDetails implements UserDetails {
 
     private static final long serialVersionUID = 1L;
     private final User user;
 
     /**
-     * Constructs a new StoreUserDetails with the specified user.
-     * 
+     * Constructs a new StoreBackendUserDetails with the specified user.
+     *
      * @param user the User entity to wrap
      */
-    public StoreUserDetails(User user) {
+    public StoreBackendUserDetails(User user) {
         this.user = user;
     }
 
@@ -38,7 +38,7 @@ public class StoreUserDetails implements UserDetails {
      * Returns the authorities granted to the user.
      *
      * @return a collection of GrantedAuthority objects representing the user's
-     *         roles
+     * roles
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,7 +54,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Returns the password used to authenticate the user.
-     * 
+     *
      * @return the password
      */
     @Override
@@ -64,7 +64,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Returns the username used to authenticate the user.
-     * 
+     *
      * @return the username (email in this case)
      */
     @Override
@@ -74,7 +74,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Indicates whether the user's account has expired.
-     * 
+     *
      * @return true if the user's account is valid (non-expired), false otherwise
      */
     @Override
@@ -84,7 +84,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Indicates whether the user is locked or unlocked.
-     * 
+     *
      * @return true if the user is not locked, false otherwise
      */
     @Override
@@ -96,7 +96,7 @@ public class StoreUserDetails implements UserDetails {
      * Indicates whether the user's credentials (password) has expired.
      *
      * @return true if the user's credentials are valid (non-expired), false
-     *         otherwise
+     * otherwise
      */
     @Override
     public boolean isCredentialsNonExpired() {
@@ -105,7 +105,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Indicates whether the user is enabled or disabled.
-     * 
+     *
      * @return true if the user is enabled, false otherwise
      */
     @Override
@@ -115,7 +115,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Gets the image path of the user.
-     * 
+     *
      * @return the user's image path
      */
     public String getImagePath() {
@@ -124,7 +124,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Gets the ID of the user.
-     * 
+     *
      * @return the user's ID
      */
     public Integer getId() {
@@ -137,7 +137,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Gets the full name of the user.
-     * 
+     *
      * @return the user's full name
      */
     public String getFullName() {
@@ -146,7 +146,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Gets the roles of the user.
-     * 
+     *
      * @return the user's roles
      */
     public Set role() {
@@ -155,7 +155,7 @@ public class StoreUserDetails implements UserDetails {
 
     /**
      * Checks if the user has a specific role.
-     * 
+     *
      * @param roleName the name of the role to check
      * @return true if the user has the specified role, false otherwise
      */

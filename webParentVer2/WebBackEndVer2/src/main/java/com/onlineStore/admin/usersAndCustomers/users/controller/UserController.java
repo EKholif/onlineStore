@@ -1,7 +1,7 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStore.admin.utility.FileUploadUtil;
@@ -181,11 +181,11 @@ public class UserController {
 
                 } else if (!multipartFile.isEmpty()) {
 
-                    FileUploadUtil.cleanDir(updateUser.getImageDir());
+                    FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(updateUser.getId(), "users"));
                     String fileName = StringUtils
                             .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                     // AG-ASSET-PATH-002: Use centralized path from Entity
-                    String uploadDir = updateUser.getImageDir();
+                    String uploadDir = FileUploadUtil.getStoragePath(updateUser.getId(), "users");
                     user.setPhotos(fileName);
                     BeanUtils.copyProperties(user, updateUser, "id", "password", "tenants", "roles");
                     service.saveUpdatededUser(updateUser);
@@ -203,10 +203,10 @@ public class UserController {
 
                 } else if (!multipartFile.isEmpty()) {
 
-                    FileUploadUtil.cleanDir(updateUser.getImageDir());
+                    FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(updateUser.getId(), "users"));
                     String fileName = StringUtils
                             .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                    String uploadDir = updateUser.getImageDir();
+                    String uploadDir = FileUploadUtil.getStoragePath(updateUser.getId(), "users");
                     user.setPhotos(fileName);
                     BeanUtils.copyProperties(user, updateUser, "id", "tenants", "roles");
                     service.saveUser(updateUser);
@@ -215,7 +215,7 @@ public class UserController {
             }
             // AG-SEC-FIX: Refresh Security Context to reflected changes immediately in UI
             // (e.g. Navbar)
-            StoreUserDetails userDetails = new StoreUserDetails(service.getUser(user.getId()));
+            StoreBackendUserDetails userDetails = new StoreBackendUserDetails(service.getUser(user.getId()));
             org.springframework.security.core.Authentication authentication = new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
                     userDetails, userDetails.getPassword(), userDetails.getAuthorities());
             org.springframework.security.core.context.SecurityContextHolder.getContext()
@@ -233,7 +233,7 @@ public class UserController {
     public ModelAndView deleteUser(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         try {
             if (service.existsById(id)) {
-                FileUploadUtil.cleanDir(service.getUser(id).getImageDir());
+                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.getUser(id).getId(), "users"));
                 service.deleteUser(id);
                 redirectAttributes.addFlashAttribute("message",
                         "User with ID " + id + " has been successfully deleted.");
@@ -273,7 +273,7 @@ public class UserController {
 
         if (selectedUsers != null && !selectedUsers.isEmpty()) {
             for (Integer id : selectedUsers) {
-                FileUploadUtil.cleanDir(service.getUser(id).getImageDir());
+                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.getUser(id).getId(), "users"));
                 service.deleteUser(id);
             }
         }

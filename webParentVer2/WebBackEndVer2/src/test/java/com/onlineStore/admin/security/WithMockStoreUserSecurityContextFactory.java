@@ -24,7 +24,7 @@ public class WithMockStoreUserSecurityContextFactory implements WithSecurityCont
             user.addRole(new Role(roleName, "Mock Role"));
         }
 
-        StoreUserDetails principal = new StoreUserDetails(user);
+        StoreBackendUserDetails principal = new StoreBackendUserDetails(user);
         Authentication auth = new UsernamePasswordAuthenticationToken(principal, principal.getPassword(),
                 principal.getAuthorities());
         context.setAuthentication(auth);

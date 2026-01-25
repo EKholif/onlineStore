@@ -161,7 +161,7 @@ public class CustomerController {
         Customer savedCustomer = service.saveCustomer(customer);
 
         // AG-ASSET-PATH-002: Use centralized path
-        String uploadDir = savedCustomer.getImageDir();
+        String uploadDir = FileUploadUtil.getStoragePath(savedCustomer.getId(), "customers");
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     }
@@ -176,7 +176,7 @@ public class CustomerController {
 
         if (selectedModels != null && !selectedModels.isEmpty()) {
             for (Integer id : selectedModels) {
-                FileUploadUtil.cleanDir(service.findById(id).getImageDir());
+                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.findById(id).getId(), "customers"));
                 service.delete(id);
             }
         }

@@ -1,7 +1,7 @@
 package com.onlineStore.admin.debug;
 
+import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.utility.FileUploadUtil;
-import com.onlineStore.admin.security.StoreUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,7 +25,7 @@ public class StorageMigrationController {
     public Map<String, Object> runMigration(
             @RequestParam("tenantId") Long tenantId,
             @RequestParam(value = "type", defaultValue = "customers") String defaultType,
-            @AuthenticationPrincipal StoreUserDetails loggedUser) {
+            @AuthenticationPrincipal StoreBackendUserDetails loggedUser) {
 
         LOGGER.info("Manually triggered storage migration for Tenant {} by {}", tenantId, loggedUser.getUsername());
 

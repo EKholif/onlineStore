@@ -1,7 +1,7 @@
 package com.onlineStore.admin.usersAndCustomers.users.controller;
 
 import com.onlineStore.admin.UsernameNotFoundException;
-import com.onlineStore.admin.security.StoreUserDetails;
+import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
 import com.onlineStoreCom.entity.users.Role;
 import com.onlineStoreCom.entity.users.User;
@@ -25,7 +25,7 @@ public class AccountController {
     private UserService userService;
 
     @GetMapping("/account")
-    public ModelAndView ViewAccountDetails(@AuthenticationPrincipal StoreUserDetails loggedUser,
+    public ModelAndView ViewAccountDetails(@AuthenticationPrincipal StoreBackendUserDetails loggedUser,
                                            RedirectAttributes redirectAttributes) {
 
         Integer id = loggedUser.getId();
