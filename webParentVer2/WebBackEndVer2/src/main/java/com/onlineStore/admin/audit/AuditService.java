@@ -29,6 +29,10 @@ public class AuditService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuditService.class);
 
+    public AuditService() {
+        LOGGER.info("AG-AUDIT: Initializing AuditService");
+    }
+
     @Autowired
     private TenantAuditLogRepository auditLogRepo;
 

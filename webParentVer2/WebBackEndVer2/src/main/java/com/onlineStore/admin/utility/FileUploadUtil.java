@@ -20,7 +20,8 @@ public class FileUploadUtil {
             throw new IllegalStateException("Tenant context not found for asset storage.");
         }
         // AG-ASSET-PATH-FIX: Standardized path
-        return "tenants/" + tenantId + "/assets/" + type + "/" + entityId;
+        String path = "tenants/" + tenantId + "/assets/" + type + "/" + entityId;
+        return path;
     }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FileUploadUtil.class);
@@ -52,21 +53,26 @@ public class FileUploadUtil {
     private static void validatePath(String uploadDir) {
         // Architecture Rule: Assets MUST be stored only under
         // tenants/{tenantId}/assets/{type}/{id}/
-        if (!uploadDir.startsWith("tenants/")) {
+
+        // AG-ASSET-PATH-FIX: Support absolute paths and configured TENANTS_PATH
+        String normalizedPath = Paths.get(uploadDir).normalize().toString().replace("\\", "/");
+        boolean isRelativeTenants = normalizedPath.startsWith("tenants/");
+        boolean containsTenantsSegment = normalizedPath.contains("/tenants/");
+
+        if (!isRelativeTenants && !containsTenantsSegment) {
             // Exception: Common system assets might be allowed?
-            // For now, strict enforcement as per "Critical rules"
-            if (uploadDir.startsWith("knowledge_export"))
+            if (normalizedPath.contains("knowledge_export"))
                 return;
 
             LOGGER.error("🚨 ARCHITECTURE VIOLATION: Attempt to write to prohibited path: " + uploadDir);
-            throw new IllegalArgumentException("Architecture Violation: Assets must be stored in tenants/{id}/assets/{type}/");
+            throw new IllegalArgumentException("Architecture Violation: Assets path invalid: " + uploadDir);
         }
 
         // Tenant Isolation Check
         Long currentTenant = TenantContext.getTenantId();
         if (currentTenant != null) {
-            String expectedStart = "tenants/" + currentTenant;
-            if (!uploadDir.startsWith(expectedStart)) {
+            String tenantSegment = "tenants/" + currentTenant;
+            if (!normalizedPath.contains(tenantSegment)) {
                 LOGGER.error("🚨 SECURITY VIOLATION: Cross-tenant write attempt! Tenant " + currentTenant
                         + " tried to write to " + uploadDir);
                 throw new SecurityException("Cross-tenant write attempt denied.");

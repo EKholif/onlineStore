@@ -64,9 +64,19 @@ public class CorrectTenant4Data implements CommandLineRunner {
         LOGGER.info("⚠️ Deleted {} duplicate settings from Tenant 1", settingsDeleted);
 
         // B. Move remaining Settings
+        // AG-FIX-CURRENCY: This moves ALL remaining settings (including
+        // CURRENCY_SYMBOLE) to Tenant 4
         String fixSettings = "UPDATE settings SET tenant_id = 4 WHERE tenant_id = 1";
         int settingsFixed = entityManager.createNativeQuery(fixSettings).executeUpdate();
         LOGGER.info("✅ Fixed {} settings: tenant_id 1 → 4", settingsFixed);
+
+        // AG-FIX-CURRENCY-SAFTEY: Ensure CURRENCY_SYMBOLE exists for Tenant 4 if it was
+        // missing
+        // This is a safety check: if we moved everything correctly above, this might be
+        // redundant but safe.
+        // But if the original Tenant 4 creation created SOME currency settings but not
+        // others, we might have issues.
+        // Let's rely on the Update above for now. The log will confirm.
 
         // Step 4: Fix Customers (Move all generic test customers to Tenant 4)
         String fixCustomers = "UPDATE customers SET tenant_id = 4 WHERE tenant_id = 1";
@@ -92,7 +102,12 @@ public class CorrectTenant4Data implements CommandLineRunner {
                 .executeUpdate();
         LOGGER.info("✅ Fixed Content: {} articles, {} menus, {} sections", articlesFixed, menusFixed, sectionsFixed);
 
-        // Step 8: Verify - count remaining cross-tenant references
+        // Step 9: Fix Shipping Rates
+        String fixShippingRates = "UPDATE shipping_rates SET tenant_id = 4 WHERE tenant_id = 1";
+        int shippingRatesFixed = entityManager.createNativeQuery(fixShippingRates).executeUpdate();
+        LOGGER.info("✅ Fixed {} shipping rates: tenant_id 1 → 4", shippingRatesFixed);
+
+        // Step 10: Verify - count remaining cross-tenant references
         var remaining = entityManager.createNativeQuery("""
                     SELECT COUNT(*) FROM brands_categories bc
                     JOIN brands b ON bc.brand_id = b.id

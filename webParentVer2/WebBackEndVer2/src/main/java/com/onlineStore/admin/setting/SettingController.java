@@ -29,15 +29,19 @@ public class SettingController {
     @Autowired
     private SettingService service;
 
-    @Autowired
+    @org.springframework.beans.factory.annotation.Value("${app.storage.tenants-path}")
+    private String tenantsPath;
 
+    @Autowired
     private CurrencyRepository currencyRepo;
 
     @GetMapping("/settings")
     public String listAll(Model modal) {
 
         List<Setting> settingList = service.settingList();
+        List<Setting> currencySettings = service.getCurrencySettings().list(); // Fetch dedicated currency settings
         List<Currency> currencyList = currencyRepo.findAllByOrderByNameAsc();
+
         for (Setting setting : settingList) {
             modal.addAttribute(setting.getKey(), setting.getValue());
         }
@@ -72,12 +76,18 @@ public class SettingController {
             Long tenantId = TenantContext.getTenantId();
 
             // AG-ASSET-PATH-006: Use new hierarchical structure for site logo (profile)
+            // Value in DB is RELATIVE for serving via URL (matches ResourceHandler)
             String value = "/tenants/" + tenantId + "/assets/profile/" + fileName;
 
             settingBag.setTenantId(tenantId);
 
             settingBag.updateSiteLogo(value);
-            String uploadDir = "tenants/" + tenantId + "/assets/profile";
+
+            // AG-ASSET-PATH-FIX: Use configured filesystem path for upload
+            java.nio.file.Path uploadPath = java.nio.file.Paths.get(tenantsPath, String.valueOf(tenantId),
+                    "assets/profile");
+            String uploadDir = uploadPath.toString();
+
             FileUploadUtil.cleanDir(uploadDir);
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
