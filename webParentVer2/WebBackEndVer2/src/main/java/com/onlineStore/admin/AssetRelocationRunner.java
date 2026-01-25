@@ -1,29 +1,45 @@
 package com.onlineStore.admin;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
 /**
- * Runners to move files from `tenants/{id}/assets/{type}` to
- * `tenants/{id}/{type}`.
+ * AG-ASSET-PATH-MIGRATION-001: Asset Path Standardization
+ * WHY: All Entity methods (User, Product, Customer, etc.) use /assets/ in
+ * paths:
+ * e.g., /tenants/{id}/assets/users/{userId}/photo.jpg
+ * WHAT: Move files FROM tenants/{id}/{type} TO tenants/{id}/assets/{type}
+ * BUSINESS IMPACT: Ensures asset paths match entity getImagePath() methods
  */
-// @Component
+@Component
+@Order(5) // Run early in startup
 public class AssetRelocationRunner implements CommandLineRunner {
 
-    private final Path rootDir = Paths.get("tenants");
+    @org.springframework.beans.factory.annotation.Value("${app.storage.tenants-path}")
+    private String tenantsBasePath;
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("==================================================");
-        System.out.println("STARTING ASSET RELOCATION (removing 'assets' folder)");
+        System.out.println("📂 STARTING ASSET PATH STANDARDIZATION (adding 'assets' folder)");
         System.out.println("==================================================");
 
+        Path rootDir = Paths.get(tenantsBasePath);
+
+        System.out.println("Configured tenants path: " + tenantsBasePath);
+        System.out.println("Resolved tenants path: " + rootDir.toAbsolutePath());
+
         if (!Files.exists(rootDir)) {
-            System.out.println("Root 'tenants' directory not found.");
+            System.out.println("⚠️  Tenants directory not found at: " + rootDir.toAbsolutePath());
+            System.out.println("⚠️  Skipping asset migration.");
             return;
         }
 
@@ -32,75 +48,43 @@ public class AssetRelocationRunner implements CommandLineRunner {
         }
 
         System.out.println("==================================================");
-        System.out.println("ASSET RELOCATION COMPLETED");
+        System.out.println("✅ ASSET PATH STANDARDIZATION COMPLETED");
         System.out.println("==================================================");
     }
 
     private void processTenant(Path tenantDir) {
-        Path assetsDir = tenantDir.resolve("assets");
-        if (!Files.exists(assetsDir)) {
-            return;
-        }
-
         System.out.println("Processing tenant: " + tenantDir.getFileName());
 
-        try (Stream<Path> typeDirs = Files.list(assetsDir)) {
-            typeDirs.forEach(typeDir -> {
-                Path relativeTypeDir = assetsDir.relativize(typeDir); // e.g. "products"
-                Path targetTypeDir = tenantDir.resolve(relativeTypeDir); // tenants/4/products
+        // Asset types based on Entity structure
+        String[] assetTypes = {"users", "products", "customers", "categories", "brands", "services"};
 
-                System.out.println("  Migrating type: " + relativeTypeDir);
-                moveRecursively(typeDir, targetTypeDir);
-            });
-        } catch (IOException e) {
-            System.err.println("  Error listing assets dir: " + e.getMessage());
-        }
+        for (String type : assetTypes) {
+            Path wrongLocation = tenantDir.resolve(type); // tenants/4/products (WITHOUT assets)
+            Path correctLocation = tenantDir.resolve("assets").resolve(type); // tenants/4/assets/products
 
-        // Try to delete assets dir if empty
-        try {
-            if (Files.list(assetsDir).findAny().isEmpty()) {
-                Files.delete(assetsDir);
-                System.out.println("  Deleted empty assets dir: " + assetsDir);
-            } else {
-                System.out.println("  Assets dir not empty, skipping delete: " + assetsDir);
+            // Move from wrong location TO correct location (inside assets folder)
+            if (Files.exists(wrongLocation) && !Files.exists(correctLocation)) {
+                System.out.println("  ➡️  Moving " + type + " INTO assets folder...");
+                moveIntoAssetsFolder(wrongLocation, correctLocation);
+            } else if (Files.exists(correctLocation)) {
+                System.out.println("  ✅ " + type + " already in correct location (assets folder)");
+            } else if (!Files.exists(wrongLocation) && !Files.exists(correctLocation)) {
+                System.out.println("  ⏭️  " + type + " not found (skipping)");
             }
-        } catch (IOException e) {
-            // ignore
         }
     }
 
-    private void moveRecursively(Path source, Path target) {
+    private void moveIntoAssetsFolder(Path source, Path target) {
         try {
-            Files.walkFileTree(source, new SimpleFileVisitor<Path>() {
-                @Override
-                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-                    Path rel = source.relativize(dir);
-                    Path targetDir = target.resolve(rel);
-                    if (!Files.exists(targetDir)) {
-                        Files.createDirectories(targetDir);
-                    }
-                    return FileVisitResult.CONTINUE;
-                }
+            // Create assets/{type} directory structure
+            Files.createDirectories(target.getParent());
 
-                @Override
-                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                    Path rel = source.relativize(file);
-                    Path targetFile = target.resolve(rel);
+            // Move entire directory
+            Files.move(source, target, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("    ✅ Moved: " + source + " → " + target);
 
-                    // Move and replace
-                    Files.move(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
-                    System.out.println("    Moved: " + file.getFileName());
-                    return FileVisitResult.CONTINUE;
-                }
-
-                @Override
-                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-                    Files.delete(dir); // Delete empty dir after processing
-                    return FileVisitResult.CONTINUE;
-                }
-            });
         } catch (IOException e) {
-            System.err.println("    Failed to move " + source + ": " + e.getMessage());
+            System.err.println("    ❌ Failed to move " + source + ": " + e.getMessage());
         }
     }
 }

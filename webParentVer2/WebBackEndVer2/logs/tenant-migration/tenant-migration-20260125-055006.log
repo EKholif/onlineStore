@@ -1,0 +1,19 @@
+=== Tenant Migration Log Started: 2026-01-25T05:50:06.780347100 ===
+[05:50:06] [0] [profile] 8efe822f44e536affa464ac16a603483.png -> 8efe822f44e536affa464ac16a603483.png [OK]
+[05:50:06] [11] [profile] 8c02662811277bacd09ea2389c572119.png -> 8c02662811277bacd09ea2389c572119.png [OK]
+[05:50:06] [11] [profile] WARNING: Collision. Renaming node-debug-icon.png -> node-debug-icon.png_1769313006840
+[05:50:06] [11] [profile] node-debug-icon.png -> node-debug-icon.png_1769313006840 [OK]
+[05:50:06] [5] [products] WARNING: Collision. Renaming 152 -> 152_1769313006872
+[05:50:06] [5] [products] 152 -> 152_1769313006872 [OK]
+[05:50:06] [5] [profile] WARNING: Collision. Renaming 8c02662811277bacd09ea2389c572119.png -> 8c02662811277bacd09ea2389c572119.png_1769313006892
+[05:50:06] [5] [profile] 8c02662811277bacd09ea2389c572119.png -> 8c02662811277bacd09ea2389c572119.png_1769313006892 [OK]
+[05:50:06] [5] [profile] WARNING: Collision. Renaming icon.png -> icon.png_1769313006898
+[05:50:06] [5] [profile] icon.png -> icon.png_1769313006898 [OK]
+[05:50:06] [7] [profile] WARNING: Collision. Renaming Alienware-Logo-head-while.png -> Alienware-Logo-head-while.png_1769313006912
+[05:50:06] [7] [profile] Alienware-Logo-head-while.png -> Alienware-Logo-head-while.png_1769313006912 [OK]
+=========================================
+MIGRATION SUMMARY
+Total Tenants Processed: 125
+Total Files Moved: 7
+Errors: 0
+=========================================

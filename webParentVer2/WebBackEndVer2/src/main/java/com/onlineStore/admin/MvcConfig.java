@@ -19,26 +19,25 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-        // AG-ASSET-PATH-005: New hierarchical asset structure
-        addResourceHandler(registry, tenantsPath);
-    }
+        // AG-ASSET-PATH-BACKEND-SERVE: Serve tenant assets from filesystem
+        // Maps URL: /tenants/** → Filesystem: {configured-path}/tenants/
+        // Example: /tenants/4/assets/categories/1/electronics.png
 
-    private void addResourceHandler(ResourceHandlerRegistry registry, String pathPattern) {
-        // AG-ASSET-PATH-005: Strict Deterministic Asset Path
-        // Priority: Use configured path relative to work dir (usually root).
-        
-        Path resolvedPath = Paths.get(pathPattern);
-        String absolutePath = resolvedPath.toAbsolutePath().toUri().toString();
+        Path resolvedPath = Paths.get(tenantsPath).toAbsolutePath().normalize();
+        String absolutePath = resolvedPath.toUri().toString();
 
-        // Ensure directory logic by appending trailing slash if missing
+        // Ensure trailing slash for directory
         if (!absolutePath.endsWith("/")) {
             absolutePath += "/";
         }
 
-        // Log the final path for verification (visible in console)
-        System.out.println("AG-ASSET-CONFIG: Mapping /" + pathPattern + "/** to " + absolutePath);
+        System.out.println("🗂️  AG-BACKEND-ASSET: Mapping /tenants/** to filesystem");
+        System.out.println("   Working Dir: " + System.getProperty("user.dir"));
+        System.out.println("   Config Path: " + tenantsPath);
+        System.out.println("   Resolved: " + resolvedPath);
+        System.out.println("   URI: " + absolutePath);
 
-        registry.addResourceHandler("/" + pathPattern + "/**")
+        registry.addResourceHandler("/tenants/**")
                 .addResourceLocations(absolutePath);
     }
 

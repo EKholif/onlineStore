@@ -5,7 +5,6 @@ import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 
-@Component
+// @Component // DISABLED: Asset migration runner interfering with static resource serving
 @Order(10) // Run after migration
 public class ReorganizeAssetsRunner implements CommandLineRunner {
 

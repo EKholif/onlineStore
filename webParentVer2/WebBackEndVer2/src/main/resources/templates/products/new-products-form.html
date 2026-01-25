@@ -307,7 +307,7 @@
 
     function checkUniqueProduct(form) {
         // Legacy unique check logic preserved
-        const url = "[[@{/check_unique_product}]]";
+        const url = /*[[@{/check_unique_product}]]*/ "/check_unique_product";
         const params = {
             id: $("#id").val(),
             name: $("#name").val(),

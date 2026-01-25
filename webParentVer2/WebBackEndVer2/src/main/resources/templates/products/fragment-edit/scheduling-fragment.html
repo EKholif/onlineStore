@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="content" th:remove="tag">
+
+    <div class="container p-3">
+        <p class="text-muted">Define the duration and capacity for this service or booking.</p>
+
+        <!-- Service Duration -->
+        <div class="form-group row p-2" id="divServiceDuration">
+            <label class="col-sm-3 col-form-label fw-bold">Duration:</label>
+            <div class="col-sm-9">
+                <input class="form-control"
+                       placeholder="e.g. 30 mins, 1 hour"
+                       th:field="*{serviceDuration}"
+                       type="text"/>
+            </div>
+        </div>
+
+        <!-- Booking Slots -->
+        <div class="form-group row p-2" id="divBookingSlots">
+            <label class="col-sm-3 col-form-label fw-bold">Slots per Session:</label>
+            <div class="col-sm-9">
+                <input class="form-control"
+                       min="1"
+                       placeholder="Default: 1"
+                       th:field="*{bookingSlots}"
+                       type="number"/>
+            </div>
+        </div>
+
+        <!-- Subscription Interval -->
+        <div class="form-group row p-2" id="divSubscriptionInterval" style="display:none;">
+            <label class="col-sm-3 col-form-label fw-bold">Billing Interval:</label>
+            <div class="col-sm-9">
+                <select class="form-control" th:field="*{subscriptionInterval}">
+                    <option value="">Select Interval</option>
+                    <option value="WEEKLY">Weekly</option>
+                    <option value="MONTHLY">Monthly</option>
+                    <option value="YEARLY">Yearly</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
