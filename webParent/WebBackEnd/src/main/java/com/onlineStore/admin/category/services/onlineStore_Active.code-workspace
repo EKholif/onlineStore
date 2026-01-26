@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "onlineStore_Active",
+			"path": "../../../../../../../../../.."
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"git.ignoreLimitWarning": true,
+		"java.debug.settings.onBuildFailureProceed": true
+	}
+}

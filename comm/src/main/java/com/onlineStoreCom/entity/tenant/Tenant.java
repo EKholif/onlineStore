@@ -1,5 +1,6 @@
 package com.onlineStoreCom.entity.tenant;
 
+import com.onlineStoreCom.entity.saas.BusinessTemplate;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -105,6 +106,13 @@ public class Tenant implements Serializable {
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private java.util.Set<Tenant> children = new java.util.HashSet<>();
 
+    @Column(name = "owner_tenant_id")
+    private Long ownerTenantId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "template_id")
+    private BusinessTemplate template;
+
     public Tenant getParent() {
         return parent;
     }
@@ -119,6 +127,22 @@ public class Tenant implements Serializable {
 
     public void setChildren(java.util.Set<Tenant> children) {
         this.children = children;
+    }
+
+    public Long getOwnerTenantId() {
+        return ownerTenantId;
+    }
+
+    public void setOwnerTenantId(Long ownerTenantId) {
+        this.ownerTenantId = ownerTenantId;
+    }
+
+    public BusinessTemplate getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(BusinessTemplate template) {
+        this.template = template;
     }
 
     @Override

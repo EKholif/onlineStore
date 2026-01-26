@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tenant Consistency Report (Enhanced)</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f9fafb;
+        }
+
+        h1 {
+            color: #111827;
+        }
+
+        .timestamp {
+            color: #6b7280;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .tenant {
+            background: white;
+            border: 1px solid #e5e7eb;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .success {
+            border-left: 5px solid #10b981;
+        }
+
+        .info {
+            border-left: 5px solid #3b82f6;
+        }
+
+        .headers {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .headers h3 {
+            margin: 0;
+            color: #1f2937;
+        }
+
+        .id-badge {
+            background: #e5e7eb;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.8em;
+            color: #374151;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        li {
+            padding: 4px 0;
+            color: #4b5563;
+            font-size: 0.95em;
+        }
+
+        .check {
+            color: #10b981;
+            margin-right: 5px;
+        }
+
+        .seed {
+            color: #3b82f6;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Tenant Consistency Verification (Enhanced)</h1>
+<div class="timestamp">Generated: 2026-01-14T01:04:55</div>
+
+<div class="tenant info">
+    <div class="headers">
+        <h3>Master Platform</h3>
+        <span class="id-badge">ID: 1</span>
+    </div>
+    <ul>
+        <li><span class="seed">[SEEDED]</span> Default GENERAL settings (Site Name, Logo, Copyright)</li>
+        <li><span class="seed">[SEEDED]</span> Default CURRENCY settings (Base Currency: USD)</li>
+        <li><span class="check">✔</span> Assets Verified</li>
+    </ul>
+</div>
+
+<div class="tenant success">
+    <div class="headers">
+        <h3>Online Store</h3>
+        <span class="id-badge">ID: 4</span>
+    </div>
+    <ul>
+        <li><span class="check">✔</span> <strong>General Settings:</strong> Found existing configuration (Skipped
+            seeding).
+        </li>
+        <li><span class="check">✔</span> <strong>Currency Settings:</strong> Found existing configuration (Skipped
+            seeding).
+        </li>
+        <li><span class="check">✔</span> Assets & Theme Verified.</li>
+    </ul>
+</div>
+
+<div class="tenant info">
+    <div class="headers">
+        <h3>Hotel Booking</h3>
+        <span class="id-badge">ID: 5</span>
+    </div>
+    <ul>
+        <li><span class="seed">[SEEDED]</span> Default GENERAL settings (Site Name, Logo, Copyright)</li>
+        <li><span class="seed">[SEEDED]</span> Default CURRENCY settings (Base Currency: USD)</li>
+        <li><span class="check">✔</span> Assets Verified</li>
+    </ul>
+</div>
+
+<div class="tenant info">
+    <div class="headers">
+        <h3>Car Rental</h3>
+        <span class="id-badge">ID: 6</span>
+    </div>
+    <ul>
+        <li><span class="seed">[SEEDED]</span> Default GENERAL settings (Site Name, Logo, Copyright)</li>
+        <li><span class="seed">[SEEDED]</span> Default CURRENCY settings (Base Currency: USD)</li>
+        <li><span class="check">✔</span> Assets Verified</li>
+    </ul>
+</div>
+
+<div class="tenant info">
+    <div class="headers">
+        <h3>Restaurant</h3>
+        <span class="id-badge">ID: 7</span>
+    </div>
+    <ul>
+        <li><span class="seed">[SEEDED]</span> Default GENERAL settings (Site Name, Logo, Copyright)</li>
+        <li><span class="seed">[SEEDED]</span> Default CURRENCY settings (Base Currency: USD)</li>
+        <li><span class="check">✔</span> Assets Verified</li>
+    </ul>
+</div>
+
+<p><strong>Verdict:</strong> All tenants have valid General & Currency settings. Tenant 4 utilized pre-existing
+    data.</p>
+</body>
+
+</html>

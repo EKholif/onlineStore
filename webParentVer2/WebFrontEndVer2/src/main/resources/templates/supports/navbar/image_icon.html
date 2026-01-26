@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="content" class="navbar-brand">
+
+
+
+    <div class="dropdown">
+        <img type="button"
+             th:if="${#authorization.expression('isAuthenticated()')}"
+             th:src="${#authentication.principal.picture}"
+             id="account"
+             class="rounded-circle dropdown-toggle"
+             style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+             alt="User" />
+
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" id="logout">Log out</a></li>
+            <li><a class="dropdown-item" th:href="@{/account}">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Link 3</a></li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
+
+

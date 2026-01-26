@@ -1,7 +1,7 @@
 id: 02-RULE-MAPPING
 type: UNSTRUCTURED
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
-  previousVersion: null, updatedAt: '2026-01-21T20:07:03.697587200', version: 0.1.0}
+                                                                previousVersion: null, updatedAt: '2026-01-21T23:05:29.460682', version: 0.1.0 }
 personas: null
 content:
   rules:

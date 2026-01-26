@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{supports/header/header::content}"></head>
+<body>
+
+
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+<div th:replace="~{supports/fragment::search}"></div>
+<div th:replace="~{supports/breadcrumb :: content}"></div>
+
+
+
+
+
+
+
+
+
+    <nav th:replace="~{supports/paginate::content}"></nav>
+
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+</div>
+</body>
+</html>

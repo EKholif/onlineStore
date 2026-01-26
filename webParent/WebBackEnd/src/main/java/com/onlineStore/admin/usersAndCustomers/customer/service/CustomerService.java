@@ -44,7 +44,7 @@ public class CustomerService {
     }
 
     public void UdpateCustomerEnableStatus(Integer id, Boolean enable) {
-        customerRepo.enableCustomer(id, enable);
+        customerRepo.updateEnabledStatus(id, enable);
 
     }
 

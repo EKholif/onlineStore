@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.ui.Model;
 
 import java.io.IOException;
 import java.net.URLConnection;
@@ -232,6 +233,22 @@ public class CustomerController {
 
         // Send the email
         mailSender.send(message);
+    }
+
+    @Autowired
+    private com.onlineStore.admin.usersAndCustomers.customer.CustomerPointRepository customerPointRepo;
+
+    @GetMapping("/customer/points/{id}")
+    public String viewCustomerPoints(@PathVariable("id") Integer id, Model model) {
+        Customer customer = service.findById(id);
+        List<com.onlineStoreCom.entity.customer.CustomerPoint> pointsHistory = customerPointRepo
+                .findByCustomerOrderByTransactionDateDesc(customer);
+
+        model.addAttribute("customer", customer);
+        model.addAttribute("pointsHistory", pointsHistory);
+        model.addAttribute("pageTitle", "Points History - " + customer.getFullName());
+
+        return "customer/customer_points";
     }
 
 }

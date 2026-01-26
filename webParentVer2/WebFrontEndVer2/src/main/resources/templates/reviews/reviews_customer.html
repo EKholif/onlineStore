@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{supports/header/header::content}">
+<body>
+<div class="container-fluid">
+    <div th:replace="~{supports/navbar/navbar::content}"></div>
+
+    <div class="text-center">
+        <h2>Reviews Posted by me</h2>
+    </div>
+
+    <div th:replace="~{supports/fragment::search}"></div>
+
+    <div class="full-details">
+        <table
+                class="table table-bordered table-striped table-hover table-responsive-xl">
+            <thead class=" table-success table-header">
+            <tr>
+                <th th:replace="~{supports/table_format/colum_link :: content('id', 'ID', 'none')}"></th>
+                <th th:replace="~{supports/table_format/colum_link :: content('product', 'Product', 'none')}"></th>
+                <th th:replace="~{supports/table_format/colum_link :: content('headline', 'Headline', 'none')}"></th>
+                <th th:replace="~{supports/table_format/colum_link :: content('rating', 'Rating', 'none')}"></th>
+                <th th:replace="~{supports/table_format/colum_link :: content('reviewTime', 'Review Time', 'none')}"></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="review : ${listReviews}">
+                <td>[[${review.id}]]</td>
+                <td><a target="_blank"
+                       th:href="@{'/p/' + ${review.product.alias}}"> [[${review.product.shortName}]] </a></td>
+                <td>[[${review.headline}]]</td>
+                <td>[[${review.rating}]] <i class="far fa-star"></i></td>
+                <td>[[${review.reviewTime}]]</td>
+                <td><a
+                        class="fas fa-file-alt fa-2x icon-green link-detail-review"
+                        th:href="@{'/reviews/detail/' + ${review.id}}"
+                        title="View details of this review"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="less-details">
+        <div class="row m-1" th:each="review : ${listReviews}">
+            <div class="col-2">
+                <span>[[${review.id}]]</span>
+            </div>
+            <div class="col-10">
+                <div class="mb-1">
+                    <span>[[${review.product.shortName}]]</span>
+                </div>
+                <div>
+                    &nbsp; <span>[[${review.rating}]] <i class="far fa-star"></i></span>
+                    &nbsp; <a
+                        class="fas fa-file-alt fa-2x icon-green link-detail-review"
+                        th:href="@{'/reviews/detail/' + ${review.id}}"
+                        title="View details of this review"></a>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+
+    <nav th:replace="~{supports/paginate::content}"></nav>
+
+    <div class="modal fade" id="reviewDetailModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+    <div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+
+</div>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/reviews}]]";
+
+    $(document).ready(function () {
+        handleDetailLink(".link-detail-review", "#reviewDetailModal");
+    });
+</script>
+</body>
+
+</html>

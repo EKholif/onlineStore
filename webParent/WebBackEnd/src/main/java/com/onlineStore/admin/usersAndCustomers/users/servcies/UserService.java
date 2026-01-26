@@ -99,7 +99,7 @@ public class UserService {
     }
 
     public void UdpateUserEnableStatus(Integer id, Boolean enable) {
-        userRepo.enableUser(id, enable);
+        userRepo.updateEnabledStatus(id, enable);
 
     }
 }

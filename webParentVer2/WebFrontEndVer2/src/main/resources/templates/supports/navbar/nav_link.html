@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<!-- Fragment with optional security parameter -->
+<!-- Usage: th:replace="~{supports/navbar/nav_link::content('orders','My Orders', 'authenticated')}" -->
+<!-- Usage: th:replace="~{supports/navbar/nav_link::content('about','About', 'public')}" -->
+
+<li th:fragment="content(fieldName, label, securityLevel)" 
+    th:if="${securityLevel == null or securityLevel == 'public'}" >
+    <a class="nav-link" th:href="@{'/' + ${fieldName}}">[[${label}]]</a>
+</li>
+
+<li th:fragment="content(fieldName, label, securityLevel)" 
+    th:if="${securityLevel == 'authenticated'}" 
+    sec:authorize="isAuthenticated()">
+    <a class="nav-link" th:href="@{'/' + ${fieldName}}">[[${label}]]</a>
+</li>
+
+</body>
+
+</html>

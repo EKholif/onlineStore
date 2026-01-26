@@ -18,9 +18,12 @@ public class DataRepairRunner implements CommandLineRunner {
         System.out.println("🔧 RUNNING DATA REPAIR: Fixing Broken Category Hierarchies...");
         try {
             categoryRepository.fixBrokenHierarchies();
-            System.out.println("✅ DATA REPAIR COMPLETE: Cross-tenant parents removed.");
+            System.out.println("✅" +
+                    " DATA REPAIR COMPLETE: Cross-tenant parents removed.");
         } catch (Exception e) {
             System.err.println("❌ DATA REPAIR FAILED: " + e.getMessage());
         }
     }
 }
+
+

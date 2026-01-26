@@ -1,0 +1,680 @@
+# System Architecture Audit Report
+
+**Execution Time:** 2026-01-24T23:37:35.133987
+**Status:** WARNINGS
+
+## 1. Audit Log
+- ⚠️ **WARNING** [TENANT 5]: Unknown folder: 66
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 5]: Unknown folder: 96
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT 5]: Unknown folder: 97
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 1
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 10
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 11
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 12
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 13
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 14
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 15
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 16
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 17
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 18
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 19
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 2
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 20
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 21
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 22
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 23
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 24
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 25
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 26
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 27
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 28
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 29
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 3
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 30
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 31
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 32
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 33
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 34
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 35
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 36
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 37
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 38
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 39
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 4
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 40
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 41
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 42
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 43
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 44
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 45
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 46
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 47
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 48
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 49
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 5
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 50
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 51
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 52
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 53
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 54
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 6
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 7_1768700318089
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 8
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT brands]: Unknown folder: 9
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 1
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 10
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 10_1768669988493
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 11
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 11_1768669988496
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 12
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 12_1768669988499
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 13
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 13_1768669988502
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 14
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 14_1768669988505
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 15
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 15_1768669988509
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 16
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 16_1768669988513
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 17
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 17_1768669988516
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 18
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 18_1768669988521
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 19
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 19_1768669988527
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 1_1768669988489
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 2
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 20
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 20_1768669988533
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 21
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 21_1768669988536
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 22
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 22_1768669988541
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 23
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 23_1768669988547
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 24
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 24_1768669988550
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 25
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 25_1768669988554
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 26
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 26_1768669988559
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 27
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 27_1768669988563
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 28
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 28_1768669988565
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 29
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 29_1768669988569
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 2_1768669988530
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 3
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 30
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 30_1768669988575
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 31
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 31_1768669988578
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 3_1768669988572
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 5
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 5_1768669988580
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 6
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 6_1768669988584
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 8
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 8_1768669988586
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 9
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT categories]: Unknown folder: 9_1768669988589
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 10
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 10_1768669988593
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 18
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 18_1768669988595
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 7
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 7_1768669988598
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 87
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 87_1768669988600
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 88
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT customers]: Unknown folder: 88_1768669988604
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 1
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 10
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 100
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 100_1768669988615
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 101
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 101_1768669988619
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 102
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 102_1768669988622
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 103
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 103_1768669988625
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 104
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 104_1768669988636
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 105
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 105_1768669988640
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 106
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 106_1768669988643
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 10_1768669988612
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 11
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 11_1768669988645
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 12
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 12_1768669988650
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 14
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 14_1768669988654
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 15
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 15_1768669988656
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 16
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 16_1768669988659
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 17
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 17_1768669988663
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 18
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 18_1768669988667
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 19
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 19_1768669988671
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 1_1768669988608
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 2
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 20
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 20_1768669988679
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 21
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 21_1768669988682
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 22
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 22_1768669988685
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 23
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 23_1768669988689
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 24
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 24_1768669988693
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 25
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 25_1768669988697
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 26
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 26_1768669988701
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 27
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 27_1768669988704
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 28
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 28_1768669988708
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 29
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 29_1768669988711
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 2_1768669988674
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 3
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 30
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 30_1768669988716
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 31
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 31_1768669988719
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 32
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 32_1768669988724
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 33
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 33_1768669988727
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 34
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 34_1768669988730
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 35
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 35_1768669988733
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 36
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 36_1768669988736
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 37
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 37_1768669988743
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 38
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 38_1768669988748
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 39
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 39_1768669988751
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 3_1768669988715
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 40
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 40_1768669988754
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 41
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 41_1768669988758
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 42
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 42_1768669988762
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 43
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 43_1768669988766
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 44
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 44_1768669988770
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 45
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 45_1768669988772
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 46
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 46_1768669988776
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 47
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 47_1768669988779
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 48_1768669988782
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 48_1768685374204
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 49
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 49_1768669988788
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 50
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 50_1768669988792
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 51
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 51_1768669988795
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 52
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 52_1768669988800
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 53
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 53_1768669988803
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 54
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 54_1768669988806
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 55
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 55_1768669988809
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 56
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 56_1768669988813
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 57
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 57_1768669988817
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 58
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 58_1768669988818
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 59
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 59_1768669988822
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 6
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 60
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 60_1768669988830
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 61
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 61_1768669988834
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 62
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 62_1768669988837
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 63
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 63_1768669988841
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 64
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 64_1768669988897
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 65
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 65_1768669988902
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 66
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 66_1768669988905
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 67
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 67_1768669988910
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 68
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 68_1768669988913
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 69
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 69_1768669988924
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 6_1768669988826
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 70
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 70_1768669988932
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 71
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 71_1768669988940
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 73
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 73_1768669988943
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 74
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 74_1768669989024
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 75
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 75_1768669989041
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 76
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 76_1768669989135
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 77
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 77_1768669989143
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 78
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 78_1768669989146
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 79
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 79_1768669989153
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 8
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 80
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 80_1768669989181
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 81
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 81_1768669989185
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 82
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 82_1768669989188
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 83
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 83_1768669989192
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 84
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 84_1768669989210
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 85
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 85_1768669989217
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 86
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 86_1768669989226
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 87
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 87_1768669989228
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 87_1769033356749
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 88
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 88_1768669989231
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 89
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 89_1768669989236
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 8_1768669989177
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 9
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 90
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 90_1768669989243
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 91
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 91_1768669989245
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 92
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 92_1768669989248
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 93
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 93_1768669989250
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 94
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 94_1768669989277
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 95
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 95_1768669989281
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 96
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 96_1768669989285
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 97
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 97_1768669989290
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 98
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 98_1768669989297
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 99
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 99_1768669989356
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT products]: Unknown folder: 9_1768669989239
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 1
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 18
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 18_1768669989374
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 1_1768669989371
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 36
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 36_1768669989808
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 36_1768709890462
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 6
+  - *Action:* Verify purpose
+- ⚠️ **WARNING** [TENANT users]: Unknown folder: 6_1768669989812
+  - *Action:* Verify purpose

@@ -28,7 +28,7 @@ public class ProductRepositoryTests {
 
     @BeforeEach
     public void setup() {
-        TenantContext.setTenantId(1L);
+        TenantContext.setTenantId(0L);
     }
 
     @AfterEach
@@ -105,4 +105,9 @@ public class ProductRepositoryTests {
         assertThat(saved.getHasShipping()).isFalse();
         assertThat(saved.getHasScheduling()).isTrue();
     }
+
+
+
+
+
 }

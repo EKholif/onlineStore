@@ -1,0 +1,13 @@
+{
+  "name": "online-store-backend",
+  "version": "1.0.0",
+  "description": "Backend tests for OnlineStore Admin Panel",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jquery": "^3.7.1"
+  }
+}

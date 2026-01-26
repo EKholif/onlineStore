@@ -1,0 +1,15 @@
+
+
+<th th:fragment="content(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
+    <a th:href="@{${modelUrl}+ ${currentPage}+'?sortField='+${fieldName}+'&sortDir='
+                            +${sortField!= fieldName? sortDir: reverseSortDir} + ${keyWord!=null ?
+                            '&keyWord='+ keyWord: ''}}"  class="text-white">
+        [[${columnLabel}]]
+    </a>
+
+    <span th:if="${sortField== fieldName}"
+          th:class="${sortDir=='asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+</th>
+
+
+

@@ -1,0 +1,16 @@
+id: 10-STORAGE-STRUCTURE
+type: UNSTRUCTURED
+versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion { backwardCompatible: false,
+                                                                 previousVersion: null, updatedAt: '2026-01-11T04:27:08.082573200', version: 0.1.0 }
+personas: null
+content:
+  storage_structure: { root: /storage }
+  tenants: { enabled: true, path: '/storage/tenants/{tenantId}' }
+  default_folders: [ profile, services, customers, categories, brands, users ]
+  folder_purposes:
+    profile:
+      description: Tenant brand identity
+      contains: [ logo, cover, brand_assets ]
+    services: { description: Service related images }
+    customers: { description: Customer uploaded assets }
+  rules: { auto_create_on_tenant_creation: true, delete_on_tenant_removal: true, ai_scan_allowed: true }

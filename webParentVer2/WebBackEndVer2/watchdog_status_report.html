@@ -1,0 +1,50 @@
+<html>
+<head>
+    <style>body {
+        font-family: sans-serif;
+        padding: 20px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .violation {
+        color: red;
+    }</style>
+</head>
+<body><h1>🐶 Architecture Watchdog Status</h1>
+<p>Last Updated: 2026-01-12T08:49:59.545874</p>
+<h2>Violations Detected: 1</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Time</th>
+        <th>Code</th>
+        <th>Message</th>
+        <th>Rule</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>08:49:59.542832</td>
+        <td>LEGACY_PATH_CREATION</td>
+        <td class='violation'>Prohibited legacy folder created:
+            C:\Users\enoam\AppData\Local\Temp\junit15025573578052983995\site-logo
+        </td>
+        <td>ALL_ASSETS_MUST_BE_TENANT_ISOLATED</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

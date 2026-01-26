@@ -39,7 +39,7 @@ public class ServiceController {
         Page<Service> page = serviceService.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
                 helper.getKeyword());
         helper.updateModelAttributes(pageNum, page);
-        return "services/services";
+        return "services";
     }
 
     @GetMapping("/services/new")

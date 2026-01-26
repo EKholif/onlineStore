@@ -10,18 +10,25 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
+import com.onlineStore.admin.repository.base.SearchableRepository;
+import com.onlineStore.admin.repository.base.ToggleableRepository;
 
-    @Query("UPDATE Category u set  u.enabled=?2 WHERE u.id = ?1 ")
-    @Modifying
-    void enableCategory(Integer id, boolean enable);
+@Repository
+public interface CategoryRepository extends JpaRepository<Category, Integer>,
+        ToggleableRepository<Category, Integer>,
+        SearchableRepository<Category, Integer> {
+
+    // Removed enableCategory as it's replaced by updateEnabledStatus
+    // @Query("UPDATE Category u set u.enabled=?2 WHERE u.id = ?1 ")
+    // @Modifying
+    // void enableCategory(Integer id, boolean enable);
 
     @Query("UPDATE Category SET enabled=true")
     @Modifying
     @jakarta.transaction.Transactional
     void enableCategoryAll();
 
+    @Override
     @Query("SELECT u FROM Category u WHERE  CONCAT(u.id, ' ', u.name, ' ', u.alias) LIKE %?1%")
     Page<Category> findAll(String keyword, Pageable pageable);
 

@@ -9,9 +9,13 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import com.onlineStore.admin.repository.base.SearchableRepository;
+import com.onlineStore.admin.repository.base.ToggleableRepository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer>,
+        ToggleableRepository<Product, Integer>,
+        SearchableRepository<Product, Integer> {
 
     @Query("SELECT p FROM Product p WHERE p.name = ?1")
     Product findByName(String name);
@@ -19,12 +23,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT p FROM Product p WHERE p.alias = ?1")
     Product findByAlias(String alias);
 
+    @Override
     @Query("SELECT p FROM Product p WHERE (CONCAT(p.id, ' ', p.name, ' ', p.alias) LIKE %?1%)")
     Page<Product> findAll(String keyword, Pageable pageable);
 
-    @Query("UPDATE Product p set p.enabled=?2 WHERE p.id = ?1")
-    @Modifying
-    Integer enableProduct(Integer id, boolean enable);
+    // Removed enableProduct in favor of updateEnabledStatus
+    // @Query("UPDATE Product p set p.enabled=?2 WHERE p.id = ?1")
+    // @Modifying
+    // Integer enableProduct(Integer id, boolean enable);
 
     // [AG-TEN-RISK-001] Native Query must still be careful, but user rejected
     // manual WHERE in standard queries.

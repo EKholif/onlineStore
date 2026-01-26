@@ -64,6 +64,8 @@
                         th:replace="~{support/fragments/standard/table_fragments :: column_link('phoneNumber', 'Phone Number')}">
                 </th>
 
+                <th>Points</th>
+
                 <th>Enabled</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -95,6 +97,11 @@
                 <td th:text="${customer.country}"></td>
                 <td th:text="${customer.city}"></td>
                 <td th:text="${customer.phoneNumber}"></td>
+                <td>
+                    <a th:href="@{'/customer/points/' + ${customer.id}}" title="View Points History">
+                        [[${customer.pointsBalance}]]
+                    </a>
+                </td>
 
 
                 <td>

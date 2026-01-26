@@ -1,7 +1,7 @@
 id: 04-AI-PROMPTS
 type: AI_CONTEXT
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
-  previousVersion: null, updatedAt: '2026-01-21T20:07:03.712755500', version: 0.1.0}
+                                                                previousVersion: null, updatedAt: '2026-01-21T23:05:29.477110800', version: 0.1.0 }
 personas: null
 content:
   ai_agents:

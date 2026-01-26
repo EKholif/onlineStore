@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" charset="UTF-8" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>About [[${SITE_NAME}]] </title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+    <script th:src="@{/webjars/font-awesome/6.4.0/js/all.min.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.4.0/css/all.min.css}">
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{supports/navbar/navbar::content}"></div>
+
+<!-- Search -->
+<div th:replace="~{supports/fragment::search}"></div>
+
+<!-- Hero Image Section -->
+<div class="marketplace-hero text-center">
+    <h1 class="fw-bold display-5">Explore [[${SITE_NAME}]] Marketplace</h1>
+</div>
+
+<!-- Content -->
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <!-- Intro -->
+            <div class="text-center mb-5">
+                <p class="lead">
+                    [[${SITE_NAME}]] Marketplace connects you with a wide variety of sellers across Canada, all in one trusted platform.
+                </p>
+                <img src="/images/marketplace-overview.png" alt="Marketplace Overview" class="img-fluid rounded shadow-sm" style="max-height: 300px;">
+            </div>
+
+            <!-- Why Shop Section -->
+            <div class="marketplace-section">
+                <h4><i class="fas fa-store me-2"></i> Why shop on [[${SITE_NAME}]] Marketplace?</h4>
+
+                <div class="icon-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <strong>Secure Shopping:</strong>
+                        <p>Transactions are handled safely through [[${SITE_NAME}]]'s platform.</p>
+                    </div>
+                </div>
+
+                <div class="icon-box">
+                    <i class="fas fa-box-open"></i>
+                    <div>
+                        <strong>Wider Selection:</strong>
+                        <p>Shop products from sellers you won’t find in our traditional store.</p>
+                    </div>
+                </div>
+
+                <div class="icon-box">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <strong>Trusted Sellers:</strong>
+                        <p>All sellers are vetted to meet our quality standards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping and Returns -->
+            <div class="marketplace-section mt-5">
+                <h4><i class="fas fa-truck me-2"></i> Shipping & Returns</h4>
+                <p>
+                    Shipping methods and return policies vary by seller. Always review the seller’s terms before purchase.
+                </p>
+            </div>
+
+            <!-- Customer Support -->
+            <div class="marketplace-section mt-5">
+                <h4><i class="fas fa-headset me-2"></i> Customer Support</h4>
+                <p>
+                    For help with your Marketplace orders, contact the seller directly or reach out to our [[${SITE_NAME}]] support team.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{supports/footer/footer_menu::content}"></div>
+
+<!-- Scripts -->
+
+
+
+
+
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+</body>
+</html>
+
+
+

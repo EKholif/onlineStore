@@ -22,8 +22,12 @@ public class ProductListTest {
         Iterable<Product> products = productRepository.findAll();
         int count = 0;
         for (Product product : products) {
-            System.out.printf("Product ID: %d | Name: %s | Alias: %s | Enabled: %s%n",
-                    product.getId(), product.getName(), product.getAlias(), product.isEnabled());
+              if (product.getTenantId() == 0L) {
+                  product.addProductDetailsTenantId(4l);
+                    productRepository.save(product);
+              }
+//            System.out.printf("Product ID: %d | Name: %s | Alias: %s | Enabled: %s%n",
+//                    product.getId(), product.getName(), product.getAlias(), product.isEnabled());
             count++;
         }
         System.out.println("============= TOTAL PRODUCTS: " + count + " =============");

@@ -1,0 +1,114 @@
+[
+  {
+    "Entity": "User",
+    "Module": "Users",
+    "Lifecycle": "CRUD (Admin)",
+    "TenantAwareness": "Strict (TenantAwareEntity)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Role",
+    "Module": "Users",
+    "Lifecycle": "Read/Assign",
+    "TenantAwareness": "Shared/System",
+    "Compliance": "N/A"
+  },
+  {
+    "Entity": "Setting",
+    "Module": "Setting",
+    "Lifecycle": "Managed via SettingService",
+    "TenantAwareness": "Strict (TenantAwareEntity)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Product",
+    "Module": "Product",
+    "Lifecycle": "CRUD (Admin), Read (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Category",
+    "Module": "Category",
+    "Lifecycle": "CRUD (Admin), Read (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Brand",
+    "Module": "Brand",
+    "Lifecycle": "CRUD (Admin), Read (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Order",
+    "Module": "Order",
+    "Lifecycle": "Create (Store), Process (Admin)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Customer",
+    "Module": "Customer",
+    "Lifecycle": "Register (Store), Manage (Admin)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Review",
+    "Module": "Review",
+    "Lifecycle": "Create (Store), Moderate (Admin)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "CartItem",
+    "Module": "Cart",
+    "Lifecycle": "Manage (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS (Patched)"
+  },
+  {
+    "Entity": "ShippingRate",
+    "Module": "Shipping",
+    "Lifecycle": "CRUD (Admin), Read (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS (Patched)"
+  },
+  {
+    "Entity": "Article",
+    "Module": "Articles",
+    "Lifecycle": "CRUD (Admin), Read (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Section",
+    "Module": "Section",
+    "Lifecycle": "CRUD (Admin), Read (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Menu",
+    "Module": "Menu",
+    "Lifecycle": "CRUD (Admin), Read (Store)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  },
+  {
+    "Entity": "Question",
+    "Module": "Question",
+    "Lifecycle": "CRUD (Store/Admin)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS (Patched)"
+  },
+  {
+    "Entity": "Booking",
+    "Module": "Booking",
+    "Lifecycle": "Create (Store), Manage (Admin)",
+    "TenantAwareness": "Strict (@Filter)",
+    "Compliance": "PASS"
+  }
+]

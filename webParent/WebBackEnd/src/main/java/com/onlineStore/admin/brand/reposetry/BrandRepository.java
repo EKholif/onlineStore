@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import com.onlineStore.admin.repository.base.SearchableRepository;
+
 @Repository
-public interface BrandRepository extends JpaRepository<Brand, Integer> {
+public interface BrandRepository extends JpaRepository<Brand, Integer>, SearchableRepository<Brand, Integer> {
 
     Integer countById(Integer id);
 

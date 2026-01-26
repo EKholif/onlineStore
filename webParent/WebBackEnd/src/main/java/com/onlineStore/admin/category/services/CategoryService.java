@@ -278,7 +278,7 @@ public class CategoryService {
         Category category = categoryRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
 
-        categoryRepo.enableCategory(id, enable);
+        categoryRepo.updateEnabledStatus(id, enable);
 
         disableChildrenRecursively(category, enable);
     }
@@ -287,7 +287,7 @@ public class CategoryService {
         List<Category> children = categoryRepo.findByParent(parent);
         for (Category child : children) {
 
-            categoryRepo.enableCategory(child.getId(), enable);
+            categoryRepo.updateEnabledStatus(child.getId(), enable);
 
             disableChildrenRecursively(child, enable);
         }

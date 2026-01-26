@@ -82,8 +82,7 @@ public class ProductService {
     }
 
     public void UpdateProductEnableStatus(Integer id, Boolean enable) {
-        repository.enableProduct(id, enable);
-
+        repository.updateEnabledStatus(id, enable);
     }
 
     public Page<Product> listByPage(int pageNum, String sortField, String sortDir, String keyWord) {
