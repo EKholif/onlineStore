@@ -1,9 +1,9 @@
 package com.onlineStore.admin.saas.service;
 
-import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStore.admin.saas.repository.BusinessDomainRepository;
 import com.onlineStore.admin.saas.repository.BusinessTemplateRepository;
 import com.onlineStore.admin.saas.repository.TenantTemplateProductRepository;
+import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.product.ProductType;
 import com.onlineStoreCom.entity.saas.BusinessDomain;
@@ -17,8 +17,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -59,6 +57,8 @@ public class TenantProvisioningServiceTest {
         demoProd.setTemplate(template);
         demoProd.setName("Demo Dental Checkup");
         demoProd.setAlias("demo-dental");
+        demoProd.setShortDescription("Short Desc");
+        demoProd.setFullDescription("Full Desc");
         demoProd.setProductType(ProductType.BOOKING);
         demoProd.setPrice(100.0f);
         demoProductRepo.save(demoProd);

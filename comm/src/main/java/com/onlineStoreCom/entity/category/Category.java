@@ -9,7 +9,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.Filter;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "categories", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"alias", "tenant_id"})
+})
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 @EntityListeners(TenantListener.class)

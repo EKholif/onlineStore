@@ -54,7 +54,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
             System.out.println("   > JWT Generated & Cookie Set: " + token.substring(0, 15) + "...");
         }
 
-        // Redirect to home
-        response.sendRedirect("/");
+        // Redirect to dashboard
+        response.sendRedirect("/dashboard");
     }
 }

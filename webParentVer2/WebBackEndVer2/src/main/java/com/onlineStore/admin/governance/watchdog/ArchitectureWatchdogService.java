@@ -1,67 +1,74 @@
 package com.onlineStore.admin.governance.watchdog;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Service that orchestrates the runtime architectural compliance checks.
- * It manages the FileSystemMonitor thread and integrates with the
- * SystemArchitectureAuditor.
+ * Service responsible for starting and stopping the Architecture Watchdog file
+ * system monitor.
+ * It identifies the root directories to watch (e.g., project root, tenants
+ * folder).
  */
 @Service
-public class ArchitectureWatchdogService {
+public class ArchitectureWatchdogService implements SmartInitializingSingleton, DisposableBean {
 
-    private final FileSystemMonitor fileSystemMonitor;
-    private final ExecutorService executorService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ArchitectureWatchdogService.class);
+
     private final ViolationRegistry violationRegistry;
+    private FileSystemWatcher fileSystemWatcher;
+    private ExecutorService executorService;
 
     public ArchitectureWatchdogService(ViolationRegistry violationRegistry) {
         this.violationRegistry = violationRegistry;
-        this.fileSystemMonitor = new FileSystemMonitor(violationRegistry);
+    }
+
+    @Override
+    public void afterSingletonsInstantiated() {
+        LOGGER.info("Initializing Architecture Watchdog Service...");
+
+        List<Path> watchTargets = new ArrayList<>();
+
+        // Strategy: Watch the current working directory (project root)
+        // This is where users might accidentally create "user-photos" etc.
+        Path rootPath = Paths.get(".").toAbsolutePath().normalize();
+        watchTargets.add(rootPath);
+
+        // Also watch webParent/WebBackEnd if possible, though root covers most
+        // 'accidental' creations
+        // We can add more specific paths if needed.
+
+        LOGGER.info("Watchdog targets: {}", watchTargets);
+
+        this.fileSystemWatcher = new FileSystemWatcher(watchTargets, violationRegistry);
+
         this.executorService = Executors.newSingleThreadExecutor(r -> {
-            Thread t = new Thread(r, "Architecture-Watchdog-Thread");
-            t.setDaemon(true); // Ensure it doesn't block app shutdown
+            Thread t = new Thread(r, "ArchWatchdog-Monitor");
+            t.setDaemon(true);
             return t;
         });
+
+        this.executorService.submit(fileSystemWatcher);
+        LOGGER.info("Architecture Watchdog Service started successfully.");
     }
 
-    @PostConstruct
-    public void startWatchdog() {
-        System.out.println("🐕 Architecture Watchdog starting...");
-
-        // Define root paths to monitor
-        // Using "tenants" as a critical directory to watch for creation of new assets
-        // Using "." (root) to watch for creation of prohibited folders like "site-logo"
-        // in root
-
-        // Note: Watching root "." might be noisy, we need to filter carefully in the
-        // Monitor.
-        // Better to watch specific parents if possible, but for "no root assets" we
-        // must watch root.
-
-        try {
-            fileSystemMonitor.registerPath(Paths.get("tenants"));
-            fileSystemMonitor.registerPath(Paths.get(".")); // Watch root for creation of legacy folders
-
-            executorService.submit(fileSystemMonitor);
-
-            System.out.println("✅ Architecture Watchdog is active and monitoring.");
-        } catch (IOException e) {
-            System.err.println("❌ Failed to start Architecture Watchdog file monitor: " + e.getMessage());
-            e.printStackTrace();
+    @Override
+    public void destroy() {
+        if (fileSystemWatcher != null) {
+            fileSystemWatcher.stop();
         }
-    }
-
-    @PreDestroy
-    public void stopWatchdog() {
-        System.out.println("🛑 Stopping Architecture Watchdog...");
-        fileSystemMonitor.stop();
-        executorService.shutdownNow();
+        if (executorService != null) {
+            executorService.shutdownNow();
+        }
+        LOGGER.info("Architecture Watchdog Service stopped.");
     }
 }

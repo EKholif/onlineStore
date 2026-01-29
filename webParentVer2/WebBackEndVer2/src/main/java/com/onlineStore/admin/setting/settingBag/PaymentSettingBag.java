@@ -7,7 +7,6 @@ import java.util.List;
 
 public class PaymentSettingBag extends SettingBag {
 
-    private String currencySymbole;
 
     public PaymentSettingBag(List<Setting> listSettings) {
         super(listSettings);

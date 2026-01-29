@@ -21,6 +21,9 @@ public class TenantTemplateProduct extends IdBasedEntity {
     @Column(length = 1000)
     private String shortDescription;
 
+    @Column(nullable = false)
+    private String mainImage;
+
     @Lob
     @Column(length = 4096)
     private String fullDescription;
@@ -81,6 +84,14 @@ public class TenantTemplateProduct extends IdBasedEntity {
 
     public void setFullDescription(String fullDescription) {
         this.fullDescription = fullDescription;
+    }
+
+    public String getMainImage() {
+        return mainImage;
+    }
+
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
     }
 
     public ProductType getProductType() {

@@ -4,7 +4,6 @@ import com.onlineStore.admin.UsernameNotFoundException;
 import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.security.tenant.TenantService;
 import com.onlineStore.admin.usersAndCustomers.users.servcies.UserService;
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.UserCsvExporter;
 import com.onlineStore.admin.utility.UserExcelExporter;
 import com.onlineStore.admin.utility.UserPdfExporter;
@@ -17,7 +16,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,10 +23,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
+// AG-CLEANUP: Removed FileUploadUtil usage
 
 @org.springframework.stereotype.Controller
 public class UserController {
+
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService service;
     @Autowired
@@ -89,8 +90,6 @@ public class UserController {
     public ModelAndView saveNewUser(@ModelAttribute com.onlineStoreCom.entity.users.User user,
             RedirectAttributes redirectAttributes,
             @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
-        redirectAttributes.addFlashAttribute("message", "the user   has been saved successfully.  ");
-        String dirName = FileUploadUtil.getStoragePath(user.getId(), "users");
 
         Long tenantId = TenantContext.getTenantId();
 
@@ -103,13 +102,10 @@ public class UserController {
             user.setTenantId(tenantId);
         }
 
-        if (!multipartFile.isEmpty()) {
-            savePhoto(user, multipartFile, dirName);
-        }
+        // AG-REFACTOR: Delegate to Service
+        service.saveUser(user, multipartFile);
 
-        user.setTenantId(getTenantId(user));
-
-        service.saveUser(user);
+        redirectAttributes.addFlashAttribute("message", "The user has been saved successfully.");
         return new ModelAndView("redirect:/users/users");
     }
 
@@ -117,19 +113,7 @@ public class UserController {
         return entity.getTenantId();
     }
 
-    private void savePhoto(com.onlineStoreCom.entity.users.User user, MultipartFile multipartFile, String dirName)
-            throws IOException {
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-
-        user.setPhotos(fileName);
-
-        com.onlineStoreCom.entity.users.User savedUser = service.saveUser(user);
-
-        // AG-ASSET-PATH-001: Strict tenant asset hierarchy
-        String uploadDir = FileUploadUtil.getStoragePath(savedUser.getId(), "users");
-
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-    }
+    // AG-CLEANUP: Removed savePhoto (logic moved to Service)
 
     @GetMapping("/users/edit/{id}")
     public ModelAndView editUser(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
@@ -164,92 +148,86 @@ public class UserController {
     }
 
     @PostMapping("/users/save-edit-user")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id,
+    public ModelAndView saveUpdatedUser(@RequestParam(name = "id") Integer id,
                                         @ModelAttribute com.onlineStoreCom.entity.users.User user,
             RedirectAttributes redirectAttributes,
             @RequestParam("image") MultipartFile multipartFile) throws UsernameNotFoundException, IOException {
         try {
-            redirectAttributes.addFlashAttribute("message", "the user Id : " + id + " has been updated successfully. ");
+            com.onlineStoreCom.entity.users.User existingUser = service.getUser(id);
 
-            com.onlineStoreCom.entity.users.User updateUser = service.getUser(id);
+            // Copy mutable fields from form (user) to existingUser
+            // Exclude ID, Password, Photos, Tenants (handled separately or preserved)
+            BeanUtils.copyProperties(user, existingUser, "id", "password", "photos", "tenants", "createdTime",
+                    "verificationCode");
 
-            if (user.getPassword().isEmpty()) {
+            // Handle Password: If form has value, set it. If empty, keep existing (Service
+            // will handle if we passed DTO, but here we pass Entity)
+            // But wait, Service `saveUser` logic:
+            /*
+             * if (user.getPassword().isEmpty()) { ... } else { encodePassword(user); }
+             */
+            // If we update `existingUser.password` with RAW usage, it isn't empty. Service
+            // will encode it. Correct.
+            // If we DON'T update `existingUser.password`, it is HASH. Service will encode
+            // HASH. Incorrect.
 
-                if (multipartFile.isEmpty()) {
-                    BeanUtils.copyProperties(user, updateUser, "id", "photos", "password", "tenants", "roles");
-                    service.saveUpdatededUser(updateUser);
-
-                } else if (!multipartFile.isEmpty()) {
-
-                    FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(updateUser.getId(), "users"));
-                    String fileName = StringUtils
-                            .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                    // AG-ASSET-PATH-002: Use centralized path from Entity
-                    String uploadDir = FileUploadUtil.getStoragePath(updateUser.getId(), "users");
-                    user.setPhotos(fileName);
-                    BeanUtils.copyProperties(user, updateUser, "id", "password", "tenants", "roles");
-                    service.saveUpdatededUser(updateUser);
-                    FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
-                }
-
+            // FIX: We must check here.
+            if (!user.getPassword().isEmpty()) {
+                existingUser.setPassword(user.getPassword());
             } else {
+                // If empty, we want to keep existing hash.
+                // But Service will re-encode it because it's not empty?
+                // Service logic needs to know if it's raw or hash.
+                // Since we can't easily know, we should rely on the Service Logic I wrote:
+                // "if (user.getPassword().isEmpty())" -> copies from DB.
 
-                if (multipartFile.isEmpty()) {
+                // SO: To use Service logic, we must pass an object with EMPTY password if we
+                // want to keep old one.
+                // existingUser has HASH.
 
-                    BeanUtils.copyProperties(user, updateUser, "id", "photos", "tenants", "roles");
+                // TRICK: Set existingUser.password to "" if form was empty?
+                // No, then Service copies from... itself? (load from DB).
 
-                    service.saveUser(updateUser);
-
-                } else if (!multipartFile.isEmpty()) {
-
-                    FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(updateUser.getId(), "users"));
-                    String fileName = StringUtils
-                            .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                    String uploadDir = FileUploadUtil.getStoragePath(updateUser.getId(), "users");
-                    user.setPhotos(fileName);
-                    BeanUtils.copyProperties(user, updateUser, "id", "tenants", "roles");
-                    service.saveUser(updateUser);
-                    FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-                }
+                // Service: "User existingUser = userRepo.findById(user.getId())"
+                // So if we pass 'existingUser' (arg) with password "", Service loads DB version
+                // (hash), sets arg.password = hash.
+                // Perfect.
+                existingUser.setPassword("");
             }
-            // AG-SEC-FIX: Refresh Security Context to reflected changes immediately in UI
-            // (e.g. Navbar)
-            StoreBackendUserDetails userDetails = new StoreBackendUserDetails(service.getUser(user.getId()));
-            org.springframework.security.core.Authentication authentication = new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
+
+            existingUser.setRoles(user.getRoles());
+            // Tenants usually not editable in basic form, but if so:
+            // existingUser.setTenants(user.getTenants());
+
+            service.saveUser(existingUser, multipartFile);
+
+            // Refresh Security Context
+            StoreBackendUserDetails userDetails = new StoreBackendUserDetails(service.getUser(existingUser.getId()));
+            org.springframework.security.authentication.UsernamePasswordAuthenticationToken authentication = new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
                     userDetails, userDetails.getPassword(), userDetails.getAuthorities());
             org.springframework.security.core.context.SecurityContextHolder.getContext()
                     .setAuthentication(authentication);
 
+            redirectAttributes.addFlashAttribute("message", "The user ID " + id + " has been updated successfully.");
+
         } catch (Exception e) {
             e.printStackTrace();
-            throw e;
+            redirectAttributes.addFlashAttribute("message", "Error updating user: " + e.getMessage());
         }
-        String fristPartEmail = user.getEmail().split("@")[0];
-        return new ModelAndView("redirect:/users/page/1?sortField=id&sortDir=asc&keyWord=" + fristPartEmail);
+        return new ModelAndView("redirect:/users/page/1?sortField=id&sortDir=asc");
     }
 
     @GetMapping("/delete-user/{id}")
     public ModelAndView deleteUser(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         try {
-            if (service.existsById(id)) {
-                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.getUser(id).getId(), "users"));
-                service.deleteUser(id);
-                redirectAttributes.addFlashAttribute("message",
-                        "User with ID " + id + " has been successfully deleted.");
-            } else {
-                redirectAttributes.addFlashAttribute("message", "User with ID " + id + " not found.");
-            }
+            // AG-REFACTOR: Service handles cleanup
+            service.deleteUser(id);
+            redirectAttributes.addFlashAttribute("message", "User with ID " + id + " has been successfully deleted.");
         } catch (UsernameNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message", "User with ID " + id + " not found.");
-        } catch (IOException ex) {
-            redirectAttributes.addFlashAttribute("message", "Error occurred while deleting user with ID " + id + ".");
-            // Log the exception for further investigation
-            ex.printStackTrace();
         } catch (Exception ex) {
+            LOGGER.error("Error deleting user: {}", ex.getMessage());
             redirectAttributes.addFlashAttribute("message", "An unexpected error occurred.");
-            // Log the exception for further investigation
-            ex.printStackTrace();
         }
         return new ModelAndView("redirect:/users/users");
     }
@@ -267,15 +245,19 @@ public class UserController {
 
     @PostMapping("/deleteUsers")
     public ModelAndView deleteUsers(@RequestParam(name = "selectedUsers", required = false) List<Integer> selectedUsers,
-            RedirectAttributes redirectAttributes) throws UsernameNotFoundException, IOException {
-
-        redirectAttributes.addFlashAttribute("message", "the Users ID: " + selectedUsers + " has been Deleted");
+                                    RedirectAttributes redirectAttributes) {
 
         if (selectedUsers != null && !selectedUsers.isEmpty()) {
             for (Integer id : selectedUsers) {
-                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.getUser(id).getId(), "users"));
-                service.deleteUser(id);
+                try {
+                    service.deleteUser(id);
+                } catch (UsernameNotFoundException e) {
+                    LOGGER.warn("Attempted to delete non-existent user ID: {}", id);
+                }
             }
+            redirectAttributes.addFlashAttribute("message", "Selected users have been deleted.");
+        } else {
+            redirectAttributes.addFlashAttribute("message", "No users selected.");
         }
 
         return new ModelAndView("redirect:/users/users");

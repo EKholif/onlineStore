@@ -26,6 +26,9 @@ public class DailyProductStats {
     @Column(name = "view_count", nullable = false)
     private Long viewCount = 0L;
 
+    @Column(name = "cart_add_count", nullable = false)
+    private Long cartAddCount = 0L;
+
     @Column(name = "sales_count", nullable = false)
     private Long salesCount = 0L;
 
@@ -81,6 +84,14 @@ public class DailyProductStats {
         this.viewCount = viewCount;
     }
 
+    public Long getCartAddCount() {
+        return cartAddCount;
+    }
+
+    public void setCartAddCount(Long cartAddCount) {
+        this.cartAddCount = cartAddCount;
+    }
+
     public Long getSalesCount() {
         return salesCount;
     }
@@ -100,6 +111,10 @@ public class DailyProductStats {
     // Increment methods for convenience and atomic-like operations logic
     public void incrementViews() {
         this.viewCount++;
+    }
+
+    public void incrementCartAdds() {
+        this.cartAddCount++;
     }
 
     public void recordSale(Double amount) {

@@ -35,6 +35,8 @@ public class ProductController {
     private ReviewVoteService voteService;
     @Autowired
     private ControllerHelper controllerHelper;
+    @Autowired
+    private com.onlineStoreCom.analytics.ProductAnalyticsService analyticsService;
 
     // @GetMapping("/p/{category_alias}")
     // public String viewCategoryFirstPage(@PathVariable("category_alias") String
@@ -154,6 +156,9 @@ public class ProductController {
 
         // [AG-PSI-001] Publish Product View Event (Async Analytics)
         if (product != null && product.getId() != null) {
+            // AG-PSI-001: Log View with Async Service
+            analyticsService.logView(product.getId());
+
             Long tenantIdLong = com.onlineStoreCom.tenant.TenantContext.getTenantId();
             // If accessed by public, tenant might be null if not set by filter?
             // Ideally filter sets it based on domain. If null, we skip or log?

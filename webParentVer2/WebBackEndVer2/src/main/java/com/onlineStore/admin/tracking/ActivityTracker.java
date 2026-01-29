@@ -1,20 +1,32 @@
 package com.onlineStore.admin.tracking;
 
+
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Tracks real-time activity of Visitors, Users, and Customers.
+ */
 @Component
 public class ActivityTracker {
 
+    // Tracks anonymous visitors (Session count)
     private final AtomicInteger activeVisitors = new AtomicInteger(0);
-    private final AtomicInteger activeUsers = new AtomicInteger(0);
-    private final AtomicInteger activeCustomers = new AtomicInteger(0);
 
-    public void incrementVisitor() {
+    // Map<UserId, LastHeartbeat>
+    private final Map<Integer, Long> activeUsers = new ConcurrentHashMap<>();
+
+    // Map<CustomerId, LastHeartbeat>
+    private final Map<Integer, Long> activeCustomers = new ConcurrentHashMap<>();
+
+    public void visitorConnected() {
         activeVisitors.incrementAndGet();
     }
 
-    public void decrementVisitor() {
+    public void visitorDisconnected() {
         activeVisitors.decrementAndGet();
     }
 
@@ -22,27 +34,30 @@ public class ActivityTracker {
         return activeVisitors.get();
     }
 
-    public void incrementUser() {
-        activeUsers.incrementAndGet();
+    public void userLoggedIn(Integer userId) {
+        activeUsers.put(userId, System.currentTimeMillis());
     }
 
-    public void decrementUser() {
-        activeUsers.decrementAndGet();
+    public void userLoggedOut(Integer userId) {
+        activeUsers.remove(userId);
     }
 
     public int getActiveUserCount() {
-        return activeUsers.get();
-    }
-    
-    public void incrementCustomer() {
-        activeCustomers.incrementAndGet();
+        // Optional: Clean up stale sessions older than 30 mins
+        long thirtyMinsAgo = System.currentTimeMillis() - (30 * 60 * 1000);
+        activeUsers.entrySet().removeIf(entry -> entry.getValue() < thirtyMinsAgo);
+
+        return activeUsers.size();
     }
 
-    public void decrementCustomer() {
-        activeCustomers.decrementAndGet();
+    public void customerLoggedIn(Integer customerId) {
+        activeCustomers.put(customerId, System.currentTimeMillis());
     }
 
     public int getActiveCustomerCount() {
-        return activeCustomers.get();
+        long thirtyMinsAgo = System.currentTimeMillis() - (30 * 60 * 1000);
+        activeCustomers.entrySet().removeIf(entry -> entry.getValue() < thirtyMinsAgo);
+
+        return activeCustomers.size();
     }
 }

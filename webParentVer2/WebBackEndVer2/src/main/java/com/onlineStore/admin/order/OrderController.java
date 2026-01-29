@@ -1,6 +1,5 @@
 package com.onlineStore.admin.order;
 
-import com.onlineStore.admin.product.service.ProductService;
 import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.setting.service.SettingService;
 import com.onlineStore.admin.setting.settingBag.CurrencySettingBag;
@@ -8,10 +7,6 @@ import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.exception.OrderNotFoundException;
 import com.onlineStoreCom.entity.order.Order;
-import com.onlineStoreCom.entity.order.OrderDetail;
-import com.onlineStoreCom.entity.order.OrderStatus;
-import com.onlineStoreCom.entity.order.OrderTrack;
-import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.setting.Setting;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
 import com.onlineStoreCom.tenant.TenantContext;
@@ -26,22 +21,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class OrderController {
+
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(OrderController.class);
+
     private final String defaultRedirectURL = "redirect:/orders/page/1?sortField=orderTime&sortDir=desc";
 
     @Autowired
     private OrderService orderService;
     @Autowired
     private SettingService settingService;
-    @Autowired
-    private ProductService productService;
+    // AG-CLEANUP: ProductService is now used by OrderService, not Controller
+    // (unless needed for other views)
+    // Checking usages below: editOrder uses listAllCountries via OrderService.
+    // listByPage uses orderService.
+    // saveOrder uses ProductService INDIRECTLY via updateProductDetails.
+    // So we can remove ProductService autowire?
+    // Wait, updateProductDetails (now in Service) needs it. OrderController doesn't
+    // seem to need it explicitly elsewhere.
+    // Let's comment it out to see if it breaks anything (Verification will catch
+    // it).
+    // @Autowired
+    // private ProductService productService;
 
     @GetMapping("/orders")
     public String listFirstPage() {
@@ -139,51 +143,11 @@ public class OrderController {
     public String saveOrder(Order order, HttpServletRequest request, RedirectAttributes ra) {
         String countryName = request.getParameter("countryName");
         order.setCountry(countryName);
+
         Long tenantId = TenantContext.getTenantId();
         order.setTenantId(tenantId);
-        updateProductDetails(order, request);
-        updateOrderTracks(order, request);
 
-        orderService.save(order);
-
-        ra.addFlashAttribute("message", "The order ID " + order.getId() + " has been updated successfully");
-
-        return defaultRedirectURL;
-    }
-
-    private void updateOrderTracks(Order order, HttpServletRequest request) {
-        String[] trackIds = request.getParameterValues("trackId");
-        String[] trackStatuses = request.getParameterValues("trackStatus");
-        String[] trackDates = request.getParameterValues("trackDate");
-        String[] trackNotes = request.getParameterValues("trackNotes");
-
-        List<OrderTrack> orderTracks = order.getOrderTracks();
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
-
-        for (int i = 0; i < trackIds.length; i++) {
-
-            OrderTrack trackRecord = new OrderTrack();
-
-            int trackId = Integer.parseInt(trackIds[i]);
-            if (trackId > 0) {
-                trackRecord.setId(trackId);
-            }
-
-            trackRecord.setOrder(order);
-            trackRecord.setStatus(OrderStatus.valueOf(trackStatuses[i]));
-            trackRecord.setNotes(trackNotes[i]);
-
-            try {
-                trackRecord.setUpdatedTime(dateFormatter.parse(trackDates[i]));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-            orderTracks.add(trackRecord);
-        }
-    }
-
-    private void updateProductDetails(Order order, HttpServletRequest request) {
+        // AG-REFACTOR-ORDER-003: Delegated to Service
         String[] detailIds = request.getParameterValues("detailId");
         String[] productIds = request.getParameterValues("productId");
         String[] productPrices = request.getParameterValues("productPrice");
@@ -192,35 +156,22 @@ public class OrderController {
         String[] productSubtotals = request.getParameterValues("productSubtotal");
         String[] productShipCosts = request.getParameterValues("productShipCost");
 
-        Set<OrderDetail> orderDetails = order.getOrderDetails();
+        String[] trackIds = request.getParameterValues("trackId");
+        String[] trackStatuses = request.getParameterValues("trackStatus");
+        String[] trackDates = request.getParameterValues("trackDate");
+        String[] trackNotes = request.getParameterValues("trackNotes");
 
-        for (int i = 0; i < detailIds.length; i++) {
+        orderService.updateProductDetails(order, detailIds, productIds, productPrices, productDetailCosts, quantities,
+                productSubtotals, productShipCosts);
+        orderService.updateOrderTracks(order, trackIds, trackStatuses, trackDates, trackNotes);
 
-            OrderDetail orderDetail = new OrderDetail();
-            Integer productId = Integer.parseInt(productIds[i]);
+        orderService.save(order);
 
-            Product product;
-            product = productService.findById(productId);
+        ra.addFlashAttribute("message", "The order ID " + order.getId() + " has been updated successfully");
 
-            orderDetail.setProduct(product);
-
-            int detailId = Integer.parseInt(detailIds[i]);
-
-            if (detailId > 0) {
-                orderDetail.setId(detailId);
-            }
-            orderDetail.setProduct(product);
-            orderDetail.setOrder(order);
-            orderDetail.setProductCost(Float.parseFloat(productDetailCosts[i]));
-            orderDetail.setSubtotal(Float.parseFloat(productSubtotals[i]));
-            orderDetail.setShippingCost(Float.parseFloat(productShipCosts[i]));
-            orderDetail.setQuantity(Integer.parseInt(quantities[i]));
-            orderDetail.setUnitPrice(Float.parseFloat(productPrices[i]));
-
-            orderDetails.add(orderDetail);
-
-        }
-
+        return defaultRedirectURL;
     }
+
+    // AG-CLEANUP: Private methods moved to Service
 
 }

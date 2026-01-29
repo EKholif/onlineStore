@@ -5,23 +5,24 @@ import com.onlineStore.admin.category.CategoryRepository;
 import com.onlineStoreCom.entity.category.Category;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import org.springframework.data.domain.PageImpl;
 import java.util.*;
 
 @Service
 @Transactional
 public class CategoryService {
 
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CategoryService.class);
+
     public static final int USERS_PER_PAGE = 5;
 
     @Autowired
     private CategoryRepository categoryRepo;
+
+    @Autowired
+    private com.onlineStore.admin.utility.storage.StorageService storageService;
 
     public List<Category> listAll() {
         return categoryRepo.findAll();
@@ -242,7 +243,39 @@ public class CategoryService {
         }
         setCategoryLevel(category);
         return categoryRepo.saveAndFlush(category);
+    }
 
+    // AG-REFACTOR-CAT-001: Handle Image Storage in Service
+    public Category saveCategory(Category category, org.springframework.web.multipart.MultipartFile multipartFile)
+            throws java.io.IOException {
+        LOGGER.info("Saving category: {}", category.getName());
+        if (!multipartFile.isEmpty()) {
+            String fileName = org.springframework.util.StringUtils
+                    .cleanPath(java.util.Objects.requireNonNull(multipartFile.getOriginalFilename()));
+            category.setImage(fileName);
+            LOGGER.debug("New image file provided: {}", fileName);
+
+            // Allow override of ID if updating existing
+            Category savedCategory = saveCategory(category);
+
+            String uploadDir = storageService.getStoragePath(savedCategory.getId(), "categories");
+
+            // Clean old dir if updating?
+            // The controller logic was: if updating and file not empty -> cleanDir, then
+            // saveFile.
+            // But 'cleanDir' empties the dir. If we have only 1 image per category, that's
+            // fine.
+            storageService.cleanDir(uploadDir);
+            storageService.saveFile(uploadDir, fileName, multipartFile);
+
+            return savedCategory;
+        } else {
+            // No new file. Use existing logic (keeps old image if object has it)
+            // But wait, if 'category' object passed from controller has null image ?
+            // Controller usually copies properties.
+            // If new file is empty, we just save the entity.
+            return saveCategory(category);
+        }
     }
 
     public void setCategoryLevel(Category category) {
@@ -260,6 +293,15 @@ public class CategoryService {
 
     public void deleteCategory(Integer id) throws CategoryNotFoundException {
         try {
+            // AG-REFACTOR-CAT-002: Cleanup artifacts
+            if (categoryRepo.existsById(id)) {
+                String storagePath = storageService.getStoragePath(id, "categories");
+                try {
+                    storageService.deleteDir(storagePath);
+                } catch (java.io.IOException e) {
+                    e.printStackTrace(); // Log error
+                }
+            }
             categoryRepo.deleteById(id);
 
         } catch (NoSuchElementException ex) {

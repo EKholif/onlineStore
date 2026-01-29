@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaRepositories(basePackages = { "com.onlineStore.admin", "com.onlineStore.services",
-        "com.onlineStoreCom.repo" })
+        "com.onlineStoreCom.repo"}, repositoryBaseClass = com.onlineStoreCom.repo.base.BaseTenantRepositoryImpl.class)
 @EnableTransactionManagement
 public class JpaConfig {
 }

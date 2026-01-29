@@ -1,11 +1,9 @@
 package com.onlineStore.admin.product;
 
-import com.onlineStore.admin.brand.BrandNotFoundException;
 import com.onlineStore.admin.brand.BrandService;
 import com.onlineStore.admin.category.CategoryNotFoundException;
 import com.onlineStore.admin.category.services.CategoryService;
 import com.onlineStore.admin.product.service.ProductService;
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.brand.Brand;
@@ -15,7 +13,6 @@ import com.onlineStoreCom.tenant.TenantContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 @org.springframework.stereotype.Controller
 public class ProductController {
@@ -34,6 +30,7 @@ public class ProductController {
     private CategoryService categoryService;
     @Autowired
     private ProductService productService;
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(ProductController.class);
 
     @GetMapping("/products/products")
     public String listAllProducts() {
@@ -57,39 +54,25 @@ public class ProductController {
     public String manageMyProducts() {
         return "redirect:/products/page/1?sortField=name&sortDir=asc";
     }
-
-    static void setProductDetails(String[] detailIDs, String[] detailNames,
-            String[] detailValues, Product product, Long tenantId) {
-        if (detailNames == null || detailNames.length == 0)
-            return;
-
-        for (int count = 0; count < detailNames.length; count++) {
-            String name = detailNames[count];
-            String value = detailValues[count];
-
-            Integer id = count;
-
-            if (id != 0) {
-                product.addProductDetails(id, name, value, tenantId);
-            } else if (!name.isEmpty() && !value.isEmpty()) {
-                product.addProductDetails(name, value, tenantId);
-
-            }
-        }
-    }
+    @Autowired
+    private com.onlineStoreCom.analytics.ProductAnalyticsService analyticsService;
 
     @GetMapping("/products/page/{pageNum}")
     public String listByPage(
             @PagingAndSortingParam(listName = "products", moduleURL = "/products/page/") PagingAndSortingHelper helper,
             @PathVariable(name = "pageNum") int pageNum) {
 
-        System.out.println("🔍 [ProductController] Requested Page: " + pageNum);
-        System.out.println("   > Current TenantContext ID: " + TenantContext.getTenantId());
+        // AG-OBSERVABILITY: Replaced System.out with SLF4J
+        LOGGER.debug("Received request for Product Page: {}", pageNum);
 
-        // Check Session Attribute manually as a cross-reference
-        // Request context is not easily available here without injecting
-        // HttpServletRequest,
-        // relying on TenantContext which should be set by Filter.
+        // AG-ANALYTICS: Log View Asynchronously
+        // We track "List View" as a generic view maybe? Or only Detail View?
+        // Typically "View" means detail page. But let's log listing access too if
+        // useful.
+        // For strictness, let's look at `detailProductView` for the actual analytics
+        // event.
+        // But the user rules said "Log View".
+        // Let's check detailProductView method.
 
         Page<Product> page = productService.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
                 helper.getKeyword());
@@ -146,91 +129,21 @@ public class ProductController {
             @RequestParam(name = "detailNames", required = false) String[] detailNames,
             @RequestParam(name = "detailValues", required = false) String[] detailValues) throws IOException {
 
-        redirectAttributes.addFlashAttribute("message", "the brand has been saved successfully.  ");
+        redirectAttributes.addFlashAttribute("message", "the product has been saved successfully.");
 
         Long tenantId = TenantContext.getTenantId();
         product.setTenantId(tenantId);
 
-        // --- AG-UNIFIED-002: Smart Defaults (Backend Enforcement) ---
-        if (!product.getHasDescription()) {
-            // Satisfy NOT NULL constraint with whitespace
-            product.setShortDescription(" ");
-            product.setFullDescription(" ");
-        }
+        // AG-REFACTOR: Validating Detail Arrays before processing
+        productService.processProductDetails(detailIDs, detailNames, detailValues, product, tenantId);
 
-        if (!product.getHasShipping()) {
-            // Reset physical attributes
-            product.setWeight(0);
-            product.setLength(0);
-            product.setWidth(0);
-            product.setHeight(0);
-            // Services/Digital items are always "available" (or managed by Booking Slots)
-            product.setInStock(true);
-        }
+        // AG-REFACTOR: Delegate logic and storage to Service
+        productService.saveProduct(product, mainImageMultipartFile, extraImageMultipart);
 
-        if (!product.getHasScheduling()) {
-            // Ensure no stale booking data
-            product.setBookingSlots(0);
-        }
-        // -----------------------------------------------------------
-
-        setMainImageName(mainImageMultipartFile, product);
-        setExtraImageNames(extraImageMultipart, product);
-        setProductDetails(detailIDs, detailNames, detailValues, product, tenantId);
-        Product saveProduct = productService.saveProduct(product);
-
-        saveUpLoadImages(mainImageMultipartFile, extraImageMultipart, saveProduct);
         return new ModelAndView("redirect:/products/products");
     }
 
-    private void saveUpLoadImages(MultipartFile mainImageMultipartFile,
-            MultipartFile[] extraImageMultipart, Product saveProduct) throws IOException {
 
-        if (!mainImageMultipartFile.isEmpty()) {
-
-            String fileName = StringUtils
-                    .cleanPath(Objects.requireNonNull(mainImageMultipartFile.getOriginalFilename()));
-            String uploadDir = FileUploadUtil.getStoragePath(saveProduct.getId(), "products");
-            FileUploadUtil.saveFile(uploadDir, fileName, mainImageMultipartFile);
-        }
-
-        if (extraImageMultipart.length > 0) {
-
-            // AG-ASSET-PATH-005: Strict tenant asset hierarchy for extras
-            String uploadDir = FileUploadUtil.getStoragePath(saveProduct.getId(), "products") + "/extras/";
-
-            for (MultipartFile extramultipartFile : extraImageMultipart) {
-
-                if (!extramultipartFile.isEmpty()) {
-
-                    String extraImageFileName = StringUtils
-                            .cleanPath(Objects.requireNonNull(extramultipartFile.getOriginalFilename()));
-                    FileUploadUtil.saveFile(uploadDir, extraImageFileName, extramultipartFile);
-                }
-            }
-        }
-    }
-
-    private void setExtraImageNames(MultipartFile[] extraImageMultipart, Product product) {
-
-        for (MultipartFile multipartFile : extraImageMultipart) {
-
-            if (!multipartFile.isEmpty()) {
-                String extraImageFileName = StringUtils
-                        .cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-                product.addExtraImages(extraImageFileName);
-            }
-        }
-    }
-
-    private void setMainImageName(MultipartFile mainImageMultipartFile, Product product) {
-
-        if (!mainImageMultipartFile.isEmpty()) {
-            String fileName = StringUtils
-                    .cleanPath(Objects.requireNonNull(mainImageMultipartFile.getOriginalFilename()));
-            product.setMainImage(fileName);
-        }
-    }
 
     @GetMapping("/products/{id}/enabled/{status}")
     public ModelAndView UpdateUserStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enable,
@@ -282,6 +195,11 @@ public class ProductController {
     @GetMapping("/products/detail/{id}")
     public ModelAndView detailProductView(@PathVariable("id") Integer id, RedirectAttributes ra) {
 
+        // AG-ANALYTICS: Track specific product view
+        if (id != null) {
+            analyticsService.logView(id);
+        }
+
         ModelAndView model = new ModelAndView("products/product_detail_modal");
 
         Product product = productService.findById(id);
@@ -313,7 +231,7 @@ public class ProductController {
             @RequestParam(name = "detailValues", required = false) String[] detailValues)
             throws CategoryNotFoundException, IOException {
 
-        redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
+        redirectAttributes.addFlashAttribute("message", "the Product Id : " + id + " has been updated successfully. ");
 
         Product updateProduct = productService.findById(id);
         Long tenantId = TenantContext.getTenantId();
@@ -326,39 +244,46 @@ public class ProductController {
             return new ModelAndView("redirect:/products/products");
         }
 
-        setProductDetails(detailIDs, detailNames, detailValues, updateProduct, tenantId);
+        // Merge Details
+        productService.processProductDetails(detailIDs, detailNames, detailValues, updateProduct, tenantId);
 
-        setMainImageName(mainImageMultipartFile, product);
-        setExtraImageNames(extraImageMultipart, product);
+        // Copy Properties from Form
+        BeanUtils.copyProperties(product, updateProduct, "id", "name", "alias", "tenantId", "mainImage", "images",
+                "details");
 
-        if (mainImageMultipartFile.isEmpty()) {
+        // Delegate Saving (Service handles Image Logic and Saving)
+        // Note: We pass the updateProduct which now has modified properties, and the
+        // images.
+        // Service check: if mainImage is empty, it does NOT overwrite
+        // product.mainImage.
+        // BUT product.mainImage is now updateProduct.mainImage from the DB (because we
+        // ignored it in copyProperties? No, we didn't).
+        // Wait, copyProperties syntax is (source, target, ignoreProperties).
+        // I ignored "mainImage", "images", "details" so they preserve DB state.
+        // This allows Service to perform logic: if new image uploaded, set it. If not,
+        // keep existing.
+        // Perfect.
 
-            product.setMainImage(updateProduct.getMainImage());
-
-        }
-
-        BeanUtils.copyProperties(product, updateProduct, "id", "name", "alias", "tenantId");
-
-        Product saveProduct = productService.saveProduct(updateProduct);
-
-        saveUpLoadImages(mainImageMultipartFile, extraImageMultipart, saveProduct);
+        productService.saveProduct(updateProduct, mainImageMultipartFile, extraImageMultipart);
 
         return new ModelAndView("redirect:/products/products");
     }
 
     @GetMapping("/products/delete-product/{id}")
     public ModelAndView deleteProduct(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
-
-        redirectAttributes.addFlashAttribute("message", deleteFilesAndFolder(id));
-
+        try {
+            productService.deleteProduct(id);
+            redirectAttributes.addFlashAttribute("message", "the Product ID: " + id + " has been Deleted");
+        } catch (CategoryNotFoundException e) {
+            redirectAttributes.addFlashAttribute("message", "Product Not Found");
+        }
         return new ModelAndView("redirect:/products/products");
     }
 
     @PostMapping("/delete-Products")
     public ModelAndView deleteProducts(
             @RequestParam(name = "selectedForDelete", required = false) List<Integer> selectedForDelete,
-            RedirectAttributes redirectAttributes)
-            throws IOException, ProductNotFoundException, CategoryNotFoundException, BrandNotFoundException {
+            RedirectAttributes redirectAttributes) {
 
         ModelAndView model = new ModelAndView("/products/products");
         redirectAttributes.addFlashAttribute("message", "the Product ID: " + selectedForDelete + " has been Deleted");
@@ -367,30 +292,16 @@ public class ProductController {
 
         if (selectedForDelete != null && !selectedForDelete.isEmpty()) {
             for (Integer id : selectedForDelete) {
-                redirectAttributes.addFlashAttribute("message", deleteFilesAndFolder(id));
+                try {
+                    productService.deleteProduct(id);
+                } catch (CategoryNotFoundException e) {
+                    // ignore partial failures
+                }
             }
         }
         return new ModelAndView("redirect:/products/products");
     }
 
-    private String deleteFilesAndFolder(Integer id) {
-        try {
-            if (productService.existsById(id)) {
-
-                // AG-ASSET-PATH-005: Strict tenant asset hierarchy for extras
-                String storagePath = FileUploadUtil.getStoragePath(productService.findById(id).getId(), "products");
-                FileUploadUtil.deleteDir(storagePath + "/extras/");
-                FileUploadUtil.deleteDir(storagePath);
-                productService.deleteProduct(id);
-                return "the Product ID: " + id + " has been Deleted";
-            } else {
-                return "the Product ID: " + id + " Product Not Found";
-            }
-        } catch (IOException | CategoryNotFoundException e) {
-            return " Brand Not Found";
-        }
-
-    }
 
     // @GetMapping("/products/export/csv")
     // public void exportToCsv(HttpServletResponse response) throws IOException {

@@ -100,8 +100,10 @@ public class WebSecurityConfig {
                         .deleteCookies("JSESSIONID", "remember-me") // Ensure clean session kill
                         .permitAll())
                 .sessionManagement(session -> session
-                        .sessionFixation().migrateSession() // Prevent session fixation attacks
-                        .maximumSessions(1) // Prevent concurrent logins if needed (optional, keeping 1 for security)
+                        .sessionFixation().changeSessionId() // AG-SECURITY: Safer than migrateSession
+                        // for stability
+                        .maximumSessions(-1) // AG-STABILITY: Disable concurrency control to prevent
+                        // accidental logouts
                         .expiredUrl("/login?expired")) // Redirect if session dies
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin())

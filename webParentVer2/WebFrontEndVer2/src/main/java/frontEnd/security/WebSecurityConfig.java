@@ -103,7 +103,9 @@ public class WebSecurityConfig {
 
         @Bean
         public WebSecurityCustomizer webSecurityCustomizer() {
-            return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**", "/fontawesome/**");
+            // AG-SECURITY-ASSET-001: Allow public access to tenant assets
+            return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**",
+                    "/fontawesome/**", "/tenants/**");
         }
 
         @Bean

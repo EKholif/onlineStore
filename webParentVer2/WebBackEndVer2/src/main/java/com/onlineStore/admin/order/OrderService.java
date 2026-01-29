@@ -22,10 +22,14 @@ import java.util.NoSuchElementException;
 public class OrderService {
 	private static final int ORDERS_PER_PAGE = 4;
 
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(OrderService.class);
+
 	@Autowired
 	private OrderRepository orderRepo;
     @Autowired
     private CountryRepository countryRepo;
+    @Autowired
+    private com.onlineStore.admin.product.service.ProductService productService;
 
 	public void listByPage(int pageNum, PagingAndSortingHelper helper) {
 		String sortField = helper.getSortField();
@@ -142,5 +146,71 @@ public class OrderService {
             }
 		}
 
+    }
+
+    // AG-REFACTOR-ORDER-001: Logic moved from Controller
+    public void updateOrderTracks(Order order, String[] trackIds, String[] trackStatuses, String[] trackDates,
+                                  String[] trackNotes) {
+        if (trackIds == null)
+            return;
+
+        List<OrderTrack> orderTracks = order.getOrderTracks();
+        java.text.DateFormat dateFormatter = new java.text.SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+
+        for (int i = 0; i < trackIds.length; i++) {
+
+            OrderTrack trackRecord = new OrderTrack();
+
+            int trackId = Integer.parseInt(trackIds[i]);
+            if (trackId > 0) {
+                trackRecord.setId(trackId);
+            }
+
+            trackRecord.setOrder(order);
+            trackRecord.setStatus(OrderStatus.valueOf(trackStatuses[i]));
+            trackRecord.setNotes(trackNotes[i]);
+
+            try {
+                trackRecord.setUpdatedTime(dateFormatter.parse(trackDates[i]));
+            } catch (java.text.ParseException e) {
+                LOGGER.error("Error parsing date: {}", e.getMessage());
+            }
+
+            orderTracks.add(trackRecord);
+        }
+    }
+
+    // AG-REFACTOR-ORDER-002: Logic moved from Controller
+    public void updateProductDetails(Order order, String[] detailIds, String[] productIds, String[] productPrices,
+                                     String[] productDetailCosts, String[] quantities, String[] productSubtotals, String[] productShipCosts) {
+        if (detailIds == null)
+            return;
+
+        java.util.Set<com.onlineStoreCom.entity.order.OrderDetail> orderDetails = order.getOrderDetails();
+
+        for (int i = 0; i < detailIds.length; i++) {
+
+            com.onlineStoreCom.entity.order.OrderDetail orderDetail = new com.onlineStoreCom.entity.order.OrderDetail();
+            Integer productId = Integer.parseInt(productIds[i]);
+
+            com.onlineStoreCom.entity.product.Product product = productService.findById(productId);
+
+            orderDetail.setProduct(product);
+
+            int detailId = Integer.parseInt(detailIds[i]);
+
+            if (detailId > 0) {
+                orderDetail.setId(detailId);
+            }
+            orderDetail.setProduct(product);
+            orderDetail.setOrder(order);
+            orderDetail.setProductCost(Float.parseFloat(productDetailCosts[i]));
+            orderDetail.setSubtotal(Float.parseFloat(productSubtotals[i]));
+            orderDetail.setShippingCost(Float.parseFloat(productShipCosts[i]));
+            orderDetail.setQuantity(Integer.parseInt(quantities[i]));
+            orderDetail.setUnitPrice(Float.parseFloat(productPrices[i]));
+
+            orderDetails.add(orderDetail);
+        }
     }
 }

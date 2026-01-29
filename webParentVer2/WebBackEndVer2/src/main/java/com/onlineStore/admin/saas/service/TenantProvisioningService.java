@@ -1,9 +1,9 @@
 package com.onlineStore.admin.saas.service;
 
-import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStore.admin.saas.repository.BusinessTemplateRepository;
 import com.onlineStore.admin.saas.repository.TenantTemplateProductRepository;
 import com.onlineStore.admin.setting.country.SettingRepository;
+import com.onlineStore.services.service.repository.ProductRepository;
 import com.onlineStoreCom.entity.product.Product;
 import com.onlineStoreCom.entity.saas.BusinessTemplate;
 import com.onlineStoreCom.entity.saas.TenantTemplateProduct;
@@ -80,6 +80,7 @@ public class TenantProvisioningService {
             p.setAlias(demo.getAlias() + "-" + System.currentTimeMillis()); // Ensure unique alias
             p.setShortDescription(demo.getShortDescription());
             p.setFullDescription(demo.getFullDescription());
+            p.setMainImage(demo.getMainImage());
             p.setCreatedTime(new Date());
             p.setUpdatedTime(new Date());
             p.setProductType(demo.getProductType());

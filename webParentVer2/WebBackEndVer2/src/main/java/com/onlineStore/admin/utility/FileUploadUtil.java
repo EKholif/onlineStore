@@ -21,6 +21,14 @@ public class FileUploadUtil {
         tenantsBasePath = path;
     }
 
+    /**
+     * AG-STORAGE-001: Get resolved absolute base path for validation
+     * WHY: Allows StoragePathValidator to verify consistency with MvcConfig
+     */
+    public static String getResolvedBasePath() {
+        return tenantsBasePath;
+    }
+
     public static String getStoragePath(Object entityId, String type) {
         Long tenantId = TenantContext.getTenantId();
         if (tenantId == null) {

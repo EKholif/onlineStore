@@ -1,10 +1,10 @@
 VERIFICATION REPORT
 ===================
 [products       ] Tenant 1: 0 | Tenant 4: 109 | Status: ✅ Clean
-[categories     ] Tenant 1: 0 | Tenant 4: 34 | Status: ✅ Clean
+[categories     ] Tenant 1: 0 | Tenant 4: 32 | Status: ✅ Clean
 [brands         ] Tenant 1: 0 | Tenant 4: 77 | Status: ✅ Clean
 [customers      ] Tenant 1: 0 | Tenant 4: 44 | Status: ✅ Clean
-[orders         ] Tenant 1: 0 | Tenant 4: 160 | Status: ✅ Clean
+[orders         ] Tenant 1: 0 | Tenant 4: 165 | Status: ✅ Clean
 [reviews        ] Tenant 1: 0 | Tenant 4: 66 | Status: ✅ Clean
 [articles       ] Tenant 1: 0 | Tenant 4: 9 | Status: ✅ Clean
 [menus          ] Tenant 1: 0 | Tenant 4: 0 | Status: ✅ Clean

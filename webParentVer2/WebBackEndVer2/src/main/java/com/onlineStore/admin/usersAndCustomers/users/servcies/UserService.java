@@ -30,6 +30,54 @@ public class UserService {
     private RoleRepository roleRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private com.onlineStore.admin.utility.storage.StorageService storageService;
+
+    // AG-REFACTOR-USER-003: Unified save method (Create/Update)
+    public User saveUser(User user, org.springframework.web.multipart.MultipartFile multipartFile)
+            throws java.io.IOException {
+        LOGGER.info("Saving user: {}", user.getEmail());
+
+        // 1. Handle Password
+        if (user.getId() != null) {
+            User existingUser = userRepo.findById(user.getId()).orElse(null);
+            if (existingUser != null) {
+                if (user.getPassword().isEmpty()) {
+                    user.setPassword(existingUser.getPassword());
+                } else {
+                    encodePassword(user);
+                }
+
+                // Keep photos if not updating
+                if (multipartFile.isEmpty()) {
+                    user.setPhotos(existingUser.getPhotos());
+                }
+            } else {
+                encodePassword(user); // Should not happen if ID exists but safety check
+            }
+        } else {
+            encodePassword(user);
+        }
+
+        // 2. Handle Image
+        if (!multipartFile.isEmpty()) {
+            String fileName = org.springframework.util.StringUtils
+                    .cleanPath(java.util.Objects.requireNonNull(multipartFile.getOriginalFilename()));
+            user.setPhotos(fileName);
+
+            User savedUser = userRepo.saveAndFlush(user);
+
+            String uploadDir = storageService.getStoragePath(savedUser.getId(), "users");
+            storageService.cleanDir(uploadDir);
+            storageService.saveFile(uploadDir, fileName, multipartFile);
+
+            LOGGER.debug("Saved user photo: {}", fileName);
+            return savedUser;
+        }
+
+        return userRepo.saveAndFlush(user);
+    }
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(UserService.class);
 
     public List<User> listAllUsers() {
@@ -44,10 +92,7 @@ public class UserService {
         encodePassword(user);
         return userRepo.saveAndFlush(user);
     }
-
-    public User saveUpdatededUser(User user) {
-        return userRepo.saveAndFlush(user);
-    }
+    // AG-CLEANUP: Removed saveUpdatededUser (redundant)
 
     public Page<User> listByPage(int pageNum, String sortField, String sortDir, String keyword) {
         Pageable pageable = createPageable(pageNum, sortField, sortDir);
@@ -91,6 +136,15 @@ public class UserService {
 
     public void deleteUser(Integer id) throws UsernameNotFoundException {
         try {
+            // AG-REFACTOR-USER-002: Cleanup artifacts
+            if (userRepo.existsById(id)) {
+                String storagePath = storageService.getStoragePath(id, "users");
+                try {
+                    storageService.deleteDir(storagePath);
+                } catch (java.io.IOException e) {
+                    LOGGER.error("Failed to delete user directory: {}", e.getMessage());
+                }
+            }
             userRepo.deleteById(id);
 
         } catch (NoSuchElementException ex) {

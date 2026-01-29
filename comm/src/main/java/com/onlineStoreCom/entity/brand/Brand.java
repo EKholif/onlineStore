@@ -10,7 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "brands")
+@Table(name = "brands", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "tenant_id"})
+})
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Brand extends IdBasedEntity {

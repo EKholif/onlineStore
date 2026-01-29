@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 @Entity
-@Table(name = "'user'")
+@Table(name = "users")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class User extends IdBasedEntity {

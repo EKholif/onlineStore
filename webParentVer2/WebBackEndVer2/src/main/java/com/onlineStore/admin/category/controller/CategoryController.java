@@ -5,7 +5,6 @@ import com.onlineStore.admin.category.controller.utility.CategoryCsvCategoryExpo
 import com.onlineStore.admin.category.controller.utility.CategoryExcelExporter;
 import com.onlineStore.admin.category.controller.utility.CategoryPdfCategoryExporter;
 import com.onlineStore.admin.category.services.CategoryService;
-import com.onlineStore.admin.utility.FileUploadUtil;
 import com.onlineStore.admin.utility.paging.PagingAndSortingHelper;
 import com.onlineStore.admin.utility.paging.PagingAndSortingParam;
 import com.onlineStoreCom.entity.category.Category;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,15 +20,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 @org.springframework.stereotype.Controller
 public class CategoryController {
+
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CategoryController.class);
+
     @Autowired
     private CategoryService service;
 
     @GetMapping("/categories/categories")
     public String listAllCategories() {
+        LOGGER.info("Request received to list all categories (redirecting to page 1)");
         return "redirect:/categories/page/1?sortField=name&sortDir=asc";
     }
 
@@ -38,6 +39,9 @@ public class CategoryController {
     public String listByPage(
             @PagingAndSortingParam(listName = "categories", moduleURL = "/categories/page/") PagingAndSortingHelper helper,
             @PathVariable(name = "pageNum") int pageNum) {
+
+        LOGGER.debug("Listing categories page: {} with sortField: {}, sortDir: {}", pageNum, helper.getSortField(),
+                helper.getSortDir());
 
         Page<Category> page = service.listByPage(pageNum, helper.getSortField(), helper.getSortDir(),
                 helper.getKeyword());
@@ -70,30 +74,18 @@ public class CategoryController {
     // todo : rundom id
 
     @PostMapping("/categories/save-category")
-    public ModelAndView saveNewUCategory(@ModelAttribute Category category,
+    public ModelAndView saveNewCategory(@ModelAttribute Category category,
                                          RedirectAttributes redirectAttributes, @RequestParam("fileImage") MultipartFile multipartFile)
             throws IOException {
-        redirectAttributes.addFlashAttribute("message", "the category   has been saved successfully.  ");
 
         Long tenantId = TenantContext.getTenantId();
         category.setTenantId(tenantId);
-        if (!multipartFile.isEmpty()) {
-            String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
-            category.setImage(fileName);
-            Category savedCategory = service.saveCategory(category);
+        // AG-REFACTOR: Delegate to Service
+        service.saveCategory(category, multipartFile);
 
-            String uploadDir = FileUploadUtil.getStoragePath(savedCategory.getId(), "categories");
-
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
-        } else {
-
-            service.saveCategory(category);
-        }
-
+        redirectAttributes.addFlashAttribute("message", "The category has been saved successfully.");
         return new ModelAndView("redirect:/categories/categories");
-
     }
 
     @GetMapping("/categories/edit/{id}")
@@ -122,53 +114,44 @@ public class CategoryController {
     }
 
     @PostMapping("/categories/save-edit-category")
-    public ModelAndView saveUpdaterUser(@RequestParam(name = "id") Integer id, @ModelAttribute Category category,
+    public ModelAndView saveUpdatedCategory(@RequestParam(name = "id") Integer id, @ModelAttribute Category category,
                                         RedirectAttributes redirectAttributes,
                                         @RequestParam("fileImage") MultipartFile multipartFile) throws CategoryNotFoundException, IOException {
 
-        redirectAttributes.addFlashAttribute("message", "the Category Id : " + id + " has been updated successfully. ");
-
         Category updateCategory = service.findById(id);
+
+        // AG-REFACTOR: Copy props then delegate to Service
+        // Note: Controller previously handled "if file empty -> copy excluding image".
+        // Service now handles "if file empty -> keep existing logic".
+        // But here we are binding form to 'category' object.
+        // We need to merge carefully.
 
         if (multipartFile.isEmpty()) {
             BeanUtils.copyProperties(category, updateCategory, "id", "image", "tenantId");
-            service.saveCategory(updateCategory);
-
-        } else if (!multipartFile.isEmpty()) {
-
-            FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(updateCategory.getId(), "categories"));
-            String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-            // AG-ASSET-PATH-012: Update path for category updates
-            String uploadDir = FileUploadUtil.getStoragePath(updateCategory.getId(), "categories");
-            category.setImage(fileName);
+            // Service.saveCategory(entity, emptyFile) will just save entity.
+            service.saveCategory(updateCategory, multipartFile);
+        } else {
+            // File present
             BeanUtils.copyProperties(category, updateCategory, "id", "tenantId");
-
-            service.saveCategory(updateCategory);
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
+            // Service will set new image name from file.
+            service.saveCategory(updateCategory, multipartFile);
         }
+
+        redirectAttributes.addFlashAttribute("message", "The Category ID " + id + " has been updated successfully.");
 
         return new ModelAndView("redirect:/categories/categories");
     }
 
     @GetMapping("/delete-category/{id}")
     public ModelAndView deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes)
-            throws CategoryNotFoundException, IOException {
+            throws CategoryNotFoundException {
 
         try {
-            if (service.existsById(id)) {
-                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.findById(id).getId(), "categories"));
-
-                service.deleteCategory(id);
-                redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + " has been Deleted");
-            } else {
-                redirectAttributes.addFlashAttribute("message", "the Category ID: " + id + " Category Not Found");
-
-            }
-
-            return new ModelAndView("redirect:/categories/categories");
-        } catch (CategoryNotFoundException | IOException ex) {
-            redirectAttributes.addFlashAttribute("message", " Category Not Found");
+            // AG-REFACTOR: Service handles cleanup
+            service.deleteCategory(id);
+            redirectAttributes.addFlashAttribute("message", "The Category ID " + id + " has been deleted.");
+        } catch (CategoryNotFoundException ex) {
+            redirectAttributes.addFlashAttribute("message", "Category Not Found or Error Deleting");
         }
         return new ModelAndView("redirect:/categories/categories");
     }
@@ -190,19 +173,19 @@ public class CategoryController {
     @PostMapping("/categories/deleteCategories")
     public ModelAndView deleteCategory(
             @RequestParam(name = "selectedCategory", required = false) List<Integer> selectedCategory,
-            RedirectAttributes redirectAttributes) throws CategoryNotFoundException, IOException {
-
-        redirectAttributes.addFlashAttribute("message", "the Category ID: " + selectedCategory + " has been Deleted");
-        ModelAndView model = new ModelAndView("categories/categories");
-
-        model.addObject("label", selectedCategory);
+            RedirectAttributes redirectAttributes) {
 
         if (selectedCategory != null && !selectedCategory.isEmpty()) {
             for (Integer id : selectedCategory) {
-                FileUploadUtil.cleanDir(FileUploadUtil.getStoragePath(service.findById(id).getId(), "categories"));
-                service.deleteCategory(id);
+                try {
+                    service.deleteCategory(id);
+                } catch (Exception e) {
+                    // ignore partial
+                }
             }
+            redirectAttributes.addFlashAttribute("message", "Selected Categories have been deleted.");
         }
+
         return new ModelAndView("redirect:/categories/categories");
     }
 

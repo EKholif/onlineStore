@@ -13,8 +13,19 @@ import java.util.List;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
+    // AG-STORAGE-001: Store resolved path for validation
+    private static String resolvedTenantsPath;
+
     @org.springframework.beans.factory.annotation.Value("${app.storage.tenants-path}")
     private String tenantsPath;
+
+    /**
+     * AG-STORAGE-001: Get resolved tenants path for validation
+     * WHY: Allows StoragePathValidator to verify consistency with FileUploadUtil
+     */
+    public static String getResolvedTenantsPath() {
+        return resolvedTenantsPath;
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -24,6 +35,10 @@ public class MvcConfig implements WebMvcConfigurer {
         // Example: /tenants/4/assets/categories/1/electronics.png
 
         Path resolvedPath = Paths.get(tenantsPath).toAbsolutePath().normalize();
+
+        // AG-STORAGE-001: Store for validation
+        resolvedTenantsPath = resolvedPath.toString();
+
         String absolutePath = resolvedPath.toUri().toString();
 
         // Ensure trailing slash for directory

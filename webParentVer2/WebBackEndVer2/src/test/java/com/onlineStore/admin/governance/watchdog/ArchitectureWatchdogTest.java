@@ -1,75 +1,95 @@
 package com.onlineStore.admin.governance.watchdog;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
+import org.springframework.util.FileSystemUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/**
+ * Integration test for the Architecture Watchdog.
+ * Verifies that creating prohibited folders triggers a violation.
+ */
 public class ArchitectureWatchdogTest {
 
-    @TempDir
-    Path tempDir;
-    private ArchitectureWatchdogService watchdogService;
-    private ViolationRegistry violationRegistry;
-    private FileSystemMonitor monitor; // We access this indirectly via registry or by exposing it for test?
+    private Path tempRoot;
+    private ViolationRegistry registry;
+    private FileSystemWatcher watcher;
+    private Thread watcherThread;
 
     @BeforeEach
     public void setup() throws IOException {
-        violationRegistry = new ViolationRegistry();
-        // creating manual monitor for test to avoid threading complexity of the full
-        // service if possible of full service
-        // But better test the service.
+        // Create a temporary root directory to watch
+        tempRoot = Files.createTempDirectory("watchdog-test-root");
+        registry = new ViolationRegistry();
 
-        watchdogService = new ArchitectureWatchdogService(violationRegistry);
+        // Initialize watcher
+        watcher = new FileSystemWatcher(Collections.singletonList(tempRoot), registry);
 
-        // We need to inject the temp directory as a root to monitor.
-        // ArchitectureWatchdogService hardcodes paths currently.
-        // We should really refactor ArchitectureWatchdogService to allow adding paths,
-        // or use reflection/subclass for testing.
-        // For this test, I'll instantiate FileSystemMonitor directly.
+        // Start watcher in a separate thread
+        watcherThread = new Thread(watcher);
+        watcherThread.start();
+
+        // Give the watcher a moment to initialize and register keys
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    @AfterEach
+    public void tearDown() throws IOException {
+        // Stop watcher
+        if (watcher != null) {
+            watcher.stop();
+        }
+        if (watcherThread != null) {
+            watcherThread.interrupt();
+        }
+
+        // Clean up temp directory
+        FileSystemUtils.deleteRecursively(tempRoot);
     }
 
     @Test
-    public void testLegacyFolderCreationDetection() throws IOException, InterruptedException {
-        // Given
-        FileSystemMonitor testMonitor = new FileSystemMonitor(violationRegistry);
-        testMonitor.registerPath(tempDir);
+    public void testDetectsLegacyFolderCreation() throws IOException, InterruptedException {
+        // 1. Create a prohibited folder
+        Path legacyFolder = tempRoot.resolve("site-logo");
+        Files.createDirectories(legacyFolder);
 
-        Thread monitorThread = new Thread(testMonitor);
-        monitorThread.start();
-
-        // Allow monitor to start
-        Thread.sleep(500);
-
-        // When: Create a prohibited folder
-        Path prohibited = tempDir.resolve("site-logo");
-        Files.createDirectories(prohibited);
-
-        // And: Create a valid folder (should not trigger)
-        Files.createDirectories(tempDir.resolve("valid-folder"));
-
-        // Allow file events to process
+        // 2. Wait for the WatchService to poll and process
+        // The watcher polls every 1 second, so we wait slightly longer
         Thread.sleep(2000);
 
-        // Then
-        List<ViolationRegistry.Violation> violations = violationRegistry.getViolations();
+        // 3. Verify violation
+        List<ViolationRegistry.Violation> violations = registry.getViolations();
+        assertEquals(1, violations.size(), "Should detect exactly one violation");
 
-        // Using stream to find specific violation
-        boolean found = violations.stream()
-                .anyMatch(v -> v.message.contains("site-logo") && v.code.equals("LEGACY_PATH_CREATION"));
+        ViolationRegistry.Violation v = violations.get(0);
+        assertTrue(v.getDescription().contains("Legacy folder structure created"), "Description should match");
+        assertTrue(v.getPath().contains("site-logo"), "Path should contain the culprit");
+    }
 
-        testMonitor.stop();
+    @Test
+    public void testIgnoresValidFolderCreation() throws IOException, InterruptedException {
+        // 1. Create a valid folder
+        Path validFolder = tempRoot.resolve("tenants");
+        Files.createDirectories(validFolder);
 
-        if (!found) {
-            System.out.println("Violations found: ");
-            violations.forEach(v -> System.out.println(v.message));
-        }
+        // 2. Wait
+        Thread.sleep(2000);
 
-        Assertions.assertTrue(found, "Should have detected creation of 'site-logo'");
+        // 3. Verify NO violation
+        List<ViolationRegistry.Violation> violations = registry.getViolations();
+        assertTrue(violations.isEmpty(), "Should NOT detect violation for valid folder");
     }
 }

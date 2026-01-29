@@ -11,7 +11,9 @@ import org.hibernate.annotations.Filter;
 import java.util.*;
 
 @Entity
-@Table(name = "products")
+@Table(name = "products", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"alias", "tenant_id"})
+})
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 // AG-MARKETPLACE-001: Allow reading Global Products (0) + Tenant Products
 @Filter(name = "tenantFilter", condition = "(tenant_id = :tenantId OR tenant_id = 0)")
@@ -21,7 +23,7 @@ public class Product extends IdBasedEntity {
     @Column(length = 256, nullable = false)
     protected String name;
 
-    @Column(unique = true, length = 256, nullable = false)
+    @Column(length = 256, nullable = false)
     protected String alias;
 
     @Column(length = 512, nullable = false, name = "short_description")
@@ -81,6 +83,21 @@ public class Product extends IdBasedEntity {
 
     @Column(name = "has_location")
     private Boolean hasLocation = false;
+
+    // --- AG-PRODUCT-STRICT-001: Missing Stock Quantity ---
+    // User Requirement: "Stock quantity" (Card 5)
+    @Column(name = "stock_quantity")
+    private Integer stockQuantity = 0;
+
+    // --- AG-PRODUCT-STRICT-002: Location Data (Card 7) ---
+    @Column(name = "location_address", length = 512)
+    private String locationAddress;
+
+    @Column(name = "location_latitude")
+    private Double locationLatitude;
+
+    @Column(name = "location_longitude")
+    private Double locationLongitude;
     // -------------------------------------------------------
 
     // ----------------------------------------------
@@ -344,6 +361,38 @@ public class Product extends IdBasedEntity {
 
     public void setHasLocation(Boolean hasLocation) {
         this.hasLocation = hasLocation;
+    }
+
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
+    public String getLocationAddress() {
+        return locationAddress;
+    }
+
+    public void setLocationAddress(String locationAddress) {
+        this.locationAddress = locationAddress;
+    }
+
+    public Double getLocationLatitude() {
+        return locationLatitude;
+    }
+
+    public void setLocationLatitude(Double locationLatitude) {
+        this.locationLatitude = locationLatitude;
+    }
+
+    public Double getLocationLongitude() {
+        return locationLongitude;
+    }
+
+    public void setLocationLongitude(Double locationLongitude) {
+        this.locationLongitude = locationLongitude;
     }
 
     // --- End Accessors ---

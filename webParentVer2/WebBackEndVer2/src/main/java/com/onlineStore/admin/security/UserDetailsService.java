@@ -31,10 +31,23 @@ public class UserDetailsService implements org.springframework.security.core.use
      */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        // 1. Try Scoped Search (Current Tenant)
         User user = userRepository.findByEmail(email);
 
         if (user != null) {
             return new StoreBackendUserDetails(user);
+        }
+
+        // 2. Fallback: Global Search if on Platform (Tenant 0)
+        // This allows correct login for Tenant Users via the Platform Login Page
+        Long currentTenantId = com.onlineStoreCom.tenant.TenantContext.getTenantId();
+        if (currentTenantId != null && currentTenantId == 0L) {
+            System.out.println("🔐 [UserDetailsService] User not found in Scope 0. Trying Global Search for: " + email);
+            user = userRepository.findByEmailGeneric(email);
+            if (user != null) {
+                System.out.println("   > Found Globally! User Tenant: " + user.getTenantId());
+                return new StoreBackendUserDetails(user);
+            }
         }
 
         throw new UsernameNotFoundException("Could not find user with email: " + email);

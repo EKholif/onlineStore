@@ -22,6 +22,26 @@
             <!-- Left Column: Content Builder -->
             <div class="col-md-9">
 
+                <!-- AG-ANALYTICS: Read-Only Stats Card -->
+                <div class="card mb-4 shadow-sm" th:if="${product.id != null}">
+                    <div class="card-header bg-light py-2">
+                        <h6 class="mb-0 text-muted"><i class="fas fa-chart-line me-2"></i>Product Intelligence</h6>
+                    </div>
+                    <div class="card-body py-2">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <small class="text-muted">Lifetime Views</small>
+                                <h4 class="fw-bold" th:text="${analyticsViews != null ? analyticsViews : 0}">0</h4>
+                            </div>
+                            <!-- Future: Sales, Carts -->
+                            <div class="col-md-9 pt-2">
+                                <small class="text-muted fst-italic">Analytics are tracked asynchronously to ensure
+                                    performance.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 1. Identity & Configuration -->
                 <div class="card mb-4 shadow-sm">
                     <div class="card-header bg-white py-3">
@@ -59,13 +79,19 @@
                                         <label class="form-check-label fw-bold" for="toggleShipping">Shipping</label>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" id="toggleScheduling" th:field="*{hasScheduling}"
                                                type="checkbox">
                                         <label class="form-check-label fw-bold" for="toggleScheduling">Booking</label>
                                     </div>
                                 </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" id="toggleLocation" th:field="*{hasLocation}"
+                                           type="checkbox">
+                                    <label class="form-check-label fw-bold" for="toggleLocation">Location</label>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -146,6 +172,16 @@
                         <div th:replace="~{products/fragment-edit/scheduling-fragment :: content}"></div>
                     </div>
                 </div>
+
+            <!-- 7. Location (Card 7) -->
+            <div class="card mb-4 shadow-sm" id="section-location" style="display:none;">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>7. Location & Service Area</h5>
+                </div>
+                <div class="card-body">
+                    <div th:replace="~{products/fragment-edit/location-fragment :: content}"></div>
+                </div>
+            </div>
 
                 <!-- 7. Technical Details -->
                 <div class="card mb-4 shadow-sm" id="section-details">
@@ -251,6 +287,7 @@
         const hasDescription = $("#toggleDescription").is(":checked");
         const hasShipping = $("#toggleShipping").is(":checked");
         const hasScheduling = $("#toggleScheduling").is(":checked");
+        const hasLocation = $("#toggleLocation").is(":checked"); // New
         const hasDetails = $("#toggleDetails").is(":checked");
 
         // 2. Apply Visibility (Slide Animation)
@@ -261,6 +298,7 @@
         // 3. Handle Product Type Specifics (Scheduling fields inside Overview)
         // Ag-Consolidation: Now using dedicated card #section-scheduling
         toggleSection("#section-scheduling", hasScheduling);
+        toggleSection("#section-location", hasLocation); // New
 
         // Note: Service Duration / Booking Slots are now inside #section-scheduling
         // So we don't need to toggle them individually unless we want finer control.

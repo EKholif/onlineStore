@@ -8,16 +8,19 @@ import org.hibernate.annotations.Filter;
 import java.util.Date;
 
 @Entity
-@Table(name = "services")
+@Table(name = "services", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "tenant_id"}),
+        @UniqueConstraint(columnNames = {"alias", "tenant_id"})
+})
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public class Service extends IdBasedEntity {
 
     // --- Inherited from CatalogItem ---
-    @Column(unique = true, length = 256, nullable = false)
+    @Column(length = 256, nullable = false)
     protected String name;
 
-    @Column(unique = true, length = 256, nullable = false)
+    @Column(length = 256, nullable = false)
     protected String alias;
 
     @Column(length = 512, nullable = false, name = "short_description")
