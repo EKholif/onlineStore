@@ -1,0 +1,74 @@
+id: AG-STORAGE-001
+type: RULE
+category: STORAGE
+severity: CRITICAL
+title: Storage Path Consistency Rule
+
+description: |
+  Tenant assets storage path MUST be identical for write and read operations.
+  
+  WHY: Prevents 404 errors and data loss from path mismatches between upload and serving.
+  
+  BUSINESS IMPACT:
+  - CRITICAL: Images uploaded won't be accessible via HTTP if paths mismatch
+  - Data appears "lost" even though files exist on disk
+  - Silent failures that are hard to debug
+  
+  ENFORCEMENT:
+  - Single source of truth: app.storage.tenants-path in application.properties
+  - Validation: StoragePathValidator fails startup if mismatch detected
+  - Testing: Automated test verifies path consistency (StoragePathConsistencyTest)
+  
+  COMPONENTS AFFECTED:
+  - FileUploadUtil (write operations)
+  - MvcConfig (HTTP serving via Spring resource handler)
+  - Any storage service or utility
+
+golden_rules:
+  - NEVER set TENANTS_PATH environment variable in run configurations
+  - NEVER hardcode absolute paths in code (E:\, /home/, etc.)
+  - ALWAYS use ${app.storage.tenants-path} property
+  - Default path: "tenants" (relative from Backend working directory)
+  - Application MUST NOT start if FileUploadUtil and MvcConfig paths differ
+
+violation_examples:
+  - "IntelliJ Run Configuration → Environment Variables → TENANTS_PATH=E:\\onlineStore_Active\\tenants"
+  - "Hardcoding: tenantsBasePath = \"E:\\onlineStore_Active\\tenants\""
+  - "Using different properties for upload path vs serving path"
+
+compliance_verification:
+  startup_validation:
+    - "StoragePathValidator runs at startup (Ordered.HIGHEST_PRECEDENCE)"
+    - "Compares FileUploadUtil.getResolvedBasePath() vs MvcConfig.getResolvedTenantsPath()"
+    - "Application terminates with detailed error if mismatch found"
+  
+  automated_testing:
+    - "Test: StoragePathConsistencyTest.testStoragePathConsistency()"
+    - "Test: StoragePathConsistencyTest.testNoAbsolutePathHardcoded()"
+  
+  manual_verification:
+    - "Upload image via Backend API"
+    - "Verify HTTP access: GET /tenants/{tenantId}/assets/{type}/{id}/image.png"
+    - "Check physical file exists at: webParentVer2/WebBackEndVer2/tenants/{tenantId}/..."
+
+configuration:
+  file: webParentVer2/WebBackEndVer2/src/main/resources/application.properties
+  property: app.storage.tenants-path
+  default: tenants
+  override_mechanism: ${TENANTS_PATH:tenants}
+  recommended: "Use default 'tenants' (relative path)"
+
+references:
+  - com/onlineStore/admin/utility/FileUploadUtil.java
+  - com/onlineStore/admin/MvcConfig.java
+  - com/onlineStore/admin/config/StoragePathValidator.java
+  - com/onlineStore/admin/config/FileUploadConfigurer.java
+  - application.properties
+
+related_rules:
+  - AG-CONFIG-ENV-001 (Environment Variable Configuration)
+  - AG-ASSET-PATH-FIX (Standardized asset path structure)
+
+last_updated: 2026-01-29
+updated_by: Antigravity
+reason: Permanent fix for recurring image 404 issues due to path mismatch

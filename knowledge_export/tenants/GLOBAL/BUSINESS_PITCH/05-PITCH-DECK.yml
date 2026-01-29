@@ -1,7 +1,7 @@
 id: 05-PITCH-DECK
 type: BUSINESS_PITCH
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
-                                                                previousVersion: null, updatedAt: '2026-01-29T03:48:35.499018600', version: 0.1.0 }
+                                                                previousVersion: null, updatedAt: '2026-01-29T04:41:10.471575500', version: 0.1.0 }
 personas: null
 content:
   pitch_deck:
