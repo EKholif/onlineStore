@@ -7,54 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="Refactor user and customer enable status methods to use unified updateEnabledStatus; add customer points history view">
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-28.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-29.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-30.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/src/main/java/com/onlineStore/admin/category/services/onlineStore_Active.code-workspace_ver1_ref.code-workspace" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_2026-01-30.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/analytics/DailyProductStatsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/analytics/ProductAnalyticsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/seeding/TenantZeroSeeder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/test/java/com/onlineStore/admin/analytics/ProductAnalyticsServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/test/java/com/onlineStore/admin/seeding/TenantZeroSeederTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/analytics/DailyProductStatsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/analytics/ProductAnalyticsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd-2026-01-22.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/onlineStore-BackEnd.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/src/main/java/com/onlineStore/services/service/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/src/main/java/com/onlineStore/services/service/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd-2026-01-19.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/onlineStore-BackEnd.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-26.md" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-26.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/onlineStore-BackEnd-2026-01-22.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_latest.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_latest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/order/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/product/ProductController.java" afterDir="false" />
-    </list>
+    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="Refactor user and customer enable status methods to use unified updateEnabledStatus; add customer points history view" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -458,7 +411,7 @@
       <workItem from="1769191677807" duration="8215000" />
       <workItem from="1769273552820" duration="33087000" />
       <workItem from="1769442032809" duration="1302000" />
-      <workItem from="1769555061483" duration="23531000" />
+      <workItem from="1769555061483" duration="24049000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
