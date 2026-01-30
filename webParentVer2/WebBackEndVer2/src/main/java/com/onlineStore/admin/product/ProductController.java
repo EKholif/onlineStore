@@ -54,8 +54,7 @@ public class ProductController {
     public String manageMyProducts() {
         return "redirect:/products/page/1?sortField=name&sortDir=asc";
     }
-    @Autowired
-    private com.onlineStoreCom.analytics.ProductAnalyticsService analyticsService;
+
 
     @GetMapping("/products/page/{pageNum}")
     public String listByPage(
@@ -192,12 +191,15 @@ public class ProductController {
 
     }
 
+    @Autowired
+    private com.onlineStore.admin.analytics.ProductAnalyticsService analyticsService;
+
     @GetMapping("/products/detail/{id}")
     public ModelAndView detailProductView(@PathVariable("id") Integer id, RedirectAttributes ra) {
 
         // AG-ANALYTICS: Track specific product view
         if (id != null) {
-            analyticsService.logView(id);
+            analyticsService.logView(id, TenantContext.getTenantId());
         }
 
         ModelAndView model = new ModelAndView("products/product_detail_modal");

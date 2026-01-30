@@ -1,7 +1,7 @@
 id: 06-GOVERNANCE
 type: GOVERNANCE
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
-                                                                previousVersion: null, updatedAt: '2026-01-29T04:41:10.475187600', version: 0.1.0 }
+  previousVersion: null, updatedAt: '2026-01-30T03:04:30.439812900', version: 0.1.0}
 personas: null
 content:
   governance:

@@ -49,4 +49,7 @@ public interface ProductRepository extends com.onlineStoreCom.repo.base.BaseTena
             """)
     void updateReviewCountAndAverageRating(@Param("productId") Integer productId);
 
+    @Query("SELECT p FROM Product p WHERE (p.tenantId = :tenantId OR p.tenantId = 0) AND p.id NOT IN (SELECT s.productId FROM DailyProductStats s WHERE s.tenantId = :tenantId)")
+    Page<Product> findProductsWithZeroViews(@Param("tenantId") Integer tenantId, Pageable pageable);
+
 }

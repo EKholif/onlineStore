@@ -1,7 +1,7 @@
-2026-01-25T00:25:56.177+02:00  INFO 32368 --- [main] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 32368 (E:\onlineStore_Active\webParent\WebBackEnd\target\classes started by enoam in E:\onlineStore_Active\webParent\WebBackEnd)
-2026-01-25T00:25:56.186+02:00  INFO 32368 --- [main] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
-2026-01-25T00:26:01.641+02:00  WARN 32368 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
-2026-01-25T00:26:01.728+02:00 ERROR 32368 --- [main] o.s.boot.SpringApplication               : Application run failed
+2026-01-28T15:02:27.190+03:00  INFO 33756 --- [main] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 33756 (E:\onlineStore_Active\webParent\WebBackEnd\target\classes started by enoam in E:\onlineStore_Active\webParent\WebBackEnd)
+2026-01-28T15:02:27.221+03:00  INFO 33756 --- [main] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-28T15:02:31.913+03:00  WARN 33756 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
+2026-01-28T15:02:31.935+03:00 ERROR 33756 --- [main] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
 	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:178) ~[spring-context-6.0.12.jar:6.0.12]
@@ -28,10 +28,10 @@ Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionExcep
 	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:164) ~[spring-context-6.0.12.jar:6.0.12]
 	... 13 common frames omitted
 
-2026-01-25T04:57:45.028+02:00  INFO 31108 --- [main] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 31108 (E:\onlineStore_Active\webParent\WebBackEnd\target\classes started by enoam in E:\onlineStore_Active\webParent\WebBackEnd)
-2026-01-25T04:57:45.048+02:00  INFO 31108 --- [main] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
-2026-01-25T04:57:46.439+02:00  WARN 31108 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
-2026-01-25T04:57:46.466+02:00 ERROR 31108 --- [main] o.s.boot.SpringApplication               : Application run failed
+2026-01-28T15:12:12.257+03:00  INFO 11416 --- [main] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 11416 (E:\onlineStore_Active\webParent\WebBackEnd\target\classes started by enoam in E:\onlineStore_Active\webParent\WebBackEnd)
+2026-01-28T15:12:12.284+03:00  INFO 11416 --- [main] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-28T15:12:15.162+03:00  WARN 11416 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
+2026-01-28T15:12:15.198+03:00 ERROR 11416 --- [main] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
 	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:178) ~[spring-context-6.0.12.jar:6.0.12]
@@ -58,10 +58,10 @@ Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionExcep
 	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:164) ~[spring-context-6.0.12.jar:6.0.12]
 	... 13 common frames omitted
 
-2026-01-25T04:58:10.625+02:00  INFO 4272 --- [main] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 4272 (E:\onlineStore_Active\webParent\WebBackEnd\target\classes started by enoam in E:\onlineStore_Active\webParent\WebBackEnd)
-2026-01-25T04:58:10.627+02:00  INFO 4272 --- [main] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
-2026-01-25T04:58:10.953+02:00  WARN 4272 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
-2026-01-25T04:58:10.973+02:00 ERROR 4272 --- [main] o.s.boot.SpringApplication               : Application run failed
+2026-01-28T15:12:40.919+03:00  INFO 21720 --- [main] c.o.admin.WebBackEndApplication          : Starting WebBackEndApplication using Java 19.0.1 with PID 21720 (E:\onlineStore_Active\webParent\WebBackEnd\target\classes started by enoam in E:\onlineStore_Active\webParent\WebBackEnd)
+2026-01-28T15:12:40.921+03:00  INFO 21720 --- [main] c.o.admin.WebBackEndApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-01-28T15:12:41.284+03:00  WARN 21720 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
+2026-01-28T15:12:41.307+03:00 ERROR 21720 --- [main] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.onlineStore.admin.WebBackEndApplication]
 	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:178) ~[spring-context-6.0.12.jar:6.0.12]

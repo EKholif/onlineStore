@@ -30,7 +30,7 @@ public class MainController {
      * - Tenant: Store Statistics (tenant/store_dashboard)
      */
     @Autowired
-    private com.onlineStoreCom.analytics.ProductAnalyticsService analyticsService;
+    private com.onlineStore.admin.analytics.ProductAnalyticsService analyticsService;
 
     /**
      * Handles requests to the "/ind" URL and returns the index page.

@@ -30,6 +30,8 @@ public class OrderService {
     private CountryRepository countryRepo;
     @Autowired
     private com.onlineStore.admin.product.service.ProductService productService;
+    @Autowired
+    private com.onlineStore.admin.analytics.ProductAnalyticsService analyticsService;
 
 	public void listByPage(int pageNum, PagingAndSortingHelper helper) {
 		String sortField = helper.getSortField();
@@ -138,11 +140,24 @@ public class OrderService {
 
             // AG-BILLING-EVENT-001: Trigger Revenue Calculation on Completion
             if (statusToUpdate == OrderStatus.DELIVERED) {
+                Long tenantId = com.onlineStoreCom.tenant.TenantContext.getTenantId();
+                if (tenantId == null)
+                    tenantId = 0L; // Fallback or handle error
+
+                // AG-ANALYTICS-002: Record Sale per Product
+                for (com.onlineStoreCom.entity.order.OrderDetail detail : orderInDB.getOrderDetails()) {
+                    Integer productId = detail.getProduct().getId();
+                    // Use subtotal or unitPrice * quantity? Subtotal is safest.
+                    // detail.getSubtotal() returns float, Service expects Double.
+                    Double amount = (double) detail.getSubtotal();
+                    analyticsService.recordSale(productId, tenantId, amount);
+                }
+
                 // Publish event efficiently
                 eventPublisher.publishEvent(new com.onlineStore.admin.order.event.OrderCompletedEvent(
                         this,
                         savedOrder,
-                        com.onlineStoreCom.tenant.TenantContext.getTenantId()));
+                        tenantId));
             }
 		}
 
