@@ -29,25 +29,21 @@ public class ProductAnalyticsService {
     @Transactional
     public void logView(Integer productId, Long tenantId) {
         Date today = new java.sql.Date(System.currentTimeMillis());
-        // Using Integer for TenantId based on Entity definition (though TenantContext
-        // uses Long, Entity uses Integer... mismatch?)
-        // Entity DailyProductStats uses Integer tenantId. We should cast.
-        Integer tenantIdInt = tenantId.intValue();
 
-        Optional<DailyProductStats> stats = repo.findByProductIdAndTenantIdAndDate(productId, tenantIdInt, today);
+        Optional<DailyProductStats> stats = repo.findByProductIdAndTenantIdAndDate(productId, tenantId, today);
 
         if (stats.isPresent()) {
             repo.incrementViewCount(stats.get().getId());
         } else {
             // Create new
             try {
-                DailyProductStats newStats = new DailyProductStats(today, productId, tenantIdInt);
+                DailyProductStats newStats = new DailyProductStats(today, productId, tenantId);
                 newStats.setViewCount(1L);
                 repo.save(newStats);
             } catch (Exception e) {
                 // Concurrency: Another thread might have created it.
                 // Fallback: update matching record
-                Optional<DailyProductStats> retry = repo.findByProductIdAndTenantIdAndDate(productId, tenantIdInt,
+                Optional<DailyProductStats> retry = repo.findByProductIdAndTenantIdAndDate(productId, tenantId,
                         today);
                 retry.ifPresent(dailyProductStats -> repo.incrementViewCount(dailyProductStats.getId()));
             }
@@ -58,19 +54,18 @@ public class ProductAnalyticsService {
     @Transactional
     public void logAddToCart(Integer productId, Long tenantId) {
         Date today = new java.sql.Date(System.currentTimeMillis());
-        Integer tenantIdInt = tenantId.intValue();
 
-        Optional<DailyProductStats> stats = repo.findByProductIdAndTenantIdAndDate(productId, tenantIdInt, today);
+        Optional<DailyProductStats> stats = repo.findByProductIdAndTenantIdAndDate(productId, tenantId, today);
 
         if (stats.isPresent()) {
             repo.incrementCartAddCount(stats.get().getId());
         } else {
             try {
-                DailyProductStats newStats = new DailyProductStats(today, productId, tenantIdInt);
+                DailyProductStats newStats = new DailyProductStats(today, productId, tenantId);
                 newStats.setCartAddCount(1L);
                 repo.save(newStats);
             } catch (Exception e) {
-                Optional<DailyProductStats> retry = repo.findByProductIdAndTenantIdAndDate(productId, tenantIdInt,
+                Optional<DailyProductStats> retry = repo.findByProductIdAndTenantIdAndDate(productId, tenantId,
                         today);
                 retry.ifPresent(dailyProductStats -> repo.incrementCartAddCount(dailyProductStats.getId()));
             }
@@ -81,20 +76,19 @@ public class ProductAnalyticsService {
     @Transactional
     public void recordSale(Integer productId, Long tenantId, Double amount) {
         Date today = new java.sql.Date(System.currentTimeMillis());
-        Integer tenantIdInt = tenantId.intValue();
 
-        Optional<DailyProductStats> stats = repo.findByProductIdAndTenantIdAndDate(productId, tenantIdInt, today);
+        Optional<DailyProductStats> stats = repo.findByProductIdAndTenantIdAndDate(productId, tenantId, today);
 
         if (stats.isPresent()) {
             repo.recordSale(stats.get().getId(), amount);
         } else {
             try {
-                DailyProductStats newStats = new DailyProductStats(today, productId, tenantIdInt);
+                DailyProductStats newStats = new DailyProductStats(today, productId, tenantId);
                 newStats.setSalesCount(1L);
                 newStats.setRevenue(amount);
                 repo.save(newStats);
             } catch (Exception e) {
-                Optional<DailyProductStats> retry = repo.findByProductIdAndTenantIdAndDate(productId, tenantIdInt,
+                Optional<DailyProductStats> retry = repo.findByProductIdAndTenantIdAndDate(productId, tenantId,
                         today);
                 retry.ifPresent(s -> repo.recordSale(s.getId(), amount));
             }
@@ -103,12 +97,12 @@ public class ProductAnalyticsService {
 
     // --- Dashboard Analytics ---
 
-    public java.util.List<Object[]> getTopViewedProducts(Integer tenantId, int limit) {
+    public java.util.List<Object[]> getTopViewedProducts(Long tenantId, int limit) {
         return repo.findTopViewedProducts(tenantId, org.springframework.data.domain.PageRequest.of(0, limit))
                 .getContent();
     }
 
-    public java.util.List<Object[]> getTopSellingProducts(Integer tenantId, int limit) {
+    public java.util.List<Object[]> getTopSellingProducts(Long tenantId, int limit) {
         return repo.findTopSellingProducts(tenantId, org.springframework.data.domain.PageRequest.of(0, limit))
                 .getContent();
     }
@@ -126,9 +120,17 @@ public class ProductAnalyticsService {
         return repo.getActiveTenantsCount();
     }
 
-    public org.springframework.data.domain.Page<Object[]> getZeroViewProducts(Integer tenantId, int page, int size) {
+    public org.springframework.data.domain.Page<Object[]> getZeroViewProducts(Long tenantId, int page, int size) {
+        // ProductRepository likely still expects Integer, so we cast here if needed.
+        // Assuming ProductRepository uses tenantId filter which usually expects Integer
+        // in this specific legacy repo?
+        // Let's check. Actually, BaseTenantRepository uses Long generally, but
+        // ProductRepository might have custom queries.
+        // Ideally we pass Integer if that's what it wants.
+        Integer tenantIdInt = tenantId != null ? tenantId.intValue() : null;
+
         org.springframework.data.domain.Page<com.onlineStoreCom.entity.product.Product> productsProxy = productRepo
-                .findProductsWithZeroViews(tenantId, org.springframework.data.domain.PageRequest.of(page, size));
+                .findProductsWithZeroViews(tenantIdInt, org.springframework.data.domain.PageRequest.of(page, size));
 
         return productsProxy.map(p -> new Object[] { p.getId(), p.getName() });
     }

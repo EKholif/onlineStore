@@ -66,11 +66,12 @@ public class WebSecurityConfig {
 
                                 .authenticationProvider(authenticationProvider())
                                 .authorizeHttpRequests((requests) -> requests
-
                                                 .requestMatchers("/customer").authenticated()
-
-                                                .anyRequest().permitAll()
-
+                                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fontawesome/**",
+                                                "/tenants/**", "/webjars/**")
+                                        .permitAll()
+                                        .anyRequest()
+                                        .permitAll()
                                 )
                                 .formLogin(form -> form
                                                 .loginPage("/login")
@@ -103,9 +104,10 @@ public class WebSecurityConfig {
 
         @Bean
         public WebSecurityCustomizer webSecurityCustomizer() {
-            // AG-SECURITY-ASSET-001: Allow public access to tenant assets
-            return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**",
-                    "/fontawesome/**", "/tenants/**");
+            // AG-SECURITY-ASSET-001: Allow public access to static assets only via ignoring
+            // Note: /css/** and /images/** are REMOVED from ignoring to allow filters to
+            // run
+            return (web) -> web.ignoring().requestMatchers("/js/**", "/webjars/**", "/fontawesome/**");
         }
 
         @Bean

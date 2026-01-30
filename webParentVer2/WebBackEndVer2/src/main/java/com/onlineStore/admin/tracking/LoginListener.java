@@ -3,6 +3,7 @@ package com.onlineStore.admin.tracking;
 import com.onlineStore.admin.security.StoreBackendUserDetails;
 import com.onlineStore.admin.usersAndCustomers.users.UserRepository;
 import com.onlineStoreCom.entity.users.User;
+import com.onlineStoreCom.tenant.TenantContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
@@ -33,8 +34,16 @@ public class LoginListener implements ApplicationListener<AuthenticationSuccessE
             activityTracker.userLoggedIn(user.getId());
 
             // 2. Update Database LastLoginTime
-            user.setLastLoginTime(new Date());
-            userRepository.save(user);
+            Long originalTenantId = TenantContext.getTenantId();
+            try {
+                if (user.getTenantId() != null) {
+                    TenantContext.setTenantId(user.getTenantId());
+                }
+                user.setLastLoginTime(new Date());
+                userRepository.save(user);
+            } finally {
+                TenantContext.setTenantId(originalTenantId);
+            }
         }
     }
 }

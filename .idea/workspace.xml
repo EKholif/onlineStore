@@ -7,7 +7,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="Refactor user and customer enable status methods to use unified updateEnabledStatus; add customer points history view" />
+    <list default="true" id="0a8bb1fd-8d43-4b4d-8724-2913d328523d" name="Changes" comment="feat(analytics): Add separate JPA configuration for analytics repositories">
+      <change afterPath="$PROJECT_DIR$/theme_output.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-31.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/fix_fk_constraint.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_2026-01-31.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/tenants/4/assets/products/199/45f5eba5_a6843230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/resources/templates/supports/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/test/java/frontEnd/setting/ThemePriorityIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/analytics/DailyProductStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/analytics/DailyProductStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/Country/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/state/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/setting/subsetting/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/tenant/Tenant.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/entity/tenant/Tenant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/repo/base/BaseTenantRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/comm/src/main/java/com/onlineStoreCom/repo/base/BaseTenantRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd-2026-01-23.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/onlineStore-BackEnd.log" beforeDir="false" afterPath="$PROJECT_DIR$/onlineStore-BackEnd.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verification_result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/verification_result.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-30.md" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_2026-01-30.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParent/WebBackEnd/reports/system/system_audit_latest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/AI_CONTEXT/04-AI-PROMPTS.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_LOGIC/03-BUSINESS-SCENARIOS.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/BUSINESS_PITCH/05-PITCH-DECK.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/GOVERNANCE/06-GOVERNANCE.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/INTENT/00-INTENT.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/PRINCIPLE/01-CORE-PRINCIPLES.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/REFERENCE_DATA/07-SHARED-REFERENCE-DATA.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/RULE/08-TENANT-ISOLATION.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/TECHNICAL_SPEC/10-STORAGE-STRUCTURE.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/knowledge_export/tenants/GLOBAL/UNSTRUCTURED/02-RULE-MAPPING.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/onlineStore-BackEnd-2026-01-23.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_2026-01-30.md" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_2026-01-30.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_latest.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/reports/system/system_audit_latest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/JpaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/WebBackEndApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/WebBackEndApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/ZeroDateFixerRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/ZeroDateFixerRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/analytics/DailyProductStatsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/analytics/DailyProductStatsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/analytics/ProductAnalyticsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/analytics/ProductAnalyticsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/product/ProdactRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/product/ProdactRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/product/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/product/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/tracking/LoginListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/src/main/java/com/onlineStore/admin/tracking/LoginListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/tenants/4/assets/profile/dev-containers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/verification_result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebBackEndVer2/verification_result.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/setting/SettingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/setting/SettingFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/setting/repository/SettingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/java/frontEnd/setting/repository/SettingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/resources/templates/supports/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webParentVer2/WebFrontEndVer2/src/main/resources/templates/supports/navbar/navbar.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +195,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.FrontEndApplication (1)">
+  <component name="RunManager" selected="Spring Boot.WebBackEndApplication (1)">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
@@ -280,8 +340,8 @@
       <item itemvalue="JUnit.MultiTenancyIsolationTest.testTwoTenantsDataIsolation" />
       <item itemvalue="JUnit.ShippingRateRepositoryTest.testListAll" />
       <item itemvalue="JUnit.TenantFilterCheckTest.testFilterAppliedOnSameEntityManager" />
-      <item itemvalue="Spring Boot.WebBackEndApplication (1)" />
       <item itemvalue="Spring Boot.FrontEndApplication (1)" />
+      <item itemvalue="Spring Boot.WebBackEndApplication (1)" />
       <item itemvalue="Spring Boot.FrontEndApplication" />
       <item itemvalue="Spring Boot.WebBackEndApplication" />
     </list>
@@ -411,7 +471,7 @@
       <workItem from="1769191677807" duration="8215000" />
       <workItem from="1769273552820" duration="33087000" />
       <workItem from="1769442032809" duration="1302000" />
-      <workItem from="1769555061483" duration="24049000" />
+      <workItem from="1769555061483" duration="36169000" />
     </task>
     <task id="LOCAL-00001" summary="new Frontend">
       <option name="closed" value="true" />
@@ -859,7 +919,6 @@
       <path value="$PROJECT_DIR$/emailSender" />
       <path value="$PROJECT_DIR$/webParent/FrontEnd" />
     </ignored-roots>
-    <MESSAGE value="updated" />
     <MESSAGE value="new Frontend" />
     <MESSAGE value="Add report functionality and improve UI components&#10;&#10;- Introduced ReportType enum for report categorization.&#10;- Enhanced SettingBag with a method to retrieve all settings.&#10;- Updated Country to improve string representation.&#10;- Modified common_form.js for better navigation handling.&#10;- Added ProductRepositoryTests for product alias retrieval.&#10;- Implemented new report controller for sales report view.&#10;- Updated various HTML files for improved modal behavior and styling." />
     <MESSAGE value="Implement home page view and enhance product listing functionality" />
@@ -884,7 +943,8 @@
     <MESSAGE value="Add tenant migration logs and implement asset path standardization" />
     <MESSAGE value="Refactor user and customer enable status methods; standardize repository interface for enabling entities" />
     <MESSAGE value="Refactor user and customer enable status methods to use unified updateEnabledStatus; add customer points history view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor user and customer enable status methods to use unified updateEnabledStatus; add customer points history view" />
+    <MESSAGE value="feat(analytics): Add separate JPA configuration for analytics repositories" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(analytics): Add separate JPA configuration for analytics repositories" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -144,7 +144,7 @@ public class MainController {
             model.addAttribute("pageTitle", "My Store Dashboard");
 
             if (tenantIdLong != null) {
-                Integer tenantId = tenantIdLong.intValue();
+                Long tenantId = tenantIdLong;
 
                 // Analytics - Top Viewed
                 java.util.List<Object[]> topViewed = analyticsService.getTopViewedProducts(tenantId, 5);

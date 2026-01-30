@@ -1,13 +1,14 @@
 package com.onlineStoreCom.entity.setting.subsetting;
 
 import com.onlineStoreCom.entity.BaseIdEntity;
+import com.onlineStoreCom.tenant.GlobalData;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "currencies")
-public class Currency extends BaseIdEntity {
+public class Currency extends BaseIdEntity implements GlobalData {
 
 	@Column(nullable = false, length = 64)
 	private String name;

@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 @Table(name = "daily_product_stats",
         uniqueConstraints = @UniqueConstraint(columnNames = {"date", "product_id", "tenant_id"}))
-public class DailyProductStats {
+public class DailyProductStats implements com.onlineStoreCom.tenant.TenantAware {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class DailyProductStats {
     private Integer productId;
 
     @Column(name = "tenant_id", nullable = false)
-    private Integer tenantId;
+    private Long tenantId;
 
     @Column(name = "view_count", nullable = false)
     private Long viewCount = 0L;
@@ -38,7 +38,7 @@ public class DailyProductStats {
     public DailyProductStats() {
     }
 
-    public DailyProductStats(Date date, Integer productId, Integer tenantId) {
+    public DailyProductStats(Date date, Integer productId, Long tenantId) {
         this.date = date;
         this.productId = productId;
         this.tenantId = tenantId;
@@ -68,11 +68,13 @@ public class DailyProductStats {
         this.productId = productId;
     }
 
-    public Integer getTenantId() {
+    @Override
+    public Long getTenantId() {
         return tenantId;
     }
 
-    public void setTenantId(Integer tenantId) {
+    @Override
+    public void setTenantId(Long tenantId) {
         this.tenantId = tenantId;
     }
 

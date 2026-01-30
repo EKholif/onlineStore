@@ -1,5 +1,6 @@
 package com.onlineStoreCom.repo.base;
 
+import com.onlineStoreCom.tenant.GlobalData;
 import com.onlineStoreCom.tenant.TenantAware;
 import com.onlineStoreCom.tenant.TenantContext;
 import jakarta.persistence.EntityManager;
@@ -20,6 +21,10 @@ public class BaseTenantRepositoryImpl<T, ID extends Serializable> extends Simple
     @Override
     @Transactional
     public <S extends T> S save(S entity) {
+        if (GlobalData.class.isAssignableFrom(getDomainClass())) {
+            return super.save(entity);
+        }
+
         Long tenantId = TenantContext.getTenantId();
         if (tenantId == null) {
             throw new SecurityException("No Tenant Context set for save operation.");
@@ -39,6 +44,10 @@ public class BaseTenantRepositoryImpl<T, ID extends Serializable> extends Simple
 
     @Override
     public Optional<T> findById(ID id) {
+        if (GlobalData.class.isAssignableFrom(getDomainClass())) {
+            return super.findById(id);
+        }
+
         Long tenantId = TenantContext.getTenantId();
         if (tenantId == null) {
             throw new SecurityException("No Tenant Context set for findById operation.");
@@ -48,6 +57,10 @@ public class BaseTenantRepositoryImpl<T, ID extends Serializable> extends Simple
 
     @Override
     public List<T> findAll() {
+        if (GlobalData.class.isAssignableFrom(getDomainClass())) {
+            return super.findAll();
+        }
+
         Long tenantId = TenantContext.getTenantId();
         if (tenantId == null) {
             throw new SecurityException("No Tenant Context set for findAll operation.");
@@ -57,6 +70,9 @@ public class BaseTenantRepositoryImpl<T, ID extends Serializable> extends Simple
 
     @Override
     public Optional<T> findByIdAndTenantId(ID id, Long tenantId) {
+        if (GlobalData.class.isAssignableFrom(getDomainClass())) {
+            return super.findById(id);
+        }
         return super.findOne((root, query, cb) -> cb.and(
                 cb.equal(root.get("id"), id),
                 cb.equal(root.get("tenantId"), tenantId)

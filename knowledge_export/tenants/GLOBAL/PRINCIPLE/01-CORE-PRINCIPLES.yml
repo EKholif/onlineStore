@@ -1,7 +1,7 @@
 id: 01-CORE-PRINCIPLES
 type: PRINCIPLE
 versioning: !!com.onlineStore.admin.knowledge.KnowledgeVersion {backwardCompatible: false,
-  previousVersion: null, updatedAt: '2026-01-30T03:04:30.404636200', version: 0.1.0}
+                                                                previousVersion: null, updatedAt: '2026-01-31T02:46:00.354905100', version: 0.1.0 }
 personas: null
 content:
   core_principles:

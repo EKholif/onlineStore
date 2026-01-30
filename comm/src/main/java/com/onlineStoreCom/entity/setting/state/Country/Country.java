@@ -3,6 +3,7 @@ package com.onlineStoreCom.entity.setting.state.Country;
 import com.onlineStoreCom.entity.BaseIdEntity;
 import com.onlineStoreCom.entity.customer.Customer;
 import com.onlineStoreCom.entity.setting.state.State;
+import com.onlineStoreCom.tenant.GlobalData;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "countries")
-public class Country extends BaseIdEntity {
+public class Country extends BaseIdEntity implements GlobalData {
 
     @Column(nullable = false, length = 45)
     private String name;

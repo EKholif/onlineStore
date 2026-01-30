@@ -1,6 +1,7 @@
 package com.onlineStoreCom.entity.tenant;
 
 import com.onlineStoreCom.entity.saas.BusinessTemplate;
+import com.onlineStoreCom.tenant.GlobalData;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -8,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tenants")
-public class Tenant implements Serializable {
+public class Tenant implements Serializable, GlobalData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

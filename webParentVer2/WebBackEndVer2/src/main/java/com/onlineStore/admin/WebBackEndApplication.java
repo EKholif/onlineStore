@@ -8,12 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication(scanBasePackages = { "com.onlineStore.admin", "com.onlineStore.services", "com.onlineStoreCom" })
 @org.springframework.boot.autoconfigure.domain.EntityScan({ "com.onlineStoreCom.entity" })
-@org.springframework.data.jpa.repository.config.EnableJpaRepositories(basePackages = {
-        "com.onlineStore.admin",
-        "com.onlineStore.services",
-        "com.onlineStoreCom.repo",
-        "com.onlineStoreCom.analytics"
-})
 public class WebBackEndApplication {
 
     public static void main(String[] args) {

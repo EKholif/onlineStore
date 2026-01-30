@@ -67,7 +67,7 @@ public class ProductService {
         }
 
         if (productByAlias != null && !Objects.equals(productByAlias.getId(), id)) {
-            return "DuplicateAlies";
+            return "DuplicateAlias";
         }
 
         return "Ok";

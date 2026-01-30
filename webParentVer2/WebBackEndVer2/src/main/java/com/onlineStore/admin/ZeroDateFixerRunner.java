@@ -33,13 +33,11 @@ public class ZeroDateFixerRunner implements CommandLineRunner {
             }
 
             // Fix Users
-            fixTable("users", "created_time");
             fixTable("users", "last_login_time");
 
             // Fix Customers
             fixTable("customers", "created_time");
             fixTable("customers", "last_login_time");
-            fixTable("customers", "date_of_birth"); // Just in case
 
             // Fix Products
             fixTable("products", "created_time");
@@ -47,14 +45,9 @@ public class ZeroDateFixerRunner implements CommandLineRunner {
 
             // Fix Orders
             fixTable("orders", "order_time");
+            fixTable("orders", "deliver_date");
 
-            // Fix Brand
-            fixTable("brands", "created_time");
-            // Fix Category
-            fixTable("categories", "created_time");
-
-            // Fix Daily Product Stats (The culprit of earlier stack trace?)
-            // Note: stats often use 'date' column which is DATE type, not DATETIME.
+            // Daily Product Stats (already handled via fixDateColumn)
             fixDateColumn("daily_product_stats", "date");
 
             System.out.println("✅ [ZeroDateFixer] COMPLETED.");

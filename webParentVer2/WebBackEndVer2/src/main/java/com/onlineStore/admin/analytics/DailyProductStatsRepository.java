@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface DailyProductStatsRepository
                 extends JpaRepository<DailyProductStats, Long>, JpaSpecificationExecutor<DailyProductStats> {
 
-        Optional<DailyProductStats> findByProductIdAndTenantIdAndDate(Integer productId, Integer tenantId, Date date);
+    Optional<DailyProductStats> findByProductIdAndTenantIdAndDate(Integer productId, Long tenantId, Date date);
 
         @Modifying
         @Query("UPDATE DailyProductStats s SET s.viewCount = s.viewCount + 1 WHERE s.id = ?1")
@@ -29,11 +29,11 @@ public interface DailyProductStatsRepository
 
         // Tenant Analytics
         @Query("SELECT s.productId, SUM(s.viewCount) as totalViews FROM DailyProductStats s WHERE s.tenantId = ?1 GROUP BY s.productId ORDER BY totalViews DESC")
-        org.springframework.data.domain.Page<Object[]> findTopViewedProducts(Integer tenantId,
+        org.springframework.data.domain.Page<Object[]> findTopViewedProducts(Long tenantId,
                         org.springframework.data.domain.Pageable pageable);
 
         @Query("SELECT s.productId, SUM(s.salesCount) as totalSales FROM DailyProductStats s WHERE s.tenantId = ?1 GROUP BY s.productId ORDER BY totalSales DESC")
-        org.springframework.data.domain.Page<Object[]> findTopSellingProducts(Integer tenantId,
+        org.springframework.data.domain.Page<Object[]> findTopSellingProducts(Long tenantId,
                         org.springframework.data.domain.Pageable pageable);
 
         // Platform Analytics (Global)

@@ -2,11 +2,12 @@ package com.onlineStoreCom.entity.setting.state;
 
 import com.onlineStoreCom.entity.BaseIdEntity;
 import com.onlineStoreCom.entity.setting.state.Country.Country;
+import com.onlineStoreCom.tenant.GlobalData;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "states")
-public class State extends BaseIdEntity {
+public class State extends BaseIdEntity implements GlobalData {
 
     @Column(nullable = false, length = 45)
     private String name;
